@@ -40,7 +40,7 @@
                                     <div class="col-md-10 col-md-push-1">
                                         <!--<?php if(isset($status) && !$status){ ?>-->
                                         <!--<p class="alert alert-danger"><i class="icon-warning-sign"></i> <?php echo $msg ?></p>-->
-                                        <p id="loginvalidator" class="alert alert-danger"><i class="icon-warning-sign"></i>  </p>
+                                        <p class="alert alert-danger"><i class="icon-warning-sign"></i>  </p>
                                         <!--<?php } ?>-->
 
                                         <!-- <p><input class="col-xs-12 col-md-12 sign-up" id="username" type="text" name="username" placeholder="Username" required></p>
@@ -594,48 +594,48 @@
 
             <div id="feature-wrap-team" class="bg">
 
-                <h2 class="title-area team-member">Meet the Team</h2>
+                <h2 class="title-area team-member">Meet the Revision Team</h2>
 
                 <div class="container">
                     <ul class="row">
                         <li class="col-md-3 team-member">		
                             <div class="member-photo">	
                                 <!-- <a target="_blank" href="https://www.facebook.com/dominicdosdos" id="doms" data-toggle="tooltip" data-placement="left" title="Hello There!"> -->
-                                <a target="_blank" href="https://www.facebook.com/dominicdosdos">						
-                                    <img src="img/doms.jpg" alt="Dominic Dosdos" class="img-responsive-team img-circle">
+                                <a target="_blank" href="https://www.facebook.com/david.l.ramirez.79">						
+                                    <img src="img/doms.jpg" alt="David Ramirez" class="img-responsive-team img-circle">
                                 </a>
                             </div>
-                            <h5 class="member-name">Dominic John Dosdos</h5>
-                            <p class="job">Team Lead &amp; Front-end Developer</p>						
+                            <h5 class="member-name">David Ramirez</h5>
+                            <p class="job">Team Lead &amp; Back-end Developer</p>						
                         </li>
 
                         <li class="col-md-3 team-member">		
                             <div class="member-photo">
-                                <a target="_blank" href="https://www.facebook.com/jedstevenmorillo">			
-                                    <img src="img/jed.jpg" alt="Jed Morillo" class="img-responsive-team img-circle">
+                                <a target="_blank" href="https://www.facebook.com/vine.deiparine">			
+                                    <img src="img/jed.jpg" alt="Vine Deiparine" class="img-responsive-team img-circle">
                                 </a>
                             </div>
-                            <h5 class="member-name">Jed Steven Morillo</h5>
+                            <h5 class="member-name">Vine Joy Deiparine</h5>
                             <p class="job">Systems Analyst &amp; Back-end Developer</p>						
                         </li>
 
                         <li class="col-md-3 team-member">		
                             <div class="member-photo">
-                                <a target="_blank" href="https://www.facebook.com/silverfrost7">			
-                                    <img src="img/aven.jpg" alt="Aven Benitez" class="img-responsive-team img-circle">
+                                <a target="_blank" href="https://www.facebook.com/juliejanealegre">			
+                                    <img src="img/aven.jpg" alt="Julie Alegre" class="img-responsive-team img-circle">
                                 </a>
                             </div>
-                            <h5 class="member-name">Jay Aven Benitez</h5>
-                            <p class="job">Front-end Developer &amp; Quality Assurance Engineer</p>						
+                            <h5 class="member-name">Julie Jane Alegre</h5>
+                            <p class="job">Back-end Developer &amp; Quality Assurance Engineer</p>						
                         </li>
 
                         <li class="col-md-3 team-member last">		
                             <div class="member-photo">	
-                                <a target="_blank" href="https://www.facebook.com/josef619235">		
-                                    <img src="img/dave.jpg" alt="Dave Manatad" class="img-responsive-team img-circle">
+                                <a target="_blank" href="https://www.facebook.com/A.J.Caparoso">		
+                                    <img src="img/dave.jpg" alt="Aislinn Caparoso" class="img-responsive-team img-circle">
                                 </a>
                             </div>
-                            <h5 class="member-name">Joseph Dave Manatad</h5>
+                            <h5 class="member-name">Aislinn Jewel Caparoso</h5>
                             <p class="job">Back-end Developer &amp; Documentation Officer</p>						
                         </li>					
                     </ul>
@@ -658,26 +658,17 @@
                             <h4>Login as a Developer or Reviewer <br> and start using LOOP today!</h4>
                             <h5 class="spec">Join us, It's just a click away.</h5>
                             <a class="btn btn-success banner-learnmore" id="signUpFree" type="button" href="#responsive_signUpLight" data-toggle="modal">
+                                    <!-- <h5>Sign Up. It’s Free!</h5> -->
+                                    <h5>Sign me up for LOOP!</h5>
+                            </a>
+                        <div class="clearfix"></div>
+                        </div>
+                        <div class="col-md-6 slogan-pic">					
+                                <img src="img/professor-mascot-inv-m2.png" class="img-responsive pull-left"/>
                         </div>
                     </div>
-                    <!-- <h5>Sign Up. It’s Free!</h5> -->
-                    <h5>Sign me up for LOOP!</h5>
-                    </a>
-                    <div class="clearfix"></div>
-                </div>
-
-                <div class="col-md-6 slogan-pic">
-
-
-
-
-
-                    <img src="img/professor-mascot-inv-m.png" class="img-responsive pull-left"/>
-
-
                 </div>
             </div>
-        </div>
     </div>
 
 
