@@ -2,6 +2,7 @@
 <!--Functions in php that have not been transfered/revised here:-->
     <!--?php $this->layout->modal_footer() ?>-->
     <!--?php echo date("Y"); ?-->
+
 <!--?php
 	session_start();
 	$counter=0;
@@ -112,17 +113,80 @@
 			</nav>
 		</div>
 
+
+
+
+
 		<div class="clearfix"></div>
 
+		<!-- <div id="banner-wrap-main-view">
+			<div class="container main-view">
+				<div class="well col-md-6 col-md-offset-3 main">
+					<button type="button" class="btn btn-success btn-lg btn-block main" onclick="document.location='http://localhost/jiary/index.php/journal/create_entry'">Create</button>
+					<button type="button" class="btn btn-primary btn-lg btn-block main" onclick="document.location='http://localhost/jiary/index.php/journal'">List View</button>
+					<button type="button" class="btn btn-info btn-lg btn-block main" onclick="document.location='http://localhost/jiary/index.php/journal/jiary_view'">Jiary View</button>
+				</div>
+			</div>
+		</div>
+		
+		<div class="clearfix"></div> -->
+
+		<!-- <div id="breadcrumb-wrap">
+			<div class="container">
+				<ol class="breadcrumb">
+					<li><a class="breadcrumb-link" href="<?php //echo base_url() ?>index.php/home">Back to Main View</a></li>
+					<li class="active">Create</li>
+				</ol>
+			</div>
+		</div> -->
+
+		<!-- <div id="actions-wrap">
+			<div class="container">
+				Hello There! Transfer tabs here. Make this awesome. Much Like the admin page.
+
+				<ul class="nav nav-tabs admin">
+				    <li class="active"><a href="admin-view.php">Developer</a></li>
+				    <li><a href="admin-view2.php">Reviewer</a></li>
+				    <li><a href="admin-view3.php">Inactive Accounts</a></li>
+				    <li><a href="admin-view4.php">Blocked Accounts</a></li>
+				    <li><a href="admin-view5.php">Learning Objects</a></li>
+		    	</ul>
+
+
+			</div>
+		</div> -->
+
+
+		<!-- This is really great -->
+		<!-- <ul class="nav nav-tabs admin">
+		    <li class="active"><a class="tab" href="#">Developer</a></li>
+		    <li><a class="tab" href="#">Reviewer</a></li>
+		    <li><a class="tab" href="#">Inactive Accounts</a></li>
+		    <li><a class="tab" href="#">Blocked Accounts</a></li>
+		    <li><a class="tab" href="#">Learning Objects</a></li>
+    	</ul> -->
+
+
+
+
+
+
+        
+
+
+
+
     	<ul class="nav nav-tabs main-views">
-    		<li><a href="<?php echo base_url()?>redirect/admin_view"><i class="icon-plus-sign-alt icon-large default"></i> New Account Requests</a></li>
-			<li><a href="<?php echo base_url()?>redirect/admin_view1"><i class="icon-folder-open icon-large default"></i> Developers</a></li>
-		    <li><a href="<?php echo base_url()?>redirect/admin_view2"><i class="icon-edit icon-large default"></i> Reviewers</a></li>
-		    <li><a href="<?php echo base_url()?>redirect/admin_view3"><i class="icon-time icon-large default"></i> Inactive Accounts</a></li>
-		    <li><a href="<?php echo base_url()?>redirect/admin_view4"><i class="icon-ban-circle icon-large default"></i> Blocked Accounts</a></li>
-		    <li><a href="<?php echo base_url()?>redirect/admin_view5"><i class="icomoon-list"></i> Learning Objects</a></li>
+    		<li><a href="redirect/admin_view"><i class="icon-plus-sign-alt icon-large default"></i> New Account Requests</a></li>
+			<li><a href="redirect/admin_view1"><i class="icon-folder-open icon-large default"></i> Developers</a></li>
+		    <li><a href="redirect/admin_view2"><i class="icon-edit icon-large default"></i> Reviewers</a></li>
+		    <li><a href="redirect/admin_view3"><i class="icon-time icon-large default"></i> Inactive Accounts</a></li>
+		    <li><a href="redirect/admin_view4"><i class="icon-ban-circle icon-large default"></i> Blocked Accounts</a></li>
+		    
 			<!-- <li class="active"><a href="<?php //echo base_url()?>redirect/admin_view5"><i class="icon-list icon-large default"></i> Learning Objects</a></li> -->
-			<li class="active"><a class="active-tab" href="<?php echo base_url()?>redirect/admin_view6"><i class="icomoon-list"></i> Learning Elements</a></li>
+			<li class="active"><a class="active-tab" href="redirect/admin_view5"><i class="icomoon-list"></i> Learning Objects</a></li>
+
+			<li><a href="redirect/admin_view6"><i class="icomoon-list"></i> Learning Elements</a></li>
 		</ul>
 
 		<div class="clearfix"></div>
@@ -152,8 +216,8 @@
 						        <tbody>
 						        <!--?php  
 
-					        		require './application/controllers/LEController.php';
-					        		$controller = new LEController;
+					        		require './application/controllers/LOController.php';
+					        		$controller = new LOController;
 						if(isset($_POST['searchName'])){
 							$subject = null;
 							$dateFrom = null;
@@ -172,15 +236,15 @@
 							if(isset($_POST['order']) && isset($_POST['orderCheck'])){
 								$order = $_POST['order'];
 							}
-							$LEs = $controller->searchLE($_POST['searchName'],$subject,$dateFrom,$dateTo,$order);
+							$LOs = $controller->searchLO($_POST['searchName'],$subject,$dateFrom,$dateTo,$order);
 							//$_POST['searchName'] = null;
 						}
 						else{//new condition for advanced search
-							$LEs = @$controller->getAllLE();
+							$LOs = @$controller->getAllLO();
 						}
-						$_SESSION['les'] = serialize($LEs);
-						$LE = current($LEs);
-						if($LE != null && isset($_POST['searchName'])){
+						$_SESSION['los'] = serialize($LOs);
+						$LO = current($LOs);
+						if($LO != null && isset($_POST['searchName'])){
 								echo '<tr style="font-size:80%;"><td><i class="icon-search"></i></td><td colspan="5">Search Results for "'.$_POST['searchName'].'"....<a href="'. base_url().'"redirect/LO>CLICK HERE</a> to reload all Learning Objects</td>';
 								 	echo '<td style="display: none">'.'</td>';
 									echo '<td style="display: none">'.'</td>';
@@ -188,46 +252,46 @@
 									echo '<td style="display: none">'.'</td>';
 									echo '</tr>';
 								}
-						while($LE != null)
+						while($LO != null)
 						{
 							echo '<form name="form'.$counter.'" action="<?php echo base_url()?>/redirect/history" method="POST">';
 							echo '<tr>';
-							if($LE->getRating()==1)
+							if($LO->getRating()==1)
 								echo '<td><img src="'.base_url().'img/icon-red.png" alt="For Review" /></td>';
-							else if($LE->getRating()==2)
+							else if($LO->getRating()==2)
 								echo '<td><img src="'.base_url().'img/icon-orange.png" alt="For Review" /></td>';
-							else if($LE->getRating()==3)
+							else if($LO->getRating()==3)
 								echo '<td><img src="'.base_url().'img/icon-yellow.png" alt="For Review" /></td>';
-							else if($LE->getRating()==4)
+							else if($LO->getRating()==4)
 								echo '<td><img src="'.base_url().'img/icon-yellowgreen.png" alt="For Review" /></td>';
-							else if($LE->getRating() == 5)
+							else if($LO->getRating() == 5)
 								echo '<td><img src="'.base_url().'img/icon-green.png" alt="Ready To Use" /></td>';
 							// echo '<td><a href="#responsive_fileActionReviewer" data-toggle="modal" >'.$LO->getName().'</a></td>';
 							
-							echo '<td><a onclick="select('.$counter.')" href="'.base_url().'redirect/history/LE/'.$counter.'" data-toggle="modal" >'.$LE->getName().'</a></td>';
-							echo '<td>'.$LE->getSubject().'</td>';
-							echo '<td>'.$LE->getDateUploaded().'</td>';
-							echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LE->getRating().'</td>';
-							echo '<td>'.$LE->getComments().'</td>';
+							echo '<td><a onclick="select('.$counter.')" href="'.base_url().'redirect/history/LO/'.$counter.'" data-toggle="modal" >'.$LO->getName().'</a></td>';
+							echo '<td>'.$LO->getSubject().'</td>';
+							echo '<td>'.$LO->getDateUploaded().'</td>';
+							echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LO->getRating().'</td>';
+							echo '<td>'.$LO->getComments().'</td>';
 							echo '<input type="hidden" name="downloadLO" value="'.$counter.'"/>';
-							if($LE->getStatus() == 0)
+							if($LO->getStatus() == 0)
 								echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;<i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>';
-							else if($LE->getStatus() == 2)
+							else if($LO->getStatus() == 2)
 								echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;<i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>';
-							else if($LE->getStatus() == 1)
+							else if($LO->getStatus() == 1)
 								echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;<i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>';
-							echo '<td>'.$LE->getRev().'</td>';
-							echo '<td>'.$LE->getUploadedBy().'</td>';
+							echo '<td>'.$LO->getRev().'</td>';
+							echo '<td>'.$LO->getUploadedBy().'</td>';
 							echo '</tr>';
 							echo '</form>';
-							next($LEs);
-							$LE = current($LEs);
+							next($LOs);
+							$LO = current($LOs);
 							$counter++;
 						}
 						if($counter == 0){
 							echo '<tr>';
-									echo '<td colspan=9><h2 style="color: #000; font-weight:bold;">No Learning Elements found.</h2><br>
-														No Learning Elements found.Please <a href="'. base_url().'"redirect/upload class="btn btn-success">CLICK HERE</a> to refresh the list.</td>';			
+									echo '<td colspan=9><h2 style="color: #000; font-weight:bold;">No Learning Objects found.</h2><br>
+														No Learning Objects found.Please <a href="'. base_url().'"redirect/upload class="btn btn-success">CLICK HERE</a> to refresh the list.</td>';			
 									echo '<td style="display: none">'.'</td>';
 									echo '<td style="display: none">'.'</td>';
 									echo '<td style="display: none">'.'</td>';
@@ -254,6 +318,16 @@
 
   		<div class="clearfix"></div>
 
+		<!-- This is the original footer with id=wrapper -->
+		<!-- <footer id="footer-wrap-index"> -->
+			<!-- <div class="container">
+		    	<div class="copyright-here pull-left">
+					Copyright &copy; <?php //echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<button id="aime" class="btn btn-default">Test</button>
+		    	</div>
+	  		</div>
+    	</footer> -->
+		
+		<!-- Take this out if you want the original footer back -->
         <div class="push"></div>
 	</div>
 
@@ -304,7 +378,30 @@
 	<script> 
 		$(document).ready(function(){
 			var length_sel;
+			// // alert($(document).height());
+			// if($(document).height() > 799){
+			// 	$('footer').removeClass('navbar-fixed-bottom').addClass('navbar-static-bottom');
+			// }
 
+
+			//Sticky Footer Help
+			
+			// var optionVal = $('tbody > tr:last-child()').index();
+
+			// 	$('.dataTables_filter label input').click(function(){
+			// 		if(optionVal >= 8){
+			// 			$('footer').removeClass('navbar-fixed-bottom').addClass('navbar-static-bottom');
+			// 		}
+			// 		else{
+			// 			$('footer').addClass('navbar-fixed-bottom').removeClass('navbar-static-bottom');
+			// 		}
+			// 	});
+			
+
+
+
+			// if( optionVal == '10'){
+			// }
             $('.datatable').dataTable({ 
                 "sPaginationType": "bs_normal"
             });
@@ -380,6 +477,17 @@
 		                    }
 		                }
 		            },
+		            // password: {
+		            //     validators: {
+		            //         notEmpty: {
+		            //             message: 'The password is required and can\'t be empty'
+		            //         },
+		            //         identical: {
+		            //             field: 'password',
+		            //             message: 'The password and its confirm are not the same'
+		            //         }
+		            //     }
+		            // },
 
 		            newPassword: {
 		                validators: {
