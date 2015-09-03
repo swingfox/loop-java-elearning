@@ -3,12 +3,13 @@
     <!--?php $this->layout->modal_footer() ?>-->
     <!--?php echo date("Y"); ?-->
     under <ol class="breadcrumb">
+    href ="<php echo base_url().'redirect/admin_view6'?>"
+    href="<?php echo base_url().'redirect/download_Admin/LE/'.$counter ?>"
     href="<?php echo base_url().'index.php'?>"
     value="<?php echo $index?>"
     value="<?php echo $counter?>"
     <!--?php echo $name?-->
     <%--action="<?php echo base_url().'redirect/deleteLE_admin/'?>" --%>
-    <%--action="<?php echo base_url().'redirect/upload_reviseLE/'?>" --%>
     <%--action="<?php echo base_url().'redirect/plusrevLE/'?>"--%>
     <%--under <table class="datatable table table-hover">--%>
 

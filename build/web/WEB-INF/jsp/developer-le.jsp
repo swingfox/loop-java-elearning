@@ -1,81 +1,79 @@
 <%--NOTE:
-<!--Functions in php that have not been transfered/revised here:-->
+Functions in php that have not been transfered/revised here:
     <!--?php $this->layout->modal_footer() ?>-->
     <!--?php echo date("Y"); ?-->
-    under <ol class="breadcrumb">
-    href="<?php echo base_url().'index.php'?>"
-    value="<?php echo $index?>"
-    value="<?php echo $counter?>"
-    <!--?php echo $name?-->
-    <%--action="<?php echo base_url().'redirect/deleteLE_admin/'?>" --%>
-    <%--action="<?php echo base_url().'redirect/upload_reviseLE/'?>" --%>
-    <%--action="<?php echo base_url().'redirect/plusrevLE/'?>"--%>
-    <%--under <table class="datatable table table-hover">--%>
-
+    <!--?php $this->load->helper('url'); ?-->
+    <!--?php echo (isset($status) && $status)?'onload=document.getElementById("responsive_changePassword_btn").click()':'' ?>-->	
+    <!--?php $this->layout->modal_footer(isset($status)?$status:FALSE) ?-->
+    <!--?php session_start();?-->
+--%>
 <!--?php
-	session_start();//to use session variables
-	require './application/controllers/LEController.php';
-	$les = unserialize($_SESSION['les']);
-	$index = $counter;
-	$le = $les[$index];
-	$dev = $le->getUploadedBy();
-	$name = $le->getName();
-	$rate = $le->getRating();
-	$comment = $le->getComments();
-	$rev = $le->getRev();
-	$path = base_url().'uploads/';
-	//print_r($los);
-	//serialize($_SESSION['los']);
-	//echo $dev;*/
+	session_start();
 ?-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>LOOP | History</title>
+<!--?php
+echo '--><script type="text/javascript">
+			function select(i)
+			{
+				
+				document.getElementById("ctr").value = i;
+				document.getElementById("counters").value = i;
+				
+			}
+		</script><!--';
 
-<!--?php $this->layout->header() ?-->
-<link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
-
-    <!-- Bootstrap 3 -->
-    <link href="css/bootstrap3/dist/css/bootstrap.css" rel="stylesheet" media="screen" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Date Picker -->
-    <link href="css/bootstrapformhelpers/css/bootstrap-formhelpers.css" rel="stylesheet" />
-
-    <!-- Modal -->
-    <link href="css/bootstrap-modal-master/css/bootstrap-modal.css" rel="stylesheet" />
-
-    <!-- Icons -->
-    <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
-
-    <!-- 1170 grid -->
-    <link type="text/css" href="css/css-include/1170grid.css" rel="stylesheet" />           
-
-    <!-- Bootstrap Tour -->
-    <link href="js/bootstrap-tour/build/css/bootstrap-tour.css" rel="stylesheet" />
-    <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
-
-    <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
-
-    <!-- Input File -->
-    <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
-
-    <!-- Form Validator -->
-    <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
+		require './application/controllers/LEController.php';
+?-->
+<title>LOOP | Developer View</title>
 
 
+<!--?php $this->layout->header_subpages() ?-->
+            <meta charset="utf-8">
+            <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+
+            <!-- Bootstrap 3 -->
+            <link href="css/bootstrap3/dist/css/bootstrap.css" rel="stylesheet" media="screen" />
+
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <!-- Date Picker -->
+            <!--link href="'.$this->base_url.'css/bootstrap-formhelpers/docs/assets/css/bootstrap-responsive.css" rel="stylesheet" /-->
+            <link href="css/bootstrapformhelpers/css/bootstrap-formhelpers.css" rel="stylesheet" />
+
+            <!-- Modal -->
+            <link href="css/bootstrap-modal-master/css/bootstrap-modal.css" rel="stylesheet" />
+            
+            <!-- Icons -->
+            <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+            <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
+           
+            <!-- Bootstrap Tour -->
+            <link href="js/bootstrap-tour/build/css/bootstrap-tour.css" rel="stylesheet" />
+            <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
+
+
+
+            <!--link type="text/css" href="'.$this->base_url.'css/css-include/style.css" rel="stylesheet" /-->
+            <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
+                
+            <!-- Input File -->
+            <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
+
+            <!-- Form Validator -->
+            <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
+
+<!--?php $this->load->helper('url'); ?-->
 </head>
-<body>	
+<body <!--?php echo (isset($status) && $status)?'onload=document.getElementById("responsive_changePassword_btn").click()':'' ?>-->	
 	<!-- <div id="wrapper"> -->
 	<div class="wrapper">
-    	<!--?php $this->layout->modal_footer() ?-->
+    	<!--?php $this->layout->modal_footer(isset($status)?$status:FALSE) ?-->
 		
 		<div id="header-wrap">
 			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-				<!-- <div class="container"> -->
+				<div class="container">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 							<span class="icon-bar"></span>
@@ -84,7 +82,7 @@
 						</button>
 	                    
 	                    <a class="navbar-brand" href="index.php">
-							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
+							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LEOP Logo"/>
 						</a>
 	                </div>
 					
@@ -110,93 +108,74 @@
                                                      </li>
                                                 </ul>
 					</div>
-				<!-- </div> -->
+				</div>
 			</nav>
 		</div>
 
-		<div class="clearfix"></div>
-
-		<div id="breadcrumb-wrap">
-			<!-- <div class="container"> -->
-				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="redirect/LE">Back to Learning Element List</a></li>
-					<li class="active">History - <!--?php echo $name?--></li>
-				</ol>
-			<!-- </div> -->
-		</div> 
-
-		<div class="clearfix"></div>
-
-		<!-- Confirm Delete Update-->
-        <form name="uniquetest" method="post" action="<?php echo base_url().'redirect/deleteLE/'?>">
-            <div class="modal fade" id="responsive_confirmDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<form id="defaultForm" method="post" action="index.php/redirect/reviewNow">
+            <div class="modal fade" id="responsive_changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header light-theme">
                             <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <span class="popup">Delete</span>
+                            <span class="popup">Change Password</span>
                         </div>
                         <div class="modal-body">  
                             <div class="row">
-                                <div class="col-md-10 col-md-push-1">                                 
-                                    <label class="file-action">Are you sure you want to delete all this Learning Element?</label>
+                                <div class="col-md-10 col-md-push-1 ">
+                                    <!--p><input class="col-xs-12 col-md-12 sign-up" id="password" type="password" name="password" placeholder="Enter Old Password"></p>
+                                    <p><input class="col-xs-12 col-md-12 sign-up" id="enterNewPassword" type="password" name="newPassword" placeholder="Enter New Password"></p>
+                                    <p><input class="col-xs-12 col-md-12 sign-up last" id="confirmNewPassword" type="password" name="confirmNewPassword" placeholder="Confirm New Password"></p-->
+
+                                    <?php if(isset($status) && !$status){ ?>
+                                    <p class="alert alert-danger"><i class="icon-warning-sign"></i> Invalid password.</p>
+                                    <?php } ?>
+
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Old Password" required/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="enterNewPassword" name="newPassword" placeholder="Enter New Password" />
+                                    </div>
+
+                                    <div class="form-group last">
+                                        <input type="password" class="form-control last" id="confirmNewPassword" name="confirmNewPassword" placeholder="Confirm New password" />
+                                    </div>
+
+
                                 </div> 
                             </div>
                         </div>
                         <div class="modal-footer"> 
                             <div class="row">
-                                <div class="col-md-8 col-md-push-3">                                  
-                                <input type="hidden" <%--value="<?php echo $counter?>" --%>id="counters" name="counters">                                           
-                                    <button type="button" class="btn btn-primary" onclick="document.uniquetest.submit()"><i class="icon-ok icon-large default"></i> Yes &nbsp;</button>
-                            		<button type="button" class="btn btn-default" data-dismiss="modal" style="color: red;"><i class="icon-remove icon-large default"></i> &nbsp; No &nbsp;</button>
+                                <div class="col-md-10 col-md-push-1 ">
+                                    <button type="submit" class="btn btn-primary"><i class="icon-ok icon-large default"></i> Save</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>  
-
-		<!-- Confirm Upload Revision Update-->
-        <form name = "teeest" method="post" <%--action="<?php echo base_url().'redirect/upload_reviseLE/'?>" --%>>
-            <div class="modal fade" id="responsive_confirmUploadRev" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header light-theme">
-                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <span class="popup">Upload Revision</span>
-                        </div>
-                        <div class="modal-body">  
-                            <div class="row">
-                                <div class="col-md-10 col-md-push-1">                                 
-                                    <label class="file-action upload-revision">Are you sure you want to upload a revision of this Learning Element?</label>                                    			
-
-									<p class="alert alert-danger upload-revision"><i class="icon-warning-sign"></i> IMPORTANT: <br> Please make sure that the revision will have the same 'Name'
-									to ensure that the revision will reflect to the history list.</p>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="modal-footer"> 
-                            <div class="row">
-                                <div class="col-md-9 col-md-push-2">
-                                <input type="hidden" <%--value="<?php echo $counter?>" --%> id="counters" name="ctr">                                                           
-                                    <button type="button" class="btn btn-primary" onclick="document.teeest.submit()"><i class="icon-upload-alt icon-large default"></i> Upload Revision</button>
-                            		<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-
-
-		<!-- Gi sugdan -->
+        </form>		
 
 		<div class="clearfix"></div>
-		<!-- <div id="content-wrap"> -->
 
-		<div id="content-wrap">
+    	<ul id="main-demo" class="nav nav-tabs main-views tour-step tour-step-two">
+			<li class="tour-step tour-step-one"><a class="active-tab"  href="<?php echo base_url()?>redirect/LO"><i class="icomoon-list"></i> Learning Objects</a></li>
+			<li class="active tour-step tour-step-two"><a class="active-tab"  href="<?php echo base_url()?>redirect/LE"><i class="icomoon-list"></i> Learning Elements</a></li>
+			<!-- <li class="active"><a class="active-tab"  href="<?php //echo base_url()?>redirect/LE"><i class="icon-list icon-large default"></i> Learning Objects</a></li> -->
+			<!-- <li><a href="<?php //echo base_url()?>redirect/upload"><i class="icomoon-upload3"></i> Upload</a></li> -->
+			<li class="tour-step tour-step-three"><a href="<?php echo base_url()?>redirect/uploadLO"><i class="icon-upload-alt icon-large default"></i> Upload LO</a></li>
+			<li class="tour-step tour-step-three"><a href="<?php echo base_url()?>redirect/uploadLE"><i class="icon-upload-alt icon-large default"></i> Upload LE</a></li>
+			<!-- <li><a href="<?php //echo base_url()?>redirect/search"><i class="icomoon-search"></i> Advanced Search</a></li> -->
+			<li class="tour-step tour-step-four"><a href="<?php echo base_url()?>redirect/search"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
+		</ul>
+
+		<div class="clearfix"></div>
+
+  		<div id="content-wrap-dev">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 content">
@@ -208,7 +187,7 @@
 
 						    <thead>
 								<tr>
-									<th class="color-code">#</th>
+									<th class="color-code"></th>
 									<th>Name</th>
 									<th>Subject</th>
 									<!-- <th>Date Uploaded</th> -->
@@ -219,75 +198,111 @@
 								</tr>
 							</thead>
 					        <tbody>
-						        <!--?php
-						        $controller = new LEController();
-						        $LEs = $controller->getLEHistory($name,$dev);
-						        $_SESSION['histles'] = serialize($LEs);
-						        $LE = current($LEs);
-						        $i=0;								
-						        while($LE!=NULL){						       		
-								  	echo '<tr>';										
-										echo '<td>'.($i+1).'</td>';
-										echo '<td><a href="'.$path.$LE->getFilepath().'">'.$LE->getName().'</a></td>';
-										echo '<td>'.$LE->getSubject().'</td>';
-										// echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LE->getDateUploaded().'</td>';
-										echo '<td>'.$LE->getDateUploaded().'</td>';
-										echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LE->getRating().'</td>';
-										echo '<td>'.$LE->getComments().'</td>';
-										echo '<td>'.$LE->getRev().'</td>';;
-										echo '<input type="hidden" name="downloadlo" value="'.$counter.'"/>';
+					        <!--?php  
+					   
+					        //require './application/controllers/LEController.php';
+					        $controller = new LEController();
+					    if(isset($_POST['searchName'])){
+							$subject = null;
+							$dateFrom = null;
+							$dateTo = null;
+							$order = null;
+							//find by subject
+							if(isset($_POST['subject']) && isset($_POST['subjectCheck'])){
+								$subject = $_POST['subject'];
+							}
+							//find by date
+							if(isset($_POST['dateFrom']) && isset($_POST['dateTo']) && isset($_POST['dateCheck'])){
+								$dateFrom = $_POST['dateFrom'];
+								$dateTo = $_POST['dateTo'];
+							}
+							//order by
+							if(isset($_POST['order']) && isset($_POST['orderCheck'])){
+								$order = $_POST['order'];
+							}
+
+							$LEs = $controller->searchLEDev($_POST['searchName'],$subject,$dateFrom,$dateTo,$order,$username);
+							//$_POST['searchName'] = null;
+						}
+						else{//new condition for advanced search
+							
+							$LEs = $controller->getAllLEDev($this->session->userdata('username'));
+						
+						}
+				        		$_SESSION['les'] = serialize($LEs);
+
+								$counter = 0;
+								$LE = current($LEs);
+								if($LE != null && isset($_POST['searchName'])){
+								 	echo '<tr style="font-size:80%;"><td><i class="icon-search"></i></td><td colspan="5">Search Results for "'.$_POST['searchName'].'"....<a href="'. base_url().'"redirect/LE>CLICK HERE</a> to reload all Learning Objects</td>';
+								 	echo '<td style="display: none">'.'</td>';
+									echo '<td style="display: none">'.'</td>';
+									echo '<td style="display: none">'.'</td>';
+									echo '<td style="display: none">'.'</td>';
 									echo '</tr>';
+								}
+								while($LE != null){
+									echo '<form name="form'.$counter.'" method="POST" action="<?php echo base_url()?>/redirect/history">';
+									echo '<tr>';
+									if($LE->getRating()==1)
+								echo '<td><img src="'.base_url().'img/icon-red.png" alt="For Review" /></td>';
+							else if($LE->getRating()==2)
+								echo '<td><img src="'.base_url().'img/icon-orange.png" alt="For Review" /></td>';
+							else if($LE->getRating()==3)
+								echo '<td><img src="'.base_url().'img/icon-yellow.png" alt="For Review" /></td>';
+							else if($LE->getRating()==4)
+								echo '<td><img src="'.base_url().'img/icon-yellowgreen.png" alt="For Review" /></td>';
+							else if($LE->getRating() == 5)
+								echo '<td><img src="'.base_url().'img/icon-green.png" alt="Ready To Use" /></td>';
+									echo '<td><a href="'.base_url().'redirect/history/'.$LE->getType().'/'.$counter.'" onclick="document.form'.$counter.'.submit()">'.$LE->getName().'</a></td>';
+									echo '<td>'.$LE->getSubject().'</td>';
+									// echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LE->getDateUploaded().'</td>';
+									echo '<td>'.$LE->getDateUploaded().'</td>';
+									echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LE->getRating().'</td>';
+									echo '<td>'.$LE->getComments().'</td>';
+									echo '<td>'.$LE->getRev().'</td>';
+									echo '<input type="hidden" name="downloadLE" value="'.$counter.'"/>';
+									echo '</tr>';
+									echo '</form>';									
 									next($LEs);
 									$LE = current($LEs);
-									//echo $i;
-									$i++;							
+									$counter++;
 								}
-						        ?-->													
+
+								if($counter == 0){
+									echo '<tr>';
+									echo '<td colspan=6><h2 style="color: #000; font-weight:bold;">No Learning Elements found.</h2><br>  
+														No Learning Elements found. You have not uploaded any Learning Elements. Please <a href="'. base_url().'redirect/upload" class="btn btn-success">CLICK HERE</a> to upload a Learning Object.</td>';		
+									echo '<td style="display: none">'.'</td>';
+									echo '<td style="display: none">'.'</td>';
+									echo '<td style="display: none">'.'</td>';
+									echo '<td style="display: none">'.'</td>';
+									echo '<td style="display: none">'.'</td>';
+									echo '</tr>';
+								}
+		
+
+
+					        ?-->
+													
 							</tbody>
 						  </table>
 						</div>
-						<div>
-							<input type="hidden" <%--value="<?php echo $index?>"--%> id="ctr" name="ctr">
-                            <input type="hidden" value="" id="counters" name="counters">
-							<!--?php
-                            if($rate != 5){
-								if($comment==NULL && $rev==NULL){									
-									if($i==1)
-										echo '<a href="#responsive_confirmDelete" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"><i class="icon-trash icon-large default"></i> Delete</a>';
-									else
-										echo '<a href="#responsive_confirmUploadRev" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" disabled><i class="icon-upload-alt icon-large default"></i> Upload Revision</a>'.' ';
-								}
-								else if($rev!=NULL){
-									if($comment!=NULL){									
-										echo '<a href="#responsive_confirmUploadRev" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"><i class="icon-upload-alt icon-large default"></i> Upload Revision</a>'.' ';
-									}
-									else{
-										echo '<a href="#responsive_confirmUploadRev" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" disabled><i class="icon-upload-alt icon-large default"></i> Upload Revision</a>'.' ';
-									}
-								}
-							}
-				    		else{								
-				    			echo '<a href="#responsive_confirmUploadRev" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" disabled><i class="icon-upload-alt icon-large default"></i> Upload Revision</a>'.' ';
-				    		}
-				    		?-->
-						</div>
+
 					</div>
 				</div>
 				
 				<div class="clearfix" id="before-features" ></div>
 			</div>
 		</div>
-				<div class="clearfix"></div>				
-			</div>
-		</div> 
 
   		<div class="clearfix"></div>
 
-  		<!-- This is the original footer with id=wrapper -->
+		<!-- This is the original footer with id=wrapper -->
 		<!-- <footer id="footer-wrap-index"> -->
 			<!-- <div class="container">
 		    	<div class="copyright-here pull-left">
-					Copyright &copy; <?php //echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<button id="aime" class="btn btn-default">Test</button>
+					Copyright &copy; <?php //echo date("Y"); ?> LEOP | Learning Object Organizer Plus. All rights reserved.<button id="aime" class="btn btn-default">Test</button>
 		    	</div>
 	  		</div>
     	</footer> -->
@@ -298,11 +313,11 @@
 
 	<div class="footer">
 		<footer id="footer-wrap-index">
-			<!-- <div class="container"> -->
-	            <div class="copyright-here pull-left download">
+			<div class="container">
+	            <div class="copyright-here pull-left">
 					Copyright &copy; <!--?php echo date("Y"); ?--> LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
 		    	</div>
-		    <!-- </div> -->
+		    </div>
 	    </footer>
     </div>
 
@@ -311,7 +326,12 @@
 	<!--?php $this->layout->footer() ?-->
         <script src="css/bootstrap3/assets/js/jquery.js"></script>
         <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
+
+
+
         <script src="js/main.js"></script>
+
+
         <script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
         <script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
         <script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
@@ -427,8 +447,43 @@
             
  </script>
 
+
+	<script> 
+		$(document).ready(function(){
+			var length_sel;
+			
+            $('.datatable').dataTable({ 
+                "sPaginationType": "bs_normal"
+            });
+
+            $('.datatable').each(function(){
+                $(this).show();
+                datatable_configuration_for_bootstrap_three($(this));
+            });
+
+            // datatable configuration for bootstrap 3
+            function datatable_configuration_for_bootstrap_three(datatable){
+            	datatable.addClass('col-md-12');
+                var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
+                search_input.attr('placeholder', 'Search');
+                $('<i class="icomoon-search pull-left searchbar-icon"></i>').prependTo($('div:eq(0) > div > div:eq(0)',datatable.parents('.dataTables_wrapper')));
+                $('div:eq(0) > div > div:eq(0) > div',datatable.parents('.dataTables_wrapper')).addClass('pull-right');
+                search_input.addClass('form-control input-sm');
+                search_input.width('140px'); //used to be 150
+                length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
+                length_sel.addClass('form-control input-sm').css({ padding: '5px 10px 5px 5px', cursor: 'pointer' });
+                $('option', length_sel).css({ padding: '5px 8px' });
+                var pagination = datatable.closest('.dataTables_wrapper').find('ul.pagination');
+                pagination.addClass('pagination-sm');
+            }
+		});
+
+	</script>
+
+
 	<script type="text/javascript">
 		$(document).ready(function() {
+    
 		    $('#defaultForm').bootstrapValidator({
 		        message: 'This value is not valid',
 		        submitHandler: function(validator, form) {
@@ -505,6 +560,5 @@
 		    });
 		});
 	</script>
-
 </body>
 </html>
