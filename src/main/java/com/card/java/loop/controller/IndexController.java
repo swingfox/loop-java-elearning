@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 
 @Controller
+@RequestMapping("/loop-java-elearning")
 public class IndexController {
     
     @RequestMapping("/home")
@@ -26,6 +27,6 @@ public class IndexController {
                 1.  I-set up imu mga XML
                 2.  I-map ang pages(code above)
                 3.  Himu mga contollers
-              */
+      */
     }
 }
