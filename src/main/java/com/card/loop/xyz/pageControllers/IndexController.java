@@ -27,32 +27,32 @@ public class IndexController {
     public ModelAndView accessDownloadLE() {
         return new ModelAndView("downloadLE");
     } 
-    @RequestMapping("/downloadLE/admin")
+    @RequestMapping("/downloadLE-admin")
     public ModelAndView accessDownloadLEAdmin() {
         return new ModelAndView("downloadLEAdmin");
     } 
-    @RequestMapping("/downloadLO/admin")
+    @RequestMapping("/downloadLO-admin")
     public ModelAndView accessDownloadLOAdmin() {
         return new ModelAndView("downloadLOAdmin");
     } 
     
-    @RequestMapping("/historyLE/admin")
+    @RequestMapping("/historyLE-admin")
     public ModelAndView accessHistoryLEAdmin() {
         return new ModelAndView("historyLE-admin");
     } 
-    @RequestMapping("/historyLE/dev")
+    @RequestMapping("/historyLE-dev")
     public ModelAndView accessHistoryLEDev() {
         return new ModelAndView("historyLE-dev");
     } 
-    @RequestMapping("/historyLE/rev")
+    @RequestMapping("/historyLE-rev")
     public ModelAndView accessHistoryLERev() {
         return new ModelAndView("historyLE-rev");
     } 
-    @RequestMapping("/historyLO/admin")
+    @RequestMapping("/historyLO-admin")
     public ModelAndView accessHistoryLOAdmin() {
         return new ModelAndView("historyLO-admin");
     }
-    @RequestMapping("/historyLO/dev")
+    @RequestMapping("/historyLO-dev")
     public ModelAndView accessHistoryLODev() {
         return new ModelAndView("historyLO-dev");
     }
@@ -60,60 +60,60 @@ public class IndexController {
     public ModelAndView accessReviewList() {
         return new ModelAndView("review-list");
     }
-    @RequestMapping("/reviewLE/admin")
+    @RequestMapping("/reviewLE-admin")
     public ModelAndView accessReviewLEAdmin() {
         return new ModelAndView("reviewLE-admin");
     }
-    @RequestMapping("/reviewLE/rev")
+    @RequestMapping("/reviewLE-rev")
     public ModelAndView accessReviewLERev() {
         return new ModelAndView("reviewLE-rev");
     }
-    @RequestMapping("/reviewLO/admin")
+    @RequestMapping("/reviewLO-admin")
     public ModelAndView accessReviewLOAdmin() {
         return new ModelAndView("reviewLE-rev");
     }
-    @RequestMapping("/reviewLO/rev")
+    @RequestMapping("/reviewLO-rev")
     public ModelAndView accessReviewLORev() {
         return new ModelAndView("reviewLO-rev");
     }
-    @RequestMapping("/reviewer/le")
+    @RequestMapping("/reviewer-le")
     public ModelAndView accessReviewerLE() {
         return new ModelAndView("reviewer-le");
     }
-    @RequestMapping("/reviewer/update")
+    @RequestMapping("/reviewer-update")
     public ModelAndView accessReviewerUpdate() {
         return new ModelAndView("reviewer-update");
     }
-    @RequestMapping("/upload/dev")
+    @RequestMapping("/upload-dev")
     public ModelAndView accessUploadDev() {
         return new ModelAndView("upload-dev");
     }
-    @RequestMapping("/historyLO/rev")
+    @RequestMapping("/historyLO-rev")
     public ModelAndView accessHistoryLORev() {
         return new ModelAndView("HistoryLO-rev");
     }
     
-    @RequestMapping("/admin/view")
+    @RequestMapping("/admin-view")
     public ModelAndView accessAdminView() {
         return new ModelAndView("admin-view");
     }
-    @RequestMapping("/admin/view2")
+    @RequestMapping("/admin-view2")
     public ModelAndView accessAdminView2() {
         return new ModelAndView("admin-view2");
     }
-    @RequestMapping("/admin/view3")
+    @RequestMapping("/admin-view3")
     public ModelAndView accessAdminView3() {
         return new ModelAndView("admin-view3");
     }
-    @RequestMapping("/admin/view4")
+    @RequestMapping("/admin-view4")
     public ModelAndView accessAdminView4() {
         return new ModelAndView("admin-view4");
     }
-    @RequestMapping("/admin/view5")
+    @RequestMapping("/admin-view5")
     public ModelAndView accessAdminView5() {
         return new ModelAndView("admin-view5");
     }
-    @RequestMapping("/admin/view6")
+    @RequestMapping("/admin-view6")
     public ModelAndView accessAdminView6() {
         return new ModelAndView("admin-view6");
     }
