@@ -5,14 +5,27 @@
  */
 package com.card.loop.xyz.pageControllers;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
  * @author David
  */
-
-@RequestMapping("/LOIDE")
+@Controller
+@RequestMapping("/loide")
 public class LOIDEController {
-    
+    @RequestMapping("/download")
+    public ModelAndView accessInformatronDownload() {
+        return new ModelAndView("download");
+    } 
+    @RequestMapping("/downloadLE")
+    public ModelAndView accessInformatronDownloadLE() {
+        return new ModelAndView("downloadLE");
+    } 
+    @RequestMapping("/error")
+    public ModelAndView accessError() {
+        return new ModelAndView("error");
+    }
 }

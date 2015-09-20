@@ -97,6 +97,10 @@ public class IndexController {
     public ModelAndView accessAdminView() {
         return new ModelAndView("admin-view");
     }
+    @RequestMapping("/admin-view1")
+    public ModelAndView accessAdminView1() {
+        return new ModelAndView("admin-view1");
+    }
     @RequestMapping("/admin-view2")
     public ModelAndView accessAdminView2() {
         return new ModelAndView("admin-view2");
