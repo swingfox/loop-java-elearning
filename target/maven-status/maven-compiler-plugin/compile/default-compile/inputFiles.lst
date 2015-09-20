@@ -1,5 +1,6 @@
 C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\dto\LearningObjectDto.java
 C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\dto\LearningElementDto.java
+C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\pageControllers\InformatronController.java
 C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\dao\LearningObjectDAO.java
 C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\controller\IndexController.java
 C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\controller\adminController.java
@@ -11,5 +12,6 @@ C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\confi
 C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\model\LearningElement.java
 C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\dto\UserDto.java
 C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\config\DatabaseManager.java
+C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\pageControllers\LOIDEController.java
 C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\service\LearningObjectService.java
 C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\pageControllers\IndexController.java
