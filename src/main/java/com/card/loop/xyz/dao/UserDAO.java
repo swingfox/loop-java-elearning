@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.crackers.informatronyx.dao;
+package com.card.loop.xyz.dao;
 
-import com.crackers.informatronyx.config.AppConfig;
-import com.crackers.informatronyx.config.DatabaseManager;
-import com.crackers.informatronyx.models.User;
+import com.card.loop.xyz.config.AppConfig;
+import com.card.loop.xyz.config.DatabaseManager;
+import com.card.loop.xyz.model.User;
 import com.mongodb.Mongo;
 import java.net.UnknownHostException;
 import java.util.List;
@@ -29,7 +29,7 @@ public class UserDAO {
     public static User getUser(User user) throws UnknownHostException{ 
         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"database");
         User p = null;
-        p = mongoOps.findOne(query(where("username").is(user.getUsername())), User.class);
+        p = mongoOps.findOne(query(where("username").is(user.getUserName())), User.class);
         return p;
     }
     public static boolean addUser(User user) throws UnknownHostException{
@@ -43,10 +43,10 @@ public class UserDAO {
         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"database");
         boolean ok = false;
         Query query = new Query();
-        query.addCriteria(where("username").is(user.getUsername()));
+        query.addCriteria(where("username").is(user.getUserName()));
         Update update = new Update();
         update.addToSet("password", user.getPassword());
-        update.addToSet("firstName",user.getFirstName());
+        //update.addToSet("firstName",user.getFirstName());
     mongoOps.updateFirst(query,update,User.class);
         ok = true;
         return ok;
@@ -67,12 +67,10 @@ public class UserDAO {
     public static void main(String []args){
         try {
             User user = new User();
-            user.setUsername("osiastedian");
+            user.setUserName("admin");
             user = UserDAO.getUser(user);
-            user.setPassword("tedian23");
-            user.setFirstName("Ted Ian");
-            user.setLastName("Osias");
-            user.generateToken();
+            user.setPassword("admin");
+            //user.generateToken();
             System.out.println(UserDAO.saveUser(user));
             //System.out.println(UserDAO.deleteUser(user));
             //System.out.println(UserDAO.addUser(user));
