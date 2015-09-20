@@ -5,9 +5,9 @@
  */
 package com.crackers.informatronyx.dao;
 
-import com.crackers.informatronyx.config.AppConfig;
-import com.crackers.informatronyx.config.DatabaseManager;
-import com.crackers.informatronyx.models.User;
+import com.card.loop.xyz.config.AppConfig;
+import com.card.loop.xyz.config.DatabaseManager;
+import com.card.loop.xyz.model.User;
 import com.mongodb.Mongo;
 import java.net.UnknownHostException;
 import java.util.List;
