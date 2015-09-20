@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\dto\LearningObjectDto.java
 C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\dto\LearningElementDto.java
 C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\controller\LEDatabaseController.java
@@ -16,3 +17,22 @@ C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\confi
 C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\pageControllers\LOIDEController.java
 C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\service\LearningObjectService.java
 C:\Users\David\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\pageControllers\IndexController.java
+=======
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\pageControllers\InformatronController.java
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\config\DatabaseManager.java
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\controller\adminController.java
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\dto\LearningObjectDto.java
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\service\UserService.java
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\model\LearningElement.java
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\config\AppConfig.java
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\controller\IndexController.java
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\model\LearningObject.java
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\model\User.java
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\dto\UserDto.java
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\pageControllers\IndexController.java
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\service\LearningElementService.java
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\pageControllers\LOIDEController.java
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\dto\LearningElementDto.java
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\dao\LearningObjectDAO.java
+C:\Users\jm-maricel\Desktop\loop-java-elearning\src\main\java\com\card\loop\xyz\service\LearningObjectService.java
+>>>>>>> 7f2653f5a95b24c7eb25fc8c15f3d7cc676a51dc

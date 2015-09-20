@@ -64,10 +64,6 @@ public class LearningObjectDto {
     */
     private String uploadedBy;
     /*
-    *Type of the Learning Object
-    */
-    private String type;
-    /*
     *List of errors
     */
     private List<String>  errorList;
@@ -262,22 +258,6 @@ public class LearningObjectDto {
      */
     public void setUploadedBy(String uploadedBy) {
         this.uploadedBy = uploadedBy;
-    }
-
-    /**
-     * 
-     * @return String This returns the type of the LO
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * This sets the type of the LO
-     * @param type String
-     */
-    public void setType(String type) {
-        this.type = type;
     }
 
     /**

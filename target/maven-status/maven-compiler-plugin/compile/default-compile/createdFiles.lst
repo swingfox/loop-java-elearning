@@ -1,18 +1,23 @@
-com\card\loop\xyz\model\User.class
+com\card\loop\xyz\service\LearningElementService.class
+com\card\loop\xyz\config\AppConfig.class
+com\card\loop\xyz\controller\IndexController.class
 com\card\loop\xyz\dto\LearningElementDto.class
-com\card\loop\xyz\dto\UserDto.class
-com\card\loop\xyz\model\LearningElement.class
-com\card\loop\xyz\pageControllers\LOIDEController.class
-com\card\loop\xyz\pageControllers\InformatronController.class
 com\card\loop\xyz\dto\LearningObjectDto.class
+<<<<<<< HEAD
 com\card\loop\xyz\pageControllers\IndexController.class
 com\card\loop\xyz\controller\LEDatabaseController.class
 com\card\loop\xyz\service\UserService.class
+=======
+com\card\loop\xyz\dto\UserDto.class
+>>>>>>> 7f2653f5a95b24c7eb25fc8c15f3d7cc676a51dc
 com\card\loop\xyz\config\DatabaseManager.class
-com\card\loop\xyz\config\AppConfig.class
+com\card\loop\xyz\service\UserService.class
+com\card\loop\xyz\model\LearningObject.class
+com\card\loop\xyz\model\User.class
+com\card\loop\xyz\controller\adminController.class
 com\card\loop\xyz\dao\LearningObjectDAO.class
 com\card\loop\xyz\service\LearningObjectService.class
-com\card\loop\xyz\service\LearningElementService.class
-com\card\loop\xyz\model\LearningObject.class
-com\card\loop\xyz\controller\IndexController.class
-com\card\loop\xyz\controller\adminController.class
+com\card\loop\xyz\pageControllers\LOIDEController.class
+com\card\loop\xyz\pageControllers\IndexController.class
+com\card\loop\xyz\model\LearningElement.class
+com\card\loop\xyz\pageControllers\InformatronController.class
