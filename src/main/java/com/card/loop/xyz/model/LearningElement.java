@@ -61,6 +61,11 @@ public class LearningElement {
     *uploaded the learning element
     */
     private String uploadedBy;
+    /*
+    *Type of the Learning Object.
+    *Example: music, video, text, etc.
+    */
+    private String type;
     
     
     
@@ -93,8 +98,8 @@ public class LearningElement {
         this.name=name;
     }
     /**
-     * Gets the subject of the learning element
-     * @return String This returns the subject of the learning element
+     * Gets the subject of the learning the learning element
+     * @return String This returns the subject of the learning element     
      */
     public String getSubject(){
         return this.subject;
@@ -232,6 +237,21 @@ public class LearningElement {
     public void setUploadedBy(String uploadedBy){
         this.uploadedBy=uploadedBy;
     }   
+    /**
+     * Gets the type of the Learning Object.
+     * Example: music, video, text, etc.
+     * @return String This returns the type of Learning Object.
+     */
+    public String getType() {
+        return type;
+    }
+    /**
+     * Sets the type of the Learning Object
+     * @param type String
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
     
     
 }

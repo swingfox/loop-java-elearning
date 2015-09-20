@@ -62,11 +62,7 @@ public class LearningObject {
     *Name of the uploader of the Learning Object.
     */
     private String uploadedBy;
-    /*
-    *Type of the Learning Object.
-    *Example: music, video, text, etc.
-    */
-    private String type;
+    
 
     /**
      * Gets the name of the uploader of the Learning Object
@@ -163,24 +159,7 @@ public class LearningObject {
     public String getRev(){
         return this.rev;
     }
-
-    /**
-     * Gets the type of the Learning Object.
-     * Example: music, video, text, etc.
-     * @return String This returns the type of Learning Object.
-     */
-    public String getType(){
-        return this.type;
-    }
-
-    /**
-     * Sets the type of the Learning Object
-     * @param type String
-     */
-    public void setType(String type){
-        this.type = type;
-    }
-
+    
     /**
      * Sets the name of the reviewer of the Learning Object
      * @param rev String

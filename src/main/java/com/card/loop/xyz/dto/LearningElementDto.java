@@ -61,6 +61,11 @@ public class LearningElementDto {
     */
     private String uploadedBy;
     /*
+    *Type of the Learning Object.
+    *Example: music, video, text, etc.
+    */
+    private String type;
+    /*
     *List of errors
     */
     private List<String>  errorList;
@@ -248,5 +253,20 @@ public class LearningElementDto {
     */
     public void setErrorList(List<String> errorList) {
         this.errorList = errorList;
+    }
+    /**
+     * Gets the type of the Learning Object.
+     * Example: music, video, text, etc.
+     * @return String This returns the type of Learning Object.
+     */
+    public String getType() {
+        return type;
+    }
+    /**
+     * Sets the type of the Learning Object
+     * @param type String
+     */
+    public void setType(String type) {
+        this.type = type;
     }
 }
