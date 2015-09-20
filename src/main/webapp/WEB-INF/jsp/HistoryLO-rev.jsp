@@ -95,7 +95,7 @@
 		<div id="breadcrumb-wrap">
 			<!-- <div class="container"> -->
 				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="">Back to Review List</a></li>
+					<li><a class="breadcrumb-link" href="/loop-XYZ/store/reviewer-update">Back to Review List</a></li>
 					<li class="active">History - <!--<?php echo $name?>--></li>
 				</ol>
 			<!-- </div> -->

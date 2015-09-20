@@ -19,6 +19,10 @@ public class User {
     */
     private String username;
     /*
+    *Assign password
+    */
+    private String password;
+    /*
     *Date of last log in
     */
     private String lastLogin;
@@ -140,6 +144,12 @@ public void setLastDownload(String lastDownload){
 public void setBlocked(boolean blocked){
          this.blocked = blocked;
 }
-    
-    
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

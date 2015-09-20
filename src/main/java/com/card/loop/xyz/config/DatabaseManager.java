@@ -9,6 +9,7 @@ import com.mongodb.Mongo;
 import java.net.UnknownHostException;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import com.mongodb.gridfs.GridFS;
 
 /**
  *

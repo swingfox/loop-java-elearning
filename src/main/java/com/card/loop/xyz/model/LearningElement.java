@@ -67,7 +67,25 @@ public class LearningElement {
     */
     private String type;
     
+    public LearningElement(){
     
+    }
+    
+    public LearningElement(String name, String subject,  String description, int downloads,  
+                           String dateUploaded, String filePath, double rating, 
+                           String comments, String status, String rev, String uploadedBy){
+       this.name = name;
+       this.subject = subject;
+       this.description = description;
+       this.downloads = downloads;
+       this.dateUploaded = dateUploaded;
+       this.filepath = filePath;
+       this.rating = rating;
+       this.comments = comments;
+       this.status = status;
+       this.rev = rev;
+       this.uploadedBy = uploadedBy;
+    }
     
     /**
      * Gets the id of the learning element
@@ -157,14 +175,14 @@ public class LearningElement {
      * Gets the file path of the learning element
      * @return String Returns the file path of the learning element
      */
-    public String getFilepath() {
+    public String getFilePath() {
         return filepath;
     }
     /**
      * Sets the file path of the learning element
      * @param filepath 
      */
-    public void setFilepath(String filepath) {
+    public void setFilePath(String filepath) {
         this.filepath = filepath;
     }
     /**
