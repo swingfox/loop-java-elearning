@@ -5,6 +5,9 @@
  */
 package com.card.loop.xyz.pageControllers;
 
+import com.card.loop.xyz.controller.LEDatabaseController;
+import com.card.loop.xyz.model.LearningElement;
+import java.io.IOException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,8 +18,16 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class IndexController {
+    
+    LEDatabaseController lec;
     @RequestMapping("/home")
-    public ModelAndView accessIndex() {
+    public ModelAndView accessIndex() throws IOException {
+      /*  lec = new LEDatabaseController();
+        LearningElement le = new LearningElement("Momentum","Physics",
+                "learning object", 5, "09-08-2015", "C:\\Users\\David\\Desktop\\", 5, "nice", "approved", "rev1", "dev1");
+        lec.addLE(le);
+        System.out.println("SUCCESSFULLY ADDED");
+              */
         return new ModelAndView("index");
     } 
     @RequestMapping("/download")
@@ -35,10 +46,17 @@ public class IndexController {
     public ModelAndView accessDownloadLOAdmin() {
         return new ModelAndView("downloadLOAdmin");
     } 
-    
     @RequestMapping("/historyLE-admin")
     public ModelAndView accessHistoryLEAdmin() {
         return new ModelAndView("historyLE-admin");
+    } 
+    @RequestMapping("/developer-le")
+    public ModelAndView accessDeveloperLE() {
+        return new ModelAndView("developer-le");
+    } 
+    @RequestMapping("/developer-update")
+    public ModelAndView accessDeveloperUpdate() {
+        return new ModelAndView("developer-update");
     } 
     @RequestMapping("/historyLE-dev")
     public ModelAndView accessHistoryLEDev() {
@@ -56,13 +74,21 @@ public class IndexController {
     public ModelAndView accessHistoryLODev() {
         return new ModelAndView("historyLO-dev");
     }
-    @RequestMapping("/review-list")
+    @RequestMapping("/reviewer-list")
     public ModelAndView accessReviewList() {
         return new ModelAndView("review-list");
     }
     @RequestMapping("/reviewLE-admin")
     public ModelAndView accessReviewLEAdmin() {
         return new ModelAndView("reviewLE-admin");
+    }
+    @RequestMapping("/advanced-search-rev")
+    public ModelAndView accessAdvancedSearchRev() {
+        return new ModelAndView("advanced-search-rev");
+    }
+    @RequestMapping("/advanced-search-dev")
+    public ModelAndView accessAdvancedSearchDev() {
+        return new ModelAndView("advanced-search-dev");
     }
     @RequestMapping("/reviewLE-rev")
     public ModelAndView accessReviewLERev() {
@@ -93,9 +119,18 @@ public class IndexController {
         return new ModelAndView("HistoryLO-rev");
     }
     
+    @RequestMapping("/uploadLE-dev")
+    public ModelAndView uploadLEDeveloper() {
+        return new ModelAndView("uploadLE-dev");
+    }
+    
     @RequestMapping("/admin-view")
     public ModelAndView accessAdminView() {
         return new ModelAndView("admin-view");
+    }
+    @RequestMapping("/admin-view1")
+    public ModelAndView accessAdminView1() {
+        return new ModelAndView("admin-view1");
     }
     @RequestMapping("/admin-view2")
     public ModelAndView accessAdminView2() {

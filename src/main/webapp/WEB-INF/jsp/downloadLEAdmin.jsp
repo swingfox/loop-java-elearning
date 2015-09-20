@@ -110,7 +110,7 @@
 		<div id="breadcrumb-wrap">
 			<!-- <div class="container"> -->
 				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="index.php'?>">Back to Learning Element List</a></li>
+					<li><a class="breadcrumb-link" href="/loop-XYZ/store/admin-view6">Back to Learning Element List</a></li>
 					<li class="active">
 						<!--?php 
 	                    	if($le->getStatus() == 0)

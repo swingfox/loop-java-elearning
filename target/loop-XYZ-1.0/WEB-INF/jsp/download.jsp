@@ -110,7 +110,7 @@
 		<div id="breadcrumb-wrap">
 			<!-- <div class="container"> -->
 				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="redirect/LO_rev">Back to Learning Object List</a></li>
+					<li><a class="breadcrumb-link" href="/loop-XYZ/store/reviewer-update">Back to Learning Object List</a></li>
 					<li class="active">Download</li>
 				</ol>
 			<!-- </div> -->

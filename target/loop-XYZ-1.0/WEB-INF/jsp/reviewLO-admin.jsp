@@ -88,7 +88,7 @@
 
 		<div id="breadcrumb-wrap">
                     <ol class="breadcrumb">
-                        <li><a class="breadcrumb-link" href="redirect/admin_view5">Back to Learning Object List</a></li>
+                        <li><a class="breadcrumb-link" href="/loop-XYZ/store/admin-view5">Back to Learning Object List</a></li>
                         <li class="active">Review Learning Object</li>
                     </ol>
 		</div> 

@@ -1,10 +1,47 @@
 <!--<?php session_start(); ?>-->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+        <head>
         <title>LOOP | Review View</title>
+        <meta charset="utf-8">
+            
 
-        <!--<?php $this->layout->header_subpages() ?>-->
+            <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+
+            <!-- Bootstrap 3 -->
+            <link href="css/bootstrap3/dist/css/bootstrap.css" rel="stylesheet" media="screen" />
+
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <!-- Date Picker -->
+            <link href="css/bootstrapformhelpers/css/bootstrap-formhelpers.css" rel="stylesheet" />
+
+            <!-- Modal -->
+            <link href="css/bootstrap-modal-master/css/bootstrap-modal.css" rel="stylesheet" />
+            
+            <!-- Icons -->
+            <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+            <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
+            <!--[if IE 7]>
+              <link href="'.$this->base_url.'fonts/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
+            <![endif]-->
+
+            <!-- 1280 grid -->
+            <link type="text/css" href="css/css-include/1280grid.css" rel="stylesheet" />
+
+            <!-- Bootstrap Tour -->
+            <link href="js/bootstrap-tour/build/css/bootstrap-tour.css" rel="stylesheet" />
+            <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
+
+            <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
+                
+            <!-- Input File -->
+            <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
+
+            <!-- Form Validator -->
+            <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
+
+<!--<?php $this->layout->header_subpages() ?>-->
     </head>
     <body>
         <!-- <div id="wrapper"> -->
@@ -39,11 +76,11 @@
 
 		
     	<ul class="nav nav-tabs main-views">
-		 <li><a class="active-tab" href="redirect/LO_rev"><i class="icomoon-list"></i> Learning Objects</a></li>
-		  <li class="active"><a class="active-tab" href="redirect/LE_rev"><i class="icomoon-list"></i> Learning Elements</a></li>
+		 <li><a class="active-tab" href="/loop-XYZ/store/reviewer-update"><i class="icomoon-list"></i> Learning Objects</a></li>
+		  <li class="active"><a class="active-tab" href="/loop-XYZ/store/reviewer-le"><i class="icomoon-list"></i> Learning Elements</a></li>
 		  <!-- <li><a href="<?php echo base_url()?>redirect/reviewlist_rev"><i class="icomoon-signup"></i> Review List</a></li> -->
-		  <li><a href="redirect/review_list"><i class="icon-edit icon-large default"></i> Review List</a></li>
-		  <li ><a  hrefredirect/search_rev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
+		  <li><a href="/loop-XYZ/store/reviewer-list"><i class="icon-edit icon-large default"></i> Review List</a></li>
+		  <li><a href="/loop-XYZ/store/advanced-search-rev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
 		</ul>
 
 		<div class="clearfix"></div>

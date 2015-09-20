@@ -93,7 +93,7 @@
 		<div id="breadcrumb-wrap">
 			<!-- <div class="container"> -->
 				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="<?php echo base_url().'index.php'?>">Back to Learning Object List</a></li>
+					<li><a class="breadcrumb-link" href="/loop-XYZ/store/admin-view5">Back to Learning Object List</a></li>
 					<li class="active">History - <!--<?php echo $name?>--></li>
 				</ol>
 			<!-- </div> -->
@@ -240,7 +240,7 @@
                             <input type="hidden" value="" id="counters" name="counters">
 
                            <a href="#responsive_addReviewer" class="btn btn-default" data-dismiss="modal" data-toggle="modal"><i class="icon-plus-sign icon-large default"></i> Add Reviewer</a>
-							<a hrefredirect="" type="button" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>
+							<a href redirect="" type="button" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>
 							<a href="#responsive_confirmDelete" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"><i class="icon-trash icon-large default"></i> Delete</a>
 				    		<a href="" class="btn btn-default"> Back</a>
 						</div>
