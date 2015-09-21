@@ -15,7 +15,7 @@ import java.util.List;
 /**
  *
  * @author Vine Joy Deiparine
- * @date   09/21/2015
+ * @date   09/21/2015s
  */
 public class UserService {
     
@@ -25,17 +25,17 @@ public class UserService {
         if(userModel != null){
             user.setId(userModel.getId());
             user.setEmail(userModel.getEmail());
-            user.setFirstName(userModel.getFirstName());
-            user.setLastName(userModel.getLastName());
-            user.setLastDownloadDate(userModel.getLastDownloadDate());
-            user.setLastDownloadId(userModel.getLastDownloadId());
+            //user.setFirstName(userModel.getFirstName());
+            //.setLastName(userModel.getLastName());
+            user.setLastDownload(userModel.getLastDownload());
+            //user.setLastDownloadId(userModel.getLastDownloadId());
             user.setLastLogin(new Date());
-            userModel.generateToken();
-            user.setApproved(userModel.isApproved());
+            //userModel.generateToken();
+            //user.setApproved(userModel.isApproved());
             user.setBlocked(userModel.isBlocked());
-            user.setFunctionType(userModel.getFunctionType());
+            //user.setFunctionType(userModel.getFunctionType());
             user.setUserType(userModel.getUserType());
-            user.setToken(userModel.getToken());            
+            //user.setToken(userModel.getToken());            
         }
         return user;
     }
@@ -45,8 +45,8 @@ public class UserService {
             User model = new User();
             model.setUsername(user.getUsername());
             model.setPassword(user.getPassword());
-            model.setFirstName(user.getFirstName());
-            model.setLastName(user.getLastName());
+            model.setEmail(user.getEmail);
+            model.setUserType(user.getUserType());
             UserDAO.addUser(model);
             ok = true;
         }

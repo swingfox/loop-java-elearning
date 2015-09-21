@@ -1,6 +1,6 @@
-/*
+<!--
 *Updated as of September 2, 2015 6:52 pm
-*/
+-->
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -24,12 +24,36 @@
         <!-- Form Validator -->
         <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
 
+        <script type="text/javascript">
+            onload = function(){
+                var e=document.getElementById('refreshed');
+                if(e.value == 'no') e.value = 'yes';
+                else{e.value =\\\= 'no'; location.href = 'main'; }
+            }            
+        </script>
+            
+      <%        
+        
+      
+        if(session.getAttribute("developer") != null || session.getAttribute("reviewer") != null) 
+                response.sendRedirect("alllo.action");
+        else if("icms_superadmin".equals((String)session.getAttribute("USER"))) 
+            response.sendRedirect("superadmin.action");
+        else if("icms_user".equals((String)session.getAttribute("USER")))
+            response.sendRedirect("main.action");
+        else if("icms_approveadmin".equals((String)session.getAttribute("USER")))
+            response.sendRedirect("approveadmin.action");
+        else if("icms_meteradmin".equals((String)session.getAttribute("USER")))
+            response.sendRedirect("meteradmin.action");
+        %>
+
     </head>
 
     <body>        
+        <input type="hidden" id="refreshed" value="no">
         <div id="wrapper">
             <!-- Login LIGHT-->
-            <form method="post" action="">
+            <form id="login_form" method="post" action="">
                 <!-- <div id="responsive_loginLight" class="modal hide fade" tabindex="-1" data-width="760"> -->
                 <div class="modal fade" id="responsive_loginLight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -44,6 +68,8 @@
                                     <div class="col-md-10 col-md-push-1">
                                         <!--<?php if(isset($status) && !$status){ ?>-->
                                         <!--<p class="alert alert-danger"><i class="icon-warning-sign"></i> <?php echo $msg ?></p>-->
+                                        <p><span class="error_message_1"></span></p>
+                                        <p><span class="error_message"></span></p>
                                         <p class="alert alert-danger"><i class="icon-warning-sign"></i>  </p>
                                         <!--<?php } ?>-->
 
@@ -107,7 +133,7 @@
                             <div class="modal-footer"> 
                                 <div class="row">
                                     <div class="col-md-8 col-md-push-3">
-                                        <button type="submit" class="btn btn-primary" value="Login"><i class="icon-signin icon-large default"></i> Login</button>
+                                        <button id="btn-login" type="submit" class="btn btn-primary" value="Login"><i class="icon-signin icon-large default"></i> Login</button>
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                     </div>
                                 </div>
@@ -136,6 +162,8 @@
             <p><input class="col-xs-12 col-md-12 sign-up" id="password" type="password" name="password" placeholder="Password" required></p>
             <p><input class="col-xs-12 col-md-12 sign-up" id="confirmPassword" type="password" name="confirmPassword" placeholder="Confirm Password" required></p> -->
                                         <div class="alert alert-success" style="display: none;"></div>
+                                        <p><span class="error_message_1"></span></p>
+                                        <p><span class="error_message"></span></p>
 
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="username" name="username" placeholder="Username" />
@@ -201,7 +229,7 @@
                             <div class="modal-footer">
                                 <div class="row">
                                     <div class="col-md-8 col-md-push-3">
-                                        <button type="submit" class="btn btn-primary"><i class="icon-ok icon-large default"></i> Sign Up</button>
+                                        <button id="btn-signup" type="submit" class="btn btn-primary"><i class="icon-ok icon-large default"></i> Sign Up</button>
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                     </div>
                                 </div>
@@ -795,7 +823,7 @@
         }
     });
 </script>
-
+<!--
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -804,11 +832,11 @@
             submitHandler: function (validator, form) {
                 // validator is the BootstrapValidator instance
                 // form is the jQuery object present the current form
-                // form.find('.alert').html('Thanks for signing up. Now you can sign in as ' + validator.getFieldElement('username').val()).show();
+                form.find('.alert').html('Thanks for signing up. Now you can sign in as ' + validator.getFieldElement('username').val()).show();
                 if (isset($msg)) {
                     form.find('.alert').html('#loginvalidator').show();
                 }
-                //form.submit();
+                form.submit();
             },
             fields: {
                 username: {
@@ -864,11 +892,11 @@
         });
     });
 </script>
-
+-->
 
 
 </body>
 </html>
-
+<script src="js/login_signup.js" type="text/javascript"></script>
 
 
