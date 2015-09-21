@@ -40,6 +40,10 @@ public class UserDto {
     *date of the last log in
     */
     private String lastLogin;
+    /*
+    *Date of last download
+    */
+    private String lastDownload;    
      /*
     *date of the last activity
     */
@@ -126,7 +130,8 @@ public class UserDto {
 
     /**
      * This sets the type of the user
-     * @param rating double
+     * 
+     * @param usertype String
      */
     public void setUsertype(String usertype) {
         this.usertype = usertype;
@@ -209,6 +214,14 @@ public class UserDto {
     */
     public void setErrorList(List<String> errorList) {
         this.errorList = errorList;
+    }
+
+    public String getLastDownload() {
+        return lastDownload;
+    }
+
+    public void setLastDownload(String lastDownload) {
+        this.lastDownload = lastDownload;
     }
     
 }

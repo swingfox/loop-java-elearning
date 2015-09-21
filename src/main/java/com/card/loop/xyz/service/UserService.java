@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.crackers.informatronyx.services;
+package com.card.loop.xyz.service;
 
 import com.card.loop.xyz.dao.UserDAO;
 import com.card.loop.xyz.dto.UserDto;
@@ -21,21 +21,21 @@ public class UserService {
     
     public boolean verify(UserDto user){return false;}
     public UserDto login(UserDto user) throws UnknownHostException{
-        User userModel = UserDAO.getUser(user.getUserName(), user.getPassword());
+        User userModel = UserDAO.getUser(user.getUsername(), user.getPassword());
         if(userModel != null){
-            user.setId(userModel.getId());
+            user.setId(userModel.getID());
             user.setEmail(userModel.getEmail());
-            user.setFirstName(userModel.getFirstName());
-            user.setLastName(userModel.getLastName());
-            user.setLastDownloadDate(userModel.getLastDownloadDate());
-            user.setLastDownloadId(userModel.getLastDownloadId());
-            user.setLastLogin(new Date());
-            userModel.generateToken();
-            user.setApproved(userModel.isApproved());
-            user.setBlocked(userModel.isBlocked());
-            user.setFunctionType(userModel.getFunctionType());
-            user.setUserType(userModel.getUserType());
-            user.setToken(userModel.getToken());            
+            //user.setFirstName(userModel.getFirstName());
+            //user.setLastName(userModel.getLastName());
+            user.setLastDownload(userModel.getLastDownload());
+            //user.setLastDownloadId(userModel.getLastDownloadId());
+            user.setLastLogin(new Date().toString());
+            //userModel.generateToken();
+            //user.setApproved(userModel.isApproved());
+            user.setBlocked(userModel.getBlocked());
+            //user.setFunctionType(userModel.getFunctionType());
+            user.setUsertype(userModel.getUserType());
+            //user.setToken(userModel.getToken());            
         }
         return user;
     }
@@ -43,10 +43,12 @@ public class UserService {
         boolean ok = false;
         if(!UserDAO.exists(user.getUsername())){
             User model = new User();
-            model.setUsername(user.getUsername());
+            model.setUserName(user.getUsername());
             model.setPassword(user.getPassword());
-            model.setFirstName(user.getFirstName());
-            model.setLastName(user.getLastName());
+            //model.setFirstName(user.getFirstName());
+            //model.setLastName(user.getLastName());
+            model.setEmail(user.getEmail());
+            model.setUserType(user.getUsertype());
             UserDAO.addUser(model);
             ok = true;
         }

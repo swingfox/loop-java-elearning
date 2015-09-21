@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.crackers.informatronyx.controllers;
+package com.card.loop.xyz.controller;
 
 import com.card.loop.xyz.dto.UserDto;
 import com.card.loop.xyz.service.UserService;
