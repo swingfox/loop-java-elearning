@@ -27,7 +27,7 @@ import static org.springframework.data.mongodb.core.query.Query.query;
  */
 public class LearningObjectDAO {
     public static List<LearningObject> getList() throws UnknownHostException {
-       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"database");
         return mongoOps.findAll(LearningObject.class);
     }
     
