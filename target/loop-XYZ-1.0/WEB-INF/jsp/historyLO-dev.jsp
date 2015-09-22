@@ -97,7 +97,7 @@
 		<div id="breadcrumb-wrap">
 			<!-- <div class="container"> -->
 				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="<?php echo base_url()?>redirect/LO">Back to Learning Object List</a></li>
+					<li><a class="breadcrumb-link" href="/loop-XYZ/store/developer-update">Back to Learning Object List</a></li>
 					<li class="active">History - <!--<?php echo $name?>--></li>
 				</ol>
 			<!-- </div> -->

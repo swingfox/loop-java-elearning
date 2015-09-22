@@ -15,15 +15,15 @@
 
         <!-- Bootstrap 3 -->
         <!-- Modal -->
-        <link href="css/bootstrap-modal-master/bootstrap-modal.css" rel="stylesheet" />
+        <link href="css/bootstrap-modal-master/css/bootstrap-modal.css" rel="stylesheet" />
         <link href="css/bootstrap3/dist/css/bootstrap.css" rel="stylesheet" media="screen" />
         <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="css/dataTables.bootstrap.css" />
+        <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
         <link type="text/css" href="css/css-include/1170grid.css" rel="stylesheet" />
         <link type="text/css" href="css/css-include/style.css" rel="stylesheet" />
         <!-- Form Validator -->
         <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
-
+<!--
         <script type="text/javascript">
             onload = function(){
                 var e=document.getElementById('refreshed');
@@ -31,7 +31,7 @@
                 else{e.value =\\\= 'no'; location.href = 'main'; }
             }            
         </script>
-            
+            -->
       <%        
         
       
@@ -751,10 +751,11 @@
 </div>
 
 
-<script src="js/main.js"></script>
+
 <script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
 <script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
+<script src="js/main.js"></script>
 <script src="js/js-flat-ui/flatui-checkbox.js"></script>
 <script src="js/js-flat-ui/flatui-radio.js"></script>
 <script src="js/js-flat-ui/jquery.tagsinput.js"></script>
@@ -770,7 +771,7 @@
 <script src="css/bootstrap3/js/popover.js"></script>
 <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
 
-
+<script src="js/angular/angular.js"></script>
 <!-- Bootstrap tour =================================================-->
 <script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
 <script src="js/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
@@ -797,9 +798,11 @@
                     return false;
                 }
             }
-        });
-    })
+    })        });
+
 </script>
+
+<script src="js/login_signup.js" type="text/javascript"></script>
 
 <script>
     // This is the distance in px between the uppder edge of the window and the upper edge of the header
@@ -897,6 +900,6 @@
 
 </body>
 </html>
-<script src="js/login_signup.js" type="text/javascript"></script>
+
 
 

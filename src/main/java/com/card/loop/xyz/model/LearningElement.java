@@ -5,17 +5,23 @@
  */
 package com.card.loop.xyz.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  *REVISION HISTORY
  * 
- * @author aislinn [September 09, 2015] - initial codes
- * 
+ * @author aislinn 
+ * [September 09, 2015] - Aislinn Caparoso - initial codes
+ * [September 22, 2015] - David Ramirez    - Added annotations
  */
+@Document(collection = "le")
 public class LearningElement {
     
     /*
     *id of learning element
     */
+    @Id
     private Long id;
     /*
     *name of learning element

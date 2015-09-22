@@ -5,11 +5,11 @@
  */
 $(document).ready(function() {
         $("#username, #password").val("");
-
+        console.log("LOG IN");
         //$('#slider_now').nivoSlider();
         
         $('#btn-signup:submit').click(function(e) {
-            if( !isValidEmailAddress( $("#email").val() ) ) { 
+            if(!isValidEmailAddress( $("#email").val() ) ) { 
                 $('.error_message_1').text("Invalid email");
                 $('#email').addClass('addborder');
                     e.preventDefault();
@@ -52,9 +52,10 @@ $(document).ready(function() {
             var jsonData = 
                         JSON.stringify({
 			email: $("#email").val(),
-            username:$("#username").val(),
+                        username:$("#username").val(),
 			password: $("#password").val(),
-            userType : $('#input[name:optionsRadios]:checked', '#defaultForm').val()
+                       // userType : $('#input[name:optionsRadios]:checked', '#defaultForm').val()
+                        userType : $('input:radio[name="'+radio.getattr('name')+'"]').val()
                         });
             $.ajax({
                 url: "/loop-XYZ/store/user/signup",
@@ -73,14 +74,16 @@ $(document).ready(function() {
             });
         });
         $("#btn-login").click(function(){
+            console.log("CLICKED BUTTON LOG IN");
             var jsonData = 
                         JSON.stringify({
-			username:$("#username").val(),
-			password: $("#password").val(),
-            user_type : $('#input[name:optionsRadios]:checked', '#login_form').val()
+                            username:$("#username").val(),
+                            password: $("#password").val(),
+                            userType :  $('input[name=optionsRadios]:checked','#login_form').val()
                         });
+            console.log(jsonData);
             $.ajax({
-                url: "/loop-XYZ/store/user/login",
+                url: "/loop-XYZ/loop/user/login",
                 contentType:'application/json',
                 data: jsonData,
                 dataType: 'json',

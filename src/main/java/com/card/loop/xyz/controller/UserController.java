@@ -11,6 +11,7 @@ import java.net.UnknownHostException;
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     
     @RequestMapping("/signup")
+    @ResponseBody
     public UserDto signup(@RequestBody UserDto user) throws UnknownHostException
     {
         try{
@@ -37,6 +39,7 @@ public class UserController {
         return user;
     }
     @RequestMapping("/login")
+    @ResponseBody
     public UserDto login(@RequestBody UserDto user) throws UnknownHostException
     {
         try{
@@ -45,7 +48,8 @@ public class UserController {
         if(result==null)
             user.getErrorList().add("Username or password is invalid.");
         }catch(Exception e){
-            user.getErrorList().add(e.toString());
+            //user.getErrorList().add(e.toString());
+            System.out.println(e.toString());
         }
         return user;
     }

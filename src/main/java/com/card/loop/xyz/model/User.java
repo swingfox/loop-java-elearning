@@ -5,14 +5,22 @@
  */
 package com.card.loop.xyz.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  *
- * @author jm-maricel
+ * @author Julie Jane Alegre
+ * [September 09, 2015] - Julie Jane Alegre  -   Initial Codes 
+ * [September 22, 2015] - David Ramirez      -   Added annotations
  */
+
+@Document(collection = "user")
 public class User {
     /*
     *Assign id number
     */
+    @Id
     private Long id;
     /*
     *Assign username

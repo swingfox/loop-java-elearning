@@ -98,7 +98,7 @@
 
             <div id="breadcrumb-wrap">
                 <ol class="breadcrumb">
-                    <li><a class="breadcrumb-link" href="redirect/review_list">Back to Review List</a></li>
+                    <li><a class="breadcrumb-link" href="/loop-XYZ/store/reviewer-le">Back to Review List</a></li>
                     <li class="active">Review Learning Element</li>
                 </ol>
             </div> 

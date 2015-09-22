@@ -235,17 +235,17 @@
 
 
     	<ul class="nav nav-tabs main-views">
-    		<li><a href="redirect/admin_view"><i class="icon-plus-sign-alt icon-large default"></i> New Account Requests</a></li>
+    		<li><a href="/loop-XYZ/store/admin-view"><i class="icon-plus-sign-alt icon-large default"></i> New Account Requests</a></li>
 			<!-- <li class="active"><a class="active-tab" href="<?php //echo base_url()?>redirect/admin_view"><i class="icon-upload-alt icon-large default"></i> Developer</a></li> -->
-			<li class="active"><a class="active-tab" href="redirect/admin_view1"><i class="icon-folder-open icon-large default"></i> Developers</a></li>
+			<li class="active"><a class="active-tab" href="/loop-XYZ/store/admin-view1"><i class="icon-folder-open icon-large default"></i> Developers</a></li>
 			<!-- <li class="active"><a class="active-tab" href="<?php //echo base_url()?>redirect/admin_view"><i class="icon-inbox icon-large default"></i> Developer</a></li> -->
 
-		    <li><a href="redirect/admin_view2"><i class="icon-edit icon-large default"></i> Reviewers</a></li>
-		    <li><a href="redirect/admin_view3"><i class="icon-time icon-large default"></i> Inactive Accounts</a></li>
-		    <li><a href="redirect/admin_view4"><i class="icon-ban-circle icon-large default"></i> Blocked Accounts</a></li>
+		    <li><a href="/loop-XYZ/store/admin-view2"><i class="icon-edit icon-large default"></i> Reviewers</a></li>
+		    <li><a href="/loop-XYZ/store/admin-view3"><i class="icon-time icon-large default"></i> Inactive Accounts</a></li>
+		    <li><a href="/loop-XYZ/store/admin-view4"><i class="icon-ban-circle icon-large default"></i> Blocked Accounts</a></li>
 		    
-			<li><a href="redirect/admin_view5"><i class="icomoon-list"></i> Learning Objects</a></li>
-			<li><a href="redirect/admin_view6"><i class="icomoon-list"></i> Learning Elements</a></li>	</ul>
+			<li><a href="/loop-XYZ/store/admin-view5"><i class="icomoon-list"></i> Learning Objects</a></li>
+			<li><a href="/loop-XYZ/store/admin-view6"><i class="icomoon-list"></i> Learning Elements</a></li>	</ul>
 
 		<div class="clearfix"></div>
 
