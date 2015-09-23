@@ -50,20 +50,28 @@ public class User {
     *Sign your user type
     *reviewer or developer
     */
-    private String usertype;
+    private String userType;
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+    /*
+    ** token
+    */
+    private String token;
 
 /**
  * Get the id of the user
  * @return id:Long
  */		
-public Long getID(){
+public Long getId(){
         return this.id;
 }
 /**
  * Get the username of the user
  * @return username:String
  */	
-public String getUserName(){
+public String getUsername(){
         return this.username;
 }
 /**
@@ -99,14 +107,14 @@ public  String getEmail(){
  * @return usertype:String
  */
 public String getUserType(){
-        return this.usertype;
+        return this.userType;
 }
 /**
  * Set the usertype
  * @param String usertype
  */
 public void setUserType(String usertype){
-        this.usertype = usertype;
+        this.userType = usertype;
 }
 /**
  * Set the email of the user
@@ -120,7 +128,7 @@ public void setEmail(String email){
  * Set the id of the user
  * @param Long id
  */
-public void setID(Long id){
+public void setId(Long id){
         this.id = id;
 }
 /**
@@ -147,7 +155,7 @@ public void setLastDownload(String lastDownload){
 }
 /**
  * Set the user if he's blocked or not
- * @param boolean block
+ * @param blocked boolean
  */
 public void setBlocked(boolean blocked){
          this.blocked = blocked;
@@ -159,5 +167,14 @@ public void setBlocked(boolean blocked){
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public void generateToken()
+    {
+        this.token = java.util.UUID.randomUUID().toString();
+    }
+    
+    public String getToken() {
+        return token;
     }
 }

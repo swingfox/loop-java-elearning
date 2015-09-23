@@ -27,53 +27,53 @@ import static org.springframework.data.mongodb.core.query.Query.query;
  */
 public class LearningObjectDAO {
     public static List<LearningObject> getList() throws UnknownHostException {
-       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"database");
+       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
         return mongoOps.findAll(LearningObject.class);
     }
     
     public static void addLearningObject(LearningObject object) throws UnknownHostException {
-         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"database");
+         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
          mongoOps.insert(object);
     }
     
     public static List<LearningObject> getAllDownloadableLO() throws UnknownHostException {
-       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"database");
+       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
        Query query = new Query();
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
        return mongoOps.find(query(where("rating").is(5)), LearningObject.class);
     }
     
     public static boolean nameAvailability(String name, String subject) throws UnknownHostException {
-       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"database");
+       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
        mongoOps.find(query(where("name").is(5)), LearningObject.class);
        Query query= new Query();
        query.addCriteria(where("name").is(name).andOperator(where("subject").is(subject)));
-        return DatabaseManager.getMongoOpsInstance("database").exists(query, LearningObject.class);
+        return DatabaseManager.getMongoOpsInstance("loop").exists(query, LearningObject.class);
     }
     
     public static List<LearningObject> getAllLO() throws UnknownHostException {
-       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"database");
+       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
        Query query = new Query();
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
        return mongoOps.findAll(LearningObject.class);
     }
     
     public static List<LearningObject> getAllLODev(String username) throws UnknownHostException {
-       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"database");
+       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
        Query query = new Query();
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
        return mongoOps.find(query(where("uploadedBy").is(username)), LearningObject.class);
     }
     
     public static List<LearningObject> getAllLORev() throws UnknownHostException {
-       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"database");
+       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
        Query query = new Query();
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
        return mongoOps.find(query(where("rating").lt(4).andOperator(where("rating").gt(0)).andOperator(where("rev").is(""))), LearningObject.class);
     }
     
     public static List<LearningObject> getAllLORevLater(String user) throws UnknownHostException {
-       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"database");
+       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
        Query query = new Query();
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
        return mongoOps.find(query(where("rating").lt(4).andOperator(where("rating").gt(0)).andOperator(where("status").is(2)).andOperator(where("rev").is(user))), LearningObject.class);

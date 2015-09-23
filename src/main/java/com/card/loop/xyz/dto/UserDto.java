@@ -56,6 +56,16 @@ public class UserDto {
     *error list
     */
     private List<String> errorList;
+    
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     
     /**

@@ -86,7 +86,7 @@ $(document).ready(function() {
                 url: "/loop-XYZ/loop/user/login",
                 contentType:'application/json',
                 data: jsonData,
-                dataType: 'json',
+                dataType: 'text',
                 type: "POST",
                 success: function(data, status, jqXHR){
                     if(data.errorList.length>0){

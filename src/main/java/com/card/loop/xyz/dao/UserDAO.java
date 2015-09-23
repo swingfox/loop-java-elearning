@@ -27,23 +27,23 @@ public class UserDAO {
     
     
     public static User getUser(User user) throws UnknownHostException{ 
-        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"database");
+        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
         User p = null;
-        p = mongoOps.findOne(query(where("username").is(user.getUserName())), User.class);
+        p = mongoOps.findOne(query(where("username").is(user.getUsername())), User.class);
         return p;
     }
     public static boolean addUser(User user) throws UnknownHostException{
-        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host),"database");
+        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host),"loop");
         boolean ok = false;
         mongoOps.insert(user);
         ok = true;
         return ok;
     }
     public static boolean editUser(User user) throws UnknownHostException{
-        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"database");
+        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
         boolean ok = false;
         Query query = new Query();
-        query.addCriteria(where("username").is(user.getUserName()));
+        query.addCriteria(where("username").is(user.getUsername()));
         Update update = new Update();
         update.addToSet("password", user.getPassword());
         //update.addToSet("firstName",user.getFirstName());
@@ -52,13 +52,13 @@ public class UserDAO {
         return ok;
     }
     public static boolean saveUser(User user) throws UnknownHostException{
-        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"database");
+        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
         boolean ok = false;
         mongoOps.save(user);
         return ok;
     }
     public static boolean deleteUser(User user) throws UnknownHostException{
-        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"database");
+        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
         boolean ok = false;
         mongoOps.remove(user);
         ok = true;
@@ -84,7 +84,7 @@ public class UserDAO {
         }
     }
     public static boolean exists(String username) throws UnknownHostException{
-        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"database");
+        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
         boolean ok = false;
         Query query = new Query();
         query.addCriteria(where("username").is(username));
@@ -94,7 +94,7 @@ public class UserDAO {
     public static User getUser(String username,String password) throws UnknownHostException{
         Query query = new Query();
         query.addCriteria(where("username").is(username).andOperator(where("password").is(password)));
-        return DatabaseManager.getMongoOpsInstance("database").findOne(query, User.class);
+        return DatabaseManager.getMongoOpsInstance("loop").findOne(query, User.class);
     }
     public static List<User> getAllUserOfType(String type){return null;}
 }

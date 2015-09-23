@@ -22,15 +22,16 @@ public class UserService {
     public boolean verify(UserDto user){return false;}
     public UserDto login(UserDto user) throws UnknownHostException{
         User userModel = UserDAO.getUser(user.getUsername(), user.getPassword());
+        System.out.println("USER SERVICE CONTROLLER");
         if(userModel != null){
-            user.setId(userModel.getID());
+            user.setId(userModel.getId());
             user.setEmail(userModel.getEmail());
             //user.setFirstName(userModel.getFirstName());
             //user.setLastName(userModel.getLastName());
             user.setLastDownload(userModel.getLastDownload());
             //user.setLastDownloadId(userModel.getLastDownloadId());
             user.setLastLogin(new Date().toString());
-            //userModel.generateToken();
+            userModel.generateToken();
             //user.setApproved(userModel.isApproved());
             user.setBlocked(userModel.getBlocked());
             //user.setFunctionType(userModel.getFunctionType());
@@ -44,7 +45,7 @@ public class UserService {
             user.setBlocked(userModel.getBlocked());
             //user.setFunctionType(userModel.getFunctionType());
             user.setUsertype(userModel.getUserType());
-            //user.setToken(userModel.getToken());            
+            user.setToken(userModel.getToken());            
         }
         return user;
     }

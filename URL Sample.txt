@@ -1,0 +1,3 @@
+/download?name=sampleName&file=samplePathHere
+
+<a href="/download?name={{name}}&file={{patth}}">Download Me</a>
