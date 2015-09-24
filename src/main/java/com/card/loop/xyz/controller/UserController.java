@@ -53,10 +53,10 @@ public class UserController {
         UserDto result = null;
         try{
             System.out.println("USERSRRR");
-        UserService service = new UserService();
-        result = service.login(user);
-        if(result==null)
-            user.getErrorList().add("Username or password is invalid.");
+            UserService service = new UserService();
+            result = service.login(user);
+            if(result==null)
+                user.getErrorList().add("Username or password is invalid.");
         }catch(Exception e){
             //user.getErrorList().add(e.toString());
             System.out.println(e.toString());

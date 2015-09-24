@@ -5,8 +5,11 @@
  */
 package com.card.loop.xyz.pageControllers;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -22,6 +25,11 @@ public class LOIDEController {
     } 
     @RequestMapping("/downloadLE")
     public ModelAndView accessInformatronDownloadLE() {
+        return new ModelAndView("downloadLE");
+    } 
+    @RequestMapping(value="/search", method=RequestMethod.GET)
+    public ModelAndView accessQueryLE(HttpServletResponse res, HttpServletRequest req) {
+        req.getParameter("searchKey");
         return new ModelAndView("downloadLE");
     } 
     @RequestMapping("/error")

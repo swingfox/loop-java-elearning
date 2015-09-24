@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import org.springframework.data.mongodb.core.query.Query;
 import static org.springframework.data.mongodb.core.query.Query.query;
@@ -29,8 +30,8 @@ public class UserDAO {
     public static User getUser(User user) throws UnknownHostException{ 
         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
         User p = null;
+        if(exists(user.getUsername(),user.getPassword()))
         p = mongoOps.findOne(query(where("username").is(user.getUsername())), User.class);
-        System.out.println("USER DAO: " +p);
         return p;
     }
     public static boolean addUser(User user) throws UnknownHostException{
@@ -68,11 +69,15 @@ public class UserDAO {
     public static void main(String []args){
         try {
             User user = new User();
+            user.setId(new Long(1));
+            user.setEmail("admin@gmail.com");
+            user.setBlocked(false);
             user.setUserName("admin");
-            user = UserDAO.getUser(user);
+      //      user = UserDAO.getUser(user);
             user.setPassword("admin");
             //user.generateToken();
-            System.out.println(UserDAO.saveUser(user));
+            System.out.println("successfully pushed");
+            System.out.println(UserDAO.getUser(user.getUsername(), user.getPassword())+ "get user");
             //System.out.println(UserDAO.deleteUser(user));
             //System.out.println(UserDAO.addUser(user));
             //System.out.println(UserDAO.exists("osiastedian"));
@@ -84,18 +89,22 @@ public class UserDAO {
             ex.printStackTrace();
         }
     }
-    public static boolean exists(String username) throws UnknownHostException{
+    public static boolean exists(String username, String password) throws UnknownHostException{
         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
         boolean ok = false;
         Query query = new Query();
-        query.addCriteria(where("username").is(username));
+        query.addCriteria(where("username").is(username).and("password").is(password));
         ok = mongoOps.exists(query, User.class);
+        System.out.println("user exists ?" + ok);
         return ok;
     }
     public static User getUser(String username,String password) throws UnknownHostException{
         Query query = new Query();
-        query.addCriteria(where("username").is(username).andOperator(where("password").is(password)));
-        return DatabaseManager.getMongoOpsInstance("loop").findOne(query, User.class);
+        query.addCriteria(Criteria.where("username").is(username).and("password").is(password));   
+        User p = null;
+        if(exists(username,password))
+           p = DatabaseManager.getMongoOpsInstance("loop").findOne(query, User.class);
+        return p;
     }
     public static List<User> getAllUserOfType(String type){return null;}
 }

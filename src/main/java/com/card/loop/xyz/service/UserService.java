@@ -24,6 +24,12 @@ public class UserService {
         User userModel = UserDAO.getUser(user.getUsername(), user.getPassword());
         System.out.println("USER SERVICE CONTROLLER");
         if(userModel != null){
+           if(userModel.getUsername().equals(user) && userModel.getPassword().equals(user)){
+           System.out.println("USER FOUND!!!");
+           }
+        }
+       // System.out.println("UserModel: " + userModel.toString());
+   /*     if(userModel != null){
             user.setId(userModel.getId());
             user.setEmail(userModel.getEmail());
             //user.setFirstName(userModel.getFirstName());
@@ -32,6 +38,7 @@ public class UserService {
             //user.setLastDownloadId(userModel.getLastDownloadId());
             user.setLastLogin(new Date().toString());
             userModel.generateToken();
+            user.setToken(userModel.getToken());
             //user.setApproved(userModel.isApproved());
             user.setBlocked(userModel.getBlocked());
             //user.setFunctionType(userModel.getFunctionType());
@@ -45,13 +52,19 @@ public class UserService {
             user.setBlocked(userModel.getBlocked());
             //user.setFunctionType(userModel.getFunctionType());
             user.setUsertype(userModel.getUserType());
-            user.setToken(userModel.getToken());            
+            user.setToken(userModel.getToken());     
+            user.setUsername(userModel.getUsername());
+            System.out.println("PASSWORD: " + user.getPassword());
         }
+        else if(userModel == null){ return null;}*/
+                    user.setPassword(userModel.getPassword());
+/*if(userModel == null)
+            return null;*/
         return user;
     }
     public boolean register(UserDto user) throws UnknownHostException{
         boolean ok = false;
-        if(!UserDAO.exists(user.getUsername())){
+        if(!UserDAO.exists(user.getUsername(),user.getPassword())){
             User model = new User();
             model.setUserName(user.getUsername());
             model.setPassword(user.getPassword());
