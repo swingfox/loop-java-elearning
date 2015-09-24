@@ -35,10 +35,13 @@ public class UserController {
         try{
         UserService service = new UserService();
         boolean ok = service.register(user);
-        if(ok==false)
-            user.getErrorList().add("Registration unsucessful.");
+            if(ok==false){
+             //   user.getErrorList().add("Registration unsucessful.");
+                System.out.println("HAHA");
+            }
         }catch(Exception e){
-            user.getErrorList().add(e.toString());
+//            user.getErrorList().add(e.toString());
+            e.printStackTrace();
         }
         return user;
     }
@@ -47,16 +50,18 @@ public class UserController {
     @ResponseBody
     public UserDto login(@RequestBody UserDto user) throws UnknownHostException
     {
+        UserDto result = null;
         try{
+            System.out.println("USERSRRR");
         UserService service = new UserService();
-        UserDto result = service.login(user);
+        result = service.login(user);
         if(result==null)
             user.getErrorList().add("Username or password is invalid.");
         }catch(Exception e){
             //user.getErrorList().add(e.toString());
             System.out.println(e.toString());
         }
-        return user;
+        return result;
     }
     @RequestMapping("/validate")
     public boolean validate(UserDto user){return false;}

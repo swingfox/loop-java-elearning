@@ -55,21 +55,22 @@ $(document).ready(function() {
                         username:$("#username").val(),
 			password: $("#password").val(),
                        // userType : $('#input[name:optionsRadios]:checked', '#defaultForm').val()
-                        userType : $('input:radio[name="'+radio.getattr('name')+'"]').val()
+                        userType :  $('input[name=optionsRadios]:checked','#defaultForm').val()
                         });
             $.ajax({
-                url: "/loop-XYZ/store/user/signup",
+                url: "/loop-XYZ/loop/user/signup",
                 contentType:'application/json',
                 data: jsonData,
                 dataType: 'json',
                 type: "POST",
                 success: function(data, status, jqXHR){
                     if(data.errorList.length>0){
-                        alert("Registration Succesful!");
+                        alert("Registration Successful!");
                         $.switchPage("login");
                     }
                 },
-		error: function(jqXHR, status, error) {;
+		error: function(jqXHR, status, error) {
+                    alert("status:" + status + " error:" + error);
 		}
             });
         });
@@ -86,15 +87,20 @@ $(document).ready(function() {
                 url: "/loop-XYZ/loop/user/login",
                 contentType:'application/json',
                 data: jsonData,
-                dataType: 'text',
+                dataType: 'json',
                 type: "POST",
                 success: function(data, status, jqXHR){
-                    if(data.errorList.length>0){
-                        alert("Login Succesful!");
-                       // $.switchPage("login");
-                    }
+                   // if(data.errorList.length>0){
+                   if(data == null)
+                       alert('User not found');
+                   else{
+                        alert("Login Successful!");
+                            $.switchPage("/loop-XYZ/store/download");
+                   }
+               //     }
                 },
-		      error: function(jqXHR, status, error) { alert("Error!");
+		error: function(jqXHR, status, error) {
+                        alert("status:" + status + "error:" + error);
 		}
             });
         });

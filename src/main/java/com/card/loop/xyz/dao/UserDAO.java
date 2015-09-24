@@ -30,6 +30,7 @@ public class UserDAO {
         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
         User p = null;
         p = mongoOps.findOne(query(where("username").is(user.getUsername())), User.class);
+        System.out.println("USER DAO: " +p);
         return p;
     }
     public static boolean addUser(User user) throws UnknownHostException{
