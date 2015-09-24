@@ -74,7 +74,7 @@ public class UserService {
             model.setUserType(user.getUsertype());
             model.setEmail(user.getEmail());
             model.setUserType(user.getUsertype());
-            UserDAO.addUser(model);
+            UserDAO.saveUser(model);
             ok = true;
         }
         return ok;

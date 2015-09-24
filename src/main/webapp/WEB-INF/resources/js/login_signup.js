@@ -51,9 +51,9 @@ $(document).ready(function() {
         $("#btn-signup").click(function(){
             var jsonData = 
                         JSON.stringify({
-			email: $("#email").val(),
-                        username:$("#username").val(),
-			password: $("#password").val(),
+			email: $("#email",'#defaultForm').val(),
+                        username:$("#username",'#defaultForm').val(),
+			password: $("#password",'#defaultForm').val(),
                        // userType : $('#input[name:optionsRadios]:checked', '#defaultForm').val()
                         userType :  $('input[name=optionsRadios]:checked','#defaultForm').val()
                         });
@@ -64,10 +64,14 @@ $(document).ready(function() {
                 dataType: 'json',
                 type: "POST",
                 success: function(data, status, jqXHR){
-                    if(data.errorList.length>0){
+                   // if(data.errorList.length>0){
+                   if(data == null)
+                        alert("Registration unSuccessful!");
+                    else{
                         alert("Registration Successful!");
-                        $.switchPage("login");
+                //        $.switchPage("login");
                     }
+                  //  }
                 },
 		error: function(jqXHR, status, error) {
                     alert("status:" + status + " error:" + error);

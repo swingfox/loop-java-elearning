@@ -21,7 +21,7 @@ public class User {
     *Assign id number
     */
     @Id
-    private Long id;
+    private String id;
     /*
     *Assign username
     */
@@ -64,7 +64,7 @@ public class User {
  * Get the id of the user
  * @return id:Long
  */		
-public Long getId(){
+public String getId(){
         return this.id;
 }
 /**
@@ -128,7 +128,7 @@ public void setEmail(String email){
  * Set the id of the user
  * @param Long id
  */
-public void setId(Long id){
+public void setId(String id){
         this.id = id;
 }
 /**

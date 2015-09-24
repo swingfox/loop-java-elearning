@@ -59,6 +59,7 @@ public class UserDAO {
         mongoOps.save(user);
         return ok;
     }
+    
     public static boolean deleteUser(User user) throws UnknownHostException{
         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
         boolean ok = false;
