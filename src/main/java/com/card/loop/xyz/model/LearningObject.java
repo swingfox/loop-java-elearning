@@ -22,7 +22,7 @@ public class LearningObject {
     *Id of the Learning Object
     */
     @Id
-    private Long id;
+    private String id;
     /*
     *Name of the Learning Object
     */
@@ -82,7 +82,7 @@ public class LearningObject {
      * Gets the Id of the Learning Object
      * @return Long This returns the id of Learning Object.
      */
-    public Long getID(){
+    public String getID(){
         return this.id;
     }
 
@@ -178,7 +178,7 @@ public class LearningObject {
      * Sets the id of the Learning Object
      * @param id Long
      */
-    public void setID(Long id){
+    public void setID(String id){
         this.id = id;
     }
 

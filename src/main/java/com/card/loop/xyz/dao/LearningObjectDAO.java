@@ -11,6 +11,7 @@ import com.card.loop.xyz.model.LearningObject;
 import com.mongodb.Mongo;
 import java.net.UnknownHostException;
 import java.util.List;
+import javax.swing.JOptionPane;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -31,6 +32,24 @@ public class LearningObjectDAO {
         return mongoOps.findAll(LearningObject.class);
     }
     
+    /*
+    * Get details of specific learning object
+    */
+    public static LearningObject getSpecificLearningObject(String lo) throws UnknownHostException {
+       //MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+       //mongoOps.find(query(where("rating").is(5)), LearningObject.class);
+        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+        //Query query= new Query();
+        //query.addCriteria(where("name").is(lo));
+        //mongoOps.findo
+        return mongoOps.findOne(query(where("name").is(lo)), LearningObject.class);
+        //MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+        //LearningObject p = null;
+        //p = mongoOps.findOne(query(where("name").is(lo)), LearningObject.class);
+       // System.out.println("USER DAO: " +p);
+        //return p;
+    }
+    
     public static void addLearningObject(LearningObject object) throws UnknownHostException {
          MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
          mongoOps.insert(object);
@@ -45,7 +64,7 @@ public class LearningObjectDAO {
     
     public static boolean nameAvailability(String name, String subject) throws UnknownHostException {
        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
-       mongoOps.find(query(where("name").is(5)), LearningObject.class);
+       mongoOps.find(query(where("rating").is(5)), LearningObject.class);
        Query query= new Query();
        query.addCriteria(where("name").is(name).andOperator(where("subject").is(subject)));
         return DatabaseManager.getMongoOpsInstance("loop").exists(query, LearningObject.class);
@@ -86,4 +105,43 @@ public class LearningObjectDAO {
         ok = true;
         return ok;
     }*/    
+    
+    public static boolean exists(String id) throws UnknownHostException {
+        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port), "database");
+        boolean ok = false;
+        Query query = new Query();
+        query.addCriteria(where("id").is(id));
+        ok = mongoOps.exists(query, LearningObject.class);
+        return ok;
+    }
+    
+    public static void main(String[] args) throws Exception {
+        LearningObject lo = new LearningObject();
+        
+        
+        lo.setName("HTML5");
+        lo.setSubject("Web Programming");
+        lo.setDateUploaded("September 25, 2015");
+        lo.setDescription("test lng");
+        LearningObjectDAO.addLearningObject(lo);
+        
+        /**lo2.setLikes(20);
+        lo2.setDownloads(153);
+        lo2.setTitle("Biboaf");
+        LearningObjectDAO.addLearningObject(lo2);
+        
+        lo3.setLikes(9);
+        lo3.setDownloads(15);
+        lo3.setTitle("Jjjownjii");
+        LearningObjectDAO.addLearningObject(lo3);
+        
+        lo4.setLikes(50);
+        lo4.setDownloads(73);
+        lo4.setTitle("walksPerSecond");
+        LearningObjectDAO.addLearningObject(lo4);*/
+        
+        //JOptionPane.showMessageDialog(null, LearningObjectDAO.getMostLikedList().toString());
+        JOptionPane.showMessageDialog(null,LearningObjectDAO.getList());
+        //System.out.println(LearningObjectDAO.getMostLikedList());
+    }
 }
