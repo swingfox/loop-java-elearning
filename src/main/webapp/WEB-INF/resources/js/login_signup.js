@@ -97,9 +97,9 @@ $(document).ready(function() {
                    // if(data.errorList.length>0){
                    if(data == null)
                        alert('User not found');
-                   else{
+                   else if(data.id != null){
                         alert("Login Successful!");
-                            $.switchPage("/loop-XYZ/store/download");
+                        window.location = "/loop-XYZ/store/developer-update";
                    }
                //     }
                 },

@@ -15,7 +15,7 @@ public class UserDto {
     /*
     *id number of the user
     */
-    private Long id;
+    private String id;
     /*
     *username of the user
     */
@@ -72,14 +72,14 @@ public class UserDto {
      * 
      * @return Long - Get the Id number of the user
      */
-    public Long getId() {
+    public String getId() {
         return id;
     }
      /**
      * This sets the id of the user
      * @param id Long
      */
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
     
