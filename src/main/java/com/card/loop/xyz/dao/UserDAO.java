@@ -70,7 +70,7 @@ public class UserDAO {
     public static void main(String []args){
         try {
             User user = new User();
-            user.setId(new Long(1));
+           // user.setId(new Long(1));
             user.setEmail("admin@gmail.com");
             user.setBlocked(false);
             user.setUserName("admin");
