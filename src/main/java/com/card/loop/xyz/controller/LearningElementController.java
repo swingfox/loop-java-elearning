@@ -5,10 +5,46 @@
  */
 package com.card.loop.xyz.controller;
 
+import com.card.loop.xyz.dto.LearningElementDto;
+import com.card.loop.xyz.dto.UserDto;
+import com.card.loop.xyz.model.LearningElement;
+//import com.card.loop.xyz.model.LearningObject;
+import com.card.loop.xyz.service.LearningElementService;
+import com.card.loop.xyz.service.UserService;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
 /**
  *
- * @author David
+ * @author Julie Jane A.Alegre
  */
+
+@RestController
+@RequestMapping("/LE")
+
 public class LearningElementController {
+   
+    @RequestMapping("/login")
+    @ResponseBody
+    public LearningElementDto LE(@RequestBody LearningElementDto le) throws UnknownHostException
+    {
+        LearningElementDto result = null;
+        try{
+            System.out.println("LE");
+        LearningElementService service = new LearningElementService();
+        result = service.getSpecificLearningElement(le);
+        if(result==null)
+            le.getErrorList().add("NULLL!");
+        }catch(Exception e){
+            //user.getErrorList().add(e.toString());
+            System.out.println(e.toString());
+        }
+        return result;
+    }
     
 }
