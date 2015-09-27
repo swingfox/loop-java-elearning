@@ -67,7 +67,7 @@ $(document).ready(function() {
                    // if(data.errorList.length>0){
                    if(data == null)
                         alert("Registration unSuccessful!");
-                    else{
+                   else if(data.id != null){
                         alert("Registration Successful!");
                 //        $.switchPage("login");
                     }

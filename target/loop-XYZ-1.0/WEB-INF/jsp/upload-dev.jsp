@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Upload</title>
 
@@ -52,25 +52,25 @@
                                         <span class="icon-bar"></span>
                                     </button>
 
-                                    <a class="navbar-brand" href="index.jsp">
+                                    <a class="navbar-brand" href="/loop-XYZ/store/developer-update">
                                         <img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
                                     </a>
                                 </div>
 
-                                <div class="navbar-collapse collapse">
+                                <div class="navbar-collapse collapse" ng-controller="LoginCtrl">
 
                                 <!--?php $this->layout->user_menu() ?-->
                                 <ul class="nav navbar-nav navbar-right"> 
                                     <li class="dropdown">
                                         <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
 
-                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>
+                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                             <li role="presentation" class="dropdown-header">Options</li>
                                             <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
                                             <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
                                             <li class="divider"></li>
-                                            <li><a href="index.jsp/account/logout"><i class="icon-off"></i> Logout</a></li>
+                                            <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -236,6 +236,10 @@
 
     <!-- Input File =================================================-->
     <script src="css/inputfile/jquery.inputfile.js"></script>
+    
+    <script src="js/angular/angular.js"></script>
+    <script src="js/angular/ngStorage.js"></script>
+    <script src="js/loop.js" type="text/javascript"></script>
 
     <!-- Form Validator =================================================-->
 
