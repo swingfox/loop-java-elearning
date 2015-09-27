@@ -24,42 +24,21 @@ public class UserService {
         User userModel = UserDAO.getUser(user.getUsername(), user.getPassword());
         System.out.println("USER SERVICE CONTROLLER");
         if(userModel != null){
-           if(userModel.getUsername().equals(user) && userModel.getPassword().equals(user)){
+           if(userModel.getUsername().equals(user.getUsername()) && userModel.getPassword().equals(user.getPassword())){
            System.out.println("USER FOUND!!!");
-           }
-        }
-       // System.out.println("UserModel: " + userModel.toString());
-   /*     if(userModel != null){
+           
             user.setId(userModel.getId());
             user.setEmail(userModel.getEmail());
-            //user.setFirstName(userModel.getFirstName());
-            //user.setLastName(userModel.getLastName());
-            user.setLastDownload(userModel.getLastDownload());
-            //user.setLastDownloadId(userModel.getLastDownloadId());
-            user.setLastLogin(new Date().toString());
             userModel.generateToken();
             user.setToken(userModel.getToken());
-            //user.setApproved(userModel.isApproved());
-            user.setBlocked(userModel.getBlocked());
-            //user.setFunctionType(userModel.getFunctionType());
             user.setUsertype(userModel.getUserType());
-            //.setLastName(userModel.getLastName());
+            user.setLastActivity(userModel.getLastLogin());
             user.setLastDownload(userModel.getLastDownload());
-            //user.setLastDownloadId(userModel.getLastDownloadId());
             user.setLastLogin(new Date().toString());
-            //userModel.generateToken();
-            //user.setApproved(userModel.isApproved());
-            user.setBlocked(userModel.getBlocked());
-            //user.setFunctionType(userModel.getFunctionType());
-            user.setUsertype(userModel.getUserType());
-            user.setToken(userModel.getToken());     
+            user.setBlocked(userModel.getBlocked());   
             user.setUsername(userModel.getUsername());
-            System.out.println("PASSWORD: " + user.getPassword());
+           }
         }
-        else if(userModel == null){ return null;}*/
-                    user.setPassword(userModel.getPassword());
-/*if(userModel == null)
-            return null;*/
         return user;
     }
     public boolean register(UserDto user) throws UnknownHostException{

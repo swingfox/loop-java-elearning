@@ -126,7 +126,7 @@ public void setEmail(String email){
 
 /**
  * Set the id of the user
- * @param Long id
+ * @param String id
  */
 public void setId(String id){
         this.id = id;

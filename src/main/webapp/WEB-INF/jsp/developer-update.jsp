@@ -12,7 +12,7 @@ Functions in php that have not been transfered/revised here:
 	session_start();
 ?!-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="loop">
 <head>
 <!--?php
 echo '--><script type="text/javascript">
@@ -82,19 +82,19 @@ echo '--><script type="text/javascript">
 							<span class="icon-bar"></span>
 						</button>
 	                    
-	                    <a class="navbar-brand" href="index.php">
+	                    <a class="navbar-brand" href="/loop-XYZ/store/developer-update">
 							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
 						</a>
 	                </div>
 					
-					<div class="navbar-collapse collapse">
+                                    <div class="navbar-collapse collapse" ng-controller="LoginCtrl">
 
 						<!--?php $this->layout->user_menu() ?-->
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
                                                         <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
 
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
                                                         <ul class="dropdown-menu">
 
                                                                 <li role="presentation" class="dropdown-header">Options</li>
@@ -104,7 +104,7 @@ echo '--><script type="text/javascript">
 
                                                                 <li class="divider"></li>
 
-                                                                <li><a href="index.php/account/logout"><i class="icon-off"></i> Logout</a></li>
+                                                                <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
                                                         </ul>
                                                      </li>
                                                 </ul>
@@ -348,7 +348,10 @@ echo '--><script type="text/javascript">
         <script src="js/datatables/jquery.dataTables.min.js"></script>
 
         <script src="js/datatables/dataTables.bootstrap.js"></script>
-
+        
+        <script src="js/angular/angular.js"></script>
+        <script src="js/angular/ngStorage.js"></script>
+        <script src="js/loop.js" type="text/javascript"></script>
 
         <script src="css/bootstrap3/js/tooltip.js"></script>
         <script src="css/bootstrap3/js/popover.js"></script>

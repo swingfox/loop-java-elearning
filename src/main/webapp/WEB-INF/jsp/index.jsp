@@ -6,7 +6,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
-<html>
+<html ng-app="loop">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>LOOP | Learning Object Organizer Plus</title>
@@ -63,7 +63,7 @@
                                 <span class="popup">Login</span>
                             </div>
 
-                            <div class="modal-body">  
+                            <div class="modal-body" >  
                                 <div class="row">
                                     <div class="col-md-10 col-md-push-1">
                                         <!--<?php if(isset($status) && !$status){ ?>-->
@@ -76,8 +76,8 @@
                                         <!-- <p><input class="col-xs-12 col-md-12 sign-up" id="username" type="text" name="username" placeholder="Username" required></p>
                                             <p><input class="col-xs-12 col-md-12 sign-up" id="password" type="password" name="password" placeholder="Password" required></p> -->
 
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" required/>
+                                        <div ng-controller="LoginCtrl" class="form-group">
+                                            <input type="text" class="form-control" id="username" ng-model="username" name="username" placeholder="Username" required/>
                                         </div>
 
                                         <div class="form-group">
@@ -761,6 +761,8 @@
 <script src="js/js-flat-ui/jquery.tagsinput.js"></script>
 <script src="js/js-flat-ui/jquery.placeholder.js"></script>
 <script src="js/js-flat-ui/jquery.stacktable.js"></script>
+<script src="js/angular/angular.js"></script>
+<script src="js/angular/ngStorage.js"></script>
 <script src="js/datatables/jquery.dataTables.min.js"></script>
 <script src="js/datatables/dataTables.bootstrap.js"></script>        
 <script src="js/backstretch-jquery/jquery.backstretch.min.js"></script>
@@ -771,7 +773,7 @@
 <script src="css/bootstrap3/js/popover.js"></script>
 <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
 
-<script src="js/angular/angular.js"></script>
+
 <!-- Bootstrap tour =================================================-->
 <script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
 <script src="js/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
@@ -803,7 +805,7 @@
 </script>
 
 <script src="js/login_signup.js" type="text/javascript"></script>
-
+<script src="js/loop.js" type="text/javascript"></script>
 <script>
     // This is the distance in px between the uppder edge of the window and the upper edge of the header
     var headerPosition = $('#header-wrap').position().top;
