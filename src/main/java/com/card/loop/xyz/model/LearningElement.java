@@ -22,7 +22,7 @@ public class LearningElement {
     *id of learning element
     */
     @Id
-    private Long id;
+    private String id;
     /*
     *name of learning element
     */
@@ -97,14 +97,14 @@ public class LearningElement {
      * Gets the id of the learning element
      * @return Long This returns the id of the learning element
      */
-    public Long getId(){
+    public String getId(){
         return this.id;
     }
     /**
      * Sets the id of the learning element
      * @param id 
      */
-    public void setId(Long id){
+    public void setId(String id){
        this.id=id;
     }
     /**
