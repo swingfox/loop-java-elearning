@@ -99,7 +99,12 @@ $(document).ready(function() {
                        alert('User not found');
                    else if(data.id != null){
                         alert("Login Successful!");
+                        if(data.usertype == "developer")
                         window.location = "/loop-XYZ/store/developer-update";
+                        else if(data.usertype == "reviewer")
+                        window.location = "/loop-XYZ/store/reviewer-update";
+                        else 
+                        window.location = "/loop-XYZ/store/admin-view";
                    }
                //     }
                 },
