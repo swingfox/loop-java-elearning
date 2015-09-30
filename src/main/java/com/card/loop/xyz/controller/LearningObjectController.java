@@ -12,9 +12,16 @@ import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.service.LearningObjectService;
 import com.card.loop.xyz.service.UserService;
+import java.io.IOException;
+import java.net.URI;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.client.ClientHttpRequest;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,26 +55,33 @@ public class LearningObjectController {
         }
         return result;
     }
-    
-    @RequestMapping("/download")
-    @ResponseBody
-    public LearningObjectDto DownloadLO()
+    //wla na dawy requestmapping
+    //okay so 
+    //okie, 
+    //padaun ug code, waitt....,cge goooo
+    public void DownloadLO()
     {
-        LearningObjectDto result = null;
-        try{
+        try {
+            /*LearningObjectDto result = null;
+            try{
             result = loService.getSpecificLearningObject(result);
             if(result!=null) {
             } else {
-                result.getErrorList().add("NULLL!");
+            result.getErrorList().add("NULLL!");
             }
-        }catch(Exception e){
+            }catch(Exception e){
             //user.getErrorList().add(e.toString());
             System.out.println(e.toString());
+            }
+            return result;*/
+            SimpleClientHttpRequestFactory rf= new SimpleClientHttpRequestFactory();
+            ClientHttpRequest req= rf.createRequest(URI.create("/InformatronYX/informatron/LO/upload/available"),HttpMethod.POST);
+        } catch (IOException ex) {
+            Logger.getLogger(LearningObjectController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return result;
+        
     }
     
-    @RequestMapping("/list")
     @ResponseBody
     public List<LearningObjectDto> ListLO()
     {
