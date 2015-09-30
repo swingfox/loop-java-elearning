@@ -15,6 +15,8 @@ import java.util.List;
 /**
  *
  * @author Aislinn
+ * 
+ * [09/30/2015] -   Vine Deiparine  - Added getLearningObjects
  */
 public class LearningObjectService 
 {
@@ -22,7 +24,7 @@ public class LearningObjectService
         LearningObject loModel;
         loModel = LearningObjectDAO.getSpecificLearningObject(lo.getName());
        if(loModel != null){
-            //lo.setId(loModel.getID());
+            lo.setId(loModel.getID());
             lo.setName(loModel.getName());
             lo.setDescription(loModel.getDescription());
             lo.setSubject(loModel.getSubject());
@@ -38,5 +40,24 @@ public class LearningObjectService
             */
         }
         return lo;
+    }
+    
+    public List<LearningObjectDto> getLearningObjects() throws UnknownHostException{
+        List<LearningObject> LOList = LearningObjectDAO.getList();//LearningObjectDAO.getAllLearningObjectByDateUpload(new Date());
+        List<LearningObjectDto> objects = new ArrayList<>();
+        for(LearningObject model: LOList){
+            LearningObjectDto dto = new LearningObjectDto();
+            dto.setId(model.getID());
+            dto.setRating(model.getRating());
+            dto.setName(model.getName());
+            dto.setDescription(model.getDescription());
+            dto.setSubject(model.getSubject());
+            dto.setDownloads(model.getDownloads());
+            dto.setDateUploaded(model.getDateUploaded());
+            dto.setRev(model.getRev());
+            dto.setUploadedBy(model.getUploadedBy());
+            objects.add(dto);
+        }
+        return objects;
     }
 }

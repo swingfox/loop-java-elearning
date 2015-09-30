@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+/* global angular */
+
 var eS = angular.module('loop', ['localStorage']);
 eS.controller('LoginCtrl', ['$scope', '$store', function($scope, $store) {
     $store.bind($scope, 'username', '');
@@ -11,6 +13,43 @@ eS.controller('LoginCtrl', ['$scope', '$store', function($scope, $store) {
     $scope.clearUser = function(){ 
         $store.remove('username'); 
     };
+}]);
+
+eS.controller('LOList', ['$scope', '$http', function($scope, $http) {
+    $http.get("/loop-XYZ/loop/LO/list")    
+    .success(function(data) {
+    	$scope.los = data;
+        //console.log(""+ response);
+    	//$scope.filename = data.filename;
+        //console.log("" + response);
+    })
+    .error(function(jqXHR, status, error) {
+    	//$scope.tasks = response.taskList;
+        console.log(""+ error);
+        //console.log("" + response);
+    });
+}]);
+
+eS.controller('DisplayLOCtrl', ['$scope', '$http', function($scope, $http) {
+    $http.get("/loop-XYZ/loop/LO/download")    
+    .success(function(data) {
+    	$scope.filename = 'response.taskList';
+        //console.log(""+ response);
+    	//$scope.filename = data.filename;
+        //console.log("" + response);
+    })
+    .error(function(jqXHR, status, error) {
+    	//$scope.tasks = response.taskList;
+        console.log(""+ error);
+        //console.log("" + response);
+    });
+        /**
+    HttpClient httpclient = new DefaultHttpClient();
+    HttpResponse response = httpClient.execute(new HttpGet(URL));
+    HttpEntity entity = response.getEntity();
+    String responseString = EntityUtils.toString(entity, "UTF-8");
+    System.out.println(responseString);
+    	**/
 }]);
 
 var ls = angular.module('localStorage',[]);

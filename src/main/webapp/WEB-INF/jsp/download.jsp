@@ -19,7 +19,7 @@
 	$filepath = $lo->getFilepath();
 ?-->
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="loop">
 <head>
 <title>LOOP | Download</title>
 
@@ -58,7 +58,7 @@
 
 
 </head>
-<body>	
+	
 	<!-- <div id="wrapper"> -->
 	<div class="wrapper">
     	<!--?php $this->layout->modal_footer() ?-->
@@ -137,12 +137,12 @@
 
                     <!-- <legend class="col-md-12 col-md-push-3">Download</legend> -->
 
-                    <form class="form-horizontal bootstrap-validator-form" method="post" id="defaultForm" novalidate="novalidate">
-                        <div class="well">		
+                    <form ng-controller="DisplayLOCtrl" class="form-horizontal bootstrap-validator-form" method="post" id="defaultForm" novalidate="novalidate">
+                        <div class="well">	
 	                        <div class="form-group">
-	                            <label class="col-md-3 control-label download">Filename :</label>
+                                    <label class="col-md-3 control-label download" ng-model="filename">Filename : {{filename}}</label>
 	                            <div class="col-md-8">
-	                                <!-- <input type="text" name="username" class="form-control"> -->
+                                        <!--<input type="text" name="username" class="form-control" value="{{filename}}" ng-model="filename">  -->
 	                                <!-- <p class="download-details"><//?php echo $lo->getName(); ?></p> -->
 	                                <p class="download-details"><!--?php echo $lo->getName(); ?--></p>
 	                            </div>
@@ -252,7 +252,9 @@
         <!--script src="'.$this->base_url.'js/reviewer-tour-script.js"></script-->
 
         <!-- Form Validator =================================================-->
-        <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
+        <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>        
+        <script src="js/angular/angular.js"></script>
+        <script src="js/loop.js"></script>
         <script>
 
 
@@ -450,6 +452,4 @@
 		    });
 		});
 	</script>
-
-</body>
 </html>

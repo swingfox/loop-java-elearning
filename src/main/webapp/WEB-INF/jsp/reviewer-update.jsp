@@ -1,6 +1,6 @@
 <!--<?php session_start(); ?>-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="loop">
     <head>
         <title>LOOP | Review View</title>
         <meta charset="utf-8">
@@ -92,7 +92,7 @@
 						
 						<div class="table-responsive">
 							<!-- <table class="datatable table table-bordered"> -->
-							<table class="datatable table table-hover">
+							<table class="datatable table table-hover" ng-controller="LOList">
 							    <thead>
 									<tr>
 										<th class="color-code"><!-- <img src="<?php //echo base_url() ?>img/icon-colorcode.png" alt="color code" /> --></th>
@@ -108,6 +108,16 @@
 									</tr>
 								</thead>
 						        <tbody>
+                                                            <tr ng-repeat="lo in los">
+                                                                <td><a href="'" onclick=""><label ng-model="name">{{name}}</a></td>
+                                                                <td><label ng-model="lo.subject">{{lo.subject}}</td>
+                                                                <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
+                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
+                                                                <td><label ng-model="lo.comments">{{lo.comments}}</td>
+                                                                <td><label ng-model="lo.status">{{lo.status}}</td>
+                                                                <td><label ng-model="lo.reviewer">{{lo.reviewer}}</td>
+                                                                <td><label ng-model="lo.author">{{lo.author}}</td>
+                                                            </tr>
                                                             <!--
 						        <?php  
 
@@ -244,7 +254,9 @@
 	<!-- Load JS here for greater good =============================-->
 
 	<!--<?php $this->layout->footer() -->
-
+         <script src="js/angular/angular.js"></script>
+        <script src="js/loop.js"></script>
+        
 	<script> 
 		$(document).ready(function(){
 			var length_sel;
