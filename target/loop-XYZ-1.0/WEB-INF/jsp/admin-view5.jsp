@@ -8,7 +8,7 @@
 	$counter=0;
 ?-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Admin - Learning Objects</title>
 
@@ -52,8 +52,6 @@
             <!-- Input File -->
             <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
 
-            <!-- Form Validator -->
-            <link rel="stylesheet" href="/js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
 
 <!--?php
 	echo '--><script type="text/javascript">
@@ -192,7 +190,7 @@
 				<div class="row">
 					<div class="col-md-12 content">
 						
-						<div class="table-responsive">
+						<div class="table-responsive" ng-controller="LOList">
 							<!-- <table class="datatable table table-bordered"> -->
 							<table class="datatable table table-hover">
 							    <thead>
@@ -210,6 +208,17 @@
 									</tr>
 								</thead>
 						        <tbody>
+                                                            
+                                                            <tr ng-repeat="lo in los">
+                                                                <td><a href="'" onclick=""><label ng-model="name">{{lo.name}}</a></td>
+                                                                <td><label ng-model="lo.subject">{{lo.subject}}</td>
+                                                                <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
+                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
+                                                                <td><label ng-model="lo.comments">{{lo.comments}}</td>
+                                                                <td><label ng-model="lo.status">{{lo.status}}</td>
+                                                                <td><label ng-model="lo.reviewer">{{lo.reviewer}}</td>
+                                                                <td><label ng-model="lo.author">{{lo.author}}</td>
+                                                            </tr>
 						        <!--?php  
 
 					        		require './application/controllers/LOController.php';

@@ -4,7 +4,7 @@
     <!--?php echo date("Y"); ?-->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Admin - Developer Accounts</title>
 
@@ -48,10 +48,6 @@
                 
             <!-- Input File -->
             <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
-
-            <!-- Form Validator -->
-            <link rel="stylesheet" href="/js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
-
 
 <!--?php -->
 <!--session_start();
@@ -250,7 +246,7 @@
 				<div class="row">
 					<div class="col-md-12 content">
 						
-						<div class="table-responsive">
+						<div class="table-responsive" ng-controller="developerAccountCtrl">
 							<!-- <table class="datatable table table-bordered"> -->
 							<table class="datatable table table-hover">
 							    <thead>
@@ -262,6 +258,12 @@
 								</thead>
 
 						        <tbody>
+                                                            
+                                                             <tr ng-repeat="developer in developerAccount">
+                                                                    <td><a href="'" onclick=""><label ng-model="developer.name">{{developer.name}}</a></td>
+                                                                    <td><label ng-model="developer.lastLogin">{{developer.lastLogin}}</td>
+                                                                    <td><label ng-model="developer.lastUpload">{{developer.lastUpload}}</td>
+                                                             </tr>
 						        <!-- <?php  
 
 					        		require './application/controllers/AdminController.php';
@@ -425,7 +427,9 @@
         <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
 
 
-
+        <script src="js/angular/angular.js"></script>
+        <script src="js/angular/ngStorage.js"></script>
+        <script src="js/loop.js" type="text/javascript"></script>
 
 
         <!-- Bootstrap tour =================================================-->

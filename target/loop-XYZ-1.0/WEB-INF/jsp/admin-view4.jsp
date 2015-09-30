@@ -3,7 +3,7 @@
     <!--?php $this->layout->modal_footer() ?>-->
     <!--?php echo date("Y"); ?-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Admin - Blocked Accounts</title>
 
@@ -46,9 +46,6 @@
                 
             <!-- Input File -->
             <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
-
-            <!-- Form Validator -->
-            <link rel="stylesheet" href="/js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
 
 <!--?php
 session_start();
@@ -246,7 +243,7 @@ session_start();
 				<div class="row">
 					<div class="col-md-12 content">
 						
-						<div class="table-responsive">
+                                            <div class="table-responsive" ng-controller="blockedAccountCtrl">
 							<!-- <table class="datatable table table-bordered"> -->
 							<table class="datatable table table-hover">
 							    <thead>
@@ -259,6 +256,11 @@ session_start();
 								</thead>
 
 						        <tbody>
+                                                            <tr ng-repeat="blocked in blockedAccount">
+                                                                    <td><a href="'" onclick=""><label ng-model="blocked.name">{{blocked.name}}</a></td>
+                                                                    <td><label ng-model="blocked.lastLogin">{{blocked.lastLogin}}</td>
+                                                                    <td><label ng-model="blocked.userType">{{blocked.userType}}</td>
+                                                             </tr>
 						        <!--?php  
 
 					        		require './application/controllers/AdminController.php';

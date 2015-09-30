@@ -3,7 +3,7 @@
     <!--?php $this->layout->modal_footer() ?>-->
     <!--?php echo date("Y"); ?-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Admin - Inactive Accounts</title>
 
@@ -46,9 +46,6 @@
                 
             <!-- Input File -->
             <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
-
-            <!-- Form Validator -->
-            <link rel="stylesheet" href="/js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
 
 <!--?php
 session_start();
@@ -246,7 +243,7 @@ session_start();
 				<div class="row">
 					<div class="col-md-12 content">
 						
-						<div class="table-responsive">
+						<div class="table-responsive" ng-controller="inactiveAccountCtrl">
 							<!-- <table class="datatable table table-bordered"> -->
 							<table class="datatable table table-hover">
 							    <thead>
@@ -258,6 +255,12 @@ session_start();
 								</thead>
 
 						        <tbody>
+                                                            
+                                                            <tr ng-repeat="passive in inactiveAccount">
+                                                                    <td><a href="'" onclick=""><label ng-model="passive.name">{{passive.name}}</a></td>
+                                                                    <td><label ng-model="passive.lastLogin">{{passive.lastLogin}}</td>
+                                                                    <td><label ng-model="passive.userType">{{passive.userType}}</td>
+                                                             </tr>
 						        <!--?php  
 
 					        		require './application/controllers/AdminController.php';

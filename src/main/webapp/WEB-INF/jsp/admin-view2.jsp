@@ -48,9 +48,6 @@
             <!-- Input File -->
             <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
 
-            <!-- Form Validator -->
-            <link rel="stylesheet" href="/js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
-
 <!--?php
 session_start();
 	echo '--><script type="text/javascript">
@@ -248,7 +245,7 @@ session_start();
 				<div class="row">
 					<div class="col-md-12 content">
 						
-						<div class="table-responsive">
+						<div class="table-responsive" ng-controller="reviewerAccountCtrl">
 							<!-- <table class="datatable table table-bordered"> -->
 							<table class="datatable table table-hover">
 							    <thead>
@@ -260,6 +257,12 @@ session_start();
 								</thead>
 
 						        <tbody>
+                                                            
+                                                             <tr ng-repeat="reviewer in reviewerAccount">
+                                                                    <td><a href="'" onclick=""><label ng-model="reviewer.name">{{reviewer.name}}</a></td>
+                                                                    <td><label ng-model="reviewer.lastLogin">{{reviewer.lastLogin}}</td>
+                                                                    <td><label ng-model="reviewer.lastDownload">{{reviewer.lastDownload}}</td>
+                                                             </tr>
 						        <!--?php  
 
 					        		require './application/controllers/AdminController.php';

@@ -7,7 +7,7 @@
 	$counter=0;
 ?-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Admin - Learning Objects</title>
 
@@ -50,9 +50,6 @@
                 
             <!-- Input File -->
             <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
-
-            <!-- Form Validator -->
-            <link rel="stylesheet" href="/js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
 
 <!--?php
 	echo '--><script type="text/javascript">
@@ -128,7 +125,7 @@
 				<div class="row">
 					<div class="col-md-12 content">
 						
-						<div class="table-responsive">
+						<div class="table-responsive" ng-controller="LEListCtrl">
 							<!-- <table class="datatable table table-bordered"> -->
 							<table class="datatable table table-hover">
 							    <thead>
@@ -146,6 +143,17 @@
 									</tr>
 								</thead>
 						        <tbody>
+                                                            
+                                                            <tr ng-repeat="le in les">
+                                                                <td><a href="'" onclick=""><label ng-model="name">{{le.name}}</a></td>
+                                                                <td><label ng-model="le.subject">{{le.subject}}</td>
+                                                                <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
+                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="le.rating">{{le.rating}}</td>
+                                                                <td><label ng-model="le.comments">{{le.comments}}</td>
+                                                                <td><label ng-model="le.status">{{le.status}}</td>
+                                                                <td><label ng-model="le.reviewer">{{le.reviewer}}</td>
+                                                                <td><label ng-model="le.author">{{le.author}}</td>
+                                                            </tr>
 						        <!--?php  
 
 					        		require './application/controllers/LEController.php';

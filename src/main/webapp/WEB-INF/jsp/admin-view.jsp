@@ -356,7 +356,7 @@
                 <div class="row">
                     <div class="col-md-12 content">
                         
-                        <div class="table-responsive">
+                        <div class="table-responsive" ng-controller="newAccountRequestCtrl">
                             <!-- <table class="datatable table table-bordered"> -->
                             <table class="datatable table table-hover">
                                 <thead>
@@ -368,6 +368,12 @@
                                 </thead>
 
                                 <tbody>
+                                    
+                                      <tr ng-repeat="user in userAccount">
+                                            <td><a href="'" onclick=""><label ng-model="user.name">{{user.name}}</a></td>
+                                            <td><label ng-model="user.email">{{user.email}}</td>
+                                            <td><label ng-model="user.userType">{{user.userType}}</td>
+                                      </tr>
                                 <!--<?php  
 
                                     require './application/controllers/AdminController.php';
