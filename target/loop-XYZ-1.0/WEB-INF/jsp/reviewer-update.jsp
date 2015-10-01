@@ -124,7 +124,7 @@
 								</thead>
 						        <tbody>
                                                             <tr ng-repeat="lo in los">
-                                                                <td><a href="'" onclick=""><label ng-model="name">{{name}}</a></td>
+                                                                <td><a href="'" onclick=""><label ng-model="lo.name">{{lo.name}}</a></td>
                                                                 <td><label ng-model="lo.subject">{{lo.subject}}</td>
                                                                 <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
@@ -311,7 +311,7 @@
         <!-- Form Validator =================================================-->
         <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
         
-	<script> 
+	<!--script>
 		$(document).ready(function(){
 			var length_sel;
 			// // alert($(document).height());
@@ -324,7 +324,7 @@
 			
 			var optionVal = $('tbody > tr:last-child()').index();
 
-				$('.dataTables_filter label input').click(function(){
+				$('.tr[p-o[;-----;j label input').click(function(){
 					if(optionVal >= 8){
 						$('footer').removeClass('navbar-fixed-bottom').addClass('navbar-static-bottom');
 					}
@@ -365,7 +365,7 @@
                 pagination.addClass('pagination-sm');
             }
 		});
-	</script>
+	</script-->
 
 	<script type="text/javascript">
 		$(document).ready(function() {

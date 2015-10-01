@@ -12,6 +12,7 @@ import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.service.LearningObjectService;
 import com.card.loop.xyz.service.UserService;
+import com.mongodb.util.JSON;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.URI;
@@ -86,21 +87,25 @@ public class LearningObjectController {
             
             //response
             BufferedReader reader= new BufferedReader(new java.io.InputStreamReader(response.getBody()));
-           // JSONObject responseObj = new JSONObject(reader.readLine());
-             JSONObject responseObj = (JSONObject) JSONSerializer.toJSON(reader.readLine());
+            JSONObject responseObj = new JSONObject();
+            responseObj.put(req, reader);
+            
+            // JSONObject responseObj = (JSONObject) JSONSerializer.toJSON(reader.readLine());
         } catch (IOException ex) {
             Logger.getLogger(LearningObjectController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
     
+    @RequestMapping("/list")
     @ResponseBody
     public List<LearningObjectDto> ListLO()
     {
         List<LearningObjectDto> dtos = new ArrayList<>();
         try{
             dtos = loService.getLearningObjects();
-        }catch(Exception e){ e.printStackTrace(); }
+        }catch(Exception e){ 
+            e.printStackTrace(); }
         return dtos;
     }
 }
