@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import org.springframework.web.bind.annotation.RestController;
+import scala.util.parsing.json.JSONObject;
 
 /**
  *
@@ -51,6 +52,7 @@ public class UserController {
     public UserDto login(@RequestBody UserDto user) throws UnknownHostException
     {
         UserDto result = null;
+     //   JSONObject json = new JSONObject("HAHAH");
         try{
             System.out.println("USERSRRR");
             UserService service = new UserService();

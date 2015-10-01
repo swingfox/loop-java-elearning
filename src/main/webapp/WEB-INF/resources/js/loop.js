@@ -43,6 +43,22 @@ eS.controller('DisplayLOCtrl', ['$scope', '$http', function($scope, $http) {
         console.log(""+ error);
         //console.log("" + response);
     });
+}]);
+    
+eS.controller('newAccountRequestCtrl', ['$scope', '$http', function($scope, $http) {
+    $http.get("/loop-XYZ/loop/LO/list")    
+    .success(function(data) {
+    	$scope.los = data;
+        //console.log(""+ response);
+    	//$scope.filename = data.filename;
+        //console.log("" + response);
+    })
+    .error(function(jqXHR, status, error) {
+    	//$scope.tasks = response.taskList;
+        console.log(""+ error);
+        //console.log("" + response);
+    });
+}]);
         /**
     HttpClient httpclient = new DefaultHttpClient();
     HttpResponse response = httpClient.execute(new HttpGet(URL));
@@ -50,7 +66,99 @@ eS.controller('DisplayLOCtrl', ['$scope', '$http', function($scope, $http) {
     String responseString = EntityUtils.toString(entity, "UTF-8");
     System.out.println(responseString);
     	**/
+
+eS.controller('developerAccountCtrl', ['$scope', '$http', function($scope, $http) {
+    $http.get("/loop-XYZ/loop/LO/list")    
+    .success(function(data) {
+    	$scope.los = data;
+        //console.log(""+ response);
+    	//$scope.filename = data.filename;
+        //console.log("" + response);
+    })
+    .error(function(jqXHR, status, error) {
+    	//$scope.tasks = response.taskList;
+        console.log(""+ error);
+        //console.log("" + response);
+    });
 }]);
+
+eS.controller('reviewerAccountCtrl', ['$scope', '$http', function($scope, $http) {
+    $http.get("/loop-XYZ/loop/LO/list")    
+    .success(function(data) {
+    	$scope.los = data;
+        //console.log(""+ response);
+    	//$scope.filename = data.filename;
+        //console.log("" + response);
+    })
+    .error(function(jqXHR, status, error) {
+    	//$scope.tasks = response.taskList;
+        console.log(""+ error);
+        //console.log("" + response);
+    });
+}]);
+
+eS.controller('inactiveAccountCtrl', ['$scope', '$http', function($scope, $http) {
+    $http.get("/loop-XYZ/loop/LO/list")    
+    .success(function(data) {
+    	$scope.los = data;
+        //console.log(""+ response);
+    	//$scope.filename = data.filename;
+        //console.log("" + response);
+    })
+    .error(function(jqXHR, status, error) {
+    	//$scope.tasks = response.taskList;
+        console.log(""+ error);
+        //console.log("" + response);
+    });
+}]);
+
+eS.controller('blockedAccountCtrl', ['$scope', '$http', function($scope, $http) {
+    $http.get("/loop-XYZ/loop/LO/list")    
+    .success(function(data) {
+    	$scope.los = data;
+        //console.log(""+ response);
+    	//$scope.filename = data.filename;
+        //console.log("" + response);
+    })
+    .error(function(jqXHR, status, error) {
+    	//$scope.tasks = response.taskList;
+        console.log(""+ error);
+        //console.log("" + response);
+    });
+}]);
+
+eS.controller('blockedAccountCtrl', ['$scope', '$http', function($scope, $http) {
+    $http.get("/loop-XYZ/loop/LO/list")    
+    .success(function(data) {
+    	$scope.los = data;
+        //console.log(""+ response);
+    	//$scope.filename = data.filename;
+        //console.log("" + response);
+    })
+    .error(function(jqXHR, status, error) {
+    	//$scope.tasks = response.taskList;
+        console.log(""+ error);
+        //console.log("" + response);
+    });
+}]);
+
+eS.controller('LEListCtrl', ['$scope', '$http', function($scope, $http) {
+    $http.get("/loop-XYZ/loop/LE/list")    
+    .success(function(data) {
+    	$scope.los = data;
+        //console.log(""+ response);
+    	//$scope.filename = data.filename;
+        //console.log("" + response);
+    })
+    .error(function(jqXHR, status, error) {
+    	//$scope.tasks = response.taskList;
+        console.log(""+ error);
+        //console.log("" + response);
+    });
+}]);
+
+
+
 
 var ls = angular.module('localStorage',[]);
  

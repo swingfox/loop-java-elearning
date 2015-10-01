@@ -3,7 +3,7 @@
     <!--?php $this->layout->modal_footer() ?>-->
     <!--?php echo date("Y"); ?-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Admin - Inactive Accounts</title>
 
@@ -47,9 +47,6 @@
             <!-- Input File -->
             <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
 
-            <!-- Form Validator -->
-            <link rel="stylesheet" href="/js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
-
 <!--?php
 session_start();
 	echo '--><script type="text/javascript">
@@ -75,32 +72,28 @@ session_start();
 							<span class="icon-bar"></span>
 						</button>
 	                    
-	                    <a class="navbar-brand" href="<index.php">
+	                    <a class="navbar-brand" href="/loop-XYZ/store/admin-view">
 							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
 						</a>
 	                </div>
 					
-					<div class="navbar-collapse collapse">
+					<div class="navbar-collapse collapse" ng-controller="LoginCtrl">
+                                                <ul class="nav navbar-nav navbar-right"> 
+                                                    <li class="dropdown">
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
+                                                        <ul class="dropdown-menu">
 
-						<!--?php $this->layout->usermenu_admin() ?-->
-						<ul class="nav navbar-nav navbar-right"> 
-                            <li class="dropdown">
-                                <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
+                                                                <li role="presentation" class="dropdown-header">Options</li>
 
-                                <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
+                                                                <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
+                                                                <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
 
-                                    <li role="presentation" class="dropdown-header">Options</li>
+                                                                <li class="divider"></li>
 
-                                    <li><a href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
-
-                                    <li class="divider"></li>
-
-                                    <li><a href="index.php/account/logout"><i class="icon-off"></i> Logout</a></li>
-                                </ul>
-                             </li>
-                        </ul>
-					
+                                                                <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
+                                                        </ul>
+                                                     </li>
+                                                </ul>
 					</div>
 				</div>
 			</nav>
@@ -250,7 +243,7 @@ session_start();
 				<div class="row">
 					<div class="col-md-12 content">
 						
-						<div class="table-responsive">
+						<div class="table-responsive" ng-controller="inactiveAccountCtrl">
 							<!-- <table class="datatable table table-bordered"> -->
 							<table class="datatable table table-hover">
 							    <thead>
@@ -262,6 +255,12 @@ session_start();
 								</thead>
 
 						        <tbody>
+                                                            
+                                                            <tr ng-repeat="passive in inactiveAccount">
+                                                                    <td><a href="'" onclick=""><label ng-model="passive.name">{{passive.name}}</a></td>
+                                                                    <td><label ng-model="passive.lastLogin">{{passive.lastLogin}}</td>
+                                                                    <td><label ng-model="passive.userType">{{passive.userType}}</td>
+                                                             </tr>
 						        <!--?php  
 
 					        		require './application/controllers/AdminController.php';
@@ -402,9 +401,6 @@ session_start();
     </div>
 
 	<!-- Load JS here for greater good =============================-->
-
-	<!--?php $this->layout->footer() ?-->
-        <script src="js/main.js"></script>
 	<script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
 	<script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
 	<script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
@@ -418,10 +414,14 @@ session_start();
 	<script src="js/backstretch-jquery/jquery.backstretch.min.js"></script>
 	<script src="js/datatables/jquery.dataTables.min.js"></script>            
 	<script src="js/datatables/dataTables.bootstrap.js"></script>
-
+        <script src="js/main.js"></script>
 	<script src="css/bootstrap3/js/tooltip.js"></script>
 	<script src="css/bootstrap3/js/popover.js"></script>
 	<script src="css/bootstrap3/dist/js/bootstrap.js"></script>
+        
+        <script src="js/angular/angular.js"></script>
+        <script src="js/angular/ngStorage.js"></script>
+        <script src="js/loop.js" type="text/javascript"></script>
 
 
 	<!-- Bootstrap tour =================================================-->
