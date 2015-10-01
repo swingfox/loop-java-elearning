@@ -12,6 +12,7 @@ import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.service.LearningObjectService;
 import com.card.loop.xyz.service.UserService;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.URI;
 import java.net.UnknownHostException;
@@ -19,8 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.json.simple.JSONObject;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpRequest;
+import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -75,7 +78,16 @@ public class LearningObjectController {
             }
             return result;*/
             SimpleClientHttpRequestFactory rf= new SimpleClientHttpRequestFactory();
-            ClientHttpRequest req= rf.createRequest(URI.create("/InformatronYX/informatron/LO/upload/available"),HttpMethod.POST);
+            ClientHttpRequest req= rf.createRequest(URI.create("http://192.168.254.101:8080/InformatronYX/informatron/LO/upload/availableLO"),HttpMethod.POST);
+            java.io.PrintWriter pw = new java.io.PrintWriter(req.getBody());
+            JSONObject obj= new JSONObject();
+            pw.print(obj.toString());
+            ClientHttpResponse response = req.execute();
+            
+            //response
+            BufferedReader reader= new BufferedReader(new java.io.InputStreamReader(response.getBody()));
+           // JSONObject responseObj = new JSONObject(reader.readLine());
+             JSONObject responseObj = (JSONObject) JSONSerializer.toJSON(reader.readLine());
         } catch (IOException ex) {
             Logger.getLogger(LearningObjectController.class.getName()).log(Level.SEVERE, null, ex);
         }

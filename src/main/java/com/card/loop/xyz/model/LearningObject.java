@@ -22,7 +22,7 @@ public class LearningObject {
     *Id of the Learning Object
     */
     @Id
-    private Long id;
+    private String id;
     /*
     *Name of the Learning Object
     */
@@ -68,6 +68,7 @@ public class LearningObject {
     *Name of the uploader of the Learning Object.
     */
     private String uploadedBy;
+    private String[] sequence;
     
 
     /**
@@ -82,7 +83,7 @@ public class LearningObject {
      * Gets the Id of the Learning Object
      * @return Long This returns the id of Learning Object.
      */
-    public Long getID(){
+    public String getID(){
         return this.id;
     }
 
@@ -178,7 +179,7 @@ public class LearningObject {
      * Sets the id of the Learning Object
      * @param id Long
      */
-    public void setID(Long id){
+    public void setID(String id){
         this.id = id;
     }
 
@@ -261,6 +262,14 @@ public class LearningObject {
      */
     public void setUploadedBy(String uploadedBy){
         uploadedBy= uploadedBy;
+    }
+
+    public String[] getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(String[] sequence) {
+        this.sequence = sequence;
     }
     
 }
