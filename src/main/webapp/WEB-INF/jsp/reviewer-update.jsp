@@ -124,7 +124,7 @@
 								</thead>
 						        <tbody>
                                                             <tr ng-repeat="lo in los">
-                                                                <td><a href="'" onclick=""><label ng-model="lo.name">{{lo.name}}</a></td>
+                                                                <td><a href="" onclick=""><label ng-model="lo.name">{{lo.name}}</a></td>
                                                                 <td><label ng-model="lo.subject">{{lo.subject}}</td>
                                                                 <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
