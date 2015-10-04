@@ -67,8 +67,8 @@
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
                                                         <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
-
                                                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
+                                                        <input type="hidden" class="username" id="username" name="username" value="{{username}}">
                                                         <ul class="dropdown-menu">
 
                                                                 <li role="presentation" class="dropdown-header">Options</li>
@@ -107,31 +107,38 @@
 						
 						<div class="table-responsive">
 							<!-- <table class="datatable table table-bordered"> -->
-							<table class="datatable table table-hover" ng-controller="LOList">
+							<table class="datatable table table-hover" ng-controller="RevLOListCtrl" class="col-md-12">
 							    <thead>
-									<tr>
-										<th class="color-code"><!-- <img src="<?php //echo base_url() ?>img/icon-colorcode.png" alt="color code" /> --></th>
-										<th>Name</th>
-										<th>Subject</th>
-										<!-- <th>Date Uploaded</th> -->
-										<th>Uploaded</th>
-										<th>Rating</th>
-										<th>Comments</th>
-										<th>Status</th>
-										<th>Reviewer</th>
-										<th>Author</th>
-									</tr>
-								</thead>
+                                                                <tr role="row">
+                                                                    <th class="color-code"><!-- <img src="<?php //echo base_url() ?>img/icon-colorcode.png" alt="color code" /> --></th>
+                                                                    <th>Name</th>
+                                                                    <th>Subject</th>
+                                                                    <!-- <th>Date Uploaded</th> -->
+                                                                    <th>Uploaded</th>
+                                                                    <th>Rating</th>
+                                                                    <th>Comments</th>
+                                                                    <th>Status</th>
+                                                                    <th>Reviewer</th>
+                                                                    <th>Author</th>
+                                                                </tr>
+                                                            </thead>
 						        <tbody>
+<<<<<<< HEAD
+                                                            <tr ng-repeat="lo in los" >
+                                                                <td>
+                                                                <td><a href="'" onclick=""><label ng-model="lo.name">{{lo.name}}</a></td>
+=======
                                                             <tr ng-repeat="lo in los">
                                                                 <td><a href="/loop-XYZ/store/download/{{lo.id}}"><label ng-model="lo.name">{{lo.name}}</a></td>
+>>>>>>> 575cfd4d8be70da92c2f1b66dad19da3220a9a13
                                                                 <td><label ng-model="lo.subject">{{lo.subject}}</td>
                                                                 <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
-                                                                <td><label ng-model="lo.comments">{{lo.comments}}</td>
+                                                                <td><label ng-model="lo.comments">{{lo.comments}}</td>                                                                
                                                                 <td><label ng-model="lo.status">{{lo.status}}</td>
                                                                 <td><label ng-model="lo.rev">{{lo.rev}}</td>
                                                                 <td><label ng-model="lo.uploadedBy">{{lo.uploadedBy}}</td>
+                                                                </td>
                                                             </tr>
                                                             <!--
 						        <?php  

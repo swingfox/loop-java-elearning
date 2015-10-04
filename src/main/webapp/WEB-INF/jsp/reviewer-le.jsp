@@ -107,7 +107,7 @@
 						
 						<div class="table-responsive">
 							<!-- <table class="datatable table table-bordered"> -->
-							<table class="datatable table table-hover">
+							<table class="datatable table table-hover" ng-controller="LEListCtrl">
 							    <thead>
 									<tr>
 										<th class="color-code"><!-- <img src="<?php //echo base_url() ?>img/icon-colorcode.png" alt="color code" /> --></th>
@@ -123,6 +123,19 @@
 									</tr>
 								</thead>
 						        <tbody>
+                                                             <tr ng-repeat="le in les">
+                                                                 <td>
+                                                                <td><a href="'" onclick=""><label ng-model="le.name">{{le.name}}</a></td>
+                                                                <td><label ng-model="le.subject">{{le.subject}}</td>
+                                                                <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
+                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="le.rating">{{le.rating}}</td>
+                                                                <td><label ng-model="le.comments">{{le.comments}}</td>
+                                                                <td><label ng-model="le.status">{{le.status}}</td>
+                                                                <td><label ng-model="le.rev">{{le.rev}}</td>
+                                                                <td><label ng-model="le.uploadedBy">{{le.uploadedBy}}</td>
+                                                                </td>
+                                                            </tr>
+                                                            
                                                             <!--
 						        <?php  
 

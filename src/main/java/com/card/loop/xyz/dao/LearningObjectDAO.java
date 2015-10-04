@@ -34,6 +34,11 @@ public class LearningObjectDAO {
         return mongoOps.findAll(LearningObject.class);
     }
     
+    public static List<LearningObject> getReviewerLOList(String rev) throws UnknownHostException {
+       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+        return mongoOps.find(query(where("uploadedBy").is(rev)), LearningObject.class);        
+    }
+    
     /*
     * Get details of specific learning object
     */
