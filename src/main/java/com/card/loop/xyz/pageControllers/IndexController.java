@@ -7,9 +7,15 @@ package com.card.loop.xyz.pageControllers;
 
 import com.card.loop.xyz.controller.LEDatabaseController;
 import com.card.loop.xyz.model.LearningElement;
+import com.loop.controller.ContentShipper;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -32,8 +38,28 @@ public class IndexController {
     } 
     @RequestMapping("/download")
     public ModelAndView accessDownload() {
+       
         return new ModelAndView("download");
     } 
+    @RequestMapping(value="/downloads",method=RequestMethod.HEAD)
+    public void accessDownloadFileH(HttpServletRequest req, HttpServletResponse res){
+        try {
+            ContentShipper sh = new ContentShipper(req,res,false); // true if ship physical file
+            sh.ship("C:\\Users\\David\\Downloads\\gapps-lp-20141109-signed.zip");
+        } catch (IOException ex) {
+            Logger.getLogger(IndexController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @RequestMapping(value="/downloads",method=RequestMethod.GET)
+    public void accessDownloadFile(HttpServletRequest req, HttpServletResponse res){
+        try {
+            ContentShipper sh = new ContentShipper(req,res,true); // true if ship physical file
+            sh.ship("C:\\Users\\David\\Downloads\\gapps-lp-20141109-signed.zip");
+        } catch (IOException ex) {
+            Logger.getLogger(IndexController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     @RequestMapping("/downloadLE")
     public ModelAndView accessDownloadLE() {
         return new ModelAndView("downloadLE");

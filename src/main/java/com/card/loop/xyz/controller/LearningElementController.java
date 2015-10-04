@@ -6,6 +6,7 @@
 package com.card.loop.xyz.controller;
 
 import com.card.loop.xyz.dto.LearningElementDto;
+import com.card.loop.xyz.dto.LearningObjectDto;
 import com.card.loop.xyz.dto.UserDto;
 import com.card.loop.xyz.model.LearningElement;
 //import com.card.loop.xyz.model.LearningObject;
@@ -28,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/LE")
 
 public class LearningElementController {
-   
+   LearningElementService leService = new LearningElementService();
     @RequestMapping("/login")
     @ResponseBody
     public LearningElementDto LE(@RequestBody LearningElementDto le) throws UnknownHostException
@@ -45,6 +46,18 @@ public class LearningElementController {
             System.out.println(e.toString());
         }
         return result;
+    }
+    
+    @RequestMapping("/list")
+    @ResponseBody
+    public List<LearningElementDto> ListLE()
+    {
+        List<LearningElementDto> dtos = new ArrayList<>();
+        try{
+            dtos = leService.getLearningElements();
+        }catch(Exception e){ 
+            e.printStackTrace(); }
+        return dtos;
     }
     
 }

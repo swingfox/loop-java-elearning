@@ -37,4 +37,27 @@ public class LearningElementService {
         }
         return le;
     }
+    
+     public List<LearningElementDto> getLearningElements() throws UnknownHostException{
+        List<LearningElement> LOList = LearningElementDAO.getList();//LearningObjectDAO.getAllLearningObjectByDateUpload(new Date());
+        List<LearningElementDto> objects = new ArrayList<>();
+        for(LearningElement model: LOList){
+            LearningElementDto dto = new LearningElementDto();
+          //  dto.setId(model.getID());
+            dto.setRating(model.getRating());
+            dto.setName(model.getName());
+            dto.setDescription(model.getDescription());
+            dto.setSubject(model.getSubject());
+            dto.setDownloads(model.getDownloads());
+            dto.setDateUploaded(model.getDateUploaded());
+            dto.setRev(model.getRev());
+            dto.setUploadedBy(model.getUploadedBy());
+            dto.setComments(model.getComments());
+            dto.setRev(model.getRev());
+            dto.setStatus(model.getStatus());
+            dto.setUploadedBy(model.getUploadedBy());
+            objects.add(dto);
+        }
+        return objects;
+     }
 }

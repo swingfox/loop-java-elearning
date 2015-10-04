@@ -1,5 +1,8 @@
 com\card\loop\xyz\dao\UserDAO.class
 com\card\loop\xyz\model\User.class
+QueryController.class
+com\loop\controller\LoopController.class
+com\loop\controller\ContentShipper.class
 com\card\loop\xyz\controller\LEDatabaseController.class
 com\card\loop\xyz\service\UserService.class
 com\card\loop\xyz\config\DatabaseManager.class
@@ -20,5 +23,6 @@ com\card\loop\xyz\controller\LearningElementController.class
 com\card\loop\xyz\service\LearningElementService.class
 com\card\loop\xyz\service\LearningObjectService.class
 com\card\loop\xyz\model\LearningObject.class
+com\loop\controller\ContentShipper$Range.class
 com\card\loop\xyz\controller\adminController.class
 com\card\loop\xyz\controller\IndexController.class
