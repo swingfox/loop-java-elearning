@@ -24,6 +24,8 @@ public class LearningObjectService
         LearningObject loModel;
         loModel = LearningObjectDAO.getSpecificLearningObject(lo.getName());
        if(loModel != null){
+  
+            lo.setId(loModel.getID());
            // lo.setId(loModel.getID());
             lo.setName(loModel.getName());
             lo.setDescription(loModel.getDescription());
@@ -55,6 +57,10 @@ public class LearningObjectService
             dto.setDownloads(model.getDownloads());
             dto.setDateUploaded(model.getDateUploaded());
             dto.setRev(model.getRev());
+            dto.setUploadedBy(model.getUploadedBy());
+            dto.setComments(model.getComments());
+            dto.setRev(model.getRev());
+            dto.setStatus(model.getStatus());
             dto.setUploadedBy(model.getUploadedBy());
             objects.add(dto);
         }

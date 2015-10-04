@@ -63,7 +63,7 @@
                                 <span class="popup">Login</span>
                             </div>
 
-                            <div class="modal-body" >  
+                            <div class="modal-body" ng-controller="LoginCtrl">  
                                 <div class="row">
                                     <div class="col-md-10 col-md-push-1">
                                         <!--<?php if(isset($status) && !$status){ ?>-->
@@ -76,12 +76,12 @@
                                         <!-- <p><input class="col-xs-12 col-md-12 sign-up" id="username" type="text" name="username" placeholder="Username" required></p>
                                             <p><input class="col-xs-12 col-md-12 sign-up" id="password" type="password" name="password" placeholder="Password" required></p> -->
 
-                                        <div ng-controller="LoginCtrl" class="form-group">
-                                            <input type="text" class="form-control" id="username" ng-model="username" name="username" placeholder="Username" required/>
+                                        <div class="form-group">
+                                            <input type="text"  class="form-control" id="username" name="username" placeholder="Username" required/>
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required/>
+                                            <input type="password"  class="form-control" id="password" name="password" placeholder="Password" required/>
                                         </div>
 
                                         <!--   <div class="forgot-pass">
@@ -116,7 +116,8 @@
                                         </div>
 
                                         <div class="clearfix"></div>
-
+                                        <div ng-hide="hide"><input type="text" id="userId" class="ng-dirty ng-touched" ng-model="userId"/></div>
+                                        <div ng-hide="hide"><input type="text" id="userName" class="ng-dirty ng-touched" ng-model="username"/></div>
                                         <div class="label-signup">
                                             <p>Haven’t Signed Up Yet?</p>
                                         </div>
@@ -806,6 +807,10 @@
 
 <script src="js/login_signup.js" type="text/javascript"></script>
 <script src="js/loop.js" type="text/javascript"></script>
+<script>
+ $('userId').hide();
+ $('userName').hide();
+</script>
 <script>
     // This is the distance in px between the uppder edge of the window and the upper edge of the header
     var headerPosition = $('#header-wrap').position().top;
