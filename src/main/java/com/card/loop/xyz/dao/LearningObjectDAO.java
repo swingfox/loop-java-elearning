@@ -59,7 +59,7 @@ public class LearningObjectDAO {
        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
        Query query = new Query();
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
-       return mongoOps.find(query(where("rating").is(5)), LearningObject.class);
+       return (mongoOps.find(query(where("rating").is(5)), LearningObject.class));
     }
     
     public static boolean nameAvailability(String name, String subject) throws UnknownHostException {
@@ -119,10 +119,11 @@ public class LearningObjectDAO {
         LearningObject lo = new LearningObject();
         
         
-        lo.setName("HTML5");
+        lo.setName("HTML58");
         lo.setSubject("Web Programming");
         lo.setDateUploaded("September 25, 2015");
         lo.setDescription("test lng");
+        lo.setRating(5);
         LearningObjectDAO.addLearningObject(lo);
         
         /**lo2.setLikes(20);
@@ -141,7 +142,7 @@ public class LearningObjectDAO {
         LearningObjectDAO.addLearningObject(lo4);*/
         
         //JOptionPane.showMessageDialog(null, LearningObjectDAO.getMostLikedList().toString());
-        JOptionPane.showMessageDialog(null,LearningObjectDAO.getList());
+        JOptionPane.showMessageDialog(null,LearningObjectDAO.getAllDownloadableLO());
         //System.out.println(LearningObjectDAO.getMostLikedList());
     }
 }

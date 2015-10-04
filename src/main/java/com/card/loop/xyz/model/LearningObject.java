@@ -68,6 +68,7 @@ public class LearningObject {
     *Name of the uploader of the Learning Object.
     */
     private String uploadedBy;
+    private String[] sequence;
     
 
     /**
@@ -261,6 +262,14 @@ public class LearningObject {
      */
     public void setUploadedBy(String uploadedBy){
         uploadedBy= uploadedBy;
+    }
+
+    public String[] getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(String[] sequence) {
+        this.sequence = sequence;
     }
     
 }

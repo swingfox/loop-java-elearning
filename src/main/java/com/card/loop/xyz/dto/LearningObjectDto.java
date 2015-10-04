@@ -67,6 +67,7 @@ public class LearningObjectDto {
     *List of errors
     */
     private List<String>  errorList;
+    private String[] sequence;
 
     /**
      * 
@@ -274,5 +275,13 @@ public class LearningObjectDto {
      */
     public void setErrorList(List<String> errorList) {
         this.errorList = errorList;
+    }
+
+    public String[] getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(String[] sequence) {
+        this.sequence = sequence;
     }
 }
