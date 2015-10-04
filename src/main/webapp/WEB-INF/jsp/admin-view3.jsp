@@ -257,9 +257,9 @@ session_start();
 						        <tbody>
                                                             
                                                             <tr ng-repeat="passive in inactiveAccount">
-                                                                    <td><a href="'" onclick=""><label ng-model="passive.name">{{passive.name}}</a></td>
+                                                                    <td><a href="'" onclick=""><label ng-model="passive.username">{{passive.username}}</a></td>
                                                                     <td><label ng-model="passive.lastLogin">{{passive.lastLogin}}</td>
-                                                                    <td><label ng-model="passive.userType">{{passive.userType}}</td>
+                                                                    <td><label ng-model="passive.usertype">{{passive.usertype}}</td>
                                                              </tr>
 						        <!--?php  
 
@@ -436,7 +436,7 @@ session_start();
 	</script>
 
 
-	<script> 
+	<!--<script> 
 		$(document).ready(function(){
 			var length_sel;
 			// // alert($(document).height());
@@ -490,7 +490,7 @@ session_start();
                 pagination.addClass('pagination-sm');
             }
 		});
-	</script>
+	</script> -->
 
 	<script type="text/javascript">
 		$(document).ready(function() {

@@ -79,8 +79,7 @@ eS.controller('DisplayLOCtrl', ['$scope', '$http', function($scope, $http) {
 eS.controller('newAccountRequestCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get("/loop-XYZ/loop/user/newAccountRequests")    
     .success(function(data) {
-    	$scope.los = data;
-
+    	$scope.userAccount = data;
     })
     .error(function(jqXHR, status, error) {
     	//$scope.tasks = response.taskList;
@@ -99,10 +98,7 @@ eS.controller('newAccountRequestCtrl', ['$scope', '$http', function($scope, $htt
 eS.controller('developerAccountCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get("/loop-XYZ/loop/user/developer")    
     .success(function(data) {
-    	$scope.los = data;
-        //console.log(""+ response);
-    	//$scope.filename = data.filename;
-        //console.log("" + response);
+    	$scope.developerAccount = data;
     })
     .error(function(jqXHR, status, error) {
     	//$scope.tasks = response.taskList;
@@ -112,24 +108,19 @@ eS.controller('developerAccountCtrl', ['$scope', '$http', function($scope, $http
 }]);
 
 eS.controller('reviewerAccountCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.get("/loop-XYZ/loop/LO/list")    
+    $http.get("/loop-XYZ/loop/user/reviewer")    
     .success(function(data) {
-    	$scope.los = data;
-        //console.log(""+ response);
-    	//$scope.filename = data.filename;
-        //console.log("" + response);
+    	$scope.reviewerAccount = data;
     })
     .error(function(jqXHR, status, error) {
-    	//$scope.tasks = response.taskList;
         console.log(""+ error);
-        //console.log("" + response);
     });
 }]);
 
 eS.controller('inactiveAccountCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.get("/loop-XYZ/loop/LO/list")    
+    $http.get("/loop-XYZ/loop/user/inactive")    
     .success(function(data) {
-    	$scope.los = data;
+    	$scope.inactiveAccount = data;
         //console.log(""+ response);
     	//$scope.filename = data.filename;
         //console.log("" + response);
@@ -142,24 +133,9 @@ eS.controller('inactiveAccountCtrl', ['$scope', '$http', function($scope, $http)
 }]);
 
 eS.controller('blockedAccountCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.get("/loop-XYZ/loop/LO/list")    
+    $http.get("/loop-XYZ/loop/user/block")    
     .success(function(data) {
-    	$scope.los = data;
-        //console.log(""+ response);
-    	//$scope.filename = data.filename;
-        //console.log("" + response);
-    })
-    .error(function(jqXHR, status, error) {
-    	//$scope.tasks = response.taskList;
-        console.log(""+ error);
-        //console.log("" + response);
-    });
-}]);
-
-eS.controller('blockedAccountCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.get("/loop-XYZ/loop/LO/list")    
-    .success(function(data) {
-    	$scope.los = data;
+    	$scope.blockedAccount = data;
         //console.log(""+ response);
     	//$scope.filename = data.filename;
         //console.log("" + response);
@@ -174,15 +150,10 @@ eS.controller('blockedAccountCtrl', ['$scope', '$http', function($scope, $http) 
 eS.controller('LEListCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get("/loop-XYZ/loop/LE/list")    
     .success(function(data) {
-    	$scope.los = data;
-        //console.log(""+ response);
-    	//$scope.filename = data.filename;
-        //console.log("" + response);
+    	$scope.les = data;
     })
     .error(function(jqXHR, status, error) {
-    	//$scope.tasks = response.taskList;
         console.log(""+ error);
-        //console.log("" + response);
     });
 }]);
 

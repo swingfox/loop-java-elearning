@@ -68,12 +68,33 @@ public class UserController {
     
     @RequestMapping("/newAccountRequests")
     public List<UserDto>  accountRequests(){
-        return null;
+        List<UserDto> result = null;
+        try{
+            UserService service = new UserService();
+            result = service.getAllNewAccount();
+            if(result==null)
+                return null;
+        }catch(Exception e){
+            //user.getErrorList().add(e.toString());
+            System.out.println(e.toString());
+        }
+        return result;
     }
     
     @RequestMapping("/developer")
     public List<UserDto>  accountDeveloper(){
-        return null;
+        List<UserDto> result = null;
+        try{
+            System.out.println("LOOO");
+            UserService service = new UserService();
+            result = service.getAllDeveloper();
+            if(result==null)
+               return null;
+        }catch(Exception e){
+            //user.getErrorList().add(e.toString());
+            System.out.println(e.toString());
+        }
+        return result;
     }
     
     @RequestMapping("/validate")
@@ -92,7 +113,35 @@ public class UserController {
     public boolean demote(UserDto user){return false;}
     
     @RequestMapping("/block")
-    public boolean block(UserDto user){return false;}
+    public List<UserDto> block(UserDto user){
+     List<UserDto> result = null;
+        try{
+            System.out.println("LOOO");
+            UserService service = new UserService();
+            result = service.block();
+            if(result==null)
+                user.getErrorList().add("NULLL!");
+        }catch(Exception e){
+            //user.getErrorList().add(e.toString());
+            System.out.println(e.toString());
+        }
+        return result;
+    }
+    
+    @RequestMapping("/reviewer")
+    public List<UserDto> reviewerUser(){
+     List<UserDto> result = null;
+        try{
+            UserService service = new UserService();
+            result = service.getAllReviewer();
+            if(result==null)
+                return null;
+        }catch(Exception e){
+            //user.getErrorList().add(e.toString());
+            System.out.println(e.toString());
+        }
+        return result;
+    }
     
     @RequestMapping("/unblock")
     public boolean unblock(UserDto user){return false;}
