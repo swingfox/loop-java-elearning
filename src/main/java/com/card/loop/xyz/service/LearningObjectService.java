@@ -26,6 +26,7 @@ public class LearningObjectService
         LearningObjectDto dto = new LearningObjectDto();
        if(loModel != null){
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   
             dto.setId(loModel.getID());
             dto.setName(loModel.getName());
@@ -50,6 +51,8 @@ public class LearningObjectService
             LearningObjectDto dto = new LearningObjectDto();
           //  dto.setId(model.getID());
 =======
+=======
+>>>>>>> Stashed changes
            // lo.setId(loModel.getID());
             lo.setName(loModel.getName());
             lo.setDescription(loModel.getDescription());

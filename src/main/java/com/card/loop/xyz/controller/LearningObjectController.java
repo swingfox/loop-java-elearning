@@ -13,7 +13,10 @@ import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.service.LearningObjectService;
 import com.card.loop.xyz.service.UserService;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import com.mongodb.util.JSON;
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 import java.io.BufferedReader;
@@ -91,10 +94,14 @@ public class LearningObjectController {
             //response
             BufferedReader reader= new BufferedReader(new java.io.InputStreamReader(response.getBody()));
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             JSONObject responseObj = new JSONObject();
             responseObj.put(req, reader);
             
             // JSONObject responseObj = (JSONObject) JSONSerializer.toJSON(reader.readLine());
+=======
+           // JSONObject responseObj = new JSONObject(reader.readLine());
+>>>>>>> Stashed changes
 =======
            // JSONObject responseObj = new JSONObject(reader.readLine());
 >>>>>>> Stashed changes
