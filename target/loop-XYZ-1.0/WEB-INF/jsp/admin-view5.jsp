@@ -216,8 +216,8 @@
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
                                                                 <td><label ng-model="lo.comments">{{lo.comments}}</td>
                                                                 <td><label ng-model="lo.status">{{lo.status}}</td>
-                                                                <td><label ng-model="lo.reviewer">{{lo.reviewer}}</td>
-                                                                <td><label ng-model="lo.author">{{lo.author}}</td>
+                                                                <td><label ng-model="lo.rev">{{lo.rev}}</td>
+                                                                <td><label ng-model="lo.uploadedBy">{{lo.uploadedBy}}</td>
                                                             </tr>
 						        <!--?php  
 
@@ -380,7 +380,7 @@
 	$("#banner-wrap").backstretch("img/img-banner.jpg");
 	</script>
 
-	<script> 
+	<!-- <script> 
 		$(document).ready(function(){
 			var length_sel;
 			// // alert($(document).height());
@@ -441,7 +441,7 @@
 		// 	new FixedHeader( oTable );
 		// });
 
-	</script>
+	</script> -->
 
 	<script type="text/javascript">
 		$(document).ready(function() {
