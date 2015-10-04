@@ -73,13 +73,15 @@ public class LearningElement {
     */
     private String type;
     
+    private String fileExtension;
+    
     public LearningElement(){
     
     }
     
     public LearningElement(String name, String subject,  String description, int downloads,  
                            String dateUploaded, String filePath, double rating, 
-                           String comments, String status, String rev, String uploadedBy){
+                           String comments, String status, String rev, String uploadedBy,String fileExtension ){
        this.name = name;
        this.subject = subject;
        this.description = description;
@@ -91,6 +93,7 @@ public class LearningElement {
        this.status = status;
        this.rev = rev;
        this.uploadedBy = uploadedBy;
+       this.fileExtension=fileExtension;
     }
     
     /**
@@ -276,6 +279,14 @@ public class LearningElement {
     public void setType(String type) {
         this.type = type;
     }
+
+    public String getFileExtension() {
+        return fileExtension;
+    }
+
+    public void setFileExtension(String fileExtension) {
+        this.fileExtension = fileExtension;
+    }
     
-    
+   
 }
