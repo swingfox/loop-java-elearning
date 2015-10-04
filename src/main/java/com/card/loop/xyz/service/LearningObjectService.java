@@ -25,8 +25,7 @@ public class LearningObjectService
         loModel = LearningObjectDAO.getLearningObject(id);
         LearningObjectDto dto = new LearningObjectDto();
        if(loModel != null){
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
   
             dto.setId(loModel.getID());
             dto.setName(loModel.getName());
@@ -50,17 +49,10 @@ public class LearningObjectService
         for(LearningObject model: LOList){
             LearningObjectDto dto = new LearningObjectDto();
           //  dto.setId(model.getID());
-=======
-=======
->>>>>>> Stashed changes
+
            // lo.setId(loModel.getID());
-            lo.setName(loModel.getName());
-            lo.setDescription(loModel.getDescription());
-            lo.setSubject(loModel.getSubject());
-            lo.setDateUploaded(loModel.getDateUploaded());
-            
-            /*dto.setDownloads(model.getDownloads());           
->>>>>>> Stashed changes
+                     
+
             dto.setRating(model.getRating());
             dto.setName(model.getName());
             dto.setDescription(model.getDescription());

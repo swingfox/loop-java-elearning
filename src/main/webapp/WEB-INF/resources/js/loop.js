@@ -168,8 +168,7 @@ eS.controller('blockedAccountCtrl', ['$scope', '$http', function($scope, $http) 
     });
 }]);
 
-<<<<<<< HEAD
-=======
+
 eS.controller('LEListCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get("/loop-XYZ/loop/LE/list")    
     .success(function(data) {
@@ -179,8 +178,6 @@ eS.controller('LEListCtrl', ['$scope', '$http', function($scope, $http) {
         console.log(""+ error);
     });
 }]);
->>>>>>> 575cfd4d8be70da92c2f1b66dad19da3220a9a13
-
 
 
 
