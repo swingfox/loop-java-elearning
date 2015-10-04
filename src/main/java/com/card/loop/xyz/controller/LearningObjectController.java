@@ -41,7 +41,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LearningObjectController {
     
     LearningObjectService loService = new LearningObjectService();
-    
+    /**
     @RequestMapping("/login")
     @ResponseBody
     public LearningObjectDto LO(@RequestBody LearningObjectDto lo) throws UnknownHostException
@@ -50,7 +50,7 @@ public class LearningObjectController {
         try{
             System.out.println("LOOO");
             LearningObjectService service = new LearningObjectService();
-            result = service.getSpecificLearningObject(lo);
+            result = service.getLearningObject(lo.getID());
             if(result==null)
                 lo.getErrorList().add("NULLL!");
         }catch(Exception e){
@@ -58,7 +58,7 @@ public class LearningObjectController {
             System.out.println(e.toString());
         }
         return result;
-    }
+    }**/
     //wla na dawy requestmapping
     //okay so 
     //okie, 
@@ -105,11 +105,11 @@ public class LearningObjectController {
         List<LearningObjectDto> dtos = new ArrayList<>();
         try{
             dtos = loService.getLearningObjects();
-        }catch(Exception e){ 
-            e.printStackTrace(); }
+        }catch(Exception e){ }
         return dtos;
     }
     
+<<<<<<< HEAD
     //this is for the the admin
     @RequestMapping("/revList")
     @ResponseBody
@@ -121,5 +121,15 @@ public class LearningObjectController {
         }catch(Exception e){ 
             e.printStackTrace(); }
         return dtos;
+=======
+    @RequestMapping("/LODetails")    
+    public LearningObjectDto LODetails(@RequestBody String id) throws UnknownHostException
+    {
+        LearningObjectDto dto = new LearningObjectDto();
+        try{
+            dto = loService.getLearningObject(id);
+        }catch(Exception e){ }
+        return dto;
+>>>>>>> 575cfd4d8be70da92c2f1b66dad19da3220a9a13
     }
 }

@@ -33,6 +33,32 @@ eS.controller('LOList', ['$scope', '$http', function($scope, $http) {
         console.log(""+ error);
         //console.log("" + response);
     });
+    
+    $scope.LODetails = function(lo) {
+        console.log("SULOD");
+    	window.location = '/loop-XYZ/loop/store/download' + lo.id;
+    }; 
+}]);
+
+eS.controller('LODisplayDetails', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+        console.log(""+ $routeParams.loId);
+	var loID = $routeParams.loId;
+
+    $http({
+        url : '/loop-XYZ/loop/LO/LODetails', 
+        method : 'GET',
+        params : {id : loID}
+    }).success(function(data) {
+        $scope.filename = data.name;
+        $scope.subject = data.subject;
+        $scope.dateUploded = data.dateUploaded;
+        $scope.description = data.description;
+    })
+    .error(function(jqXHR, status, error) {
+    	//$scope.tasks = response.taskList;
+        console.log(""+ error);
+        //console.log("" + response);
+    });
 }]);
 
 eS.controller('RevLOListCtrl', ['$scope', '$http', function($scope, $http) {
@@ -74,8 +100,7 @@ eS.controller('DisplayLOCtrl', ['$scope', '$http', function($scope, $http) {
 eS.controller('newAccountRequestCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get("/loop-XYZ/loop/user/newAccountRequests")    
     .success(function(data) {
-    	$scope.los = data;
-
+    	$scope.userAccount = data;
     })
     .error(function(jqXHR, status, error) {
     	//$scope.tasks = response.taskList;
@@ -94,10 +119,7 @@ eS.controller('newAccountRequestCtrl', ['$scope', '$http', function($scope, $htt
 eS.controller('developerAccountCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get("/loop-XYZ/loop/user/developer")    
     .success(function(data) {
-    	$scope.los = data;
-        //console.log(""+ response);
-    	//$scope.filename = data.filename;
-        //console.log("" + response);
+    	$scope.developerAccount = data;
     })
     .error(function(jqXHR, status, error) {
     	//$scope.tasks = response.taskList;
@@ -107,24 +129,19 @@ eS.controller('developerAccountCtrl', ['$scope', '$http', function($scope, $http
 }]);
 
 eS.controller('reviewerAccountCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.get("/loop-XYZ/loop/LO/list")    
+    $http.get("/loop-XYZ/loop/user/reviewer")    
     .success(function(data) {
-    	$scope.los = data;
-        //console.log(""+ response);
-    	//$scope.filename = data.filename;
-        //console.log("" + response);
+    	$scope.reviewerAccount = data;
     })
     .error(function(jqXHR, status, error) {
-    	//$scope.tasks = response.taskList;
         console.log(""+ error);
-        //console.log("" + response);
     });
 }]);
 
 eS.controller('inactiveAccountCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.get("/loop-XYZ/loop/LO/list")    
+    $http.get("/loop-XYZ/loop/user/inactive")    
     .success(function(data) {
-    	$scope.los = data;
+    	$scope.inactiveAccount = data;
         //console.log(""+ response);
     	//$scope.filename = data.filename;
         //console.log("" + response);
@@ -137,9 +154,9 @@ eS.controller('inactiveAccountCtrl', ['$scope', '$http', function($scope, $http)
 }]);
 
 eS.controller('blockedAccountCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.get("/loop-XYZ/loop/LO/list")    
+    $http.get("/loop-XYZ/loop/user/block")    
     .success(function(data) {
-    	$scope.los = data;
+    	$scope.blockedAccount = data;
         //console.log(""+ response);
     	//$scope.filename = data.filename;
         //console.log("" + response);
@@ -151,21 +168,18 @@ eS.controller('blockedAccountCtrl', ['$scope', '$http', function($scope, $http) 
     });
 }]);
 
-eS.controller('blockedAccountCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.get("/loop-XYZ/loop/LO/list")    
+<<<<<<< HEAD
+=======
+eS.controller('LEListCtrl', ['$scope', '$http', function($scope, $http) {
+    $http.get("/loop-XYZ/loop/LE/list")    
     .success(function(data) {
-    	$scope.los = data;
-        //console.log(""+ response);
-    	//$scope.filename = data.filename;
-        //console.log("" + response);
+    	$scope.les = data;
     })
     .error(function(jqXHR, status, error) {
-    	//$scope.tasks = response.taskList;
         console.log(""+ error);
-        //console.log("" + response);
     });
 }]);
-
+>>>>>>> 575cfd4d8be70da92c2f1b66dad19da3220a9a13
 
 
 

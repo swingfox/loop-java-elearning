@@ -9,13 +9,14 @@ import com.card.loop.xyz.dao.UserDAO;
 import com.card.loop.xyz.dto.UserDto;
 import com.card.loop.xyz.model.User;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
  *
  * @author Vine Joy Deiparine
- * @date   09/21/2015s
+ * @date   09/21/2015
  */
 public class UserService {
     
@@ -59,14 +60,72 @@ public class UserService {
         return ok;
     }
     public boolean edit(UserDto user) throws UnknownHostException{return false;}
-    public boolean block(UserDto user) throws UnknownHostException{return false;}
+    public List<UserDto> block() throws UnknownHostException{
+         List<UserDto> objects = new ArrayList<>();
+         List<User> userList = UserDAO.getBlockedUsers();
+         for(User model: userList){
+            UserDto dto = new UserDto();
+            dto.setLastLogin(model.getLastLogin());
+            dto.setUsertype(model.getUserType());
+            dto.setUsername(model.getUsername());
+            objects.add(dto);
+         }
+        return objects;
+    }
+     public List<UserDto> inactive() throws UnknownHostException{
+         List<UserDto> objects = new ArrayList<>();
+         List<User> userList = UserDAO.getInactiveUsers();
+         for(User model: userList){
+            UserDto dto = new UserDto();
+            dto.setLastLogin(model.getLastLogin());
+            dto.setUsertype(model.getUserType());
+            dto.setUsername(model.getUsername());
+            objects.add(dto);
+         }
+         return objects;
+     }
+     
+     public List<UserDto> getAllReviewer() throws UnknownHostException{
+         List<UserDto> objects = new ArrayList<>();
+         List<User> userList = UserDAO.getReviewer();
+         for(User model: userList){
+            UserDto dto = new UserDto();
+            dto.setLastDownload(model.getLastDownload());
+            dto.setLastLogin(model.getLastLogin());
+            dto.setUsername(model.getUsername());
+            objects.add(dto);
+         }
+         return objects;
+     }
     public boolean unblock(UserDto user) throws UnknownHostException{return false;}
     public UserDto promote(String username) throws UnknownHostException{return null;}
     public UserDto demote(String username) throws UnknownHostException{return null;}
     public UserDto getUserInfo(UserDto user) throws UnknownHostException{return null;}
     public List<UserDto> getAllUsers(UserDto user) throws UnknownHostException{return null;}
-    public List<UserDto> getAllDeveloper(UserDto user) throws UnknownHostException{
-        return null;
+    public List<UserDto> getAllDeveloper() throws UnknownHostException{
+        List<UserDto> objects = new ArrayList<>();
+        List<User> userList = UserDAO.getDeveloper();
+         for(User model: userList){
+            UserDto dto = new UserDto();
+            dto.setLastUpload(model.getLastDownload());
+            dto.setLastLogin(model.getLastLogin());
+            dto.setUsername(model.getUsername());
+            objects.add(dto);
+         }
+         return objects;
+    }
+    
+    public List<UserDto> getAllNewAccount() throws UnknownHostException{
+        List<UserDto> objects = new ArrayList<>();
+        List<User> userList = UserDAO.getNewAccount();
+         for(User model: userList){
+            UserDto dto = new UserDto();
+            dto.setUsertype(model.getUserType());
+            dto.setEmail(model.getEmail());
+            dto.setUsername(model.getUsername());
+            objects.add(dto);
+         }
+         return objects;
     }
     public List<UserDto> getAllCommonUsers(UserDto user) throws UnknownHostException{return null;}
     public List<UserDto> getAllPendingUsers(UserDto user) throws UnknownHostException{return null;}

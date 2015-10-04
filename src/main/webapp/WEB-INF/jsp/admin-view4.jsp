@@ -257,9 +257,9 @@ session_start();
 
 						        <tbody>
                                                             <tr ng-repeat="blocked in blockedAccount">
-                                                                    <td><a href="'" onclick=""><label ng-model="blocked.name">{{blocked.name}}</a></td>
+                                                                    <td><a href="'" onclick=""><label ng-model="blocked.username">{{blocked.username}}</a></td>
                                                                     <td><label ng-model="blocked.lastLogin">{{blocked.lastLogin}}</td>
-                                                                    <td><label ng-model="blocked.userType">{{blocked.userType}}</td>
+                                                                    <td><label ng-model="blocked.usertype">{{blocked.usertype}}</td>
                                                              </tr>
 						        <!--?php  
 
@@ -435,7 +435,7 @@ session_start();
 	$("#banner-wrap").backstretch("img/img-banner.jpg");
 	</script>
 
-	<script> 
+<!--	<script> 
 		$(document).ready(function(){
 			var length_sel;
 			// // alert($(document).height());
@@ -489,7 +489,7 @@ session_start();
                 pagination.addClass('pagination-sm');
             }
 		});
-	</script>
+	</script> -->
 
 	<script type="text/javascript">
 		$(document).ready(function() {
