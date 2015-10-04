@@ -35,6 +35,27 @@ eS.controller('LOList', ['$scope', '$http', function($scope, $http) {
     });
 }]);
 
+eS.controller('RevLOListCtrl', ['$scope', '$http', function($scope, $http) {
+    
+    //if(null != $('input#username').val()) {
+    //    username = $('input#username').val();
+    //}
+    //console.log(username);
+    $http.get("/loop-XYZ/loop/LO/revList", {params:{rev:'rev1'}})    
+    .success(function(data) {
+    	$scope.los = data;
+        //console.log(""+ response);
+    	//$scope.filename = data.filename;
+        //console.log("" + response);
+    })
+    .error(function(jqXHR, status, error) {
+    	//$scope.tasks = response.taskList;
+        console.log(""+ error);
+        //console.log("" + response);
+    });
+}]);
+
+
 eS.controller('DisplayLOCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get("/loop-XYZ/loop/LO/download")    
     .success(function(data) {
@@ -145,20 +166,6 @@ eS.controller('blockedAccountCtrl', ['$scope', '$http', function($scope, $http) 
     });
 }]);
 
-eS.controller('LEListCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.get("/loop-XYZ/loop/LE/list")    
-    .success(function(data) {
-    	$scope.los = data;
-        //console.log(""+ response);
-    	//$scope.filename = data.filename;
-        //console.log("" + response);
-    })
-    .error(function(jqXHR, status, error) {
-    	//$scope.tasks = response.taskList;
-        console.log(""+ error);
-        //console.log("" + response);
-    });
-}]);
 
 
 

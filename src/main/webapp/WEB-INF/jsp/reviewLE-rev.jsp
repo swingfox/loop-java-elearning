@@ -79,7 +79,7 @@
 
                             <li class="divider"></li>
 
-                            <li><a href="index.jsp/account/logout"><i class="icon-off"></i> Logout</a></li>
+                            <li><a href="index.jsp/account/logout"><i class="icon-off"></i> Logoutx</a></li>
                         </ul>
                             </li>
                         </ul>

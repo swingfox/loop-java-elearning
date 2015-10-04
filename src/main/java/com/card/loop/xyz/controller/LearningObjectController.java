@@ -96,6 +96,8 @@ public class LearningObjectController {
         }
         
     }
+    
+    //this is for the the admin
     @RequestMapping("/list")
     @ResponseBody
     public List<LearningObjectDto> ListLO()
@@ -103,6 +105,19 @@ public class LearningObjectController {
         List<LearningObjectDto> dtos = new ArrayList<>();
         try{
             dtos = loService.getLearningObjects();
+        }catch(Exception e){ 
+            e.printStackTrace(); }
+        return dtos;
+    }
+    
+    //this is for the the admin
+    @RequestMapping("/revList")
+    @ResponseBody
+    public List<LearningObjectDto> RevListLO(@RequestBody String rev)
+    {
+        List<LearningObjectDto> dtos = new ArrayList<>();
+        try{
+            dtos = loService.getReviewerLOList(rev);
         }catch(Exception e){ 
             e.printStackTrace(); }
         return dtos;
