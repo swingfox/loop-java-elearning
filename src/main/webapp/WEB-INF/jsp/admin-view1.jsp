@@ -260,7 +260,7 @@
 						        <tbody>
                                                             
                                                              <tr ng-repeat="developer in developerAccount">
-                                                                    <td><a href="'" onclick=""><label ng-model="developer.name">{{developer.name}}</a></td>
+                                                                    <td><a href="'" onclick=""><label ng-model="developer.username">{{developer.username}}</a></td>
                                                                     <td><label ng-model="developer.lastLogin">{{developer.lastLogin}}</td>
                                                                     <td><label ng-model="developer.lastUpload">{{developer.lastUpload}}</td>
                                                              </tr>
@@ -442,7 +442,7 @@
 <script>
     $("#banner-wrap").backstretch("img/img-banner.jpg");
 </script>
-
+<!--
 	<script> 
 		$(document).ready(function(){
 			var length_sel;
@@ -497,7 +497,7 @@
                 pagination.addClass('pagination-sm');
             }
 		});
-	</script>
+	</script> -->
 
 	<script type="text/javascript">
 		$(document).ready(function() {

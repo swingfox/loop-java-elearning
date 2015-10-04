@@ -124,4 +124,28 @@ public class UserDAO {
         return p;
     }
     public static List<User> getAllUserOfType(String type){return null;}
+    public static List<User> getBlockedUsers() throws UnknownHostException{
+        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+        return mongoOps.find(query(where("blocked").is(true)), User.class);
+    }
+
+    public static List<User> getInactiveUsers() throws UnknownHostException {
+        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+        return mongoOps.find(query(where("inactive").is(true)), User.class);
+    }
+
+    public static List<User> getReviewer() throws UnknownHostException {
+         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+        return mongoOps.find(query(where("userType").is("reviewer")), User.class);
+    }
+    
+    public static List<User> getDeveloper() throws UnknownHostException {
+         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+        return mongoOps.find(query(where("userType").is("developer")), User.class);
+    }
+    
+    public static List<User> getNewAccount() throws UnknownHostException {
+         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+        return mongoOps.find(query(where("newAccount").is(true)), User.class);
+    }
 }

@@ -259,7 +259,7 @@ session_start();
 						        <tbody>
                                                             
                                                              <tr ng-repeat="reviewer in reviewerAccount">
-                                                                    <td><a href="'" onclick=""><label ng-model="reviewer.name">{{reviewer.name}}</a></td>
+                                                                    <td><a href="'" onclick=""><label ng-model="reviewer.username">{{reviewer.username}}</a></td>
                                                                     <td><label ng-model="reviewer.lastLogin">{{reviewer.lastLogin}}</td>
                                                                     <td><label ng-model="reviewer.lastDownload">{{reviewer.lastDownload}}</td>
                                                              </tr>
@@ -441,7 +441,7 @@ session_start();
 	$("#banner-wrap").backstretch("img/img-banner.jpg");
 	</script>
 
-
+<!--
 	<script> 
 		$(document).ready(function(){
 			var length_sel;
@@ -497,7 +497,7 @@ session_start();
             }
 		});
 	</script>
-
+-->
 	<script type="text/javascript">
 		$(document).ready(function() {
 		    $('#defaultForm').bootstrapValidator({
