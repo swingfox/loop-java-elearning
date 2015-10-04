@@ -137,7 +137,7 @@
 
                     <!-- <legend class="col-md-12 col-md-push-3">Download</legend> -->
 
-                    <form ng-controller="DisplayLOCtrl" class="form-horizontal bootstrap-validator-form" method="post" id="defaultForm" novalidate="novalidate">
+                    <form ng-controller="LODisplayDetails" class="form-horizontal bootstrap-validator-form" method="post" id="defaultForm" novalidate="novalidate">
                         <div class="well">	
 	                        <div class="form-group">
                                     <label class="col-md-3 control-label download" ng-model="filename">Filename : {{filename}}</label>
@@ -149,7 +149,7 @@
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
-	                            <label class="col-md-3 control-label download">Subject :</label>
+	                            <label class="col-md-3 control-label download" ng-model="subject">Subject : {{subject}}</label>
 	                            <div class="col-md-8">
 	                                <!-- <input type="text" name="email" class="form-control"> -->
 	                                <p class="download-details"><!--?php echo $lo->getSubject(); ?--></p>
@@ -157,7 +157,7 @@
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
-	                            <label class="col-md-3 control-label download">Date Uploaded :</label>
+	                            <label class="col-md-3 control-label download" ng-model="dateUploaded">Date Uploaded : {{dateUploaded}}</label>
 	                            <div class="col-md-8">
 	                                <!-- <input type="password" name="password" class="form-control"> -->
 	                                <p class="download-details"><!--?php echo $lo->getDateUploaded(); ?--></p>
@@ -165,7 +165,7 @@
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
-	                            <label class="col-md-3 control-label download">Description :</label>
+	                            <label class="col-md-3 control-label download" ng-model="description">Description : {{description}}</label>
 	                            <div class="col-md-8">
 	                                <!-- <input type="password" name="confirmPassword" class="form-control"> -->
 	                                <p class="download-details"><!--?php echo $lo->getDescription(); ?--></p>

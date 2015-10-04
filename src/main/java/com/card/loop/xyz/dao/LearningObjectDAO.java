@@ -25,6 +25,8 @@ import static org.springframework.data.mongodb.core.query.Query.query;
  * 
  * @version 1.2 - 09/21/15
  * @author  Aislinn
+ * 
+ * [10/05/2015] -   Vine Deiparine  - Modified getLearningObject. Param changed to id.
  */
 public class LearningObjectDAO {
     public static List<LearningObject> getList() throws UnknownHostException {
@@ -35,14 +37,14 @@ public class LearningObjectDAO {
     /*
     * Get details of specific learning object
     */
-    public static LearningObject getSpecificLearningObject(String lo) throws UnknownHostException {
+    public static LearningObject getLearningObject(String lo_id) throws UnknownHostException {
        //MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
        //mongoOps.find(query(where("rating").is(5)), LearningObject.class);
         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
         //Query query= new Query();
         //query.addCriteria(where("name").is(lo));
         //mongoOps.findo
-        return mongoOps.findOne(query(where("name").is(lo)), LearningObject.class);
+        return mongoOps.findOne(query(where("id").is(lo_id)), LearningObject.class);
         //MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
         //LearningObject p = null;
         //p = mongoOps.findOne(query(where("name").is(lo)), LearningObject.class);

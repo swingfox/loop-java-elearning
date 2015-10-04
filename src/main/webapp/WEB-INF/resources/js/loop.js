@@ -33,6 +33,32 @@ eS.controller('LOList', ['$scope', '$http', function($scope, $http) {
         console.log(""+ error);
         //console.log("" + response);
     });
+    
+    $scope.LODetails = function(lo) {
+        console.log("SULOD");
+    	window.location = '/loop-XYZ/loop/store/download' + lo.id;
+    }; 
+}]);
+
+eS.controller('LODisplayDetails', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+        console.log(""+ $routeParams.loId);
+	var loID = $routeParams.loId;
+
+    $http({
+        url : '/loop-XYZ/loop/LO/LODetails', 
+        method : 'GET',
+        params : {id : loID}
+    }).success(function(data) {
+        $scope.filename = data.name;
+        $scope.subject = data.subject;
+        $scope.dateUploded = data.dateUploaded;
+        $scope.description = data.description;
+    })
+    .error(function(jqXHR, status, error) {
+    	//$scope.tasks = response.taskList;
+        console.log(""+ error);
+        //console.log("" + response);
+    });
 }]);
 
 eS.controller('DisplayLOCtrl', ['$scope', '$http', function($scope, $http) {
