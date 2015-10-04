@@ -34,6 +34,22 @@ public class UserDAO {
         p = mongoOps.findOne(query(where("username").is(user.getUsername())), User.class);
         return p;
     }
+    
+    public static List<User> getAllDeveloperUser(User user) throws UnknownHostException{ 
+        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+        User p = null;
+        if(exists(user.getUsername(),user.getPassword()))
+        p = mongoOps.findOne(query(where("username").is(user.getUsername()).and("userType").is("reviewer")), User.class);
+        return null;
+    }
+    
+    public static List<User> getAllReviewerUser(User user) throws UnknownHostException{ 
+        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+        User p = null;
+        if(exists(user.getUsername(),user.getPassword()))
+        p = mongoOps.findOne(query(where("username").is(user.getUsername()).and("userType").is("reviewer")), User.class);
+        return null;
+    }
     public static boolean addUser(User user) throws UnknownHostException{
         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host),"loop");
         boolean ok = false;

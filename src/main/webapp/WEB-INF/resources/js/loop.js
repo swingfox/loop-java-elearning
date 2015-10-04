@@ -9,9 +9,14 @@
 var eS = angular.module('loop', ['localStorage']);
 eS.controller('LoginCtrl', ['$scope', '$store', function($scope, $store) {
     $store.bind($scope, 'username', '');
-    
+    $store.bind($scope, 'userId', '');
+    $scope.$watch("username", function(newVal) {
+        console.log(newVal);
+    });
+    $scope.hide = true;
     $scope.clearUser = function(){ 
         $store.remove('username'); 
+        $store.remove('userId');
     };
 }]);
 
@@ -46,12 +51,10 @@ eS.controller('DisplayLOCtrl', ['$scope', '$http', function($scope, $http) {
 }]);
     
 eS.controller('newAccountRequestCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.get("/loop-XYZ/loop/LO/list")    
+    $http.get("/loop-XYZ/loop/user/newAccountRequests")    
     .success(function(data) {
     	$scope.los = data;
-        //console.log(""+ response);
-    	//$scope.filename = data.filename;
-        //console.log("" + response);
+
     })
     .error(function(jqXHR, status, error) {
     	//$scope.tasks = response.taskList;
@@ -68,7 +71,7 @@ eS.controller('newAccountRequestCtrl', ['$scope', '$http', function($scope, $htt
     	**/
 
 eS.controller('developerAccountCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.get("/loop-XYZ/loop/LO/list")    
+    $http.get("/loop-XYZ/loop/user/developer")    
     .success(function(data) {
     	$scope.los = data;
         //console.log(""+ response);

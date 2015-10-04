@@ -65,6 +65,17 @@ public class UserController {
         }
         return result;
     }
+    
+    @RequestMapping("/newAccountRequests")
+    public List<UserDto>  accountRequests(){
+        return null;
+    }
+    
+    @RequestMapping("/developer")
+    public List<UserDto>  accountDeveloper(){
+        return null;
+    }
+    
     @RequestMapping("/validate")
     public boolean validate(UserDto user){return false;}
     

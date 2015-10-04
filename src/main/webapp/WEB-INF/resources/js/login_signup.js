@@ -95,6 +95,8 @@ $(document).ready(function() {
                 type: "POST",
                 success: function(data, status, jqXHR){
                    // if(data.errorList.length>0){
+                   $('#userId').val(data.id).change();
+                   $('#userName').val(data.username).change();
                    if(data == null)
                        alert('User not found');
                    else if(data.id != null){
@@ -105,6 +107,8 @@ $(document).ready(function() {
                         window.location = "/loop-XYZ/store/reviewer-update";
                         else 
                         window.location = "/loop-XYZ/store/admin-view";
+                    
+                      
                    }
                //     }
                 },

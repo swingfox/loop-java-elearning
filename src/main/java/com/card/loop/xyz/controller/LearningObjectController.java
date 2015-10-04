@@ -81,7 +81,7 @@ public class LearningObjectController {
         }
         
     }
-    
+    @RequestMapping("/list")
     @ResponseBody
     public List<LearningObjectDto> ListLO()
     {
