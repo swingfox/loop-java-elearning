@@ -370,9 +370,9 @@
                                 <tbody>
                                     
                                       <tr ng-repeat="user in userAccount">
-                                            <td><a href="'" onclick=""><label ng-model="user.name">{{user.name}}</a></td>
+                                            <td><a href="'" onclick=""><label ng-model="user.username">{{user.username}}</a></td>
                                             <td><label ng-model="user.email">{{user.email}}</td>
-                                            <td><label ng-model="user.userType">{{user.userType}}</td>
+                                            <td><label ng-model="user.usertype">{{user.usertype}}</td>
                                       </tr>
                                 <!--<?php  
 
@@ -507,7 +507,7 @@
     $("#banner-wrap").backstretch("img/img-banner.jpg");
 </script>
 
-    <script> 
+ <!--   <script> 
         $(document).ready(function(){
             var length_sel;
             // // alert($(document).height());
@@ -561,7 +561,7 @@
                 pagination.addClass('pagination-sm');
             }
         });
-    </script>
+    </script> -->
     
     <script type="text/javascript">
         $(document).ready(function() {

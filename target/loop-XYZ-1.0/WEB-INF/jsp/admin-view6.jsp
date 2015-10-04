@@ -151,8 +151,8 @@
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="le.rating">{{le.rating}}</td>
                                                                 <td><label ng-model="le.comments">{{le.comments}}</td>
                                                                 <td><label ng-model="le.status">{{le.status}}</td>
-                                                                <td><label ng-model="le.reviewer">{{le.reviewer}}</td>
-                                                                <td><label ng-model="le.author">{{le.author}}</td>
+                                                                <td><label ng-model="le.rev">{{le.rev}}</td>
+                                                                <td><label ng-model="le.uploadedBy">{{le.uploadedBy}}</td>
                                                             </tr>
 						        <!--?php  
 
@@ -305,7 +305,7 @@
 	$("#banner-wrap").backstretch("img/img-banner.jpg");
 	</script>
 
-	<script> 
+<!--	<script> 
 		$(document).ready(function(){
 			var length_sel;
 
@@ -344,7 +344,7 @@
 		// });
 
 	</script>
-
+-->
 	<script type="text/javascript">
 		$(document).ready(function() {
 		    $('#defaultForm').bootstrapValidator({

@@ -183,7 +183,7 @@ echo '--><script type="text/javascript">
 						
 						<div class="table-responsive">
 						 	<!-- <table class="datatable table table-bordered"> -->
-						 	<table class="datatable table table-hover">
+						 	<table class="datatable table table-hover" ng-controller="LOList">
 
 
 						    <thead>
@@ -199,6 +199,16 @@ echo '--><script type="text/javascript">
 								</tr>
 							</thead>
 					        <tbody>
+                                                    <tr ng-repeat="lo in los">
+                                                        <td>
+                                                                <td><a href="'" onclick=""><label ng-model="lo.name">{{lo.name}}</a></td>
+                                                                <td><label ng-model="lo.subject">{{lo.subject}}</td>
+                                                                <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
+                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
+                                                                <td><label ng-model="lo.comments">{{lo.comments}}</td>
+                                                                <td><label ng-model="lo.rev">{{lo.rev}}</td>
+                                                        </td>   
+                                                    </tr>
 					        <!--?php  
 					   
 					        //require './application/controllers/LOController.php';
@@ -452,7 +462,7 @@ echo '--><script type="text/javascript">
  </script>
             
 
-	<script> 
+	<!--script> 
 		$(document).ready(function(){
 			var length_sel;
 			
@@ -482,7 +492,7 @@ echo '--><script type="text/javascript">
             }
 		});
 
-	</script>
+	</script-->
 
 
 	<script type="text/javascript">

@@ -182,7 +182,7 @@ echo '--><script type="text/javascript">
 						
 						<div class="table-responsive">
 						 	<!-- <table class="datatable table table-bordered"> -->
-						 	<table class="datatable table table-hover">
+                                                        <table class="datatable table table-hover" ng-controller="LEListCtrl">
 
 
 						    <thead>
@@ -198,6 +198,16 @@ echo '--><script type="text/javascript">
 								</tr>
 							</thead>
 					        <tbody>
+                                                    <tr ng-repeat="le in les">
+                                                        <td>
+                                                                <td><a href="'" onclick=""><label ng-model="le.name">{{le.name}}</a></td>
+                                                                <td><label ng-model="le.subject">{{le.subject}}</td>
+                                                                <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
+                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="le.rating">{{le.rating}}</td>
+                                                                <td><label ng-model="le.comments">{{le.comments}}</td>
+                                                                <td><label ng-model="le.rev">{{le.rev}}</td>
+                                                        </td>   
+                                                    </tr>
 					        <!--?php  
 					   
 					        //require './application/controllers/LEController.php';
@@ -454,7 +464,7 @@ echo '--><script type="text/javascript">
  </script>
 
 
-	<script> 
+	<!--script> 
 		$(document).ready(function(){
 			var length_sel;
 			
@@ -484,7 +494,7 @@ echo '--><script type="text/javascript">
             }
 		});
 
-	</script>
+	</script-->
 
 
 	<script type="text/javascript">

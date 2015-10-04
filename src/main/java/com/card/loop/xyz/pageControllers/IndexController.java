@@ -5,7 +5,6 @@
  */
 package com.card.loop.xyz.pageControllers;
 
-import com.card.loop.xyz.controller.LEDatabaseController;
 import com.card.loop.xyz.model.LearningElement;
 import com.loop.controller.ContentShipper;
 import java.io.IOException;
@@ -23,22 +22,13 @@ import org.springframework.web.servlet.ModelAndView;
  * @author David
  */
 @Controller
-public class IndexController {
-    
-    LEDatabaseController lec;
+public class IndexController{
     @RequestMapping("/home")
     public ModelAndView accessIndex() throws IOException {
-      /*  lec = new LEDatabaseController();
-        LearningElement le = new LearningElement("Momentum","Physics",
-                "learning object", 5, "09-08-2015", "C:\\Users\\David\\Desktop\\", 5, "nice", "approved", "rev1", "dev1");
-        lec.addLE(le);
-        System.out.println("SUCCESSFULLY ADDED");
-              */
         return new ModelAndView("index");
     } 
     @RequestMapping("/download")
     public ModelAndView accessDownload() {
-       
         return new ModelAndView("download");
     } 
     @RequestMapping(value="/downloads",method=RequestMethod.HEAD)

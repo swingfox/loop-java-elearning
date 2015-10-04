@@ -260,7 +260,7 @@
 						        <tbody>
                                                             
                                                              <tr ng-repeat="developer in developerAccount">
-                                                                    <td><a href="'" onclick=""><label ng-model="developer.name">{{developer.name}}</a></td>
+                                                                    <td><a href="#responsive_fileActionAdmin1" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-model="developer.username">{{developer.username}}</a></td>
                                                                     <td><label ng-model="developer.lastLogin">{{developer.lastLogin}}</td>
                                                                     <td><label ng-model="developer.lastUpload">{{developer.lastUpload}}</td>
                                                              </tr>
@@ -442,7 +442,7 @@
 <script>
     $("#banner-wrap").backstretch("img/img-banner.jpg");
 </script>
-
+<
 	<script> 
 		$(document).ready(function(){
 			var length_sel;
@@ -470,7 +470,7 @@
 
 			// if( optionVal == '10'){
 			// }
-            $('.datatable').dataTable({ 
+         /*   $('.datatable').dataTable({ 
                 "sPaginationType": "bs_normal"
             });
 
@@ -478,7 +478,7 @@
                 $(this).show();
                 datatable_configuration_for_bootstrap_three($(this));
             });
-
+*/
             // datatable configuration for bootstrap 3
             function datatable_configuration_for_bootstrap_three(datatable){
             	datatable.addClass('col-md-12');
@@ -497,7 +497,7 @@
                 pagination.addClass('pagination-sm');
             }
 		});
-	</script>
+	</script> 
 
 	<script type="text/javascript">
 		$(document).ready(function() {

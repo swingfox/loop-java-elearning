@@ -58,6 +58,8 @@ public class UserDto {
     private List<String> errorList;
     
     private String token;
+    
+    private String lastUpload;
 
     public String getToken() {
         return token;
@@ -65,6 +67,14 @@ public class UserDto {
 
     public void setToken(String token) {
         this.token = token;
+    }
+    
+    public String getLastUpload() {
+        return lastUpload;
+    }
+
+    public void setLastUpload(String lastUpload) {
+        this.lastUpload = lastUpload;
     }
 
     
@@ -233,5 +243,4 @@ public class UserDto {
     public void setLastDownload(String lastDownload) {
         this.lastDownload = lastDownload;
     }
-    
 }
