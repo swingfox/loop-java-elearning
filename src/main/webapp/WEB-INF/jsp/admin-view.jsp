@@ -370,69 +370,29 @@
                                 <tbody>
                                     
                                       <tr ng-repeat="user in userAccount">
-                                            <td><a href="'" onclick=""><label ng-model="user.username">{{user.username}}</a></td>
+                                            <td><a href="#responsive_fileActionAdmin" data-toggle="modal" onclick="onclick="selectIndex('.$counter.')"><label ng-model="user.username">{{user.username}}</a></td>
                                             <td><label ng-model="user.email">{{user.email}}</td>
                                             <td><label ng-model="user.usertype">{{user.usertype}}</td>
                                       </tr>
-                                <!--<?php  
-
-                                    require './application/controllers/AdminController.php';
-                                    $controller = new AdminController;
-                                        if(isset($_POST['searchUsers'])){
-                                            if($_POST['searchUsers']=='')
-                                                $siteUsers = @$controller->getAllNewUsers();
-                                            else
-                                                $siteUsers = @$controller->searchSiteUsersDev($_POST['searchUsers']);
-                                        }
-                                        else{
-                                            $siteUsers = @$controller->getAllNewUsers();
-                                        }
-                                        $_SESSION['siteUsers'] = serialize($siteUsers);
-                                        $counter = 0;
-                                        $siteUser = current($siteUsers);
-                                        if($siteUser != null && isset($_POST['searchUsers'])){
-                                            echo '<tr style="font-size:80%;"><td colspan="4">Search Results for "'.$_POST['searchUsers'].'"....<a href="admin-view.php">CLICK HERE</a> to reload all developer accounts</td></tr>';
-                                        }
-                                        while($siteUser != null)
-                                        {
-                                            //echo '<form name="form'.$counter.'" action="admin-view.php" method="POST">';
-                                            echo '<tr>';
-                                            echo '<td><a href="#responsive_fileActionAdmin" data-toggle="modal" onclick="selectIndex('.$counter.')">'.$siteUser->getUserName().'</td>';
-                                            echo '<td>'.$siteUser->getEmail().'</td>';
-                                            echo '<td>'.$siteUser->getUserType().'</td>';
-                                            //echo '<td>'.$siteUser->getLastDownload().'</td>';
-                                            //echo '<input type="hidden" name="siteUserIndex" value="'.$counter.'"/>';
-                                            echo '</tr>';
-                                            //echo '</form>';
-                                            next($siteUsers);
-                                            $siteUser = current($siteUsers);
-                                            $counter++;
-                                        }
-                                        unset($_POST['searchUsers']);
-
-                                        if($counter == 0){
+                          <!--      <form name="form'.$counter.'" action="admin-view.php" method="POST">';
+                                           <tr>
+                                            <td><a href="#responsive_fileActionAdmin" data-toggle="modal" onclick="selectIndex('.$counter.')">'.$siteUser->getUserName().'</td>';
+                                            <td>.$siteUser->getEmail()</td>
+                                            <td>.$siteUser->getUserType().</td>
+                                            <td>.$siteUser->getLastDownload().</td>
+                                            <input type="hidden" name="siteUserIndex" value="'.$counter.'"/>
+                                            </tr>
+                                </form> -->
+                                     <!--   if($counter == 0){
                                             echo '<tr>';
                                             echo '<td>'.'</td>';
                                             echo '<td colspan=3><h2 style="color: #000; font-weight:bold;">Developer not found.</h2><br>
                                                                 Developer not found. Please <a href="admin-view.php" class="btn btn-success">CLICK HERE</a> to refresh the list.</td>';
                                             echo '</tr>';
-                                        }
+                                        } 
 
-                                ?>-->
+                                ?> -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-                        
                                                         
                                 </tbody>
                               </table>
@@ -507,7 +467,7 @@
     $("#banner-wrap").backstretch("img/img-banner.jpg");
 </script>
 
- <!--   <script> 
+   <script> 
         $(document).ready(function(){
             var length_sel;
             // // alert($(document).height());
@@ -534,7 +494,7 @@
 
             // if( optionVal == '10'){
             // }
-            $('.datatable').dataTable({ 
+          /*  $('.datatable').dataTable({ 
                 "sPaginationType": "bs_normal"
             });
 
@@ -542,7 +502,7 @@
                 $(this).show();
                 datatable_configuration_for_bootstrap_three($(this));
             });
-
+*/
             // datatable configuration for bootstrap 3
             function datatable_configuration_for_bootstrap_three(datatable){
                 datatable.addClass('col-md-12');
@@ -561,7 +521,7 @@
                 pagination.addClass('pagination-sm');
             }
         });
-    </script> -->
+    </script> 
     
     <script type="text/javascript">
         $(document).ready(function() {
