@@ -130,8 +130,8 @@
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
                                                                 <td><label ng-model="lo.comments">{{lo.comments}}</td>
                                                                 <td><label ng-model="lo.status">{{lo.status}}</td>
-                                                                <td><label ng-model="lo.reviewer">{{lo.reviewer}}</td>
-                                                                <td><label ng-model="lo.author">{{lo.author}}</td>
+                                                                <td><label ng-model="lo.rev">{{lo.rev}}</td>
+                                                                <td><label ng-model="lo.uploadedBy">{{lo.uploadedBy}}</td>
                                                             </tr>
                                                             <!--
 						        <?php  
@@ -305,7 +305,7 @@
 
         <!-- Bootstrap tour =================================================-->
         <script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
-        <script src="bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+        <script src="js/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
         <!--script src="'.$this->base_url.'js/reviewer-tour-script.js"></script-->
 
         <!-- Form Validator =================================================-->

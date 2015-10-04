@@ -58,6 +58,10 @@ public class LearningObjectService
             dto.setDateUploaded(model.getDateUploaded());
             dto.setRev(model.getRev());
             dto.setUploadedBy(model.getUploadedBy());
+            dto.setComments(model.getComments());
+            dto.setRev(model.getRev());
+            dto.setStatus(model.getStatus());
+            dto.setUploadedBy(model.getUploadedBy());
             objects.add(dto);
         }
         return objects;
