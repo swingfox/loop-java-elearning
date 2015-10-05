@@ -259,7 +259,7 @@ session_start();
 						        <tbody>
                                                             
                                                              <tr ng-repeat="reviewer in reviewerAccount">
-                                                                    <td><a href="'" onclick=""><label ng-model="reviewer.username">{{reviewer.username}}</a></td>
+                                                                    <td><a href="#responsive_fileActionAdmin2" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-model="reviewer.username">{{reviewer.username}}</a></td>
                                                                     <td><label ng-model="reviewer.lastLogin">{{reviewer.lastLogin}}</td>
                                                                     <td><label ng-model="reviewer.lastDownload">{{reviewer.lastDownload}}</td>
                                                              </tr>
@@ -441,7 +441,7 @@ session_start();
 	$("#banner-wrap").backstretch("img/img-banner.jpg");
 	</script>
 
-<!--
+
 	<script> 
 		$(document).ready(function(){
 			var length_sel;
@@ -469,14 +469,14 @@ session_start();
 
 			// if( optionVal == '10'){
 			// }
-            $('.datatable').dataTable({ 
+        /*    $('.datatable').dataTable({ 
                 "sPaginationType": "bs_normal"
             });
 
             $('.datatable').each(function(){
                 $(this).show();
                 datatable_configuration_for_bootstrap_three($(this));
-            });
+            });*/
 
             // datatable configuration for bootstrap 3
             function datatable_configuration_for_bootstrap_three(datatable){
@@ -497,7 +497,7 @@ session_start();
             }
 		});
 	</script>
--->
+
 	<script type="text/javascript">
 		$(document).ready(function() {
 		    $('#defaultForm').bootstrapValidator({

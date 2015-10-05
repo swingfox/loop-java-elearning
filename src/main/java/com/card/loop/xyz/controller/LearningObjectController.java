@@ -12,13 +12,7 @@ import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.service.LearningObjectService;
 import com.card.loop.xyz.service.UserService;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 import com.mongodb.util.JSON;
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.URI;
@@ -93,18 +87,18 @@ public class LearningObjectController {
             
             //response
             BufferedReader reader= new BufferedReader(new java.io.InputStreamReader(response.getBody()));
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
             JSONObject responseObj = new JSONObject();
             responseObj.put(req, reader);
             
             // JSONObject responseObj = (JSONObject) JSONSerializer.toJSON(reader.readLine());
-=======
            // JSONObject responseObj = new JSONObject(reader.readLine());
->>>>>>> Stashed changes
-=======
+
+
            // JSONObject responseObj = new JSONObject(reader.readLine());
->>>>>>> Stashed changes
+
+           // JSONObject responseObj = new JSONObject(reader.readLine());
+
         } catch (IOException ex) {
             Logger.getLogger(LearningObjectController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -122,8 +116,6 @@ public class LearningObjectController {
         }catch(Exception e){ }
         return dtos;
     }
-    
-<<<<<<< HEAD
     //this is for the the admin
     @RequestMapping("/revList")
     @ResponseBody
@@ -135,15 +127,14 @@ public class LearningObjectController {
         }catch(Exception e){ 
             e.printStackTrace(); }
         return dtos;
-=======
+    }
     @RequestMapping("/LODetails")    
     public LearningObjectDto LODetails(@RequestBody String id) throws UnknownHostException
     {
         LearningObjectDto dto = new LearningObjectDto();
         try{
             dto = loService.getLearningObject(id);
-        }catch(Exception e){ }
+        }catch(Exception e){ e.printStackTrace();}
         return dto;
->>>>>>> 575cfd4d8be70da92c2f1b66dad19da3220a9a13
     }
 }
