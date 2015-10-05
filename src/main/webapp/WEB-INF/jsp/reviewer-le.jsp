@@ -101,143 +101,156 @@
 		<div class="clearfix"></div>
 
   		<div id="content-wrap-rev">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 content">
-						
-						<div class="table-responsive">
-							<!-- <table class="datatable table table-bordered"> -->
-							<table class="datatable table table-hover" ng-controller="LEListCtrl">
-							    <thead>
-									<tr>
-										<th class="color-code"><!-- <img src="<?php //echo base_url() ?>img/icon-colorcode.png" alt="color code" /> --></th>
-										<th>Name</th>
-										<th>Subject</th>
-										<!-- <th>Date Uploaded</th> -->
-										<th>Uploaded</th>
-										<th>Rating</th>
-										<th>Comments</th>
-										<th>Status</th>
-										<th>Reviewer</th>
-										<th>Author</th>
-									</tr>
-								</thead>
-						        <tbody>
-                                                             <tr ng-repeat="le in les">
-                                                                 <td>
-                                                                <td><a href="'" onclick=""><label ng-model="le.name">{{le.name}}</a></td>
-                                                                <td><label ng-model="le.subject">{{le.subject}}</td>
-                                                                <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
-                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="le.rating">{{le.rating}}</td>
-                                                                <td><label ng-model="le.comments">{{le.comments}}</td>
-                                                                <td><label ng-model="le.status">{{le.status}}</td>
-                                                                <td><label ng-model="le.rev">{{le.rev}}</td>
-                                                                <td><label ng-model="le.uploadedBy">{{le.uploadedBy}}</td>
-                                                                </td>
-                                                            </tr>
-                                                            
-                                                            <!--
-						        <?php  
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 content">						
+                                <div class="table-responsive">
+                                    <!-- <table class="datatable table table-bordered"> -->
+                                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                    <div class="row">
+                                    <div class="col-sm-12">
+                                    <div class="pull-right">
+                                        <i class="icomoon-search pull-left searchbar-icon"></i>
+                                        <div class="dataTables_filter pull-right" id="DataTables_Table_0_filter">
+                                            <label>
+                                                <input type="text" aria-controls="DataTables_Table_0" data-ng-model="searchText" placeholder="Search" class="form-control input-sm" style="width: 162px;">
+                                            </label>
+                                        </div>
+                                    </div>
+                                        <div class="clearfix"></div>
+                                    </div></div>
 
-					        		require './application/controllers/LEController.php';
-					        		$controller = new LEController();
-					        		// $username = 'Details'.$username;
-					        		//$user = $this->session->userdata('username');
-									if(isset($_POST['searchName'])){
-										$subject = null;
-										$dateFrom = null;
-										$dateTo = null;
-										$order = null;
-										//find by subject
-										if(isset($_POST['subject']) && isset($_POST['subjectCheck'])){
-											$subject = $_POST['subject'];
-										}
-										//find by date
-										if(isset($_POST['dateFrom']) && isset($_POST['dateTo']) && isset($_POST['dateCheck'])){
-											$dateFrom = $_POST['dateFrom'];
-											$dateTo = $_POST['dateTo'];
-										}
-										//order by
-										if(isset($_POST['order']) && isset($_POST['orderCheck'])){
-											$order = $_POST['order'];
-										}
-										$LEs = $controller->searchLERev($_POST['searchName'],$subject,$dateFrom,$dateTo,$order);
-										//$_POST['searchName'] = null;
-									}
-									else{//new condition for advanced search
-										$LEs = @$controller->getAllLERev();
-									}
-									$_SESSION['les'] = serialize($LEs);
-									$counter = 0;
-									$LE = current($LEs);
-									if($LE != null && isset($_POST['searchName'])){
-										echo '<tr style="font-size:80%;"><td><i class="icon-search"></i></td><td colspan="8">Search Results for "'.$_POST['searchName'].'"....<a href='. base_url().'redirect/LE_rev>CLICK HERE</a> to reload all Learning Objects</td></tr>';
-									echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '</tr>';
+                                    <table class="datatable table table-hover" ng-controller="LEListCtrl" id="les">
+                                        <thead>
+                                                    <tr>
+                                                            <th class="color-code"><!-- <img src="<?php //echo base_url() ?>img/icon-colorcode.png" alt="color code" /> --></th>
+                                                            <th>Name</th>
+                                                            <th>Subject</th>
+                                                            <!-- <th>Date Uploaded</th> -->
+                                                            <th>Uploaded</th>
+                                                            <th>Rating</th>
+                                                            <th>Comments</th>
+                                                            <th>Status</th>
+                                                            <th>Reviewer</th>
+                                                            <th>Author</th>
+                                                    </tr>
+                                            </thead>
+                                    <tbody>
+                                         <tr ng-repeat="le in les | filter:searchText">
+                                             <td>
+                                            <td><a href="'" onclick=""><label ng-model="name">{{le.name}}</a></td>
+                                            <td><label ng-model="subject">{{le.subject}}</td>
+                                            <td><label ng-model="dateUploaded">{{le.dateUploaded}}</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="rating">{{le.rating}}</td>
+                                            <td><label ng-model="comments">{{le.comments}}</td>
+                                            <td><label ng-model="status">{{le.status}}</td>
+                                            <td><label ng-model="rev">{{le.rev}}</td>
+                                            <td><label ng-model="uploadedBy">{{le.uploadedBy}}</td>
+                                            </td>
+                                        </tr>
 
-									}
-									while($LE != null)
-									{
-										echo '<form name="form'.$counter.'" action="<?php echo base_url()?>/redirect/downloadLE" method="POST">';
-										//echo "<script type='text/javascript'>alert('1');</script>";
-										echo '<tr>';
-										if($LE->getRating()==1)
-								echo '<td><img src="'.base_url().'img/icon-red.png" alt="For Review" /></td>';
-							else if($LE->getRating()==2)
-								echo '<td><img src="'.base_url().'img/icon-orange.png" alt="For Review" /></td>';
-							else if($LE->getRating()==3)
-								echo '<td><img src="'.base_url().'img/icon-yellow.png" alt="For Review" /></td>';
-										// echo '<td><a href="#responsive_fileActionReviewer" data-toggle="modal" >'.$LE->getName().'</a></td>';
-										echo '<td><a href="'.base_url().'redirect/downloadLE/'.$counter.'" onclick="document.form'.$counter.'.submit()">'.$LE->getName().'</a></td>';
-										echo '<td>'.$LE->getSubject().'</td>';
-										// echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LE->getDateUploaded().'</td>';
-										echo '<td>'.$LE->getDateUploaded().'</td>';
-										echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LE->getRating().'</td>';
-										echo '<td>'.$LE->getComments().'</td>';
-										echo '<input type="hidden" name="downloadLE" value="'.$counter.'"/>';
-										if($LE->getStatus() == 0)
-											echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;<i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>';
-										else if($LE->getStatus() == 2)
-											echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;<i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>';
-										else if($LE->getStatus() == 1)
-											echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;<i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>';
-										echo '<td>'.$LE->getRev().'</td>';
-										echo '<td>'.$LE->getUploadedBy().'</td>';
-										echo '</tr>';
-										echo '</form>';
-										next($LEs);
-										$LE = current($LEs);
-										$counter++;
-									}
+                                        <!--
+                                    <?php  
 
-									if($counter == 0){
-											echo '<tr>';
-												echo '<td colspan=9><h2 style="color: #000; font-weight:bold;">No Learning Elements found.</h2><br>
-																No Learning Elements found.Please <a href="'. base_url().'redirect/LE_rev" class="btn btn-success">CLICK HERE</a> to refresh the list.</td>';	
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '</tr>';
-												}
-											unset($_POST['searchName']);
+                                            require './application/controllers/LEController.php';
+                                            $controller = new LEController();
+                                            // $username = 'Details'.$username;
+                                            //$user = $this->session->userdata('username');
+                                                    if(isset($_POST['searchName'])){
+                                                            $subject = null;
+                                                            $dateFrom = null;
+                                                            $dateTo = null;
+                                                            $order = null;
+                                                            //find by subject
+                                                            if(isset($_POST['subject']) && isset($_POST['subjectCheck'])){
+                                                                    $subject = $_POST['subject'];
+                                                            }
+                                                            //find by date
+                                                            if(isset($_POST['dateFrom']) && isset($_POST['dateTo']) && isset($_POST['dateCheck'])){
+                                                                    $dateFrom = $_POST['dateFrom'];
+                                                                    $dateTo = $_POST['dateTo'];
+                                                            }
+                                                            //order by
+                                                            if(isset($_POST['order']) && isset($_POST['orderCheck'])){
+                                                                    $order = $_POST['order'];
+                                                            }
+                                                            $LEs = $controller->searchLERev($_POST['searchName'],$subject,$dateFrom,$dateTo,$order);
+                                                            //$_POST['searchName'] = null;
+                                                    }
+                                                    else{//new condition for advanced search
+                                                            $LEs = @$controller->getAllLERev();
+                                                    }
+                                                    $_SESSION['les'] = serialize($LEs);
+                                                    $counter = 0;
+                                                    $LE = current($LEs);
+                                                    if($LE != null && isset($_POST['searchName'])){
+                                                            echo '<tr style="font-size:80%;"><td><i class="icon-search"></i></td><td colspan="8">Search Results for "'.$_POST['searchName'].'"....<a href='. base_url().'redirect/LE_rev>CLICK HERE</a> to reload all Learning Objects</td></tr>';
+                                                    echo '<td style="display: none">'.'</td>';
+                                                                            echo '<td style="display: none">'.'</td>';
+                                                                            echo '<td style="display: none">'.'</td>';
+                                                                            echo '<td style="display: none">'.'</td>';
+                                                                            echo '</tr>';
 
-						        ?>-->
-									
-														
-								</tbody>
-							  </table>
-						</div>
+                                                    }
+                                                    while($LE != null)
+                                                    {
+                                                            echo '<form name="form'.$counter.'" action="<?php echo base_url()?>/redirect/downloadLE" method="POST">';
+                                                            //echo "<script type='text/javascript'>alert('1');</script>";
+                                                            echo '<tr>';
+                                                            if($LE->getRating()==1)
+                                            echo '<td><img src="'.base_url().'img/icon-red.png" alt="For Review" /></td>';
+                                    else if($LE->getRating()==2)
+                                            echo '<td><img src="'.base_url().'img/icon-orange.png" alt="For Review" /></td>';
+                                    else if($LE->getRating()==3)
+                                            echo '<td><img src="'.base_url().'img/icon-yellow.png" alt="For Review" /></td>';
+                                                            // echo '<td><a href="#responsive_fileActionReviewer" data-toggle="modal" >'.$LE->getName().'</a></td>';
+                                                            echo '<td><a href="'.base_url().'redirect/downloadLE/'.$counter.'" onclick="document.form'.$counter.'.submit()">'.$LE->getName().'</a></td>';
+                                                            echo '<td>'.$LE->getSubject().'</td>';
+                                                            // echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LE->getDateUploaded().'</td>';
+                                                            echo '<td>'.$LE->getDateUploaded().'</td>';
+                                                            echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LE->getRating().'</td>';
+                                                            echo '<td>'.$LE->getComments().'</td>';
+                                                            echo '<input type="hidden" name="downloadLE" value="'.$counter.'"/>';
+                                                            if($LE->getStatus() == 0)
+                                                                    echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;<i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>';
+                                                            else if($LE->getStatus() == 2)
+                                                                    echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;<i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>';
+                                                            else if($LE->getStatus() == 1)
+                                                                    echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;<i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>';
+                                                            echo '<td>'.$LE->getRev().'</td>';
+                                                            echo '<td>'.$LE->getUploadedBy().'</td>';
+                                                            echo '</tr>';
+                                                            echo '</form>';
+                                                            next($LEs);
+                                                            $LE = current($LEs);
+                                                            $counter++;
+                                                    }
 
-					</div>
+                                                    if($counter == 0){
+                                                                    echo '<tr>';
+                                                                            echo '<td colspan=9><h2 style="color: #000; font-weight:bold;">No Learning Elements found.</h2><br>
+                                                                                                            No Learning Elements found.Please <a href="'. base_url().'redirect/LE_rev" class="btn btn-success">CLICK HERE</a> to refresh the list.</td>';	
+                                                                            echo '<td style="display: none">'.'</td>';
+                                                                            echo '<td style="display: none">'.'</td>';
+                                                                            echo '<td style="display: none">'.'</td>';
+                                                                            echo '<td style="display: none">'.'</td>';
+                                                                            echo '<td style="display: none">'.'</td>';
+                                                                            echo '<td style="display: none">'.'</td>';
+                                                                            echo '<td style="display: none">'.'</td>';
+                                                                            echo '<td style="display: none">'.'</td>';
+                                                                            echo '<td style="display: none">'.'</td>';
+                                                                            echo '</tr>';
+                                                                            }
+                                                                    unset($_POST['searchName']);
+
+                                    ?>-->
+
+
+                                            </tbody>
+                                          </table>
+                                        </div>
+
+                                    </div>
 				</div>
 				
 				<div class="clearfix" id="before-features" ></div>
