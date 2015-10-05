@@ -123,14 +123,11 @@
                                                                 </tr>
                                                             </thead>
 						        <tbody>
-<<<<<<< HEAD
+
                                                             <tr ng-repeat="lo in los" >
                                                                 <td>
-                                                                <td><a href="'" onclick=""><label ng-model="lo.name">{{lo.name}}</a></td>
-=======
-                                                            <tr ng-repeat="lo in los">
-                                                                <td><a href="/loop-XYZ/store/download/{{lo.id}}"><label ng-model="lo.name">{{lo.name}}</a></td>
->>>>>>> 575cfd4d8be70da92c2f1b66dad19da3220a9a13
+                                                                <td><a href=""><label ng-model="lo.name">{{lo.name}}</a></td>
+
                                                                 <td><label ng-model="lo.subject">{{lo.subject}}</td>
                                                                 <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>

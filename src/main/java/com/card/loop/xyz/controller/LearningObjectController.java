@@ -12,7 +12,14 @@ import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.service.LearningObjectService;
 import com.card.loop.xyz.service.UserService;
+<<<<<<< Updated upstream
 import com.mongodb.util.JSON;
+=======
+
+
+import com.mongodb.util.JSON;
+
+>>>>>>> Stashed changes
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.URI;
@@ -92,11 +99,17 @@ public class LearningObjectController {
             responseObj.put(req, reader);
             
             // JSONObject responseObj = (JSONObject) JSONSerializer.toJSON(reader.readLine());
+<<<<<<< Updated upstream
            // JSONObject responseObj = new JSONObject(reader.readLine());
 
 
            // JSONObject responseObj = new JSONObject(reader.readLine());
 
+=======
+
+           // JSONObject responseObj = new JSONObject(reader.readLine());
+
+>>>>>>> Stashed changes
            // JSONObject responseObj = new JSONObject(reader.readLine());
 
         } catch (IOException ex) {
@@ -116,6 +129,11 @@ public class LearningObjectController {
         }catch(Exception e){ }
         return dtos;
     }
+<<<<<<< Updated upstream
+=======
+    
+
+>>>>>>> Stashed changes
     //this is for the the admin
     @RequestMapping("/revList")
     @ResponseBody
@@ -128,7 +146,12 @@ public class LearningObjectController {
             e.printStackTrace(); }
         return dtos;
     }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     @RequestMapping("/LODetails")    
+    @ResponseBody
     public LearningObjectDto LODetails(@RequestBody String id) throws UnknownHostException
     {
         LearningObjectDto dto = new LearningObjectDto();
@@ -136,5 +159,9 @@ public class LearningObjectController {
             dto = loService.getLearningObject(id);
         }catch(Exception e){ e.printStackTrace();}
         return dto;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     }
 }
