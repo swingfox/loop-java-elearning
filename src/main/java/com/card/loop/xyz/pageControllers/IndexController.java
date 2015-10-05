@@ -35,7 +35,7 @@ public class IndexController{
     public void accessDownloadFileH(HttpServletRequest req, HttpServletResponse res){
         try {
             ContentShipper sh = new ContentShipper(req,res,false); // true if ship physical file
-            sh.ship("C:\\Users\\David\\Downloads\\gapps-lp-20141109-signed.zip");
+            sh.ship("C:\\Users\\jm-maricel\\Desktop\\100415\\loop-java-elearning\\uploads\\LE\\TestLEUpload2.zip");
         } catch (IOException ex) {
             Logger.getLogger(IndexController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -45,7 +45,7 @@ public class IndexController{
     public void accessDownloadFile(HttpServletRequest req, HttpServletResponse res){
         try {
             ContentShipper sh = new ContentShipper(req,res,true); // true if ship physical file
-            sh.ship("C:\\Users\\David\\Downloads\\gapps-lp-20141109-signed.zip");
+            sh.ship("C:\\Users\\jm-maricel\\Desktop\\100415\\loop-java-elearning\\uploads\\LE\\TestLEUpload2.zip");
         } catch (IOException ex) {
             Logger.getLogger(IndexController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -87,10 +87,16 @@ public class LearningObjectController {
             
             //response
             BufferedReader reader= new BufferedReader(new java.io.InputStreamReader(response.getBody()));
+
             JSONObject responseObj = new JSONObject();
             responseObj.put(req, reader);
             
             // JSONObject responseObj = (JSONObject) JSONSerializer.toJSON(reader.readLine());
+           // JSONObject responseObj = new JSONObject(reader.readLine());
+
+
+           // JSONObject responseObj = new JSONObject(reader.readLine());
+
            // JSONObject responseObj = new JSONObject(reader.readLine());
 
         } catch (IOException ex) {
@@ -110,7 +116,6 @@ public class LearningObjectController {
         }catch(Exception e){ }
         return dtos;
     }
-
     //this is for the the admin
     @RequestMapping("/revList")
     @ResponseBody

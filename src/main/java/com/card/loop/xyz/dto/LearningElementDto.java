@@ -70,6 +70,9 @@ public class LearningElementDto {
     */
     private List<String>  errorList;
     
+    private String fileExtension;
+    
+    
     
     
     /**
@@ -268,5 +271,13 @@ public class LearningElementDto {
      */
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getFileExtension() {
+        return fileExtension;
+    }
+
+    public void setFileExtension(String fileExtension) {
+        this.fileExtension = fileExtension;
     }
 }
