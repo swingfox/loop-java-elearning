@@ -160,6 +160,13 @@
                                                             
                                                             <tr ng-repeat="le in les | filter:searchText">
                                                                 <td>
+                                                                    <img ng-if="le.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
+                                                                    <img ng-if="le.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">
+                                                                    <img ng-if="le.rating==3" src="http://localhost/loop.com/img/icon-yellow.png" alt="For Review">
+                                                                    <img ng-if="le.rating==4" src="http://localhost/loop.com/img/icon-yellowgreen.png" alt="For Review">
+                                                                    <img ng-if="le.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
+                                                                    
+                                                                </td>
                                                                 <td><a href="'" onclick=""><label ng-model="name">{{le.name}}</a></td>
                                                                 <td><label ng-model="le.subject">{{le.subject}}</td>
                                                                 <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
@@ -170,7 +177,6 @@
                                                                 <td ng-if="le.status==2"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>
                                                                 <td><label ng-model="le.rev">{{le.rev}}</td>
                                                                 <td><label ng-model="le.uploadedBy">{{le.uploadedBy}}</td>
-                                                                </td>
                                                             </tr>
 						        <!--?php  
 

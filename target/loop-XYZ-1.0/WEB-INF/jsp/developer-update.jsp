@@ -214,13 +214,20 @@ echo '--><script type="text/javascript">
 					        <tbody>
                                                     <tr ng-repeat="lo in los | filter:searchText">
                                                         <td>
-                                                                <td><a href="'" onclick=""><label ng-model="lo.name">{{lo.name}}</a></td>
-                                                                <td><label ng-model="lo.subject">{{lo.subject}}</td>
-                                                                <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
-                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
-                                                                <td><label ng-model="lo.comments">{{lo.comments}}</td>
-                                                                <td><label ng-model="lo.rev">{{lo.rev}}</td>
-                                                        </td>   
+                                                            <img ng-if="lo.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
+                                                            <img ng-if="lo.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">
+                                                            <img ng-if="lo.rating==3" src="http://localhost/loop.com/img/icon-yellow.png" alt="For Review">
+                                                            <img ng-if="lo.rating==4" src="http://localhost/loop.com/img/icon-yellowgreen.png" alt="For Review">
+                                                            <img ng-if="lo.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
+
+                                                        </td>
+                                                        <td><a href="'" onclick=""><label ng-model="lo.name">{{lo.name}}</a></td>
+                                                        <td><label ng-model="lo.subject">{{lo.subject}}</td>
+                                                        <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
+                                                        <td><label ng-model="lo.comments">{{lo.comments}}</td>
+                                                        <td><label ng-model="lo.rev">{{lo.rev}}</td>
+                                                         
                                                     </tr>
 					        <!--?php  
 					   
@@ -334,6 +341,7 @@ echo '--><script type="text/javascript">
 		<!-- Take this out if you want the original footer back -->
         <div class="push"></div>
 	</div>
+        </div>
 
 	<div class="footer">
 		<footer id="footer-wrap-index">

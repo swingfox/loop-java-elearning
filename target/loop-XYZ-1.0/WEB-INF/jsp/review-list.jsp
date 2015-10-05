@@ -209,6 +209,13 @@ MAKE THIS BOOTSTRAP 3
 					        <tbody>
                                                     <tr ng-repeat="le in les | filter:searchText">
                                                         <td>
+                                                            <img ng-if="le.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
+                                                            <img ng-if="le.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">
+                                                            <img ng-if="le.rating==3" src="http://localhost/loop.com/img/icon-yellow.png" alt="For Review">
+                                                            <img ng-if="le.rating==4" src="http://localhost/loop.com/img/icon-yellowgreen.png" alt="For Review">
+                                                            <img ng-if="le.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
+
+                                                        </td>
                                                        <td><a href="'" onclick=""><label ng-model="name">{{le.name}}</a></td>
                                                        <td><label ng-model="subject">{{le.subject}}</td>
                                                        <td><label ng-model="fileType">{{le.fileType}}</td>
@@ -220,7 +227,7 @@ MAKE THIS BOOTSTRAP 3
                                                        <td><label ng-model="comments">{{le.comments}}</td>                                                 
                                                        
                                                        
-                                                       </td>
+                                                       
                                                    </tr>
                                                     <!--
 					        <?php  
@@ -335,7 +342,7 @@ MAKE THIS BOOTSTRAP 3
 		<!-- Take this out if you want the original footer back -->
         <div class="push"></div>
 	</div>
-
+        </div>
 	<div class="footer">
 		<footer id="footer-wrap-index">
 			<div class="container">
