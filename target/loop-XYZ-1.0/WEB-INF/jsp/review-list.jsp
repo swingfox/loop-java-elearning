@@ -177,6 +177,20 @@ MAKE THIS BOOTSTRAP 3
 					<div class="col-md-12 content">						
 						<div class="table-responsive">
 						  <!-- <table class="datatable table table-bordered"> -->
+                                                  <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                        <div class="pull-right">
+                                                            <i class="icomoon-search pull-left searchbar-icon"></i>
+                                                            <div class="dataTables_filter pull-right" id="DataTables_Table_0_filter">
+                                                                <label>
+                                                                    <input type="text" aria-controls="DataTables_Table_0" data-ng-model="searchText" placeholder="Search" class="form-control input-sm" style="width: 162px;">
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
 						  <table class="datatable table table-hover">
 						    <thead>
 								<tr>
@@ -193,6 +207,21 @@ MAKE THIS BOOTSTRAP 3
 								</tr>
 							</thead>
 					        <tbody>
+                                                    <tr ng-repeat="le in les | filter:searchText">
+                                                        <td>
+                                                       <td><a href="'" onclick=""><label ng-model="name">{{le.name}}</a></td>
+                                                       <td><label ng-model="subject">{{le.subject}}</td>
+                                                       <td><label ng-model="fileType">{{le.fileType}}</td>
+                                                       <td><label ng-model="dateUploaded">{{le.dateUploaded}}</td>
+                                                       <td ng-if="le.status==0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>
+                                                        <td ng-if="le.status==1"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>
+                                                        <td ng-if="le.status==2"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>
+                                                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="rating">{{le.rating}}</td>
+                                                       <td><label ng-model="comments">{{le.comments}}</td>                                                 
+                                                       
+                                                       
+                                                       </td>
+                                                   </tr>
                                                     <!--
 					        <?php  
 

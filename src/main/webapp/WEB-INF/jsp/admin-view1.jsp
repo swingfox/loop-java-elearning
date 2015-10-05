@@ -245,7 +245,20 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 content">
-						
+                                            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                    <div class="pull-right">
+                                                        <i class="icomoon-search pull-left searchbar-icon"></i>
+                                                        <div class="dataTables_filter pull-right" id="DataTables_Table_0_filter">
+                                                            <label>
+                                                                <input type="text" aria-controls="DataTables_Table_0" data-ng-model="searchText" placeholder="Search" class="form-control input-sm" style="width: 162px;">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
 						<div class="table-responsive" ng-controller="developerAccountCtrl">
 							<!-- <table class="datatable table table-bordered"> -->
 							<table class="datatable table table-hover">
@@ -259,7 +272,7 @@
 
 						        <tbody>
                                                             
-                                                             <tr ng-repeat="developer in developerAccount">
+                                                             <tr ng-repeat="developer in developerAccount | filter:searchText">
                                                                     <td><a href="#responsive_fileActionAdmin1" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-model="developer.username">{{developer.username}}</a></td>
                                                                     <td><label ng-model="developer.lastLogin">{{developer.lastLogin}}</td>
                                                                     <td><label ng-model="developer.lastUpload">{{developer.lastUpload}}</td>

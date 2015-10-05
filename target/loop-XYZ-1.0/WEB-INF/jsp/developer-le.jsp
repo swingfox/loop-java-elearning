@@ -66,7 +66,7 @@ echo '--><script type="text/javascript">
 
 <!--?php $this->load->helper('url'); ?-->
 </head>
-<body <!--?php echo (isset($status) && $status)?'onload=document.getElementById("responsive_changePassword_btn").click()':'' ?>-->	
+<body> <!--?php echo (isset($status) && $status)?'onload=document.getElementById("responsive_changePassword_btn").click()':'' ?>-->	
 	<!-- <div id="wrapper"> -->
 	<div class="wrapper">
     	<!--?php $this->layout->modal_footer(isset($status)?$status:FALSE) ?-->
@@ -182,23 +182,36 @@ echo '--><script type="text/javascript">
 						
 						<div class="table-responsive">
 						 	<!-- <table class="datatable table table-bordered"> -->
-                                                        <table class="datatable table table-hover" ng-controller="LEListCtrl">
+                                                     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                                    <div class="row">
+                                                    <div class="col-sm-12">
+                                                    <div class="pull-right">
+                                                        <i class="icomoon-search pull-left searchbar-icon"></i>
+                                                        <div class="dataTables_filter pull-right" id="DataTables_Table_0_filter">
+                                                            <label>
+                                                                <input type="text" aria-controls="DataTables_Table_0" data-ng-model="searchText" placeholder="Search" class="form-control input-sm" style="width: 162px;">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                        <div class="clearfix"></div>
+                                                    </div></div>
+                                                    <table class="datatable table table-hover" ng-controller="LEListCtrl">
 
 
 						    <thead>
-								<tr>
-									<th class="color-code"></th>
-									<th>Name</th>
-									<th>Subject</th>
-									<!-- <th>Date Uploaded</th> -->
-									<th>Uploaded</th>
-									<th>Rating</th>
-									<th>Comments</th>
-									<th>Reviewer</th>
-								</tr>
+                                                        <tr>
+                                                                <th class="color-code"></th>
+                                                                <th>Name</th>
+                                                                <th>Subject</th>
+                                                                <!-- <th>Date Uploaded</th> -->
+                                                                <th>Uploaded</th>
+                                                                <th>Rating</th>
+                                                                <th>Comments</th>
+                                                                <th>Reviewer</th>
+                                                        </tr>
 							</thead>
 					        <tbody>
-                                                    <tr ng-repeat="le in les">
+                                                    <tr ng-repeat="le in les | filter:searchText">
                                                         <td>
                                                                 <td><a href="'" onclick=""><label ng-model="le.name">{{le.name}}</a></td>
                                                                 <td><label ng-model="le.subject">{{le.subject}}</td>

@@ -244,7 +244,20 @@ session_start();
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 content">
-						
+					    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                    <div class="pull-right">
+                                                        <i class="icomoon-search pull-left searchbar-icon"></i>
+                                                        <div class="dataTables_filter pull-right" id="DataTables_Table_0_filter">
+                                                            <label>
+                                                                <input type="text" aria-controls="DataTables_Table_0" data-ng-model="searchText" placeholder="Search" class="form-control input-sm" style="width: 162px;">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
 						<div class="table-responsive" ng-controller="reviewerAccountCtrl">
 							<!-- <table class="datatable table table-bordered"> -->
 							<table class="datatable table table-hover">
@@ -258,7 +271,7 @@ session_start();
 
 						        <tbody>
                                                             
-                                                             <tr ng-repeat="reviewer in reviewerAccount">
+                                                             <tr ng-repeat="reviewer in reviewerAccount | filter:searchText">
                                                                     <td><a href="#responsive_fileActionAdmin2" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-model="reviewer.username">{{reviewer.username}}</a></td>
                                                                     <td><label ng-model="reviewer.lastLogin">{{reviewer.lastLogin}}</td>
                                                                     <td><label ng-model="reviewer.lastDownload">{{reviewer.lastDownload}}</td>

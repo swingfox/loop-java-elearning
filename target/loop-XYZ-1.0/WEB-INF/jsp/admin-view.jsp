@@ -355,7 +355,20 @@
 
                 <div class="row">
                     <div class="col-md-12 content">
-                        
+                        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                <div class="pull-right">
+                                    <i class="icomoon-search pull-left searchbar-icon"></i>
+                                    <div class="dataTables_filter pull-right" id="DataTables_Table_0_filter">
+                                        <label>
+                                            <input type="text" aria-controls="DataTables_Table_0" data-ng-model="searchText" placeholder="Search" class="form-control input-sm" style="width: 162px;">
+                                        </label>
+                                    </div>
+                                </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
                         <div class="table-responsive" ng-controller="newAccountRequestCtrl">
                             <!-- <table class="datatable table table-bordered"> -->
                             <table class="datatable table table-hover">
@@ -369,7 +382,7 @@
 
                                 <tbody>
                                     
-                                      <tr ng-repeat="user in userAccount">
+                                      <tr ng-repeat="user in userAccount | filter:searchText">
                                             <td><a href="#responsive_fileActionAdmin" data-toggle="modal" onclick="onclick="selectIndex('.$counter.')"><label ng-model="user.username">{{user.username}}</a></td>
                                             <td><label ng-model="user.email">{{user.email}}</td>
                                             <td><label ng-model="user.usertype">{{user.usertype}}</td>

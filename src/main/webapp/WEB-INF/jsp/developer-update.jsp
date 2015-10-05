@@ -183,6 +183,19 @@ echo '--><script type="text/javascript">
 						
 						<div class="table-responsive">
 						 	<!-- <table class="datatable table table-bordered"> -->
+                                                        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                                    <div class="row">
+                                                    <div class="col-sm-12">
+                                                    <div class="pull-right">
+                                                        <i class="icomoon-search pull-left searchbar-icon"></i>
+                                                        <div class="dataTables_filter pull-right" id="DataTables_Table_0_filter">
+                                                            <label>
+                                                                <input type="text" aria-controls="DataTables_Table_0" data-ng-model="searchText" placeholder="Search" class="form-control input-sm" style="width: 162px;">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                        <div class="clearfix"></div>
+                                                    </div></div>
 						 	<table class="datatable table table-hover" ng-controller="LOList">
 
 
@@ -199,7 +212,7 @@ echo '--><script type="text/javascript">
 								</tr>
 							</thead>
 					        <tbody>
-                                                    <tr ng-repeat="lo in los">
+                                                    <tr ng-repeat="lo in los | filter:searchText">
                                                         <td>
                                                                 <td><a href="'" onclick=""><label ng-model="lo.name">{{lo.name}}</a></td>
                                                                 <td><label ng-model="lo.subject">{{lo.subject}}</td>

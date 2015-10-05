@@ -143,7 +143,9 @@
                                             <td><label ng-model="dateUploaded">{{le.dateUploaded}}</td>
                                             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="rating">{{le.rating}}</td>
                                             <td><label ng-model="comments">{{le.comments}}</td>
-                                            <td><label ng-model="status">{{le.status}}</td>
+                                            <td ng-if="le.status==0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>
+                                            <td ng-if="le.status==1"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>
+                                            <td ng-if="le.status==2"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>
                                             <td><label ng-model="rev">{{le.rev}}</td>
                                             <td><label ng-model="uploadedBy">{{le.uploadedBy}}</td>
                                             </td>

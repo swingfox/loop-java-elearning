@@ -245,6 +245,20 @@ session_start();
 						
 						<div class="table-responsive" ng-controller="inactiveAccountCtrl">
 							<!-- <table class="datatable table table-bordered"> -->
+                                                        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                <div class="pull-right">
+                                                                    <i class="icomoon-search pull-left searchbar-icon"></i>
+                                                                    <div class="dataTables_filter pull-right" id="DataTables_Table_0_filter">
+                                                                        <label>
+                                                                            <input type="text" aria-controls="DataTables_Table_0" data-ng-model="searchText" placeholder="Search" class="form-control input-sm" style="width: 162px;">
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+                                                            </div>
 							<table class="datatable table table-hover">
 							    <thead>
 									<tr>
@@ -256,7 +270,7 @@ session_start();
 
 						        <tbody>
                                                             
-                                                            <tr ng-repeat="passive in inactiveAccount">
+                                                            <tr ng-repeat="passive in inactiveAccount | filter:searchText">
                                                                     <td><a href="'" onclick=""><label ng-model="passive.username">{{passive.username}}</a></td>
                                                                     <td><label ng-model="passive.lastLogin">{{passive.lastLogin}}</td>
                                                                     <td><label ng-model="passive.usertype">{{passive.usertype}}</td>
