@@ -16,6 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.card.loop.xyz.dao.LearningElementDAO;
 import com.card.loop.xyz.model.LearningElement;
 import com.loop.controller.ContentShipper;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -64,5 +69,29 @@ public class LOIDEController {
 		shipper.ship(path);
 	}
         
-        
+        @RequestMapping(value="/upload", method = RequestMethod.POST)
+	public void uploadLearningElement(@RequestParam("title") String title, @RequestParam("author") String authorID,
+						   @RequestParam("description") String description, @RequestParam("file") MultipartFile file) {
+		if (!file.isEmpty()) {
+			try {
+                byte[] bytes = file.getBytes();
+                File fil = new File("C:/Users/David/Desktop/Software Engineering/loop-java-elearning/uploads/LE" + title);
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fil));
+                stream.write(bytes);
+                stream.close();
+                
+                LearningElement le = new LearningElement();
+                le.setName(title);
+                le.setUploadedBy(authorID);
+                le.setDescription(description);
+                LearningElementDAO.addLearningElement(le);
+                
+                System.out.println("UPLOAD FINISHED");
+            } catch (Exception e) {
+                System.err.println(e.toString());
+            }
+        } else {
+            System.err.println("EMPTY FILE.");
+        }
+	}
 }
