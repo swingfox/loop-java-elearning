@@ -23,6 +23,7 @@ eS.controller('LoginCtrl', ['$scope', '$store', function($scope, $store) {
 eS.controller('LOList', ['$scope', '$http', function($scope, $http) {
     $http.get("/loop-XYZ/loop/LO/list")    
     .success(function(data) {
+        console.log(JSON.stringify(data));
     	$scope.los = data;
         //console.log(""+ response);
     	//$scope.filename = data.filename;
@@ -36,7 +37,7 @@ eS.controller('LOList', ['$scope', '$http', function($scope, $http) {
     
     $scope.LODetails = function(lo) {
         console.log("SULOD");
-    	window.location = '/loop-XYZ/loop/store/download' + lo.id;
+    	window.location = '/loop-XYZ/loop/store/download/' + lo.id;
     }; 
 }]);
 
@@ -177,6 +178,11 @@ eS.controller('LEListCtrl', ['$scope', '$http', function($scope, $http) {
     .error(function(jqXHR, status, error) {
         console.log(""+ error);
     });
+    
+    $scope.LEDetails = function(le) {
+        console.log("SULOD");
+    	window.location = '/loop-XYZ/loop/store/downloadLE/';
+    }; 
 }]);
 
 

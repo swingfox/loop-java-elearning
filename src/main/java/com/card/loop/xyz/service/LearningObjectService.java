@@ -24,9 +24,7 @@ public class LearningObjectService
         LearningObject loModel;
         loModel = LearningObjectDAO.getLearningObject(id);
         LearningObjectDto dto = new LearningObjectDto();
-       if(loModel != null){
-
-  
+       if(loModel != null){  
             dto.setId(loModel.getID());
             dto.setName(loModel.getName());
             dto.setDescription(loModel.getDescription());

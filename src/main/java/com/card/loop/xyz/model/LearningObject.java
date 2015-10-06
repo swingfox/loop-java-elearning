@@ -19,10 +19,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class LearningObject {
 
     /*
-    *Id of the Learning Object
-    */
+    *Id of the Learning Object mongoDB
+    */    
     @Id
-    private String id;
+    private String _id;
+    /*
+    *ObjectId of the Learning Object in 
+    */
+    private String id;    
     /*
     *Name of the Learning Object
     */
@@ -78,13 +82,21 @@ public class LearningObject {
     public String getUploadedBy(){
         return this.uploadedBy;
     }
+    
+    /**
+     * Gets the Id of the Learning Object 
+     * @return Long This returns the id of Learning Object.
+     */
+    public String getId(){
+        return this.id;
+    }
 
     /**
-     * Gets the Id of the Learning Object
+     * Gets the Id of the Learning Object in mongoDB
      * @return Long This returns the id of Learning Object.
      */
     public String getID(){
-        return this.id;
+        return this._id;
     }
 
     /**
@@ -176,11 +188,19 @@ public class LearningObject {
     }
 
     /**
-     * Sets the id of the Learning Object
+     * Sets the id of the Learning Object 
+     * @param id Long
+     */
+    public void setId(String id){
+        this.id = id;
+    }
+    
+    /**
+     * Sets the id of the Learning Object in mongoDB
      * @param id Long
      */
     public void setID(String id){
-        this.id = id;
+        this._id = id;
     }
 
     /**

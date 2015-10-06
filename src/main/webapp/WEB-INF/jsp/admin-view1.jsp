@@ -136,7 +136,7 @@
 
     	<!-- User Action Update-->
         <!-- <form method="post" action="'.base_url().'index.php/account/change_password"> -->
-       <form method="post" action="account/block" id="blockForm" name="blockForm">
+       <form method="post"  id="blockForm" name="blockForm">
             <div class="modal fade" id="responsive_fileActionAdmin1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">

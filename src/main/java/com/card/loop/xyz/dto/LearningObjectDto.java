@@ -24,9 +24,14 @@ public class LearningObjectDto {
     */
     private double rating;
     /*
-    *Id of the Learning Object
+    *ObjectId of the Learning Object
     */
     private String id;
+    /*
+    *Id of the Learning Object  in mongoDB
+    */
+    private String _id;
+    
     /*
     *Name of the Learning Object
     */
@@ -103,18 +108,34 @@ public class LearningObjectDto {
 
     /**
      * 
-     * @return Long This returns the id of the LO
+     * @return Long This returns the id of the LO 
      */
     public String getId() {
         return id;
     }
+    
+    /**
+     * 
+     * @return Long This returns the id of the LO in mongoDB
+     */
+    public String getID() {
+        return _id;
+    }
 
     /**
-     * This sets the id of the LO
+     * This sets the id of the LO 
      * @param id Long
      */
     public void setId(String id) {
         this.id = id;
+    }
+    
+    /**
+     * This sets the id of the LO in mongoDB
+     * @param id Long
+     */
+    public void setID(String id) {
+        this._id = id;
     }
 
     /**
