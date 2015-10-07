@@ -85,7 +85,7 @@ public class LearningObject {
     
     /**
      * Gets the Id of the Learning Object 
-     * @return Long This returns the id of Learning Object.
+     * @return String This returns the id of Learning Object.
      */
     public String getId(){
         return this.id;
@@ -281,7 +281,7 @@ public class LearningObject {
      * @param uploadedBy String
      */
     public void setUploadedBy(String uploadedBy){
-        uploadedBy= uploadedBy;
+        this.uploadedBy = uploadedBy;
     }
 
     public String[] getSequence() {

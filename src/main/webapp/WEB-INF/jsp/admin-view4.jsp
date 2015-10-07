@@ -271,7 +271,7 @@ session_start();
 
 						        <tbody>
                                                             <tr ng-repeat="blocked in blockedAccount | filter:searchText">
-                                                                    <td><a href="'" onclick=""><label ng-model="blocked.username">{{blocked.username}}</a></td>
+                                                                    <td><a href="#responsive_fileActionAdmin4" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-model="blocked.username">{{blocked.username}}</a></td>
                                                                     <td><label ng-model="blocked.lastLogin">{{blocked.lastLogin}}</td>
                                                                     <td><label ng-model="blocked.usertype">{{blocked.usertype}}</td>
                                                              </tr>

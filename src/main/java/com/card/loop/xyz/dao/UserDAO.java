@@ -69,6 +69,19 @@ public class UserDAO {
         ok = true;
         return ok;
     }
+    
+    public static boolean blockUser(User user) throws UnknownHostException{
+        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+        boolean ok = false;
+        Query query = new Query();
+        query.addCriteria(where("username").is(user.getUsername()));
+        Update update = new Update();
+        update.addToSet("blocked", true);
+        //update.addToSet("firstName",user.getFirstName());
+    mongoOps.updateFirst(query,update,User.class);
+        ok = true;
+        return ok;
+    }
     public static boolean saveUser(User user) throws UnknownHostException{
         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
         boolean ok = false;

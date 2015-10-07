@@ -64,29 +64,15 @@ public class LearningObjectController {
         }
         return result;
     }**/
-    //wla na dawy requestmapping
-    //okay so 
-    //okie, 
-    //padaun ug code, waitt....,cge goooo
-    public void DownloadLO()
+
+    public void downloadAllLO()
     {
         try {
-            /*LearningObjectDto result = null;
-            try{
-            result = loService.getSpecificLearningObject(result);
-            if(result!=null) {
-            } else {
-            result.getErrorList().add("NULLL!");
-            }
-            }catch(Exception e){
-            //user.getErrorList().add(e.toString());
-            System.out.println(e.toString());
-            }
-            return result;*/
             SimpleClientHttpRequestFactory rf= new SimpleClientHttpRequestFactory();
             ClientHttpRequest req= rf.createRequest(URI.create("http://192.168.254.101:8080/InformatronYX/informatron/LO/upload/availableLO"),HttpMethod.POST);
             java.io.PrintWriter pw = new java.io.PrintWriter(req.getBody());
             JSONObject obj= new JSONObject();
+            obj.put("lo", loService.getLearningObjects());
             pw.print(obj.toString());
             ClientHttpResponse response = req.execute();
             
@@ -96,19 +82,6 @@ public class LearningObjectController {
             JSONObject responseObj = new JSONObject();
             responseObj.put(req, reader);
             
-            // JSONObject responseObj = (JSONObject) JSONSerializer.toJSON(reader.readLine());
-
-           // JSONObject responseObj = new JSONObject(reader.readLine());
-
-
-           // JSONObject responseObj = new JSONObject(reader.readLine());
-
-
-
-           // JSONObject responseObj = new JSONObject(reader.readLine());
-
-
-           // JSONObject responseObj = new JSONObject(reader.readLine());
 
         } catch (IOException ex) {
             Logger.getLogger(LearningObjectController.class.getName()).log(Level.SEVERE, null, ex);

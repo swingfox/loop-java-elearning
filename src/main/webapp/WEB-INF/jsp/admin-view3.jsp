@@ -271,7 +271,7 @@ session_start();
 						        <tbody>
                                                             
                                                             <tr ng-repeat="passive in inactiveAccount | filter:searchText">
-                                                                    <td><a href="'" onclick=""><label ng-model="passive.username">{{passive.username}}</a></td>
+                                                                    <td><a href="#responsive_fileActionAdmin3" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-model="passive.username">{{passive.username}}</a></td>
                                                                     <td><label ng-model="passive.lastLogin">{{passive.lastLogin}}</td>
                                                                     <td><label ng-model="passive.usertype">{{passive.usertype}}</td>
                                                              </tr>
@@ -477,6 +477,7 @@ session_start();
 
 			// if( optionVal == '10'){
 			// }
+             /*
             $('.datatable').dataTable({ 
                 "sPaginationType": "bs_normal"
             });
@@ -484,8 +485,8 @@ session_start();
             $('.datatable').each(function(){
                 $(this).show();
                 datatable_configuration_for_bootstrap_three($(this));
-            });
-
+            }); 
+*/
             // datatable configuration for bootstrap 3
             function datatable_configuration_for_bootstrap_three(datatable){
             	datatable.addClass('col-md-12');

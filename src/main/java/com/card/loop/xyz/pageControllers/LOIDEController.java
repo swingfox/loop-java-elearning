@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.card.loop.xyz.dao.LearningElementDAO;
+import com.card.loop.xyz.dao.LearningObjectDAO;
 import com.card.loop.xyz.model.LearningElement;
+import com.card.loop.xyz.model.LearningObject;
 import com.loop.controller.ContentShipper;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -70,23 +72,35 @@ public class LOIDEController {
 	}
         
         @RequestMapping(value="/upload", method = RequestMethod.POST)
-	public void uploadLearningElement(@RequestParam("title") String title, @RequestParam("author") String authorID,
-						   @RequestParam("description") String description, @RequestParam("file") MultipartFile file) {
+	public void uploadLearningElement(@RequestParam("title") String title, @RequestParam("author") String author,
+						   @RequestParam("description") String description, @RequestParam("file") MultipartFile file, @RequestParam("type") String type) {
 		if (!file.isEmpty()) {
-			try {
-                byte[] bytes = file.getBytes();
-                File fil = new File("C:/Users/David/Desktop/Software Engineering/loop-java-elearning/uploads/LE" + title);
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fil));
-                stream.write(bytes);
-                stream.close();
+                try {
+                    byte[] bytes = file.getBytes();
+                    File fil = new File("C:/Users/David/Desktop/Software Engineering/loop-java-elearning/uploads//"+ type + "//" + file.getOriginalFilename());
+                    BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fil));
+                    stream.write(bytes);
+                    stream.close();
+                    
+                    if(type.equals("LE")){
+                        LearningElement le = new LearningElement();
+                        le.setName(title);
+                        le.setUploadedBy(author);
+                        le.setDescription(description);
+                        le.setFilePath(file.getOriginalFilename());
+                        LearningElementDAO.addLearningElement(le);
+                    }
+                    else if(type.equals("LO")){
+                      LearningObject lo = new LearningObject();
+                        lo.setName(title);
+                        lo.setUploadedBy(author);
+                        lo.setDescription(description);
+                        lo.setFilepath(file.getOriginalFilename());
+                        LearningObjectDAO.addLearningObject(lo);
+                    }
+
+                    System.out.println("UPLOAD FINISHED");
                 
-                LearningElement le = new LearningElement();
-                le.setName(title);
-                le.setUploadedBy(authorID);
-                le.setDescription(description);
-                LearningElementDAO.addLearningElement(le);
-                
-                System.out.println("UPLOAD FINISHED");
             } catch (Exception e) {
                 System.err.println(e.toString());
             }

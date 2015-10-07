@@ -42,15 +42,12 @@ public class LearningObjectService
     }
     
     public List<LearningObjectDto> getLearningObjects() throws UnknownHostException{
-        List<LearningObject> LOList = LearningObjectDAO.getList();//LearningObjectDAO.getAllLearningObjectByDateUpload(new Date());
+        List<LearningObject> LOList = LearningObjectDAO.getList();
         List<LearningObjectDto> objects = new ArrayList<>();
         for(LearningObject model: LOList){
             LearningObjectDto dto = new LearningObjectDto();
-          //  dto.setId(model.getID());
-
-           // lo.setId(loModel.getID());
-                     
-
+            dto.setID(model.getID());
+            dto.setId(model.getId());
             dto.setRating(model.getRating());
             dto.setName(model.getName());
             dto.setDescription(model.getDescription());
@@ -63,6 +60,7 @@ public class LearningObjectService
             dto.setRev(model.getRev());
             dto.setStatus(model.getStatus());
             dto.setUploadedBy(model.getUploadedBy());
+            dto.setSequence(model.getSequence());
             objects.add(dto);
         }
         return objects;

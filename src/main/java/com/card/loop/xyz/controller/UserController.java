@@ -113,19 +113,34 @@ public class UserController {
     public boolean demote(UserDto user){return false;}
     
     @RequestMapping("/block")
-    public List<UserDto> block(UserDto user){
+    public List<UserDto> getAllBlockedUsers(){
      List<UserDto> result = null;
         try{
             System.out.println("LOOO");
             UserService service = new UserService();
-            result = service.block();
-            if(result==null)
-                user.getErrorList().add("NULLL!");
+            result = service.getBlockedUsers();
+            if(result==null);
+             //   user.getErrorList().add("NULLL!");
         }catch(Exception e){
             //user.getErrorList().add(e.toString());
             System.out.println(e.toString());
         }
         return result;
+    }
+    
+    @RequestMapping("/blockUser")
+    public void blockUser(){
+     List<UserDto> result = null;
+        try{
+            System.out.println("LOOO");
+            UserService service = new UserService();
+            result = service.getBlockedUsers();
+            if(result==null);
+             //   user.getErrorList().add("NULLL!");
+        }catch(Exception e){
+            //user.getErrorList().add(e.toString());
+            System.out.println(e.toString());
+        }
     }
     
     @RequestMapping("/reviewer")
@@ -134,6 +149,21 @@ public class UserController {
         try{
             UserService service = new UserService();
             result = service.getAllReviewer();
+            if(result==null)
+                return null;
+        }catch(Exception e){
+            //user.getErrorList().add(e.toString());
+            System.out.println(e.toString());
+        }
+        return result;
+    }
+    
+    @RequestMapping("/inactive")
+    public List<UserDto> inactiveUser(){
+     List<UserDto> result = null;
+        try{
+            UserService service = new UserService();
+            result = service.inactive();
             if(result==null)
                 return null;
         }catch(Exception e){

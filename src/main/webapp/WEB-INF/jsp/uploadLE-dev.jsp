@@ -113,7 +113,7 @@
                         <h2 class="download">Upload Learning Element: Revision</h2>
                     </div>
 
-					<!-- <form action="uploading.php" method="post" enctype="multipart/form-data" name="upload" class="form-horizontal">-->
+			<form action="/loop-XYZ/store/loide/upload" enctype="multipart/form-data" method="post" name="upload" class="form-horizontal">-->
                     <!-- <form class="form-horizontal bootstrap-validator-form" action="<?php //echo base_url()?>index.php/uploading/do_upload" method="post" id="defaultForm" novalidate="novalidate"> -->
 						
 						<!-- <?php echo form_open_multipart('uploading/do_upload','id="myform"');?> -->
@@ -125,7 +125,7 @@
 				            
 				            <label class="control-label upload-file fileinput pull-left" for="fileInput">File Path :</label>
 				            <div class="controls">
-				            	<input type="file" name="userfile" size="20" class="input-file tour-step tour-step-eight" required/>
+				            	<input type="file" name="file" size="20" class="input-file tour-step tour-step-eight" required/>
 				            	<!-- <input name="userfile" type="file" class="input-file" required/> -->
 				            </div>
 				            
@@ -137,7 +137,7 @@
 
 
 
-						<div class="well upload tour-step tour-step-nine">		
+						<div class="well upload tour-step tour-step-nine" ng-controller="LoginCtrl">		
 								<label class="col-md-3 control-label upload-file" for="input01">Name:</label>					
 								<!-- <label class="control-label pull-left" for="input01"> -->
 									<!-- Name : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
@@ -152,6 +152,11 @@
 								}
 
 								?> -->
+                                                                
+                                                                <input type="hidden" name="author" id="auth" value="{{username}}">
+                                                                <input type="hidden" name="rating"  value="0">
+                                                                <input type="hidden" name="type" value="LE">
+                                                                <input type="text"   name="title" class="form-control col-md-7"  placeholder="e.g. HTML5, Linear Equations"/>
 								<div class="clearfix"></div>
 							</div>
 
@@ -172,6 +177,7 @@
 									}
 								?>
 								-->
+                                                                <input type="text" class="form-control col-md-7" id="input01"  name="subject" placeholder="e.g. Web Programming, Algebra" required/>
 								<div class="clearfix"></div>
 							</div>
 
@@ -196,8 +202,7 @@
 									<!-- Description : &nbsp; -->
 									<!-- Description : -->
 								</label>
-								<input type = "hidden" name = "uploadType" value = "LE">
-								<input type="text" class="form-control col-md-7" id="input01" name="desc" placeholder="Write a description..." required/>								
+								<input type="text" class="form-control col-md-7" id="input01" name="description" placeholder="Write a description..." required/>								
 								
 								<div class="clearfix"></div>
 							</div>

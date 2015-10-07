@@ -59,8 +59,12 @@ public class UserService {
         }
         return ok;
     }
+    public boolean blockUser(UserDto user) throws UnknownHostException{
+        return true;    
+    }
+    
     public boolean edit(UserDto user) throws UnknownHostException{return false;}
-    public List<UserDto> block() throws UnknownHostException{
+    public List<UserDto> getBlockedUsers() throws UnknownHostException{
          List<UserDto> objects = new ArrayList<>();
          List<User> userList = UserDAO.getBlockedUsers();
          for(User model: userList){
