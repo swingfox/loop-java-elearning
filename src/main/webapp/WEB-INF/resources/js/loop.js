@@ -95,7 +95,7 @@ eS.controller('LOList', ['$scope', '$http', function($scope, $http) {
     
     $scope.LODetails = function(lo) {
         console.log("SULOD");
-    	window.location = '/loop-XYZ/loop/store/download/' + lo.id;
+    	window.location = '/loop-XYZ/loop/LO/download/' + lo.id;
     }; 
 }]);
 

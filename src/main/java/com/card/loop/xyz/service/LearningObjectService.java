@@ -25,7 +25,7 @@ public class LearningObjectService
         loModel = LearningObjectDAO.getLearningObject(id);
         LearningObjectDto dto = new LearningObjectDto();
        if(loModel != null){  
-            dto.setId(loModel.getID());
+            dto.setId(loModel.getId());
             dto.setName(loModel.getName());
             dto.setDescription(loModel.getDescription());
             dto.setSubject(loModel.getSubject());
@@ -46,7 +46,6 @@ public class LearningObjectService
         List<LearningObjectDto> objects = new ArrayList<>();
         for(LearningObject model: LOList){
             LearningObjectDto dto = new LearningObjectDto();
-            dto.setID(model.getID());
             dto.setId(model.getId());
             dto.setRating(model.getRating());
             dto.setName(model.getName());

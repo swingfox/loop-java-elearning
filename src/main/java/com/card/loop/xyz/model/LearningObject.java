@@ -19,14 +19,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class LearningObject {
 
     /*
-    *Id of the Learning Object mongoDB
+    *ObjectId of the Learning Object in mongoDB
     */    
     @Id
-    private String _id;
-    /*
-    *ObjectId of the Learning Object in 
-    */
-    private String id;    
+    private String id;  
     /*
     *Name of the Learning Object
     */
@@ -84,19 +80,11 @@ public class LearningObject {
     }
     
     /**
-     * Gets the Id of the Learning Object 
-     * @return String This returns the id of Learning Object.
+     * Gets the Id of the Learning Object in mongoDB
+     * @return String This returns the id of Learning Object in mongoDB.
      */
     public String getId(){
         return this.id;
-    }
-
-    /**
-     * Gets the Id of the Learning Object in mongoDB
-     * @return Long This returns the id of Learning Object.
-     */
-    public String getID(){
-        return this._id;
     }
 
     /**
@@ -188,21 +176,13 @@ public class LearningObject {
     }
 
     /**
-     * Sets the id of the Learning Object 
-     * @param id Long
+     * Sets the id of the Learning Object in mongoDB
+     * @param id String
      */
     public void setId(String id){
         this.id = id;
     }
     
-    /**
-     * Sets the id of the Learning Object in mongoDB
-     * @param id Long
-     */
-    public void setID(String id){
-        this._id = id;
-    }
-
     /**
      * Sets the status of the Learning Object to Reviewed, Being Reviewed, or
      * Not Yet Reviewed
