@@ -145,7 +145,7 @@
                                                 <img ng-if="le.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
 
                                             </td>
-                                            <td><a href="'" ng-click="LEDetails(le)"><label ng-model="name">{{le.name}}</a></td>
+                                            <td><a href="/loop-XYZ/store/downloadLE" ng-click="LEDetails(le)"><label ng-model="name">{{le.name}}</a></td>
                                             <td><label ng-model="subject">{{le.subject}}</td>
                                             <td><label ng-model="dateUploaded">{{le.dateUploaded}}</td>
                                             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="rating">{{le.rating}}</td>

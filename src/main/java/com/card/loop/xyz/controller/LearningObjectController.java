@@ -31,6 +31,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpRequest;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -140,9 +141,9 @@ public class LearningObjectController {
         return dtos;
     }
 
-    @RequestMapping("/LODetails")    
+    @RequestMapping("/download/{id}")    
     @ResponseBody
-    public LearningObjectDto LODetails(@RequestBody String id) throws UnknownHostException
+    public LearningObjectDto LODetails(@PathVariable String id) throws UnknownHostException
     {
         LearningObjectDto dto = new LearningObjectDto();
         try{
