@@ -217,7 +217,7 @@
 									<!-- <button type="submit" class="btn btn-primary"><i class="icon-upload-alt icon-large"></i> Upload</button> -->
 									
 
-									<button type="submit" class="btn btn-primary tour-step tour-step-twelve"><i class="icon-upload-alt icon-large"></i> Upload</button>
+                                                                        <button type="submit" href="/loop-XYZ/store/developer-update" class="btn btn-primary tour-step tour-step-twelve" ><i class="icon-upload-alt icon-large" ></i> Upload</button>
 								
 
 									<!-- <a href="index.php" class="btn btn-default">Cancel</a> -->

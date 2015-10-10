@@ -78,14 +78,14 @@
 						</a>
 	                </div>
 					
-					<div class="navbar-collapse collapse">
+					<div class="navbar-collapse collapse" ng-controller="LoginCtrl">
 
 						<!--?php $this->layout->user_menu() ?-->
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
                                                         <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
 
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
                                                         <ul class="dropdown-menu">
 
                                                                 <li role="presentation" class="dropdown-header">Options</li>
@@ -95,7 +95,7 @@
 
                                                                 <li class="divider"></li>
 
-                                                                <li><a href="index.php/account/logout"><i class="icon-off"></i> Logout</a></li>
+                                                                <li><a href="loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
                                                         </ul>
                                                      </li>
                                                 </ul>
@@ -107,19 +107,16 @@
 
 		<div class="clearfix"></div>
 
-		<div id="breadcrumb-wrap">
+		<div id="breadcrumb-wrap" ng-controller="LOList">
 			<!-- <div class="container"> -->
 				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="/loop-XYZ/store/reviewer-update">Back to Learning Object List</a></li>
+					<li><a class="breadcrumb-link" href="/loop-XYZ/store/reviewer-update" ng-click="clearLO()">Back to Learning Object List</a></li>
 					<li class="active">Download</li>
 				</ol>
 			<!-- </div> -->
 		</div> 
 
 		<div class="clearfix"></div>
-
-
-		<!-- Gi sugdan -->
 
 		<!-- <div id="content-wrap"> -->
 		<div id="content-download">
@@ -137,38 +134,33 @@
 
                     <!-- <legend class="col-md-12 col-md-push-3">Download</legend> -->
 
-                    <form ng-controller="LODisplayDetails" class="form-horizontal bootstrap-validator-form" method="post" id="defaultForm" novalidate="novalidate">
+                    <form ng-controller="LOList" class="form-horizontal bootstrap-validator-form" id="defaultForm" novalidate="novalidate">
                         <div class="well">	
-	                        <div class="form-group">
-                                    <label class="col-md-3 control-label download" ng-model="filename">Filename : {{filename}}</label>
+                            <div class="form-group" >
+                                    <label class="col-md-3 control-label download">Filename :</label>
 	                            <div class="col-md-8">
-                                        <!--<input type="text" name="username" class="form-control" value="{{filename}}" ng-model="filename">  -->
-	                                <!-- <p class="download-details"><//?php echo $lo->getName(); ?></p> -->
-	                                <p class="download-details"><!--?php echo $lo->getName(); ?--></p>
+	                                <p class="download-details">{{lo.name}}</p>
 	                            </div>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
-	                            <label class="col-md-3 control-label download" ng-model="subject">Subject : {{subject}}</label>
+	                            <label class="col-md-3 control-label download">Subject :</label>
 	                            <div class="col-md-8">
-	                                <!-- <input type="text" name="email" class="form-control"> -->
-	                                <p class="download-details"><!--?php echo $lo->getSubject(); ?--></p>
+	                                <p class="download-details">{{lo.subject}}</p>
 	                            </div>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
-	                            <label class="col-md-3 control-label download" ng-model="dateUploaded">Date Uploaded : {{dateUploaded}}</label>
+	                            <label class="col-md-3 control-label download">Date Uploaded :</label>
 	                            <div class="col-md-8">
-	                                <!-- <input type="password" name="password" class="form-control"> -->
-	                                <p class="download-details"><!--?php echo $lo->getDateUploaded(); ?--></p>
+	                                <p class="download-details">{{lo.dateUploaded}}</p>
 	                            </div>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
-	                            <label class="col-md-3 control-label download" ng-model="description">Description : {{description}}</label>
+	                            <label class="col-md-3 control-label download">Description :</label>
 	                            <div class="col-md-8">
-	                                <!-- <input type="password" name="confirmPassword" class="form-control"> -->
-	                                <p class="download-details"><!--?php echo $lo->getDescription(); ?--></p>
+	                                <p class="download-details">{{lo.description}}</p>
 	                            </div>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 	                    </div>	
@@ -181,7 +173,8 @@
                                 if($lo->getStatus() == 2 && $lo->getRev() == $username)
                                 echo '<a href="'.base_url().'redirect/review_rev/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>';
                                 ?-->
-                                <a class="btn btn-default" href="index.php">Back</a>
+                                <a href="#" class="btn btn-primary"><i class="icon-download-alt icon-large"></i> Download</a>
+                                <a class="btn btn-default" href="/loop-XYZ/store/reviewer-update" ng-click="clearLO()">Back</a>
                             </div>
 									
                     </form>
@@ -254,6 +247,7 @@
         <!-- Form Validator =================================================-->
         <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>        
         <script src="js/angular/angular.js"></script>
+        <script src="js/angular/ngStorage.js"></script>
         <script src="js/loop.js"></script>
         <script>
 

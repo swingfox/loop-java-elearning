@@ -147,7 +147,7 @@
                                                                     <img ng-if="lo.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
                                                                     
                                                                 </td>
-                                                                <td><a href="" ng-click="LODetails(lo)"><label ng-model="lo.name">{{lo.name}}</a></td>
+                                                                <td><a ng-click="GetLO(lo)"><label ng-model="lo.name">{{lo.name}}</a></td>
 
                                                                 <td><label ng-model="lo.subject">{{lo.subject}}</td>
                                                                 <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>

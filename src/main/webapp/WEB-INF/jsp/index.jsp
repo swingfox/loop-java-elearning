@@ -756,14 +756,16 @@
 <script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
 <script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
+<script src="js/angular/angular.js"></script>
+<script src="js/angular/ngStorage.js"></script>
+<script src="js/login_signup.js" type="text/javascript"></script>
+<script src="js/loop.js" type="text/javascript"></script>
 <script src="js/main.js"></script>
 <script src="js/js-flat-ui/flatui-checkbox.js"></script>
 <script src="js/js-flat-ui/flatui-radio.js"></script>
 <script src="js/js-flat-ui/jquery.tagsinput.js"></script>
 <script src="js/js-flat-ui/jquery.placeholder.js"></script>
 <script src="js/js-flat-ui/jquery.stacktable.js"></script>
-<script src="js/angular/angular.js"></script>
-<script src="js/angular/ngStorage.js"></script>
 <script src="js/datatables/jquery.dataTables.min.js"></script>
 <script src="js/datatables/dataTables.bootstrap.js"></script>        
 <script src="js/backstretch-jquery/jquery.backstretch.min.js"></script>
@@ -785,28 +787,6 @@
 <script>
     $("#banner-wrap").backstretch("img/img-banner.jpg");
 </script>
-
-<script>
-    $(function () {
-        $('a[href*=#header-wrap], a[href*=#before-content], a[href*=#before-features], a[href*=#before-team]').click(function () {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
-                    || location.hostname == this.hostname) {
-
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top
-                    }, 1000);
-                    return false;
-                }
-            }
-    })        });
-
-</script>
-
-<script src="js/login_signup.js" type="text/javascript"></script>
-<script src="js/loop.js" type="text/javascript"></script>
 <script>
  $('userId').hide();
  $('userName').hide();

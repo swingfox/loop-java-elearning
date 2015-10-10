@@ -64,22 +64,50 @@ eS.controller('LoginCtrl', ['$scope', '$store', function($scope, $store) {
         $store.remove('username'); 
         $store.remove('userId');
     };
+
 }]);
 
-eS.controller('LOList', ['$scope', '$http', function($scope, $http) {
+eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $http) {
+        $store.bind($scope, 'lo.id', '');
+        $store.bind($scope, 'lo.name', '');
+        $store.bind($scope, 'lo.subject', '');
+        $store.bind($scope, 'lo.dateUploaded', '');
+        $store.bind($scope, 'lo.description', '');
     $http.get("/loop-XYZ/loop/LO/list")    
     .success(function(data) {
         console.log(JSON.stringify(data));
     	$scope.los = data;
-        //console.log(""+ response);
-    	//$scope.filename = data.filename;
-        //console.log("" + response);
     })
     .error(function(jqXHR, status, error) {
-    	//$scope.tasks = response.taskList;
         console.log(""+ error);
-        //console.log("" + response);
     });
+    
+     $scope.GetLO = function(lo) {
+        console.log("SULOD");
+        $http.get('/loop-XYZ/loop/LO/download/' + lo.id)    
+        .success(function(data) {
+            $store.bind($scope, 'lo.id', data.id); 
+            $store.bind($scope, 'lo.name', data.name);
+            $store.bind($scope, 'lo.subject', data.subject); 
+            $store.bind($scope, 'lo.dateUploaded', data.dateUploaded); 
+            $store.bind($scope, 'lo.description', data.description); 
+         if($store.get('id') === "developer")
+             window.location = '/loop-XYZ/store/historyLO-dev';
+         else
+             window.location = '/loop-XYZ/store/download';
+        })
+        .error(function(jqXHR, status, error) {
+            console.log(""+ error);
+        });
+    }; 
+    
+    $scope.clearLO = function(){ 
+        $store.remove('lo.id'); 
+        $store.remove('lo.name');
+        $store.remove('lo.subject');
+        $store.remove('lo.dateUploaded');
+        $store.remove('lo.description');
+    };
  }]);
     
  eS.controller('blockCtrl', ['$scope', '$http', function($scope, $http) {
@@ -93,10 +121,7 @@ eS.controller('LOList', ['$scope', '$http', function($scope, $http) {
         //console.log("" + response);
     });
     
-    $scope.LODetails = function(lo) {
-        console.log("SULOD");
-    	window.location = '/loop-XYZ/loop/LO/download/' + lo.id;
-    }; 
+   
 }]);
 
 eS.controller('LODisplayDetails', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
