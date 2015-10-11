@@ -54,6 +54,8 @@ public class UserService {
             model.setUserType(user.getUsertype());
             model.setEmail(user.getEmail());
             model.setUserType(user.getUsertype());
+            model.setBlocked(false);
+            model.setLastLogin(new Date().toString());
             UserDAO.saveUser(model);
             ok = true;
         }
