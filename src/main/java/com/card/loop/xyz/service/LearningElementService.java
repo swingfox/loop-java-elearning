@@ -16,26 +16,26 @@ import java.util.List;
  * @author Julie Jane Alegre
  */
 public class LearningElementService {
-    public LearningElementDto getSpecificLearningElement(LearningElementDto le) throws UnknownHostException{
+    
+    public LearningElementDto getSpecificLearningElement(String id) throws UnknownHostException{
         LearningElement leModel;
-        leModel = LearningElementDAO.getSpecificLearningElement(le.getName());
-       if(leModel != null){
-            //lo.setId(loModel.getID());
-            le.setName(leModel.getName());
-            le.setDescription(leModel.getDescription());
-            le.setSubject(leModel.getSubject());
-            le.setDateUploaded(leModel.getDateUploaded());
-            
-            /*dto.setDownloads(model.getDownloads());           
-            dto.setRating(model.getRating());
-            dto.setRev(model.getRev());
-            dto.setStatus(model.getStatus());
-            dto.setComments(model.getComments());
-            dto.setUploadedBy(model.getUploadedBy());
-            dto.setFilepath(model.getFilepath());
-            */
+        leModel = LearningElementDAO.getSpecificLearningElement(id);
+        LearningElementDto dto = new LearningElementDto();
+       if(leModel != null){  
+            dto.setId(leModel.getId());
+            dto.setName(leModel.getName());
+            dto.setDescription(leModel.getDescription());
+            dto.setSubject(leModel.getSubject());
+            dto.setDateUploaded(leModel.getDateUploaded());
+            dto.setDownloads(leModel.getDownloads());           
+            dto.setRating(leModel.getRating());
+            dto.setRev(leModel.getRev());
+            dto.setStatus(leModel.getStatus());
+            dto.setComments(leModel.getComments());
+            dto.setUploadedBy(leModel.getUploadedBy());
+            dto.setFilepath(leModel.getFilePath());            
         }
-        return le;
+        return dto;
     }
     
      public List<LearningElementDto> getLearningElements() throws UnknownHostException{
