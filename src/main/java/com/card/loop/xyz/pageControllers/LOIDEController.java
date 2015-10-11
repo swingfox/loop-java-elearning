@@ -21,6 +21,7 @@ import com.loop.controller.ContentShipper;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Date;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -75,7 +76,8 @@ public class LOIDEController {
 		if (!file.isEmpty()) {
                 try {
                     byte[] bytes = file.getBytes();
-                    File fil = new File("C:/Users/David/Desktop/Software Engineering/loop-java-elearning/uploads//"+ type + "//" + file.getOriginalFilename());
+       //             File fil = new File("C:/Users/David/Desktop/Software Engineering/loop-java-elearning/uploads//"+ type + "//" + file.getOriginalFilename());
+                    File fil = new File("C:/Users/aislinn.dell-PC/Desktop/SoftEng/LOOP/latest/loop-java-elearning/uploads//"+ type + "//" + file.getOriginalFilename());
                     BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fil));
                     stream.write(bytes);
                     stream.close();
@@ -85,6 +87,10 @@ public class LOIDEController {
                         le.setName(title);
                         le.setUploadedBy(author);
                         le.setDescription(description);
+                        le.setDownloads(0);
+                        le.setStatus("1");
+                        le.setRating(1);
+                        le.setDateUploaded(new Date().toString());
                         le.setFilePath(file.getOriginalFilename());
                         LearningElementDAO.addLearningElement(le);
                     }

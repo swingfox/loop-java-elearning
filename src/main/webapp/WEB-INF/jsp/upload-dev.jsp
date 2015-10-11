@@ -180,7 +180,7 @@
                                 <!-- <button type="reset" class="btn btn-default">Cancel</button> -->
 
                                 <!-- <button onclick="document.location='http://localhost/loop-sp-ci7/redirect/LO'" type="button" class="btn btn-default">Cancel</button> -->
-                                <a class="btn btn-default" href="index.jsp">Cancel</a>
+                                <a class="btn btn-default" href="/loop-XYZ/store/developer-update">Cancel</a>
 
                                 <!-- <button onclick="document.location='http://localhost/jiary/index.php/journal/create_entry'" class="btn btn-success btn-lg btn-block main" type="button">Create</button>
                                 <button type="button" class="btn btn-info btn-lg btn-block main" onclick="document.location='http://localhost/jiary/index.php/journal/jiary_view'">Jiary View</button> -->
