@@ -83,7 +83,7 @@ public class LearningElementDAO {
         //Query query= new Query();
         //query.addCriteria(where("name").is(lo));
         //mongoOps.findo
-        return mongoOps.findOne(query(where("name").is(le)), LearningElement.class);
+        return mongoOps.findOne(query(where("id").is(le)), LearningElement.class);
         //MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
         //LearningObject p = null;
         //p = mongoOps.findOne(query(where("name").is(lo)), LearningObject.class);

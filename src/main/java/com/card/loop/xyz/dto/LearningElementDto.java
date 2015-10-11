@@ -15,7 +15,7 @@ public class LearningElementDto {
     /*
     *id of learning element
     */
-    private Long id;
+    private String id;
     /*
     *name of learning element
     */
@@ -79,14 +79,14 @@ public class LearningElementDto {
      * Gets the id of the learning element
      * @return Long This returns the id of the learning element
      */
-    public Long getId(){
+    public String getId(){
         return this.id;
     }
     /**
      * Sets the id of the learning element
      * @param id 
      */
-    public void setId(Long id){
+    public void setId(String id){
        this.id=id;
     }
     /**

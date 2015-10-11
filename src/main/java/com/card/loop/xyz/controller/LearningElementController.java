@@ -15,6 +15,7 @@ import com.card.loop.xyz.service.UserService;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,24 +31,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class LearningElementController {
    LearningElementService leService = new LearningElementService();
-    @RequestMapping("/login")
-    @ResponseBody
-    public LearningElementDto LE(@RequestBody LearningElementDto le) throws UnknownHostException
-    {
-        LearningElementDto result = null;
-        try{
-            System.out.println("LE");
-        LearningElementService service = new LearningElementService();
-        result = service.getSpecificLearningElement(le);
-        if(result==null)
-            le.getErrorList().add("NULLL!");
-        }catch(Exception e){
-            //user.getErrorList().add(e.toString());
-            System.out.println(e.toString());
-        }
-        return result;
-    }
-    
     @RequestMapping("/list")
     @ResponseBody
     public List<LearningElementDto> ListLE()
@@ -60,4 +43,14 @@ public class LearningElementController {
         return dtos;
     }
     
+    @RequestMapping("/downloadLE/{id}")    
+    @ResponseBody
+    public LearningElementDto LEDetails(@PathVariable String id) throws UnknownHostException
+    {
+        LearningElementDto dto = new LearningElementDto();
+        try{
+            dto = leService.getSpecificLearningElement(id);
+        }catch(Exception e){ e.printStackTrace();}
+        return dto;
+    }
 }

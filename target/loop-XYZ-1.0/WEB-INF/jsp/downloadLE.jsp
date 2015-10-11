@@ -1,71 +1,26 @@
-<%--NOTE:
-<!--Functions in php that have not been transfered/revised here:-->
-    <!--?php $this->layout->modal_footer() ?>-->
-    <!--?php echo date("Y"); ?-->
-    under <div class="page-header download">
-    under <div class="form-actions advanced-search">
-    <?php echo $le->getName(); ?>
-    <?php echo $le->getSubject(); ?>
-    <?php echo $le->getDateUploaded(); ?>
-    <?php echo $le->getDescription(); ?>
---%>
 
-<!--?php
-	session_start();//to use session variables
-	require './application/controllers/LEController.php';
-	$les = unserialize($_SESSION['les']);
-	$index = $counter;
-	$le = $les[$index];
-	$filepath = $le->getFilepath();
-?-->
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="loop">
 <head>
 <title>LOOP | Download</title>
 
-<!--?php $this->layout->header() ?-->
-<link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
-
-    <!-- Bootstrap 3 -->
+    <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
     <link href="css/bootstrap3/dist/css/bootstrap.css" rel="stylesheet" media="screen" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Date Picker -->
     <link href="css/bootstrapformhelpers/css/bootstrap-formhelpers.css" rel="stylesheet" />
-
-    <!-- Modal -->
     <link href="css/bootstrap-modal-master/css/bootstrap-modal.css" rel="stylesheet" />
-
-    <!-- Icons -->
     <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
-
-    <!-- 1170 grid -->
     <link type="text/css" href="css/css-include/1170grid.css" rel="stylesheet" />           
-
-    <!-- Bootstrap Tour -->
     <link href="js/bootstrap-tour/build/css/bootstrap-tour.css" rel="stylesheet" />
     <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
-
     <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
-
-    <!-- Input File -->
     <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
-
-    <!-- Form Validator -->
     <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
-
-
 </head>
-<body>	
-	<!-- <div id="wrapper"> -->
-	<div class="wrapper">
-    	<!--?php $this->layout->modal_footer() ?-->
-		
+	<div class="wrapper">		
 		<div id="header-wrap">
 			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-				<!-- <div class="container"> -->
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 							<span class="icon-bar"></span>
@@ -78,148 +33,85 @@
 						</a>
 	                </div>
 					
-					<div class="navbar-collapse collapse">
+					<div class="navbar-collapse collapse" ng-controller="LoginCtrl">
 
-						<!--?php $this->layout->user_menu() ?-->
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
-                                                        <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
-
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
                                                         <ul class="dropdown-menu">
-
                                                                 <li role="presentation" class="dropdown-header">Options</li>
-
                                                                 <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
                                                                 <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
-
                                                                 <li class="divider"></li>
 
-                                                                <li><a href="index.php/account/logout"><i class="icon-off"></i> Logout</a></li>
+                                                                <li><a href="loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
                                                         </ul>
                                                      </li>
                                                 </ul>
+					
 					</div>
-				<!-- </div> -->
+			
 			</nav>
 		</div>
 
 		<div class="clearfix"></div>
 
-		<div id="breadcrumb-wrap">
-			<!-- <div class="container"> -->
+		<div id="breadcrumb-wrap" ng-controller="LOList">
 				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="/loop-XYZ/store/reviewer-le">Back to Learning Element List</a></li>
+					<li><a class="breadcrumb-link" href="/loop-XYZ/store/reviewer-update" ng-click="clearLE()">Back to Learning Object List</a></li>
 					<li class="active">Download</li>
 				</ol>
-			<!-- </div> -->
 		</div> 
 
 		<div class="clearfix"></div>
-
-
-		<!-- Gi sugdan -->
-
-		<!-- <div id="content-wrap"> -->
 		<div id="content-download">
 			<div class="container">
-				<!-- <div class="col-md-8 col-md-push-2"> -->
 				<div class="col-md-6 col-md-push-3">
                     <div class="page-header download">
-                    	<!--?php 
-                    	if($le->getStatus() == 0)
-                        	echo '<h2 class="download">Download</h2>';
-                        else
-                        	echo '<h2 class="download">Review</h2>';
-                        ?-->
-                    </div>
-
-                    <!-- <legend class="col-md-12 col-md-push-3">Download</legend> -->
-
-                    <form class="form-horizontal bootstrap-validator-form" method="post" id="defaultForm" novalidate="novalidate">
-                        <div class="well">		
-	                        <div class="form-group">
-	                            <label class="col-md-3 control-label download">Filename :</label>
+                    </div>       
+                    <form ng-controller="LEList" class="form-horizontal bootstrap-validator-form" id="defaultForm" novalidate="novalidate">
+                        <div class="well">	
+                            <div class="form-group" >
+                                    <label class="col-md-3 control-label download">Filename :</label>
 	                            <div class="col-md-8">
-	                                <!-- <input type="text" name="username" class="form-control"> -->
-	                                <!-- <p class="download-details"><//?php echo $le->getName(); ?></p> -->
-	                                <p class="download-details"><!--?php echo $le->getName(); ?--></p>
+	                                <p class="download-details">{{le.name}}</p>
 	                            </div>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Subject :</label>
 	                            <div class="col-md-8">
-	                                <!-- <input type="text" name="email" class="form-control"> -->
-	                                <p class="download-details"><!--?php echo $le->getSubject(); ?--></p>
+	                                <p classdownload-details ng-binding="download-details">{{le.subject}}</p>
 	                            </div>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
-	                            <label class="col-md-3 control-label download">Date Uploaded:</label>
+	                            <label class="col-md-3 control-label download">Date Uploaded :</label>
 	                            <div class="col-md-8">
-	                                <!-- <input type="password" name="password" class="form-control"> -->
-	                                <p class="download-details"><!--?php echo $le->getDateUploaded(); ?--></p>
+	                                <p class="download-details">{{le.dateUploaded}}</p>
 	                            </div>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Description :</label>
 	                            <div class="col-md-8">
-	                                <!-- <input type="password" name="confirmPassword" class="form-control"> -->
-	                                <p class="download-details"><!--?php echo $le->getDescription(); ?--></p>
+	                                <p class="download-details">{{le.description}}</p>
 	                            </div>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 	                    </div>	
 
-                            <div class="form-actions advanced-search">
-                                <!--?php
-                                echo '<input type="hidden" value="'.$le->getID().'" id="id" name="id">';
-                                if($le->getStatus() == 0)
-                                 echo '<a href="'.base_url().'redirect/downloadNow/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-download-alt icon-large"></i> Download</a>';
-                                if($le->getStatus() == 2 && $le->getRev() == $username)
-                                echo '<a href="'.base_url().'redirect/review_rev/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>';
-                                ?-->
-
-                                <a class="btn btn-default" href="index.php">Back</a>
-                            </div>
-									
-                    </form>
-                </div>
-				<div class="clearfix"></div>				
-			</div>
-		</div> 
-
-  		<div class="clearfix"></div>
-
-  		<!-- This is the original footer with id=wrapper -->
-		<!-- <footer id="footer-wrap-index"> -->
-			<!-- <div class="container">
-		    	<div class="copyright-here pull-left">
-					Copyright &copy; <?php //echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<button id="aime" class="btn btn-default">Test</button>
-		    	</div>
-	  		</div>
-    	</footer> -->
-		
-		<!-- Take this out if you want the original footer back -->
+                            <div class="form-actions advanced-search">                                    
         <div class="push"></div>
 	</div>
 
 	<div class="footer">
 		<footer id="footer-wrap-index">
-			<!-- <div class="container"> -->
+			
 	            <div class="copyright-here pull-left download">
-					Copyright &copy; <!--?php echo date("Y"); ?--> LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
+					Copyright &copy; LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
 		    	</div>
-		    <!-- </div> -->
 	    </footer>
     </div>
-
-	<!-- Load JS here for greater good =============================-->
-
-	<!--?php $this->layout->footer_subpages() ?-->
-
-	<!--?php $this->layout->footer() ?-->
         <script src="css/bootstrap3/assets/js/jquery.js"></script>
         <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
         <script src="js/main.js"></script>
@@ -232,24 +124,17 @@
         <script src="js/js-flat-ui/jquery.placeholder.js"></script>
         <script src="js/js-flat-ui/jquery.stacktable.js"></script>
         <script src="http://vjs.zencdn.net/c/video.js"></script>
-
         <script src="js/backstretch-jquery/jquery.backstretch.min.js"></script>
-
         <script src="js/datatables/jquery.dataTables.min.js"></script>
-
         <script src="js/datatables/dataTables.bootstrap.js"></script>
-
-
         <script src="css/bootstrap3/js/tooltip.js"></script>
         <script src="css/bootstrap3/js/popover.js"></script>
-
-        <!-- Bootstrap tour =================================================-->
         <script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
         <script src="bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
-        <!--script src="'.$this->base_url.'js/reviewer-tour-script.js"></script-->
-
-        <!-- Form Validator =================================================-->
-        <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
+        <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>        
+        <script src="js/angular/angular.js"></script>
+        <script src="js/angular/ngStorage.js"></script>
+        <script src="js/loop.js"></script>
         <script>
 
 
@@ -294,8 +179,6 @@
                 });
             </script>
 
-
-  <!-- Change Email Script =================================================-->
    <script>
                 $(document).ready(function(){
                     $("#changeEmail").click(function(e){
@@ -352,8 +235,6 @@
                 $(this).show();
                 datatable_configuration_for_bootstrap_three($(this));
             });
-
-            // datatable configuration for bootstrap 3
             function datatable_configuration_for_bootstrap_three(datatable){
             	datatable.addClass('col-md-12');
                 var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
@@ -374,11 +255,7 @@
 		    $('#defaultForm').bootstrapValidator({
 		        message: 'This value is not valid',
 		        submitHandler: function(validator, form) {
-	                // validator is the BootstrapValidator instance
-	                // form is the jQuery object present the current form
-	                // form.find('.alert').html('Thanks for signing up. Now you can sign in as ' + validator.getFieldElement('username').val()).show();
 	                form.find('.alert').html('Password Changed.').show();
-	                //form.submit();
 	            },
 		        fields: {
 		            username: {
@@ -408,18 +285,6 @@
 		                    }
 		                }
 		            },
-		            // password: {
-		            //     validators: {
-		            //         notEmpty: {
-		            //             message: 'The password is required and can\'t be empty'
-		            //         },
-		            //         identical: {
-		            //             field: 'password',
-		            //             message: 'The password and its confirm are not the same'
-		            //         }
-		            //     }
-		            // },
-
 		            newPassword: {
 		                validators: {
 		                    notEmpty: {
@@ -447,6 +312,4 @@
 		    });
 		});
 	</script>
-
-</body>
 </html>
