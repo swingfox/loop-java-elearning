@@ -83,8 +83,18 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
         console.log(""+ error);
     });
     
-     $scope.GetLO = function(lo) {
+    $scope.DownloadLO = function(name){
         console.log("SULOD");
+        $http.get('/loop-XYZ/loop/LO/downloadLO/' + name)    
+        .success(function(data){
+            console.log(data);
+        })
+        .error(function(jqXHR, status, error) {
+            console.log(""+ error);
+        });
+    };
+    
+     $scope.GetLO = function(lo) {
         $http.get('/loop-XYZ/loop/LO/download/' + lo.id)    
         .success(function(data) {
             $store.bind($scope, 'lo.id', data.id); 

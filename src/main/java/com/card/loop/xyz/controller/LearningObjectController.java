@@ -6,12 +6,15 @@
 package com.card.loop.xyz.controller;
 
 //import com.card.loop.xyz.dto.UserDto;
+import com.card.loop.xyz.dao.LearningElementDAO;
+import com.card.loop.xyz.dao.LearningObjectDAO;
 import com.card.loop.xyz.dto.LearningObjectDto;
 import com.card.loop.xyz.dto.UserDto;
 import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.service.LearningObjectService;
 import com.card.loop.xyz.service.UserService;
+import com.loop.controller.ContentShipper;
 import com.mongodb.util.JSON;
 
 
@@ -26,6 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpRequest;
@@ -34,6 +39,7 @@ import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 /**
@@ -135,4 +141,29 @@ public class LearningObjectController {
         }catch(Exception e){ e.printStackTrace();}
         return dto;
     }
+    
+    @RequestMapping(value = "/downloadLO/{elementID}", method = RequestMethod.GET)
+	public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
+	
+      //  LearningObject element= LearningObjectDAO.getLearningObject(elementID);
+                            
+                LearningObject element = LearningObjectDAO.getLearningObject(elementID);
+                System.out.println("ELEMENT ID:" +  element.getFilepath());
+		String path = "C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LO\\" + element.getFilepath();
+		ContentShipper shipper = new ContentShipper(request, response, true);
+		shipper.ship(path);   
+	}
+        
+     @RequestMapping(value = "/downloadLO/{elementID}", method = RequestMethod.HEAD)
+	public void getFileH(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
+		
+      //   LearningObject element= LearningObjectDAO.getLearningObject(elementID);
+                LearningObject element = LearningObjectDAO.getLearningObject(elementID);
+
+                System.out.println("ELEMENT ID:" +  element.getFilepath());
+
+		String path = "C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LO\\" + element.getFilepath();
+		ContentShipper shipper = new ContentShipper(request, response, false);
+		shipper.ship(path);
+	}
 }

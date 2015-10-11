@@ -55,7 +55,7 @@ public class LOIDEController {
     @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.GET)
 	public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
 	
-        LearningElement element= LearningElementDAO.getSpecificLearningElement(elementID);
+        LearningElement element= LearningElementDAO.getSpecificLearningElementById(elementID);
 		String path = "C:\\Users\\jm-maricel\\Desktop\\100815\\loop-java-elearning\\uploads\\LE\\" + element.getName();
 		ContentShipper shipper = new ContentShipper(request, response, true);
 		shipper.ship(path);   
@@ -64,9 +64,9 @@ public class LOIDEController {
      @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.HEAD)
 	public void getFileH(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
 		
-        LearningElement element= LearningElementDAO.getSpecificLearningElement(elementID);
+        LearningElement element= LearningElementDAO.getSpecificLearningElementById(elementID);
 		String path = "C:\\Users\\jm-maricel\\Desktop\\100815\\loop-java-elearning\\uploads\\LE\\" + element.getName();
-		ContentShipper shipper = new ContentShipper(request, response, true);
+		ContentShipper shipper = new ContentShipper(request, response, false);
 		shipper.ship(path);
 	}
         
