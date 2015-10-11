@@ -173,7 +173,7 @@
                                 if($lo->getStatus() == 2 && $lo->getRev() == $username)
                                 echo '<a href="'.base_url().'redirect/review_rev/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>';
                                 ?-->
-                                <a href="#" class="btn btn-primary"><i class="icon-download-alt icon-large"></i> Download</a>
+                                <a class="btn btn-primary" href="/loop-XYZ/loop/LO/downloadLO/{{lo.id}}"><i class="icon-download-alt icon-large" ></i> Download</a>
                                 <a class="btn btn-default" href="/loop-XYZ/store/reviewer-update" ng-click="clearLO()">Back</a>
                             </div>
 									
