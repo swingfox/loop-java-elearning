@@ -21,6 +21,7 @@ import com.loop.controller.ContentShipper;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Date;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -53,20 +54,18 @@ public class LOIDEController {
     
     @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.GET)
 	public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
-		//request.setAttribute(FILE_ID, id);
-              
-                LearningElement element= LearningElementDAO.getSpecificLearningElement(elementID);
-		String path = "C:\\Users\\jm-maricel\\Desktop\\100415\\loop-java-elearning\\uploads\\LE\\" + element.getName();
+	
+        LearningElement element= LearningElementDAO.getSpecificLearningElement(elementID);
+		String path = "C:\\Users\\jm-maricel\\Desktop\\100815\\loop-java-elearning\\uploads\\LE\\" + element.getName();
 		ContentShipper shipper = new ContentShipper(request, response, true);
 		shipper.ship(path);   
 	}
         
      @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.HEAD)
 	public void getFileH(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
-		//request.setAttribute(FILE_ID, id);
-            
-                LearningElement element= LearningElementDAO.getSpecificLearningElement(elementID);
-		String path = "C:\\Users\\jm-maricel\\Desktop\\100415\\loop-java-elearning\\uploads\\LE\\" + element.getName();
+		
+        LearningElement element= LearningElementDAO.getSpecificLearningElement(elementID);
+		String path = "C:\\Users\\jm-maricel\\Desktop\\100815\\loop-java-elearning\\uploads\\LE\\" + element.getName();
 		ContentShipper shipper = new ContentShipper(request, response, true);
 		shipper.ship(path);
 	}
@@ -77,7 +76,8 @@ public class LOIDEController {
 		if (!file.isEmpty()) {
                 try {
                     byte[] bytes = file.getBytes();
-                    File fil = new File("C:/Users/David/Desktop/Software Engineering/loop-java-elearning/uploads//"+ type + "//" + file.getOriginalFilename());
+       //             File fil = new File("C:/Users/David/Desktop/Software Engineering/loop-java-elearning/uploads//"+ type + "//" + file.getOriginalFilename());
+                    File fil = new File("C:/Users/aislinn.dell-PC/Desktop/SoftEng/LOOP/latest/loop-java-elearning/uploads//"+ type + "//" + file.getOriginalFilename());
                     BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fil));
                     stream.write(bytes);
                     stream.close();
@@ -87,6 +87,10 @@ public class LOIDEController {
                         le.setName(title);
                         le.setUploadedBy(author);
                         le.setDescription(description);
+                        le.setDownloads(0);
+                        le.setStatus("1");
+                        le.setRating(1);
+                        le.setDateUploaded(new Date().toString());
                         le.setFilePath(file.getOriginalFilename());
                         LearningElementDAO.addLearningElement(le);
                     }

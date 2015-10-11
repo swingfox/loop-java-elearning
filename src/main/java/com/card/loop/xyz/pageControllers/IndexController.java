@@ -90,7 +90,7 @@ public class IndexController{
     public ModelAndView accessHistoryLODev() {
         return new ModelAndView("historyLO-dev");
     }
-    @RequestMapping("/reviewer-list")
+    @RequestMapping("/review-list")
     public ModelAndView accessReviewList() {
         return new ModelAndView("review-list");
     }
@@ -112,7 +112,7 @@ public class IndexController{
     }
     @RequestMapping("/reviewLO-admin")
     public ModelAndView accessReviewLOAdmin() {
-        return new ModelAndView("reviewLE-rev");
+        return new ModelAndView("reviewLO-admin");
     }
     @RequestMapping("/reviewLO-rev")
     public ModelAndView accessReviewLORev() {

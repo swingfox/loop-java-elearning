@@ -8,6 +8,21 @@ $(document).ready(function() {
         console.log("LOG IN");
         //$('#slider_now').nivoSlider();
         
+         $('a[href*=#header-wrap], a[href*=#before-content], a[href*=#before-features], a[href*=#before-team]').click(function () {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+                    || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+    });    
+        
         $('#btn-signup:submit').click(function(e) {
             if(!isValidEmailAddress( $("#email").val() ) ) { 
                 $('.error_message_1').text("Invalid email");
@@ -41,6 +56,7 @@ $(document).ready(function() {
         switchit = $.getURLParameter('action');
         <% } %>
             */
+           
         // Edited     
         var switchit = get("action");
         if(switchit == 'signup') 
@@ -117,6 +133,9 @@ $(document).ready(function() {
 		}
             });
         });
+        
+        
+        
     });
     function get(name){
         if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))

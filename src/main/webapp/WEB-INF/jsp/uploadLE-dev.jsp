@@ -113,7 +113,7 @@
                         <h2 class="download">Upload Learning Element: Revision</h2>
                     </div>
 
-			<form action="/loop-XYZ/store/loide/upload" enctype="multipart/form-data" method="post" name="upload" class="form-horizontal">-->
+			<form action="/loop-XYZ/store/loide/upload" enctype="multipart/form-data" method="post" name="upload" class="form-horizontal">
                     <!-- <form class="form-horizontal bootstrap-validator-form" action="<?php //echo base_url()?>index.php/uploading/do_upload" method="post" id="defaultForm" novalidate="novalidate"> -->
 						
 						<!-- <?php echo form_open_multipart('uploading/do_upload','id="myform"');?> -->
@@ -217,14 +217,14 @@
 									<!-- <button type="submit" class="btn btn-primary"><i class="icon-upload-alt icon-large"></i> Upload</button> -->
 									
 
-									<button type="submit" class="btn btn-primary tour-step tour-step-twelve"><i class="icon-upload-alt icon-large"></i> Upload</button>
+                                                                        <button type="submit" href="/loop-XYZ/store/developer-update" class="btn btn-primary tour-step tour-step-twelve" ><i class="icon-upload-alt icon-large" ></i> Upload</button>
 								
 
 									<!-- <a href="index.php" class="btn btn-default">Cancel</a> -->
 									<!-- <button type="reset" class="btn btn-default">Cancel</button> -->
 
 									<!-- <button onclick="document.location='http://localhost/loop-sp-ci7/redirect/LO'" type="button" class="btn btn-default">Cancel</button> -->
-									<a class="btn btn-default" href="<?php echo base_url() ?>index.php">Cancel</a>
+									<a class="btn btn-default" href="/loop-XYZ/store/developer-update">Cancel</a>
 
 									<!-- <button onclick="document.location='http://localhost/jiary/index.php/journal/create_entry'" class="btn btn-success btn-lg btn-block main" type="button">Create</button>
 									<button type="button" class="btn btn-info btn-lg btn-block main" onclick="document.location='http://localhost/jiary/index.php/journal/jiary_view'">Jiary View</button> -->

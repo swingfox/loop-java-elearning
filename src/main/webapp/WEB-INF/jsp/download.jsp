@@ -78,14 +78,14 @@
 						</a>
 	                </div>
 					
-					<div class="navbar-collapse collapse">
+					<div class="navbar-collapse collapse" ng-controller="LoginCtrl">
 
 						<!--?php $this->layout->user_menu() ?-->
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
                                                         <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
 
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
                                                         <ul class="dropdown-menu">
 
                                                                 <li role="presentation" class="dropdown-header">Options</li>
@@ -95,7 +95,7 @@
 
                                                                 <li class="divider"></li>
 
-                                                                <li><a href="index.php/account/logout"><i class="icon-off"></i> Logout</a></li>
+                                                                <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
                                                         </ul>
                                                      </li>
                                                 </ul>
@@ -107,19 +107,16 @@
 
 		<div class="clearfix"></div>
 
-		<div id="breadcrumb-wrap">
+		<div id="breadcrumb-wrap" ng-controller="LOList">
 			<!-- <div class="container"> -->
 				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="/loop-XYZ/store/reviewer-update">Back to Learning Object List</a></li>
+					<li><a class="breadcrumb-link" href="/loop-XYZ/store/reviewer-update" ng-click="clearLO()">Back to Learning Object List</a></li>
 					<li class="active">Download</li>
 				</ol>
 			<!-- </div> -->
 		</div> 
 
 		<div class="clearfix"></div>
-
-
-		<!-- Gi sugdan -->
 
 		<!-- <div id="content-wrap"> -->
 		<div id="content-download">
@@ -137,38 +134,33 @@
 
                     <!-- <legend class="col-md-12 col-md-push-3">Download</legend> -->
 
-                    <form ng-controller="LODisplayDetails" class="form-horizontal bootstrap-validator-form" method="post" id="defaultForm" novalidate="novalidate">
+                    <form ng-controller="LOList" class="form-horizontal bootstrap-validator-form" id="defaultForm" novalidate="novalidate">
                         <div class="well">	
-	                        <div class="form-group">
-                                    <label class="col-md-3 control-label download" ng-model="filename">Filename : {{filename}}</label>
+                            <div class="form-group" >
+                                    <label class="col-md-3 control-label download">Filename :</label>
 	                            <div class="col-md-8">
-                                        <!--<input type="text" name="username" class="form-control" value="{{filename}}" ng-model="filename">  -->
-	                                <!-- <p class="download-details"><//?php echo $lo->getName(); ?></p> -->
-	                                <p class="download-details"><!--?php echo $lo->getName(); ?--></p>
+	                                <p class="download-details">{{lo.name}}</p>
 	                            </div>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
-	                            <label class="col-md-3 control-label download" ng-model="subject">Subject : {{subject}}</label>
+	                            <label class="col-md-3 control-label download">Subject :</label>
 	                            <div class="col-md-8">
-	                                <!-- <input type="text" name="email" class="form-control"> -->
-	                                <p class="download-details"><!--?php echo $lo->getSubject(); ?--></p>
+	                                <p class="download-details">{{lo.subject}}</p>
 	                            </div>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
-	                            <label class="col-md-3 control-label download" ng-model="dateUploaded">Date Uploaded : {{dateUploaded}}</label>
+	                            <label class="col-md-3 control-label download">Date Uploaded :</label>
 	                            <div class="col-md-8">
-	                                <!-- <input type="password" name="password" class="form-control"> -->
-	                                <p class="download-details"><!--?php echo $lo->getDateUploaded(); ?--></p>
+	                                <p class="download-details">{{lo.dateUploaded}}</p>
 	                            </div>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
-	                            <label class="col-md-3 control-label download" ng-model="description">Description : {{description}}</label>
+	                            <label class="col-md-3 control-label download">Description :</label>
 	                            <div class="col-md-8">
-	                                <!-- <input type="password" name="confirmPassword" class="form-control"> -->
-	                                <p class="download-details"><!--?php echo $lo->getDescription(); ?--></p>
+	                                <p class="download-details">{{lo.description}}</p>
 	                            </div>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 	                    </div>	
@@ -181,7 +173,8 @@
                                 if($lo->getStatus() == 2 && $lo->getRev() == $username)
                                 echo '<a href="'.base_url().'redirect/review_rev/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>';
                                 ?-->
-                                <a class="btn btn-default" href="index.php">Back</a>
+                                <a href="#" class="btn btn-primary"><i class="icon-download-alt icon-large"></i> Download</a>
+                                <a class="btn btn-default" href="/loop-XYZ/store/reviewer-update" ng-click="clearLO()">Back</a>
                             </div>
 									
                     </form>
@@ -214,6 +207,95 @@
 		    <!-- </div> -->
 	    </footer>
     </div>
+        
+         <!-- echo '--><!-- Change Password Pop Up -->
+        <form id="defaultForm" method="post">
+            <div class="modal fade" id="responsive_changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header light-theme">
+                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <span class="popup">Change Password</span>
+                        </div>
+                        <div class="modal-body">  
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1 ">
+
+                                    <p class="alert alert-danger hide" id="error"><i class="icon-warning-sign"></i> Invalid password.</p>
+                                    <p class="alert alert-success hide" id="success"><i class="icon-ok"></i> Successfully changed password.</p>
+                                    
+
+                                    <!--' . $alert . '--><div class="form-group">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Old Password" required/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="enterNewPassword" name="newPassword" placeholder="Enter New Password" />
+                                    </div>
+
+                                    <div class="form-group last">
+                                        <input type="password" class="form-control last" id="confirmNewPassword" name="confirmNewPassword" placeholder="Confirm New password" />
+                                    </div>
+
+
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="modal-footer"> 
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-3 ">
+                                    <button type="submit" class="btn btn-primary" id="changepassword"><i class="icon-ok icon-large default"></i> Save</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- Change Email Pop Up -->
+        <form id="emailForm" method="post">
+            <div class="modal fade" id="responsive_changeEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header light-theme">
+                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <span class="popup">Change Email</span>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1">
+
+                                 <p class="alert alert-danger hide" id="error1"><i class="icon-warning-sign"></i> Invalid password.</p>
+                                    <p class="alert alert-success hide" id="success1"><i class="icon-ok"></i> Successfully changed password.</p>
+
+                                   
+
+                                   <!--' . $alert . '--> <div class="form-group">
+                                        <input type="password" class="form-control" id="emailPassword" name="emailPassword" placeholder="Enter Password" required/>
+                                    </div>
+
+                                    <div class="form-group last">
+                                        <input type="text" class="form-control last" id="enterNewEmail" name="enterNewEmail" placeholder="Enter New Email" required/>
+                                    </div>
+                                
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-3">
+                                    <button type="submit" class="btn btn-primary" id="changeEmail"><i class="icon-ok icon-large default"></i> Save</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </form>
 
 	<!-- Load JS here for greater good =============================-->
 
@@ -254,6 +336,7 @@
         <!-- Form Validator =================================================-->
         <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>        
         <script src="js/angular/angular.js"></script>
+        <script src="js/angular/ngStorage.js"></script>
         <script src="js/loop.js"></script>
         <script>
 

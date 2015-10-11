@@ -19,7 +19,7 @@
 ?>
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="loop">
     <head>
         <title>LOOP | History</title>
         <meta charset="utf-8">
@@ -178,7 +178,7 @@
 				<div class="row">
 					<div class="col-md-12 content">
 						
-						<div class="table-responsive">
+						<div class="table-responsive" ng-controller="LOList">
 						 	<!-- <table class="datatable table table-bordered"> -->
 						 	<table class="datatable table table-hover">
 
@@ -196,7 +196,7 @@
 								</tr>
 							</thead>
 					        <tbody>
-						        
+                                                <td>{{lo.id}}</td>
                                                     <!--<?php
 						        $controller = new LOController();
 						        $LOs = $controller->getLOHistory($name,$dev);
@@ -291,7 +291,33 @@
 	<!--?php $this->layout->footer_subpages() ?-->
 
 	<!--<?php $this->layout->footer() ?>-->
+        
+         <script src="css/bootstrap3/assets/js/jquery.js"></script>
+        <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
 
+
+
+        <script src="js/main.js"></script>
+
+
+        <script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
+        <script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
+        <script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
+        <script src="js/js-flat-ui/flatui-checkbox.js"></script>
+        <script src="js/js-flat-ui/flatui-radio.js"></script>
+        <script src="js/js-flat-ui/jquery.tagsinput.js"></script>
+        <script src="js/js-flat-ui/jquery.placeholder.js"></script>
+        <script src="js/js-flat-ui/jquery.stacktable.js"></script>
+        <script src="http://vjs.zencdn.net/c/video.js"></script>
+
+        <script src="js/backstretch-jquery/jquery.backstretch.min.js"></script>
+
+        <script src="js/datatables/jquery.dataTables.min.js"></script>
+
+        <script src="js/datatables/dataTables.bootstrap.js"></script>
+        <script src="js/angular/angular.js"></script>
+        <script src="js/angular/ngStorage.js"></script>
+        <script src="js/loop.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 		    $('#defaultForm').bootstrapValidator({

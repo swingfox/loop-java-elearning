@@ -18,7 +18,7 @@
 ?>
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="loop">
     <head>
         <title>LOOP | History</title>
         <meta charset="utf-8">
@@ -74,15 +74,32 @@
 							<span class="icon-bar"></span>
 						</button>
 	                    
-	                    <a class="navbar-brand" href="index.php">
+	                    <a class="navbar-brand" href="/loop-XYZ/store/admin-view">
 							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
 						</a>
 	                </div>
 					
-					<div class="navbar-collapse collapse">
+					<div class="navbar-collapse collapse" ng-controller="LoginCtrl">
 
-						<!--<?php $this->layout->user_menu() ?>-->
-					
+						<!--?php $this->layout->user_menu() ?-->
+                                                <ul class="nav navbar-nav navbar-right"> 
+                                                    <li class="dropdown">
+                                                        <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
+
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
+                                                        <ul class="dropdown-menu">
+
+                                                                <li role="presentation" class="dropdown-header">Options</li>
+
+                                                                <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
+                                                                <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
+
+                                                                <li class="divider"></li>
+
+                                                                <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
+                                                        </ul>
+                                                     </li>
+                                                </ul>
 					</div>
 				<!-- </div> -->
 			</nav>
@@ -101,7 +118,7 @@
 
 		<div class="clearfix"></div>
 
-		<form name="uniquetest" method="post" action="<?php echo base_url().'redirect/deleteLO_admin/'?>">
+		<form name="uniquetest" method="post" >
             <div class="modal fade" id="responsive_confirmDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -112,7 +129,7 @@
                         <div class="modal-body">  
                             <div class="row">
                                 <div class="col-md-10 col-md-push-1">                                 
-                                    <label class="file-action">Are you sure you want to delete this Learning Object?</label>
+                                    <label class="file-action">Are you sure you want to delete this Learning Element?</label>
                                 </div> 
                             </div>
                         </div>
@@ -130,52 +147,7 @@
             </div>
         </form>
 
-        <form name="tester" method="post" action="<?php echo base_url().'redirect/plusrevLO/'?>">
-            <div class="modal fade" id="responsive_addReviewer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content fileAction">
-                        <div class="modal-header light-theme">
-                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <span class="popup">Add Reviewer</span>
-                        </div>
-                        <div class="modal-body">  
-                            <div class="row">
-                                <div class="col-md-10 col-md-push-1">                                 
-                                    <label class="file-action">Choose a Reviewer for the Learning Object</label>
-                                   <!-- <?php 
-	                                    require './application/controllers/AdminController.php';
-						        		$controller = new AdminController;
-						        		$siteUsers = @$controller->getAllSiteUsersRev();						        		
-										$indexer = 0;
-										$siteUser = current($siteUsers);
-					        		
-						        		echo '<select name="reviewer" class="btn btn-default">';
-						        			echo '<option value="">--none--</option>';
-							        		while($siteUser != null){
-							        			echo '<option value="'.$siteUser->getUserName().'">'.$siteUser->getUserName().'</option>';
-												next($siteUsers);
-												$siteUser = current($siteUsers);
-												$indexer++;
-
-							        		}        			
-						        		echo '</select>';
-					        		?>-->
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="modal-footer"> 
-                            <div class="row">
-                                <div class="col-md-8 col-md-push-3">      
-                                <input type="hidden" value="<?php echo $counter?>" id="counters" name="counters">                                                                  
-                                    <button type="button" class="btn btn-primary" onclick="document.tester.submit()"><i class="icon-ok icon-large default"></i> Yes &nbsp;</button>
-                            		<button type="button" class="btn btn-default" data-dismiss="modal" style="color: red;"><i class="icon-remove icon-large default"></i> &nbsp; No &nbsp;</button>
-                        		</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
+        
 		<!-- Gi sugdan -->
 
 		<div class="clearfix"></div>
@@ -230,19 +202,19 @@
 									next($LOs);
 									$LO = current($LOs);
 									$i++;							
-								}
+								}s
 						        ?>-->													
 							</tbody>
 						  </table>
 						</div>
 						<div>
-							<input type="hidden" value="<?php echo $index?>" id="ctr" name="ctr">
-                            <input type="hidden" value="" id="counters" name="counters">
+                                                    <input type="hidden" value="<?php echo $index?>" id="ctr" name="ctr">
+                                                    <input type="hidden" value="" id="counters" name="counters">
 
-                           <a href="#responsive_addReviewer" class="btn btn-default" data-dismiss="modal" data-toggle="modal"><i class="icon-plus-sign icon-large default"></i> Add Reviewer</a>
-							<a href redirect="" type="button" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>
-							<a href="#responsive_confirmDelete" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"><i class="icon-trash icon-large default"></i> Delete</a>
-				    		<a href="" class="btn btn-default"> Back</a>
+                                                    <a href="#responsive_addReviewer" class="btn btn-default" data-dismiss="modal" data-toggle="modal"><i class="icon-plus-sign icon-large default"></i> Add Reviewer</a>
+                                                    <a href redirect="" type="button" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>
+                                                    <a href="#responsive_confirmDelete" class="btn btn-primary" data-toggle="modal"><i class="icon-trash icon-large default"></i> Delete</a>
+                                                    <a href="/loop-XYZ/store/admin-view5" class="btn btn-default"> Back</a>
 						</div>
 					</div>
 				</div>
@@ -267,10 +239,94 @@
 		    	</div>
 		    <!-- </div> -->
 	    </footer>
-    </div>
+        </div>
+        
+        <!-- Delete modal -->
+        
+        
+         <form name="tester" method="post" <%--action="<?php echo base_url().'redirect/plusrevLE/'?>"--%> >
+            <div class="modal fade" id="responsive_addReviewer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content fileAction">
+                        <div class="modal-header light-theme">
+                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <span class="popup">Add Reviewer</span>
+                        </div>
+                        <div class="modal-body">  
+                            <div class="row">
+                                <div class="col-md-10 col-md-push-1">                                 
+                                    <label class="file-action">Choose a Reviewer for the Learning Element</label>
+                                    <!--?php 
+                                        require './application/controllers/AdminController.php';
+                                        $controller = new AdminController;
+                                        $siteUsers = @$controller->getAllSiteUsersRev();						        		
+                                                $indexer = 0;
+                                                $siteUser = current($siteUsers);
+
+                                        echo '<select name="reviewer" class="btn btn-default">';
+                                                echo '<option value="">--none--</option>';
+                                                while($siteUser != null){
+                                                        echo '<option value="'.$siteUser->getUserName().'">'.$siteUser->getUserName().'</option>';
+                                                                next($siteUsers);
+                                                                $siteUser = current($siteUsers);
+                                                                $indexer++;
+
+                                                }        			
+                                        echo '</select>';
+                                    ?-->
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="modal-footer"> 
+                            <div class="row">
+                                <div class="col-md-8 col-md-push-3">      
+                                <input type="hidden" value="<?php echo $counter?>" id="counters" name="counters">                                                                  
+                                    <button type="button" class="btn btn-primary" onclick="document.tester.submit()"><i class="icon-ok icon-large default"></i> Yes &nbsp;</button>
+                            		<button type="button" class="btn btn-default" data-dismiss="modal" style="color: red;"><i class="icon-remove icon-large default"></i> &nbsp; No &nbsp;</button>
+                        		</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
 
 	<!-- Load JS here for greater good =============================-->
+            <script src="css/bootstrap3/assets/js/jquery.js"></script>
+        <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
+        <script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
+        <script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
+        <script src="js/js-flat-ui/flatui-checkbox.js"></script>
+        <script src="js/js-flat-ui/flatui-radio.js"></script>
+        <script src="js/js-flat-ui/jquery.tagsinput.js"></script>
+        <script src="js/js-flat-ui/jquery.placeholder.js"></script>
+        <script src="js/js-flat-ui/jquery.stacktable.js"></script>
+        <script src="http://vjs.zencdn.net/c/video.js"></script>
 
+        <script src="js/backstretch-jquery/jquery.backstretch.min.js"></script>
+
+        <script src="js/datatables/jquery.dataTables.min.js"></script>
+        
+        <script src="js/datatables/dataTables.bootstrap.js"></script>
+
+
+        <script src="css/bootstrap3/js/tooltip.js"></script>
+        <script src="css/bootstrap3/js/popover.js"></script>
+        
+        <script src="js/angular/angular.js"></script>
+        <script src="js/angular/ngStorage.js"></script>
+        <script src="js/loop.js" type="text/javascript"></script>
+
+
+        <!-- Bootstrap tour =================================================-->
+        <script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
+        <script src="bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+        <!--script src="'.$this->base_url.'js/reviewer-tour-script.js"></script-->
+
+        <!-- Form Validator =================================================-->
+        <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
 	<!--?php $this->layout->footer_subpages() ?-->
 
 	<!--<?php $this->layout->footer() ?>-->

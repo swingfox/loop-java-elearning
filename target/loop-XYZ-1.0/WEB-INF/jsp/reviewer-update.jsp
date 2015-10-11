@@ -147,7 +147,7 @@
                                                                     <img ng-if="lo.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
                                                                     
                                                                 </td>
-                                                                <td><a href="" ng-click="LODetails(lo)"><label ng-model="lo.name">{{lo.name}}</a></td>
+                                                                <td><a ng-click="GetLO(lo)"><label ng-model="lo.name">{{lo.name}}</a></td>
 
                                                                 <td><label ng-model="lo.subject">{{lo.subject}}</td>
                                                                 <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
@@ -292,6 +292,95 @@
 		    </div>
 	    </footer>
     </div>
+        
+         <!-- echo '--><!-- Change Password Pop Up -->
+        <form id="defaultForm" method="post">
+            <div class="modal fade" id="responsive_changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header light-theme">
+                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <span class="popup">Change Password</span>
+                        </div>
+                        <div class="modal-body">  
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1 ">
+
+                                    <p class="alert alert-danger hide" id="error"><i class="icon-warning-sign"></i> Invalid password.</p>
+                                    <p class="alert alert-success hide" id="success"><i class="icon-ok"></i> Successfully changed password.</p>
+                                    
+
+                                    <!--' . $alert . '--><div class="form-group">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Old Password" required/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="enterNewPassword" name="newPassword" placeholder="Enter New Password" />
+                                    </div>
+
+                                    <div class="form-group last">
+                                        <input type="password" class="form-control last" id="confirmNewPassword" name="confirmNewPassword" placeholder="Confirm New password" />
+                                    </div>
+
+
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="modal-footer"> 
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-3 ">
+                                    <button type="submit" class="btn btn-primary" id="changepassword"><i class="icon-ok icon-large default"></i> Save</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- Change Email Pop Up -->
+        <form id="emailForm" method="post">
+            <div class="modal fade" id="responsive_changeEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header light-theme">
+                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <span class="popup">Change Email</span>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1">
+
+                                 <p class="alert alert-danger hide" id="error1"><i class="icon-warning-sign"></i> Invalid password.</p>
+                                    <p class="alert alert-success hide" id="success1"><i class="icon-ok"></i> Successfully changed password.</p>
+
+                                   
+
+                                   <!--' . $alert . '--> <div class="form-group">
+                                        <input type="password" class="form-control" id="emailPassword" name="emailPassword" placeholder="Enter Password" required/>
+                                    </div>
+
+                                    <div class="form-group last">
+                                        <input type="text" class="form-control last" id="enterNewEmail" name="enterNewEmail" placeholder="Enter New Email" required/>
+                                    </div>
+                                
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-3">
+                                    <button type="submit" class="btn btn-primary" id="changeEmail"><i class="icon-ok icon-large default"></i> Save</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </form>
 
 	<!-- Load JS here for greater good =============================-->
 

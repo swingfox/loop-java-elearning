@@ -124,4 +124,15 @@ public class LearningObjectController {
         }catch(Exception e){ e.printStackTrace();}
         return dto;
     }
+    
+    @RequestMapping("/downloadAllLO")    
+    @ResponseBody
+    public List<LearningObjectDto> LearningObjects() throws UnknownHostException
+    {
+        List<LearningObjectDto> dto = new ArrayList<>();
+        try{
+            dto = loService.getLearningObjects();
+        }catch(Exception e){ e.printStackTrace();}
+        return dto;
+    }
 }
