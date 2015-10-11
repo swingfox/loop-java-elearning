@@ -45,7 +45,7 @@
     </head>
     <body>
         <!-- <div id="wrapper"> -->
-	<div class="wrapper">
+	<div class="wrapper" ng-controller="LoginCtrl">
     	<!--<?php $this->layout->modal_footer() ?>-->
 		
 		<div id="header-wrap">
@@ -63,7 +63,7 @@
 						</a>
 	                </div>
 					
-					<div class="navbar-collapse collapse" ng-controller="LoginCtrl">
+					<div class="navbar-collapse collapse" >
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
                                                         <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
@@ -136,7 +136,7 @@
                                                     </tr>
                                             </thead>
                                     <tbody>
-                                         <tr ng-repeat="le in les | filter:searchText">
+                                         <tr ng-repeat="le in les | filter:searchText ">
                                              <td>
                                                 <img ng-if="le.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
                                                 <img ng-if="le.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">

@@ -45,7 +45,7 @@
     </head>
     <body>
         <!-- <div id="wrapper"> -->
-	<div class="wrapper">
+	<div class="wrapper" ng-controller="LoginCtrl">
     	<!--<?php $this->layout->modal_footer() ?>-->
 		
 		<div id="header-wrap">
