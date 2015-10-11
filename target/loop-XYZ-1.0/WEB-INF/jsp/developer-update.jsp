@@ -69,7 +69,7 @@ echo '--><script type="text/javascript">
 </head>
 <body ><!--?php echo (isset($status) && $status)?'onload=document.getElementById("responsive_changePassword_btn").click()':'' ?>-->	
 	<!-- <div id="wrapper"> -->
-	<div class="wrapper">
+	<div class="wrapper"  ng-controller="LoginCtrl">
     	<!--?php $this->layout->modal_footer(isset($status)?$status:FALSE) ?-->
 		
 		<div id="header-wrap">
@@ -87,7 +87,7 @@ echo '--><script type="text/javascript">
 						</a>
 	                </div>
 					
-                                    <div class="navbar-collapse collapse" ng-controller="LoginCtrl">
+                                    <div class="navbar-collapse collapse">
 
 						<!--?php $this->layout->user_menu() ?-->
                                                 <ul class="nav navbar-nav navbar-right"> 
@@ -212,7 +212,7 @@ echo '--><script type="text/javascript">
 								</tr>
 							</thead>
 					        <tbody>
-                                                    <tr ng-repeat="lo in los | filter:searchText">
+                                                    <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : username }">
                                                         <td>
                                                             <img ng-if="lo.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
                                                             <img ng-if="lo.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">

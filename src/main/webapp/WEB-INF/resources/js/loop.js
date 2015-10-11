@@ -265,24 +265,49 @@ eS.controller('blockedAccountCtrl', ['$scope', '$http', function($scope, $http) 
     });
 }]);
 
-
-eS.controller('LEListCtrl', ['$scope', '$http', function($scope, $http) {
+eS.controller('LEList', ['$scope', '$store', '$http', function($scope, $store, $http) {
+        $store.bind($scope, 'le.id', '');
+        $store.bind($scope, 'le.name', '');
+        $store.bind($scope, 'le.subject', '');
+        $store.bind($scope, 'le.dateUploaded', '');
+        $store.bind($scope, 'le.description', '');
     $http.get("/loop-XYZ/loop/LE/list")    
     .success(function(data) {
+        console.log(JSON.stringify(data));
     	$scope.les = data;
     })
     .error(function(jqXHR, status, error) {
         console.log(""+ error);
     });
     
-    $scope.LEDetails = function(le) {
-        console.log("SULOD");
-    	window.location = '/loop-XYZ/loop/store/downloadLE/';
+     $scope.GetLE = function(le) {
+        console.log("SULOD....");
+        $http.get('/loop-XYZ/loop/LE/downloadLE/' + le.id)    
+        .success(function(data) {
+            $store.bind($scope, 'le.id', data.id); 
+            $store.bind($scope, 'le.name', data.name);
+            $store.bind($scope, 'le.subject', data.subject); 
+            $store.bind($scope, 'le.dateUploaded', data.dateUploaded); 
+            $store.bind($scope, 'le.description', data.description); 
+         if($store.get('id') === "developer")
+             window.location = '/loop-XYZ/store/historyLE-dev';
+         else
+             window.location = '/loop-XYZ/store/downloadLE';
+        })
+        .error(function(jqXHR, status, error) {
+            console.log(""+ error);
+        });
     }; 
-}]);
-
-
-
+    
+    $scope.clearLE = function(){ 
+        $store.remove('le.id'); 
+        $store.remove('le.name');
+        $store.remove('le.subject');
+        $store.remove('le.dateUploaded');
+        $store.remove('le.description');
+    };
+ }]);
+ 
 var ls = angular.module('localStorage',[]);
  
 ls.factory("$store",function($parse){

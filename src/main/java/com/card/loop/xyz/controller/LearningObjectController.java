@@ -53,25 +53,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LearningObjectController {
     
     LearningObjectService loService = new LearningObjectService();
-    /**
-    @RequestMapping("/login")
-    @ResponseBody
-    public LearningObjectDto LO(@RequestBody LearningObjectDto lo) throws UnknownHostException
-    {
-        LearningObjectDto result = null;
-        try{
-            System.out.println("LOOO");
-            LearningObjectService service = new LearningObjectService();
-            result = service.getLearningObject(lo.getID());
-            if(result==null)
-                lo.getErrorList().add("NULLL!");
-        }catch(Exception e){
-            //user.getErrorList().add(e.toString());
-            System.out.println(e.toString());
-        }
-        return result;
-    }**/
-
+    
     public void downloadAllLO()
     {
         try {

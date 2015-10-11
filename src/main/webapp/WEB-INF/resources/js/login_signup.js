@@ -9,8 +9,8 @@ $(document).ready(function() {
         //$('#slider_now').nivoSlider();
         
          $('a[href*=#header-wrap], a[href*=#before-content], a[href*=#before-features], a[href*=#before-team]').click(function () {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
-                    || location.hostname == this.hostname) {
+            if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')
+                    || location.hostname === this.hostname) {
 
                 var target = $(this.hash);
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
@@ -24,18 +24,23 @@ $(document).ready(function() {
     });    
         
         $('#btn-signup:submit').click(function(e) {
-            if(!isValidEmailAddress( $("#email").val() ) ) { 
-                $('.error_message_1').text("Invalid email");
-                $('#email').addClass('addborder');
+            if(!isValidUsername( $("#susername").val() ) ) { 
+                $('.error_message_1').text("Invalid username");
+                $('#susername').addClass('addborder');
                     e.preventDefault();
             }
-            if($('#password').val() != $('#confirmPassword').val()) {
+            if(!isValidEmailAddress( $("#semail").val() ) ) { 
+                $('.error_message_1').text("Invalid email");
+                $('#semail').addClass('addborder');
+                    e.preventDefault();
+            }
+            if($('#spassword').val() !== $('#sconfirmPassword').val()) {
                 $('.error_message').text("Confirmation password does not match password");
-                $('#password, #confirmPassword').addClass('addborder');
+                $('#spassword, #sconfirmPassword').addClass('addborder');
                 e.preventDefault();
             }
         });
-        $('#email, #password, #confirmPassword').on('keydown', function() {
+        $('#semail, #spassword, #sconfirmPassword').on('keydown', function() {
             if($(this).hasClass('addborder')) {
                 $(this).removeClass('addborder');
                 $(this).val('');
@@ -58,18 +63,18 @@ $(document).ready(function() {
             */
            
         // Edited     
-        var switchit = get("action");
-        if(switchit == 'signup') 
-		$.switchPage(switchit);
-	else if(switchit == 'login') 
-		$.switchPage(switchit);
+        //var switchit = get("action");
+        //if(switchit === 'signup') 
+	//	$.switchPage(switchit);
+	//else if(switchit === 'login') 
+	//	$.switchPage(switchit);
         // ADDED 
         $("#btn-signup").click(function(){
             var jsonData = 
                         JSON.stringify({
-			email: $("#email",'#defaultForm').val(),
-                        username:$("#username",'#defaultForm').val(),
-			password: $("#password",'#defaultForm').val(),
+			email: $("#semail").val(),
+                        username:$("#susername").val(),
+			password: $("#spassword").val(),
                        // userType : $('#input[name:optionsRadios]:checked', '#defaultForm').val()
                         userType :  $('input[name=optionsRadios]:checked','#defaultForm').val()
                         });
@@ -81,11 +86,11 @@ $(document).ready(function() {
                 type: "POST",
                 success: function(data, status, jqXHR){
                    // if(data.errorList.length>0){
-                   if(data == null)
+                   if(data === null)
                         alert("Registration unSuccessful!");
-                   else if(data.id != null){
+                   else if(data.id !== null){
                         alert("Registration Successful!");
-                //        $.switchPage("login");
+                        $.switchPage("login");
                     }
                   //  }
                 },
@@ -113,18 +118,16 @@ $(document).ready(function() {
                    // if(data.errorList.length>0){
                    $('#userId').val(data.id).change();
                    $('#userName').val(data.username).change();
-                   if(data == null)
+                   if(data === null)
                        alert('User not found');
-                   else if(data.id != null){
+                   else if(data.id !== null){
                         alert("Login Successful!");
-                        if(data.usertype == "developer")
+                        if(data.usertype === "developer")
                         window.location = "/loop-XYZ/store/developer-update";
-                        else if(data.usertype == "reviewer")
+                        else if(data.usertype === "reviewer")
                         window.location = "/loop-XYZ/store/reviewer-update";
                         else 
                         window.location = "/loop-XYZ/store/admin-view";
-                    
-                      
                    }
                //     }
                 },
@@ -133,12 +136,9 @@ $(document).ready(function() {
 		}
             });
         });
-        
-        
-        
     });
     function get(name){
-        if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+        if(name===(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
            return decodeURIComponent(name[1]);
     }
     function isValidEmailAddress(emailAddress) {

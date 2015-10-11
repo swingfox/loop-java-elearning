@@ -70,7 +70,7 @@
                                         <!--<p class="alert alert-danger"><i class="icon-warning-sign"></i> <?php echo $msg ?></p>-->
                                         <p><span class="error_message_1"></span></p>
                                         <p><span class="error_message"></span></p>
-                                        <p class="alert alert-danger"><i class="icon-warning-sign"></i>  </p>
+                                        <!--<p class="alert alert-danger"><i class="icon-warning-sign"></i>  </p>-->
                                         <!--<?php } ?>-->
 
                                         <!-- <p><input class="col-xs-12 col-md-12 sign-up" id="username" type="text" name="username" placeholder="Username" required></p>
@@ -167,19 +167,19 @@
                                         <p><span class="error_message"></span></p>
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" />
+                                            <input type="text" class="form-control" id="susername" name="username" placeholder="Username" />
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="email" name="email" placeholder="Email" />
+                                            <input type="text" class="form-control" id="semail" name="email" placeholder="Email" />
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
+                                            <input type="password" class="form-control" id="spassword" name="password" placeholder="Password" />
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Retype password" />
+                                            <input type="password" class="form-control" id="sconfirmPassword" name="confirmPassword" placeholder="Retype password" />
                                         </div>
 
                                         <!-- <div class="form-group">

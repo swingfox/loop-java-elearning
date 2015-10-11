@@ -68,7 +68,11 @@ echo '--><script type="text/javascript">
 </head>
 <body> <!--?php echo (isset($status) && $status)?'onload=document.getElementById("responsive_changePassword_btn").click()':'' ?>-->	
 	<!-- <div id="wrapper"> -->
+<<<<<<< HEAD
 	<div class="wrapper" ng-controller="LoginCtrl">
+=======
+	<div class="wrapper"  ng-controller="LoginCtrl">
+>>>>>>> f84aa8b4071c01da5c5d7e140d953a7629c58781
     	<!--?php $this->layout->modal_footer(isset($status)?$status:FALSE) ?-->
 		
 		<div id="header-wrap">
@@ -86,7 +90,11 @@ echo '--><script type="text/javascript">
 						</a>
 	                </div>
 					
+<<<<<<< HEAD
                                     <div class="navbar-collapse collapse" >
+=======
+                                    <div class="navbar-collapse collapse">
+>>>>>>> f84aa8b4071c01da5c5d7e140d953a7629c58781
 
 						<!--?php $this->layout->user_menu() ?-->
                                                 <ul class="nav navbar-nav navbar-right"> 
@@ -211,7 +219,11 @@ echo '--><script type="text/javascript">
                                                         </tr>
 							</thead>
 					        <tbody>
+<<<<<<< HEAD
                                                     <tr ng-repeat="le in les | filter:searchText | filter:{uploadedBy: username}">
+=======
+                                                    <tr ng-repeat="le in les | filter:searchText | filter: { uploadedBy: username }">
+>>>>>>> f84aa8b4071c01da5c5d7e140d953a7629c58781
                                                         <td>
                                                             <img ng-if="le.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
                                                             <img ng-if="le.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">
