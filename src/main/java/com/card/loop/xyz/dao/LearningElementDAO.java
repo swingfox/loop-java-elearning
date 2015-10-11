@@ -161,6 +161,11 @@ public class LearningElementDAO {
         JOptionPane.showMessageDialog(null,LearningElementDAO.getList());
         //System.out.println(LearningObjectDAO.getMostLikedList());
     }
+
+    public static LearningElement getSpecificLearningElementById(String elementID) throws UnknownHostException {
+        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+        return mongoOps.findOne(query(where("_id").is(elementID)), LearningElement.class);
+    }
     
     
 }

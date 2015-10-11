@@ -56,6 +56,7 @@ var eS = angular.module('loop', ['localStorage'], function($httpProvider) {
 eS.controller('LoginCtrl', ['$scope', '$store', function($scope, $store) {
     $store.bind($scope, 'username', '');
     $store.bind($scope, 'userId', '');
+    $store.bind($scope, 'userType', '');
     $scope.$watch("username", function(newVal) {
         console.log(newVal);
     });
@@ -82,8 +83,18 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
         console.log(""+ error);
     });
     
-     $scope.GetLO = function(lo) {
+    $scope.DownloadLO = function(name){
         console.log("SULOD");
+        $http.get('/loop-XYZ/loop/LO/downloadLO/' + name)    
+        .success(function(data){
+            console.log(data);
+        })
+        .error(function(jqXHR, status, error) {
+            console.log(""+ error);
+        });
+    };
+    
+     $scope.GetLO = function(lo) {
         $http.get('/loop-XYZ/loop/LO/download/' + lo.id)    
         .success(function(data) {
             $store.bind($scope, 'lo.id', data.id); 
@@ -91,7 +102,9 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
             $store.bind($scope, 'lo.subject', data.subject); 
             $store.bind($scope, 'lo.dateUploaded', data.dateUploaded); 
             $store.bind($scope, 'lo.description', data.description); 
-         if($store.get('id') === "developer")
+            console.log($store.get('username'));
+            console.log($store.get('userType'));
+         if($store.get('userType') === "developer")
              window.location = '/loop-XYZ/store/historyLO-dev';
          else
              window.location = '/loop-XYZ/store/download';

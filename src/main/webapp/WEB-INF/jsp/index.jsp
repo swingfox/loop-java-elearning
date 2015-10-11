@@ -96,11 +96,11 @@
                                             <div class="clearfix"></div>
                                         </div>
 
-                                        <div class="radio-options">
+                                        <div class="radio-options" ng-model="userType">
                                             <div class="row">
                                                 <div class="col-md-4 col-md-push-1">
                                                     <label class="radio log-in">  
-                                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="developer" data-toggle="radio" checked="">
+                                                        <input type="radio" name="optionsRadios"  id="optionsRadios1" value="developer" data-toggle="radio" checked="">
                                                         Developer
                                                     </label>
                                                 </div>
@@ -108,7 +108,7 @@
                                                 <div class="col-md-4 col-md-push-2">
                                                     <label class="radio log-in">  
                                                         <!-- <input type="radio" name="optionsRadios" id="optionsRadios2" value="reviewer" data-toggle="radio" disabled> -->
-                                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="reviewer" data-toggle="radio">
+                                                        <input type="radio" name="optionsRadios"  id="optionsRadios2" value="reviewer" data-toggle="radio">
                                                         Reviewer
                                                     </label>
                                                 </div>

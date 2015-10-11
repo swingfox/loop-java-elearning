@@ -30,7 +30,7 @@
 	$path = base_url().'uploads/';
 ?-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="loop">
 <head>
 <title>LOOP | History</title>
 
@@ -84,19 +84,19 @@
 							<span class="icon-bar"></span>
 						</button>
 	                    
-	                    <a class="navbar-brand" href="index.php">
+	                    <a class="navbar-brand" href="/loop-XYZ/store/admin-view">
 							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
 						</a>
 	                </div>
 					
-					<div class="navbar-collapse collapse">
+					<div class="navbar-collapse collapse" ng-controller="LoginCtrl">
 
 						<!--?php $this->layout->user_menu() ?-->
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
                                                         <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
 
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
                                                         <ul class="dropdown-menu">
 
                                                                 <li role="presentation" class="dropdown-header">Options</li>
@@ -106,7 +106,7 @@
 
                                                                 <li class="divider"></li>
 
-                                                                <li><a href="index.php/account/logout"><i class="icon-off"></i> Logout</a></li>
+                                                                <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
                                                         </ul>
                                                      </li>
                                                 </ul>
@@ -128,7 +128,7 @@
 
 		<div class="clearfix"></div>
 
-                <form name="uniquetest" method="post" <%--action="<?php echo base_url().'redirect/deleteLE_admin/'?>" --%>>
+        <form name="uniquetest" method="post" <%--action="<?php echo base_url().'redirect/deleteLE_admin/'?>" --%>>
             <div class="modal fade" id="responsive_confirmDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -157,7 +157,7 @@
             </div>
         </form>
 
-                <form name="tester" method="post" <%--action="<?php echo base_url().'redirect/plusrevLE/'?>"--%> >
+        <form name="tester" method="post" <%--action="<?php echo base_url().'redirect/plusrevLE/'?>"--%> >
             <div class="modal fade" id="responsive_addReviewer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content fileAction">
@@ -263,12 +263,13 @@
 						</div>
 						<div>
 							<input type="hidden" <%--value="<?php echo $index?>"--%> id="ctr" name="ctr">
-                            <input type="hidden" value="" id="counters" name="counters">
+                                                        <input type="hidden" value="" id="counters" name="counters">
 
-                           <a href="#responsive_addReviewer" class="btn btn-default" data-dismiss="modal" data-toggle="modal"><i class="icon-plus-sign icon-large default"></i> Add Reviewer</a>
+                                                        <a href="#responsive_addReviewer" class="btn btn-default" data-dismiss="modal" data-toggle="modal"><i class="icon-plus-sign icon-large default"></i> Add Reviewer</a>
 							<a <%--href="<?php echo base_url().'redirect/download_Admin/LE/'.$counter ?>" --%> type="button" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>
-							<a href="#responsive_confirmDelete" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"><i class="icon-trash icon-large default"></i> Delete</a>
-				    		<a <%--href="<?php echo base_url().'index.php'?>"--%> class="btn btn-default"> Back</a>
+							<a href="#responsive_confirmDelete" class="btn btn-primary" data-toggle="modal"><i class="icon-trash icon-large default"></i> Delete</a>
+
+				    		<a href="/loop-XYZ/store/admin-view6" class="btn btn-default"> Back</a>
 						</div>
 					</div>
 				</div>
@@ -294,7 +295,99 @@
 		    <!-- </div> -->
 	    </footer>
     </div>
+        
+        <!-- Delete modal -->
+        
 
+        
+        <!-- echo '--><!-- Change Password Pop Up -->
+        <form id="defaultForm" method="post">
+            <div class="modal fade" id="responsive_changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header light-theme">
+                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <span class="popup">Change Password</span>
+                        </div>
+                        <div class="modal-body">  
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1 ">
+
+                                    <p class="alert alert-danger hide" id="error"><i class="icon-warning-sign"></i> Invalid password.</p>
+                                    <p class="alert alert-success hide" id="success"><i class="icon-ok"></i> Successfully changed password.</p>
+                                    
+
+                                    <!--' . $alert . '--><div class="form-group">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Old Password" required/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="enterNewPassword" name="newPassword" placeholder="Enter New Password" />
+                                    </div>
+
+                                    <div class="form-group last">
+                                        <input type="password" class="form-control last" id="confirmNewPassword" name="confirmNewPassword" placeholder="Confirm New password" />
+                                    </div>
+
+
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="modal-footer"> 
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-3 ">
+                                    <button type="submit" class="btn btn-primary" id="changepassword"><i class="icon-ok icon-large default"></i> Save</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- Change Email Pop Up -->
+        <form id="emailForm" method="post">
+            <div class="modal fade" id="responsive_changeEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header light-theme">
+                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <span class="popup">Change Email</span>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1">
+
+                                 <p class="alert alert-danger hide" id="error1"><i class="icon-warning-sign"></i> Invalid password.</p>
+                                    <p class="alert alert-success hide" id="success1"><i class="icon-ok"></i> Successfully changed password.</p>
+
+                                   
+
+                                   <!--' . $alert . '--> <div class="form-group">
+                                        <input type="password" class="form-control" id="emailPassword" name="emailPassword" placeholder="Enter Password" required/>
+                                    </div>
+
+                                    <div class="form-group last">
+                                        <input type="text" class="form-control last" id="enterNewEmail" name="enterNewEmail" placeholder="Enter New Email" required/>
+                                    </div>
+                                
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-3">
+                                    <button type="submit" class="btn btn-primary" id="changeEmail"><i class="icon-ok icon-large default"></i> Save</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </form>
 	<!-- Load JS here for greater good =============================-->
 
 	<!--?php $this->layout->footer() ?-->
@@ -320,6 +413,11 @@
 
         <script src="css/bootstrap3/js/tooltip.js"></script>
         <script src="css/bootstrap3/js/popover.js"></script>
+        
+        <script src="js/angular/angular.js"></script>
+        <script src="js/angular/ngStorage.js"></script>
+        <script src="js/loop.js" type="text/javascript"></script>
+
 
         <!-- Bootstrap tour =================================================-->
         <script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>

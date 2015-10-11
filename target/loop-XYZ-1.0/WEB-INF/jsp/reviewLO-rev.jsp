@@ -6,7 +6,7 @@
 	$lo = $los[$index];
 ?-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Review</title>
 
@@ -49,41 +49,45 @@
     <div class="wrapper">
     <!--?php $this->layout->modal_footer() ?-->
     <div id="header-wrap">
-        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+	                    
+	                    <a class="navbar-brand" href="/loop-XYZ/store/developer-update">
+							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
+						</a>
+	                </div>
+					
+                                    <div class="navbar-collapse collapse" ng-controller="LoginCtrl">
 
-                <a class="navbar-brand" href="index.jsp">
-                    <img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
-                </a>
-            </div>
+						<!--?php $this->layout->user_menu() ?-->
+                                                <ul class="nav navbar-nav navbar-right"> 
+                                                    <li class="dropdown">
+                                                        <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
 
-            <div class="navbar-collapse collapse">
-                <!--?php $this->layout->user_menu() ?-->
-                <ul class="nav navbar-nav navbar-right"> 
-                <li class="dropdown">
-                <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>
-                <ul class="dropdown-menu">
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
+                                                        <ul class="dropdown-menu">
 
-                    <li role="presentation" class="dropdown-header">Options</li>
+                                                                <li role="presentation" class="dropdown-header">Options</li>
 
-                    <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
-                    <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
+                                                                <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
+                                                                <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
 
-                    <li class="divider"></li>
+                                                                <li class="divider"></li>
 
-                    <li><a href="index.jsp/account/logout"><i class="icon-off"></i> Logout</a></li>
-                </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+                                                                <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
+                                                        </ul>
+                                                     </li>
+                                                </ul>
+					</div>
+				</div>
+			</nav>
+		</div>
     <div class="clearfix"></div>
 
     <!-- <ul class="nav nav-tabs main-views">
@@ -95,7 +99,7 @@
     <div id="breadcrumb-wrap">
         <!-- <div class="container"> -->
             <ol class="breadcrumb">
-                <li><a class="breadcrumb-link" href="/loop-XYZ/store/reviewer-update">Back to Review List</a></li>
+                <li><a class="breadcrumb-link" href="/loop-XYZ/store/review-list">Back to Review List</a></li>
                 <li class="active">Review Learning Object</li>
             </ol>
         <!-- </div> -->
@@ -172,7 +176,7 @@
                             <input type="hidden" value="LO" id ="type" name="type">
                             <button type="submit" class="btn btn-primary"><i class="icon-ok icon-large"></i> Submit</button>
 
-                            <a class="btn btn-default" href="index.jsp">Cancel</a>
+                            <a class="btn btn-default" href="/loop-XYZ/store/review-list">Cancel</a>
                             <!-- <button onclick="document.location='http://localhost/loop-sp-ci7/redirect/LO_rev'" type="button" class="btn btn-default">Cancel</button> -->
                         </div>
                     </div>
@@ -232,6 +236,10 @@
 
     <script src="css/bootstrap3/js/tooltip.js"></script>
     <script src="css/bootstrap3/js/popover.js"></script>
+    
+    <script src="js/angular/angular.js"></script>
+    <script src="js/angular/ngStorage.js"></script>
+    <script src="js/loop.js" type="text/javascript"></script>
 
     <!-- Bootstrap tour =================================================-->
     <script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>

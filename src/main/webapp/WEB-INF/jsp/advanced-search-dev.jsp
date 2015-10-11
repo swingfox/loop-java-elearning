@@ -327,7 +327,7 @@
 								<button type="submit" class="btn btn-primary tour-step tour-step-nineteen">Search</button>
 								<!-- <a href="index.php" class="btn btn-default">Cancel</a> -->
 								
-								<a class="btn btn-default" href="<?php echo base_url() ?>index.php">Cancel</a>
+								<a class="btn btn-default" href="/loop-XYZ/store/developer-update">Cancel</a>
 								<!-- <button type="reset" class="btn btn-default">Cancel</button> -->
 
 
