@@ -1,10 +1,9 @@
 <!--<?php session_start(); ?>-->
 <!DOCTYPE html>
 <html lang="en" ng-app="loop">
-<<<<<<< HEAD
-        <head>
-        <title>LOOP | Review View</title>
-        <meta charset="utf-8">
+<head>
+<title>LOOP | Review View</title>
+<meta charset="utf-8">
             
 
             <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
@@ -41,10 +40,8 @@
 
             <!-- Form Validator -->
             <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
-
-<!--<?php $this->layout->header_subpages() ?>-->
-    </head>
-    <body>
+</head>
+<body>
         <!-- <div id="wrapper"> -->
 	<div class="wrapper" ng-controller="LoginCtrl">
     	<!--<?php $this->layout->modal_footer() ?>-->
@@ -142,7 +139,6 @@
 </div>
 
 <div class="clearfix"></div>
->>>>>>> f84aa8b4071c01da5c5d7e140d953a7629c58781
     	<ul class="nav nav-tabs main-views">
 		 <li><a class="active-tab" href="/loop-XYZ/store/reviewer-update"><i class="icomoon-list"></i> Learning Objects</a></li>
 		  <li class="active"><a class="active-tab" href="/loop-XYZ/store/reviewer-le"><i class="icomoon-list"></i> Learning Elements</a></li>
@@ -169,8 +165,7 @@
                                     </div>
                                         <div class="clearfix"></div>
                                     </div></div>
-
-<<<<<<< HEAD
+                                        
                                     <table class="datatable table table-hover" ng-controller="LEListCtrl" id="les">
                                         <thead>
                                                     <tr>
@@ -207,7 +202,6 @@
                                             <td><label ng-model="rev">{{le.rev}}</td>
                                             <td><label ng-model="uploadedBy">{{le.uploadedBy}}</td>
                                             
-=======
                                     <table class="datatable table table-hover" ng-controller="LEList" id="les">
                                     <thead>
                                         <tr>
@@ -220,7 +214,6 @@
                                             <th>Status</th>
                                             <th>Reviewer</th>
                                             <th>Author</th>
->>>>>>> f84aa8b4071c01da5c5d7e140d953a7629c58781
                                         </tr>
                                     </thead>
                                     <tbody>

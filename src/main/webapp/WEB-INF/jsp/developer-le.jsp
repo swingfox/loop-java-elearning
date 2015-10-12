@@ -219,11 +219,7 @@ echo '--><script type="text/javascript">
                                                         </tr>
 							</thead>
 					        <tbody>
-<<<<<<< HEAD
-                                                    <tr ng-repeat="le in les | filter:searchText | filter:{uploadedBy: username}">
-=======
                                                     <tr ng-repeat="le in les | filter:searchText | filter: { uploadedBy: username }">
->>>>>>> f84aa8b4071c01da5c5d7e140d953a7629c58781
                                                         <td>
                                                             <img ng-if="le.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
                                                             <img ng-if="le.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">

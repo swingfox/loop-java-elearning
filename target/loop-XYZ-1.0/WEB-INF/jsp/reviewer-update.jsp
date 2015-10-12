@@ -18,13 +18,8 @@
         <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
     </head>
     <body>
-<<<<<<< HEAD
         <!-- <div id="wrapper"> -->
-<<<<<<< HEAD
 	<div class="wrapper" ng-controller="LoginCtrl">
-=======
-	<div class="wrapper"  ng-controller="LoginCtrl">
->>>>>>> f84aa8b4071c01da5c5d7e140d953a7629c58781
     	<!--<?php $this->layout->modal_footer() ?>-->
 		
 		<div id="header-wrap">
@@ -248,7 +243,6 @@
 		</div>
 
   		<div class="clearfix"></div>
-=======
 	<div class="wrapper">
             <div id="header-wrap">
 		<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
@@ -345,7 +339,6 @@
                                         </tbody>
                                   </table>
                         </div>
->>>>>>> 31a1f9cee7d7972307a7546c7615de1b507413fb
 
                 </div>
         </div>
@@ -492,64 +485,64 @@
 <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-$('#defaultForm').bootstrapValidator({
-message: 'This value is not valid',
-submitHandler: function(validator, form) {
-form.find('.alert').html('Password Changed.').show();
-},
-fields: {
-    username: {
-        message: 'The username is not valid',
-        validators: {
-            notEmpty: {
-                message: 'The username is required and can\'t be empty'
-            },
-            stringLength: {
-                min: 6,
-                max: 30,
-                message: 'The username must be more than 6 and less than 30 characters long'
-            },
-            regexp: {
-                regexp: /^[a-zA-Z0-9_\.]+$/,
-                message: 'The username can only consist of alphabetical, number, dot and underscore'
-            }
-        }
+    $('#defaultForm').bootstrapValidator({
+    message: 'This value is not valid',
+    submitHandler: function(validator, form) {
+    form.find('.alert').html('Password Changed.').show();
     },
-    email: {
-        validators: {
-            notEmpty: {
-                message: 'The email address is required and can\'t be empty'
-            },
-            emailAddress: {
-                message: 'The input is not a valid email address'
+    fields: {
+        username: {
+            message: 'The username is not valid',
+            validators: {
+                notEmpty: {
+                    message: 'The username is required and can\'t be empty'
+                },
+                stringLength: {
+                    min: 6,
+                    max: 30,
+                    message: 'The username must be more than 6 and less than 30 characters long'
+                },
+                regexp: {
+                    regexp: /^[a-zA-Z0-9_\.]+$/,
+                    message: 'The username can only consist of alphabetical, number, dot and underscore'
+                }
             }
-        }
-    },
-    newPassword: {
-        validators: {
-            notEmpty: {
-                message: 'The password is required and can\'t be empty'
-            },
-            identical: {
-                field: 'confirmNewPassword',
-                message: 'The password and its confirm are not the same'
+        },
+        email: {
+            validators: {
+                notEmpty: {
+                    message: 'The email address is required and can\'t be empty'
+                },
+                emailAddress: {
+                    message: 'The input is not a valid email address'
+                }
             }
-        }
-    },
+        },
+        newPassword: {
+            validators: {
+                notEmpty: {
+                    message: 'The password is required and can\'t be empty'
+                },
+                identical: {
+                    field: 'confirmNewPassword',
+                    message: 'The password and its confirm are not the same'
+                }
+            }
+        },
 
-    confirmNewPassword: {
-        validators: {
-            notEmpty: {
-                message: 'The confirm password is required and can\'t be empty'
-            },
-            identical: {
-                field: 'newPassword',
-                message: 'The password and its confirm are not the same'
+        confirmNewPassword: {
+            validators: {
+                notEmpty: {
+                    message: 'The confirm password is required and can\'t be empty'
+                },
+                identical: {
+                    field: 'newPassword',
+                    message: 'The password and its confirm are not the same'
+                }
             }
         }
     }
-}
-});
+    });
 });
 </script>
 </body>
