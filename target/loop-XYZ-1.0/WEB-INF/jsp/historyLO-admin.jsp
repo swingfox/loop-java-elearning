@@ -160,7 +160,7 @@
 						
 						<div class="table-responsive">
 						 	<!-- <table class="datatable table table-bordered"> -->
-						 	<table class="datatable table table-hover">
+						 	<table class="datatable table table-hover" ng-controller="LOList">
 
 
 						    <thead>
@@ -176,6 +176,23 @@
 								</tr>
 							</thead>
 					        <tbody>
+                                                    <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : username }">
+                                                        <td>
+                                                            <img ng-if="lo.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
+                                                            <img ng-if="lo.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">
+                                                            <img ng-if="lo.rating==3" src="http://localhost/loop.com/img/icon-yellow.png" alt="For Review">
+                                                            <img ng-if="lo.rating==4" src="http://localhost/loop.com/img/icon-yellowgreen.png" alt="For Review">
+                                                            <img ng-if="lo.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
+
+                                                        </td>
+                                                        <td><p classdownload-details ng-binding="download-details">{{lo.name}}</p></td>
+                                                        <td><label >{{lo.subject}}</td>
+                                                        <td><label >{{lo.dateUploaded}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label >{{lo.rating}}</td>
+                                                        <td><label >{{lo.comments}}</td>
+                                                        <td><label >{{lo.rev}}</td>
+                                                         
+                                                    </tr>
                                                     <!--
 						        <?php
 						        $controller = new LOController();

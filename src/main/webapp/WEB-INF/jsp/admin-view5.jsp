@@ -232,7 +232,7 @@
                                                                     <img ng-if="lo.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
                                                                     
                                                                 </td>
-                                                                <td><a href="'"><label ng-model="name">{{lo.name}}</a></td>
+                                                                <td><a ng-click="GetLO_admin(lo)"><label ng-model="name">{{lo.name}}</a></td>
                                                                 <td><label ng-model="lo.subject">{{lo.subject}}</td>
                                                                 <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>

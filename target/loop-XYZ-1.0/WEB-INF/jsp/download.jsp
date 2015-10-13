@@ -28,7 +28,7 @@
 							<span class="icon-bar"></span>
 						</button>
 	                    
-	                    <a class="navbar-brand" href="index.php">
+	                    <a class="navbar-brand" href="/loop-XYZ/store/reviewer-update">
 							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
 						</a>
 	                </div>
@@ -73,30 +73,30 @@
                         <div class="well">	
                             <div class="form-group" >
                                     <label class="col-md-3 control-label download">Filename :</label>
-	                            <div class="col-md-8">
+	                            
 	                                <p class="download-details">{{lo.name}}</p>
-	                            </div>
+	                            
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Subject :</label>
-	                            <div class="col-md-8">
-	                                <p classdownload-details ng-binding="download-details">{{lo.subject}}</p>
-	                            </div>
+	                            
+	                                <p class="download-details" ng-binding="download-details">{{lo.subject}}</p>
+	                            
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Date Uploaded :</label>
-	                            <div class="col-md-8">
+	                           
 	                                <p class="download-details">{{lo.dateUploaded}}</p>
-	                            </div>
+	                           
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Description :</label>
-	                            <div class="col-md-8">
+	                            
 	                                <p class="download-details">{{lo.description}}</p>
-	                            </div>
+	                            
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 	                    </div>	
 

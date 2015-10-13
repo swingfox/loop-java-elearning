@@ -114,6 +114,26 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
         });
     }; 
     
+    $scope.GetLO_admin = function(lo) {
+        $http.get('/loop-XYZ/loop/LO/download/' + lo.id)    
+        .success(function(data) {
+            $store.bind($scope, 'lo.id', data.id); 
+            $store.bind($scope, 'lo.name', data.name);
+            $store.bind($scope, 'lo.subject', data.subject); 
+            $store.bind($scope, 'lo.dateUploaded', data.dateUploaded); 
+            $store.bind($scope, 'lo.description', data.description); 
+            console.log($store.get('username'));
+            console.log($store.get('userType'));
+         if($store.get('userType') === "developer")
+             window.location = '/loop-XYZ/store/historyLO-dev';
+         else
+             window.location = '/loop-XYZ/store/historyLO-admin';
+        })
+        .error(function(jqXHR, status, error) {
+            console.log(""+ error);
+        });
+    }; 
+    
     $scope.clearLO = function(){ 
         $store.remove('lo.id'); 
         $store.remove('lo.name');
