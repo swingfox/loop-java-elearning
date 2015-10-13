@@ -2,9 +2,6 @@
 <!DOCTYPE html>
 
 <html ng-app="loop">
-
-<html lang="en" ng-app="loop">
-
 <head>
 <title>LOOP | Download</title>
 
@@ -43,7 +40,6 @@
                                                     <li class="dropdown">
 
                                                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
-=======
                                                         <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
 
                                                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
@@ -114,8 +110,7 @@
 	                            </div>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 	                    </div>	
-
-                            <div class="form-actions advanced-search">                                    
+                                
 
                             <div class="form-actions advanced-search">
                                 <!--?php
@@ -252,11 +247,6 @@
         </form>
 
 	<!-- Load JS here for greater good =============================-->
-
-	<!--?php $this->layout->footer_subpages() ?-->
-
-	<!--?php $this->layout->footer() ?-->
-
         <script src="css/bootstrap3/assets/js/jquery.js"></script>
         <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
         <script src="js/main.js"></script>

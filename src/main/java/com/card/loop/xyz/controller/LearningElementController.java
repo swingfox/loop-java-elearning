@@ -23,14 +23,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author Julie Jane A.Alegre
+ * @author Julie Jane A. Alegre
  */
 
 @RestController
 @RequestMapping("/LE")
 
 public class LearningElementController {
-   LearningElementService leService = new LearningElementService();
+    LearningElementService leService = new LearningElementService();
+   /*
+    *   @return List<LearningElementDto> returns the list of all downloadable LEs
+    */ 
     @RequestMapping("/list")
     @ResponseBody
     public List<LearningElementDto> ListLE()
@@ -39,10 +42,14 @@ public class LearningElementController {
         try{
             dtos = leService.getLearningElements();
         }catch(Exception e){ 
-            e.printStackTrace(); }
+            e.printStackTrace(); 
+        }
         return dtos;
     }
-    
+    /*
+    *   @params String id the name of the specific LE
+    *   @return List<LearningElementDto> returns the list of all downloadable LEs
+    */
     @RequestMapping("/downloadLE/{id}")    
     @ResponseBody
     public LearningElementDto LEDetails(@PathVariable String id) throws UnknownHostException
@@ -50,7 +57,9 @@ public class LearningElementController {
         LearningElementDto dto = new LearningElementDto();
         try{
             dto = leService.getSpecificLearningElement(id);
-        }catch(Exception e){ e.printStackTrace();}
+        }catch(Exception e){ 
+            e.printStackTrace();
+        }
         return dto;
     }
 }

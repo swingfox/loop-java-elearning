@@ -21,7 +21,10 @@ public class AppConfig {
      */
     public static String mongodb_host = "";
     public static int mongodb_port = 27017;
-     public @Bean MongoFactoryBean mongo() {
+    public static String UPLOAD_LO_PATH = "C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LO\\";
+    public static String UPLOAD_LE_PATH = "C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LE\\";
+    public static String UPLOAD_BASE_PATH = "C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\";
+    public @Bean MongoFactoryBean mongo() {
           MongoFactoryBean mongo = new MongoFactoryBean();
           String address = "localhost";
           mongo.setHost(address);

@@ -23,10 +23,6 @@ import static org.springframework.data.mongodb.core.query.Query.query;
  *
  * @author David
  * 
- * @version 1.2 - 09/21/15
- * @author  Aislinn
- * 
- * [10/05/2015] -   Vine Deiparine  - Modified getLearningObject. Param changed to id.
  */
 public class LearningObjectDAO {
     public static List<LearningObject> getList() throws UnknownHostException {
@@ -43,18 +39,8 @@ public class LearningObjectDAO {
     * Get details of specific learning object
     */
     public static LearningObject getLearningObject(String name) throws UnknownHostException {
-       //MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
-       //mongoOps.find(query(where("rating").is(5)), LearningObject.class);
         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
-        //Query query= new Query();
-        //query.addCriteria(where("name").is(lo));
-        //mongoOps.findo
-        return mongoOps.findOne(query(where("id").is(name)), LearningObject.class);
-        //MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
-        //LearningObject p = null;
-        //p = mongoOps.findOne(query(where("name").is(lo)), LearningObject.class);
-       // System.out.println("USER DAO: " +p);
-        //return p;
+        return mongoOps.findOne(query(where("name").is(name)), LearningObject.class);
     }
     
     public static void addLearningObject(LearningObject object) throws UnknownHostException {
@@ -81,6 +67,7 @@ public class LearningObjectDAO {
        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
        Query query = new Query();
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
+       
        return mongoOps.findAll(LearningObject.class);
     }
     
@@ -105,19 +92,40 @@ public class LearningObjectDAO {
        return mongoOps.find(query(where("rating").lt(4).andOperator(where("rating").gt(0)).andOperator(where("status").is(2)).andOperator(where("rev").is(user))), LearningObject.class);
     }
     
-    /*public static boolean deleteLO(User user) throws UnknownHostException{
-        MongoOperations mongoOps =DatabaseManager.getMongoOpsInstance("database");
+    public static boolean deleteLO(LearningObject lo) throws UnknownHostException{
+        MongoOperations mongoOps = DatabaseManager.getMongoOpsInstance("loop");
         boolean ok = false;
-        mongoOps.remove(user);
-        ok = true;
+        Query query = new Query();
+        query.addCriteria(where("name").is(lo.getName()));
+        ok = mongoOps.exists(query, LearningObject.class);
+        if(ok)
+            mongoOps.remove(lo);
         return ok;
-    }*/    
+    }   
+    
+    public static void updateLO(LearningObject lo) throws UnknownHostException{
+        MongoOperations mongoOps = DatabaseManager.getMongoOpsInstance("loop");
+        Query query = new Query();
+        query.addCriteria(where("name").is(lo.getName()));
+        LearningObject obj = mongoOps.findOne(query, LearningObject.class);
+        obj.setDateUploaded(lo.getDateUploaded());
+        obj.setDownloads(lo.getDownloads());
+        obj.setStatus(lo.getStatus());
+        obj.setSubject(lo.getSubject());
+        obj.setDescription(lo.getDescription());
+        obj.setUploadedBy(lo.getUploadedBy());
+        obj.setRating(lo.getRating());
+        obj.setFilepath(lo.getFilepath());
+        obj.setComments(lo.getComments());
+    //    System.out.println(obj.getName());
+    }   
     
     public static boolean exists(String id) throws UnknownHostException {
-        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port), "database");
+        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port), "loop");
         boolean ok = false;
         Query query = new Query();
         query.addCriteria(where("id").is(id));
+        
         ok = mongoOps.exists(query, LearningObject.class);
         return ok;
     }
@@ -126,29 +134,14 @@ public class LearningObjectDAO {
         LearningObject lo = new LearningObject();
         
         
-        lo.setName("HTML58");
+        lo.setName("testing1");
         lo.setSubject("Web Programming");
         lo.setDateUploaded("September 25, 2015");
         lo.setDescription("test lng");
         lo.setRating(5);
-        LearningObjectDAO.addLearningObject(lo);
-        
-        /**lo2.setLikes(20);
-        lo2.setDownloads(153);
-        lo2.setTitle("Biboaf");
-        LearningObjectDAO.addLearningObject(lo2);
-        
-        lo3.setLikes(9);
-        lo3.setDownloads(15);
-        lo3.setTitle("Jjjownjii");
-        LearningObjectDAO.addLearningObject(lo3);
-        
-        lo4.setLikes(50);
-        lo4.setDownloads(73);
-        lo4.setTitle("walksPerSecond");
-        LearningObjectDAO.addLearningObject(lo4);*/
-        
-        //JOptionPane.showMessageDialog(null, LearningObjectDAO.getMostLikedList().toString());
+        lo.setUploadedBy("dev1");
+        LearningObjectDAO.updateLO(lo);
+
         JOptionPane.showMessageDialog(null,LearningObjectDAO.getAllDownloadableLO());
         //System.out.println(LearningObjectDAO.getMostLikedList());
     }

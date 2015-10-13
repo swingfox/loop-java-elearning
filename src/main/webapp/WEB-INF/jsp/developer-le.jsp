@@ -1,15 +1,3 @@
-<%--NOTE:
-Functions in php that have not been transfered/revised here:
-    <!--?php $this->layout->modal_footer() ?>-->
-    <!--?php echo date("Y"); ?-->
-    <!--?php $this->load->helper('url'); ?-->
-    <!--?php echo (isset($status) && $status)?'onload=document.getElementById("responsive_changePassword_btn").click()':'' ?>-->	
-    <!--?php $this->layout->modal_footer(isset($status)?$status:FALSE) ?-->
-    <!--?php session_start();?-->
---%>
-<!--?php
-	session_start();
-?-->
 <!DOCTYPE html>
 <html lang="en" ng-app="loop">
 <head>
@@ -213,9 +201,7 @@ echo '--><script type="text/javascript">
                                                         </tr>
 							</thead>
 					        <tbody>
-
                                                     <tr ng-repeat="le in les | filter:searchText | filter: { uploadedBy: username }">
-
                                                         <td>
                                                             <img ng-if="le.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
                                                             <img ng-if="le.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">

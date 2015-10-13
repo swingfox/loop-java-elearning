@@ -53,7 +53,7 @@
         <input type="hidden" id="refreshed" value="no">
         <div id="wrapper">
             <!-- Login LIGHT-->
-            <form id="login_form" method="post" action="">
+            <form id="login_form" method="post" ng-controller="LoginCtrl" action="">
                 <!-- <div id="responsive_loginLight" class="modal hide fade" tabindex="-1" data-width="760"> -->
                 <div class="modal fade" id="responsive_loginLight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -63,7 +63,7 @@
                                 <span class="popup">Login</span>
                             </div>
 
-                            <div class="modal-body" ng-controller="LoginCtrl">  
+                            <div class="modal-body">  
                                 <div class="row">
                                     <div class="col-md-10 col-md-push-1">
                                         <!--<?php if(isset($status) && !$status){ ?>-->
@@ -77,11 +77,11 @@
                                             <p><input class="col-xs-12 col-md-12 sign-up" id="password" type="password" name="password" placeholder="Password" required></p> -->
 
                                         <div class="form-group">
-                                            <input type="text"  class="form-control" id="username" name="username" placeholder="Username" required/>
+                                            <input type="text"  class="form-control" id="username" ng-model="user" name="username" placeholder="Username" required/>
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="password"  class="form-control" id="password" name="password" placeholder="Password" required/>
+                                            <input type="password"  class="form-control" id="password" ng-model="password" name="password" placeholder="Password" required/>
                                         </div>
 
                                         <!--   <div class="forgot-pass">
@@ -100,7 +100,7 @@
                                             <div class="row">
                                                 <div class="col-md-4 col-md-push-1">
                                                     <label class="radio log-in">  
-                                                        <input type="radio" name="optionsRadios"  id="optionsRadios1" value="developer" data-toggle="radio" checked="">
+                                                        <input type="radio" name="optionsRadios"   id="optionsRadios1" value="developer" data-toggle="radio" checked="">
                                                         Developer
                                                     </label>
                                                 </div>
@@ -134,7 +134,7 @@
                             <div class="modal-footer"> 
                                 <div class="row">
                                     <div class="col-md-8 col-md-push-3">
-                                        <button id="btn-login" type="submit" class="btn btn-primary" value="Login"><i class="icon-signin icon-large default"></i> Login</button>
+                                        <button id="btn-login" type="submit" class="btn btn-primary" ng-click="LogIn(user,password,userType)" value="Login"><i class="icon-signin icon-large default"></i> Login</button>
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                     </div>
                                 </div>
@@ -813,7 +813,7 @@
         }
     });
 </script>
-<!--
+
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -882,7 +882,6 @@
         });
     });
 </script>
--->
 
 
 </body>

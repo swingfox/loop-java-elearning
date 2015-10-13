@@ -18,8 +18,8 @@
         <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
     </head>
     <body>
-
-	<div class="wrapper"  ng-controller="LoginCtrl">
+        <!-- <div id="wrapper"> -->
+	<div class="wrapper" ng-controller="LoginCtrl">
     	<!--<?php $this->layout->modal_footer() ?>-->
 		
 		<div id="header-wrap">
@@ -241,6 +241,108 @@
 				<div class="clearfix" id="before-features" ></div>
 			</div>
 		</div>
+<<<<<<< HEAD
+
+  		<div class="clearfix"></div>
+	<div class="wrapper">
+            <div id="header-wrap">
+		<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+		<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		</button>
+                    <a class="navbar-brand" href="/loop-XYZ/store/reviewer-update">
+                    <img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
+                    </a>
+	    </div>
+            <div class="navbar-collapse collapse" ng-controller="LoginCtrl">
+                <ul class="nav navbar-nav navbar-right"> 
+                <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
+                <input type="hidden" class="username" id="username" name="username" value="{{username}}">
+                <ul class="dropdown-menu">
+                <li role="presentation" class="dropdown-header">Options</li>
+                <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
+                <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
+                <li class="divider"></li>
+                <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
+                </ul>
+                </li>
+                </ul>
+                </div>
+                </nav>
+            </div>
+    <div class="clearfix"></div>	
+    	<ul class="nav nav-tabs main-views">
+            <li class="active"><a class="active-tab" href="/loop-XYZ/store/reviewer-le"><i class="icomoon-list"></i> Learning Objects</a></li>
+            <li><a class="active-tab" href="/loop-XYZ/store/reviewer-le"><i class="icomoon-list"></i> Learning Elements</a></li>
+            <li><a href="/loop-XYZ/store/reviewer-list"><i class="icon-edit icon-large default"></i> Review List</a></li>
+           <li ><a  href="/loop-XYZ/store/advanced-search-rev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
+           </ul>
+    <div class="clearfix"></div>
+    <div id="content-wrap-rev">
+<div class="container">
+    <div class="row">
+<div class="col-md-12 content">
+
+        <div class="table-responsive">
+                <!-- <table class="datatable table table-bordered"> -->
+                 <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                <div class="row">
+                <div class="col-sm-12">
+                <div class="pull-right">
+                <i class="icomoon-search pull-left searchbar-icon"></i>
+                <div class="dataTables_filter pull-right" id="DataTables_Table_0_filter">
+                    <label>
+                        <input type="text" aria-controls="DataTables_Table_0" data-ng-model="searchText" placeholder="Search" class="form-control input-sm" style="width: 162px;">
+                    </label>
+                </div>
+                </div>
+                <div class="clearfix"></div>
+                </div></div>
+                <table class="datatable table table-hover" ng-controller="LOList" class="col-md-12">
+            <thead>
+                <tr role="row">
+                    <th class="color-code"></th>
+                    <th>Name</th>
+                    <th>Subject</th>
+                    <th>Uploaded</th>
+                    <th>Rating</th>
+                    <th>Comments</th>
+                    <th>Status</th>
+                    <th>Reviewer</th>
+                    <th>Author</th>
+                </tr>
+            </thead>
+                <tbody>
+                    <tr ng-repeat="lo in los | filter:searchText" >
+                                <td>
+                                    <img ng-if="lo.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
+                                    <img ng-if="lo.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">
+                                    <img ng-if="lo.rating==3" src="http://localhost/loop.com/img/icon-yellow.png" alt="For Review">
+                                    <img ng-if="lo.rating==4" src="http://localhost/loop.com/img/icon-yellowgreen.png" alt="For Review">
+                                    <img ng-if="lo.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
+                                </td>
+                                <td><a ng-click="GetLO(lo)"><label ng-model="lo.name">{{lo.name}}</a></td
+                                <td><label ng-model="lo.subject">{{lo.subject}}</td>
+                                <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
+                                <td><label ng-model="lo.comments">{{lo.comments}}</td>                                                                
+                                <td ng-if="lo.status==0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>
+                                <td ng-if="lo.status==1"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>
+                                <td ng-if="lo.status==2"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>
+                                <td><label ng-model="lo.rev">{{lo.rev}}</td>
+                                <td><label ng-model="lo.uploadedBy">{{lo.uploadedBy}}</td>
+
+                            </tr>
+                                        </tbody>
+                                  </table>
+                        </div>
+
+=======
+>>>>>>> a02975dc498b172b1c54ba754bc6bbc6acd5597b
                 </div>
         </div>
    
@@ -379,64 +481,64 @@
 <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-$('#defaultForm').bootstrapValidator({
-message: 'This value is not valid',
-submitHandler: function(validator, form) {
-form.find('.alert').html('Password Changed.').show();
-},
-fields: {
-    username: {
-        message: 'The username is not valid',
-        validators: {
-            notEmpty: {
-                message: 'The username is required and can\'t be empty'
-            },
-            stringLength: {
-                min: 6,
-                max: 30,
-                message: 'The username must be more than 6 and less than 30 characters long'
-            },
-            regexp: {
-                regexp: /^[a-zA-Z0-9_\.]+$/,
-                message: 'The username can only consist of alphabetical, number, dot and underscore'
-            }
-        }
+    $('#defaultForm').bootstrapValidator({
+    message: 'This value is not valid',
+    submitHandler: function(validator, form) {
+    form.find('.alert').html('Password Changed.').show();
     },
-    email: {
-        validators: {
-            notEmpty: {
-                message: 'The email address is required and can\'t be empty'
-            },
-            emailAddress: {
-                message: 'The input is not a valid email address'
+    fields: {
+        username: {
+            message: 'The username is not valid',
+            validators: {
+                notEmpty: {
+                    message: 'The username is required and can\'t be empty'
+                },
+                stringLength: {
+                    min: 6,
+                    max: 30,
+                    message: 'The username must be more than 6 and less than 30 characters long'
+                },
+                regexp: {
+                    regexp: /^[a-zA-Z0-9_\.]+$/,
+                    message: 'The username can only consist of alphabetical, number, dot and underscore'
+                }
             }
-        }
-    },
-    newPassword: {
-        validators: {
-            notEmpty: {
-                message: 'The password is required and can\'t be empty'
-            },
-            identical: {
-                field: 'confirmNewPassword',
-                message: 'The password and its confirm are not the same'
+        },
+        email: {
+            validators: {
+                notEmpty: {
+                    message: 'The email address is required and can\'t be empty'
+                },
+                emailAddress: {
+                    message: 'The input is not a valid email address'
+                }
             }
-        }
-    },
+        },
+        newPassword: {
+            validators: {
+                notEmpty: {
+                    message: 'The password is required and can\'t be empty'
+                },
+                identical: {
+                    field: 'confirmNewPassword',
+                    message: 'The password and its confirm are not the same'
+                }
+            }
+        },
 
-    confirmNewPassword: {
-        validators: {
-            notEmpty: {
-                message: 'The confirm password is required and can\'t be empty'
-            },
-            identical: {
-                field: 'newPassword',
-                message: 'The password and its confirm are not the same'
+        confirmNewPassword: {
+            validators: {
+                notEmpty: {
+                    message: 'The confirm password is required and can\'t be empty'
+                },
+                identical: {
+                    field: 'newPassword',
+                    message: 'The password and its confirm are not the same'
+                }
             }
         }
     }
-}
-});
+    });
 });
 </script>
 </body>

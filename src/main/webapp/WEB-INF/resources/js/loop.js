@@ -57,6 +57,9 @@ eS.controller('LoginCtrl', ['$scope', '$store', function($scope, $store) {
     $store.bind($scope, 'username', '');
     $store.bind($scope, 'userId', '');
     $store.bind($scope, 'userType', '');
+    $scope.user = '';
+    $scope.password = '';
+    $scope.type = '';
     $scope.$watch("username", function(newVal) {
         console.log(newVal);
     });
@@ -66,6 +69,17 @@ eS.controller('LoginCtrl', ['$scope', '$store', function($scope, $store) {
         $store.remove('userId');
     };
 
+  /*  $scope.LogIn = function(user,password,type){
+        console.log("SULOD");
+        var data =  {
+                            username: user,
+                            password: password,
+                            userType :  type
+                    };
+        $http.post("/loop-XYZ/loop/user/login",data).success(function(response){
+            console.log(response);
+        });
+    }*/
 }]);
 
 eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $http) {
