@@ -5,6 +5,7 @@
  */
 package com.card.loop.xyz.pageControllers;
 
+import com.card.loop.xyz.config.AppConfig;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -53,63 +54,64 @@ public class LOIDEController {
     }
     
     @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.GET)
-	public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
-	
+    public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
         LearningElement element= LearningElementDAO.getSpecificLearningElementById(elementID);
-		String path = "C:\\Users\\jm-maricel\\Desktop\\100815\\loop-java-elearning\\uploads\\LE\\" + element.getName();
-		ContentShipper shipper = new ContentShipper(request, response, true);
-		shipper.ship(path);   
-	}
+	String path = "C:\\Users\\jm-maricel\\Desktop\\100815\\loop-java-elearning\\uploads\\LE\\" + element.getName();
+	ContentShipper shipper = new ContentShipper(request, response, true);
+	shipper.ship(path);   
+    }
         
-     @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.HEAD)
-	public void getFileH(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
-		
+    @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.HEAD)
+    public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {	
         LearningElement element= LearningElementDAO.getSpecificLearningElementById(elementID);
-		String path = "C:\\Users\\jm-maricel\\Desktop\\100815\\loop-java-elearning\\uploads\\LE\\" + element.getName();
-		ContentShipper shipper = new ContentShipper(request, response, false);
-		shipper.ship(path);
-	}
+	String path = "C:\\Users\\jm-maricel\\Desktop\\100815\\loop-java-elearning\\uploads\\LE\\" + element.getName();
+	ContentShipper shipper = new ContentShipper(request, response, false);
+	shipper.ship(path);
+    }
         
-        @RequestMapping(value="/upload", method = RequestMethod.POST)
-	public void uploadLearningElement(@RequestParam("title") String title, @RequestParam("author") String author,
-						   @RequestParam("description") String description, @RequestParam("file") MultipartFile file, @RequestParam("type") String type) {
-		if (!file.isEmpty()) {
-                try {
-                    byte[] bytes = file.getBytes();
-       //             File fil = new File("C:/Users/David/Desktop/Software Engineering/loop-java-elearning/uploads//"+ type + "//" + file.getOriginalFilename());
-                    File fil = new File("C:/Users/aislinn.dell-PC/Desktop/SoftEng/LOOP/latest/loop-java-elearning/uploads//"+ type + "//" + file.getOriginalFilename());
-                    BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fil));
-                    stream.write(bytes);
-                    stream.close();
-                    
-                    if(type.equals("LE")){
-                        LearningElement le = new LearningElement();
-                        le.setName(title);
-                        le.setUploadedBy(author);
-                        le.setDescription(description);
-                        le.setDownloads(0);
-                        le.setStatus("1");
-                        le.setRating(1);
-                        le.setDateUploaded(new Date().toString());
-                        le.setFilePath(file.getOriginalFilename());
-                        LearningElementDAO.addLearningElement(le);
-                    }
-                    else if(type.equals("LO")){
-                      LearningObject lo = new LearningObject();
-                        lo.setName(title);
-                        lo.setUploadedBy(author);
-                        lo.setDescription(description);
-                        lo.setFilepath(file.getOriginalFilename());
-                        LearningObjectDAO.addLearningObject(lo);
-                    }
+    @RequestMapping(value="/upload", method = RequestMethod.POST)
+    public void upload(@RequestParam("title") String title, @RequestParam("author") String author,
+		       @RequestParam("description") String description, @RequestParam("file") MultipartFile file, @RequestParam("type") String type) {
+            if (!file.isEmpty()) {
+                    try {
+                        byte[] bytes = file.getBytes();
+                        File fil = new File(AppConfig.UPLOAD_BASE_PATH+ type + "//" + file.getOriginalFilename());
+                        BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fil));
+                        stream.write(bytes);
+                        stream.close();
 
-                    System.out.println("UPLOAD FINISHED");
-                
-            } catch (Exception e) {
-                System.err.println(e.toString());
+                        switch (type) {
+                            case "LE":
+                                LearningElement le = new LearningElement();
+                                le.setName(title);
+                                le.setUploadedBy(author);
+                                le.setDescription(description);
+                                le.setDownloads(0);
+                                le.setStatus("1");
+                                le.setRating(1);
+                                le.setDateUploaded(new Date().toString());
+                                le.setFilePath(file.getOriginalFilename());
+                                LearningElementDAO.addLearningElement(le);
+                                break;
+                            case "LO":
+                                LearningObject lo = new LearningObject();
+                                lo.setName(title);
+                                lo.setUploadedBy(author);
+                                lo.setDescription(description);
+                                lo.setFilepath(file.getOriginalFilename());
+                                LearningObjectDAO.addLearningObject(lo);
+                                break;
+                        }
+
+                        System.out.println("UPLOAD FINISHED");
+
+                } catch (Exception e) {
+                    System.err.println(e.toString());
+                }
+            } 
+            else {
+                System.err.println("EMPTY FILE.");
             }
-        } else {
-            System.err.println("EMPTY FILE.");
         }
-	}
+    
 }

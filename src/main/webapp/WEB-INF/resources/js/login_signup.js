@@ -99,7 +99,7 @@ $(document).ready(function() {
 		}
             });
         });
-        $("#btn-login").click(function(){
+       $("#btn-login").click(function(){
             console.log("CLICKED BUTTON LOG IN");
             var jsonData = 
                         JSON.stringify({
@@ -135,7 +135,7 @@ $(document).ready(function() {
                         alert("status:" + status + "error:" + error);
 		}
             });
-        });
+        }); 
     });
     function get(name){
         if(name===(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))

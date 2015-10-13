@@ -21,5 +21,4 @@ com\card\loop\xyz\controller\LearningElementController.class
 com\card\loop\xyz\service\LearningElementService.class
 com\card\loop\xyz\service\LearningObjectService.class
 com\card\loop\xyz\model\LearningObject.class
-com\card\loop\xyz\controller\IndexController.class
 com\loop\controller\ContentShipper$Range.class

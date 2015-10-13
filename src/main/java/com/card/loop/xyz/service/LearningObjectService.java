@@ -36,7 +36,8 @@ public class LearningObjectService
             dto.setStatus(loModel.getStatus());
             dto.setComments(loModel.getComments());
             dto.setUploadedBy(loModel.getUploadedBy());
-            dto.setFilepath(loModel.getFilepath());            
+            dto.setFilepath(loModel.getFilepath());     
+            dto.setSequence(loModel.getSequence());
         }
         return dto;
     }
@@ -70,7 +71,7 @@ public class LearningObjectService
         List<LearningObjectDto> objects = new ArrayList<>();
         for(LearningObject model: LOList){
             LearningObjectDto dto = new LearningObjectDto();
-          //  dto.setId(model.getID());
+            dto.setId(model.getId());
             dto.setRating(model.getRating());
             dto.setName(model.getName());
             dto.setDescription(model.getDescription());
@@ -80,9 +81,9 @@ public class LearningObjectService
             dto.setRev(model.getRev());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
-            dto.setRev(model.getRev());
             dto.setStatus(model.getStatus());
             dto.setUploadedBy(model.getUploadedBy());
+            dto.setSequence(model.getSequence());
             objects.add(dto);
         }
         return objects;

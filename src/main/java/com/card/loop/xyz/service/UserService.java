@@ -48,8 +48,6 @@ public class UserService {
             User model = new User();
             model.setUserName(user.getUsername());
             model.setPassword(user.getPassword());
-            //model.setFirstName(user.getFirstName());
-            //model.setLastName(user.getLasstName());
             model.setEmail(user.getEmail());
             model.setUserType(user.getUsertype());
             model.setEmail(user.getEmail());
@@ -136,7 +134,4 @@ public class UserService {
     public List<UserDto> getAllCommonUsers(UserDto user) throws UnknownHostException{return null;}
     public List<UserDto> getAllPendingUsers(UserDto user) throws UnknownHostException{return null;}
     public boolean appoveUserRegistration(UserDto user) throws UnknownHostException{return false;}
-    
-    
-    
 }

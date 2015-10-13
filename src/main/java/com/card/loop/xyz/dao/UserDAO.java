@@ -22,7 +22,6 @@ import org.springframework.data.mongodb.core.query.Update;
 /**
  *
  * @author Vine Deiparine
- * @date   09/21/2015
  */
 public class UserDAO {
     
@@ -78,7 +77,7 @@ public class UserDAO {
         Update update = new Update();
         update.addToSet("blocked", true);
         //update.addToSet("firstName",user.getFirstName());
-    mongoOps.updateFirst(query,update,User.class);
+        mongoOps.updateFirst(query,update,User.class);
         ok = true;
         return ok;
     }
@@ -125,7 +124,6 @@ public class UserDAO {
         Query query = new Query();
         query.addCriteria(where("username").is(username).and("password").is(password));
         ok = mongoOps.exists(query, User.class);
-        System.out.println("user exists ?" + ok);
         return ok;
     }
     public static User getUser(String username,String password) throws UnknownHostException{

@@ -37,11 +37,9 @@ public class UserController {
         UserService service = new UserService();
         boolean ok = service.register(user);
             if(ok==false){
-             //   user.getErrorList().add("Registration unsucessful.");
                 System.out.println("HAHA");
             }
         }catch(Exception e){
-//            user.getErrorList().add(e.toString());
             e.printStackTrace();
         }
         return user;
@@ -52,15 +50,12 @@ public class UserController {
     public UserDto login(@RequestBody UserDto user) throws UnknownHostException
     {
         UserDto result = null;
-     //   JSONObject json = new JSONObject("HAHAH");
         try{
-            System.out.println("USERSRRR");
             UserService service = new UserService();
             result = service.login(user);
             if(result==null)
                 user.getErrorList().add("Username or password is invalid.");
         }catch(Exception e){
-            //user.getErrorList().add(e.toString());
             System.out.println(e.toString());
         }
         return result;
@@ -75,8 +70,7 @@ public class UserController {
             if(result==null)
                 return null;
         }catch(Exception e){
-            //user.getErrorList().add(e.toString());
-            System.out.println(e.toString());
+            e.printStackTrace();
         }
         return result;
     }
@@ -85,14 +79,12 @@ public class UserController {
     public List<UserDto>  accountDeveloper(){
         List<UserDto> result = null;
         try{
-            System.out.println("LOOO");
             UserService service = new UserService();
             result = service.getAllDeveloper();
             if(result==null)
                return null;
         }catch(Exception e){
-            //user.getErrorList().add(e.toString());
-            System.out.println(e.toString());
+            e.printStackTrace();
         }
         return result;
     }
@@ -138,8 +130,7 @@ public class UserController {
             if(result==null);
              //   user.getErrorList().add("NULLL!");
         }catch(Exception e){
-            //user.getErrorList().add(e.toString());
-            System.out.println(e.toString());
+            e.printStackTrace();
         }
     }
     
@@ -152,8 +143,7 @@ public class UserController {
             if(result==null)
                 return null;
         }catch(Exception e){
-            //user.getErrorList().add(e.toString());
-            System.out.println(e.toString());
+            e.printStackTrace();
         }
         return result;
     }
@@ -167,8 +157,7 @@ public class UserController {
             if(result==null)
                 return null;
         }catch(Exception e){
-            //user.getErrorList().add(e.toString());
-            System.out.println(e.toString());
+            e.printStackTrace();
         }
         return result;
     }

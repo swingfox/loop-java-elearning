@@ -6,6 +6,7 @@
 package com.card.loop.xyz.controller;
 
 //import com.card.loop.xyz.dto.UserDto;
+import com.card.loop.xyz.config.AppConfig;
 import com.card.loop.xyz.dao.LearningElementDAO;
 import com.card.loop.xyz.dao.LearningObjectDAO;
 import com.card.loop.xyz.dto.LearningObjectDto;
@@ -75,10 +76,13 @@ public class LearningObjectController {
         } catch (IOException ex) {
             Logger.getLogger(LearningObjectController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     
     //this is for the the admin
+    /*
+    *   @params String id the name of the specific LE
+    *   @return List<LearningObjectDto> returns the list of all downloadable LEs
+    */
     @RequestMapping("/list")
     @ResponseBody
     public List<LearningObjectDto> ListLO()
@@ -86,22 +90,31 @@ public class LearningObjectController {
         List<LearningObjectDto> dtos = new ArrayList<>();
         try{
             dtos = loService.getLearningObjects();
-        }catch(Exception e){ }
+        }catch(Exception e){ 
+            e.printStackTrace();
+        }
         return dtos;
     }
-    //this is for the the admin
-    @RequestMapping("/revList")
+    /* 
+    *   @return List<LearningObjectDto> reviewer's learning objects
+    */
+    @RequestMapping("/revList/{reviewerID}")
     @ResponseBody
-    public List<LearningObjectDto> RevListLO(@RequestBody String rev)
+    public List<LearningObjectDto> RevListLO(@PathVariable String reviewerID)
     {
         List<LearningObjectDto> dtos = new ArrayList<>();
         try{
-            dtos = loService.getReviewerLOList(rev);
+            dtos = loService.getReviewerLOList(reviewerID);
         }catch(Exception e){ 
-            e.printStackTrace(); }
+            e.printStackTrace(); 
+        }
         return dtos;
     }
 
+    /*
+    *   @params String id the name of the specific LO
+    *   @return List<LearningObjectDto> returns the list of all downloadable LOs
+    */
     @RequestMapping("/download/{id}")    
     @ResponseBody
     public LearningObjectDto LODetails(@PathVariable String id) throws UnknownHostException
@@ -109,43 +122,30 @@ public class LearningObjectController {
         LearningObjectDto dto = new LearningObjectDto();
         try{
             dto = loService.getLearningObject(id);
-        }catch(Exception e){ e.printStackTrace();}
+        }catch(Exception e){ 
+            e.printStackTrace();
+        }
         return dto;
     }
-    
-    @RequestMapping("/downloadAllLO")    
-    @ResponseBody
-    public List<LearningObjectDto> LearningObjects() throws UnknownHostException
-    {
-        List<LearningObjectDto> dto = new ArrayList<>();
-        try{
-            dto = loService.getLearningObjects();
-        }catch(Exception e){ e.printStackTrace();}
-        return dto;
-    }
-    
+    /*
+    *   @params String elementID the name of the specific LO to be downloaded
+    */
     @RequestMapping(value = "/downloadLO/{elementID}", method = RequestMethod.GET)
-	public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
-	
-      //  LearningObject element= LearningObjectDAO.getLearningObject(elementID);
-                            
+    public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {                   
                 LearningObject element = LearningObjectDAO.getLearningObject(elementID);
-                System.out.println("ELEMENT ID:" +  element.getFilepath());
-		String path = "C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LO\\" + element.getFilepath();
+		String path = AppConfig.UPLOAD_LO_PATH + element.getFilepath();
 		ContentShipper shipper = new ContentShipper(request, response, true);
 		shipper.ship(path);   
-	}
-        
-     @RequestMapping(value = "/downloadLO/{elementID}", method = RequestMethod.HEAD)
-	public void getFileH(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
-		
-      //   LearningObject element= LearningObjectDAO.getLearningObject(elementID);
+    }
+    /*
+    *   @params String elementID the name of the specific LO to be downloaded
+    */
+    @RequestMapping(value = "/downloadLO/{elementID}", method = RequestMethod.HEAD)
+    public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
                 LearningObject element = LearningObjectDAO.getLearningObject(elementID);
 
-                System.out.println("ELEMENT ID:" +  element.getFilepath());
-
-		String path = "C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LO\\" + element.getFilepath();
+		String path = AppConfig.UPLOAD_LO_PATH + element.getFilepath();
 		ContentShipper shipper = new ContentShipper(request, response, false);
 		shipper.ship(path);
-	}
+    }
 }

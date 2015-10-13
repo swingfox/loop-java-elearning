@@ -8,11 +8,8 @@ package com.card.loop.xyz.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-/**
- * REVISION HISTORY
- * 
- * [2015/09/09]         - Vine Deiparine  -   Initial Codes 
- * [September 22, 2015] - David Ramirez   -   Added annotations
+/* 
+ * @author Vine Deiparine
  */
 
 @Document(collection = "lo")
