@@ -58,7 +58,7 @@ public class IndexController{
     public ModelAndView accessDownloadLEAdmin() {
         return new ModelAndView("downloadLEAdmin");
     } 
-    @RequestMapping("/downloadLO-admin")
+    @RequestMapping("/downloadLOAdmin")
     public ModelAndView accessDownloadLOAdmin() {
         return new ModelAndView("downloadLOAdmin");
     } 

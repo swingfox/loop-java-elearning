@@ -196,7 +196,7 @@ echo '--><script type="text/javascript">
                                                     </div>
                                                         <div class="clearfix"></div>
                                                     </div></div>
-						 	<table class="datatable table table-hover" ng-controller="LOList">
+                                                    <table class="datatable table table-hover" ng-controller="LOList">
 
 
 						    <thead>

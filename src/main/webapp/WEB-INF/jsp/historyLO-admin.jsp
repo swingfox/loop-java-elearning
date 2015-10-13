@@ -61,7 +61,7 @@
     </head>
     <body>
         <!-- <div id="wrapper"> -->
-	<div class="wrapper">
+	<div class="wrapper" ng-controller="LOList">
     	<!--<?php $this->layout->modal_footer() ?>-->
 		
 		<div id="header-wrap">
@@ -111,7 +111,7 @@
 			<!-- <div class="container"> -->
 				<ol class="breadcrumb">
 					<li><a class="breadcrumb-link" href="/loop-XYZ/store/admin-view5">Back to Learning Object List</a></li>
-					<li class="active">History - <!--<?php echo $name?>--></li>
+					<li class="active">History - {{lo.name}}</li>
 				</ol>
 			<!-- </div> -->
 		</div> 
@@ -229,7 +229,7 @@
                                                     <input type="hidden" value="" id="counters" name="counters">
 
                                                     <a href="#responsive_addReviewer" class="btn btn-default" data-dismiss="modal" data-toggle="modal"><i class="icon-plus-sign icon-large default"></i> Add Reviewer</a>
-                                                    <a href redirect="" type="button" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>
+                                                    <a ng-click="GetLODetails_admin(lo)" type="button" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>
                                                     <a href="#responsive_confirmDelete" class="btn btn-primary" data-toggle="modal"><i class="icon-trash icon-large default"></i> Delete</a>
                                                     <a href="/loop-XYZ/store/admin-view5" class="btn btn-default"> Back</a>
 						</div>
