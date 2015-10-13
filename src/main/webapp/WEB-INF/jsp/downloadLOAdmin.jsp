@@ -20,7 +20,7 @@
 	$filepath = $lo->getFilepath();
 ?-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Download</title>
 
@@ -143,39 +143,39 @@
 
                     <!-- <legend class="col-md-12 col-md-push-3">Download</legend> -->
 
-                    <form class="form-horizontal bootstrap-validator-form" method="post" id="defaultForm" novalidate="novalidate">
+                   <form ng-controller="LOList" class="form-horizontal bootstrap-validator-form" id="defaultForm" novalidate="novalidate">
                         <div class="well">		
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Filename :</label>
-	                            <div class="col-md-8">
+	                            
 	                                <!-- <input type="text" name="username" class="form-control"> -->
 	                                <!-- <p class="download-details"><//?php echo $lo->getName(); ?></p> -->
-	                                <p class="download-details"><!--?php echo $lo->getName(); ?--></p>
-	                            </div>
+	                                <p class="download-details">{{lo.name}}</p>
+	                           
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Subject :</label>
-	                            <div class="col-md-8">
+	                            
 	                                <!-- <input type="text" name="email" class="form-control"> -->
-	                                <p class="download-details"><!--?php echo $lo->getSubject(); ?--></p>
-	                            </div>
+	                                <p class="download-details">{{lo.subject}}</p>
+	                            
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Date Uploaded :</label>
-	                            <div class="col-md-8">
+	                            
 	                                <!-- <input type="password" name="password" class="form-control"> -->
-	                                <p class="download-details"><!--?php echo $lo->getDateUploaded(); ?--></p>
-	                            </div>
+	                                <p class="download-details">{{lo.dateUploaded}}</p>
+	                            
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Description :</label>
-	                            <div class="col-md-8">
+	                            
 	                                <!-- <input type="password" name="confirmPassword" class="form-control"> -->
-	                                <p class="download-details"><!--?php echo $lo->getDescription(); ?--></p>
-	                            </div>
+	                                <p class="download-details">{{lo.description}}</p>
+	                            
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 	                    </div>	
 
@@ -248,7 +248,11 @@
 
         <script src="css/bootstrap3/js/tooltip.js"></script>
         <script src="css/bootstrap3/js/popover.js"></script>
-
+        
+        
+        <script src="js/angular/angular.js"></script>
+        <script src="js/angular/ngStorage.js"></script>
+        <script src="js/loop.js"></script>
         <!-- Bootstrap tour =================================================-->
         <script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
         <script src="bootstrap-tour/build/js/bootstrap-tour.min.js"></script>

@@ -1,15 +1,3 @@
-<%--NOTE:
-Functions in php that have not been transfered/revised here:
-    <!--?php $this->layout->modal_footer() ?>-->
-    <!--?php echo date("Y"); ?-->
-    <!--?php $this->load->helper('url'); ?-->
-    <!--?php echo (isset($status) && $status)?'onload=document.getElementById("responsive_changePassword_btn").click()':'' ?>-->	
-    <!--?php $this->layout->modal_footer(isset($status)?$status:FALSE) ?-->
-    <!--?php session_start();?-->
---%>
-<!--?php
-	session_start();
-?-->
 <!DOCTYPE html>
 <html lang="en" ng-app="loop">
 <head>
@@ -68,11 +56,8 @@ echo '--><script type="text/javascript">
 </head>
 <body> <!--?php echo (isset($status) && $status)?'onload=document.getElementById("responsive_changePassword_btn").click()':'' ?>-->	
 	<!-- <div id="wrapper"> -->
-<<<<<<< HEAD
-	<div class="wrapper" ng-controller="LoginCtrl">
-=======
+
 	<div class="wrapper"  ng-controller="LoginCtrl">
->>>>>>> f84aa8b4071c01da5c5d7e140d953a7629c58781
     	<!--?php $this->layout->modal_footer(isset($status)?$status:FALSE) ?-->
 		
 		<div id="header-wrap">
@@ -90,11 +75,8 @@ echo '--><script type="text/javascript">
 						</a>
 	                </div>
 					
-<<<<<<< HEAD
-                                    <div class="navbar-collapse collapse" >
-=======
+
                                     <div class="navbar-collapse collapse">
->>>>>>> f84aa8b4071c01da5c5d7e140d953a7629c58781
 
 						<!--?php $this->layout->user_menu() ?-->
                                                 <ul class="nav navbar-nav navbar-right"> 

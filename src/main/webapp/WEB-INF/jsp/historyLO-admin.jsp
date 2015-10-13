@@ -61,7 +61,7 @@
     </head>
     <body>
         <!-- <div id="wrapper"> -->
-	<div class="wrapper">
+	<div class="wrapper" ng-controller="LOList">
     	<!--<?php $this->layout->modal_footer() ?>-->
 		
 		<div id="header-wrap">
@@ -111,7 +111,7 @@
 			<!-- <div class="container"> -->
 				<ol class="breadcrumb">
 					<li><a class="breadcrumb-link" href="/loop-XYZ/store/admin-view5">Back to Learning Object List</a></li>
-					<li class="active">History - <!--<?php echo $name?>--></li>
+					<li class="active">History - {{lo.name}}</li>
 				</ol>
 			<!-- </div> -->
 		</div> 
@@ -160,7 +160,7 @@
 						
 						<div class="table-responsive">
 						 	<!-- <table class="datatable table table-bordered"> -->
-						 	<table class="datatable table table-hover">
+						 	<table class="datatable table table-hover" ng-controller="LOList">
 
 
 						    <thead>
@@ -176,6 +176,23 @@
 								</tr>
 							</thead>
 					        <tbody>
+                                                    <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : username }">
+                                                        <td>
+                                                            <img ng-if="lo.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
+                                                            <img ng-if="lo.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">
+                                                            <img ng-if="lo.rating==3" src="http://localhost/loop.com/img/icon-yellow.png" alt="For Review">
+                                                            <img ng-if="lo.rating==4" src="http://localhost/loop.com/img/icon-yellowgreen.png" alt="For Review">
+                                                            <img ng-if="lo.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
+
+                                                        </td>
+                                                        <td><p classdownload-details ng-binding="download-details">{{lo.name}}</p></td>
+                                                        <td><label >{{lo.subject}}</td>
+                                                        <td><label >{{lo.dateUploaded}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label >{{lo.rating}}</td>
+                                                        <td><label >{{lo.comments}}</td>
+                                                        <td><label >{{lo.rev}}</td>
+                                                         
+                                                    </tr>
                                                     <!--
 						        <?php
 						        $controller = new LOController();
@@ -212,7 +229,7 @@
                                                     <input type="hidden" value="" id="counters" name="counters">
 
                                                     <a href="#responsive_addReviewer" class="btn btn-default" data-dismiss="modal" data-toggle="modal"><i class="icon-plus-sign icon-large default"></i> Add Reviewer</a>
-                                                    <a href redirect="" type="button" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>
+                                                    <a ng-click="GetLODetails_admin(lo)" type="button" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>
                                                     <a href="#responsive_confirmDelete" class="btn btn-primary" data-toggle="modal"><i class="icon-trash icon-large default"></i> Delete</a>
                                                     <a href="/loop-XYZ/store/admin-view5" class="btn btn-default"> Back</a>
 						</div>

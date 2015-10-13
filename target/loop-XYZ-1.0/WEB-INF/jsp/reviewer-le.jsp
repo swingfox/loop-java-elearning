@@ -1,11 +1,12 @@
-<!--<?php session_start(); ?>-->
 <!DOCTYPE html>
 <html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Review View</title>
 <meta charset="utf-8">
-            
-
+=======
+        <head>
+        <title>LOOP | Review View</title>
+        <meta charset="utf-8">
             <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 
             <!-- Bootstrap 3 -->
@@ -87,6 +88,7 @@
 
 		<div class="clearfix"></div>
 
+<<<<<<< HEAD
 		
 =======
 <head>
@@ -139,10 +141,12 @@
 </div>
 
 <div class="clearfix"></div>
+=======
+>>>>>>> a02975dc498b172b1c54ba754bc6bbc6acd5597b
     	<ul class="nav nav-tabs main-views">
 		 <li><a class="active-tab" href="/loop-XYZ/store/reviewer-update"><i class="icomoon-list"></i> Learning Objects</a></li>
 		  <li class="active"><a class="active-tab" href="/loop-XYZ/store/reviewer-le"><i class="icomoon-list"></i> Learning Elements</a></li>
-		  <li><a href="/loop-XYZ/store/reviewer-list"><i class="icon-edit icon-large default"></i> Review List</a></li>
+		  <li><a href="/loop-XYZ/store/review-list"><i class="icon-edit icon-large default"></i> Review List</a></li>
 		  <li><a href="/loop-XYZ/store/advanced-search-rev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
 		</ul>
 		<div class="clearfix"></div>
@@ -165,7 +169,11 @@
                                     </div>
                                         <div class="clearfix"></div>
                                     </div></div>
+<<<<<<< HEAD
                                         
+=======
+
+>>>>>>> a02975dc498b172b1c54ba754bc6bbc6acd5597b
                                     <table class="datatable table table-hover" ng-controller="LEListCtrl" id="les">
                                         <thead>
                                                     <tr>
@@ -202,6 +210,7 @@
                                             <td><label ng-model="rev">{{le.rev}}</td>
                                             <td><label ng-model="uploadedBy">{{le.uploadedBy}}</td>
                                             
+<<<<<<< HEAD
                                     <table class="datatable table table-hover" ng-controller="LEList" id="les">
                                     <thead>
                                         <tr>
@@ -224,8 +233,11 @@
                             <img ng-if="le.rating==3" src="http://localhost/loop.com/img/icon-yellow.png" alt="For Review">
                             <img ng-if="le.rating==4" src="http://localhost/loop.com/img/icon-yellowgreen.png" alt="For Review">
                             <img ng-if="le.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
+=======
+>>>>>>> a02975dc498b172b1c54ba754bc6bbc6acd5597b
 
-                        </td>
+                                    
+                       
                         <td><a ng-click="GetLE(le)"><label ng-model="le.name">{{le.name}}</a></td>
                         <td><label ng-model="le.subject">{{le.subject}}</td>
                         <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>

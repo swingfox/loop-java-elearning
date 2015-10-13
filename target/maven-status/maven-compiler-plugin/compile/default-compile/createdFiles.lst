@@ -16,7 +16,6 @@ com\card\loop\xyz\model\LearningElement.class
 com\card\loop\xyz\pageControllers\LOIDEController.class
 com\card\loop\xyz\dto\LearningObjectDto.class
 com\card\loop\xyz\pageControllers\InformatronController.class
-com\card\loop\xyz\pageControllers\IndexController.class
 com\card\loop\xyz\config\AppConfig.class
 com\card\loop\xyz\controller\LearningElementController.class
 com\card\loop\xyz\service\LearningElementService.class

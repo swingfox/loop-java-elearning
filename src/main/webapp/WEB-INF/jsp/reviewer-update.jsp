@@ -68,7 +68,7 @@
 		 <li class="active"><a class="active-tab" href="/loop-XYZ/store/reviewer-update"><i class="icomoon-list"></i> Learning Objects</a></li>
 		  <li><a class="active-tab" href="/loop-XYZ/store/reviewer-le"><i class="icomoon-list"></i> Learning Elements</a></li>
 		  <!-- <li><a href="<?php echo base_url()?>redirect/reviewlist_rev"><i class="icomoon-signup"></i> Review List</a></li> -->
-		  <li><a href="/loop-XYZ/store/reviewer-list"><i class="icon-edit icon-large default"></i> Review List</a></li>
+		  <li><a href="/loop-XYZ/store/review-list"><i class="icon-edit icon-large default"></i> Review List</a></li>
 		  <li ><a  href="/loop-XYZ/store/advanced-search-rev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
 		</ul>
 
@@ -241,6 +241,7 @@
 				<div class="clearfix" id="before-features" ></div>
 			</div>
 		</div>
+<<<<<<< HEAD
 
   		<div class="clearfix"></div>
 	<div class="wrapper">
@@ -340,18 +341,13 @@
                                   </table>
                         </div>
 
+=======
+>>>>>>> a02975dc498b172b1c54ba754bc6bbc6acd5597b
                 </div>
         </div>
-
-	<div class="footer">
-		<footer id="footer-wrap-index">
-			<div class="container">
-	            <div class="copyright-here pull-left">
-					Copyright &copy; <!--<?php echo date("Y"); ?>--> LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
-		    	</div>
-		    </div>
-	    </footer>
-    </div>
+   
+  		
+	
         
          <!-- echo '--><!-- Change Password Pop Up -->
         <form id="defaultForm" method="post">
