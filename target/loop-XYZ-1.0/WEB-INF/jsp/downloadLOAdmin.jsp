@@ -73,7 +73,7 @@
 							<span class="icon-bar"></span>
 						</button>
 	                    
-	                    <a class="navbar-brand" href="index.php">
+	                    <a class="navbar-brand" href="/loop-XYZ/store/admin-view">
 							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
 						</a>
 	                </div>
@@ -187,7 +187,7 @@
                                     if($lo->getStatus() == 2 && $lo->getRev() == $username)
                                     echo '<a href="'.base_url().'redirect/reviewLO_Admin/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>';
                                     ?-->
-                                    <a class="btn btn-default" href="index.php">Back</a>
+                                    <a class="btn btn-default" href="/loop-XYZ/store/admin-view5">Back</a>
                                 </div>
 									
                     </form>
