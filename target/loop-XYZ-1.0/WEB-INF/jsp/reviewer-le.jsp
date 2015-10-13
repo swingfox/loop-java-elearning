@@ -1,7 +1,6 @@
 <!--<?php session_start(); ?>-->
 <!DOCTYPE html>
 <html lang="en" ng-app="loop">
-<<<<<<< HEAD
         <head>
         <title>LOOP | Review View</title>
         <meta charset="utf-8">
@@ -90,63 +89,10 @@
 
 		<div class="clearfix"></div>
 
-		
-=======
-<head>
-<title>LOOP | Review View</title>
-    <meta charset="utf-8">
-    <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
-    <link href="css/bootstrap3/dist/css/bootstrap.css" rel="stylesheet" media="screen" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrapformhelpers/css/bootstrap-formhelpers.css" rel="stylesheet" />
-    <link href="css/bootstrap-modal-master/css/bootstrap-modal.css" rel="stylesheet" />
-    <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
-    <link type="text/css" href="css/css-include/1280grid.css" rel="stylesheet" />
-    <link href="js/bootstrap-tour/build/css/bootstrap-tour.css" rel="stylesheet" />
-    <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
-    <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
-    <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
-    <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
-</head>
-<body>
-    <div class="wrapper">
-    <div id="header-wrap">
-        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/loop-XYZ/store/reviewer-le">
-                <img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
-            </a>
-</div>
-    <div class="navbar-collapse collapse" ng-controller="LoginCtrl">
-            <ul class="nav navbar-nav navbar-right"> 
-                <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                            <li role="presentation" class="dropdown-header">Options</li>
-                            <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
-                            <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
-                            <li class="divider"></li>
-                            <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
-                    </ul>
-                </li>
-           </ul>
-   </div>
-
-</nav>
-</div>
-
-<div class="clearfix"></div>
->>>>>>> f84aa8b4071c01da5c5d7e140d953a7629c58781
     	<ul class="nav nav-tabs main-views">
 		 <li><a class="active-tab" href="/loop-XYZ/store/reviewer-update"><i class="icomoon-list"></i> Learning Objects</a></li>
 		  <li class="active"><a class="active-tab" href="/loop-XYZ/store/reviewer-le"><i class="icomoon-list"></i> Learning Elements</a></li>
-		  <li><a href="/loop-XYZ/store/reviewer-list"><i class="icon-edit icon-large default"></i> Review List</a></li>
+		  <li><a href="/loop-XYZ/store/review-list"><i class="icon-edit icon-large default"></i> Review List</a></li>
 		  <li><a href="/loop-XYZ/store/advanced-search-rev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
 		</ul>
 		<div class="clearfix"></div>
@@ -170,7 +116,6 @@
                                         <div class="clearfix"></div>
                                     </div></div>
 
-<<<<<<< HEAD
                                     <table class="datatable table table-hover" ng-controller="LEListCtrl" id="les">
                                         <thead>
                                                     <tr>
@@ -207,32 +152,9 @@
                                             <td><label ng-model="rev">{{le.rev}}</td>
                                             <td><label ng-model="uploadedBy">{{le.uploadedBy}}</td>
                                             
-=======
-                                    <table class="datatable table table-hover" ng-controller="LEList" id="les">
-                                    <thead>
-                                        <tr>
-                                            <th class="color-code"></th>
-                                            <th>Name</th>
-                                            <th>Subject</th>
-                                            <th>Uploaded</th>
-                                            <th>Rating</th>
-                                            <th>Comments</th>
-                                            <th>Status</th>
-                                            <th>Reviewer</th>
-                                            <th>Author</th>
->>>>>>> f84aa8b4071c01da5c5d7e140d953a7629c58781
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                            <tr ng-repeat="le in les | filter:searchText" >
-                            <td>
-                            <img ng-if="le.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
-                            <img ng-if="le.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">
-                            <img ng-if="le.rating==3" src="http://localhost/loop.com/img/icon-yellow.png" alt="For Review">
-                            <img ng-if="le.rating==4" src="http://localhost/loop.com/img/icon-yellowgreen.png" alt="For Review">
-                            <img ng-if="le.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
 
-                        </td>
+                                    
+                       
                         <td><a ng-click="GetLE(le)"><label ng-model="le.name">{{le.name}}</a></td>
                         <td><label ng-model="le.subject">{{le.subject}}</td>
                         <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
