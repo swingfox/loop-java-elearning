@@ -32,6 +32,7 @@
             }            
         </script>
             -->
+            
       <%        
         
       
@@ -258,7 +259,7 @@
                                 <span class="icon-bar"></span>
                             </button>
 
-                            <a class="navbar-brand" href="index.jsp">
+                            <a class="navbar-brand" href="/">
                                 <img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
                             </a>
                         </div>
@@ -758,9 +759,9 @@
 <script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
 <script src="js/angular/angular.js"></script>
 <script src="js/angular/ngStorage.js"></script>
+<script src="js/main.js"></script>
 <script src="js/login_signup.js" type="text/javascript"></script>
 <script src="js/loop.js" type="text/javascript"></script>
-<script src="js/main.js"></script>
 <script src="js/js-flat-ui/flatui-checkbox.js"></script>
 <script src="js/js-flat-ui/flatui-radio.js"></script>
 <script src="js/js-flat-ui/jquery.tagsinput.js"></script>
@@ -816,7 +817,6 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-
         $('#defaultForm').bootstrapValidator({
             message: 'This value is not valid',
             submitHandler: function (validator, form) {
