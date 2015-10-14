@@ -443,9 +443,6 @@ MAKE THIS BOOTSTRAP 3
         </form>
 
 	<!-- Load JS here for greater good =============================-->
-
-	<?php $this->layout->footer() ?>
-
 	<script> 
 		$(document).ready(function(){
 			var length_sel;
