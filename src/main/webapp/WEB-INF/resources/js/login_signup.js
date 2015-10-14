@@ -105,7 +105,7 @@ $(document).ready(function() {
                         JSON.stringify({
                             username:$("#username").val(),
                             password: $("#password").val(),
-                            userType :  $('input[name=optionsRadios]:checked','#login_form').val()
+                            usertype :  $('input[name=optionsRadios]:checked','#login_form').val()
                         });
             console.log(jsonData);
             $.ajax({
@@ -118,6 +118,7 @@ $(document).ready(function() {
                    // if(data.errorList.length>0){
                    $('#userId').val(data.id).change();
                    $('#userName').val(data.username).change();
+                   $('#userType').val(data.usertype).change();
                    if(data === null)
                        alert('User not found');
                    else if(data.id !== null){

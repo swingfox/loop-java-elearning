@@ -97,11 +97,11 @@
                                             <div class="clearfix"></div>
                                         </div>
 
-                                        <div class="radio-options" ng-model="userType">
+                                        <div class="radio-options">
                                             <div class="row">
                                                 <div class="col-md-4 col-md-push-1">
                                                     <label class="radio log-in">  
-                                                        <input type="radio" name="optionsRadios"   id="optionsRadios1" value="developer" data-toggle="radio" checked="">
+                                                        <input type="radio" name="optionsRadios" ng-model="userType"  id="optionsRadios1" value="developer" data-toggle="radio" checked="">
                                                         Developer
                                                     </label>
                                                 </div>
@@ -109,7 +109,7 @@
                                                 <div class="col-md-4 col-md-push-2">
                                                     <label class="radio log-in">  
                                                         <!-- <input type="radio" name="optionsRadios" id="optionsRadios2" value="reviewer" data-toggle="radio" disabled> -->
-                                                        <input type="radio" name="optionsRadios"  id="optionsRadios2" value="reviewer" data-toggle="radio">
+                                                        <input type="radio" name="optionsRadios" ng-model="userType" id="optionsRadios2" value="reviewer" data-toggle="radio">
                                                         Reviewer
                                                     </label>
                                                 </div>
@@ -119,6 +119,7 @@
                                         <div class="clearfix"></div>
                                         <div ng-hide="hide"><input type="text" id="userId" class="ng-dirty ng-touched" ng-model="userId"/></div>
                                         <div ng-hide="hide"><input type="text" id="userName" class="ng-dirty ng-touched" ng-model="username"/></div>
+                                        <div ng-hide="hide"><input type="text" id="userType" class="ng-dirty ng-touched" ng-model="userType"/></div>
                                         <div class="label-signup">
                                             <p>Haven’t Signed Up Yet?</p>
                                         </div>

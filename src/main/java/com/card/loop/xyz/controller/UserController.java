@@ -6,12 +6,12 @@
 package com.card.loop.xyz.controller;
 
 import com.card.loop.xyz.dto.UserDto;
-import com.card.loop.xyz.model.User;
 import com.card.loop.xyz.service.UserService;
 import java.net.UnknownHostException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -121,17 +121,10 @@ public class UserController {
     }
     
     @RequestMapping("/blockUser")
-    public void blockUser(){
-     List<UserDto> result = null;
-        try{
-            System.out.println("LOOO");
-            UserService service = new UserService();
-            result = service.getBlockedUsers();
-            if(result==null);
-             //   user.getErrorList().add("NULLL!");
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+    @ResponseBody
+    public boolean blockUser(@RequestBody UserDto user) throws UnknownHostException{
+        UserService service = new UserService();
+        return service.blockUser(user);
     }
     
     @RequestMapping("/reviewer")
