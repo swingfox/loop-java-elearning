@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.card.loop.xyz.dao.LearningElementDAO;
 import com.card.loop.xyz.dao.LearningObjectDAO;
+import com.card.loop.xyz.dto.LearningObjectDto;
 import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
 import com.loop.controller.ContentShipper;
@@ -94,7 +95,7 @@ public class LOIDEController {
                                 LearningElementDAO.addLearningElement(le);
                                 break;
                             case "LO":
-                                LearningObject lo = new LearningObject();
+                                LearningObjectDto lo = new LearningObjectDto();
                                 lo.setName(title);
                                 lo.setUploadedBy(author);
                                 lo.setDescription(description);

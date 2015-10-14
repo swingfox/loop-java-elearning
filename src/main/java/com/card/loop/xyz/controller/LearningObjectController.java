@@ -16,14 +16,9 @@ import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.service.LearningObjectService;
 import com.card.loop.xyz.service.UserService;
 import com.loop.controller.ContentShipper;
-import com.mongodb.util.JSON;
-
-
-import com.mongodb.util.JSON;
-
-
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -32,7 +27,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.simple.JSONObject;
+import org.apache.commons.io.IOUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpRequest;
 import org.springframework.http.client.ClientHttpResponse;
@@ -54,25 +51,28 @@ import org.springframework.web.bind.annotation.RestController;
 public class LearningObjectController {
     
     LearningObjectService loService = new LearningObjectService();
-    
-    public void downloadAllLO()
+    // unsay silbi URL mapping nya? if wa, asa ni namo tawgon???
+    public void downloadAllLOToInformatron()
     {
         try {
             SimpleClientHttpRequestFactory rf= new SimpleClientHttpRequestFactory();
-            ClientHttpRequest req= rf.createRequest(URI.create("http://192.168.254.101:8080/InformatronYX/informatron/LO/upload/availableLO"),HttpMethod.POST);
-            java.io.PrintWriter pw = new java.io.PrintWriter(req.getBody());
-            JSONObject obj= new JSONObject();
-            obj.put("lo", loService.getLearningObjects());
-            pw.print(obj.toString());
+            ClientHttpRequest req = rf.createRequest(URI.create(AppConfig.LOOP_URL + "/loop-XYZ/loop/list"),HttpMethod.GET);
             ClientHttpResponse response = req.execute();
+            ClientHttpRequest req2 = rf.createRequest(URI.create(AppConfig.INFORMATRON_URL + "/InformatronYX/informatron/LO/upload/availableLO"), HttpMethod.GET);
+            IOUtils.copy(response.getBody(), req2.getBody());
+            ClientHttpResponse response2 = req2.execute();
             
-            //response
-            BufferedReader reader= new BufferedReader(new java.io.InputStreamReader(response.getBody()));
-
-            JSONObject responseObj = new JSONObject();
-            responseObj.put(req, reader);
-            
-
+            BufferedReader reader  = new BufferedReader(new InputStreamReader(response2.getBody()));
+            try {
+                JSONObject obj = new JSONObject(reader.readLine());
+                // checking
+                if(reader.readLine().equals("true"))
+                        System.out.println("SUCCESS!!");
+                else
+                    System.err.println("FAILL!!");
+            } catch (JSONException ex) {
+                Logger.getLogger(LearningObjectController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (IOException ex) {
             Logger.getLogger(LearningObjectController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -89,7 +89,7 @@ public class LearningObjectController {
     {
         List<LearningObjectDto> dtos = new ArrayList<>();
         try{
-            dtos = loService.getLearningObjects();
+            dtos = loService.getAvailableLearningObjects();
         }catch(Exception e){ 
             e.printStackTrace();
         }
@@ -116,7 +116,6 @@ public class LearningObjectController {
     *   @return List<LearningObjectDto> returns the list of all downloadable LOs
     */
     @RequestMapping("/download/{id}")    
-    @ResponseBody
     public LearningObjectDto LODetails(@PathVariable String id) throws UnknownHostException
     {
         LearningObjectDto dto = new LearningObjectDto();
@@ -126,6 +125,19 @@ public class LearningObjectController {
             e.printStackTrace();
         }
         return dto;
+    }
+    
+    /*
+    *   @params String LOname the name of the specific LO
+    *   @return ok returns true if approved successfully
+    */
+    @RequestMapping("/approve/{LOname}")    
+    public boolean approve(@PathVariable String LOname) throws UnknownHostException
+    {
+        boolean ok;
+        ok = loService.approveLO(LOname);
+   //     this.downloadAllLOToInformatron();
+        return ok;
     }
     /*
     *   @params String elementID the name of the specific LO to be downloaded
@@ -148,4 +160,6 @@ public class LearningObjectController {
 		ContentShipper shipper = new ContentShipper(request, response, false);
 		shipper.ship(path);
     }
+    
+    
 }

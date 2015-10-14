@@ -63,10 +63,14 @@ eS.controller('LoginCtrl', ['$scope', '$store', function($scope, $store) {
     $scope.$watch("username", function(newVal) {
         console.log(newVal);
     });
+    $scope.$watch("userType", function(newVal) {
+        console.log(newVal);
+    });
     $scope.hide = true;
     $scope.clearUser = function(){ 
         $store.remove('username'); 
         $store.remove('userId');
+        $store.remove('userType');
     };
 
   /*  $scope.LogIn = function(user,password,type){
