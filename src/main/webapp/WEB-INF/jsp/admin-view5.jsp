@@ -225,11 +225,11 @@
                                                             
                                                             <tr ng-repeat="lo in los | filter:searchText">
                                                                 <td>
-                                                                    <img ng-if="lo.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
-                                                                    <img ng-if="lo.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">
-                                                                    <img ng-if="lo.rating==3" src="http://localhost/loop.com/img/icon-yellow.png" alt="For Review">
-                                                                    <img ng-if="lo.rating==4" src="http://localhost/loop.com/img/icon-yellowgreen.png" alt="For Review">
-                                                                    <img ng-if="lo.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
+                                                                    <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
+                                                                    <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">
+                                                                    <img ng-if="lo.rating==3" src="img/icon-yellow.png" alt="For Review">
+                                                                    <img ng-if="lo.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
+                                                                    <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
                                                                     
                                                                 </td>
                                                                 <td><a ng-click="GetLO_admin(lo)"><label ng-model="name">{{lo.name}}</a></td>
