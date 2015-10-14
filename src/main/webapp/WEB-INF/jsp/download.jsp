@@ -69,7 +69,7 @@
 				<div class="col-md-6 col-md-push-3">
                     <div class="page-header download">
                     </div>       
-                    <form ng-controller="LOList" class="form-horizontal bootstrap-validator-form" id="defaultForm" novalidate="novalidate">
+                    <form ng-controller="LOList" class="form-horizontal bootstrap-validator-form" id="los from lo" novalidate="novalidate">
                         <div class="well">	
                             <div class="form-group" >
                                     <label class="col-md-3 control-label download">Filename :</label>
@@ -101,15 +101,7 @@
 	                    </div>	
 
                             <div class="form-actions advanced-search">                                    
-
-                                <!---?php
-                                echo '<input type="hidden" value="'.$lo->getID().'" id="id" name="id">';
-                                if($lo->getStatus() == 0)
-                                 echo '<a href="'.base_url().'redirect/downloadNow/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-download-alt icon-large"></i> Download</a>';
-                                if($lo->getStatus() == 2 && $lo->getRev() == $username)
-                                echo '<a href="'.base_url().'redirect/review_rev/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>';
-                                ?-->
-                                <a class="btn btn-primary" href="/loop-XYZ/loop/LO/downloadLO/{{lo.id}}"><i class="icon-download-alt icon-large" ></i> Download</a>
+                                <a class="btn btn-primary" href="/loop-XYZ/loop/LO/download/{{lo.id}}"><i class="icon-download-alt icon-large" ></i> Download</a>
                                 <a class="btn btn-default" href="/loop-XYZ/store/reviewer-update" ng-click="clearLO()">Back</a>
                             </div>
 									
@@ -120,17 +112,6 @@
 		</div> 
 
   		<div class="clearfix"></div>
-
-  		<!-- This is the original footer with id=wrapper -->
-		<!-- <footer id="footer-wrap-index"> -->
-			<!-- <div class="container">
-		    	<div class="copyright-here pull-left">
-					Copyright &copy; <?php //echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<button id="aime" class="btn btn-default">Test</button>
-		    	</div>
-	  		</div>
-    	</footer> -->
-		
-		<!-- Take this out if you want the original footer back -->
 
         <div class="push"></div>
 	</div>
@@ -233,11 +214,6 @@
                 </div>
             </div>  
         </form>
-
-	<!-- Load JS here for greater good =============================-->
-
-	<!--?php $this->layout->footer() ?-->
-
         <script src="css/bootstrap3/assets/js/jquery.js"></script>
         <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
         <script src="js/main.js"></script>

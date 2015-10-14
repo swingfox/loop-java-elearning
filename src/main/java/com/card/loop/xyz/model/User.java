@@ -48,6 +48,7 @@ public class User {
     *reviewer or developer
     */
     private String userType;
+    private boolean accepted;
 
     public void setToken(String token) {
         this.token = token;
@@ -174,4 +175,14 @@ public void setBlocked(boolean blocked){
     public String getToken() {
         return token;
     }
+
+    public boolean isAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
+    }
+
+    
 }

@@ -115,7 +115,7 @@
                                         <div class="clearfix"></div>
                                     </div></div>
 
-                                    <table class="datatable table table-hover" ng-controller="LEListCtrl" id="les">
+                                    <table class="datatable table table-hover" ng-controller="LEList" id="les">
                                         <thead>
                                                     <tr>
                                                             <th class="color-code"><!-- <img src="<?php //echo base_url() ?>img/icon-colorcode.png" alt="color code" /> --></th>
@@ -131,7 +131,7 @@
                                                     </tr>
                                             </thead>
                                     <tbody>
-                                         <tr ng-repeat="le in les | filter:searchText ">
+                                         <tr ng-repeat="le in les | filter:searchText | filter: { rating:1  }">
                                              <td>
                                                 <img ng-if="le.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
                                                 <img ng-if="le.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">
@@ -155,16 +155,7 @@
 
                                     
                        
-                        <td><a ng-click="GetLE(le)"><label ng-model="le.name">{{le.name}}</a></td>
-                        <td><label ng-model="le.subject">{{le.subject}}</td>
-                        <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="le.rating">{{le.rating}}</td>
-                        <td><label ng-model="le.comments">{{le.comments}}</td>                                                                
-                        <td ng-if="le.status==0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>
-                        <td ng-if="le.status==1"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>
-                        <td ng-if="le.status==2"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>
-                        <td><label ng-model="le.rev">{{le.rev}}</td>
-                        <td><label ng-model="le.uploadedBy">{{le.uploadedBy}}</td>
+                       
 
                     </tr>
                                     </tbody>

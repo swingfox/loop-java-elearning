@@ -39,7 +39,7 @@
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
 
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
+                                                        
                                                         <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
 
                                                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
@@ -52,10 +52,9 @@
                                                                 <li class="divider"></li>
 
 
-                                                                <li><a href="loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
-
                                                                 <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
 
+                                                               
                                                         </ul>
                                                      </li>
                                                 </ul>
@@ -69,7 +68,7 @@
 
 		<div id="breadcrumb-wrap" ng-controller="LOList">
 				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="/loop-XYZ/store/reviewer-update" ng-click="clearLE()">Back to Learning Object List</a></li>
+					<li><a class="breadcrumb-link" href="/loop-XYZ/store/reviewer-le" ng-click="clearLE()">Back to Learning Element List</a></li>
 					<li class="active">Download</li>
 				</ol>
 		</div> 

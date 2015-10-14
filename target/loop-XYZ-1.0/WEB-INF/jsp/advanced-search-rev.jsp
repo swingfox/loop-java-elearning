@@ -324,7 +324,7 @@
 	 						<div class="clearfix"></div>
 							
 							<div class="form-actions advanced-search">
-								<button type="submit" class="btn btn-primary tour-step tour-step-nineteen">Search</button>
+                                                            <button type="submit" class="btn btn-primary tour-step tour-step-nineteen"><a >Search</a></button>
 								<!-- <a href="index.php" class="btn btn-default">Cancel</a> -->
 								
 								<a class="btn btn-default" href="/loop-XYZ/store/developer-update">Cancel</a>

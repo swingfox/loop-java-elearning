@@ -117,9 +117,9 @@ echo '--><script type="text/javascript">
                                     <p><input class="col-xs-12 col-md-12 sign-up" id="enterNewPassword" type="password" name="newPassword" placeholder="Enter New Password"></p>
                                     <p><input class="col-xs-12 col-md-12 sign-up last" id="confirmNewPassword" type="password" name="confirmNewPassword" placeholder="Confirm New Password"></p-->
 
-                                    <?php if(isset($status) && !$status){ ?>
+                                    <!--?php if(isset($status) && !$status){ ?>
                                     <p class="alert alert-danger"><i class="icon-warning-sign"></i> Invalid password.</p>
-                                    <?php } ?>
+                                    <?php } ?-->
 
                                     <div class="form-group">
                                         <input type="password" class="form-control" id="password" name="password" placeholder="Enter Old Password" required/>
@@ -185,7 +185,7 @@ echo '--><script type="text/javascript">
                                                     </div>
                                                         <div class="clearfix"></div>
                                                     </div></div>
-                                                    <table class="datatable table table-hover" ng-controller="LEListCtrl">
+                                                    <table class="datatable table table-hover" ng-controller="LEList">
 
 
 						    <thead>

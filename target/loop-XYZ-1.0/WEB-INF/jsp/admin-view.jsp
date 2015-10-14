@@ -68,7 +68,7 @@
 </head>
 <body>  
     <!-- <div id="wrapper"> -->
-    <div class="wrapper">
+    <div class="wrapper" ng-controller="LoginCtrl">
             
         <!--?php $this->layout->modal_footer() ?-->
         
@@ -179,7 +179,7 @@
                         </a>
                     </div>
                     
-                           <div class="navbar-collapse collapse" ng-controller="LoginCtrl">
+                           <div class="navbar-collapse collapse" >
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
                                                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} {{userId}}<b class="caret"></b></a>
@@ -382,7 +382,7 @@
 
                                 <tbody>
                                     
-                                      <tr ng-repeat="user in userAccount | filter:searchText">
+                                      <tr ng-repeat="user in userAccount | filter:searchText ">
                                             <td><a href="#responsive_fileActionAdmin" data-toggle="modal" onclick="onclick="selectIndex('.$counter.')"><label ng-model="user.username">{{user.username}}</a></td>
                                             <td><label ng-model="user.email">{{user.email}}</td>
                                             <td><label ng-model="user.usertype">{{user.usertype}}</td>

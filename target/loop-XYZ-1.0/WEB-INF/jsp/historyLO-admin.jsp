@@ -176,7 +176,7 @@
 								</tr>
 							</thead>
 					        <tbody>
-                                                    <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : username }">
+                                                    
                                                         <td>
                                                             <img ng-if="lo.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
                                                             <img ng-if="lo.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">
@@ -192,7 +192,7 @@
                                                         <td><label >{{lo.comments}}</td>
                                                         <td><label >{{lo.rev}}</td>
                                                          
-                                                    </tr>
+                                                    
                                                     <!--
 						        <?php
 						        $controller = new LOController();

@@ -44,7 +44,7 @@
     </head>
     <body>
         <!-- <div id="wrapper"> -->
-	<div class="wrapper">
+	<div class="wrapper" ng-controller="LoginCtrl">
     	<!--<?php $this->layout->modal_footer() ?>-->
 		
 		<div id="header-wrap">
@@ -62,7 +62,7 @@
 						</a>
 	                </div>
 					
-					 <div class="navbar-collapse collapse" ng-controller="LoginCtrl">
+					 <div class="navbar-collapse collapse" >
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
                                                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
@@ -191,23 +191,25 @@ MAKE THIS BOOTSTRAP 3
                                                             <div class="clearfix"></div>
                                                         </div>
                                                     </div>
-						  <table class="datatable table table-hover">
+						  <table class="datatable table table-hover" ng-controller="LEList">
 						    <thead>
 								<tr>
 									<th class="color-code"><!-- <img src="<?php echo base_url() ?>img/icon-colorcode.png" alt="color code" /> --></th>
 									<th>Name</th>
-									<th>Subject</th>
-									<th>Type</th>
-									<!-- <th>Date Uploaded</th> -->
+                                                                        <th>Subject</th>
 									<th>Uploaded</th>
+                                                                        <th>Rating</th>
+                                                                        <th>Comments</th>
 									<th>Status</th>
-									<th>Rating</th>
-									<th>Comments</th>
+                                                                        <th>Reviewer</th>
+									<th>Author</th>
+									
+									
 								
 								</tr>
 							</thead>
 					        <tbody>
-                                                    <tr ng-repeat="le in les | filter:searchText">
+                                                    <tr ng-repeat="le in les | filter:searchText | filter: { rev : username }">
                                                         <td>
                                                             <img ng-if="le.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
                                                             <img ng-if="le.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">
@@ -218,16 +220,14 @@ MAKE THIS BOOTSTRAP 3
                                                         </td>
                                                        <td><a href="'" onclick=""><label ng-model="name">{{le.name}}</a></td>
                                                        <td><label ng-model="subject">{{le.subject}}</td>
-                                                       <td><label ng-model="fileType">{{le.fileType}}</td>
                                                        <td><label ng-model="dateUploaded">{{le.dateUploaded}}</td>
+                                                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="rating">{{le.rating}}</td>
+                                                       <td><label ng-model="comments">{{le.comments}}</td>    
                                                        <td ng-if="le.status==0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>
                                                         <td ng-if="le.status==1"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>
                                                         <td ng-if="le.status==2"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>
-                                                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="rating">{{le.rating}}</td>
-                                                       <td><label ng-model="comments">{{le.comments}}</td>                                                 
-                                                       
-                                                       
-                                                       
+                                                       <td><label ng-model="rev">{{le.rev}}</td>   
+                                                       <td><label ng-model="uploadedBy">{{le.uploadedBy}}</td>                                              
                                                    </tr>
                                                     <!--
 					        <?php  

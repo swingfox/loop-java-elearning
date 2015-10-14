@@ -125,7 +125,7 @@
 				<div class="row">
 					<div class="col-md-12 content">
 						
-						<div class="table-responsive" ng-controller="LEListCtrl">
+						<div class="table-responsive" ng-controller="LEList">
 							<!-- <table class="datatable table table-bordered"> -->
                                                         <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
                                                             <div class="row">
@@ -167,7 +167,7 @@
                                                                     <img ng-if="le.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
                                                                     
                                                                 </td>
-                                                                <td><a href="'" onclick=""><label ng-model="name">{{le.name}}</a></td>
+                                                                <td><a ng-click="GetLEDetails_admin(le)"><label ng-model="name">{{le.name}}</a></td>
                                                                 <td><label ng-model="le.subject">{{le.subject}}</td>
                                                                 <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="le.rating">{{le.rating}}</td>

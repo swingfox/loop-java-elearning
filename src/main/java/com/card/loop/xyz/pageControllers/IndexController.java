@@ -54,7 +54,7 @@ public class IndexController{
     public ModelAndView accessDownloadLE() {
         return new ModelAndView("downloadLE");
     } 
-    @RequestMapping("/downloadLE-admin")
+    @RequestMapping("/downloadLEAdmin")
     public ModelAndView accessDownloadLEAdmin() {
         return new ModelAndView("downloadLEAdmin");
     } 
@@ -112,7 +112,7 @@ public class IndexController{
     }
     @RequestMapping("/reviewLO-admin")
     public ModelAndView accessReviewLOAdmin() {
-        return new ModelAndView("reviewLE-rev");
+        return new ModelAndView("reviewLO-admin");
     }
     @RequestMapping("/reviewLO-rev")
     public ModelAndView accessReviewLORev() {
@@ -132,7 +132,7 @@ public class IndexController{
     }
     @RequestMapping("/historyLO-rev")
     public ModelAndView accessHistoryLORev() {
-        return new ModelAndView("HistoryLO-rev");
+        return new ModelAndView("historyLO-rev");
     }
     
     @RequestMapping("/uploadLE-dev")
