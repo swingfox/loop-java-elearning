@@ -177,8 +177,6 @@
 						<div class="table-responsive" ng-controller="LOList">
 						 	<!-- <table class="datatable table table-bordered"> -->
 						 	<table class="datatable table table-hover">
-
-
 						    <thead>
 								<tr>
 									<th class="color-code">#</th>
@@ -191,25 +189,25 @@
 									<th>Reviewer</th>
 								</tr>
 							</thead>
-					        <tbody>
-                                                <!--td>{{lo.id}}</td-->
-                                                <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : username }">
-                                                        <td>
-                                                            <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
-                                                            <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">
-                                                            <img ng-if="lo.rating==3" src="img/icon-yellow.png" alt="For Review">
-                                                            <img ng-if="lo.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
-                                                            <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
+                                                    <tbody>
+                                                        <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : username }">
+                                                                <td>
+                                                                    <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
+                                                                    <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">
+                                                                    <img ng-if="lo.rating==3" src="img/icon-yellow.png" alt="For Review">
+                                                                    <img ng-if="lo.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
+                                                                    <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
 
-                                                        </td>
-                                                        <td><a ng-click="GetLODeveloper(lo)"><label ng-model="lo.name">{{lo.name}}</a></td>
-                                                        <td><label ng-model="lo.subject">{{lo.subject}}</td>
-                                                        <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
-                                                        <td><label ng-model="lo.comments">{{lo.comments}}</td>
-                                                        <td><label ng-model="lo.rev">{{lo.rev}}</td>
-                                                         
+                                                                </td>
+                                                                <td><a ng-click="GetLODeveloper(lo)"><label ng-model="lo.name">{{lo.name}}</a></td>
+                                                                <td><label ng-model="lo.subject">{{lo.subject}}</td>
+                                                                <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
+                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
+                                                                <td><label ng-model="lo.comments">{{lo.comments}}</td>
+                                                                <td><label ng-model="lo.rev">{{lo.rev}}</td>
                                                         </tr>
+                                                    </tbody>
+                                                        </table>
 						</div>
 					</div>
 				</div>
@@ -222,17 +220,6 @@
 		</div> 
 
   		<div class="clearfix"></div>
-
-  		<!-- This is the original footer with id=wrapper -->
-		<!-- <footer id="footer-wrap-index"> -->
-			<!-- <div class="container">
-		    	<div class="copyright-here pull-left">
-					Copyright &copy; <?php //echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<button id="aime" class="btn btn-default">Test</button>
-		    	</div>
-	  		</div>
-    	</footer> -->
-		
-		<!-- Take this out if you want the original footer back -->
         <div class="push"></div>
 	</div>
 
