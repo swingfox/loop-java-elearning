@@ -113,7 +113,7 @@
                         <h2 class="download">Upload Learning Element: Revision</h2>
                     </div>
 
-			<form action="/loop-XYZ/store/loide/upload" enctype="multipart/form-data" method="post" name="upload" class="form-horizontal">
+			<form action="/loop-XYZ/loop/LE/upload" enctype="multipart/form-data" method="post" name="upload" class="form-horizontal">
                     <!-- <form class="form-horizontal bootstrap-validator-form" action="<?php //echo base_url()?>index.php/uploading/do_upload" method="post" id="defaultForm" novalidate="novalidate"> -->
 						
 						<!-- <?php echo form_open_multipart('uploading/do_upload','id="myform"');?> -->

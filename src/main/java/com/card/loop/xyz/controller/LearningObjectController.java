@@ -16,12 +16,16 @@ import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.service.LearningObjectService;
 import com.card.loop.xyz.service.UserService;
 import com.loop.controller.ContentShipper;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,8 +42,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 /**
  *
  * @author Aislinn
@@ -51,7 +57,41 @@ import org.springframework.web.bind.annotation.RestController;
 public class LearningObjectController {
     
     LearningObjectService loService = new LearningObjectService();
-    // unsay silbi URL mapping nya? if wa, asa ni namo tawgon???
+    
+    @RequestMapping(value="/upload", method = RequestMethod.POST)
+    public void upload(@RequestParam("title") String title, @RequestParam("author") String author,
+		       @RequestParam("description") String description, @RequestParam("file") MultipartFile file, @RequestParam("type") String type) {
+            if (!file.isEmpty()) {
+                    try {
+                        byte[] bytes = file.getBytes();
+                        File fil = new File(AppConfig.UPLOAD_BASE_PATH+ type + "//" + file.getOriginalFilename());
+                        BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fil));
+                        stream.write(bytes);
+                        stream.close();
+
+                        LearningObjectDto lo = new LearningObjectDto();
+                        lo.setName(title);
+                        lo.setUploadedBy(author);
+                        lo.setDateUploaded(new Date().toString());
+                        lo.setDescription(description);
+                        lo.setStatus("1");
+                        lo.setDownloads(0);
+                        lo.setRating(1);
+                        lo.setFilepath(file.getOriginalFilename());
+                        LearningObjectDAO.addLearningObject(lo);
+
+
+                        System.out.println("UPLOAD FINISHED");
+
+                } catch (Exception e) {
+                    System.err.println(e.toString());
+                }
+            } 
+            else {
+                System.err.println("EMPTY FILE.");
+            }
+        }
+    
     public void downloadAllLOToInformatron()
     {
         try {

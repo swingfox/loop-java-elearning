@@ -107,7 +107,7 @@
                                 <!--?php echo form_open_multipart('uploading/do_upload','id="myform"');?-->
 
                                 <!-- <div class="col-md-6 col-md-push-3"> -->
-                                <form  ng-controller="LOUploadCtrl" enctype="multipart/form-data" action="/loop-XYZ/store/loide/upload" method="post" ng-submit="update(lo)" >
+                                <form  ng-controller="LOUploadCtrl" enctype="multipart/form-data" action="/loop-XYZ/loop/LO/upload" method="post" ng-submit="update(lo)" >
                                 <div class="control-group">
 
                                     <label class="control-label upload-file fileinput pull-left" for="fileInput">File Path :</label>
