@@ -123,13 +123,26 @@ public class LearningObjectController {
     *   @params String id the name of the specific LE
     *   @return List<LearningObjectDto> returns the list of all downloadable LEs
     */
+    @RequestMapping("/availableLO")
+    @ResponseBody
+    public List<LearningObjectDto> availableListLO()
+    {
+        List<LearningObjectDto> dtos = new ArrayList<>();
+        try{
+            dtos = loService.getAvailableLearningObjects();
+        }catch(Exception e){ 
+            e.printStackTrace();
+        }
+        return dtos;
+    }
+    
     @RequestMapping("/list")
     @ResponseBody
     public List<LearningObjectDto> ListLO()
     {
         List<LearningObjectDto> dtos = new ArrayList<>();
         try{
-            dtos = loService.getAvailableLearningObjects();
+            dtos = loService.getLearningObjects();
         }catch(Exception e){ 
             e.printStackTrace();
         }

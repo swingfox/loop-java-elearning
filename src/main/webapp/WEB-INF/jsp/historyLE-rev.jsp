@@ -1,21 +1,3 @@
-
-<!--<?php
-	session_start();//to use session variables
-	require './application/controllers/LEController.php';
-	$les = unserialize($_SESSION['obj']);
-	$index = $counter;
-	$le = $les[$index];
-	$id = $le->getID();
-	$rev = $le->getRev();
-	$dev = $le->getUploadedBy();
-	$name = $le->getName();
-	$status = $le->getStatus();
-	$filepath = $le->getFilepath();
-
-	$path = base_url().'uploads/';
-	//serialize($_SESSION['los']);
-	//echo $dev;*/
-?>-->
 <!DOCTYPE html>
 <html lang="en">
     <head>

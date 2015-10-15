@@ -112,7 +112,7 @@
                                                             </thead>
 						        <tbody>
 
-                                                            <tr ng-repeat="lo in los | filter:searchText" >
+                                                            <tr ng-repeat="lo in los | filter:searchText | filter: { rev : username }" >
                                                                 <td>
                                                                     <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
                                                                     <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">

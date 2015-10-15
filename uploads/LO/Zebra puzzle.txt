@@ -1,0 +1,22 @@
+Solve this famous logic puzzle, attributed to Albert Ein-
+stein, and known as the zebra puzzle. Five men with
+different nationalities and with different jobs live in con-
+secutive houses on a street. These houses are painted dif-
+ferent colors. The men have different pets and have dif-
+ferent favorite drinks. Determine who owns a zebra and
+whosefavoritedrinkismineralwater(whichisoneofthe
+favorite drinks) given these clues: The Englishman lives
+in the red house. The Spaniard owns a dog. The Japanese
+man is a painter. The Italian drinks tea. The Norwegian
+lives in the first house on the left. The green house is
+immediately to the right of the white one. The photogra-
+pherbreedssnails.Thediplomatlivesintheyellowhouse.
+Milkisdrunkinthemiddlehouse.Theownerofthegreen
+housedrinkscoffee.TheNorwegian’shouseisnexttothe
+blue one. The violinist drinks orange juice. The fox is in
+a house next to that of the physician. The horse is in a
+house next to that of the diplomat. [Hint: Make a table
+where the rows represent the men and columns represent
+the color of their houses, their jobs, their pets, and their
+favoritedrinksanduselogicalreasoningtodeterminethe
+correct entries in the table.]

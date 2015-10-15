@@ -166,10 +166,6 @@
                 </div>
             </div>
         </form>
-
-
-		<!-- Gi sugdan -->
-
 		<div class="clearfix"></div>
 		<!-- <div id="content-wrap"> -->
 
@@ -199,74 +195,21 @@
                                                 <!--td>{{lo.id}}</td-->
                                                 <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : username }">
                                                         <td>
-                                                            <img ng-if="lo.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
-                                                            <img ng-if="lo.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">
-                                                            <img ng-if="lo.rating==3" src="http://localhost/loop.com/img/icon-yellow.png" alt="For Review">
-                                                            <img ng-if="lo.rating==4" src="http://localhost/loop.com/img/icon-yellowgreen.png" alt="For Review">
-                                                            <img ng-if="lo.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
+                                                            <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
+                                                            <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">
+                                                            <img ng-if="lo.rating==3" src="img/icon-yellow.png" alt="For Review">
+                                                            <img ng-if="lo.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
+                                                            <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
 
                                                         </td>
-                                                        <td><a ng-click="GetLO(lo)"><label ng-model="lo.name">{{lo.name}}</a></td>
+                                                        <td><a ng-click="GetLODeveloper(lo)"><label ng-model="lo.name">{{lo.name}}</a></td>
                                                         <td><label ng-model="lo.subject">{{lo.subject}}</td>
                                                         <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
                                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
                                                         <td><label ng-model="lo.comments">{{lo.comments}}</td>
                                                         <td><label ng-model="lo.rev">{{lo.rev}}</td>
                                                          
-                                                    </tr>
-                                                    <!--<?php
-						        $controller = new LOController();
-						        $LOs = $controller->getLOHistory($name,$dev);
-						        //print_r($LOs);
-						        $_SESSION['histlos'] = serialize($LOs);
-						        $LO = current($LOs);
-						        $i=0;
-						        while($LO!=NULL){						       		
-								  	echo '<tr>';										
-										echo '<td>'.($i+1).'</td>';
-										echo '<td><a href="'.$path.$LO->getFilepath().'">'.$LO->getName().'</a></td>';
-										echo '<td>'.$LO->getSubject().'</td>';
-										// echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LO->getDateUploaded().'</td>';
-										echo '<td>'.$LO->getDateUploaded().'</td>';
-										echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LO->getRating().'</td>';
-										echo '<td>'.$LO->getComments().'</td>';
-										echo '<td>'.$LO->getRev().'</td>';;
-										echo '<input type="hidden" name="downloadlo" value="'.$counter.'"/>';
-									echo '</tr>';
-									next($LOs);
-									$LO = current($LOs);
-									$i++;							
-								}
-						        ?>	-->												
-							</tbody>
-						  </table>
-						</div>
-						<div>
-							<input type="hidden" value="" id="ctr" name="ctr">
-                            <input type="hidden" value="" id="counters" name="counters">
-                            <!--
-                            <?php
-                            if($rate != 5){
-								if($comment==NULL && $rev==NULL){									
-									if($i==1)
-										echo '<a href="#responsive_confirmDelete" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"><i class="icon-trash icon-large default"></i> Delete</a>';
-									else
-										echo '<a href="#responsive_confirmUploadRev" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" disabled><i class="icon-upload-alt icon-large default"></i> Upload Revision</a>'.' ';
-								}
-								else if($rev!=NULL){
-									if($comment!=NULL){									
-										echo '<a href="#responsive_confirmUploadRev" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"><i class="icon-upload-alt icon-large default"></i> Upload Revision</a>'.' ';
-									}
-									else{
-										echo '<a href="#responsive_confirmUploadRev" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" disabled><i class="icon-upload-alt icon-large default"></i> Upload Revision</a>'.' ';
-									}
-								}
-							}
-				    		else{								
-				    			echo '<a href="#responsive_confirmUploadRev" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" disabled><i class="icon-upload-alt icon-large default"></i> Upload Revision</a>'.' ';
-				    		}
-				    		?>-->
-				    		
+                                                        </tr>
 						</div>
 					</div>
 				</div>

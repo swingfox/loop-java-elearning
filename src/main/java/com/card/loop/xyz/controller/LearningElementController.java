@@ -100,8 +100,8 @@ public class LearningElementController {
 		shipper.ship(path);
     }
     
-     @RequestMapping(value="/upload", method = RequestMethod.POST)
-    public ModelAndView upload(@RequestParam("title") String title, @RequestParam("author") String author,
+    @RequestMapping(value="/upload", method = RequestMethod.POST)
+    public void upload(@RequestParam("title") String title, @RequestParam("author") String author,
 		       @RequestParam("description") String description, @RequestParam("file") MultipartFile file, @RequestParam("type") String type) {
             if (!file.isEmpty()) {
                     try {
@@ -132,5 +132,6 @@ public class LearningElementController {
             else {
                 System.err.println("EMPTY FILE.");
             }
+            
         }
 }
