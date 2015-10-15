@@ -71,7 +71,7 @@ public class LOIDEController {
     }
         
     @RequestMapping(value="/upload", method = RequestMethod.POST)
-    public void upload(@RequestParam("title") String title, @RequestParam("author") String author,
+    public String upload(@RequestParam("title") String title, @RequestParam("author") String author,
 		       @RequestParam("description") String description, @RequestParam("file") MultipartFile file, @RequestParam("type") String type) {
             if (!file.isEmpty()) {
                     try {
@@ -93,12 +93,16 @@ public class LOIDEController {
                                 le.setDateUploaded(new Date().toString());
                                 le.setFilePath(file.getOriginalFilename());
                                 LearningElementDAO.addLearningElement(le);
+                                
                                 break;
                             case "LO":
                                 LearningObjectDto lo = new LearningObjectDto();
                                 lo.setName(title);
                                 lo.setUploadedBy(author);
                                 lo.setDescription(description);
+                                lo.setDownloads(0);
+                                lo.setStatus("1");
+                                lo.setRating(1);
                                 lo.setFilepath(file.getOriginalFilename());
                                 LearningObjectDAO.addLearningObject(lo);
                                 break;
@@ -113,6 +117,13 @@ public class LOIDEController {
             else {
                 System.err.println("EMPTY FILE.");
             }
+            String redirect = null;
+            if(type.equals("LE"))
+                redirect = "redirect:/store/developer-le";
+            else if(type.equals("LO"))
+                redirect = "redirect:/store/developer-update";
+            
+            return redirect;
         }
     
 }

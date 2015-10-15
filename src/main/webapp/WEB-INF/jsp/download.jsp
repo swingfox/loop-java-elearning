@@ -100,9 +100,9 @@
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 	                    </div>	
 
-                            <div class="form-actions advanced-search">                                    
-                                <a class="btn btn-primary" href="/loop-XYZ/loop/LO/download/{{lo.id}}"><i class="icon-download-alt icon-large" ></i> Download</a>
-                                <a class="btn btn-default" href="/loop-XYZ/store/reviewer-update" ng-click="clearLO()">Back</a>
+                        <div class="form-actions advanced-search" ng-controller="LoginCtrl">                                    
+                                <a class="btn btn-primary" href="/loop-XYZ/loop/LO/downloadLO/{{lo.id}}"><i class="icon-download-alt icon-large" ></i> Download</a>
+                                <a class="btn btn-default" href="/loop-XYZ/store/{{userType}}-update" ng-click="clearLO()">Back</a>
                             </div>
 									
                     </form>

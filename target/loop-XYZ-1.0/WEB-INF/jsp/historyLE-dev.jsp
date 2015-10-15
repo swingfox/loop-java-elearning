@@ -1,36 +1,5 @@
-<%--NOTE:
-<!--Functions in php that have not been transfered/revised here:-->
-    <!--?php $this->layout->modal_footer() ?>-->
-    <!--?php echo date("Y"); ?-->
-    under <ol class="breadcrumb">
-    href ="<php echo base_url().'redirect/admin_view6'?>"
-    href="<?php echo base_url().'redirect/download_Admin/LE/'.$counter ?>"
-    href="<?php echo base_url().'index.php'?>"
-    value="<?php echo $index?>"
-    value="<?php echo $counter?>"
-    <!--?php echo $name?-->
-    <%--action="<?php echo base_url().'redirect/deleteLE_admin/'?>" --%>
-    <%--action="<?php echo base_url().'redirect/plusrevLE/'?>"--%>
-    <%--under <table class="datatable table table-hover">--%>
-
-<!--?php
-	session_start();//to use session variables
-	require './application/controllers/LEController.php';
-	$les = unserialize($_SESSION['les']);
-	$index = $counter;
-	$le = $les[$index];
-	$dev = $le->getUploadedBy();
-	$name = $le->getName();
-	$rate = $le->getRating();
-	$comment = $le->getComments();
-	$rev = $le->getRev();
-	$path = base_url().'uploads/';
-	//print_r($los);
-	//serialize($_SESSION['los']);
-	//echo $dev;*/
-?-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="loop">
 <head>
 <title>LOOP | History</title>
 
@@ -74,7 +43,7 @@
 	<div class="wrapper">
     	<!--?php $this->layout->modal_footer() ?-->
 		
-		<div id="header-wrap">
+        <div id="header-wrap" ng-controller="LoginCtrl">
 			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
 				<!-- <div class="container"> -->
 					<div class="navbar-header">
@@ -96,7 +65,7 @@
                                                     <li class="dropdown">
                                                         <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
 
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
                                                         <ul class="dropdown-menu">
 
                                                                 <li role="presentation" class="dropdown-header">Options</li>
@@ -200,7 +169,7 @@
 		<div id="content-wrap">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12 content">
+					<div class="col-md-12 content" ng-controller="LEList">
 						
 						<div class="table-responsive">
 						 	<!-- <table class="datatable table table-bordered"> -->
@@ -220,31 +189,24 @@
 								</tr>
 							</thead>
 					        <tbody>
-						        <!--?php
-						        $controller = new LEController();
-						        $LEs = $controller->getLEHistory($name,$dev);
-						        $_SESSION['histles'] = serialize($LEs);
-						        $LE = current($LEs);
-						        $i=0;								
-						        while($LE!=NULL){						       		
-								  	echo '<tr>';										
-										echo '<td>'.($i+1).'</td>';
-										echo '<td><a href="'.$path.$LE->getFilepath().'">'.$LE->getName().'</a></td>';
-										echo '<td>'.$LE->getSubject().'</td>';
-										// echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LE->getDateUploaded().'</td>';
-										echo '<td>'.$LE->getDateUploaded().'</td>';
-										echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LE->getRating().'</td>';
-										echo '<td>'.$LE->getComments().'</td>';
-										echo '<td>'.$LE->getRev().'</td>';;
-										echo '<input type="hidden" name="downloadlo" value="'.$counter.'"/>';
-									echo '</tr>';
-									next($LEs);
-									$LE = current($LEs);
-									//echo $i;
-									$i++;							
-								}
-						        ?-->													
-							</tbody>
+						       	<tr ng-repeat="le in les | filter:searchText | filter: { uploadedBy : username }">
+                                                        <td>
+                                                            <img ng-if="le.rating==1" src="img/icon-red.png" alt="For Review">
+                                                            <img ng-if="le.rating==2" src="img/icon-orange.png" alt="For Review">
+                                                            <img ng-if="le.rating==3" src="img/icon-yellow.png" alt="For Review">
+                                                            <img ng-if="le.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
+                                                            <img ng-if="le.rating==5" src="img/icon-green.png" alt="For Review">
+
+                                                        </td>
+                                                        <td><a ng-click="GetLEDeveloper(le)"><label ng-model="le.name">{{le.name}}</a></td>
+                                                        <td><label ng-model="le.subject">{{le.subject}}</td>
+                                                        <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="le.rating">{{le.rating}}</td>
+                                                        <td><label ng-model="le.comments">{{le.comments}}</td>
+                                                        <td><label ng-model="le.rev">{{le.rev}}</td>
+                                                         
+                                                    </tr>										
+                                            </tbody>
 						  </table>
 						</div>
 						<div>
@@ -329,7 +291,9 @@
 
         <script src="js/datatables/dataTables.bootstrap.js"></script>
 
-
+        <script src="js/angular/angular.js"></script>
+        <script src="js/angular/ngStorage.js"></script>
+        <script src="js/loop.js" type="text/javascript"></script>
         <script src="css/bootstrap3/js/tooltip.js"></script>
         <script src="css/bootstrap3/js/popover.js"></script>
 

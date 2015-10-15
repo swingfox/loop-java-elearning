@@ -105,16 +105,32 @@ eS.controller('LEList', ['$scope', '$store', '$http', function($scope, $store, $
     
      $scope.GetLE = function(le) {
         console.log("SULOD....");
-        $http.get('/loop-XYZ/loop/LE/downloadLE/' + le.id)    
+        $http.get('/loop-XYZ/loop/LE/download/' + le.id)    
         .success(function(data) {
             $store.bind($scope, 'le.id', data.id); 
             $store.bind($scope, 'le.name', data.name);
             $store.bind($scope, 'le.subject', data.subject); 
             $store.bind($scope, 'le.dateUploaded', data.dateUploaded); 
             $store.bind($scope, 'le.description', data.description); 
-         if($store.get('id') === "developer")
+         if($store.get('userType') === "developer")
              window.location = '/loop-XYZ/store/historyLE-dev';
          else
+             window.location = '/loop-XYZ/store/downloadLE';
+        })
+        .error(function(jqXHR, status, error) {
+            console.log(""+ error);
+        });
+    }; 
+    
+    $scope.GetLEDeveloper = function(le) {
+        $http.get('/loop-XYZ/loop/LE/download/' + le.id)    
+        .success(function(data) {
+            $store.bind($scope, 'le.id', data.id); 
+            $store.bind($scope, 'le.name', data.name);
+            $store.bind($scope, 'le.subject', data.subject); 
+            $store.bind($scope, 'le.dateUploaded', data.dateUploaded); 
+            $store.bind($scope, 'le.description', data.description); 
+
              window.location = '/loop-XYZ/store/downloadLE';
         })
         .error(function(jqXHR, status, error) {
@@ -157,7 +173,6 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
         $store.bind($scope, 'lo.description', '');
     $http.get("/loop-XYZ/loop/LO/list")    
     .success(function(data) {
-        console.log(JSON.stringify(data));
     	$scope.los = data;
     })
     .error(function(jqXHR, status, error) {
@@ -174,7 +189,7 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
             console.log(""+ error);
         });
     };
-    
+    // this is for reviewer
      $scope.GetLO = function(lo) {
         $http.get('/loop-XYZ/loop/LO/download/' + lo.id)    
         .success(function(data) {
@@ -182,13 +197,31 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
             $store.bind($scope, 'lo.name', data.name);
             $store.bind($scope, 'lo.subject', data.subject); 
             $store.bind($scope, 'lo.dateUploaded', data.dateUploaded); 
-           console.log( $store.bind($scope, 'lo.description', data.description)); 
+            console.log($store.bind($scope, 'lo.description', data.description)); 
            
             console.log($store.get('name'));
             console.log($store.get('usertype'));
          if($store.get('userType') === "developer")
              window.location = '/loop-XYZ/store/historyLO-dev';
          else
+             window.location = '/loop-XYZ/store/download';
+        })
+        .error(function(jqXHR, status, error) {
+            console.log(""+ error);
+        });
+    }; 
+    
+    $scope.GetLODeveloper = function(lo) {
+        $http.get('/loop-XYZ/loop/LO/download/' + lo.id)    
+        .success(function(data) {
+            $store.bind($scope, 'lo.id', data.id); 
+            $store.bind($scope, 'lo.name', data.name);
+            $store.bind($scope, 'lo.subject', data.subject); 
+            $store.bind($scope, 'lo.dateUploaded', data.dateUploaded); 
+            console.log($store.bind($scope, 'lo.description', data.description)); 
+           
+            console.log($store.get('name'));
+            console.log($store.get('usertype'));
              window.location = '/loop-XYZ/store/download';
         })
         .error(function(jqXHR, status, error) {

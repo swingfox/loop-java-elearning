@@ -44,8 +44,7 @@
 <body>
         <!-- <div id="wrapper"> -->
 	<div class="wrapper" ng-controller="LoginCtrl">
-    	<!--<?php $this->layout->modal_footer() ?>-->
-		
+
 		<div id="header-wrap">
 			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
 				
