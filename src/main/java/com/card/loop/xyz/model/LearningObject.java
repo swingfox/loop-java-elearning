@@ -47,7 +47,7 @@ public class LearningObject {
     /*
     *Rating of the Learning Object.
     */
-    private double rating;
+    private int rating;
     /*
     *Comments for the Learning Object.
     */
@@ -144,7 +144,7 @@ public class LearningObject {
      * Gets the rating of the Learning Object.
      * @return double This returns the rating of Learning Object.
      */
-    public double getRating(){
+    public int getRating(){
         return this.rating;
     }
 
@@ -241,7 +241,7 @@ public class LearningObject {
      * Sets the rating of the Learning Object
      * @param rating String
      */
-    public void setRating(double rating){
+    public void setRating(int rating){
         this.rating = rating;
     }
 

@@ -20,6 +20,7 @@ import java.util.List;
 public class UserService {
     
     public boolean verify(UserDto user){return false;}
+    
     public UserDto login(UserDto user) throws UnknownHostException{
         User userModel = UserDAO.getUser(user.getUsername(), user.getPassword(),user.getUsertype());
         System.out.println("USER SERVICE CONTROLLER");
@@ -50,8 +51,8 @@ public class UserService {
             model.setEmail(user.getEmail());
             model.setUserType(user.getUsertype());
             model.setEmail(user.getEmail());
-            model.setUserType(user.getUsertype());
             model.setBlocked(false);
+            model.setAccepted(false);
             model.setLastLogin(new Date().toString());
             UserDAO.saveUser(model);
             ok = true;

@@ -66,7 +66,7 @@ $(document).ready(function() {
         //var switchit = get("action");
         //if(switchit === 'signup') 
 	//	$.switchPage(switchit);
-	//else if(switchit === 'login') 
+	//else if(switchit === 'LoginCtrl') 
 	//	$.switchPage(switchit);
         // ADDED 
         $("#btn-signup").click(function(){
@@ -78,6 +78,7 @@ $(document).ready(function() {
                        // userType : $('#input[name:optionsRadios]:checked', '#defaultForm').val()
                         userType :  $('input[name=optionsRadios]:checked','#defaultForm').val()
                         });
+                        console.log(jsonData);
             $.ajax({
                 url: "/loop-XYZ/loop/user/signup",
                 contentType:'application/json',
@@ -122,19 +123,19 @@ $(document).ready(function() {
                    if(data === null)
                        alert('User not found');
                    else if(data.id !== null){
-                        alert("Login Successful!");
-                        
+                        alert("YEEEYYYY!");
                         if(data.usertype === "developer")
                         window.location = "/loop-XYZ/store/developer-update";
                         else if(data.usertype === "reviewer")
                         window.location = "/loop-XYZ/store/reviewer-update";
                         else 
                         window.location = "/loop-XYZ/store/admin-view";
+                     alert("Login Successful!");
                    }
                //     }
                 },
 		error: function(jqXHR, status, error) {
-                        alert("status:" + status + "error:" + error);
+                        alert(":( status:" + status + "error:" + error);
 		}
         }); 
     });

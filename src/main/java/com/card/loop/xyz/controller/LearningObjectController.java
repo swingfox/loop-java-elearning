@@ -135,8 +135,9 @@ public class LearningObjectController {
     public boolean approve(@PathVariable String LOname) throws UnknownHostException
     {
         boolean ok;
+        
         ok = loService.approveLO(LOname);
-   //     this.downloadAllLOToInformatron();
+        this.downloadAllLOToInformatron();
         return ok;
     }
     /*
