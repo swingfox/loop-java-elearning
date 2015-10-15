@@ -123,14 +123,14 @@ $(document).ready(function() {
                    if(data === null)
                        alert('User not found');
                    else if(data.id !== null){
-                        alert("YEEEYYYY!");
+                       
                         if(data.usertype === "developer")
                         window.location = "/loop-XYZ/store/developer-update";
                         else if(data.usertype === "reviewer")
                         window.location = "/loop-XYZ/store/reviewer-update";
                         else 
                         window.location = "/loop-XYZ/store/admin-view";
-                     alert("Login Successful!");
+                     //alert("Login Successful!");
                    }
                //     }
                 },

@@ -78,12 +78,12 @@
 							<span class="icon-bar"></span>
 						</button>
 	                    
-	                    <a class="navbar-brand" href="<?php echo base_url() ?>index.php">
+	                    <a class="navbar-brand" href="/loop-XYZ/store/developer-update">
 							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
 						</a>
 	                </div>
 					
-					<div class="navbar-collapse collapse">
+					<div class="navbar-collapse collapse" ng-controller="LoginCtrl">
 
 
 						<!--?php $this->layout->user_menu() ?-->
@@ -114,11 +114,11 @@
 
 		<div class="clearfix"></div>
 
-		<div id="breadcrumb-wrap">
+		<div id="breadcrumb-wrap" ng-controller="LOList">
 			<!-- <div class="container"> -->
 				<ol class="breadcrumb">
 					<li><a class="breadcrumb-link" href="/loop-XYZ/store/developer-update">Back to Learning Object List</a></li>
-					<li class="active">History - <!--<?php echo $name?>--></li>
+					<li class="active">History - {{lo.name}}</li>
 				</ol>
 			<!-- </div> -->
 		</div> 

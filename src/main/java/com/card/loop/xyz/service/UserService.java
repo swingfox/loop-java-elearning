@@ -86,6 +86,16 @@ public class UserService {
         }
         return UserDAO.editUser(obj);
     }
+    
+    public boolean accept(UserDto user) throws UnknownHostException{
+        User obj = new User();
+        if(!UserDAO.exists(user.getUsername())){
+            obj.setAccepted(true);            
+        }
+        return UserDAO.acceptUser(obj);
+    }    
+   
+    
     public List<UserDto> getBlockedUsers() throws UnknownHostException{
          List<UserDto> objects = new ArrayList<>();
          List<User> userList = UserDAO.getBlockedUsers();

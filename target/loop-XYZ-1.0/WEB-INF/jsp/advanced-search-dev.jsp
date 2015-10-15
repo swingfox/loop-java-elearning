@@ -111,7 +111,7 @@
 
 		<div id="content-wrap">
 			<div class="container">
-				<form class="form-horizontal" action="redirect/LO" method="POST">
+				<form class="form-horizontal" action="/loop-XYZ/store/developer-update" method="POST">
 
 					<div class="row">
 						<div class="col-md-6 col-md-push-3">
@@ -324,7 +324,7 @@
 	 						<div class="clearfix"></div>
 							
 							<div class="form-actions advanced-search">
-								<button type="submit" class="btn btn-primary tour-step tour-step-nineteen">Search</button>
+								<button type="submit" class="btn btn-primary tour-step tour-step-nineteen" >Search</button>
 								<!-- <a href="index.php" class="btn btn-default">Cancel</a> -->
 								
 								<a class="btn btn-default" href="/loop-XYZ/store/developer-update">Cancel</a>
