@@ -22,7 +22,7 @@ public class LearningObjectDto {
     /*
     *Rating of the Learning Object
     */
-    private double rating;
+    private int rating;
     /*
     * Id of the Learning Object   in mongoDB
     */
@@ -90,7 +90,7 @@ public class LearningObjectDto {
      * 
      * @return double This returns the rating of the LO
      */
-    public double getRating() {
+    public int getRating() {
         return rating;
     }
 
@@ -98,7 +98,7 @@ public class LearningObjectDto {
      * This sets the rating of the LO
      * @param rating double
      */
-    public void setRating(double rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
 

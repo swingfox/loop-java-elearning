@@ -118,7 +118,7 @@ public class LearningObjectService
         LearningObject lo = LearningObjectDAO.getLearningObject(name);
         LearningObjectDto dto = new LearningObjectDto();
             dto.setId(lo.getId());
-            dto.setRating(lo.getRating());
+            dto.setRating(5);
             dto.setName(lo.getName());
             dto.setDescription(lo.getDescription());
             dto.setSubject(lo.getSubject());

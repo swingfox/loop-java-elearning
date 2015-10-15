@@ -53,7 +53,7 @@ var eS = angular.module('loop', ['localStorage'], function($httpProvider) {
 });
 
 
-eS.controller('LoginCtrl', ['$scope', '$store', function($scope, $store) {
+eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store,$http) {
     $store.bind($scope, 'username', '');
     $store.bind($scope, 'userId', '');
     $store.bind($scope, 'userType', '');
@@ -73,17 +73,19 @@ eS.controller('LoginCtrl', ['$scope', '$store', function($scope, $store) {
         $store.remove('userType');
     };
 
-  /*  $scope.LogIn = function(user,password,type){
-        console.log("SULOD");
+  $scope.login = function(){
         var data =  {
-                            username: user,
-                            password: password,
-                            userType :  type
+                            username: $scope.username,
+                            password: $scope.password,
+                            userType :  $scope.userType
                     };
         $http.post("/loop-XYZ/loop/user/login",data).success(function(response){
-            console.log(response);
+            alert (response);
+            
+        }). error(function(response){
+            //alert ("Ajax error");
         });
-    }*/
+    };
 }]);
 
 eS.controller('LEList', ['$scope', '$store', '$http', function($scope, $store, $http) {

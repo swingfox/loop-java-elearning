@@ -50,11 +50,11 @@
 
     </head>
 
-    <body>        
+    <body ng-controller="LoginCtrl">        
         <input type="hidden" id="refreshed" value="no">
         <div id="wrapper">
             <!-- Login LIGHT-->
-            <form id="login_form" method="post" ng-controller="LoginCtrl" action="">
+            <form id="login_form" method="post" ng-submit="login()">
                 <!-- <div id="responsive_loginLight" class="modal hide fade" tabindex="-1" data-width="760"> -->
                 <div class="modal fade" id="responsive_loginLight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -78,7 +78,7 @@
                                             <p><input class="col-xs-12 col-md-12 sign-up" id="password" type="password" name="password" placeholder="Password" required></p> -->
 
                                         <div class="form-group">
-                                            <input type="text"  class="form-control" id="username" ng-model="user" name="username" placeholder="Username" required/>
+                                            <input type="text"  class="form-control" id="username" ng-model="username" name="username" placeholder="Username" required/>
                                         </div>
 
                                         <div class="form-group">
@@ -99,14 +99,20 @@
 
                                         <div class="radio-options">
                                             <div class="row">
-                                                <div class="col-md-4 col-md-push-1">
+                                                <div class="col-md-3 ">
+                                                    <label class="radio log-in">  
+                                                        <input type="radio" name="optionsRadios" ng-model="userType"  id="optionsRadios3" value="admin" data-toggle="radio" checked="">
+                                                        Admin
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-3 col-md-push-1">
                                                     <label class="radio log-in">  
                                                         <input type="radio" name="optionsRadios" ng-model="userType"  id="optionsRadios1" value="developer" data-toggle="radio" checked="">
                                                         Developer
                                                     </label>
                                                 </div>
 
-                                                <div class="col-md-4 col-md-push-2">
+                                                <div class="col-md-3 col-md-push-2">
                                                     <label class="radio log-in">  
                                                         <!-- <input type="radio" name="optionsRadios" id="optionsRadios2" value="reviewer" data-toggle="radio" disabled> -->
                                                         <input type="radio" name="optionsRadios" ng-model="userType" id="optionsRadios2" value="reviewer" data-toggle="radio">
@@ -136,7 +142,7 @@
                             <div class="modal-footer"> 
                                 <div class="row">
                                     <div class="col-md-8 col-md-push-3">
-                                        <button id="btn-login" type="submit" class="btn btn-primary" ng-click="LogIn(user,password,userType)" value="Login"><i class="icon-signin icon-large default"></i> Login</button>
+                                        <button id="btn-login" type="submit" class="btn btn-primary" value="Login"><i class="icon-signin icon-large default"></i> Login</button>
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                     </div>
                                 </div>
@@ -761,7 +767,7 @@
 <script src="js/angular/angular.js"></script>
 <script src="js/angular/ngStorage.js"></script>
 <script src="js/main.js"></script>
-<script src="js/login_signup.js" type="text/javascript"></script>
+<!--script src="js/login_signup.js" type="text/javascript"></script-->
 <script src="js/loop.js" type="text/javascript"></script>
 <script src="js/js-flat-ui/flatui-checkbox.js"></script>
 <script src="js/js-flat-ui/flatui-radio.js"></script>
@@ -816,7 +822,7 @@
     });
 </script>
 
-<script type="text/javascript">
+<!--script type="text/javascript">
     $(document).ready(function () {
         $('#defaultForm').bootstrapValidator({
             message: 'This value is not valid',
@@ -882,7 +888,7 @@
             }
         });
     });
-</script>
+</script-->
 
 
 </body>
