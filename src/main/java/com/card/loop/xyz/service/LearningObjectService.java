@@ -6,8 +6,10 @@
 package com.card.loop.xyz.service;
 
 import com.card.loop.xyz.dao.LearningObjectDAO;
+import com.card.loop.xyz.dao.UserDAO;
 import com.card.loop.xyz.dto.LearningObjectDto;
 import com.card.loop.xyz.model.LearningObject;
+import com.card.loop.xyz.model.User;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
@@ -131,6 +133,15 @@ public class LearningObjectService
             dto.setUploadedBy(lo.getUploadedBy());
             dto.setSequence(lo.getSequence());
         LearningObjectDAO.updateLO(dto);
+        return ok;
+    }
+    
+    public boolean acceptUser(String name) throws UnknownHostException{
+        boolean ok = false;
+        LearningObject lo = LearningObjectDAO.getLearningObject(name);
+        User u= UserDAO.getUser(null);
+        u.setAccepted(true);
+       // UserDAO.updateLO(u);
         return ok;
     }
 }

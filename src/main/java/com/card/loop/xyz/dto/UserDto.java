@@ -220,7 +220,9 @@ public class UserDto {
     public void setAccepted(boolean accepted) {
         this.accepted = accepted;
     }
-    
+    public boolean getAccepted() {
+        return accepted;
+    }
     /**
      * 
      * @return List<String> This returns the list of errors in the learning element
