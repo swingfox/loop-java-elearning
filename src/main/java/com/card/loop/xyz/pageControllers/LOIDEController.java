@@ -79,7 +79,7 @@ public class LOIDEController {
                         byte[] bytes = file.getBytes();
                         File fil = new File(AppConfig.UPLOAD_BASE_PATH+ type + "//" + file.getOriginalFilename());
                         BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fil));
-                        stream.write(bytes);
+                        stream.write(bytes);    
                         stream.close();
 
                         switch (type) {

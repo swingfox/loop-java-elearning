@@ -49,26 +49,6 @@ $(document).ready(function() {
             }
         });
         
-        /*
-        var switchit = "";
-        <%   
-            if(session.getAttribute("action") == "signup") {
-        %>
-        switchit = "signup";
-        <% 
-            }else {
-        %>
-        switchit = $.getURLParameter('action');
-        <% } %>
-            */
-           
-        // Edited     
-        //var switchit = get("action");
-        //if(switchit === 'signup') 
-	//	$.switchPage(switchit);
-	//else if(switchit === 'LoginCtrl') 
-	//	$.switchPage(switchit);
-        // ADDED 
         $("#btn-signup").click(function(){
             var jsonData = 
                         JSON.stringify({

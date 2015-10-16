@@ -1,16 +1,4 @@
-<%--NOTE:
-Functions in php that have not been transfered/revised here:
-    <!--?php $this->layout->modal_footer() ?>-->
-    <!--?php echo date("Y"); ?-->
-    <!--?php $this->load->helper('url'); ?-->
-    <!--?php echo (isset($status) && $status)?'onload=document.getElementById("responsive_changePassword_btn").click()':'' ?>-->	
-    <!--?php $this->layout->modal_footer(isset($status)?$status:FALSE) ?-->
-    <!--?php session_start();?-->
---%>
 
-<!--?php
-	session_start();
-?!-->
 <!DOCTYPE html>
 <html lang="en" ng-app="loop">
 <head>
@@ -23,55 +11,25 @@ echo '--><script type="text/javascript">
 				document.getElementById("counters").value = i;
 				
 			}
-		</script><!--';
-
-		require './application/controllers/LOController.php';
-?-->
+		</script><
+                
 <title>LOOP | Developer View</title>
-
-
-<!--?php $this->layout->header_subpages() ?-->
             <meta charset="utf-8">
             <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
-
-            <!-- Bootstrap 3 -->
             <link href="css/bootstrap3/dist/css/bootstrap.css" rel="stylesheet" media="screen" />
-
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-            <!-- Date Picker -->
-            <!--link href="'.$this->base_url.'css/bootstrap-formhelpers/docs/assets/css/bootstrap-responsive.css" rel="stylesheet" /-->
             <link href="css/bootstrapformhelpers/css/bootstrap-formhelpers.css" rel="stylesheet" />
-
-            <!-- Modal -->
             <link href="css/bootstrap-modal-master/css/bootstrap-modal.css" rel="stylesheet" />
-            
-            <!-- Icons -->
             <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
             <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
-           
-            <!-- Bootstrap Tour -->
             <link href="js/bootstrap-tour/build/css/bootstrap-tour.css" rel="stylesheet" />
             <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
-
-
-
-            <!--link type="text/css" href="'.$this->base_url.'css/css-include/style.css" rel="stylesheet" /-->
             <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
-                
-            <!-- Input File -->
             <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
-
-            <!-- Form Validator -->
             <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
-            
-<!--?php $this->load->helper('url'); ?-->
 </head>
-<body ><!--?php echo (isset($status) && $status)?'onload=document.getElementById("responsive_changePassword_btn").click()':'' ?>-->	
-	<!-- <div id="wrapper"> -->
+<body>
 	<div class="wrapper"  ng-controller="LoginCtrl">
-    	<!--?php $this->layout->modal_footer(isset($status)?$status:FALSE) ?-->
-		
 		<div id="header-wrap">
 			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
 				<div class="container">
@@ -86,24 +44,15 @@ echo '--><script type="text/javascript">
 							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
 						</a>
 	                </div>
-					
                                     <div class="navbar-collapse collapse">
-
-						<!--?php $this->layout->user_menu() ?-->
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
-                                                        <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
-
                                                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
                                                         <ul class="dropdown-menu">
-
                                                                 <li role="presentation" class="dropdown-header">Options</li>
-
                                                                 <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
                                                                 <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
-
                                                                 <li class="divider"></li>
-
                                                                 <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
                                                         </ul>
                                                      </li>
@@ -112,7 +61,6 @@ echo '--><script type="text/javascript">
 				</div>
 			</nav>
 		</div>
-
 		<form id="defaultForm" method="post" action="'.base_url().'index.php/redirect/reviewNow">
             <div class="modal fade" id="responsive_changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -124,27 +72,16 @@ echo '--><script type="text/javascript">
                         <div class="modal-body">  
                             <div class="row">
                                 <div class="col-md-10 col-md-push-1 ">
-                                    <!--p><input class="col-xs-12 col-md-12 sign-up" id="password" type="password" name="password" placeholder="Enter Old Password"></p>
-                                    <p><input class="col-xs-12 col-md-12 sign-up" id="enterNewPassword" type="password" name="newPassword" placeholder="Enter New Password"></p>
-                                    <p><input class="col-xs-12 col-md-12 sign-up last" id="confirmNewPassword" type="password" name="confirmNewPassword" placeholder="Confirm New Password"></p-->
-
-                                    <!--?php if(isset($status) && !$status){ ?-->
                                     <p class="alert alert-danger"><i class="icon-warning-sign"></i> Invalid password.</p>
-                                    <!--?php } ?-->
-
                                     <div class="form-group">
                                         <input type="password" class="form-control" id="password" name="password" placeholder="Enter Old Password" required/>
                                     </div>
-
                                     <div class="form-group">
                                         <input type="password" class="form-control" id="enterNewPassword" name="newPassword" placeholder="Enter New Password" />
                                     </div>
-
                                     <div class="form-group last">
                                         <input type="password" class="form-control last" id="confirmNewPassword" name="confirmNewPassword" placeholder="Confirm New password" />
                                     </div>
-
-
                                 </div> 
                             </div>
                         </div>
@@ -160,29 +97,20 @@ echo '--><script type="text/javascript">
                 </div>
             </div>
         </form>		
-
 		<div class="clearfix"></div>
-
     	<ul id="main-demo" class="nav nav-tabs main-views tour-step tour-step-two">
 			<li class="active tour-step tour-step-one"><a class="active-tab"  href="/loop-XYZ/store/developer-update"><i class="icomoon-list"></i> Learning Objects</a></li> 
 			<li class=" tour-step tour-step-two"><a class="active-tab"  href="/loop-XYZ/store/developer-le"><i class="icomoon-list"></i> Learning Elements</a></li>
-			<!-- <li class="active"><a class="active-tab"  href="<?php //echo base_url()?>redirect/LO"><i class="icon-list icon-large default"></i> Learning Objects</a></li> -->
-			<!-- <li><a href="<?php //echo base_url()?>redirect/upload"><i class="icomoon-upload3"></i> Upload</a></li> -->
 			<li class="tour-step tour-step-three"><a href="/loop-XYZ/store/upload-dev"><i class="icon-upload-alt icon-large default"></i> Upload LO</a></li>
 			<li class="tour-step tour-step-three"><a href="/loop-XYZ/store/uploadLE-dev"><i class="icon-upload-alt icon-large default"></i> Upload LE</a></li>
-			<!-- <li><a href="<?php //echo base_url()?>redirect/search"><i class="icomoon-search"></i> Advanced Search</a></li> -->
 			<li class="tour-step tour-step-four"><a href="/loop-XYZ/store/advanced-search-dev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
 		</ul>
-
 		<div class="clearfix"></div>
-
   		<div id="content-wrap-dev">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12 content">
-						
+					<div class="col-md-12 content">	
 						<div class="table-responsive">
-						 	<!-- <table class="datatable table table-bordered"> -->
                                                         <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
                                                     <div class="row">
                                                     <div class="col-sm-12">
@@ -227,94 +155,7 @@ echo '--><script type="text/javascript">
                                                         <td><label ng-model="lo.comments">{{lo.comments}}</td>
                                                         <td><label ng-model="lo.rev">{{lo.rev}}</td>
                                                          
-                                                    </tr>
-					        <!--?php  
-					   
-					        //require './application/controllers/LOController.php';
-					        $controller = new LOController();
-					    if(isset($_POST['searchName'])){
-							$subject = null;
-							$dateFrom = null;
-							$dateTo = null;
-							$order = null;
-							//find by subject
-							if(isset($_POST['subject']) && isset($_POST['subjectCheck'])){
-								$subject = $_POST['subject'];
-							}
-							//find by date
-							if(isset($_POST['dateFrom']) && isset($_POST['dateTo']) && isset($_POST['dateCheck'])){
-								$dateFrom = $_POST['dateFrom'];
-								$dateTo = $_POST['dateTo'];
-							}
-							//order by
-							if(isset($_POST['order']) && isset($_POST['orderCheck'])){
-								$order = $_POST['order'];
-							}
-
-							$LOs = $controller->searchLODev($_POST['searchName'],$subject,$dateFrom,$dateTo,$order,$username);
-							//$_POST['searchName'] = null;
-						}
-						else{//new condition for advanced search
-							
-							$LOs = $controller->getAllLODev($this->session->userdata('username'));
-						
-						}
-				        		$_SESSION['los'] = serialize($LOs);
-
-								$counter = 0;
-								$LO = current($LOs);
-								if($LO != null && isset($_POST['searchName'])){
-								 	echo '<tr style="font-size:80%;"><td><i class="icon-search"></i></td><td colspan="5">Search Results for "'.$_POST['searchName'].'"....<a href="'. base_url().'"redirect/LO>CLICK HERE</a> to reload all Learning Objects</td>';
-								 	echo '<td style="display: none">'.'</td>';
-									echo '<td style="display: none">'.'</td>';
-									echo '<td style="display: none">'.'</td>';
-									echo '<td style="display: none">'.'</td>';
-									echo '</tr>';
-								}
-								while($LO != null){
-									echo '<form name="form'.$counter.'" method="POST" action="<?php echo base_url()?>/redirect/history">';
-									echo '<tr>';
-									if($LO->getRating()==1)
-								echo '<td><img src="'.base_url().'img/icon-red.png" alt="For Review" /></td>';
-							else if($LO->getRating()==2)
-								echo '<td><img src="'.base_url().'img/icon-orange.png" alt="For Review" /></td>';
-							else if($LO->getRating()==3)
-								echo '<td><img src="'.base_url().'img/icon-yellow.png" alt="For Review" /></td>';
-							else if($LO->getRating()==4)
-								echo '<td><img src="'.base_url().'img/icon-yellowgreen.png" alt="For Review" /></td>';
-							else if($LO->getRating() == 5)
-								echo '<td><img src="'.base_url().'img/icon-green.png" alt="Ready To Use" /></td>';
-									echo '<td><a href="'.base_url().'redirect/history/'.$LO->getType().'/'.$counter.'" onclick="document.form'.$counter.'.submit()">'.$LO->getName().'</a></td>';
-									echo '<td>'.$LO->getSubject().'</td>';
-									// echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LO->getDateUploaded().'</td>';
-									echo '<td>'.$LO->getDateUploaded().'</td>';
-									echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LO->getRating().'</td>';
-									echo '<td>'.$LO->getComments().'</td>';
-									echo '<td>'.$LO->getRev().'</td>';
-									echo '<input type="hidden" name="downloadLO" value="'.$counter.'"/>';
-									echo '</tr>';
-									echo '</form>';									
-									next($LOs);
-									$LO = current($LOs);
-									$counter++;
-								}
-
-								if($counter == 0){
-									echo '<tr>';
-									echo '<td colspan=6><h2 style="color: #000; font-weight:bold;">No Learning Objects found.</h2><br>  
-														No Learning Objects found. You have not uploaded any Learning Objects. Please <a href="'. base_url().'redirect/uploadLO" class="btn btn-success">CLICK HERE</a> to upload a Learning Object.</td>';		
-									echo '<td style="display: none">'.'</td>';
-									echo '<td style="display: none">'.'</td>';
-									echo '<td style="display: none">'.'</td>';
-									echo '<td style="display: none">'.'</td>';
-									echo '<td style="display: none">'.'</td>';
-									echo '</tr>';
-								}
-		
-
-
-					        ?-->
-													
+                                                    </tr>					
 							</tbody>
 						  </table>
 						</div>
@@ -325,28 +166,15 @@ echo '--><script type="text/javascript">
 				<div class="clearfix" id="before-features" ></div>
 			</div>
 		</div>
-
   		<div class="clearfix"></div>
-
-		<!-- This is the original footer with id=wrapper -->
-		<!-- <footer id="footer-wrap-index"> -->
-			<!-- <div class="container">
-		    	<div class="copyright-here pull-left">
-					Copyright &copy; <?php //echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<button id="aime" class="btn btn-default">Test</button>
-		    	</div>
-	  		</div>
-    	</footer> -->
-		
-		<!-- Take this out if you want the original footer back -->
         <div class="push"></div>
 	</div>
         </div>
-
 	<div class="footer">
 		<footer id="footer-wrap-index">
 			<div class="container">
 	            <div class="copyright-here pull-left">
-					Copyright &copy; <!--?php echo date("Y"); ?--> LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
+					Copyright &copy; LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
 		    	</div>
 		    </div>
 	    </footer>
