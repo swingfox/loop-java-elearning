@@ -48,7 +48,7 @@ public class LearningObjectDAO {
         return mongoOps.findOne(query(where("name").is(name)), LearningObject.class);
     }
     
-    public static void addLearningObject(LearningObjectDto object) throws UnknownHostException {
+    public static void addLearningObject(LearningObject object) throws UnknownHostException {
          MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
          mongoOps.insert(object);
     }
@@ -58,6 +58,13 @@ public class LearningObjectDAO {
        Query query = new Query();
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
        return (mongoOps.find(query(where("rating").is(5)), LearningObject.class));
+    }
+    
+    public static List<LearningObject> getOldLO(String name) throws UnknownHostException {
+       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+       Query query = new Query();
+       query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
+       return (mongoOps.find(query(where("status").is(0)), LearningObject.class));
     }
     
     public static boolean nameAvailability(String name, String subject) throws UnknownHostException {
@@ -141,8 +148,9 @@ public class LearningObjectDAO {
         
         
        // lo.setId("55e3c12a9016761fa486fbd1");
-        lo.setName("TESTO");
-        lo.setRating(3);
+        lo.setName("testing3");
+        lo.setRating(1);
+      //  System.out.println(LearningObjectDAO.deleteLO(lo));
         LearningObjectDAO.addLearningObject(lo);
         System.out.println(lo.getName());
         JOptionPane.showMessageDialog(null,LearningObjectDAO.getAllDownloadableLO());

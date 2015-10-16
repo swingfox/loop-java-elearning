@@ -19,7 +19,7 @@
     <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
     <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
 </head>
-	<div class="wrapper">		
+	<div class="wrapper" ng-controller="LoginCtrl">		
 		<div id="header-wrap">
 			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
 					<div class="navbar-header">
@@ -34,7 +34,7 @@
 						</a>
 	                </div>
 					
-					<div class="navbar-collapse collapse" ng-controller="LoginCtrl">
+					<div class="navbar-collapse collapse">
 
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
@@ -68,7 +68,7 @@
 
 		<div id="breadcrumb-wrap" ng-controller="LOList">
 				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="/loop-XYZ/store/reviewer-le" ng-click="clearLE()">Back to Learning Element List</a></li>
+					<li><a class="breadcrumb-link" href="/loop-XYZ/store/{{userType}}-le" ng-click="clearLE()">Back to Learning Element List</a></li>
 					<li class="active">Download</li>
 				</ol>
 		</div> 
@@ -121,7 +121,7 @@
                                 ?-->
                                 
                                 <a href="#" class="btn btn-primary"><i class="icon-download-alt icon-large"></i> Download</a>
-                                <a class="btn btn-default" href="/loop-XYZ/store/reviewer-le">Back</a>
+                                <a class="btn btn-default" href="/loop-XYZ/store/{{userType}}-le" ng-click="clearLE()">Back</a>
                             </div>
 									
                     </form>
