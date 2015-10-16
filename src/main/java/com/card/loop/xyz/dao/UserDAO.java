@@ -193,12 +193,12 @@ public class UserDAO {
 
     public static List<User> getReviewer() throws UnknownHostException {
          MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
-        return mongoOps.find(query(where("userType").is("reviewer")), User.class);
+        return mongoOps.find(query(where("userType").is("reviewer").andOperator(where("newAccount").is(false))), User.class);
     }
     
     public static List<User> getDeveloper() throws UnknownHostException {
          MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
-        return mongoOps.find(query(where("userType").is("developer")), User.class);
+        return mongoOps.find(query(where("userType").is("developer").andOperator(where("newAccount").is(false))), User.class);
     }
     
     public static List<User> getNewAccount() throws UnknownHostException {

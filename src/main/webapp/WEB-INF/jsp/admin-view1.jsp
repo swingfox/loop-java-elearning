@@ -266,7 +266,7 @@
 
 						        <tbody>
                                                             
-                                                             <tr ng-repeat="developer in developerAccount | filter:searchText | filter: { newAccount : false }">
+                                                             <tr ng-repeat="developer in developerAccount | filter:searchText ">
                                                                     <td><a href="#responsive_fileActionAdmin1" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-model="developer.username">{{developer.username}}</a></td>
                                                                     <td><label ng-model="developer.lastLogin">{{developer.lastLogin}}</td>
                                                                     <td><label ng-model="developer.lastUpload">{{developer.lastUpload}}</td>
