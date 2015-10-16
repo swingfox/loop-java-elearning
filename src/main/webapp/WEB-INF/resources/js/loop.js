@@ -162,6 +162,17 @@ eS.controller('LEList', ['$scope', '$store', '$http', function($scope, $store, $
         $store.remove('le.dateUploaded');
         $store.remove('le.description');
     };
+   
+    $scope.DownloadLE = function(le){
+        console.log("SULOD");
+        $http.get('/loop-XYZ/loop/LE/downloadLE/' + le.id)    
+        .success(function(data){
+            console.log(data);
+        })
+        .error(function(jqXHR, status, error) {
+            console.log(""+ error);
+        });
+    };
  }]);
  
 

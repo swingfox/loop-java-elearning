@@ -74,12 +74,12 @@
 		</div> 
 
 		<div class="clearfix"></div>
-		<div id="content-download">
+		<div id="content-download"  ng-controller="LEList">
 			<div class="container">
 				<div class="col-md-6 col-md-push-3">
                     <div class="page-header download">
                     </div>       
-                    <form ng-controller="LEList" class="form-horizontal bootstrap-validator-form" id="defaultForm" novalidate="novalidate">
+                    <form class="form-horizontal bootstrap-validator-form" id="les from le" novalidate="novalidate">
                         <div class="well">	
                             <div class="form-group" >
                                     <label class="col-md-3 control-label download">Filename :</label>
@@ -109,21 +109,11 @@
 	                            </div>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 	                    </div>	
-                                
-
-                            <div class="form-actions advanced-search">
-                                <!--?php
-                                echo '<input type="hidden" value="'.$le->getID().'" id="id" name="id">';
-                                if($le->getStatus() == 0)
-                                 echo '<a href="'.base_url().'redirect/downloadNow/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-download-alt icon-large"></i> Download</a>';
-                                if($le->getStatus() == 2 && $le->getRev() == $username)
-                                echo '<a href="'.base_url().'redirect/review_rev/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>';
-                                ?-->
-                                
-                                <a href="#" class="btn btn-primary"><i class="icon-download-alt icon-large"></i> Download</a>
-                                <a class="btn btn-default" href="/loop-XYZ/store/{{userType}}-le" ng-click="clearLE()">Back</a>
+                            <div class="form-actions advanced-search" ng-controller="LoginCtrl">                                    
+                                <a class="btn btn-primary" href="/loop-XYZ/loop/LE/downloadLE/{{le.id}}"><i class="icon-download-alt icon-large" > Download</i></a>
+                                <a class="btn btn-default" href="/loop-XYZ/store/{{userType}}-update" ng-click="clearLE()">Back</a>
                             </div>
-									
+                        </div>						
                     </form>
                 </div>
 				<div class="clearfix"></div>				
@@ -131,18 +121,6 @@
 		</div> 
 
   		<div class="clearfix"></div>
-
-  		<!-- This is the original footer with id=wrapper -->
-		<!-- <footer id="footer-wrap-index"> -->
-			<!-- <div class="container">
-		    	<div class="copyright-here pull-left">
-					Copyright &copy; <?php //echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<button id="aime" class="btn btn-default">Test</button>
-		    	</div>
-	  		</div>
-    	</footer> -->
-		
-		<!-- Take this out if you want the original footer back -->
-
         <div class="push"></div>
 	</div>
 

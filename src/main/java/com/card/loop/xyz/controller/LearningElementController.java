@@ -12,7 +12,6 @@ import com.card.loop.xyz.dto.LearningElementDto;
 import com.card.loop.xyz.dto.LearningObjectDto;
 import com.card.loop.xyz.dto.UserDto;
 import com.card.loop.xyz.model.LearningElement;
-//import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.service.LearningElementService;
 import com.card.loop.xyz.service.UserService;
 import com.loop.controller.ContentShipper;
@@ -83,21 +82,20 @@ public class LearningElementController {
     */
     @RequestMapping(value = "/downloadLE/{elementID}", method = RequestMethod.GET)
     public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {                   
-                LearningElement element = LearningElementDAO.getSpecificLearningElementById(elementID);
-		String path = AppConfig.UPLOAD_LE_PATH + element.getFilePath();
-		ContentShipper shipper = new ContentShipper(request, response, true);
-		shipper.ship(path);   
+        LearningElement element = LearningElementDAO.getSpecificLearningElement(elementID);
+        String path = AppConfig.UPLOAD_LO_PATH + element.getFilePath();
+        ContentShipper shipper = new ContentShipper(request, response, true);
+        shipper.ship(path);  
     }
     /*
     *   @params String elementID the name of the specific LO to be downloaded
     */
     @RequestMapping(value = "/downloadLE/{elementID}", method = RequestMethod.HEAD)
     public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
-                LearningElement element = LearningElementDAO.getSpecificLearningElementById(elementID);
-
-		String path = AppConfig.UPLOAD_LE_PATH + element.getFilePath();
-		ContentShipper shipper = new ContentShipper(request, response, false);
-		shipper.ship(path);
+        LearningElement element = LearningElementDAO.getSpecificLearningElementById(elementID);
+        String path = AppConfig.UPLOAD_LE_PATH + element.getFilePath();
+	ContentShipper shipper = new ContentShipper(request, response, false);
+	shipper.ship(path);
     }
     
     @RequestMapping(value="/upload", method = RequestMethod.POST)

@@ -92,7 +92,7 @@ public class LearningObjectController {
             }
         }
     
-    public void downloadAllLOToInformatron()
+    public void uploadAllLOToInformatron()
     {
         try {
             SimpleClientHttpRequestFactory rf= new SimpleClientHttpRequestFactory();
@@ -190,7 +190,7 @@ public class LearningObjectController {
         boolean ok;
         
         ok = loService.approveLO(LOname);
-        this.downloadAllLOToInformatron();
+        this.uploadAllLOToInformatron();
         return ok;
     }
     /*
