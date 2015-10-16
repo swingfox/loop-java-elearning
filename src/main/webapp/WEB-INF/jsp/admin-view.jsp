@@ -383,7 +383,7 @@
                                 <tbody>
                                     
                                       <tr ng-repeat="user in userAccount | filter:searchText ">
-                                            <td><label type="hidden" id="userId" ng-model="user.id">{{user.id}}</td>
+                                            <!--td><label type="hidden" id="userId" ng-model="user.id">{{user.id}}</td-->
                                             <td><a href="#responsive_fileActionAdmin" data-toggle="modal" onclick="onclick="selectIndex('.$counter.')"><label ng-model="user.username">{{user.username}}</a></td>
                                             <td><label ng-model="user.email">{{user.email}}</td>
                                             <td><label ng-model="user.usertype">{{user.usertype}}</td>
