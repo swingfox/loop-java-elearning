@@ -151,7 +151,7 @@ public class LearningObjectDAO {
         lo.setName("testing3");
         lo.setRating(1);
       //  System.out.println(LearningObjectDAO.deleteLO(lo));
-        LearningObjectDAO.addLearningObject(lo);
+       // LearningObjectDAO.addLearningObject(lo);
         System.out.println(lo.getName());
         JOptionPane.showMessageDialog(null,LearningObjectDAO.getAllDownloadableLO());
         
