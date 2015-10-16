@@ -252,8 +252,17 @@
                         </div>
                         <div class="modal-body">  
                             <div class="row">
-                                <div class="col-md-10 col-md-push-1">                                 
+                                <div class="col-md-10 col-md-push-1" ng-controller="reviewerAccountCtrl">                                 
                                     <label class="file-action">Choose a Reviewer for the Learning Element</label>
+                                    
+                                    <select name="reviewer" class="btn btn-default" >
+                                        
+>                                               <option value="">--none--</option>
+                                                <option ng-repeat="reviewer in reviewerAccount">{{reviewer.username}}</option>
+                                               
+                                               
+                                       			
+                                    </select>
                                     <!--?php 
                                         require './application/controllers/AdminController.php';
                                         $controller = new AdminController;

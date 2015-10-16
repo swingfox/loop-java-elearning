@@ -78,14 +78,14 @@
 						</a>
 	                </div>
 					
-					<div class="navbar-collapse collapse">
+					<div class="navbar-collapse collapse" ng-controller="LoginCtrl">
 
 						<!--?php $this->layout->user_menu() ?-->
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
                                                         <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
 
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello,  {{username}} <b class="caret"></b></a>
                                                         <ul class="dropdown-menu">
 
                                                                 <li role="presentation" class="dropdown-header">Options</li>
@@ -95,7 +95,7 @@
 
                                                                 <li class="divider"></li>
 
-                                                                <li><a href="index.php/account/logout"><i class="icon-off"></i> Logout</a></li>
+                                                                <li><a href="/loop-XYZ/store/home"><i class="icon-off"></i> Logout</a></li>
                                                         </ul>
                                                      </li>
                                                 </ul>
@@ -175,6 +175,7 @@
 	                            
 	                                <!-- <input type="password" name="confirmPassword" class="form-control"> -->
 	                                <p class="download-details">{{lo.description}}</p>
+                                        
 	                            
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 	                    </div>	
@@ -187,6 +188,7 @@
                                     if($lo->getStatus() == 2 && $lo->getRev() == $username)
                                     echo '<a href="'.base_url().'redirect/reviewLO_Admin/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>';
                                     ?-->
+                                    <a class="btn btn-primary"><i class="icon-download-alt icon-large"></i> Download</a>
                                     <a class="btn btn-default" href="/loop-XYZ/store/admin-view5">Back</a>
                                 </div>
 									

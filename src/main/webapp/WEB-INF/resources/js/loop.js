@@ -169,6 +169,7 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
         $store.bind($scope, 'lo.id', '');
         $store.bind($scope, 'lo.name', '');
         $store.bind($scope, 'lo.subject', '');
+        $store.bind($scope, 'lo.rating', '');
         $store.bind($scope, 'lo.dateUploaded', '');
         $store.bind($scope, 'lo.description', '');
     $http.get("/loop-XYZ/loop/LO/list")    
@@ -360,6 +361,17 @@ eS.controller('newAccountRequestCtrl', ['$scope', '$http', function($scope, $htt
         //console.log("" + response);
     });
     
+    $scope.acceptNewAccountCtrl = function() {
+        var data =  {
+                        id: $('label#userId').val()
+                    };
+        $http.post("/loop-XYZ/loop/user/approve/",data).success(function(response){
+            alert (response);
+            
+        }). error(function(response){
+            //alert ("Ajax error");
+        });
+    };     
    
 }]);
         /**
