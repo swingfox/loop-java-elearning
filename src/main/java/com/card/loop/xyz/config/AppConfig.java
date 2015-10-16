@@ -21,9 +21,9 @@ public class AppConfig {
      */
     public static String mongodb_host = "";
     public static int mongodb_port = 27017;
-    public static String UPLOAD_LO_PATH = "C:\\Users\\aislinn.dell-PC\\Desktop\\loop-java-elearning\\uploads\\LO\\";
-    public static String UPLOAD_LE_PATH = "C:\\Users\\aislinn.dell-PC\\Desktop\\loop-java-elearning\\uploads\\LE\\";
-    public static String UPLOAD_BASE_PATH = "C:\\Users\\aislinn.dell-PC\\Desktop\\loop-java-elearning\\uploads\\";
+    public static String UPLOAD_LO_PATH = "C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LO\\";
+    public static String UPLOAD_LE_PATH = "C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LE\\";
+    public static String UPLOAD_BASE_PATH = "C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\";
     public static String INFORMATRON_URL = "http://192.168.254.101:8080";
     public static String LOOP_URL = "http://192.168.254.101:8080";
 
