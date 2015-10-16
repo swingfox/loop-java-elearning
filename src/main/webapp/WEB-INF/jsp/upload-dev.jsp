@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
 
 </head>
-<body>	
+<body  ng-controller="LoginCtrl">	
     <!-- <div id="wrapper"> -->
     <div class="wrapper">
     <!--?php $this->layout->modal_footer(isset($status)?$status:FALSE) ?-->
@@ -57,10 +57,10 @@
                                     </a>
                                 </div>
 
-                                <div class="navbar-collapse collapse" ng-controller="LoginCtrl">
+                                <div class="navbar-collapse collapse" >
 
                                 <!--?php $this->layout->user_menu() ?-->
-                                <ul class="nav navbar-nav navbar-right"> 
+                                <ul class="nav navbar-nav navbar-right" ng-controller="LoginCtrl"> 
                                     <li class="dropdown">
                                         <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
 
@@ -104,10 +104,10 @@
                                     ?-->
 
                                 </div>
-                                <form  ng-controller="LOUploadCtrl" enctype="multipart/form-data" action="/loop-XYZ/store/loide/upload" method="post" >
+                                <form  enctype="multipart/form-data" action="/loop-XYZ/store/loide/upload" method="post" ng-controller="LoginCtrl">
                                 <div class="control-group">
 
-                                    <label class="control-label upload-file fileinput pull-left" for="fileInput">File Path :</label>
+                                    <label class="control-label upload-file fileinput pull-left" for="fileInput">File Path : </label>
                                     <div class="controls">
                                         <input type="file" ng-model="lo.file" name="file" size="20" class="input-file tour-step tour-step-eight" required/>
                                         <!-- <input name="userfile" type="file" class="input-file" required/> -->
@@ -116,25 +116,16 @@
                                     <div class="upload-requirement">*Only .json file types under 10 Mb are accepted for upload.<br/>
                                     *Please avoid using white spaces for avoidance of information mismatch. </div>
                                 </div>
-                                <div class="well upload tour-step tour-step-nine" ng-controller="LoginCtrl">		
+                                <div class="well upload tour-step tour-step-nine" >		
                                     <label class="col-md-3 control-label upload-file" for="input01">Name:</label>					
                                         <!-- <label class="control-label pull-left" for="input01"> -->
                                         <!-- Name : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
                                         <!-- Name : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
                                     </label>
-                                    <input type="hidden" ng-model="lo.author" name="author" id="auth" value="{{username}}">
-                                    <input type="hidden" ng-model="lo.rating" name="rating"  value="0">
-                                    <input type="hidden" ng-model="lo.type" name="type" value="LO">
-                                    <input type="text"  ng-model="lo.title" name="title" class="form-control col-md-7"  placeholder="e.g. HTML5, Linear Equations"/>
-                                    <!--?php
-                                    if(!isset($lobject)){
-                                            echo '<input type="text" class="form-control col-md-7" id="input01" name="filenames" placeholder="e.g. HTML5, Linear Equations"/>';
-                                    }
-                                    else{
-                                            echo '<input type="text" class="form-control col-md-7" id="input01" name="filenames" value="'.$lobject.'" readonly/>';
-                                    }
-
-                                    ?-->
+                                    <input type="hidden"  name="author" id="auth" value="{{username}}">
+                                    <input type="hidden"  name="rating"  value="0">
+                                    <input type="hidden"  name="type" value="LO">
+                                    <input type="text"    name="title" class="form-control col-md-7"  placeholder="e.g. HTML5, Linear Equations"/>
                                     <div class="clearfix"></div>
                                 </div>
 
@@ -144,7 +135,7 @@
                                         <!-- Subject : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
                                         <!-- Subject : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
                                 </label>
-                                <input type="text" class="form-control col-md-7" id="input01" ng-model="lo.subject"  name="subject" placeholder="e.g. Web Programming, Algebra" required/>
+                                <input type="text" class="form-control col-md-7" id="input01"  name="subject" placeholder="e.g. Web Programming, Algebra" required/>
                                 <!--?php
                                         if(!isset($lsubj)){
                                                 echo '<input type="text" class="form-control col-md-7" id="input01" name="subject" placeholder="e.g. Web Programming, Algebra" required/>';
@@ -162,7 +153,7 @@
                                         <!-- Description : &nbsp; -->
                                         <!-- Description : -->
                                 </label>
-                                <input type="text" ng-model="lo.description"  name = "description" class="form-control col-md-7" name="desc" placeholder="Write a description..." required/>								
+                                <input type="text"  name = "description" class="form-control col-md-7" name="desc" placeholder="Write a description..." required/>								
                                <!-- <input type="text" class="form-control col-md-7" id="input01" ng-model="lo.subject"  name="subject" placeholder="e.g. Web Programming, Algebra" required/> -->
                                 <div class="clearfix"></div>
                             </div>
@@ -171,11 +162,6 @@
 
 
                                 <button type="submit"  class="btn btn-primary tour-step tour-step-twelve"><i class="icon-upload-alt icon-large"></i> Upload</button>
-
-
-                                <!-- <a href="index.php" class="btn btn-default">Cancel</a> -->
-                                <!-- <button type="reset" class="btn btn-default">Cancel</button> -->
-
                                 <!-- <button onclick="document.location='http://localhost/loop-sp-ci7/redirect/LO'" type="button" class="btn btn-default">Cancel</button> -->
                                 <a class="btn btn-default" href="/loop-XYZ/store/developer-update">Cancel</a>
 

@@ -69,7 +69,7 @@ public class LearningObjectController {
                         stream.write(bytes);
                         stream.close();
 
-                        LearningObjectDto lo = new LearningObjectDto();
+                        LearningObject lo = new LearningObject();
                         lo.setName(title);
                         lo.setUploadedBy(author);
                         lo.setDateUploaded(new Date().toString());

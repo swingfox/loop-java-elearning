@@ -1,22 +1,3 @@
-
-<!--
-<?php
-	session_start();//to use session variables
-	require './application/controllers/LOController.php';
-	$los = unserialize($_SESSION['los']);
-	$index = $counter;
-	$lo = $los[$index];
-	$_SESSION['lo'] = serialize($lo);
-	$id = $lo->getID();
-	$rev = $lo->getRev();
-	$dev = $lo->getUploadedBy();
-	$name = $lo->getName();
-	$status = $lo->getStatus();
-	$filepath = $lo->getFilepath();
-
-	$path = base_url().'uploads/';
-?>
--->
 <!DOCTYPE html>
 <html lang="en" ng-app="loop">
     <head>
@@ -178,11 +159,11 @@
 					        <tbody>
                                                     
                                                         <td>
-                                                            <img ng-if="lo.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
-                                                            <img ng-if="lo.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">
-                                                            <img ng-if="lo.rating==3" src="http://localhost/loop.com/img/icon-yellow.png" alt="For Review">
-                                                            <img ng-if="lo.rating==4" src="http://localhost/loop.com/img/icon-yellowgreen.png" alt="For Review">
-                                                            <img ng-if="lo.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
+                                                            <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
+                                                            <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">
+                                                            <img ng-if="lo.rating==3" src="img/icon-yellow.png" alt="For Review">
+                                                            <img ng-if="lo.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
+                                                            <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
 
                                                         </td>
                                                         <td><p classdownload-details ng-binding="download-details">{{lo.name}}</p></td>

@@ -643,7 +643,7 @@
                             <div class="member-photo">	
                                 <!-- <a target="_blank" href="https://www.facebook.com/dominicdosdos" id="doms" data-toggle="tooltip" data-placement="left" title="Hello There!"> -->
                                 <a target="_blank" href="https://www.facebook.com/david.l.ramirez.79">						
-                                    <img src="img/doms.jpg" alt="David Ramirez" class="img-responsive-team img-circle">
+                                    <img src="img/david.jpg" alt="David Ramirez" class="img-responsive-team img-circle">
                                 </a>
                             </div>
                             <h5 class="member-name">David Ramirez</h5>
@@ -653,7 +653,7 @@
                         <li class="col-md-3 team-member">		
                             <div class="member-photo">
                                 <a target="_blank" href="https://www.facebook.com/vine.deiparine">			
-                                    <img src="img/jed.jpg" alt="Vine Deiparine" class="img-responsive-team img-circle">
+                                    <img src="img/vine.jpg" alt="Vine Deiparine" class="img-responsive-team img-circle">
                                 </a>
                             </div>
                             <h5 class="member-name">Vine Joy Deiparine</h5>
@@ -663,7 +663,7 @@
                         <li class="col-md-3 team-member">		
                             <div class="member-photo">
                                 <a target="_blank" href="https://www.facebook.com/juliejanealegre">			
-                                    <img src="img/aven.jpg" alt="Julie Alegre" class="img-responsive-team img-circle">
+                                    <img src="img/julie.jpg" alt="Julie Alegre" class="img-responsive-team img-circle">
                                 </a>
                             </div>
                             <h5 class="member-name">Julie Jane Alegre</h5>
@@ -673,7 +673,7 @@
                         <li class="col-md-3 team-member last">		
                             <div class="member-photo">	
                                 <a target="_blank" href="https://www.facebook.com/A.J.Caparoso">		
-                                    <img src="img/dave.jpg" alt="Aislinn Caparoso" class="img-responsive-team img-circle">
+                                    <img src="img/aislinn.jpg" alt="Aislinn Caparoso" class="img-responsive-team img-circle">
                                 </a>
                             </div>
                             <h5 class="member-name">Aislinn Jewel Caparoso</h5>

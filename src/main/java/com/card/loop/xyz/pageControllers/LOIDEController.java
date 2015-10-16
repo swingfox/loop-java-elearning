@@ -24,6 +24,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -57,7 +58,7 @@ public class LOIDEController {
     @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.GET)
     public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
         LearningElement element= LearningElementDAO.getSpecificLearningElementById(elementID);
-	String path = "C:\\Users\\jm-maricel\\Desktop\\100815\\loop-java-elearning\\uploads\\LE\\" + element.getName();
+	String path = AppConfig.UPLOAD_LE_PATH + element.getName();
 	ContentShipper shipper = new ContentShipper(request, response, true);
 	shipper.ship(path);   
     }
@@ -65,13 +66,13 @@ public class LOIDEController {
     @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.HEAD)
     public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {	
         LearningElement element= LearningElementDAO.getSpecificLearningElementById(elementID);
-	String path = "C:\\Users\\jm-maricel\\Desktop\\100815\\loop-java-elearning\\uploads\\LE\\" + element.getName();
+	String path = AppConfig.UPLOAD_LE_PATH + element.getName();
 	ContentShipper shipper = new ContentShipper(request, response, false);
 	shipper.ship(path);
     }
         
     @RequestMapping(value="/upload", method = RequestMethod.POST)
-    public String upload(@RequestParam("title") String title, @RequestParam("author") String author,
+    public String upload(@RequestParam("title") String title, @RequestParam("author") String author, @RequestParam("subject") String subject,
 		       @RequestParam("description") String description, @RequestParam("file") MultipartFile file, @RequestParam("type") String type) {
             if (!file.isEmpty()) {
                     try {
@@ -90,21 +91,25 @@ public class LOIDEController {
                                 le.setDownloads(0);
                                 le.setStatus("1");
                                 le.setRating(1);
+                                le.setSubject(subject);
                                 le.setDateUploaded(new Date().toString());
                                 le.setFilePath(file.getOriginalFilename());
                                 LearningElementDAO.addLearningElement(le);
                                 
                                 break;
                             case "LO":
-                                LearningObjectDto lo = new LearningObjectDto();
+                                LearningObject lo = new LearningObject();
                                 lo.setName(title);
                                 lo.setUploadedBy(author);
                                 lo.setDescription(description);
                                 lo.setDownloads(0);
                                 lo.setStatus("1");
                                 lo.setRating(1);
+                                lo.setSubject(subject);
                                 lo.setFilepath(file.getOriginalFilename());
                                 LearningObjectDAO.addLearningObject(lo);
+                                        JOptionPane.showMessageDialog(null,lo.getName());
+
                                 break;
                         }
 
