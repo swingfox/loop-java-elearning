@@ -271,7 +271,7 @@ session_start();
 
 						        <tbody>
                                                             
-                                                             <tr ng-repeat="reviewer in reviewerAccount | filter:searchText">
+                                                             <tr ng-repeat="reviewer in reviewerAccount | filter:searchText | filter: { newAccount : true }">
                                                                     <td><a href="#responsive_fileActionAdmin2" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-model="reviewer.username">{{reviewer.username}}</a></td>
                                                                     <td><label ng-model="reviewer.lastLogin">{{reviewer.lastLogin}}</td>
                                                                     <td><label ng-model="reviewer.lastDownload">{{reviewer.lastDownload}}</td>
