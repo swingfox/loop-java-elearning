@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -37,6 +38,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/loide")
 public class LOIDEController {
+    @Autowired LearningElementDAO dao;
     @RequestMapping("/download")
     public ModelAndView accessInformatronDownload() {
         return new ModelAndView("download");
@@ -57,7 +59,7 @@ public class LOIDEController {
     
     @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.GET)
     public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
-        LearningElement element= LearningElementDAO.getSpecificLearningElementById(elementID);
+        LearningElement element= dao.getSpecificLearningElementById(elementID);
 	String path = AppConfig.UPLOAD_LE_PATH + element.getName();
 	ContentShipper shipper = new ContentShipper(request, response, true);
 	shipper.ship(path);   
@@ -65,7 +67,7 @@ public class LOIDEController {
         
     @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.HEAD)
     public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {	
-        LearningElement element= LearningElementDAO.getSpecificLearningElementById(elementID);
+        LearningElement element= dao.getSpecificLearningElementById(elementID);
 	String path = AppConfig.UPLOAD_LE_PATH + element.getName();
 	ContentShipper shipper = new ContentShipper(request, response, false);
 	shipper.ship(path);
@@ -94,7 +96,7 @@ public class LOIDEController {
                                 le.setSubject(subject);
                                 le.setDateUploaded(new Date().toString());
                                 le.setFilePath(file.getOriginalFilename());
-                                LearningElementDAO.addLearningElement(le);
+                                dao.addLearningElement(le);
                                 
                                 break;
                             case "LO":

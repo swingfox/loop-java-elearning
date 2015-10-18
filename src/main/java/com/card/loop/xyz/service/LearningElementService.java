@@ -11,6 +11,7 @@ import com.card.loop.xyz.model.LearningElement;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 /**
  *
@@ -18,10 +19,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class LearningElementService {
+    @Autowired LearningElementDAO dao;
     
     public LearningElementDto getSpecificLearningElement(String id) throws UnknownHostException{
         LearningElement leModel;
-        leModel = LearningElementDAO.getSpecificLearningElement(id);
+        leModel = dao.getSpecificLearningElement(id);
         LearningElementDto dto = new LearningElementDto();
        if(leModel != null){  
             dto.setId(leModel.getId());
@@ -41,7 +43,7 @@ public class LearningElementService {
     }
     
      public List<LearningElementDto> getLearningElements() throws UnknownHostException{
-        List<LearningElement> LOList = LearningElementDAO.getList();
+        List<LearningElement> LOList = dao.getList();
         List<LearningElementDto> objects = new ArrayList<>();
         for(LearningElement model: LOList){
             LearningElementDto dto = new LearningElementDto();

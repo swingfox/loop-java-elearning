@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,9 +43,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/LE")
-
 public class LearningElementController {
-    LearningElementService leService = new LearningElementService();
+    @Autowired LearningElementService leService;
+    @Autowired LearningElementDAO dao;
    /*
     *   @return List<LearningElementDto> returns the list of all downloadable LEs
     */ 
@@ -82,7 +83,7 @@ public class LearningElementController {
     */
     @RequestMapping(value = "/downloadLE/{elementID}", method = RequestMethod.GET)
     public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {                   
-        LearningElement element = LearningElementDAO.getSpecificLearningElement(elementID);
+        LearningElement element = dao.getSpecificLearningElement(elementID);
         String path = AppConfig.UPLOAD_LO_PATH + element.getFilePath();
         ContentShipper shipper = new ContentShipper(request, response, true);
         shipper.ship(path);  
@@ -92,7 +93,7 @@ public class LearningElementController {
     */
     @RequestMapping(value = "/downloadLE/{elementID}", method = RequestMethod.HEAD)
     public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
-        LearningElement element = LearningElementDAO.getSpecificLearningElementById(elementID);
+        LearningElement element = dao.getSpecificLearningElementById(elementID);
         String path = AppConfig.UPLOAD_LE_PATH + element.getFilePath();
 	ContentShipper shipper = new ContentShipper(request, response, false);
 	shipper.ship(path);
@@ -118,7 +119,7 @@ public class LearningElementController {
                         le.setRating(1);
                         le.setDateUploaded(new Date().toString());
                         le.setFilePath(file.getOriginalFilename());
-                        LearningElementDAO.addLearningElement(le);
+                        dao.addLearningElement(le);
                        
 
                         System.out.println("UPLOAD FINISHED");

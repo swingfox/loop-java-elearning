@@ -164,6 +164,7 @@
                                     <!-- <a href="#responsive_confirmUploadRev" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"><i class="icon-upload-alt icon-large default"></i> Upload Revision</a>
 						    		<a href="#responsive_confirmDelete" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"><i class="icon-trash icon-large default"></i> Delete</a> -->
                                 </div>
+              
                             </div>
                         </div>
                     </div>
@@ -271,15 +272,9 @@
 									</tr>
 								</thead>
 
-						        <tbody>
-                                                            
-<<<<<<< HEAD
-                                                             <tr ng-repeat="developer in developerAccount | filter:searchText">
-                                                                    <td><a href="#responsive_fileActionAdmin1" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-model="developer.username">{{developer.username}}</a></td>
-=======
+						        <tbody>                                                         
                                                              <tr ng-repeat="developer in developerAccount | filter:searchText ">
                                                                     <td><a href="#responsive_fileActionAdmin1" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-click="assignUser(developer)" id="devUser" value="developer.username">{{developer.username}}</a></td>
->>>>>>> 52e0440c1c65329dc19b9a12e1da0f137eacb6de
                                                                     <td><label ng-model="developer.lastLogin">{{developer.lastLogin}}</td>
                                                                     <td><label ng-model="developer.lastUpload">{{developer.lastUpload}}</td>
                                                              </tr>

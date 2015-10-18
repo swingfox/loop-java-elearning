@@ -14,6 +14,7 @@ import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -28,14 +29,13 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class LearningElementDAO {
-    
-    public static List<LearningElement> getList() throws UnknownHostException {
-       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+    @Autowired MongoOperations mongoOps;
+
+    public List<LearningElement> getList() throws UnknownHostException {
         return mongoOps.findAll(LearningElement.class);
     }
     
-    public static boolean exists(String id) throws UnknownHostException {
-        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port), "loop");
+    public boolean exists(String id) throws UnknownHostException {
         boolean ok = false;
         Query query = new Query();
         query.addCriteria(where("id").is(id));
@@ -43,10 +43,9 @@ public class LearningElementDAO {
         return ok;
     }
  
-    public static boolean updateList(LearningElement object) throws UnknownHostException {
+    public boolean updateList(LearningElement object) throws UnknownHostException {
         boolean ok = false;
         try {
-            MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
             mongoOps.insert(object);
             ok = true;       
         } 
@@ -56,67 +55,56 @@ public class LearningElementDAO {
         return ok;
     }
     
-    public static void addLearningElement(LearningElement object) throws UnknownHostException {
-         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
-         mongoOps.insert(object);
+    public void addLearningElement(LearningElement object) throws UnknownHostException {
+       mongoOps.insert(object);
     }
     
-    public static void addLearningElement(List<LearningElement> objects) throws UnknownHostException {
-         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
-         mongoOps.insert(objects);
+    public void addLearningElement(List<LearningElement> objects) throws UnknownHostException {
+       mongoOps.insert(objects);
     }
     
-    public static void deleteLearningElement(LearningElement objects) throws UnknownHostException{
-        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
-        mongoOps.remove(objects);
+    public void deleteLearningElement(LearningElement objects) throws UnknownHostException{
+       mongoOps.remove(objects);
     }
     
-    public static List<LearningElement> getAllLearningElementByDateUpload(Date date) throws UnknownHostException {
-        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
-        return mongoOps.find(query(where("uploadDate").is(date)), LearningElement.class);
+    public List<LearningElement> getAllLearningElementByDateUpload(Date date) throws UnknownHostException {
+       return mongoOps.find(query(where("uploadDate").is(date)), LearningElement.class);
     }
     
-     public static LearningElement getSpecificLearningElement(String le) throws UnknownHostException {
-        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
-        return mongoOps.findOne(query(where("id").is(le)), LearningElement.class);
+    public LearningElement getSpecificLearningElement(String le) throws UnknownHostException {
+       return mongoOps.findOne(query(where("id").is(le)), LearningElement.class);
     }
-      public static List<LearningElement> getAllDownloadableLE() throws UnknownHostException {
-       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+    public List<LearningElement> getAllDownloadableLE() throws UnknownHostException {
        Query query = new Query();
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
        return mongoOps.find(query(where("rating").is(5)), LearningElement.class);
     }
-    public static boolean nameAvailability(String name, String subject) throws UnknownHostException {
-       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+    public boolean nameAvailability(String name, String subject) throws UnknownHostException {
        mongoOps.find(query(where("rating").is(5)), LearningElement.class);
        Query query= new Query();
        query.addCriteria(where("name").is(name).andOperator(where("subject").is(subject)));
-        return DatabaseManager.getMongoOpsInstance("loop").exists(query, LearningElement.class);
+       return DatabaseManager.getMongoOpsInstance("loop").exists(query, LearningElement.class);
     }
     
-    public static List<LearningElement> getAllLE() throws UnknownHostException {
-       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+    public List<LearningElement> getAllLE() throws UnknownHostException {
        Query query = new Query();
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
        return mongoOps.findAll(LearningElement.class);
     }
     
-    public static List<LearningElement> getAllLEDev(String username) throws UnknownHostException {
-       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+    public List<LearningElement> getAllLEDev(String username) throws UnknownHostException {
        Query query = new Query();
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
        return mongoOps.find(query(where("uploadedBy").is(username)), LearningElement.class);
     }
     
-    public static List<LearningElement> getAllLERev() throws UnknownHostException {
-       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+    public List<LearningElement> getAllLERev() throws UnknownHostException {
        Query query = new Query();
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
        return mongoOps.find(query(where("rating").lt(4).andOperator(where("rating").gt(0)).andOperator(where("rev").is(""))), LearningElement.class);
     }
     
-    public static List<LearningElement> getAllLERevLater(String user) throws UnknownHostException {
-       MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+    public List<LearningElement> getAllLERevLater(String user) throws UnknownHostException {
        Query query = new Query();
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
        return mongoOps.find(query(where("rating").lt(4).andOperator(where("rating").gt(0)).andOperator(where("status").is(2)).andOperator(where("rev").is(user))), LearningElement.class);
@@ -130,7 +118,7 @@ public class LearningElementDAO {
         le.setSubject("jjjjjjj");
         le.setDateUploaded("September 25, 2015");
         le.setDescription("test lng");
-        LearningElementDAO.addLearningElement(le);
+       // LearningElementDAO.addLearningElement(le);
         
         /**lo2.setLikes(20);
         lo2.setDownloads(153);
@@ -148,12 +136,11 @@ public class LearningElementDAO {
         LearningObjectDAO.addLearningObject(lo4);*/
         
         //JOptionPane.showMessageDialog(null, LearningObjectDAO.getMostLikedList().toString());
-        JOptionPane.showMessageDialog(null,LearningElementDAO.getList());
+     //   JOptionPane.showMessageDialog(null,LearningElementDAO.getList());
         //System.out.println(LearningObjectDAO.getMostLikedList());
     }
 
-    public static LearningElement getSpecificLearningElementById(String elementID) throws UnknownHostException {
-        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+    public LearningElement getSpecificLearningElementById(String elementID) throws UnknownHostException {
         return mongoOps.findOne(query(where("_id").is(elementID)), LearningElement.class);
     }
 }
