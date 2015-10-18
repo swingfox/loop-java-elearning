@@ -57,7 +57,7 @@ public class UserService {
             model.setUserType(user.getUsertype());
             model.setEmail(user.getEmail());
             model.setBlocked(false);
-            model.setAccepted(false);
+            model.setNewAccount(false);
             model.setLastLogin(new Date().toString());
             dao.saveUser(model);
             ok = true;
@@ -124,10 +124,9 @@ public class UserService {
     }    
     
     public boolean block(UserDto user) throws UnknownHostException, Exception{
-       //console.log("USERSERVICE NI");
-        
         boolean ok = false;
-        User model = dao.getUser(user.getId());
+
+        User model = dao.getUser(user.getUsername());
         if(model!= null){
             model.setBlocked(true);
             dao.blockUser(model);

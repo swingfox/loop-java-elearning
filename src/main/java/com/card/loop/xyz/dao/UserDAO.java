@@ -181,7 +181,7 @@ public class UserDAO {
     }
     
     public List<User> getDeveloper() throws UnknownHostException {
-        return user.find(query(where("userType").is("developer").andOperator(where("newAccount").is(false))), User.class);
+        return user.find(query(where("userType").is("developer").andOperator(where("newAccount").is(false)).andOperator(where("blocked").is(false))), User.class);
     }
     
     public List<User> getNewAccount() throws UnknownHostException {

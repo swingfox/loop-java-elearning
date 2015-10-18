@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com\card\loop\xyz\dao\UserDAO.class
 com\card\loop\xyz\model\User.class
 QueryController.class
@@ -28,3 +29,5 @@ com\card\loop\xyz\service\LearningObjectService.class
 com\card\loop\xyz\service\LearningElementService.class
 com\card\loop\xyz\model\LearningObject.class
 com\loop\controller\ContentShipper$Range.class
+=======
+>>>>>>> cd39862bc7a1a61003784c544fa261d431ee7457

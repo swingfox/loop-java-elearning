@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\David\Desktop\LOOP-FILE-EDIT\loop-java-elearning\src\main\java\com\card\loop\xyz\dto\LearningElementDto.java
 C:\Users\David\Desktop\LOOP-FILE-EDIT\loop-java-elearning\src\main\java\com\card\loop\xyz\service\UserService.java
 C:\Users\David\Desktop\LOOP-FILE-EDIT\loop-java-elearning\src\main\java\com\card\loop\xyz\service\LearningElementService.java
@@ -27,3 +28,34 @@ C:\Users\David\Desktop\LOOP-FILE-EDIT\loop-java-elearning\src\main\java\com\card
 C:\Users\David\Desktop\LOOP-FILE-EDIT\loop-java-elearning\src\main\java\com\card\loop\xyz\dao\UserDAO.java
 C:\Users\David\Desktop\LOOP-FILE-EDIT\loop-java-elearning\src\main\java\com\card\loop\xyz\config\TestClass.java
 C:\Users\David\Desktop\LOOP-FILE-EDIT\loop-java-elearning\src\main\java\com\card\loop\xyz\model\User.java
+=======
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\config\LoopController.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\file\meta\LearningObjectMeta.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\dto\LearningObjectMetaDto.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\model\LearningElement.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\controller\UserController.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\dao\UserDAO.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\dao\LearningElementDAO.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\model\User.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\dao\LearningElementMetaDAO.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\config\ContentShipper.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\dto\LearningObjectDto.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\dao\LearningObjectMetaDAO.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\model\LearningObject.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\config\TestClass.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\dto\UserDto.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\file\meta\LearningElementMeta.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\dto\LearningElementMetaDto.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\dao\LearningObjectDAO.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\controller\LearningObjectController.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\pageControllers\IndexController.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\config\QueryController.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\config\AppConfig.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\service\LearningObjectService.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\service\LearningElementService.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\service\UserService.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\config\DatabaseManager.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\controller\LearningElementController.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\pageControllers\LOIDEController.java
+D:\LOOP\101815\loop-java-elearning\src\main\java\com\card\loop\xyz\dto\LearningElementDto.java
+>>>>>>> cd39862bc7a1a61003784c544fa261d431ee7457

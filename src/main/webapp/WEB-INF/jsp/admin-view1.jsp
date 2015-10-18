@@ -82,7 +82,7 @@
 					<div class="navbar-collapse collapse" ng-controller="LoginCtrl">
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} {{userID}}<b class="caret"></b></a>
                                                         <ul class="dropdown-menu">
 
                                                                 <li role="presentation" class="dropdown-header">Options</li>
@@ -111,7 +111,7 @@
 		<!-- <form method="post" id="blockForm" name="blockForm" action="blockScript.php">
 			<div id="responsive_fileActionAdmin1" class="modal hide fade" tabindex="-1" data-width="760">
 			    <div class="modal-header light-theme">
-				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
+				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 				    <span class="popup">User Action</span>
 			    </div>
 			    <div class="modal-body">
@@ -156,7 +156,7 @@
                         <div class="modal-footer"> 
                             <div class="row">
                                 <div class="col-md-8 col-md-push-3">
-                                	<button type="button" class="btn btn-primary" ng-click="block()"><i class="icon-ban-circle icon-large default"></i> Block Account</button>
+                                	<button type="button" class="btn btn-primary" ng-click="blockMe()"><i class="icon-ban-circle icon-large default"></i> Block Account</button>
 								    <button type="button" data-dismiss="modal" class="btn btn-default"></i> Cancel</button>
 									 <input type="hidden" name="a" id="a" value="1" />
 									<input type="hidden" id="selectedIndex" name="index" value="0"/>      
@@ -215,7 +215,14 @@
 		    <li><a class="tab" href="#">Inactive Accounts</a></li>
 		    <li><a class="tab" href="#">Blocked Accounts</a></li>
 		    <li><a class="tab" href="#">Learning Objects</a></li>
-    	</ul> -->     
+    	</ul> -->
+
+
+
+
+
+
+        
 
 
 
@@ -236,7 +243,7 @@
 		<div class="clearfix"></div>
 
   		<div id="content-wrap-rev">
-			<div class="container">
+                    <div class="container">
 				<div class="row">
 					<div class="col-md-12 content">
                                             <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
@@ -266,8 +273,13 @@
 
 						        <tbody>
                                                             
-                                                             <tr ng-repeat="developer in developerAccount | filter:searchText ">
+<<<<<<< HEAD
+                                                             <tr ng-repeat="developer in developerAccount | filter:searchText">
                                                                     <td><a href="#responsive_fileActionAdmin1" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-model="developer.username">{{developer.username}}</a></td>
+=======
+                                                             <tr ng-repeat="developer in developerAccount | filter:searchText ">
+                                                                    <td><a href="#responsive_fileActionAdmin1" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-click="assignUser(developer)" id="devUser" value="developer.username">{{developer.username}}</a></td>
+>>>>>>> 52e0440c1c65329dc19b9a12e1da0f137eacb6de
                                                                     <td><label ng-model="developer.lastLogin">{{developer.lastLogin}}</td>
                                                                     <td><label ng-model="developer.lastUpload">{{developer.lastUpload}}</td>
                                                              </tr>
