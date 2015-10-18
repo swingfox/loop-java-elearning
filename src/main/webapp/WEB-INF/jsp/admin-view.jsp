@@ -276,16 +276,7 @@
    <script> 
         $(document).ready(function(){
             var length_sel;
-            // // alert($(document).height());
-            // if($(document).height() > 799){
-            //  $('footer').removeClass('navbar-fixed-bottom').addClass('navbar-static-bottom');
-            // }
-
-
-            //Sticky Footer Help
-            
             var optionVal = $('tbody > tr:last-child()').index();
-
                 $('.dataTables_filter label input').click(function(){
                     if(optionVal >= 8){
                         $('footer').removeClass('navbar-fixed-bottom').addClass('navbar-static-bottom');
@@ -294,22 +285,6 @@
                         $('footer').addClass('navbar-fixed-bottom').removeClass('navbar-static-bottom');
                     }
                 });
-            
-
-
-
-            // if( optionVal == '10'){
-            // }
-          /*  $('.datatable').dataTable({ 
-                "sPaginationType": "bs_normal"
-            });
-
-            $('.datatable').each(function(){
-                $(this).show();
-                datatable_configuration_for_bootstrap_three($(this));
-            });
-*/
-            // datatable configuration for bootstrap 3
             function datatable_configuration_for_bootstrap_three(datatable){
                 datatable.addClass('col-md-12');
                 var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
@@ -317,9 +292,8 @@
 
                 $('<i class="icomoon-search pull-left searchbar-icon"></i>').prependTo($('div:eq(0) > div > div:eq(0)',datatable.parents('.dataTables_wrapper')));
                 $('div:eq(0) > div > div:eq(0) > div',datatable.parents('.dataTables_wrapper')).addClass('pull-right');
-
                 search_input.addClass('form-control input-sm');
-                search_input.width('140px'); //used to be 150
+                search_input.width('140px'); 
                 length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
                 length_sel.addClass('form-control input-sm').css({ padding: '5px 10px 5px 5px', cursor: 'pointer' });
                 $('option', length_sel).css({ padding: '5px 8px' });
@@ -334,11 +308,7 @@
             $('#defaultForm').bootstrapValidator({
                 message: 'This value is not valid',
                 submitHandler: function(validator, form) {
-                    // validator is the BootstrapValidator instance
-                    // form is the jQuery object present the current form
-                    // form.find('.alert').html('Thanks for signing up. Now you can sign in as ' + validator.getFieldElement('username').val()).show();
                     form.find('.alert').html('Password Changed.').show();
-                    //form.submit();
                 },
                 fields: {
                     username: {
@@ -368,18 +338,6 @@
                             }
                         }
                     },
-                    // password: {
-                    //     validators: {
-                    //         notEmpty: {
-                    //             message: 'The password is required and can\'t be empty'
-                    //         },
-                    //         identical: {
-                    //             field: 'password',
-                    //             message: 'The password and its confirm are not the same'
-                    //         }
-                    //     }
-                    // },
-
                     newPassword: {
                         validators: {
                             notEmpty: {
