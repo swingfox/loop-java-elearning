@@ -3,16 +3,16 @@
 <head>
 <title>LOOP | Admin - Inactive Accounts</title>
     <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
-            <link href="css/bootstrap3/dist/css/bootstrap.css" rel="stylesheet" media="screen" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link href="css/bootstrapformhelpers/css/bootstrap-formhelpers.css" rel="stylesheet" />
-            <link href="css/bootstrap-modal-master/css/bootstrap-modal.css" rel="stylesheet" />
-            <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-            <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
-            <link href="js/bootstrap-tour/build/css/bootstrap-tour.css" rel="stylesheet" />
-            <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
-            <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
-            <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
+    <link href="css/bootstrap3/dist/css/bootstrap.css" rel="stylesheet" media="screen" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrapformhelpers/css/bootstrap-formhelpers.css" rel="stylesheet" />
+    <link href="css/bootstrap-modal-master/css/bootstrap-modal.css" rel="stylesheet" />
+    <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
+    <link href="js/bootstrap-tour/build/css/bootstrap-tour.css" rel="stylesheet" />
+    <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
+    <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
+    <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
     <script type="text/javascript">
         function selectIndex(v){
                 document.getElementById("selectedIndex").value=v;
