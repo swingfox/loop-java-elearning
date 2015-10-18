@@ -34,6 +34,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpRequest;
 import org.springframework.http.client.ClientHttpResponse;
@@ -55,7 +56,9 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/LO")
 public class LearningObjectController {
     
-    LearningObjectService loService = new LearningObjectService();
+    @Autowired LearningObjectService loService;
+    @Autowired LearningObjectDAO dao;
+
     
     @RequestMapping(value="/upload", method = RequestMethod.POST)
     public void upload(@RequestParam("title") String title, @RequestParam("author") String author,
@@ -77,7 +80,7 @@ public class LearningObjectController {
                         lo.setDownloads(0);
                         lo.setRating(1);
                         lo.setFilepath(file.getOriginalFilename());
-                        LearningObjectDAO.addLearningObject(lo);
+                        dao.addLearningObject(lo);
 
 
                         System.out.println("UPLOAD FINISHED");
@@ -197,7 +200,7 @@ public class LearningObjectController {
     */
     @RequestMapping(value = "/downloadLO/{elementID}", method = RequestMethod.GET)
     public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {                   
-                LearningObject element = LearningObjectDAO.getLearningObject(elementID);
+                LearningObject element = dao.getLearningObject(elementID);
 		String path = AppConfig.UPLOAD_LO_PATH + element.getFilepath();
 		ContentShipper shipper = new ContentShipper(request, response, true);
 		shipper.ship(path);   
@@ -207,7 +210,7 @@ public class LearningObjectController {
     */
     @RequestMapping(value = "/downloadLO/{elementID}", method = RequestMethod.HEAD)
     public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
-                LearningObject element = LearningObjectDAO.getLearningObject(elementID);
+                LearningObject element = dao.getLearningObject(elementID);
 
 		String path = AppConfig.UPLOAD_LO_PATH + element.getFilepath();
 		ContentShipper shipper = new ContentShipper(request, response, false);

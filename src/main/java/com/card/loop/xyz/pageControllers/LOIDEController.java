@@ -38,7 +38,9 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/loide")
 public class LOIDEController {
-    @Autowired LearningElementDAO dao;
+    @Autowired LearningElementDAO daoLE;
+    @Autowired LearningObjectDAO daoLO;
+
     @RequestMapping("/download")
     public ModelAndView accessInformatronDownload() {
         return new ModelAndView("download");
@@ -59,7 +61,7 @@ public class LOIDEController {
     
     @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.GET)
     public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
-        LearningElement element= dao.getSpecificLearningElementById(elementID);
+        LearningElement element= daoLE.getSpecificLearningElementById(elementID);
 	String path = AppConfig.UPLOAD_LE_PATH + element.getName();
 	ContentShipper shipper = new ContentShipper(request, response, true);
 	shipper.ship(path);   
@@ -67,7 +69,7 @@ public class LOIDEController {
         
     @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.HEAD)
     public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {	
-        LearningElement element= dao.getSpecificLearningElementById(elementID);
+        LearningElement element= daoLE.getSpecificLearningElementById(elementID);
 	String path = AppConfig.UPLOAD_LE_PATH + element.getName();
 	ContentShipper shipper = new ContentShipper(request, response, false);
 	shipper.ship(path);
@@ -96,7 +98,7 @@ public class LOIDEController {
                                 le.setSubject(subject);
                                 le.setDateUploaded(new Date().toString());
                                 le.setFilePath(file.getOriginalFilename());
-                                dao.addLearningElement(le);
+                                daoLE.addLearningElement(le);
                                 
                                 break;
                             case "LO":
@@ -109,8 +111,8 @@ public class LOIDEController {
                                 lo.setRating(1);
                                 lo.setSubject(subject);
                                 lo.setFilepath(file.getOriginalFilename());
-                                LearningObjectDAO.addLearningObject(lo);
-                                        JOptionPane.showMessageDialog(null,lo.getName());
+                                daoLO.addLearningObject(lo);
+                                JOptionPane.showMessageDialog(null,lo.getName());
 
                                 break;
                         }

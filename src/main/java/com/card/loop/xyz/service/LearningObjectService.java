@@ -13,6 +13,7 @@ import com.card.loop.xyz.model.User;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -24,9 +25,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class LearningObjectService 
 {
+    @Autowired LearningObjectDAO dao;
+
     public LearningObjectDto getLearningObject(String id) throws UnknownHostException{
         LearningObject loModel;
-        loModel = LearningObjectDAO.getLearningObject(id);
+        loModel = dao.getLearningObject(id);
         LearningObjectDto dto = new LearningObjectDto();
        if(loModel != null){  
             dto.setId(loModel.getId());
@@ -47,7 +50,7 @@ public class LearningObjectService
     }
     
     public List<LearningObjectDto> getLearningObjects() throws UnknownHostException{
-        List<LearningObject> LOList = LearningObjectDAO.getList();
+        List<LearningObject> LOList = dao.getList();
         List<LearningObjectDto> objects = new ArrayList<>();
         for(LearningObject model: LOList){
             LearningObjectDto dto = new LearningObjectDto();
@@ -71,7 +74,7 @@ public class LearningObjectService
     }
     
     public List<LearningObjectDto> getAvailableLearningObjects() throws UnknownHostException{
-        List<LearningObject> LOList = LearningObjectDAO.getAllDownloadableLO();
+        List<LearningObject> LOList = dao.getAllDownloadableLO();
         List<LearningObjectDto> objects = new ArrayList<>();
         for(LearningObject model: LOList){
             LearningObjectDto dto = new LearningObjectDto();
@@ -95,7 +98,7 @@ public class LearningObjectService
     }
     
     public List<LearningObjectDto> getReviewerLOList(String rev) throws UnknownHostException{
-        List<LearningObject> LOList = LearningObjectDAO.getReviewerLOList(rev);//LearningObjectDAO.getAllLearningObjectByDateUpload(new Date());
+        List<LearningObject> LOList = dao.getReviewerLOList(rev);//LearningObjectDAO.getAllLearningObjectByDateUpload(new Date());
         List<LearningObjectDto> objects = new ArrayList<>();
         for(LearningObject model: LOList){
             LearningObjectDto dto = new LearningObjectDto();
@@ -119,7 +122,7 @@ public class LearningObjectService
     
     public boolean approveLO(String name) throws UnknownHostException{
         boolean ok = false;
-        LearningObject lo = LearningObjectDAO.getLearningObject(name);
+        LearningObject lo = dao.getLearningObject(name);
         LearningObjectDto dto = new LearningObjectDto();
             dto.setId(lo.getId());
             dto.setRating(5);
@@ -134,13 +137,13 @@ public class LearningObjectService
             dto.setStatus(lo.getStatus());
             dto.setUploadedBy(lo.getUploadedBy());
             dto.setSequence(lo.getSequence());
-        LearningObjectDAO.updateLO(dto);
+            dao.updateLO(dto);
         return ok;
     }
     
     public boolean acceptUser(String name) throws UnknownHostException{
         boolean ok = false;
-        LearningObject lo = LearningObjectDAO.getLearningObject(name);
+        LearningObject lo = dao.getLearningObject(name);
       //  User u= UserDAO.getUser(null);
 
        // u.setNewAccount(false);
