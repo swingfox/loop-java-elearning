@@ -113,7 +113,6 @@ public class LearningElementMetaDAO{
                 if(count == 2) break;
            }
         }
-
         return count;
     }
     
@@ -129,8 +128,8 @@ public class LearningElementMetaDAO{
         le.setFilePath("C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LE\\");
         le.setFileType(".zip");
         
-        dao.addFile(le);
-        System.out.println(dao.search("676f65e8970d856682dde3a34f2390f9","le.meta"));
+//        dao.addFile(le);
+        System.out.println(dao.getSingleLE("676f65e8970d856682dde3a34f2390f9", "le.meta"));
      //   OutputStream output = new FileOutputStream("c:\\data\\");
 
        // dao.getSingleLE("676f65e8970d856682dde3a34f2390f9","le.meta").writeTo("C:\\Users\\David\\Desktop\\haha.zip");

@@ -141,7 +141,7 @@ public class LearningObjectService
     public boolean acceptUser(String name) throws UnknownHostException{
         boolean ok = false;
         LearningObject lo = LearningObjectDAO.getLearningObject(name);
-        User u= UserDAO.getUser(null);
+      //  User u= UserDAO.getUser(null);
 
     //    u.setNewAccount(false);
        // UserDAO.updateLO(u);

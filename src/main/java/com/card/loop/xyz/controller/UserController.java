@@ -9,6 +9,7 @@ import com.card.loop.xyz.dto.UserDto;
 import com.card.loop.xyz.service.UserService;
 import java.net.UnknownHostException;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,15 +24,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/user")
-
 public class UserController {
+    @Autowired UserService service;
 
     @RequestMapping("/signup")
     @ResponseBody
     public UserDto signup(@RequestBody UserDto user) throws UnknownHostException
     {
         try{
-        UserService service = new UserService();
         boolean ok = service.register(user);
             if(ok==false){
                 System.out.println("HAHA");
@@ -49,7 +49,6 @@ public class UserController {
     {
         UserDto result = null;
         try{
-            UserService service = new UserService();
             result = service.login(user);
             if(result==null)
                 user.getErrorList().add("Username or password is invalid.");
@@ -63,7 +62,6 @@ public class UserController {
     public List<UserDto>  accountRequests(){
         List<UserDto> result = null;
         try{
-            UserService service = new UserService();
             result = service.getAllNewAccount();
             if(result==null)
                 return null;
@@ -77,7 +75,6 @@ public class UserController {
     public List<UserDto>  accountDeveloper(){
         List<UserDto> result = null;
         try{
-            UserService service = new UserService();
             result = service.getAllDeveloper();
             if(result==null)
                return null;
@@ -95,7 +92,6 @@ public class UserController {
     
     @RequestMapping("/approve")
     public boolean approve(UserDto user) throws UnknownHostException, Exception{
-         UserService service = new UserService();
         return service.acceptUser(user);
     }
     
@@ -109,8 +105,6 @@ public class UserController {
     public List<UserDto> getAllBlockedUsers(){
      List<UserDto> result = null;
         try{
-            System.out.println("LOOO");
-            UserService service = new UserService();
             result = service.getBlockedUsers();
             if(result==null);
              //   user.getErrorList().add("NULLL!");
@@ -131,7 +125,6 @@ public class UserController {
      @RequestMapping("/blockUser")
     @ResponseBody
     public boolean blockUser( @PathVariable String id) throws UnknownHostException, Exception{
-        UserService service = new UserService();
         UserDto ud= new UserDto();
         ud.setId(id);
         return service.block(ud);
@@ -141,7 +134,6 @@ public class UserController {
     public List<UserDto> reviewerUser(){
      List<UserDto> result = null;
         try{
-            UserService service = new UserService();
             result = service.getAllReviewer();
             if(result==null)
                 return null;
@@ -155,7 +147,6 @@ public class UserController {
     public List<UserDto> inactiveUser(){
      List<UserDto> result = null;
         try{
-            UserService service = new UserService();
             result = service.inactive();
             if(result==null)
                 return null;

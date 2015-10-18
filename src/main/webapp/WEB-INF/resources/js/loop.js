@@ -89,6 +89,10 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
             //alert ("Ajax error");
         });
     };
+    
+   if($store.get('userId').length === 0 && window.location.toString().split('/store/')[1] !== 'home'){
+       window.location = '/loop-XYZ/store/home';
+   }
 }]);
 
 eS.controller('LEList', ['$scope', '$store', '$http', function($scope, $store, $http) {

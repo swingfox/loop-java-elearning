@@ -12,6 +12,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,11 +22,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
+    @Autowired UserDAO dao;
     
     public boolean verify(UserDto user){return false;}
     
     public UserDto login(UserDto user) throws UnknownHostException{
-        User userModel = UserDAO.getUser(user.getUsername(), user.getPassword(),user.getUsertype());
+        User userModel = dao.getUser(user.getUsername(), user.getPassword(),user.getUsertype());
         System.out.println("USER SERVICE CONTROLLER");
         if(userModel != null){
            if(userModel.getUsername().equals(user.getUsername()) && userModel.getPassword().equals(user.getPassword())){
@@ -47,7 +49,7 @@ public class UserService {
     }
     public boolean register(UserDto user) throws UnknownHostException{
         boolean ok = false;
-        if(!UserDAO.exists(user.getUsername(),user.getPassword())){
+        if(!dao.exists(user.getUsername(),user.getPassword())){
             User model = new User();
             model.setUserName(user.getUsername());
             model.setPassword(user.getPassword());
@@ -57,7 +59,7 @@ public class UserService {
             model.setBlocked(false);
             model.setAccepted(false);
             model.setLastLogin(new Date().toString());
-            UserDAO.saveUser(model);
+            dao.saveUser(model);
             ok = true;
         }
         return ok;
@@ -73,7 +75,7 @@ public class UserService {
             obj.setUserType(user.getUsertype());
             obj.setPassword(user.getPassword());
         }
-        return UserDAO.blockUser(obj); 
+        return dao.blockUser(obj); 
     }
     
     public boolean edit(UserDto user) throws UnknownHostException{
@@ -87,7 +89,7 @@ public class UserService {
             obj.setUserType(user.getUsertype());
             obj.setPassword(user.getPassword());
         }
-        return UserDAO.editUser(obj);
+        return dao.editUser(obj);
     }
     
     public boolean acceptUser(UserDto user) throws UnknownHostException, Exception{
@@ -104,11 +106,11 @@ public class UserService {
         }
         return UserDAO.blockUser(obj); */
         boolean ok = false;
-        User model = UserDAO.getUser(user.getId());
+        User model = dao.getUser(user.getId());
         if(model!= null){
             model.setBlocked(true);
             model.setUserName("hehehhe");
-            UserDAO.blockUser(model);
+            dao.blockUser(model);
             System.out.println("ID??"+model.getId());
             
             System.out.println("Username??"+model.getUsername());
@@ -125,10 +127,10 @@ public class UserService {
        //console.log("USERSERVICE NI");
         
         boolean ok = false;
-        User model = UserDAO.getUser(user.getId());
+        User model = dao.getUser(user.getId());
         if(model!= null){
             model.setBlocked(true);
-            UserDAO.blockUser(model);
+            dao.blockUser(model);
             System.out.println("ID??"+model.getId());
             
             System.out.println("Username??"+model.getUsername());
@@ -151,7 +153,7 @@ public class UserService {
     
     public List<UserDto> getBlockedUsers() throws UnknownHostException{
          List<UserDto> objects = new ArrayList<>();
-         List<User> userList = UserDAO.getBlockedUsers();
+         List<User> userList = dao.getBlockedUsers();
          for(User model: userList){
             UserDto dto = new UserDto();
             dto.setLastLogin(model.getLastLogin());
@@ -163,7 +165,7 @@ public class UserService {
     }
     public List<UserDto> inactive() throws UnknownHostException{
          List<UserDto> objects = new ArrayList<>();
-         List<User> userList = UserDAO.getInactiveUsers();
+         List<User> userList = dao.getInactiveUsers();
          for(User model: userList){
             UserDto dto = new UserDto();
             dto.setLastLogin(model.getLastLogin());
@@ -176,7 +178,7 @@ public class UserService {
      
      public List<UserDto> getAllReviewer() throws UnknownHostException{
          List<UserDto> objects = new ArrayList<>();
-         List<User> userList = UserDAO.getReviewer();
+         List<User> userList = dao.getReviewer();
          for(User model: userList){
             UserDto dto = new UserDto();
             dto.setLastDownload(model.getLastDownload());
@@ -192,7 +194,7 @@ public class UserService {
     public UserDto getUserInfo(UserDto user) throws UnknownHostException{return null;}
     public List<UserDto> getAllUsers(UserDto user) throws UnknownHostException{
         List<UserDto> objects = new ArrayList<>();
-        List<User> userList = UserDAO.getAllUser();
+        List<User> userList = dao.getAllUser();
          for(User model: userList){
             UserDto dto = new UserDto();
             dto.setLastUpload(model.getLastDownload());
@@ -204,7 +206,7 @@ public class UserService {
     }
     public List<UserDto> getAllDeveloper() throws UnknownHostException{
         List<UserDto> objects = new ArrayList<>();
-        List<User> userList = UserDAO.getDeveloper();
+        List<User> userList = dao.getDeveloper();
          for(User model: userList){
             UserDto dto = new UserDto();
             dto.setLastUpload(model.getLastDownload());
@@ -217,7 +219,7 @@ public class UserService {
     
     public List<UserDto> getAllNewAccount() throws UnknownHostException{
         List<UserDto> objects = new ArrayList<>();
-        List<User> userList = UserDAO.getNewAccount();
+        List<User> userList = dao.getNewAccount();
          for(User model: userList){
             UserDto dto = new UserDto();
             dto.setUsertype(model.getUserType());
