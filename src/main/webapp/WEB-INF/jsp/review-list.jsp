@@ -1,97 +1,53 @@
-
 <!DOCTYPE html>
 <html lang="en" ng-app="loop">
     <head>
         <title>LOOP | Review List</title>
         <meta charset="utf-8">
-            
-
-            <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
-
-            <!-- Bootstrap 3 -->
-            <link href="css/bootstrap3/dist/css/bootstrap.css" rel="stylesheet" media="screen" />
-
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-            <!-- Date Picker -->
-            <link href="css/bootstrapformhelpers/css/bootstrap-formhelpers.css" rel="stylesheet" />
-
-            <!-- Modal -->
-            <link href="css/bootstrap-modal-master/css/bootstrap-modal.css" rel="stylesheet" />
-            
-            <!-- Icons -->
-            <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-            <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
-            <!--[if IE 7]>
-              <link href="'.$this->base_url.'fonts/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
-            <![endif]-->
-
-            <!-- 1280 grid -->
-            <link type="text/css" href="css/css-include/1280grid.css" rel="stylesheet" />
-
-            <!-- Bootstrap Tour -->
-            <link href="js/bootstrap-tour/build/css/bootstrap-tour.css" rel="stylesheet" />
-            <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
-
-            <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
-                
-            <!-- Input File -->
-            <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
-
-            <!-- Form Validator -->
-            <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
+        <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+        <link href="css/bootstrap3/dist/css/bootstrap.css" rel="stylesheet" media="screen" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrapformhelpers/css/bootstrap-formhelpers.css" rel="stylesheet" />
+        <link href="css/bootstrap-modal-master/css/bootstrap-modal.css" rel="stylesheet" />
+        <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
+        <link type="text/css" href="css/css-include/1280grid.css" rel="stylesheet" />
+        <link href="js/bootstrap-tour/build/css/bootstrap-tour.css" rel="stylesheet" />
+        <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
+        <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
+        <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
+        <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
 
     </head>
     <body>
-        <!-- <div id="wrapper"> -->
 	<div class="wrapper" ng-controller="LoginCtrl">
-    	<!--<?php $this->layout->modal_footer() ?>-->
-		
 		<div id="header-wrap">
 			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-				
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-	                    
 	                    <a class="navbar-brand" href="/loop-XYZ/store/reviewer-update">
 							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
 						</a>
 	                </div>
-					
 					 <div class="navbar-collapse collapse" >
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
                                                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
                                                         <ul class="dropdown-menu">
-
                                                                 <li role="presentation" class="dropdown-header">Options</li>
-
                                                                 <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
                                                                 <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
-
                                                                 <li class="divider"></li>
-
                                                                 <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
                                                         </ul>
                                                      </li>
                                                 </ul>
 					</div>
-				
 			</nav>
 		</div>
-
-
-<!-- ========================================================================================================================
-
-MAKE THIS BOOTSTRAP 3
-
-========================================================================================================================= -->
-
-		<!-- File Action Update-->
         <form method="post" action="'.base_url().'index.php/account/change_password">
             <div class="modal fade" id="responsive_fileActionDeveloper" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -103,10 +59,7 @@ MAKE THIS BOOTSTRAP 3
                         <div class="modal-body">  
                             <div class="row">
                                 <div class="col-md-10 col-md-push-1">
-                                    <!-- <p><input class="col-xs-12 col-md-12 sign-up" id="password" type="password" name="password" placeholder="Enter Old Password"></p>
-                                    <p><input class="col-xs-12 col-md-12 sign-up" id="enterNewPassword" type="password" name="newPassword" placeholder="Enter New Password"></p>
-                                    <p><input class="col-xs-12 col-md-12 sign-up last" id="confirmNewPassword" type="password" name="confirmNewPassword" placeholder="Confirm New Password"></p> -->
-                                    <label class="file-action">What would you like to do with this Learning Object?</label>
+                                     <label class="file-action">What would you like to do with this Learning Object?</label>
                                 </div> 
                             </div>
                         </div>
