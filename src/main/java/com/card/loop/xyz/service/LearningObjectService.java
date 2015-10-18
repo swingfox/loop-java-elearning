@@ -140,7 +140,7 @@ public class LearningObjectService
         boolean ok = false;
         LearningObject lo = LearningObjectDAO.getLearningObject(name);
         User u= UserDAO.getUser(null);
-        u.setNewAccount(false);
+       // u.setNewAccount(false);
        // UserDAO.updateLO(u);
         return ok;
     }
