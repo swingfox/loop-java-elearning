@@ -305,14 +305,15 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
  eS.controller('blockCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
          $rootScope.userBlock = '';
    $scope.blockMe = function(){ 
-       alert($rootScope.userBlock);
-        $http.post("/loop-XYZ/loop/user/blockUser/" + $rootScope.userBlock)    
+       //alert($rootScope.userBlock);
+        $http.post("/loop-XYZ/loop/user/blockUser/"+ $rootScope.userBlock)
         .success(function(data) {
             console.log("SUCCESS"); 
+            window.location.href="admin-view4";
         })
         .error(function(jqXHR, status, error) {
             //$scope.tasks = response.taskList;
-            console.log(""+ error);
+            console.log("jsjdjs"+ error);
             //console.log("" + response);
         });
    }

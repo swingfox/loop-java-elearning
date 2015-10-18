@@ -30,9 +30,9 @@ import org.springframework.stereotype.Repository;
 public class UserDAO {
     @Autowired MongoOperations user;
 
-    public User getUser(String id) throws UnknownHostException{ 
+    public User getUser(String username) throws UnknownHostException{ 
         User p = null;
-        p = user.findOne(query(where("id").is(id)), User.class);
+        p = user.findOne(query(where("username").is(username)), User.class);
         return p;
     }
     /*public static User getUser(User user) throws UnknownHostException{ 
@@ -181,7 +181,7 @@ public class UserDAO {
     }
     
     public List<User> getDeveloper() throws UnknownHostException {
-        return user.find(query(where("userType").is("developer").andOperator(where("newAccount").is(false)).andOperator(where("blocked").is(false))), User.class);
+        return user.find(query(where("userType").is("developer").andOperator((where("newAccount").is(false)).andOperator(where("blocked").is(false)))), User.class);
     }
     
     public List<User> getNewAccount() throws UnknownHostException {
