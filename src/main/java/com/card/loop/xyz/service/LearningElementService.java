@@ -11,10 +11,12 @@ import com.card.loop.xyz.model.LearningElement;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Service;
 /**
  *
  * @author Julie Jane Alegre
  */
+@Service
 public class LearningElementService {
     
     public LearningElementDto getSpecificLearningElement(String id) throws UnknownHostException{

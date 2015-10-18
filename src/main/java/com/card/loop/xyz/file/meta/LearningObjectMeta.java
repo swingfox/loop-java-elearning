@@ -13,19 +13,28 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @author David
  */
 
-@Document(collection = "lo_meta")
-public class LearningObjectMeta extends BasicDBObject{
-    private String name;
+@Document(collection = "lo.meta.files")
+public class LearningObjectMeta{
+    private String title;
     private String fileName;
     private String filePath;
+    private String fileType;
 
-    public String getName() {
-        return name;
+    public String getFileType() {
+        return fileType;
     }
 
-    public void setName(String name) {
-        this.put("name", name);
-        this.name = name;
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
+    }
+
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String name) {
+        this.title = name;
     }
 
     public String getFileName() {
@@ -33,12 +42,10 @@ public class LearningObjectMeta extends BasicDBObject{
     }
 
     public void setFileName(String fileName) {
-        this.put("fileName", fileName);
         this.fileName = fileName;
     }
 
     public String getFilePath() {
-        this.put("filePath", filePath);
         return filePath;
     }
 

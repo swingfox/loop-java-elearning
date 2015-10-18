@@ -20,11 +20,13 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import org.springframework.data.mongodb.core.query.Query;
 import static org.springframework.data.mongodb.core.query.Query.query;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Julie Jane Alegre 
  */
+@Repository
 public class LearningElementDAO {
     
     public static List<LearningElement> getList() throws UnknownHostException {

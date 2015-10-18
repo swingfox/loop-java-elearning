@@ -13,6 +13,7 @@ import com.card.loop.xyz.model.User;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
@@ -20,6 +21,7 @@ import java.util.List;
  * 
  * [09/30/2015] -   Vine Deiparine  - Added getLearningObjects
  */
+@Service
 public class LearningObjectService 
 {
     public LearningObjectDto getLearningObject(String id) throws UnknownHostException{
@@ -140,7 +142,7 @@ public class LearningObjectService
         boolean ok = false;
         LearningObject lo = LearningObjectDAO.getLearningObject(name);
         User u= UserDAO.getUser(null);
-        u.setNewAccount(false);
+    //    u.setNewAccount(false);
        // UserDAO.updateLO(u);
         return ok;
     }

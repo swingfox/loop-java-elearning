@@ -20,10 +20,12 @@ import static org.springframework.data.mongodb.core.query.Criteria.where;
 import org.springframework.data.mongodb.core.query.Query;
 import static org.springframework.data.mongodb.core.query.Query.query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Repository;
 /**
  *
  * @author Vine Deiparine
  */
+@Repository
 public class UserDAO {
 
     public static User getUser(User user) throws UnknownHostException{ 

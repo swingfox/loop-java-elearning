@@ -19,12 +19,14 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import org.springframework.data.mongodb.core.query.Query;
 import static org.springframework.data.mongodb.core.query.Query.query;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author David
  * 
  */
+@Repository
 public class LearningObjectDAO {
     public static List<LearningObject> getList() throws UnknownHostException {
        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");

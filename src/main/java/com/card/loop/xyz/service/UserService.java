@@ -12,11 +12,14 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Vine Joy Deiparine
  */
+
+@Service
 public class UserService {
     
     public boolean verify(UserDto user){return false;}
