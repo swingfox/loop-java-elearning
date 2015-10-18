@@ -102,16 +102,16 @@ $(document).ready(function() {
                    $('#userType').val(data.usertype).change();
                    if(data === null){
                        alert('User not found');
-                       $('#loginto').prepend("<p class='alert alert-danger'><i class='icon-warning-sign'></i> Invalid account details. Check your information below.</p> </div>");
+                       $('#loginto').prepend("<p class='alert alert-danger'><i class='icon-warning-sign'></i> Invalid account details. Check your information below.</p>");
                    }
                    else if(data.id !== null){
                        
                         if(data.usertype === "developer")
-                        window.location = "/loop-XYZ/store/developer-update";
+                            window.location = "/loop-XYZ/store/developer-update";
                         else if(data.usertype === "reviewer")
-                        window.location = "/loop-XYZ/store/reviewer-update";
+                            window.location = "/loop-XYZ/store/reviewer-update";
                         else 
-                        window.location = "/loop-XYZ/store/admin-view";
+                            window.location = "/loop-XYZ/store/admin-view";
                      //alert("Login Successful!");
                    }
                //     }

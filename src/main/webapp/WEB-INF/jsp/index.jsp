@@ -54,7 +54,7 @@
         <input type="hidden" id="refreshed" value="no">
         <div id="wrapper">
             <!-- Login LIGHT-->
-            <form id="login_form" method="post" ng-submit="login()">
+            <form id="login_form" method="post" ng-submit="">
                 <!-- <div id="responsive_loginLight" class="modal hide fade" tabindex="-1" data-width="760"> -->
                 <div class="modal fade" id="responsive_loginLight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -123,7 +123,7 @@
                                         </div>
 
                                         <div class="clearfix"></div>
-                                        <div ng-hide="hide"><input type="text" id="userId" class="ng-dirty ng-touched" ng-model="userId"/></div>
+                                        <div ng-hide="hide"><input type="text" id="userId" class="ng-dirty ng-touched" ng-model="userID"/></div>
                                         <div ng-hide="hide"><input type="text" id="userName" class="ng-dirty ng-touched" ng-model="username"/></div>
                                         <div ng-hide="hide"><input type="text" id="userType" class="ng-dirty ng-touched" ng-model="userType"/></div>
                                         <div class="label-signup">
