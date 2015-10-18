@@ -108,7 +108,7 @@
                             <img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
                         </a>
                     </div>
-                           <div class="navbar-collapse collapse" >
+                           <div class="navbar-collapse collapse"  ng-controller="LoginCtrl">
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
                                                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} {{userId}}<b class="caret"></b></a>
@@ -127,7 +127,7 @@
             </nav>
         </div>
         <div class="clearfix"></div>
-        <form method="post" action="account/accept">
+        <form method="post" ng-controller="acceptCtrl">
             <div class="modal fade" id="responsive_fileActionAdmin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -145,7 +145,7 @@
                         <div class="modal-footer"> 
                             <div class="row">
                                 <div class="col-md-10 col-md-push-1">
-                                    <button type="submit" class="btn btn-primary" onclick="#"><i class="icon-ok-sign icon-large default"></i> Accept</button>
+                                    <button type="submit" class="btn btn-primary" ng-click="acceptMe()"><i class="icon-ok-sign icon-large default"></i> Accept</button>
                                     <button type="button" data-dismiss="modal" class="btn btn-default"></i> Cancel</button>
                                     <input type="hidden" id="selectedIndex" name="index" value="0"/>      
                                 </div>
@@ -166,7 +166,7 @@
                 <li><a href="/loop-XYZ/store/admin-view6"><i class="icomoon-list"></i> Learning Elements</a></li>
     </ul>
         <div class="clearfix"></div>
-        <div id="content-wrap-rev">
+        <div id="content-wrap-rev" ng-controller="acceptCtrl">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 content">
@@ -194,8 +194,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                      <tr ng-repeat="user in userAccount | filter:searchText ">
-                                            <td><a href="#responsive_fileActionAdmin" data-toggle="modal" onclick="onclick="selectIndex('.$counter.')"><label ng-model="user.username">{{user.username}}</a></td>
+                                      <tr ng-repeat="user in newAccount | filter:searchText ">
+                                            <td><a href="#responsive_fileActionAdmin" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-click="assignUser(user)" value="user.username" ng-model="user.username">{{user.username}}</a></td>
                                             <td><label ng-model="user.email">{{user.email}}</td>
                                             <td><label ng-model="user.usertype">{{user.usertype}}</td>
                                       </tr>
