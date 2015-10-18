@@ -12,11 +12,14 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Vine Joy Deiparine
  */
+
+@Service
 public class UserService {
     
     public boolean verify(UserDto user){return false;}
@@ -87,13 +90,63 @@ public class UserService {
         return UserDAO.editUser(obj);
     }
     
-    public boolean accept(UserDto user) throws UnknownHostException{
-        User obj = new User();
+    public boolean acceptUser(UserDto user) throws UnknownHostException, Exception{
+        /*User obj = new User();
         if(!UserDAO.exists(user.getUsername())){
-            obj.setAccepted(true);            
+            obj.setBlocked(user.getBlocked());
+            obj.setEmail(user.getEmail());
+            obj.setLastDownload(user.getLastDownload());
+            obj.setLastLogin(user.getLastLogin());
+            obj.setUserName(user.getUsername());
+            obj.setUserType(user.getUsertype());
+            obj.setPassword(user.getPassword());
+            obj.setAccepted(false);
         }
-        return UserDAO.acceptUser(obj);
+        return UserDAO.blockUser(obj); */
+        boolean ok = false;
+        User model = UserDAO.getUser(user.getId());
+        if(model!= null){
+            model.setBlocked(true);
+            model.setUserName("hehehhe");
+            UserDAO.blockUser(model);
+            System.out.println("ID??"+model.getId());
+            
+            System.out.println("Username??"+model.getUsername());
+            System.out.println("Is blocked??"+model.getBlocked());
+            ok = true;
+        }
+        else
+            throw new Exception("User does not exist. ");
+        return ok;
+        
     }    
+    
+    public boolean block(UserDto user) throws UnknownHostException, Exception{
+       //console.log("USERSERVICE NI");
+        
+        boolean ok = false;
+        User model = UserDAO.getUser(user.getId());
+        if(model!= null){
+            model.setBlocked(true);
+            UserDAO.blockUser(model);
+            System.out.println("ID??"+model.getId());
+            
+            System.out.println("Username??"+model.getUsername());
+            System.out.println("Is blocked??"+model.getBlocked());
+            ok = true;
+        }
+        else
+            throw new Exception("User does not exist. ");
+        return ok;
+    }
+    
+    public static void main(String args[]) throws Exception{
+        UserDto u= new UserDto();
+        u.setId("56045d3995840640f703d356");
+        
+        //System.out.println(block(u));
+    }
+
    
     
     public List<UserDto> getBlockedUsers() throws UnknownHostException{
@@ -170,6 +223,7 @@ public class UserService {
             dto.setUsertype(model.getUserType());
             dto.setEmail(model.getEmail());
             dto.setUsername(model.getUsername());
+            dto.setId(model.getId());
             objects.add(dto);
          }
          return objects;

@@ -9,6 +9,7 @@ import com.card.loop.xyz.dto.UserDto;
 import com.card.loop.xyz.service.UserService;
 import java.net.UnknownHostException;
 import java.util.List;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,6 +41,7 @@ public class UserController {
         }
         return user;
     }
+    
     
     @RequestMapping("/login")
     @ResponseBody
@@ -92,7 +94,10 @@ public class UserController {
     public boolean edit(UserDto user){return false;}
     
     @RequestMapping("/approve")
-    public boolean approve(UserDto user){return false;}
+    public boolean approve(UserDto user) throws UnknownHostException, Exception{
+         UserService service = new UserService();
+        return service.acceptUser(user);
+    }
     
     @RequestMapping("/promote")
     public boolean promote(UserDto user){return false;}
@@ -116,11 +121,20 @@ public class UserController {
         return result;
     }
     
-    @RequestMapping("/blockUser")
+   /* @RequestMapping("/blockUser/{id}")
     @ResponseBody
     public boolean blockUser(@RequestBody UserDto user) throws UnknownHostException{
         UserService service = new UserService();
         return service.blockUser(user);
+    }*/
+   
+     @RequestMapping("/blockUser")
+    @ResponseBody
+    public boolean blockUser( @PathVariable String id) throws UnknownHostException, Exception{
+        UserService service = new UserService();
+        UserDto ud= new UserDto();
+        ud.setId(id);
+        return service.block(ud);
     }
     
     @RequestMapping("/reviewer")

@@ -129,6 +129,8 @@
         </div>
         <div class="clearfix"></div>
         <form method="post" ng-submit="acceptNewAccountCtrl()">
+        <form method="post" >
+
             <div class="modal fade" id="responsive_fileActionAdmin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -147,6 +149,8 @@
                             <div class="row">
                                 <div class="col-md-10 col-md-push-1">                                    
                                     <button type="submit" class="btn btn-primary"><i class="icon-ok-sign icon-large default"></i> Accept</button>
+                                <div class="col-md-10 col-md-push-1">
+                                 <button type="button" class="btn btn-primary" ng-click="block()"><i class="icon-ok-sign icon-large default"></i> Accept</button>
                                     <button type="button" data-dismiss="modal" class="btn btn-default"></i> Cancel</button>
                                     <input type="hidden" id="selectedIndex" name="index" value="0"/>      
                                 </div>
@@ -198,6 +202,8 @@
                                     
                                       <tr ng-repeat="user in userAccount | filter:searchText ">
                                             <td><a href="#responsive_fileActionAdmin" data-toggle="modal" onclick="onclick="selectIndex('.$counter.')"><label ng-model="user.username">{{user.username}}</a></td>
+                                            <td><label id="userId" ng-model="user.id">{{user.id}}</td>
+                                            <td><a href="#responsive_fileActionAdmin" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-model="user.username">{{user.username}}</a></td>
                                             <td><label ng-model="user.email">{{user.email}}</td>
                                             <td><label ng-model="user.usertype">{{user.usertype}}</td>
                                       </tr>

@@ -20,19 +20,27 @@ import static org.springframework.data.mongodb.core.query.Criteria.where;
 import org.springframework.data.mongodb.core.query.Query;
 import static org.springframework.data.mongodb.core.query.Query.query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Repository;
 /**
  *
  * @author Vine Deiparine
  */
+@Repository
 public class UserDAO {
-
-    public static User getUser(User user) throws UnknownHostException{ 
+    
+    public  static User getUser(String id) throws UnknownHostException{ 
+        User p = null;
+         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+        p = mongoOps.findOne(query(where("id").is(id)), User.class);
+        return p;
+    }
+    /*public static User getUser(User user) throws UnknownHostException{ 
         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
         User p = null;
         if(exists(user.getUsername(),user.getPassword()))
         p = mongoOps.findOne(query(where("username").is(user.getUsername())), User.class);
         return p;
-    }
+    }*/
     
     public static User getDeveloperUser(User user) throws UnknownHostException{ 
         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
@@ -71,7 +79,7 @@ public class UserDAO {
         return ok;
     }
     
-    /*public static boolean acceptUser(User user) throws UnknownHostException{
+    public static boolean acceptUser(User user) throws UnknownHostException{
         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
         boolean ok = false;
         Query query = new Query();
@@ -82,18 +90,17 @@ public class UserDAO {
         mongoOps.updateFirst(query,update,User.class);
         ok = true;
         return ok;
-    }*/
+    }
     
     public static boolean blockUser(User user) throws UnknownHostException{
-        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
-        boolean ok = false;
+         MongoOperations mongoOps = DatabaseManager.getMongoOpsInstance("loop");
+         boolean ok=false;
         Query query = new Query();
-        query.addCriteria(where("username").is(user.getUsername()));
-        Update update = new Update();
-        update.addToSet("blocked", true);
-        //update.addToSet("firstName",user.getFirstName());
-        mongoOps.updateFirst(query,update,User.class);
-        ok = true;
+        query.addCriteria(where("_id").is(user.getId()));
+        User obj = mongoOps.findOne(query, User.class);
+        obj.setId(user.getId());
+        obj.setBlocked(true);
+        mongoOps.save(obj);
         return ok;
     }
     public static boolean saveUser(User user) throws UnknownHostException{
@@ -119,21 +126,10 @@ public class UserDAO {
         //return ok;
     }*/
      
-     public static boolean acceptUser(User u) throws UnknownHostException{
-         boolean ok=false;
-        MongoOperations mongoOps = DatabaseManager.getMongoOpsInstance("loop");
-        Query query = new Query();
-        query.addCriteria(where("_id").is(u.getId()));
-        //LearningObject obj = mongoOps.findOne(query, LearningObject.class);
-        User obj = mongoOps.findOne(query, User.class);
-        obj.setId(u.getId());
-        obj.setAccepted(false);
-        mongoOps.save(obj);
-        return ok;
-    }
+     
     
     public static void main(String []args) throws UnknownHostException{
-            UserDto user = new UserDto();
+            User user = new User();
            // user.setId(new Long(1));
             /**user.setEmail("admin@gmail.com");
             user.setBlocked(false);
@@ -151,8 +147,9 @@ public class UserDAO {
             // EXIST//
             
            //
-            user.setId("56045d3995840640f703d356");
-            //UserDAO.acceptUser(user);
+            
+            user.setUserName("dev1");
+            UserDAO.acceptUser(user);
 
     }
     public static boolean exists(String username, String password,String type) throws UnknownHostException{
