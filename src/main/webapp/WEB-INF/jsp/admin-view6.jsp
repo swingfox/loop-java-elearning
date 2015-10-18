@@ -99,7 +99,7 @@
 							<table class="datatable table table-hover">
 							    <thead>
 									<tr>
-										<th class="color-code"><!-- <img src="<?php //echo base_url() ?>img/icon-colorcode.png" alt="color code" /> --></th>
+										<th class="color-code"></th>
 										<th>Name</th>
 										<th>Subject</th>
 										<!-- <th>Date Uploaded</th> -->
@@ -254,64 +254,16 @@
         <script src="js/loop.js" type="text/javascript"></script>
 	<script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
 	<script src="js/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
-
-	<!-- Form Validator =================================================-->
 	<script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
-
 	<script>
 	$("#banner-wrap").backstretch("img/img-banner.jpg");
 	</script>
-
-<!--	<script> 
-		$(document).ready(function(){
-			var length_sel;
-
-            $('.datatable').dataTable({ 
-                "sPaginationType": "bs_normal"
-            });
-
-            $('.datatable').each(function(){
-                $(this).show();
-                datatable_configuration_for_bootstrap_three($(this));
-            });
-
-            // datatable configuration for bootstrap 3
-            function datatable_configuration_for_bootstrap_three(datatable){
-            	datatable.addClass('col-md-12');
-                var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
-                search_input.attr('placeholder', 'Search');
-
-                $('<i class="icomoon-search pull-left searchbar-icon"></i>').prependTo($('div:eq(0) > div > div:eq(0)',datatable.parents('.dataTables_wrapper')));
-                $('div:eq(0) > div > div:eq(0) > div',datatable.parents('.dataTables_wrapper')).addClass('pull-right');
-                
-                search_input.addClass('form-control input-sm');
-                search_input.width('140px'); //used to be 150
-                length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
-                length_sel.addClass('form-control input-sm').css({ padding: '5px 10px 5px 5px', cursor: 'pointer' });
-                $('option', length_sel).css({ padding: '5px 8px' });
-                var pagination = datatable.closest('.dataTables_wrapper').find('ul.pagination');
-                pagination.addClass('pagination-sm');
-            }
-		});
-
-
-		// $(document).ready( function () {
-		// 	var oTable = $('#DataTables_Table_0').dataTable();
-		// 	new FixedHeader( oTable );
-		// });
-
-	</script>
--->
 	<script type="text/javascript">
 		$(document).ready(function() {
 		    $('#defaultForm').bootstrapValidator({
 		        message: 'This value is not valid',
 		        submitHandler: function(validator, form) {
-	                // validator is the BootstrapValidator instance
-	                // form is the jQuery object present the current form
-	                // form.find('.alert').html('Thanks for signing up. Now you can sign in as ' + validator.getFieldElement('username').val()).show();
-	                form.find('.alert').html('Password Changed.').show();
-	                //form.submit();
+	             	form.find('.alert').html('Password Changed.').show();
 	            },
 		        fields: {
 		            username: {
@@ -369,6 +321,6 @@
 		    });
 		});
 	</script>
-
 </body>
 </html>
+p
