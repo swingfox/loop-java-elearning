@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 
-/* global angular */
+
+/* global angular, com */
 
 var eS = angular.module('loop', ['localStorage'], function($httpProvider) {
   // Use x-www-form-urlencoded Content-Type
@@ -58,6 +59,7 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
     $store.bind($scope, 'userId', '');
     $store.bind($scope, 'userType', '');
     $scope.user = '';
+    $scope.userId = '';
     $scope.password = '';
     $scope.type = '';
     $scope.$watch("username", function(newVal) {
@@ -79,6 +81,7 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
                             password: $scope.password,
                             userType :  $scope.userType
                     };
+                //alert(data.password);
         $http.post("/loop-XYZ/loop/user/login",data).success(function(response){
             alert (response);
             
@@ -301,6 +304,7 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
         //console.log("" + response);
     });
     
+    
    
 }]);
 
@@ -361,7 +365,10 @@ eS.controller('DisplayLOCtrl', ['$scope', '$http', function($scope, $http) {
     });
 }]);
     
-eS.controller('newAccountRequestCtrl', ['$scope', '$http', function($scope, $http) {
+eS.controller('newAccountRequestCtrl', ['$scope', '$store','$http', function($scope, $store,$http) {
+    //$store.bind($scope, 'user.id', '');
+     $store.bind($scope, 'userId', '');
+     $scope.userId = '';
     $http.get("/loop-XYZ/loop/user/newAccountRequests")    
     .success(function(data) {
     	$scope.userAccount = data;
@@ -374,15 +381,43 @@ eS.controller('newAccountRequestCtrl', ['$scope', '$http', function($scope, $htt
     
     $scope.acceptNewAccountCtrl = function() {
         var data =  {
-                        id: $('label#userId').val()
+                        id: $scope.userId//$('label#userId').val()
                     };
         $http.post("/loop-XYZ/loop/user/approve/",data).success(function(response){
             alert (response);
             
         }). error(function(response){
-            //alert ("Ajax error");
+            alert ("Ajax error");
         });
     };     
+    
+     $scope.block = function(){
+        // var us = new UserService();
+        /*var blockPromise = UserService.block(user); 
+        var result = false;
+        blockPromise.success(function(response){
+            if(response == 'true')
+                result = true;
+            alert("yes");
+        });
+        blockPromise.error(function(response){
+            alert("Oops");
+        });
+        return result;*/
+         var data = {
+                        id: $scope.userId// id: $('#userId').val()
+                    };
+         alert("hmmm"+data.id);
+        $http.post("/loop-XYZ/loop/user/blockUser/",data).success(function(response){
+            alert (response);
+            
+            
+        }). error(function(response){
+            alert("hmmm"+data.id);
+            alert (response);
+            alert ("Ajax error");
+        });
+    };
    
 }]);
         /**

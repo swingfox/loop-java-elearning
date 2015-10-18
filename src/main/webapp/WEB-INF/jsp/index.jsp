@@ -66,9 +66,9 @@
 
                             <div class="modal-body">  
                                 <div class="row">
-                                    <div class="col-md-10 col-md-push-1">
+                                    <div class="col-md-10 col-md-push-1" id="loginto">
                                         <!--<?php if(isset($status) && !$status){ ?>-->
-                                        <!--<p class="alert alert-danger"><i class="icon-warning-sign"></i> <?php echo $msg ?></p>-->
+                                     
                                         <p><span class="error_message_1"></span></p>
                                         <p><span class="error_message"></span></p>
                                         <!--<p class="alert alert-danger"><i class="icon-warning-sign"></i>  </p>-->

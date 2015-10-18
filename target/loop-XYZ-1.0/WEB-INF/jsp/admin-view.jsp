@@ -237,7 +237,7 @@
 
         <!-- User Action Update-->
         <!-- <form method="post" action="'.base_url().'index.php/account/change_password"> -->
-        <form method="post" ng-submit="acceptNewAccountCtrl()">
+        <form method="post" >
             <div class="modal fade" id="responsive_fileActionAdmin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -257,7 +257,7 @@
                                 <div class="col-md-10 col-md-push-1">
                                     <!-- <button type="button" class="btn btn-primary" onclick="acceptAccount()"><i class="icon-plus-sign-alt icon-large default"></i> Accept</button>
                                     <button type="button" class="btn btn-primary" onclick="declineAccount()"><i class="icon-minus-sign-alt icon-large default"></i> Decline</button> -->
-                                    <button type="submit" class="btn btn-primary"><i class="icon-ok-sign icon-large default"></i> Accept</button>
+                                    <button type="button" class="btn btn-primary" ng-click="block()"><i class="icon-ok-sign icon-large default"></i> Accept</button>
                                     
 
                                     <!-- <button type="button" class="btn btn-primary" onclick="document.blockForm.submit()"><i class="icon-ban-circle icon-large default"></i> Block Account</button> -->
@@ -383,8 +383,8 @@
                                 <tbody>
                                     
                                       <tr ng-repeat="user in userAccount | filter:searchText ">
-                                            <!--td><label type="hidden" id="userId" ng-model="user.id">{{user.id}}</td-->
-                                            <td><a href="#responsive_fileActionAdmin" data-toggle="modal" onclick="onclick="selectIndex('.$counter.')"><label ng-model="user.username">{{user.username}}</a></td>
+                                            <td><label id="userId" ng-model="user.id">{{user.id}}</td>
+                                            <td><a href="#responsive_fileActionAdmin" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-model="user.username">{{user.username}}</a></td>
                                             <td><label ng-model="user.email">{{user.email}}</td>
                                             <td><label ng-model="user.usertype">{{user.usertype}}</td>
                                       </tr>

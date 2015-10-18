@@ -100,8 +100,10 @@ $(document).ready(function() {
                    $('#userId').val(data.id).change();
                    $('#userName').val(data.username).change();
                    $('#userType').val(data.usertype).change();
-                   if(data === null)
+                   if(data === null){
                        alert('User not found');
+                       $('#loginto').prepend("<p class='alert alert-danger'><i class='icon-warning-sign'></i> Invalid account details. Check your information below.</p> </div>");
+                   }
                    else if(data.id !== null){
                        
                         if(data.usertype === "developer")

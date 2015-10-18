@@ -120,6 +120,8 @@ $(document).ready(function(){
                        alert('User not found');
                         // <p class="alert alert-danger"><i class="icon-warning-sign"></i>  Invalid account details. Check your information below.</p>
                        // $('.modal-dialog').append(" Invalid account details. Check your information below.");
+                                              $('#loginto').prepend("<p class='alert alert-danger'><i class='icon-warning-sign'></i> Invalid account details. Check your information below.</p> </div>");
+
                     }
                    else if(data.id !== null){
                         alert("YEEEYYYY!");
