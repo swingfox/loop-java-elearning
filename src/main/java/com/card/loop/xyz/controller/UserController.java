@@ -130,6 +130,14 @@ public class UserController {
         return service.block(ud);
     }
     
+    @RequestMapping("/unblockUser/{username}")
+    @ResponseBody
+    public boolean unblockUser(@PathVariable String username) throws UnknownHostException, Exception{
+        UserDto ud = new UserDto();
+        ud.setUsername(username);
+        return service.unblock(ud);
+    }
+    
     @RequestMapping("/reviewer")
     public List<UserDto> reviewerUser(){
      List<UserDto> result = null;

@@ -97,6 +97,17 @@ public class UserDAO {
         this.user.save(obj);
         return ok;
     }
+    
+    public boolean unblockUser(User user) throws UnknownHostException{
+         boolean ok=false;
+        Query query = new Query();
+        query.addCriteria(where("_id").is(user.getId()));
+        User obj = this.user.findOne(query, User.class);
+        obj.setId(user.getId());
+        obj.setBlocked(false);
+        this.user.save(obj);
+        return ok;
+    }
     public boolean saveUser(User user) throws UnknownHostException{
         boolean ok = false;
         this.user.save(user);

@@ -156,7 +156,7 @@
                         <div class="modal-footer"> 
                             <div class="row">
                                 <div class="col-md-8 col-md-push-3">
-                                	<button type="button" class="btn btn-primary" ng-click="blockMe()"><i class="icon-ban-circle icon-large default"></i> Block Account</button>
+                                    <button type="button" class="btn btn-primary" ng-click="blockMe()" data-dismiss="modal"><i class="icon-ban-circle icon-large default"></i> Block Account</button>
 								    <button type="button" data-dismiss="modal" class="btn btn-default"></i> Cancel</button>
 									 <input type="hidden" name="a" id="a" value="1" />
 									<input type="hidden" id="selectedIndex" name="index" value="0"/>      
@@ -243,7 +243,7 @@
 
 		<div class="clearfix"></div>
 
-  		<div id="content-wrap-rev">
+  		<div id="content-wrap-rev" ng-controller="blockCtrl">
                     <div class="container">
 				<div class="row">
 					<div class="col-md-12 content">

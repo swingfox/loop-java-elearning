@@ -316,11 +316,24 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
             console.log("jsjdjs"+ error);
             //console.log("" + response);
         });
-   }
+   };
+   $scope.unblockMe = function(){ 
+       //alert($rootScope.userBlock);
+        $http.post("/loop-XYZ/loop/user/unblockUser/"+ $rootScope.userBlock)
+        .success(function(data) {
+            console.log("SUCCESS"); 
+            window.location.reload(true);
+        })
+        .error(function(jqXHR, status, error) {
+            //$scope.tasks = response.taskList;
+            console.log("jsjdjs"+ error);
+            //console.log("" + response);
+        });
+   };
    
    $scope.assignUser = function(developer) {
        $rootScope.userBlock = developer.username;
-   }
+   };
     
    
 }]);
@@ -424,14 +437,13 @@ eS.controller('newAccountRequestCtrl', ['$scope', '$store','$http', function($sc
          var data = {
                         id: $scope.userId// id: $('#userId').val()
                     };
-         alert("hmmm"+data.id);
+         
         $http.post("/loop-XYZ/loop/user/blockUser/",data).success(function(response){
             alert (response);
             
             
         }). error(function(response){
-            alert("hmmm"+data.id);
-            alert (response);
+           
             alert ("Ajax error");
         });
     };

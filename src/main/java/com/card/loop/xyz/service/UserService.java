@@ -141,6 +141,20 @@ public class UserService {
         return ok;
     }
     
+     public boolean unblock(UserDto user) throws UnknownHostException, Exception{
+         boolean ok = false;
+
+        User model = dao.getUser(user.getUsername());
+        if(model!= null){
+            model.setBlocked(false);
+            dao.unblockUser(model);
+            ok = true;
+        }
+        else
+            throw new Exception("User does not exist. ");
+        return ok;
+    }
+    
     public static void main(String args[]) throws Exception{
         UserDto u= new UserDto();
         u.setId("56045d3995840640f703d356");
@@ -187,7 +201,7 @@ public class UserService {
          }
          return objects;
      }
-    public boolean unblock(UserDto user) throws UnknownHostException{return false;}
+   
     public UserDto promote(String username) throws UnknownHostException{return null;}
     public UserDto demote(String username) throws UnknownHostException{return null;}
     public UserDto getUserInfo(UserDto user) throws UnknownHostException{return null;}

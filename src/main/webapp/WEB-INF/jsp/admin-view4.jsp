@@ -54,7 +54,7 @@
 			</nav>
 		</div>
 		<div class="clearfix"></div>
-        <form method="post" action="account/unblock" id="unblockForm" name="unblockForm">
+        <form method="post" ng-controller="blockCtrl" id="unblockForm" name="unblockForm">
             <div class="modal fade" id="responsive_fileActionAdmin4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -72,7 +72,7 @@
                         <div class="modal-footer"> 
                             <div class="row">
                                 <div class="col-md-9 col-md-push-2">
-                                	<button type="button" class="btn btn-primary" onclick="document.unblockForm.submit()"><i class="icon-check icon-large default"></i> Unblock Account</button>
+                                	<button type="button" class="btn btn-primary" ng-click="unblockMe()"><i class="icon-check icon-large default"></i> Unblock Account</button>
 								    <button type="button" data-dismiss="modal" class="btn btn-default"></i> Cancel</button>
 									<input type="hidden" id="selectedIndex" name="index" value="0"/>      
 									<input type="hidden" name="a" id="a" value="1" />
@@ -93,7 +93,7 @@
 		<li><a href="/loop-XYZ/store/admin-view6"><i class="icomoon-list"></i> Learning Elements</a></li>
 		</ul>
 		<div class="clearfix"></div>
-  		<div id="content-wrap-rev">
+  		<div id="content-wrap-rev" ng-controller="blockCtrl">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 content">	
@@ -124,7 +124,7 @@
 
 						        <tbody>
                                                             <tr ng-repeat="blocked in blockedAccount | filter:searchText">
-                                                                    <td><a href="#responsive_fileActionAdmin4" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-model="blocked.username">{{blocked.username}}</a></td>
+                                                                    <td><a href="#responsive_fileActionAdmin4" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-click="assignUser(blocked)" value="blocked.username" ng-model="blocked.username">{{blocked.username}}</a></td>
                                                                     <td><label ng-model="blocked.lastLogin">{{blocked.lastLogin}}</td>
                                                                     <td><label ng-model="blocked.usertype">{{blocked.usertype}}</td>
                                                              </tr>							

@@ -105,14 +105,14 @@ $(document).ready(function() {
                        $('#loginto').prepend("<p class='alert alert-danger'><i class='icon-warning-sign'></i> Invalid account details. Check your information below.</p>");
                    }
                    else if(data.id !== null){
-                       
+                        alert("Login YEY!");
                         if(data.usertype === "developer")
                             window.location = "/loop-XYZ/store/developer-update";
                         else if(data.usertype === "reviewer")
                             window.location = "/loop-XYZ/store/reviewer-update";
                         else 
                             window.location = "/loop-XYZ/store/admin-view";
-                     //alert("Login Successful!");
+                     alert("Login Successful!");
                    }
                //     }
                 },
