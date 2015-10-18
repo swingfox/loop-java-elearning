@@ -95,7 +95,7 @@ $(document).ready(function(){
             }
         });
    
-    
+    $('#devUser').change();
     $("#btn-login").click(function(){
             console.log("CLICKED BUTTON LOG IN");
             var jsonData = 

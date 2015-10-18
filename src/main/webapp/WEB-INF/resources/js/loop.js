@@ -56,7 +56,7 @@ var eS = angular.module('loop', ['localStorage'], function($httpProvider) {
 
 eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store,$http) {
     $store.bind($scope, 'username', '');
-    $store.bind($scope, 'userId', '');
+    $store.bind($scope, 'userID', '');
     $store.bind($scope, 'userType', '');
     $scope.user = '';
     $scope.userId = '';
@@ -68,10 +68,14 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
     $scope.$watch("userType", function(newVal) {
         console.log(newVal);
     });
+    
+     $scope.$watch("userID", function(newVal) {
+        console.log(newVal);
+    });
     $scope.hide = true;
     $scope.clearUser = function(){ 
         $store.remove('username'); 
-        $store.remove('userId');
+        $store.remove('userID');
         $store.remove('userType');
     };
 
@@ -79,6 +83,7 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
         var data =  {
                             username: $scope.username,
                             password: $scope.password,
+                            id : $scope.userID,
                             userType :  $scope.userType
                     };
                 //alert(data.password);
@@ -293,17 +298,24 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
     };
  }]);
     
- eS.controller('blockCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.post("/loop-XYZ/loop/user/blockUser")    
-    .success(function(data) {
-    	console.log("SUCCESS");
-    })
-    .error(function(jqXHR, status, error) {
-    	//$scope.tasks = response.taskList;
-        console.log(""+ error);
-        //console.log("" + response);
-    });
-    
+ eS.controller('blockCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+         $rootScope.userBlock = '';
+   $scope.blockMe = function(){ 
+       alert($rootScope.userBlock);
+        $http.post("/loop-XYZ/loop/user/blockUser/" + $rootScope.userBlock)    
+        .success(function(data) {
+            console.log("SUCCESS"); 
+        })
+        .error(function(jqXHR, status, error) {
+            //$scope.tasks = response.taskList;
+            console.log(""+ error);
+            //console.log("" + response);
+        });
+   }
+   
+   $scope.assignUser = function(developer) {
+       $rootScope.userBlock = developer.username;
+   }
     
    
 }]);

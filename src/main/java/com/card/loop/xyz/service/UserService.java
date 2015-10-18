@@ -55,7 +55,7 @@ public class UserService {
             model.setUserType(user.getUsertype());
             model.setEmail(user.getEmail());
             model.setBlocked(false);
-            model.setAccepted(false);
+            model.setNewAccount(false);
             model.setLastLogin(new Date().toString());
             UserDAO.saveUser(model);
             ok = true;
@@ -125,7 +125,7 @@ public class UserService {
        //console.log("USERSERVICE NI");
         
         boolean ok = false;
-        User model = UserDAO.getUser(user.getId());
+        User model = UserDAO.getUser(user.getUsername());
         if(model!= null){
             model.setBlocked(true);
             UserDAO.blockUser(model);

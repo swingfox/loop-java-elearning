@@ -20,7 +20,7 @@
     </script>
 </head>
 <body>	
-	<div class="wrapper">		
+	<div class="wrapper">	
 		<div id="header-wrap">
 			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
 				<div class="container">
@@ -93,7 +93,7 @@
                     <li><a href="/loop-XYZ/store/admin-view6"><i class="icomoon-list"></i> Learning Elements</a></li>
 	</ul>
 		<div class="clearfix"></div>
-  		<div id="content-wrap-rev">
+                    <div id="content-wrap-rev">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 content">
@@ -122,7 +122,7 @@
 
 						        <tbody>                                                            
                                                              <tr ng-repeat="reviewer in reviewerAccount | filter:searchText ">
-                                                                    <td><a href="#responsive_fileActionAdmin2" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-model="reviewer.username">{{reviewer.username}}</a></td>
+                                                                    <td><a href="#responsive_fileActionAdmin2" data-toggle="modal" onclick="selectIndex('.$counter.')"><label label ng-click="assignUser(reviewer)" id="revUser" value="reviewer.username">{{reviewer.username}}</a></td>
                                                                     <td><label ng-model="reviewer.lastLogin">{{reviewer.lastLogin}}</td>
                                                                     <td><label ng-model="reviewer.lastDownload">{{reviewer.lastDownload}}</td>
                                                              </tr>				

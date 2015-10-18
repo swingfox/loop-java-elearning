@@ -111,7 +111,11 @@
                            <div class="navbar-collapse collapse" >
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
+<<<<<<< HEAD
                                                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} {{userId}}<b class="caret"></b></a>
+=======
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} {{userID}} {{userType}}<b class="caret"></b></a>
+>>>>>>> 52e0440c1c65329dc19b9a12e1da0f137eacb6de
                                                         <ul class="dropdown-menu">
                                                                 <li role="presentation" class="dropdown-header">Options</li>
                                                                 <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>

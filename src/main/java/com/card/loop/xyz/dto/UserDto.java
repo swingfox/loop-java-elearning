@@ -49,9 +49,9 @@ public class UserDto {
     */
     private String lastActivity;
      /*
-    *accepted the user
+    *newAccount the user
     */
-    private boolean accepted;
+    private boolean newAccount;
      /*
     *error list
     */
@@ -207,21 +207,21 @@ public class UserDto {
 
      /**
      * 
-     * @return boolean - Get the status of the user (accepted or unaccepted )
+     * @return boolean - Get the status of the user (newAccount or unaccepted )
      */
-    public boolean isAccepted() {
-        return accepted;
+    public boolean isNewAccount() {
+        return newAccount;
     }
 
     /**
-     * This sets the status of user (accepted or unaccepted)
-     * @param accepted boolean
+     * This sets the status of user (newAccount or unaccepted)
+     * @param newAccount boolean
      */
-    public void setAccepted(boolean accepted) {
-        this.accepted = accepted;
+    public void setNewAccount(boolean newAccount) {
+        this.newAccount = newAccount;
     }
-    public boolean getAccepted() {
-        return accepted;
+    public boolean getNewAccount() {
+        return newAccount;
     }
     /**
      * 
