@@ -122,11 +122,12 @@ public class UserController {
         return service.blockUser(user);
     }*/
    
-     @RequestMapping("/blockUser")
+    @RequestMapping("/blockUser/{username}")
     @ResponseBody
-    public boolean blockUser( @PathVariable String id) throws UnknownHostException, Exception{
-        UserDto ud= new UserDto();
-        ud.setId(id);
+    public boolean blockUser( @PathVariable String username) throws UnknownHostException, Exception{
+        UserService service = new UserService();
+        UserDto ud = new UserDto();
+        ud.setUsername(username);
         return service.block(ud);
     }
     
