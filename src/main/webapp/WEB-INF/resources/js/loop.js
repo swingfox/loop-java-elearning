@@ -368,7 +368,7 @@ eS.controller('reviewerAccountCtrl', ['$scope', '$http', function($scope, $http)
         console.log(""+ error);
     });
 }]);
-
+//displays all inactive accounts
 eS.controller('inactiveAccountCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get("/loop-XYZ/loop/user/inactive")    
     .success(function(data) {
@@ -383,6 +383,7 @@ eS.controller('inactiveAccountCtrl', ['$scope', '$http', function($scope, $http)
         //console.log("" + response);
     });
 }]);
+
 
 //displays all blocked accounts
 eS.controller('blockedAccountCtrl', ['$scope', '$http', function($scope, $http) {

@@ -122,7 +122,7 @@
 
 						        <tbody>                                                            
                                                              <tr ng-repeat="reviewer in reviewerAccount | filter:searchText ">
-                                                                    <td><a href="#responsive_fileActionAdmin2" data-toggle="modal" onclick="selectIndex('.$counter.')"><label label ng-click="assignUser(reviewer)" id="revUser" value="reviewer.username">{{reviewer.username}}</a></td>
+                                                                    <td><a href="#responsive_fileActionAdmin2" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-click="assignUser(reviewer)" id="revUser" value="reviewer.username">{{reviewer.username}}</a></td>
                                                                     <td><label ng-model="reviewer.lastLogin">{{reviewer.lastLogin}}</td>
                                                                     <td><label ng-model="reviewer.lastDownload">{{reviewer.lastDownload}}</td>
                                                              </tr>				
