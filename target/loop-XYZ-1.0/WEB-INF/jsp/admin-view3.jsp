@@ -53,7 +53,7 @@
 			</nav>
 		</div>
 		<div class="clearfix"></div>
-       <form method="post" action="account/block" id="blockForm" name="blockForm">
+       <form method="post" ng-controller="blockCtrl" id="blockForm" name="blockForm">
             <div class="modal fade" id="responsive_fileActionAdmin3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -71,7 +71,7 @@
                         <div class="modal-footer"> 
                             <div class="row">
                                 <div class="col-md-8 col-md-push-3">
-                                	<button type="button" class="btn btn-primary" onclick="document.blockForm.submit()"><i class="icon-ban-circle icon-large default"></i> Block Account</button>
+                                	<button type="button" class="btn btn-primary" ng-click="blockMe()"><i class="icon-ban-circle icon-large default"></i> Block Account</button>
 								    <button type="button" data-dismiss="modal" class="btn btn-default"></i> Cancel</button>
 									<input type="hidden" id="selectedIndex" name="index" value="0"/>      
 									<input type="hidden" name="a" id="a" value="3" />                                </div>
@@ -95,7 +95,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 content">	
-						<div class="table-responsive" ng-controller="inactiveAccountCtrl">
+						<div class="table-responsive" ng-controller="blockCtrl">
                                                         <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
                                                             <div class="row">
                                                                 <div class="col-sm-12">
@@ -110,7 +110,7 @@
                                                                     <div class="clearfix"></div>
                                                                 </div>
                                                             </div>
-							<table class="datatable table table-hover">
+							<table class="datatable table table-hover" ng-controller="inactiveAccountCtrl">
 							    <thead>
 									<tr>
 										<th>Username</th>
@@ -122,7 +122,7 @@
 						        <tbody>
                                                             
                                                             <tr ng-repeat="passive in inactiveAccount | filter:searchText">
-                                                                    <td><a href="#responsive_fileActionAdmin3" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-model="passive.username">{{passive.username}}</a></td>
+                                                                    <td><a href="#responsive_fileActionAdmin3" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-click="assignUser(passive)" value="passive.username">{{passive.username}}</a></td>
                                                                     <td><label ng-model="passive.lastLogin">{{passive.lastLogin}}</td>
                                                                     <td><label ng-model="passive.usertype">{{passive.usertype}}</td>
                                                              </tr>						

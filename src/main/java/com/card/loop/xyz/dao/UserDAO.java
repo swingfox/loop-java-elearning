@@ -75,18 +75,6 @@ public class UserDAO {
         return ok;
     }
     
-    public boolean acceptUser(User user) throws UnknownHostException{
-        boolean ok = false;
-        Query query = new Query();
-        query.addCriteria(where("username").is(user.getUsername()));
-        Update update = new Update();
-        update.addToSet("newAccount", false);
-        //update.addToSet("firstName",user.getFirstName());
-        this.user.updateFirst(query,update,User.class);
-        ok = true;
-        return ok;
-    }
-    
     public boolean blockUser(User user) throws UnknownHostException{
          boolean ok=false;
         Query query = new Query();
@@ -108,6 +96,18 @@ public class UserDAO {
         this.user.save(obj);
         return ok;
     }
+    
+    public boolean acceptUser(User user) throws UnknownHostException{
+        boolean ok = false;        
+        Query query = new Query();
+        query.addCriteria(where("_id").is(user.getId()));
+        User obj = this.user.findOne(query, User.class);
+        obj.setId(user.getId());
+        obj.setNewAccount(false);
+        this.user.save(obj);
+        return ok;
+    }
+    
     public boolean saveUser(User user) throws UnknownHostException{
         boolean ok = false;
         this.user.save(user);
@@ -121,13 +121,7 @@ public class UserDAO {
         return ok;
     }
     
-     /*public void acceptUser(String name) throws UnknownHostException{
-        boolean ok = false;        
-        User u= UserDAO    
-            u.setAccepted(true);
-        LearningObjectDAO.updateLO(dto);
-        //return ok;
-    }*/
+     
      
      
     
@@ -188,7 +182,7 @@ public class UserDAO {
     }
 
     public List<User> getReviewer() throws UnknownHostException {
-        return user.find(query(where("userType").is("reviewer").andOperator(where("newAccount").is(false))), User.class);
+        return user.find(query(where("userType").is("reviewer").andOperator((where("newAccount").is(false)).andOperator(where("blocked").is(false)))), User.class);
     }
     
     public List<User> getDeveloper() throws UnknownHostException {

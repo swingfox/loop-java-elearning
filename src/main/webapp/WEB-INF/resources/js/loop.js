@@ -86,12 +86,10 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
                             id : $scope.userID,
                             userType :  $scope.userType
                     };
-                //alert(data.password);
         $http.post("/loop-XYZ/loop/user/login",data).success(function(response){
             alert (response);
             
         }). error(function(response){
-            //alert ("Ajax error");
         });
     };
     
@@ -301,42 +299,8 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
         $store.remove('lo.description');
     };
  }]);
-    
- eS.controller('blockCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
-         $rootScope.userBlock = '';
-   $scope.blockMe = function(){ 
-       //alert($rootScope.userBlock);
-        $http.post("/loop-XYZ/loop/user/blockUser/"+ $rootScope.userBlock)
-        .success(function(data) {
-            console.log("SUCCESS"); 
-            window.location.href="admin-view4";
-        })
-        .error(function(jqXHR, status, error) {
-            //$scope.tasks = response.taskList;
-            console.log("jsjdjs"+ error);
-            //console.log("" + response);
-        });
-   };
-   $scope.unblockMe = function(){ 
-       //alert($rootScope.userBlock);
-        $http.post("/loop-XYZ/loop/user/unblockUser/"+ $rootScope.userBlock)
-        .success(function(data) {
-            console.log("SUCCESS"); 
-            window.location.reload(true);
-        })
-        .error(function(jqXHR, status, error) {
-            //$scope.tasks = response.taskList;
-            console.log("jsjdjs"+ error);
-            //console.log("" + response);
-        });
-   };
-   
-   $scope.assignUser = function(developer) {
-       $rootScope.userBlock = developer.username;
-   };
-    
-   
-}]);
+ 
+
 
 eS.controller('LODisplayDetails', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
         console.log(""+ $routeParams.loId);
@@ -353,18 +317,11 @@ eS.controller('LODisplayDetails', ['$scope', '$http', '$routeParams', function($
         $scope.description = data.description;
     })
     .error(function(jqXHR, status, error) {
-    	//$scope.tasks = response.taskList;
         console.log(""+ error);
-        //console.log("" + response);
     });
 }]);
 
 eS.controller('RevLOListCtrl', ['$scope', '$http', function($scope, $http) {
-    
-    //if(null != $('input#username').val()) {
-    //    username = $('input#username').val();
-    //}
-    //console.log(username);
     $http.get("/loop-XYZ/loop/LO/revList", {params:{rev:'rev1'}})    
     .success(function(data) {
     	$scope.los = data;
@@ -384,78 +341,11 @@ eS.controller('DisplayLOCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get("/loop-XYZ/loop/LO/download")    
     .success(function(data) {
     	$scope.filename = 'response.taskList';
-        //console.log(""+ response);
-    	//$scope.filename = data.filename;
-        //console.log("" + response);
     })
     .error(function(jqXHR, status, error) {
-    	//$scope.tasks = response.taskList;
         console.log(""+ error);
-        //console.log("" + response);
     });
 }]);
-    
-eS.controller('newAccountRequestCtrl', ['$scope', '$store','$http', function($scope, $store,$http) {
-    //$store.bind($scope, 'user.id', '');
-     $store.bind($scope, 'userId', '');
-     $scope.userId = '';
-    $http.get("/loop-XYZ/loop/user/newAccountRequests")    
-    .success(function(data) {
-    	$scope.userAccount = data;
-    })
-    .error(function(jqXHR, status, error) {
-    	//$scope.tasks = response.taskList;
-        console.log(""+ error);
-        //console.log("" + response);
-    });
-    
-    $scope.acceptNewAccountCtrl = function() {
-        var data =  {
-                        id: $scope.userId//$('label#userId').val()
-                    };
-        $http.post("/loop-XYZ/loop/user/approve/",data).success(function(response){
-            alert (response);
-            
-        }). error(function(response){
-            alert ("Ajax error");
-        });
-    };     
-    
-     $scope.block = function(){
-        // var us = new UserService();
-        /*var blockPromise = UserService.block(user); 
-        var result = false;
-        blockPromise.success(function(response){
-            if(response == 'true')
-                result = true;
-            alert("yes");
-        });
-        blockPromise.error(function(response){
-            alert("Oops");
-        });
-        return result;*/
-         var data = {
-                        id: $scope.userId// id: $('#userId').val()
-                    };
-         
-        $http.post("/loop-XYZ/loop/user/blockUser/",data).success(function(response){
-            alert (response);
-            
-            
-        }). error(function(response){
-           
-            alert ("Ajax error");
-        });
-    };
-   
-}]);
-        /**
-    HttpClient httpclient = new DefaultHttpClient();
-    HttpResponse response = httpClient.execute(new HttpGet(URL));
-    HttpEntity entity = response.getEntity();
-    String responseString = EntityUtils.toString(entity, "UTF-8");
-    System.out.println(responseString);
-    	**/
 
 eS.controller('developerAccountCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get("/loop-XYZ/loop/user/developer")    
@@ -478,7 +368,7 @@ eS.controller('reviewerAccountCtrl', ['$scope', '$http', function($scope, $http)
         console.log(""+ error);
     });
 }]);
-
+//displays all inactive accounts
 eS.controller('inactiveAccountCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get("/loop-XYZ/loop/user/inactive")    
     .success(function(data) {
@@ -494,21 +384,108 @@ eS.controller('inactiveAccountCtrl', ['$scope', '$http', function($scope, $http)
     });
 }]);
 
+
+//displays all blocked accounts
 eS.controller('blockedAccountCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get("/loop-XYZ/loop/user/block")    
     .success(function(data) {
     	$scope.blockedAccount = data;
-        //console.log(""+ response);
-    	//$scope.filename = data.filename;
-        //console.log("" + response);
     })
     .error(function(jqXHR, status, error) {
-    	//$scope.tasks = response.taskList;
         console.log(""+ error);
-        //console.log("" + response);
     });
 }]);
 
+//displays all new accounts
+eS.controller('newAccountRequestCtrl', ['$scope', '$http', function($scope, $http) {
+    $http.get("/loop-XYZ/loop/user/newAccountRequests")    
+    .success(function(data) {
+    	$scope.newAccount = data;
+    })
+    .error(function(jqXHR, status, error) {
+        console.log(""+ error);
+    });
+}]);
+
+//block an account
+ eS.controller('blockCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+         $rootScope.userBlock = '';
+   $scope.blockMe = function(){ 
+        $http.post("/loop-XYZ/loop/user/blockUser/"+ $rootScope.userBlock)
+        .success(function(data) {
+            console.log("SUCCESS"); 
+            window.location.href="admin-view4";
+        })
+        .error(function(jqXHR, status, error) {
+            console.log("jsjdjs"+ error);
+        });
+   };
+   $scope.unblockMe = function(){ 
+        $http.post("/loop-XYZ/loop/user/unblockUser/"+ $rootScope.userBlock)
+        .success(function(data) {
+            console.log("SUCCESS"); 
+            window.location.reload(true);
+        })
+        .error(function(jqXHR, status, error) {
+            console.log("jsjdjs"+ error);
+        });
+   };
+   
+   $scope.assignUser = function(developer) {
+       $rootScope.userBlock = developer.username;
+   };
+    
+   
+}]);
+
+//accept an account
+ eS.controller('acceptCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+    $rootScope.userAccept = '';
+    $scope.acceptMe = function(){ 
+        $http.post("/loop-XYZ/loop/user/acceptUser/"+ $rootScope.userAccept)
+        .success(function(data) {
+            console.log("SUCCESS"); 
+            window.location.reload(true);
+        })
+        .error(function(jqXHR, status, error) {
+            console.log("jsjdjs"+ error);
+        });
+   };
+    
+   $scope.assignUser = function(developer) {
+       $rootScope.userAccept = developer.username;
+   };
+    
+   
+}]);
+
+/*eS.controller('newAccountRequestCtrl', ['$scope', '$store','$http','$rootScope', function($scope, $store,$http, $rootScope) {
+     $rootScope.userAccept = '';
+     $store.bind($scope, 'userId', '');
+     $scope.userId = '';
+    $http.get("/loop-XYZ/loop/user/newAccountRequests")    
+    .success(function(data) {
+    	$scope.userAccount = data;
+    })
+    .error(function(jqXHR, status, error) {
+        console.log(""+ error);
+    });
+    
+    $scope.accept = function() {
+        $http.post("/loop-XYZ/loop/user/acceptUser/"+ $rootScope.userAccept)
+        .success(function(data) {
+            console.log("SUCCESS"); 
+            window.location.reload(true);
+        })
+        .error(function(jqXHR, status, error) {
+            console.log("jsjdjs"+ error);
+        });
+    };      
+    
+    $scope.assignUser = function(user) {
+       $rootScope.userAccept = user.username;
+   };
+}]);*/
 
 var ls = angular.module('localStorage',[]);
  

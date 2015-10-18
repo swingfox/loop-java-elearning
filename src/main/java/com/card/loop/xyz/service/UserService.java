@@ -92,29 +92,12 @@ public class UserService {
         return dao.editUser(obj);
     }
     
-    public boolean acceptUser(UserDto user) throws UnknownHostException, Exception{
-        /*User obj = new User();
-        if(!UserDAO.exists(user.getUsername())){
-            obj.setBlocked(user.getBlocked());
-            obj.setEmail(user.getEmail());
-            obj.setLastDownload(user.getLastDownload());
-            obj.setLastLogin(user.getLastLogin());
-            obj.setUserName(user.getUsername());
-            obj.setUserType(user.getUsertype());
-            obj.setPassword(user.getPassword());
-            obj.setAccepted(false);
-        }
-        return UserDAO.blockUser(obj); */
+    public boolean accept(UserDto user) throws UnknownHostException, Exception{
         boolean ok = false;
-        User model = dao.getUser(user.getId());
+        User model = dao.getUser(user.getUsername());
         if(model!= null){
-            model.setBlocked(true);
-            model.setUserName("hehehhe");
-            dao.blockUser(model);
-            System.out.println("ID??"+model.getId());
-            
-            System.out.println("Username??"+model.getUsername());
-            System.out.println("Is blocked??"+model.getBlocked());
+            model.setNewAccount(false);
+            dao.acceptUser(model);
             ok = true;
         }
         else
@@ -130,10 +113,6 @@ public class UserService {
         if(model!= null){
             model.setBlocked(true);
             dao.blockUser(model);
-            System.out.println("ID??"+model.getId());
-            
-            System.out.println("Username??"+model.getUsername());
-            System.out.println("Is blocked??"+model.getBlocked());
             ok = true;
         }
         else

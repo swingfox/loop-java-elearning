@@ -58,6 +58,7 @@ public class UserController {
         return result;
     }
     
+    //get all new accounts
     @RequestMapping("/newAccountRequests")
     public List<UserDto>  accountRequests(){
         List<UserDto> result = null;
@@ -92,7 +93,7 @@ public class UserController {
     
     @RequestMapping("/approve")
     public boolean approve(UserDto user) throws UnknownHostException, Exception{
-        return service.acceptUser(user);
+        return false;
     }
     
     @RequestMapping("/promote")
@@ -136,6 +137,14 @@ public class UserController {
         UserDto ud = new UserDto();
         ud.setUsername(username);
         return service.unblock(ud);
+    }
+    
+    @RequestMapping("/acceptUser/{username}")
+    @ResponseBody
+    public boolean acceptUser(@PathVariable String username) throws UnknownHostException, Exception{
+        UserDto ud = new UserDto();
+        ud.setUsername(username);
+        return service.accept(ud);
     }
     
     @RequestMapping("/reviewer")
