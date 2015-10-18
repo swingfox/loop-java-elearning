@@ -25,7 +25,7 @@ public class AppConfig {
     /*
      * Factory bean that creates the com.mongodb.Mongo instance
      */
-       public static String mongodb_host = "localhost";
+       public static String mongodb_host = "192.168.1.7";
     public static int mongodb_port = 27017;
     public static String UPLOAD_LO_PATH = "C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LO\\";
     public static String UPLOAD_LE_PATH = "C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LE\\";

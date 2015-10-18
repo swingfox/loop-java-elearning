@@ -56,7 +56,7 @@ var eS = angular.module('loop', ['localStorage'], function($httpProvider) {
 
 eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store,$http) {
     $store.bind($scope, 'username', '');
-    $store.bind($scope, 'userID', '');
+    $store.bind($scope, 'userId', '');
     $store.bind($scope, 'userType', '');
     $scope.user = '';
     $scope.userId = '';
@@ -95,7 +95,7 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
         });
     };
     
-   if($store.get('userId').length === 0 && window.location.toString().split('/store/')[1] !== 'home'){
+   if($store.get('userID').length === 0 && window.location.toString().split('/store/')[1] !== 'home'){
        window.location = '/loop-XYZ/store/home';
    }
 }]);
