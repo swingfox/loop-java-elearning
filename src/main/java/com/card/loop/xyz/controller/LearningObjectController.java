@@ -98,21 +98,22 @@ public class LearningObjectController {
     {
         try {
             SimpleClientHttpRequestFactory rf= new SimpleClientHttpRequestFactory();
-            ClientHttpRequest req = rf.createRequest(URI.create(AppConfig.LOOP_URL + "/loop-XYZ/loop/list"),HttpMethod.GET);
+            ClientHttpRequest req = rf.createRequest(URI.create(AppConfig.LOOP_URL + "/loop-XYZ/loop/LO/list"),HttpMethod.GET);
             ClientHttpResponse response = req.execute();
-            ClientHttpRequest req2 = rf.createRequest(URI.create(AppConfig.INFORMATRON_URL + "/InformatronYX/informatron/LO/upload/availableLO"), HttpMethod.GET);
+            ClientHttpRequest req2 = rf.createRequest(URI.create(AppConfig.INFORMATRON_URL + "/InformatronYX/informatron/LO/upload/availableLOs"), HttpMethod.POST);
             IOUtils.copy(response.getBody(), req2.getBody());
             ClientHttpResponse response2 = req2.execute();
             
             BufferedReader reader  = new BufferedReader(new InputStreamReader(response2.getBody()));
             try {
-                JSONObject obj = new JSONObject(reader.readLine());
+                String str = reader.readLine();
+       //         JSONObject obj = new JSONObject(str);
                 // checking
-                if(reader.readLine().equals("true"))
+                if(str.equals("true"))
                         System.out.println("SUCCESS!!");
                 else
                     System.err.println("FAILL!!");
-            } catch (JSONException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(LearningObjectController.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (IOException ex) {

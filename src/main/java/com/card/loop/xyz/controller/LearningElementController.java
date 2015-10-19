@@ -7,18 +7,22 @@ package com.card.loop.xyz.controller;
 
 import com.card.loop.xyz.config.AppConfig;
 import com.card.loop.xyz.dao.LearningElementDAO;
+import com.card.loop.xyz.dao.LearningElementMetaDAO;
 import com.card.loop.xyz.dao.LearningObjectDAO;
 import com.card.loop.xyz.dto.LearningElementDto;
+import com.card.loop.xyz.dto.LearningElementMetaDto;
 import com.card.loop.xyz.dto.LearningObjectDto;
 import com.card.loop.xyz.dto.UserDto;
 import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.service.LearningElementService;
 import com.card.loop.xyz.service.UserService;
 import com.loop.controller.ContentShipper;
+import com.mongodb.gridfs.GridFSDBFile;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -83,20 +87,33 @@ public class LearningElementController {
     */
     @RequestMapping(value = "/downloadLE/{elementID}", method = RequestMethod.GET)
     public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {                   
-        LearningElement element = dao.getSpecificLearningElement(elementID);
-        String path = AppConfig.UPLOAD_LO_PATH + element.getFilePath();
+        GridFSDBFile element = dao.getSingleLE(elementID, "le.meta");
+        System.out.println(element.getId().toString());
+        dao.writePhysicalFile(element.getId().toString(), element.getFilename());
+        System.out.println(element);
+        System.out.println(element.getFilename());
+        String path = "C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + element.getFilename();
+
+        File f = new File(path);
         ContentShipper shipper = new ContentShipper(request, response, true);
-        shipper.ship(path);  
+        shipper.ship(path);         
+        f.delete();
+
     }
     /*
     *   @params String elementID the name of the specific LO to be downloaded
     */
     @RequestMapping(value = "/downloadLE/{elementID}", method = RequestMethod.HEAD)
     public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
-        LearningElement element = dao.getSpecificLearningElementById(elementID);
-        String path = AppConfig.UPLOAD_LE_PATH + element.getFilePath();
-	ContentShipper shipper = new ContentShipper(request, response, false);
-	shipper.ship(path);
+        //LearningElement element = dao.getSpecificLearningElementById(elementID);
+        GridFSDBFile element = dao.getSingleLE(elementID, "le.meta");
+        String path = "C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + element.getFilename();
+	 File f = new File(path);
+            System.out.println("DABOYY");
+            ContentShipper shipper = new ContentShipper(request, response, true);
+            shipper.ship(path);
+         
+        f.delete();
     }
     
     @RequestMapping(value="/upload", method = RequestMethod.POST)

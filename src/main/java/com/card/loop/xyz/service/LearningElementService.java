@@ -6,7 +6,10 @@
 package com.card.loop.xyz.service;
 
 import com.card.loop.xyz.dao.LearningElementDAO;
+import com.card.loop.xyz.dao.LearningElementMetaDAO;
 import com.card.loop.xyz.dto.LearningElementDto;
+import com.card.loop.xyz.dto.LearningElementMetaDto;
+import com.card.loop.xyz.file.meta.LearningElementMeta;
 import com.card.loop.xyz.model.LearningElement;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -20,6 +23,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LearningElementService {
     @Autowired LearningElementDAO dao;
+    @Autowired LearningElementMetaDAO mdao;
     
     public LearningElementDto getSpecificLearningElement(String id) throws UnknownHostException{
         LearningElement leModel;

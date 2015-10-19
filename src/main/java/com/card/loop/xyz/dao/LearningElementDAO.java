@@ -9,11 +9,24 @@ import com.card.loop.xyz.config.AppConfig;
 import com.card.loop.xyz.config.DatabaseManager;
 import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.User;
+import com.mongodb.BasicDBList;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 import com.mongodb.Mongo;
+import com.mongodb.gridfs.GridFS;
+import com.mongodb.gridfs.GridFSDBFile;
+import com.mongodb.gridfs.GridFSInputFile;
+import java.io.File;
+import java.io.IOException;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.ListIterator;
 import javax.swing.JOptionPane;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -38,7 +51,7 @@ public class LearningElementDAO {
     public boolean exists(String id) throws UnknownHostException {
         boolean ok = false;
         Query query = new Query();
-        query.addCriteria(where("id").is(id));
+        query.addCriteria(where("_id").is(id));
         ok = mongoOps.exists(query, LearningElement.class);
         return ok;
     }
@@ -55,8 +68,9 @@ public class LearningElementDAO {
         return ok;
     }
     
-    public void addLearningElement(LearningElement object) throws UnknownHostException {
+    public void addLearningElement(LearningElement object) throws UnknownHostException, IOException {
        mongoOps.insert(object);
+       this.addFile(object);
     }
     
     public void addLearningElement(List<LearningElement> objects) throws UnknownHostException {
@@ -109,38 +123,114 @@ public class LearningElementDAO {
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
        return mongoOps.find(query(where("rating").lt(4).andOperator(where("rating").gt(0)).andOperator(where("status").is(2)).andOperator(where("rev").is(user))), LearningElement.class);
     }
-    
-    public static void main(String[] args) throws Exception {
-        LearningElement le = new LearningElement();
-        
-        
-        le.setName("jjjj");
-        le.setSubject("jjjjjjj");
-        le.setDateUploaded("September 25, 2015");
-        le.setDescription("test lng");
-       // LearningElementDAO.addLearningElement(le);
-        
-        /**lo2.setLikes(20);
-        lo2.setDownloads(153);
-        lo2.setTitle("Biboaf");
-        LearningObjectDAO.addLearningObject(lo2);
-        
-        lo3.setLikes(9);
-        lo3.setDownloads(15);
-        lo3.setTitle("Jjjownjii");
-        LearningObjectDAO.addLearningObject(lo3);
-        
-        lo4.setLikes(50);
-        lo4.setDownloads(73);
-        lo4.setTitle("walksPerSecond");
-        LearningObjectDAO.addLearningObject(lo4);*/
-        
-        //JOptionPane.showMessageDialog(null, LearningObjectDAO.getMostLikedList().toString());
-     //   JOptionPane.showMessageDialog(null,LearningElementDAO.getList());
-        //System.out.println(LearningObjectDAO.getMostLikedList());
-    }
-
+ 
     public LearningElement getSpecificLearningElementById(String elementID) throws UnknownHostException {
         return mongoOps.findOne(query(where("_id").is(elementID)), LearningElement.class);
+    }
+    
+    
+    public boolean addFile(LearningElement le) throws UnknownHostException, IOException{
+        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
+        File file = new File(le.getFilePath() + le.getFileName());
+        Mongo mongo = new Mongo("localhost", 27017);
+        DB db = mongo.getDB("loop");
+
+        GridFS gf = new GridFS(db,"le.meta");
+        GridFSInputFile gfsFile = gf.createFile(file);
+	gfsFile.setFilename(le.getFileName());
+        gfsFile.setContentType(le.getFileExtension());
+        gfsFile.put("name",le.getName());
+        gfsFile.put("filePath",le.getFilePath());
+	gfsFile.save();
+
+        // Let's store our document to MongoDB
+        
+        if(search(gfsFile.getMD5(), "le.meta") > 1){            
+            deleteLE(le.getFileName(),"le.meta");
+        }
+        //
+//	collection.insert(info, WriteConcern.SAFE);
+        return true;
+    }
+    
+    public void deleteLE(String newFName, String type) throws UnknownHostException {
+        Mongo mongo = new Mongo("localhost", 27017);
+        DB db = mongo.getDB("loop");
+        GridFS le_gfs = new GridFS(db, type);
+        le_gfs.remove(le_gfs.findOne(newFName));
+    }
+    
+    public ArrayList<DBObject> listAll(String collection) throws UnknownHostException {
+        ArrayList<DBObject> list = new ArrayList<DBObject>();
+        Mongo mongo = new Mongo("localhost", 27017);
+        DB db = mongo.getDB("loop");
+        GridFS le_gfs = new GridFS(db, collection);
+        DBCursor cursor = le_gfs.getFileList();
+         System.out.println(le_gfs.getFileList()+"");
+        while (cursor.hasNext()) {
+            list.add(cursor.next());             
+        }
+        return list;
+    }
+    
+  //  public 
+    
+    public GridFSDBFile getSingleLE(String id, String collection) throws UnknownHostException {
+        Mongo mongo = new Mongo("localhost", 27017);
+        DB db = mongo.getDB("loop");
+        GridFS le_gfs = new GridFS(db, collection);
+        GridFSDBFile le_output = le_gfs.findOne(new ObjectId(id));
+        return le_output;
+    }
+    
+    public ArrayList<String> getKeywords(String md5, String collection) throws UnknownHostException{
+        Mongo mongo = new Mongo("localhost", 27017);
+        DB db = mongo.getDB("loop");
+        ArrayList<String> list = new ArrayList<>();
+        GridFS le_gfs = new GridFS(db, collection);
+        GridFSDBFile le_output = le_gfs.findOne(new BasicDBObject("md5", md5));
+        ListIterator<Object> trustedList = ((BasicDBList) le_output.get("keywords")).listIterator();
+
+        while(trustedList.hasNext()){
+            Object nextItem = trustedList.next();
+            list.add(nextItem.toString());
+        }        
+       return list;
+    }
+    
+    private int search(String md5, String collection) throws UnknownHostException{
+        ArrayList<DBObject> list = listAll(collection);
+        int count = 0;
+         System.out.println(list.size());
+        for(int i = 0; i< list.size(); i++){
+           if(list.get(i).get("md5").equals(md5)){
+                count++;
+                if(count == 2) break;
+           }
+        }
+        return count;
+    }
+    
+    public void writePhysicalFile(String md5,String fileName) throws UnknownHostException, IOException{
+         getSingleLE(md5,"le.meta").writeTo("C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + fileName);
+    }
+    
+    public static void main(String[] args) throws IOException{
+        LearningElementDAO dao = new LearningElementDAO();
+        LearningElement le = new LearningElement();
+        le.setFileName("TestLEUpload2.zip");
+        le.setName("test");
+        le.setFilePath("C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LE\\");
+        le.setFileExtension(".zip");
+        
+        dao.addFile(le);
+     //  System.out.println(dao.getSingleLE("676f65e8970d856682dde3a34f2390f9", "le.meta"));
+        
+                System.out.println(dao.getSingleLE("5623d83c456450da612f72d6", "le.meta"));
+     //   OutputStream output = new FileOutputStream("c:\\data\\");
+
+       // dao.getSingleLE("676f65e8970d856682dde3a34f2390f9","le.meta").writeTo("C:\\Users\\David\\Desktop\\haha.zip");
+       // output.close();
+     //   dao.deleteLE("TestLEUpload2.zip", "le.meta");
     }
 }

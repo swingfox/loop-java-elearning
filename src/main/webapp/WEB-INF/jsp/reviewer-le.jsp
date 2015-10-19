@@ -273,8 +273,7 @@
         <script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
         <script src="bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
         <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
-        <script>
-	<script> 
+      <!--  <script>
 		$(document).ready(function(){
 			var length_sel;
 			var optionVal = $('tbody > tr:last-child()').index();
@@ -313,7 +312,7 @@
                 pagination.addClass('pagination-sm');
             }
 		});
-	</script>
+	</script> -->
 	<script type="text/javascript">
 		$(document).ready(function() {
 		    $('#defaultForm').bootstrapValidator({

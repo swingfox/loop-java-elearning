@@ -25,8 +25,11 @@ import java.io.OutputStream;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.ListIterator;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import static org.springframework.data.mongodb.core.query.Criteria.where;
+import static org.springframework.data.mongodb.core.query.Query.query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -38,22 +41,22 @@ public class LearningElementMetaDAO{
 
     public boolean addFile(LearningElementMeta le) throws UnknownHostException, IOException{
         MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
-        File file = new File(le.getFilePath() + le.getFileName());
+        File file = new File(le.getFilepath() + le.getFileName());
         Mongo mongo = new Mongo("localhost", 27017);
-        DB db = mongo.getDB("loopFilesStorage");
+        DB db = mongo.getDB("loop");
 
         GridFS gf = new GridFS(db,"le.meta");
         GridFSInputFile gfsFile = gf.createFile(file);
 	gfsFile.setFilename(le.getFileName());
         gfsFile.setContentType(le.getFileType());
-        gfsFile.put("title",le.getTitle());
-        gfsFile.put("filePath",le.getFilePath());
+        gfsFile.put("name",le.getName());
+        gfsFile.put("filePath",le.getFilepath());
 	gfsFile.save();
 
         // Let's store our document to MongoDB
         
         if(search(gfsFile.getMD5(), "le.meta") > 1){            
-            deleteLE(le.getTitle(),"le.meta");
+            deleteLE(le.getFileName(),"le.meta");
         }
         //
 //	collection.insert(info, WriteConcern.SAFE);
@@ -62,7 +65,7 @@ public class LearningElementMetaDAO{
     
     public void deleteLE(String newFName, String type) throws UnknownHostException {
         Mongo mongo = new Mongo("localhost", 27017);
-        DB db = mongo.getDB("loopFilesStorage");
+        DB db = mongo.getDB("loop");
         GridFS le_gfs = new GridFS(db, type);
         le_gfs.remove(le_gfs.findOne(newFName));
     }
@@ -70,7 +73,7 @@ public class LearningElementMetaDAO{
     public ArrayList<DBObject> listAll(String collection) throws UnknownHostException {
         ArrayList<DBObject> list = new ArrayList<DBObject>();
         Mongo mongo = new Mongo("localhost", 27017);
-        DB db = mongo.getDB("loopFilesStorage");
+        DB db = mongo.getDB("loop");
         GridFS le_gfs = new GridFS(db, collection);
         DBCursor cursor = le_gfs.getFileList();
          System.out.println(le_gfs.getFileList()+"");
@@ -80,17 +83,19 @@ public class LearningElementMetaDAO{
         return list;
     }
     
-    public GridFSDBFile getSingleLE(String md5, String collection) throws UnknownHostException {
+  //  public 
+    
+    public GridFSDBFile getSingleLE(String id, String collection) throws UnknownHostException {
         Mongo mongo = new Mongo("localhost", 27017);
-        DB db = mongo.getDB("loopFilesStorage");
+        DB db = mongo.getDB("loop");
         GridFS le_gfs = new GridFS(db, collection);
-        GridFSDBFile le_output = le_gfs.findOne(new BasicDBObject("md5", md5));
+        GridFSDBFile le_output = le_gfs.findOne(new ObjectId(id));
         return le_output;
     }
     
     public ArrayList<String> getKeywords(String md5, String collection) throws UnknownHostException{
         Mongo mongo = new Mongo("localhost", 27017);
-        DB db = mongo.getDB("loopFilesStorage");
+        DB db = mongo.getDB("loop");
         ArrayList<String> list = new ArrayList<>();
         GridFS le_gfs = new GridFS(db, collection);
         GridFSDBFile le_output = le_gfs.findOne(new BasicDBObject("md5", md5));
@@ -117,19 +122,21 @@ public class LearningElementMetaDAO{
     }
     
     public void writePhysicalFile(String md5,String fileName) throws UnknownHostException, IOException{
-         getSingleLE(md5,"le.meta").writeTo("C:\\Users\\David\\Desktop\\" + fileName);
+         getSingleLE(md5,"le.meta").writeTo("C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + fileName);
     }
     
     public static void main(String[] args) throws IOException{
         LearningElementMetaDAO dao = new LearningElementMetaDAO();
         LearningElementMeta le = new LearningElementMeta();
         le.setFileName("TestLEUpload2.zip");
-        le.setTitle("test");
-        le.setFilePath("C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LE\\");
+        le.setName("test");
+        le.setFilepath("C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LE\\");
         le.setFileType(".zip");
         
-//        dao.addFile(le);
-        System.out.println(dao.getSingleLE("676f65e8970d856682dde3a34f2390f9", "le.meta"));
+        dao.addFile(le);
+     //  System.out.println(dao.getSingleLE("676f65e8970d856682dde3a34f2390f9", "le.meta"));
+        
+                System.out.println(dao.getSingleLE("5623d83c456450da612f72d6", "le.meta"));
      //   OutputStream output = new FileOutputStream("c:\\data\\");
 
        // dao.getSingleLE("676f65e8970d856682dde3a34f2390f9","le.meta").writeTo("C:\\Users\\David\\Desktop\\haha.zip");

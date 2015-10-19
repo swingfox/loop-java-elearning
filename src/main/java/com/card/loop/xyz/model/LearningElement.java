@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 /*
  * @author aislinn 
  */
-@Document(collection = "le")
+@Document(collection = "le.meta.files")
 public class LearningElement {
     
     /*
@@ -70,6 +70,8 @@ public class LearningElement {
     private String type;
     
     private String fileExtension;
+    
+    private String fileName;
     
     
     
@@ -284,6 +286,14 @@ public class LearningElement {
 
     public void setFileExtension(String fileExtension) {
         this.fileExtension = fileExtension;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
     
    
