@@ -26,6 +26,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
     @Autowired UserService service;
+    
+    @RequestMapping("/getUser/{user}/{usertype}")
+    @ResponseBody
+    public UserDto getUser(@PathVariable String user,@PathVariable String usertype) throws UnknownHostException {
+        UserDto userinfo = new UserDto();
+        if(user.length()>0 && usertype.length()>0)
+            userinfo = service.getUserInfo(user,usertype);
+        else
+            return null;
+        return userinfo;
+    }
 
     @RequestMapping("/signup")
     @ResponseBody
@@ -89,7 +100,19 @@ public class UserController {
     public boolean validate(UserDto user){return false;}
     
     @RequestMapping("/edit")
-    public boolean edit(UserDto user){return false;}
+    @ResponseBody
+    public boolean edit(UserDto user) throws UnknownHostException {
+        boolean edited = false;
+        if(user!=null) {
+            if(user.getPassword()!=null)
+                service.editPassword(user);
+            else
+                service.editEmail(user);
+            
+            edited = true;
+        }
+        return edited;
+    }
     
     @RequestMapping("/approve")
     public boolean approve(UserDto user) throws UnknownHostException, Exception{

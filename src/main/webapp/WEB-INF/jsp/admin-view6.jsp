@@ -23,6 +23,7 @@
 
 </head>
 <body>	
+    <jsp:include page="include/CurrentUser.jsp"/>
 	<div class="wrapper">
 		<div id="header-wrap">
 			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
