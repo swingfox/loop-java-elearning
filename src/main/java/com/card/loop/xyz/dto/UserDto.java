@@ -5,6 +5,7 @@
  */
 package com.card.loop.xyz.dto;
 
+import com.card.loop.xyz.model.User;
 import java.util.List;
 
 /**
@@ -244,5 +245,17 @@ public class UserDto {
 
     public void setLastDownload(String lastDownload) {
         this.lastDownload = lastDownload;
+    }
+    
+    public void setVariables(User model) {
+        //this.setBlocked(model.getBlocked());
+        this.setEmail(model.getEmail());
+        this.setId(model.getId());
+        //this.setLastDownload(model.getLastDownload());
+        //this.setLastLogin(model.getLastLogin());
+        this.setNewAccount(model.getAccepted());
+        this.setPassword(model.getPassword());
+        this.setUsername(model.getUsername());
+        this.setUsertype(model.getUserType());
     }
 }

@@ -49,7 +49,7 @@ public class UserService {
     }
     public boolean register(UserDto user) throws UnknownHostException{
         boolean ok = false;
-        if(!dao.exists(user.getUsername(),user.getPassword())){
+        if(!dao.exists(user.getUsername(),user.getUsertype())){
             User model = new User();
             model.setUserName(user.getUsername());
             model.setPassword(user.getPassword());
@@ -78,17 +78,22 @@ public class UserService {
         return dao.blockUser(obj); 
     }
     
-    public boolean edit(UserDto user) throws UnknownHostException{
-        User obj = new User();
-        if(!UserDAO.exists(user.getUsername())){
-            obj.setBlocked(user.getBlocked());
-            obj.setEmail(user.getEmail());
-            obj.setLastDownload(user.getLastDownload());
-            obj.setLastLogin(user.getLastLogin());
-            obj.setUserName(user.getUsername());
-            obj.setUserType(user.getUsertype());
+    public boolean editPassword(UserDto user) throws UnknownHostException{
+        User obj = dao.getUser(user.getUsername(),user.getUsertype());
+        if(obj != null){
             obj.setPassword(user.getPassword());
-        }
+        } else
+                return false;
+        return dao.editUser(obj);
+    }
+    
+    public boolean editEmail(UserDto user) throws UnknownHostException {
+        User obj = dao.getUser(user.getUsername(),user.getUsertype());
+        if(obj != null){
+            if(!dao.emailExists(user.getUsername(), user.getEmail()))
+                obj.setEmail(user.getEmail());
+        } else
+                return false;
         return dao.editUser(obj);
     }
     
@@ -183,7 +188,14 @@ public class UserService {
    
     public UserDto promote(String username) throws UnknownHostException{return null;}
     public UserDto demote(String username) throws UnknownHostException{return null;}
-    public UserDto getUserInfo(UserDto user) throws UnknownHostException{return null;}
+    public UserDto getUserInfo(String user, String usertype) throws UnknownHostException{
+        User userinfo = dao.getUser(user,usertype);
+        UserDto newUser = new UserDto();
+        if(userinfo!=null) {
+            newUser.setVariables(userinfo);
+        }
+        return newUser;
+    }
     public List<UserDto> getAllUsers(UserDto user) throws UnknownHostException{
         List<UserDto> objects = new ArrayList<>();
         List<User> userList = dao.getAllUser();
