@@ -110,7 +110,7 @@ public class LOIDEController {
                                 lo.setStatus("1");
                                 lo.setRating(1);
                                 lo.setSubject(subject);
-                                lo.setFilepath(file.getOriginalFilename());
+                                lo.setFilePath(file.getOriginalFilename());
                                 daoLO.addLearningObject(lo);
                                 JOptionPane.showMessageDialog(null,lo.getName());
 

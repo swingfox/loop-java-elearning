@@ -69,7 +69,7 @@ public class LearningElementDAO {
     }
     
     public void addLearningElement(LearningElement object) throws UnknownHostException, IOException {
-       mongoOps.insert(object);
+    //   mongoOps.insert(object);
        this.addFile(object);
     }
     
@@ -141,6 +141,15 @@ public class LearningElementDAO {
         gfsFile.setContentType(le.getFileExtension());
         gfsFile.put("name",le.getName());
         gfsFile.put("filePath",le.getFilePath());
+        gfsFile.put("subject",le.getSubject());
+        gfsFile.put("description", le.getDescription());
+        gfsFile.put("downloads",le.getDownloads());
+        gfsFile.put("rating",le.getRating());
+        gfsFile.put("comments",le.getComments());
+        gfsFile.put("uploadedBy",le.getUploadedBy());
+        gfsFile.put("status", le.getStatus());
+        gfsFile.put("rev", le.getRev());
+        gfsFile.put("type", le.getType());
 	gfsFile.save();
 
         // Let's store our document to MongoDB
@@ -219,9 +228,19 @@ public class LearningElementDAO {
         LearningElementDAO dao = new LearningElementDAO();
         LearningElement le = new LearningElement();
         le.setFileName("TestLEUpload2.zip");
-        le.setName("test");
+        le.setName("TestLEUpload2");
         le.setFilePath("C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LE\\");
         le.setFileExtension(".zip");
+        le.setSubject("recon");
+        le.setDescription("test");
+        le.setDownloads(0);
+        le.setRating(5);
+        le.setComments("promotion");
+        le.setUploadedBy("dev1");
+        le.setStatus("1");
+        le.setRev("rev1");
+        le.setType("LE");
+        
         
         dao.addFile(le);
      //  System.out.println(dao.getSingleLE("676f65e8970d856682dde3a34f2390f9", "le.meta"));

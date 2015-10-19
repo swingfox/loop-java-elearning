@@ -79,7 +79,7 @@ public class LearningObjectController {
                         lo.setStatus("1");
                         lo.setDownloads(0);
                         lo.setRating(1);
-                        lo.setFilepath(file.getOriginalFilename());
+                        lo.setFilePath(file.getOriginalFilename());
                         dao.addLearningObject(lo);
 
 
@@ -107,8 +107,6 @@ public class LearningObjectController {
             BufferedReader reader  = new BufferedReader(new InputStreamReader(response2.getBody()));
             try {
                 String str = reader.readLine();
-       //         JSONObject obj = new JSONObject(str);
-                // checking
                 if(str.equals("true"))
                         System.out.println("SUCCESS!!");
                 else
@@ -202,7 +200,7 @@ public class LearningObjectController {
     @RequestMapping(value = "/downloadLO/{elementID}", method = RequestMethod.GET)
     public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {                   
                 LearningObject element = dao.getLearningObject(elementID);
-		String path = AppConfig.UPLOAD_LO_PATH + element.getFilepath();
+		String path = AppConfig.UPLOAD_LO_PATH + element.getFilePath();
 		ContentShipper shipper = new ContentShipper(request, response, true);
 		shipper.ship(path);   
     }
@@ -213,7 +211,7 @@ public class LearningObjectController {
     public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
                 LearningObject element = dao.getLearningObject(elementID);
 
-		String path = AppConfig.UPLOAD_LO_PATH + element.getFilepath();
+		String path = AppConfig.UPLOAD_LO_PATH + element.getFilePath();
 		ContentShipper shipper = new ContentShipper(request, response, false);
 		shipper.ship(path);
     }
