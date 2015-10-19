@@ -149,6 +149,7 @@ public class LearningObjectDAO {
     }
     
     public boolean addFile(LearningObject lo) throws UnknownHostException, IOException{
+        System.out.println(lo.getFilePath() + lo.getFileName());
         File file = new File(lo.getFilePath() + lo.getFileName());
         Mongo mongo = new Mongo("localhost", 27017);
         DB db = mongo.getDB("loop");
@@ -157,6 +158,7 @@ public class LearningObjectDAO {
         GridFSInputFile gfsFile = gf.createFile(file);
 	gfsFile.setFilename(lo.getFileName());
         gfsFile.setContentType(lo.getFileType());
+        gfsFile.put("_class","com.card.loop.xyz.model.LearningObject");
         gfsFile.put("name",lo.getName());
         gfsFile.put("filePath",lo.getFilePath());
         gfsFile.put("subject",lo.getSubject());

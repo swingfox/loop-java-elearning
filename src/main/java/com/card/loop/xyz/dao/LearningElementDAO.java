@@ -139,6 +139,7 @@ public class LearningElementDAO {
         GridFSInputFile gfsFile = gf.createFile(file);
 	gfsFile.setFilename(le.getFileName());
         gfsFile.setContentType(le.getFileExtension());
+        gfsFile.put("_class","com.card.loop.xyz.model.LearningElement");
         gfsFile.put("name",le.getName());
         gfsFile.put("filePath",le.getFilePath());
         gfsFile.put("subject",le.getSubject());
