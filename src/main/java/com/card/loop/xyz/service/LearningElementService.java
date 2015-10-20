@@ -21,6 +21,37 @@ import org.springframework.stereotype.Service;
 public class LearningElementService {
     @Autowired LearningElementDAO dao;
     
+        public boolean acceptLE(LearningElementDto le) throws UnknownHostException, Exception{
+        boolean ok = false;
+        LearningElement model = dao.getLE(le.getId());
+        if(model!= null){
+            model.setStatus("2");
+            dao.acceptLE(model);
+            ok = true;
+        }
+        else
+            throw new Exception("LearningElement does not exist. ");
+        return ok;
+        
+    }
+    
+    public boolean demoteLE(LearningElementDto le) throws UnknownHostException, Exception{
+        boolean ok = false;
+        System.out.println(le.getId());
+                System.out.println(dao);
+
+        LearningElement model = dao.getLE(le.getId());
+        if(model!= null){
+            model.setStatus("0");
+            dao.demoteLE(model);
+            ok = true;
+        }
+        else
+            throw new Exception("LearningElement does not exist. ");
+        return ok;
+        
+    }
+    
     public LearningElementDto getSpecificLearningElement(String id) throws UnknownHostException{
         LearningElement leModel;
         leModel = dao.getSpecificLearningElement(id);
@@ -90,10 +121,13 @@ public class LearningElementService {
      }
     
     
-    public static void main(String[] args) throws UnknownHostException {
-        List<LearningElementDto> list;
+    public static void main(String[] args) throws UnknownHostException, Exception {
+        LearningElementDto list = new LearningElementDto();
         LearningElementService service = new LearningElementService();
-        list = service.getLearningElements("Test");
+        
+        list.setId("56252cd8456429c7df1e680b");
+        service.getSpecificLearningElement(list.getId());
+       // System.out.println(service.demoteLE(list));
      /*   for (LearningElementDto list1 : list) {
             System.out.println(list1);
         }*/

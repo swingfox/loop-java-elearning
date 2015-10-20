@@ -5,14 +5,17 @@
  */
 package com.card.loop.xyz.dao;
 
+import com.card.loop.xyz.config.AppConfig;
 import com.card.loop.xyz.dto.LearningObjectDto;
 import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.model.OldLO;
 import java.net.UnknownHostException;
 import java.util.List;
+import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import org.springframework.data.mongodb.core.query.Query;
 import static org.springframework.data.mongodb.core.query.Query.query;
@@ -32,13 +35,13 @@ public class OldLODAO {
         return mongoOps.findOne(query(where("_id").is(id)), OldLO.class);
     }
     
-    public static void main(String[] args) throws UnknownHostException{
-        OldLODAO o= new OldLODAO();
-        System.out.println(o.getLearningObject("hahah"));
+    public static void main(String[] args) throws Exception {
+        //MongoOperations mongoOps = new MongoTemplate(AppConfig.mongo(),AppConfig.DATABASE_LOOP);
+        //JOptionPane.showMessageDialog(null,mongoOps.find(query(where("name").is("hahah")), OldLO.class));
     }
     
     public List<OldLO> getListHistory(String name) throws UnknownHostException {
-        return (mongoOps.find(query(where("name").is(name)), OldLO.class));
+       return mongoOps.find(query(where("name").is(name)), OldLO.class);
     }
     
     public List<OldLO> getAllDownloadableLO() throws UnknownHostException {

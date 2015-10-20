@@ -117,11 +117,15 @@ $(document).ready(function(){
                    $('#userName').val(data.username).change();
                    $('#userType').val(data.usertype).change();
                    if(data.id === null){
-                       alert('User not found');
-                        // <p class="alert alert-danger"><i class="icon-warning-sign"></i>  Invalid account details. Check your information below.</p>
-                       // $('.modal-dialog').append(" Invalid account details. Check your information below.");
-                                              $('#loginto').prepend("<p class='alert alert-danger'><i class='icon-warning-sign'></i> Invalid account details. Check your information below.</p> </div>");
-
+                       //alert('User not found'); 
+                       //$('div').removeClass("alert alert-danger"); 
+                       //$('i').removeClass("icon-warning-sign"); 
+                       //$('p').removeClass("label-alert");
+                       //("<p class='alert alert-danger'><i class='icon-warning-sign'></i> Invalid account details. Check your information below.</p> </div>");
+                      
+                      $('#loginto').prepend("<p class='alert alert-danger'><i class='icon-warning-sign'>Invalid account details. Check your information below.</i></p>");
+                     
+                      
                     }
                    else if(data.id !== null){
                         //alert("YEEEYYYY!");

@@ -74,28 +74,7 @@ public class LearningElement {
     private String fileName;
     
     
-    
-    public LearningElement(){
-    
-    }
-    
-    public LearningElement(String name, String subject,  String description, int downloads,  
-                           String dateUploaded, String filePath, double rating, 
-                           String comments, String status, String rev, String uploadedBy,String fileExtension ){
-       this.title = name;
-       this.subject = subject;
-       this.description = description;
-       this.downloads = downloads;
-       this.dateUploaded = dateUploaded;
-       this.filepath = filePath;
-       this.rating = rating;
-       this.comments = comments;
-       this.status = status;
-       this.rev = rev;
-       this.uploadedBy = uploadedBy;
-       this.fileExtension=fileExtension;
-    }
-    
+  
     /**
      * Gets the id of the learning element
      * @return Long This returns the id of the learning element

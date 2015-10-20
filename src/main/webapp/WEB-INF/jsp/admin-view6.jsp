@@ -23,247 +23,113 @@
 
 </head>
 <body>	
+
+	
+
     <jsp:include page="include/CurrentUser.jsp"/>
-	<div class="wrapper">
-		<div id="header-wrap">
-			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-	                    
-	                    <a class="navbar-brand" href="/loop-XYZ/store/admin-view">
-							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
-						</a>
-	                </div>
-					
-				<div class="navbar-collapse collapse" ng-controller="LoginCtrl">
-                                                <ul class="nav navbar-nav navbar-right"> 
-                                                    <li class="dropdown">
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
-                                                        <ul class="dropdown-menu">
 
-                                                                <li role="presentation" class="dropdown-header">Options</li>
+    <div class="clearfix"></div>
 
-                                                                <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
-                                                                <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
 
-                                                                <li class="divider"></li>
+    <ul class="nav nav-tabs main-views">
+        <li><a href="/loop-XYZ/store/admin-view"><i class="icon-plus-sign-alt icon-large default"></i> New Account Requests</a></li>
+        <li><a href="/loop-XYZ/store/admin-view1"><i class="icon-folder-open icon-large default"></i> Developers</a></li>
+        <li><a href="/loop-XYZ/store/admin-view2"><i class="icon-edit icon-large default"></i> Reviewers</a></li>
+        <li><a href="/loop-XYZ/store/admin-view3"><i class="icon-time icon-large default"></i> Inactive Accounts</a></li>
+        <li><a href="/loop-XYZ/store/admin-view4"><i class="icon-ban-circle icon-large default"></i> Blocked Accounts</a></li>
+        <li><a href="/loop-XYZ/store/admin-view5"><i class="icomoon-list"></i> Learning Objects</a></li>
+        <li class="active"><a class="active-tab" href="/loop-XYZ/store/admin-view6"><i class="icomoon-list"></i> Learning Elements</a></li>
+    </ul>
 
-                                                                <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
-                                                        </ul>
-                                                     </li>
-                                                </ul>
-					</div>
-				</div>
-			</nav>
-		</div>
+    <div class="clearfix"></div>
 
-		<div class="clearfix"></div>
 
-    	<ul class="nav nav-tabs main-views">
-    		<li><a href="/loop-XYZ/store/admin-view"><i class="icon-plus-sign-alt icon-large default"></i> New Account Requests</a></li>
-		<li><a href="/loop-XYZ/store/admin-view1"><i class="icon-folder-open icon-large default"></i> Developers</a></li>
-		<li><a href="/loop-XYZ/store/admin-view2"><i class="icon-edit icon-large default"></i> Reviewers</a></li>
-		<li><a href="/loop-XYZ/store/admin-view3"><i class="icon-time icon-large default"></i> Inactive Accounts</a></li>
-		<li><a href="/loop-XYZ/store/admin-view4"><i class="icon-ban-circle icon-large default"></i> Blocked Accounts</a></li>
-		<li><a href="/loop-XYZ/store/admin-view5"><i class="icomoon-list"></i> Learning Objects</a></li>
-		<li class="active"><a class="active-tab" href="/loop-XYZ/store/admin-view6"><i class="icomoon-list"></i> Learning Elements</a></li>
-		</ul>
-
-		<div class="clearfix"></div>
-
-  		<div id="content-wrap-rev">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 content">
-						
-						<div class="table-responsive" ng-controller="LEList">
-							<!-- <table class="datatable table table-bordered"> -->
-                                                        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-                                                                <div class="pull-right">
-                                                                    <i class="icomoon-search pull-left searchbar-icon"></i>
-                                                                    <div class="dataTables_filter pull-right" id="DataTables_Table_0_filter">
-                                                                        <label>
-                                                                            <input type="text" aria-controls="DataTables_Table_0" data-ng-model="searchText" placeholder="Search" class="form-control input-sm" style="width: 162px;">
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                    <div class="clearfix"></div>
-                                                                </div>
-                                                            </div>
-							<table class="datatable table table-hover">
-							    <thead>
-									<tr>
-										<th class="color-code"></th>
-										<th>Name</th>
-										<th>Subject</th>
-										<!-- <th>Date Uploaded</th> -->
-										<th>Uploaded</th>
-										<th>Rating</th>
-										<th>Comments</th>
-										<th>Status</th>
-										<th>Reviewer</th>
-										<th>Author</th>
-									</tr>
-								</thead>
-						        <tbody>
-                                                            
-                                                            <tr ng-repeat="le in les | filter:searchText">
-                                                                <td>
-                                                                    <img ng-if="le.rating==1" src="img/icon-red.png" alt="For Review">
-                                                                    <img ng-if="le.rating==2" src="img/icon-orange.png" alt="For Review">
-                                                                    <img ng-if="le.rating==3" src="img/icon-yellow.png" alt="For Review">
-                                                                    <img ng-if="le.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
-                                                                    <img ng-if="le.rating==5" src="img/icon-green.png" alt="For Review">
-                                                                    
-                                                                </td>
-                                                                <td><a ng-click="GetLEDetails_admin(le)"><label ng-model="title">{{le.title}}</a></td>
-                                                                <td><label ng-model="le.subject">{{le.subject}}</td>
-                                                                <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
-                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="le.rating">{{le.rating}}</td>
-                                                                <td><label ng-model="le.comments">{{le.comments}}</td>
-                                                                <td ng-if="le.status==0"><a href="#responsive_approve" data-toggle="modal"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></a></td>
-                                                                <td ng-if="le.status==1"><a href="#responsive_approve" data-toggle="modal"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></a></td>
-                                                                <td ng-if="le.status==2"><a href="#responsive_approve" data-toggle="modal"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></a></td>
-                                                                <td><label ng-model="le.rev">{{le.rev}}</td>
-                                                                <td><label ng-model="le.uploadedBy">{{le.uploadedBy}}</td>
-                                                            </tr>			
-								</tbody>
-							  </table>
-						</div>
-
-					</div>
-				</div>
-				
-				<div class="clearfix" id="before-features" ></div>
-			</div>
-		</div>
-
-  		<div class="clearfix"></div>
-
-        <div class="push"></div>
-	</div>
-
-	<div class="footer">
-		<footer id="footer-wrap-index">
-			<div class="container">
-	            <div class="copyright-here pull-left">
-					Copyright &copy; LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
-		    	</div>
-		    </div>
-	    </footer>
-    </div>
-        <form id="defaultForm" method="post">
-            <div class="modal fade" id="responsive_changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header light-theme">
-                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <span class="popup">Change Password</span>
-                        </div>
-                        <div class="modal-body">  
+    <div id="content-wrap-rev">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 content">
+                    <div class="table-responsive" ng-controller="LEList">
+                        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
                             <div class="row">
-                                <div class="col-md-10 col-md-offset-1 ">
-
-                                    <p class="alert alert-danger hide" id="error"><i class="icon-warning-sign"></i> Invalid password.</p>
-                                    <p class="alert alert-success hide" id="success"><i class="icon-ok"></i> Successfully changed password.</p>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Old Password" required/>
+                                <div class="col-sm-12">
+                                    <div class="pull-right">
+                                        <i class="icomoon-search pull-left searchbar-icon"></i>
+                                        <div class="dataTables_filter pull-right" id="DataTables_Table_0_filter">
+                                            <label>
+                                                <input type="text" aria-controls="DataTables_Table_0" data-ng-model="searchText" placeholder="Search" class="form-control input-sm" style="width: 162px;">
+                                            </label>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" id="enterNewPassword" name="newPassword" placeholder="Enter New Password" />
-                                    </div>
-                                    <div class="form-group last">
-                                        <input type="password" class="form-control last" id="confirmNewPassword" name="confirmNewPassword" placeholder="Confirm New password" />
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="modal-footer"> 
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-3 ">
-                                    <button type="submit" class="btn btn-primary" id="changepassword"><i class="icon-ok icon-large default"></i> Save</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    <div class="clearfix"></div>
                                 </div>
                             </div>
+                            <table class="datatable table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="color-code"></th>
+                                        <th>Name</th>
+                                        <th>Subject</th>
+                                        <th>Uploaded</th>
+                                        <th>Rating</th>
+                                        <th>Comments</th>
+                                        <th>Status</th>
+                                        <th>Reviewer</th>
+                                        <th>Author</th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody ng-controller="LECtrl">
+                                    <tr ng-repeat="le in les | filter:searchText">
+                                        <td>
+                                            <img ng-if="le.rating==1" src="img/icon-red.png" alt="For Review">
+                                            <img ng-if="le.rating==2" src="img/icon-orange.png" alt="For Review">
+                                            <img ng-if="le.rating==3" src="img/icon-yellow.png" alt="For Review">
+                                            <img ng-if="le.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
+                                            <img ng-if="le.rating==5" src="img/icon-green.png" alt="For Review">
+                                        </td>
+                                        <td><a ng-click="GetLEDetails_admin(le)"><label ng-model="title">nnj{{le.title}}</a></td>
+                                        <td><label ng-model="le.subject">{{le.subject}}</td>
+                                        <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td><label ng-model="le.rating">{{le.rating}}</td>
+                                        <td><label ng-model="le.comments">{{le.comments}}</td>
+                                        <td ng-if="le.status==0"><a href="#responsive_approve" data-toggle="modal" onclick="selectIndex('.$counter.')" ng-click="assignUser(le)"  value="le.id" ng-model="le.id"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></a></td>
+                                        <td ng-if="le.status==1"><a href="#responsive_approve" data-toggle="modal" onclick="selectIndex('.$counter.')" ng-click="assignUser(le)"   value="le.id" ng-model="le.id"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></a></td>
+                                        <td ng-if="le.status==2"><a href="#responsive_approve" data-toggle="modal" onclick="selectIndex('.$counter.')" ng-click="assignUser(le)"  value="le.id" ng-model="le.id"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></a></td>
+                                        <td><label ng-model="le.rev">{{le.rev}}</td>
+                                        <td><label ng-model="le.uploadedBy">{{le.uploadedBy}}</td>
+                                    </tr>			
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <!-- Change Email Pop Up -->
-        <form id="emailForm" method="post">
-            <div class="modal fade" id="responsive_changeStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header light-theme">
-                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <span class="popup">Change Email</span>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-10 col-md-offset-1">
+                 
+                 
+                <div class="clearfix" id="before-features" ></div>
+               
+        </div>
+    <div class="clearfix"></div>
+    <div class="push"></div>
 
-                                 <p class="alert alert-danger hide" id="error1"><i class="icon-warning-sign"></i> Invalid password.</p>
-                                    <p class="alert alert-success hide" id="success1"><i class="icon-ok"></i> Successfully changed password.</p>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" id="emailPassword" name="emailPassword" placeholder="Enter Password" required/>
-                                    </div>
-                                    <div class="form-group last">
-                                        <input type="text" class="form-control last" id="enterNewEmail" name="enterNewEmail" placeholder="Enter New Email" required/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-3">
-                                    <button type="submit" class="btn btn-primary" id="changeEmail"><i class="icon-ok icon-large default"></i> Save</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>  
-        </form>
-        <form id="defaultForm" method="post">
+     <form method="post" ng-controller="LECtrl">
             <div class="modal fade" id="responsive_approve" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header light-theme">
                             <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <span class="popup">Change Password</span>
+                            <span class="popup">User Action</span>
                         </div>
                         <div class="modal-body">  
                             <div class="row">
-                                <div class="col-md-10 col-md-offset-1 ">
-
-                                    <p class="alert alert-danger hide" id="error"><i class="icon-warning-sign"></i> Invalid password.</p>
-                                    <p class="alert alert-success hide" id="success"><i class="icon-ok"></i> Successfully changed password.</p>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Old Password" required/>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" id="enterNewPassword" name="newPassword" placeholder="Enter New Password" />
-                                    </div>
-                                    <div class="form-group last">
-                                        <input type="password" class="form-control last" id="confirmNewPassword" name="confirmNewPassword" placeholder="Confirm New password" />
-                                    </div>
+                                <div class="col-md-10 col-md-push-1">                                 
+                                    <label class="file-action">What would you like to do with this account request?</label>
                                 </div> 
                             </div>
                         </div>
                         <div class="modal-footer"> 
                             <div class="row">
-                                <div class="col-md-8 col-md-offset-3 ">
-                                    <button type="submit" class="btn btn-primary" id="changepassword"><i class="icon-ok icon-large default"></i> Save</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <div class="col-md-10 col-md-push-1">
+                                    <button type="submit" class="btn btn-primary" ng-click="acceptMe()"><i class="icon-ok-sign icon-large default"></i> Accept</button>
+                                    <button type="submit" class="btn btn-default" ng-click="demoteMe()"></i> Demote</button>
+                                    <input type="hidden" id="selectedIndex" name="index" value="0"/>      
                                 </div>
                             </div>
                         </div>
@@ -271,7 +137,17 @@
                 </div>
             </div>
         </form>
-        
+
+
+        <div class="footer">
+            <footer id="footer-wrap-index">
+                <div class="container">
+                    <div class="copyright-here pull-left">
+                        Copyright &copy; LOOP | Learning Object Organizer Plus. All rights reserved.
+                    </div>
+                </div>
+            </footer>
+            </div>
 	<script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
 	<script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
 	<script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
@@ -363,4 +239,4 @@
 	</script>
 </body>
 </html>
-p
+     

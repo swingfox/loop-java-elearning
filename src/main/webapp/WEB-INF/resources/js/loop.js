@@ -142,25 +142,6 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
         });
     };
     
-
-        $scope.changeEmail=function(){
-           // alert(username);
-           var data =  {
-                            username: $scope.username,
-                            password: $scope.password,                            
-                            email: $scope.NewEmail
-                    };
-            $http.post("/loop-XYZ/loop/user/changeEmail/", data)
-            .success(function(data) {
-                console.log("SUCCESS"); 
-                window.location.reload(true);
-            })
-            .error(function(jqXHR, status, error) {
-                console.log("jsjdjs"+ error);
-            });
-        };
-
-    
    if($store.get('userID').length === 0 && window.location.toString().split('/store/')[1] !== 'home'){
        window.location = '/loop-XYZ/store/home';
    }
@@ -240,19 +221,7 @@ eS.controller('LEList', ['$scope', '$store', '$http', function($scope, $store, $
     
     $scope.GetLEDetails_admin = function(le) {
         console.log("SULOD....");
-        $http.get('/loop-XYZ/loop/LE/downloadLE/' + le.id)    
-        .success(function(data) {
-            $store.bind($scope, 'le.id', data.id); 
-            $store.bind($scope, 'le.name', data.name);
-            $store.bind($scope, 'le.subject', data.subject); 
-            $store.bind($scope, 'le.dateUploaded', data.dateUploaded); 
-            $store.bind($scope, 'le.description', data.description); 
-         
-             window.location = '/loop-XYZ/store/historyLE-admin';
-        })
-        .error(function(jqXHR, status, error) {
-            console.log(""+ error);
-        });
+             window.location.href = '/loop-XYZ/store/historyLE-admin?leid='+le.id;
     }; 
     
     $scope.clearLE = function(){ 
@@ -288,7 +257,7 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
     	$scope.los = data;
     })
     .error(function(jqXHR, status, error) {
-        console.log(""+ error);
+        console.log("why??"+ error);
     });
     
     $scope.DownloadLO = function(name){
@@ -324,14 +293,17 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
     }; 
     
     $scope.LoHistory = function(lo) {
-         $rootScope.userBlock = lo.name;
-        console.log($rootScope.userBlock);
+         //$rootScope.userBlock = lo.name;
+        //console.log($rootScope.userBlock);
         $http.get('/loop-XYZ/loop/LO/listHistory/' + lo.name)    
         .success(function(data) {
             $store.bind($scope, 'lo.id', data.id); 
             $store.bind($scope, 'lo.name', data.name);
             $store.bind($scope, 'lo.subject', data.subject); 
             $store.bind($scope, 'lo.dateUploaded', data.dateUploaded); 
+            $store.bind($scope, 'lo.rating', data.rating); 
+            $store.bind($scope, 'lo.comments', data.comments); 
+            $store.bind($scope, 'lo.reviewer', data.reviewer); 
             $store.bind($scope, 'lo.description', data.description);          
          
              window.location = '/loop-XYZ/store/historyLO-dev';
@@ -416,7 +388,7 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
         $store.bind($scope, 'lo.rating', '');
         $store.bind($scope, 'lo.dateUploaded', '');
         $store.bind($scope, 'lo.description', '');
-    $http.get("/loop-XYZ/loop/LO/listHistory")    
+    $http.get("/loop-XYZ/loop/LO/listHistory/")    
     .success(function(data) {
     	$scope.los = data;
     })
@@ -584,6 +556,103 @@ eS.controller('newAccountRequestCtrl', ['$scope', '$http', function($scope, $htt
    
 }]);
 
+eS.controller('LECtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+    $rootScope.LEFunc = '';
+    $scope.acceptMe = function(){ 
+        $http.post("/loop-XYZ/loop/LE/acceptLE/"+ $rootScope.LEFunc)
+        .success(function(data) {
+            console.log("SUCCESS"); 
+            window.location.reload(true);
+        })
+        .error(function(jqXHR, status, error) {
+            console.log("jsjdjs"+ error);
+        });
+   };
+   
+   $scope.demoteMe = function(){ 
+        $http.post("/loop-XYZ/loop/LE/demoteLE/"+ $rootScope.LEFunc)
+        .success(function(data) {
+            console.log("SUCCESS"); 
+            window.location.reload(true);
+        })
+        .error(function(jqXHR, status, error) {
+            console.log("jsjdjs"+ error);
+        });
+   };
+    
+   $scope.assignUser = function(le) {
+       $rootScope.LEFunc = le.id;
+   };
+    
+   
+}]);
+
+eS.controller('demoteLECtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+    $rootScope.LEDemote = '';
+    $scope.acceptMe = function(){ 
+        $http.post("/loop-XYZ/loop/user/demoteLE/"+ $rootScope.LEDemote)
+        .success(function(data) {
+            console.log("SUCCESS"); 
+            window.location.reload(true);
+        })
+        .error(function(jqXHR, status, error) {
+            console.log("jsjdjs"+ error);
+        });
+   };
+    
+   $scope.assignUser = function(le) {
+       $rootScope.LEDemote = le.id;
+   };
+    
+   
+}]);
+
+eS.controller('advanceSearchController', ['$scope', '$http', '$rootScope', function($scope,$http,$rootScope) {
+    $scope.searchTitle = "";
+    $scope.searchSubject = "";
+    $scope.searchToDate = "";
+    $scope.searchOrderBy = "";
+    $scope.showSearchSubject = false;
+    $scope.showSearchDate = false;
+    $scope.showSearchOrderBy = false;
+    $scope.los = [];
+    
+    $scope.showSubject = function() {
+        if($scope.showSearchSubject==false)
+            $scope.showSearchSubject = true;
+        else
+            $scope.showSearchSubject = false;
+    }
+    
+    $scope.showDate = function() {
+        if($scope.showSearchDate==false)
+            $scope.showSearchDate = true;
+        else
+            $scope.showSearchDate = false;
+    }
+    
+    $scope.showOrderBy = function() {
+        if($scope.showSearchOrderBy==false)
+            $scope.showSearchOrderBy = true;
+        else
+            $scope.showSearchOrderBy = false;
+    }
+    
+    $scope.showResults = function() {
+        var URL = "advanced-search-dev?";
+        if($scope.searchTitle.length>0)
+            URL += "lo=" + $scope.searchTitle + "&";
+        if($scope.showSearchSubject==true)
+            URL += "subject=" + $scope.searchSubject + "&";
+        if($scope.showSearchDate==true) {
+            URL += "from=" + document.getElementById("dateFrom").value + "&" + "to=" + document.getElementById("dateTo").value + "&";
+        }
+        if($scope.showSearchOrderBy==true)
+            URL += "orderBy=" + $scope.searchOrderBy + "&";
+        URL += "nan";
+        window.location.href = URL;
+    }
+}]);
 /*eS.controller('newAccountRequestCtrl', ['$scope', '$store','$http','$rootScope', function($scope, $store,$http, $rootScope) {
      $rootScope.userAccept = '';
      $store.bind($scope, 'userId', '');

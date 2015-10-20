@@ -63,6 +63,22 @@ public class LearningElementController {
         }
         return dtos;
     }
+    
+     @RequestMapping("/acceptLE/{id}")
+    @ResponseBody
+    public boolean acceptLE(@PathVariable String id) throws UnknownHostException, Exception{
+        LearningElementDto ud = new LearningElementDto();
+        ud.setId(id);
+        return leService.acceptLE(ud);
+    }
+    
+    @RequestMapping("/demoteLE/{id}")
+    @ResponseBody
+    public boolean demoteLE(@PathVariable String id) throws UnknownHostException, Exception{
+        LearningElementDto ud = new LearningElementDto();
+        ud.setId(id);
+        return leService.demoteLE(ud);
+    }
     /*
     *   @params String id the name of the specific LE
     *   @return List<LearningElementDto> returns the list of all downloadable LEs

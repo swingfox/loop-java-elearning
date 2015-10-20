@@ -31,6 +31,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import org.springframework.data.mongodb.core.query.Query;
@@ -44,18 +45,51 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class LearningElementDAO {
     @Autowired MongoOperations mongoOps;
-
+    
+    public LearningElement getLE(String id) throws UnknownHostException{ 
+        LearningElement p = null;
+        p = mongoOps.findOne(query(where("_id").is(id)), LearningElement.class);
+        return p;
+    }
+    
+    public boolean acceptLE(LearningElement le) throws UnknownHostException{
+        boolean ok = false;        
+        Query query = new Query();
+        query.addCriteria(where("_id").is(le.getId()));
+        LearningElement obj = this.mongoOps.findOne(query, LearningElement.class);
+        obj.setId(le.getId());        
+        obj.setStatus("2");
+        this.mongoOps.save(obj);
+        return ok;
+    }
+    
+    public boolean demoteLE(LearningElement le) throws UnknownHostException{
+        boolean ok = false;        
+        Query query = new Query();
+        query.addCriteria(where("_id").is(le.getId()));
+        LearningElement obj = this.mongoOps.findOne(query, LearningElement.class);
+        obj.setId(le.getId());
+        if(obj.getRev()==null)
+            obj.setStatus("0");
+        else 
+            obj.setStatus("1");
+        this.mongoOps.save(obj);
+        return ok;
+    }
     public List<LearningElement> getList() throws UnknownHostException {
         return mongoOps.findAll(LearningElement.class);
     }
     
     public List<LearningElement> searchLE(String keyword) {
         //return mongoOps.findAll(LearningElement.class);
-        Query query = new Query();
+        //Query query = new Query();
+        BasicQuery query = new BasicQuery("{\"title\": {$regex : '/" + keyword + "/'} }");
          //       System.out.println(query+"HAHA");
         query.limit(10);
-        //query.addCriteria(where("name").is(keyword).orOperator(where("subject").is(keyword)).orOperator(where("description").is(keyword)));
-        query.addCriteria(Criteria.where("name").regex(keyword));
+        //query.addCriteria(where("title").is(keyword).orOperator(where("subject").is(keyword)).orOperator(where("description").is(keyword)));
+        //query.addCriteria(Criteria.where("title").regex(keyword));
+        System.out.println(query);
+        //return mongoOps.find(query(where("title").regex(keyword)), LearningElement.class);
         return mongoOps.find(query, LearningElement.class);
     }
     
@@ -97,17 +131,17 @@ public class LearningElementDAO {
     }
     
     public LearningElement getSpecificLearningElement(String le) throws UnknownHostException {
-       return mongoOps.findOne(query(where("id").is(le)), LearningElement.class);
+       return mongoOps.findOne(query(where("_id").is(le)), LearningElement.class);
     }
     public List<LearningElement> getAllDownloadableLE() throws UnknownHostException {
        Query query = new Query();
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
        return mongoOps.find(query(where("rating").is(5)), LearningElement.class);
     }
-    public boolean nameAvailability(String name, String subject) throws UnknownHostException {
+    public boolean nameAvailability(String title, String subject) throws UnknownHostException {
        mongoOps.find(query(where("rating").is(5)), LearningElement.class);
        Query query= new Query();
-       query.addCriteria(where("name").is(name).andOperator(where("subject").is(subject)));
+       query.addCriteria(where("title").is(title).andOperator(where("subject").is(subject)));
        return DatabaseManager.getMongoOpsInstance("loop").exists(query, LearningElement.class);
     }
     
@@ -151,7 +185,7 @@ public class LearningElementDAO {
 	gfsFile.setFilename(le.getFileName());
         gfsFile.setContentType(le.getFileExtension());
         gfsFile.put("_class","com.card.loop.xyz.model.LearningElement");
-        gfsFile.put("name",le.getTitle());
+        gfsFile.put("title",le.getTitle());
         gfsFile.put("filePath",le.getFilePath());
         gfsFile.put("subject",le.getSubject());
         gfsFile.put("description", le.getDescription());
@@ -236,13 +270,18 @@ public class LearningElementDAO {
          getSingleLE(md5,"le.meta").writeTo("C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + fileName);
     }
     
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException, Exception{
+        /**
         LearningElementDAO dao = new LearningElementDAO();
         List<LearningElement> le;
         le = dao.searchLE("Test");
         System.out.println(le);
-        /**
-        le.setFileName("TestLEUpload2.zip");
+        
+        MongoOperations mongoOps = new MongoTemplate(AppConfig.mongod(),AppConfig.DATABASE_LOOP);
+        JOptionPane.showMessageDialog(null,mongoOps.find(query(where("name").is("hahah")), LearningElement.class));
+        * 
+        **/
+       /** le.setFileName("TestLEUpload2.zip");
         le.setName("TestLEUpload2");
         le.setFilePath("C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LE\\");
         le.setFileExtension(".zip");

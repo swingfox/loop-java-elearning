@@ -106,12 +106,13 @@ public class LOIDEController {
 */
                         switch (type) {
                             case "LE":
+                                System.out.println("TITLE: " + title);
                                 LearningElement le = new LearningElement();
                                 le.setTitle(title);
                                 le.setUploadedBy(author);
                                 le.setDescription(description);
                                 le.setDownloads(0);
-                                le.setStatus("1");
+                                le.setStatus("0");
                                 le.setRating(1);
                                 le.setSubject(subject);
                                 le.setType("LE");
@@ -127,7 +128,7 @@ public class LOIDEController {
                                 lo.setUploadedBy(author);
                                 lo.setDescription(description);
                                 lo.setDownloads(0);
-                                lo.setStatus("1");
+                                lo.setStatus("0");
                                 lo.setRating(1);
                                 lo.setType(type);
                                 lo.setSubject(subject);

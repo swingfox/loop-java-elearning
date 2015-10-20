@@ -25,18 +25,17 @@
 </head>
 <body>
     <jsp:include page="include/CurrentUser.jsp"/>
-		<div class="clearfix"></div>
-
-    	<ul class="nav nav-tabs main-views">
-    		<li><a href="/loop-XYZ/store/admin-view"><i class="icon-plus-sign-alt icon-large default"></i> New Account Requests</a></li>
-		<li><a href="/loop-XYZ/store/admin-view1"><i class="icon-folder-open icon-large default"></i> Developers</a></li>
-                <li><a href="/loop-XYZ/store/admin-view2"><i class="icon-edit icon-large default"></i> Reviewers</a></li>
-                <li><a href="/loop-XYZ/store/admin-view3"><i class="icon-time icon-large default"></i> Inactive Accounts</a></li>
-                <li><a href="/loop-XYZ/store/admin-view4"><i class="icon-ban-circle icon-large default"></i> Blocked Accounts</a></li>
-                <li class="active"><a class="active-tab" href="/loop-XYZ/store/admin-view5"><i class="icomoon-list"></i> Learning Objects</a></li>
-                <li><a href="/loop-XYZ/store/admin-view6"><i class="icomoon-list"></i> Learning Elements</a></li>
-	</ul>
-		<div class="clearfix"></div>
+    <div class="clearfix"></div>
+    <ul class="nav nav-tabs main-views">
+        <li><a href="/loop-XYZ/store/admin-view"><i class="icon-plus-sign-alt icon-large default"></i> New Account Requests</a></li>
+        <li><a href="/loop-XYZ/store/admin-view1"><i class="icon-folder-open icon-large default"></i> Developers</a></li>
+        <li><a href="/loop-XYZ/store/admin-view2"><i class="icon-edit icon-large default"></i> Reviewers</a></li>
+        <li><a href="/loop-XYZ/store/admin-view3"><i class="icon-time icon-large default"></i> Inactive Accounts</a></li>
+        <li><a href="/loop-XYZ/store/admin-view4"><i class="icon-ban-circle icon-large default"></i> Blocked Accounts</a></li>
+        <li class="active"><a class="active-tab" href="/loop-XYZ/store/admin-view5"><i class="icomoon-list"></i> Learning Objects</a></li>
+        <li><a href="/loop-XYZ/store/admin-view6"><i class="icomoon-list"></i> Learning Elements</a></li>
+    </ul>
+    <div class="clearfix"></div>
 
   		<div id="content-wrap-rev">
 			<div class="container">
@@ -65,7 +64,6 @@
 										<th class="color-code"><!-- <img src="<?php //echo base_url() ?>img/icon-colorcode.png" alt="color code" /> --></th>
 										<th>Name</th>
 										<th>Subject</th>
-										<!-- <th>Date Uploaded</th> -->
 										<th>Uploaded</th>
 										<th>Rating</th>
 										<th>Comments</th>
@@ -78,24 +76,24 @@
                                                             
                                                             <tr ng-repeat="lo in los | filter:searchText">
                                                                 <td>
-                                                                    <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
-                                                                    <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">
-                                                                    <img ng-if="lo.rating==3" src="img/icon-yellow.png" alt="For Review">
-                                                                    <img ng-if="lo.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
-                                                                    <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
+                                                                    <img ng-if="lo.rating===1" src="img/icon-red.png" alt="For Review">
+                                                                    <img ng-if="lo.rating===2" src="img/icon-orange.png" alt="For Review">
+                                                                    <img ng-if="lo.rating===3" src="img/icon-yellow.png" alt="For Review">
+                                                                    <img ng-if="lo.rating===4" src="img/icon-yellowgreen.png" alt="For Review">
+                                                                    <img ng-if="lo.rating===5" src="img/icon-green.png" alt="For Review"> 
                                                                     
                                                                 </td>
                                                                 <td><a ng-click="GetLO_admin(lo)"><label ng-model="lo.title">{{lo.title}}</a></td>
+
                                                                 <td><label ng-model="lo.subject">{{lo.subject}}</td>
                                                                 <td><label ng-model="lo.uploadDate">{{lo.uploadDate}}</td>
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
                                                                 <td><label ng-model="lo.comments">{{lo.comments}}</td>
-                                                                <td ng-if="lo.status==0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>
-                                                                <td ng-if="lo.status==1"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>
-                                                                <td ng-if="lo.status==2"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>
+                                                                <td ng-if="lo.status===0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>
+                                                                <td ng-if="lo.status===1"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>
+                                                                <td ng-if="lo.status===2"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>
                                                                 <td><label ng-model="lo.rev">{{lo.rev}}</td>
-                                                                <td><label ng-model="lo.uploadedBy">{{lo.uploadedBy}}</td>
-                                                             
+                                                                <td><label ng-model="lo.uploadedBy">{{lo.uploadedBy}}</td> 
                                                             </tr>							
 								</tbody>
 							  </table>
@@ -110,7 +108,6 @@
 
   		<div class="clearfix"></div>
         <div class="push"></div>
-	</div>
 	<div class="footer">
 		<footer id="footer-wrap-index">
 			<div class="container">
@@ -120,6 +117,8 @@
 		    </div>
 	    </footer>
     </div>
+        	</div>
+
 	<script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
 	<script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
 	<script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>

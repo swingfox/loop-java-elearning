@@ -208,8 +208,7 @@ req2.getHeaders().add("Content-Type", "application/json");
     {
         List<LearningObjectDto> dtos = new ArrayList<>();
         try{
-            dtos = loService2.getLearningObjects(name);
-            System.out.println(name);
+            dtos = loService2.getLearningObjects("hahah");
         }catch(Exception e){ 
             e.printStackTrace();
         }
