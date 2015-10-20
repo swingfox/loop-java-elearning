@@ -84,7 +84,7 @@
 
 		<div class="clearfix"></div>
 
-        <form name="uniquetest" method="post" <%--action="<?php echo base_url().'redirect/deleteLE_admin/'?>" --%>>
+            <form name="uniquetest" method="post" > <%--action="<?php echo base_url().'redirect/deleteLE_admin/'?>" --%>>
             <div class="modal fade" id="responsive_confirmDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -125,8 +125,8 @@
                             <div class="row">
                                 <div class="col-md-10 col-md-push-1">                                 
                                     <label class="file-action">Choose a Reviewer for the Learning Element</label>
-                                    <select ng-repeat="reviewer in reviewerAccount" ng-model="luckyReviewer">
-                                        <option>{{reviewer.username}}</option>
+                                    <select ng-model="luckyReviewer">
+                                        <option ng-repeat="reviewer in reviewerAccount" ng-title="{{reviewer.username}}" ng-selected="{{reviewer.username == luckyReviewer}}" value="{{reviewer.username}}">{{reviewer.username}}</option>
                                     </select>
                                     
                                 </div> 
@@ -134,10 +134,9 @@
                         </div>
                         <div class="modal-footer"> 
                             <div class="row">
-                                <div class="col-md-8 col-md-push-3">      
-                                <input type="hidden" value="<?php echo $counter?>" id="counters" name="counters">                                                                  
-                                    <button type="button" class="btn btn-primary" onclick="assignReviewer(luckyReviewer)" data-dismiss="modal"><i class="icon-ok icon-large default"></i> Yes &nbsp;</button>
-                            		<button type="button" class="btn btn-default" style="color: red;"><i class="icon-remove icon-large default"></i> &nbsp; No &nbsp;</button>
+                                <div class="col-md-8 col-md-push-3">                                                                        
+                                    <button type="button" class="btn btn-primary" ng-click="assignReviewer()" data-dismiss="modal"><i class="icon-ok icon-large default"></i> Yes &nbsp;</button>
+                            		<button type="button" class="btn btn-default" style="color: red;" data-dismiss="modal"><i class="icon-remove icon-large default"></i> &nbsp; No &nbsp;</button>
                         		</div>
                             </div>
                         </div>
@@ -157,7 +156,7 @@
 						
 						<div class="table-responsive">
 						 	<!-- <table class="datatable table table-bordered"> -->
-						 	<table class="datatable table table-hover" ng-controller="LEList">
+						 	<table class="datatable table table-hover" ng-controller="reviewerAccountCtrl">
 
 
 						    <thead>
@@ -175,16 +174,16 @@
 					        <tbody>
                                                      <tr ng-repeat="le in les | filter:searchText">
                                                         <td>
-                                                            <img ng-if="le.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
-                                                            <img ng-if="le.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">
-                                                            <img ng-if="le.rating==3" src="http://localhost/loop.com/img/icon-yellow.png" alt="For Review">
-                                                            <img ng-if="le.rating==4" src="http://localhost/loop.com/img/icon-yellowgreen.png" alt="For Review">
-                                                            <img ng-if="le.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
+                                                            <img ng-if="le.rating==1" src="img/icon-red.png" alt="For Review">
+                                                            <img ng-if="le.rating==2" src="img/icon-orange.png" alt="For Review">
+                                                            <img ng-if="le.rating==3" src="img/icon-yellow.png" alt="For Review">
+                                                            <img ng-if="le.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
+                                                            <img ng-if="le.rating==5" src="img/icon-green.png" alt="For Review">
 
                                                         </td>
                                                         <td><p classdownload-details ng-binding="download-details">{{le.title}}</p></td>
                                                         <td><label >{{le.subject}}</td>
-                                                        <td><label >{{le.uploadDate | date: mm d yyyy}}</td>
+                                                        <td><label >{{le.uploadDate | date:"MMMM d yyyy"}}</td>
                                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label >{{le.rating}}</td>
                                                         <td><label >{{le.comments}}</td>
                                                         <td><label >{{le.rev}}</td>

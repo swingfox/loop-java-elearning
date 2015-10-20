@@ -456,8 +456,7 @@ eS.controller('developerAccountCtrl', ['$scope', '$http', function($scope, $http
     });
 }]);
 
-eS.controller('reviewerAccountCtrl', ['$scope', '$http', function($scope, $http) {
-    
+eS.controller('reviewerAccountCtrl', ['$scope', '$http', function($scope, $http) { 
     function load() {    
     $http.get("/loop-XYZ/loop/user/reviewer")    
     .success(function(data) {
