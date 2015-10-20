@@ -113,7 +113,7 @@
             </div>
         </form>
 
-        <form name="tester" method="post" <%--action="<?php echo base_url().'redirect/plusrevLE/'?>"--%> >
+        <form name="tester" method="post" ng-controller="reviewerAccountCtrl"> 
             <div class="modal fade" id="responsive_addReviewer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content fileAction">
@@ -125,24 +125,10 @@
                             <div class="row">
                                 <div class="col-md-10 col-md-push-1">                                 
                                     <label class="file-action">Choose a Reviewer for the Learning Element</label>
-                                    <!--?php 
-                                        require './application/controllers/AdminController.php';
-                                        $controller = new AdminController;
-                                        $siteUsers = @$controller->getAllSiteUsersRev();						        		
-                                                $indexer = 0;
-                                                $siteUser = current($siteUsers);
-
-                                        echo '<select name="reviewer" class="btn btn-default">';
-                                                echo '<option value="">--none--</option>';
-                                                while($siteUser != null){
-                                                        echo '<option value="'.$siteUser->getUserName().'">'.$siteUser->getUserName().'</option>';
-                                                                next($siteUsers);
-                                                                $siteUser = current($siteUsers);
-                                                                $indexer++;
-
-                                                }        			
-                                        echo '</select>';
-                                    ?-->
+                                    <select ng-repeat="reviewer in reviewerAccount" ng-model="luckyReviewer">
+                                        <option>{{reviewer.username}}</option>
+                                    </select>
+                                    
                                 </div> 
                             </div>
                         </div>
@@ -150,8 +136,8 @@
                             <div class="row">
                                 <div class="col-md-8 col-md-push-3">      
                                 <input type="hidden" value="<?php echo $counter?>" id="counters" name="counters">                                                                  
-                                    <button type="button" class="btn btn-primary" onclick="document.tester.submit()"><i class="icon-ok icon-large default"></i> Yes &nbsp;</button>
-                            		<button type="button" class="btn btn-default" data-dismiss="modal" style="color: red;"><i class="icon-remove icon-large default"></i> &nbsp; No &nbsp;</button>
+                                    <button type="button" class="btn btn-primary" onclick="assignReviewer(luckyReviewer)" data-dismiss="modal"><i class="icon-ok icon-large default"></i> Yes &nbsp;</button>
+                            		<button type="button" class="btn btn-default" style="color: red;"><i class="icon-remove icon-large default"></i> &nbsp; No &nbsp;</button>
                         		</div>
                             </div>
                         </div>

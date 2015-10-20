@@ -36,6 +36,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import org.springframework.data.mongodb.core.query.Query;
 import static org.springframework.data.mongodb.core.query.Query.query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -268,14 +269,25 @@ public class LearningElementDAO {
          getSingleLE(md5,"le.meta").writeTo("C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + fileName);
     }
     
+    public boolean assignReviewer(String id, String reviewer) throws UnknownHostException {
+        boolean ok = false;
+        Update assigner = new Update();
+        assigner.set("rev", reviewer);
+        mongoOps.findAndModify(query(where("id").is(id)), assigner, LearningElement.class);
+        ok = true;
+        
+        return ok;
+    }
+
+    
     public static void main(String[] args) throws IOException, Exception{
         LearningElementDAO dao = new LearningElementDAO();
         List<LearningElement> le;
         le = dao.searchLE("Test");
         System.out.println(le);
         
-        MongoOperations mongoOps = new MongoTemplate(AppConfig.mongod(),AppConfig.DATABASE_LOOP);
-        JOptionPane.showMessageDialog(null,mongoOps.find(query(where("name").is("hahah")), LearningElement.class));
+        //MongoOperations mongoOps = new MongoTemplate(AppConfig.mongod(),AppConfig.DATABASE_LOOP);
+        //JOptionPane.showMessageDialog(null,mongoOps.find(query(where("name").is("hahah")), LearningElement.class));
        /** le.setFileName("TestLEUpload2.zip");
         le.setName("TestLEUpload2");
         le.setFilePath("C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LE\\");

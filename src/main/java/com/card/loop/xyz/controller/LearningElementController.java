@@ -164,4 +164,12 @@ public class LearningElementController {
             }
             
         }
+    
+    @RequestMapping(value = "/ässignReviewer", method = RequestMethod.POST)
+    public boolean assignReviewer(@RequestParam("leid") String id,@RequestParam("reviewer") String reviewer) throws UnknownHostException {
+        if(id!=null && reviewer!=null)
+            return leService.assignReviewer(id,reviewer);
+        else
+            return false;
+    }
 }
