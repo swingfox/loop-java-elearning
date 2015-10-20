@@ -323,15 +323,18 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
         });
     }; 
     
-    $scope.LoHistory = function() {
+    $scope.LoHistory = function(lo) {
          //$rootScope.userBlock = lo.name;
         //console.log($rootScope.userBlock);
-        $http.get('/loop-XYZ/loop/LO/listHistory/')    
+        $http.get('/loop-XYZ/loop/LO/listHistory/' + lo.name)    
         .success(function(data) {
             $store.bind($scope, 'lo.id', data.id); 
             $store.bind($scope, 'lo.name', data.name);
             $store.bind($scope, 'lo.subject', data.subject); 
             $store.bind($scope, 'lo.dateUploaded', data.dateUploaded); 
+            $store.bind($scope, 'lo.rating', data.rating); 
+            $store.bind($scope, 'lo.comments', data.comments); 
+            $store.bind($scope, 'lo.reviewer', data.reviewer); 
             $store.bind($scope, 'lo.description', data.description);          
          
              window.location = '/loop-XYZ/store/historyLO-dev';
@@ -416,7 +419,7 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
         $store.bind($scope, 'lo.rating', '');
         $store.bind($scope, 'lo.dateUploaded', '');
         $store.bind($scope, 'lo.description', '');
-    $http.get("/loop-XYZ/loop/LO/listHistory")    
+    $http.get("/loop-XYZ/loop/LO/listHistory/")    
     .success(function(data) {
     	$scope.los = data;
     })

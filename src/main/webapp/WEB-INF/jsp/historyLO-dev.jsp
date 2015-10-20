@@ -66,8 +66,10 @@
     <body>
 
         <!-- <div id="wrapper"> -->
-	
+	<div class="wrapper" ng-controller="LoginCtrl">
     	<!--<?php $this->layout->modal_footer() ?>-->
+		
+		
 
 
         <jsp:include page="include/CurrentUser.jsp"/>
@@ -200,6 +202,8 @@
 
   		<div class="clearfix"></div>
         <div class="push"></div>
+	</div>
+
 	<div class="footer">
 		<footer id="footer-wrap-index">
 			<!-- <div class="container"> -->

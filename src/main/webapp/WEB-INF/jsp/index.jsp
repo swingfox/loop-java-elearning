@@ -66,7 +66,7 @@
 
                             <div class="modal-body">  
                                 <div class="row">
-                                    <div class="col-md-10 col-md-push-1" id="loginto">
+                                    <div class="col-md-10 col-md-push-1">
                                         <!--<?php if(isset($status) && !$status){ ?>-->
                                      
                                         <p><span class="error_message_1"></span></p>
@@ -77,7 +77,7 @@
                                         <!-- <p><input class="col-xs-12 col-md-12 sign-up" id="username" type="text" name="username" placeholder="Username" required></p>
                                             <p><input class="col-xs-12 col-md-12 sign-up" id="password" type="password" name="password" placeholder="Password" required></p> -->
 
-                                        <div class="form-group">
+                                        <div class="form-group" id="loginto">
                                             <input type="text"  class="form-control" id="username" ng-model="username" name="username" placeholder="Username" required/>
                                         </div>
 
