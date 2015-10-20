@@ -102,11 +102,9 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                 
                 <div class="clearfix" id="before-features" ></div>
-            </div>
-        </div>
-        
+               
         </div>
     <div class="clearfix"></div>
     <div class="push"></div>
@@ -213,3 +211,4 @@
 	</script>
 </body>
 </html>
+     

@@ -118,13 +118,14 @@ $(document).ready(function(){
                    $('#userType').val(data.usertype).change();
                    if(data.id === null){
                        //alert('User not found'); 
-                       $('div').removeClass("alert alert-danger"); 
-                       $('i').removeClass("icon-warning-sign"); 
-                       $('p').removeClass("label-alert");
+                       //$('div').removeClass("alert alert-danger"); 
+                       //$('i').removeClass("icon-warning-sign"); 
+                       //$('p').removeClass("label-alert");
                        //("<p class='alert alert-danger'><i class='icon-warning-sign'></i> Invalid account details. Check your information below.</p> </div>");
                       
-                      $('#loginto').prepend("<div class='alert alert-danger'><i class='icon-warning-sign'><p class='label-alert'>Invalid account details. Check your information below.</p></i></div>");
-                       
+                      $('#loginto').prepend("<p class='alert alert-danger'><i class='icon-warning-sign'>Invalid account details. Check your information below.</i></p>");
+                     
+                      
                     }
                    else if(data.id !== null){
                         //alert("YEEEYYYY!");
