@@ -15,7 +15,7 @@ import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.service.LearningObjectService;
 import com.card.loop.xyz.service.UserService;
-import com.card.loop.controller.ContentShipper;
+import com.card.loop.xyz.config.ContentShipper;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
