@@ -63,12 +63,11 @@
 		</div>
 
     <jsp:include page="include/CurrentUser.jsp"/>
-<<<<<<< HEAD
+
 		<div class="clearfix"></div>
-=======
     <div class="wrapper">
     <div class="clearfix"></div>
->>>>>>> Updated .....
+
 
     <ul class="nav nav-tabs main-views">
         <li><a href="/loop-XYZ/store/admin-view"><i class="icon-plus-sign-alt icon-large default"></i> New Account Requests</a></li>
@@ -82,7 +81,7 @@
 
     <div class="clearfix"></div>
 
-<<<<<<< HEAD
+
   		<div id="content-wrap-rev">
 			<div class="container">
 				<div class="row">
@@ -152,7 +151,7 @@
 		</div>
 
   		<div class="clearfix"></div>
-=======
+
     <div id="content-wrap-rev">
         <div class="container">
             <div class="row">
@@ -217,7 +216,7 @@
         </div>
     <div class="clearfix"></div>
     <div class="push"></div>
->>>>>>> Updated .....
+
 
 
         <div class="footer">
