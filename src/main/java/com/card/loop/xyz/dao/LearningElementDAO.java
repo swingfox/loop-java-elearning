@@ -286,9 +286,7 @@ public class LearningElementDAO {
         le = dao.searchLE("Test");
         System.out.println(le);
         
-        //MongoOperations mongoOps = new MongoTemplate(AppConfig.mongod(),AppConfig.DATABASE_LOOP);
-        //JOptionPane.showMessageDialog(null,mongoOps.find(query(where("name").is("hahah")), LearningElement.class));
-       /** le.setFileName("TestLEUpload2.zip");
+        /** le.setFileName("TestLEUpload2.zip");
         le.setName("TestLEUpload2");
         le.setFilePath("C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LE\\");
         le.setFileExtension(".zip");
