@@ -61,6 +61,7 @@
 </head>
 <body>
     <jsp:include page="include/CurrentUser.jsp"/>
+
 		<div class="clearfix"></div>
 
 		<!-- User Action -->
@@ -375,6 +376,7 @@
 		    </div>
 	    </footer>
     </div>
+
 	<!-- Load JS here for greater good =============================-->
 
         <script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
