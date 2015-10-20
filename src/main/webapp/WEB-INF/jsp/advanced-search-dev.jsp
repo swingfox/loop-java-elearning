@@ -49,14 +49,14 @@
 </head>
 <body>	
     <jsp:include page="include/CurrentUser.jsp"/>
-	<div class="clearfix"></div>
+		<div class="clearfix"></div>
 
     	<ul class="nav nav-tabs main-views">
-		  <li><a href="/loop-XYZ/store/developer-update"><i class="icomoon-list"></i> Learning Objects</a></li>
-		  <li class=" tour-step tour-step-two"><a class="active-tab"  href="/loop-XYZ/store/developer-le"><i class="icomoon-list"></i> Learning Elements</a></li>
-		  <li><a href="/loop-XYZ/store/upload-dev"><i class="icon-upload-alt icon-large default"></i> Upload LO</a></li>
-		  <li><a href="/loop-XYZ/store/uploadLE-dev"><i class="icon-upload-alt icon-large default"></i> Upload LE</a></li>
-		  <li class="active tour-step tour-step-fourteen"><a class="active-tab" href="/loop-XYZ/store/advanced-search-dev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
+		  <li><a href="developer-update"><i class="icomoon-list"></i> Learning Objects</a></li>
+		  <li class=" tour-step tour-step-two"><a class="active-tab"  href="developer-le"><i class="icomoon-list"></i> Learning Elements</a></li>
+		  <li><a href="upload-dev"><i class="icon-upload-alt icon-large default"></i> Upload LO</a></li>
+		  <li><a href="uploadLE-dev"><i class="icon-upload-alt icon-large default"></i> Upload LE</a></li>
+		  <li class="active tour-step tour-step-fourteen"><a class="active-tab" href="advanced-search-dev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
 	</ul>
 
 		<div class="clearfix"></div>
@@ -66,17 +66,17 @@
 
 		<div id="content-wrap">
 			<div class="container">
-				<form class="form-horizontal" action="/loop-XYZ/store/developer-update" method="POST">
+				<form class="form-horizontal" method="POST">
 
 					<div class="row">
 						<div class="col-md-6 col-md-push-3">
 							<div class="input-group advanced-search tour-step tour-step-fifteen">
 								<span class="input-group-addon"><i class="icon-search"></i></span>
-								<input type="text" name="searchName" class="form-control" placeholder="Search">
+								<input type="text" name="searchName" class="form-control" placeholder="Search" ng-model="searchTitle">
 							</div>
 						
 							<div class="well tour-step tour-step-sixteen">
-								<label class="checkbox" for="checkbox1">
+								<label class="checkbox" for="checkbox1" ng-click="showSubject()">
 								    <input name="subjectCheck" type="checkbox" checked="checked" id="checkbox1" data-toggle="checkbox" value="option1">
 								    Subject
 								</label>
@@ -92,7 +92,7 @@
 								  	<input type="text" name="subject" placeholder="e.g. Algebra, Physics" />
 								</div> -->
 								
-								<input type="text" name="subject" class="form-control col-md-6" name="subject" placeholder="e.g. Algebra, Physics" />
+								<input type="text" name="subject" class="form-control col-md-6" name="subject" placeholder="e.g. Algebra, Physics" ng-model="searchSubject" />
 								<!-- <input type="text" class="form-control" placeholder="Text input"> -->
 								<div class="clearfix"></div>
 							</div>
@@ -101,7 +101,7 @@
 
 
 							<div class="well tour-step tour-step-seventeen">
-								<div class="checkbox"><label class="" for="checkbox2">
+								<div class="checkbox"><label class="" for="checkbox2" ng-click="showDate()">
 								    <input name="dateCheck" type="checkbox" id="checkbox2" data-toggle="checkbox" value="option2">
 								    Date
 								</label></div>
@@ -184,7 +184,7 @@
 									<div class="bfh-datepicker" data-format="y-m-d" data-date="2013-09-01">
 										<div class="input-prepend bfh-datepicker-toggle" data-toggle="bfh-datepicker">
 										    <span class="add-on"><i class="icon-calendar"></i></span>
-										    <input name="dateFrom" type="text" class="input-medium form-control" readonly="">
+										    <input name="dateFrom" type="text" class="input-medium form-control" ng-model="searchFromDate">
 										</div>
 
 										<div class="bfh-datepicker-calendar">
@@ -217,7 +217,7 @@
 									<div class="bfh-datepicker" data-format="y-m-d" data-date="2013-09-10">
 										<div class="input-prepend bfh-datepicker-toggle" data-toggle="bfh-datepicker">
 										    <span class="add-on"><i class="icon-calendar"></i></span>
-										    <input name="dateTo" type="text" class="input-medium form-control" readonly="">
+										    <input name="dateTo" type="text" class="input-medium form-control" ng-model="searchToDate">
 										</div>
 
 										<div class="bfh-datepicker-calendar">
@@ -248,7 +248,7 @@
 							</div>
 
 							<div class="well tour-step tour-step-eighteen">
-								<div class="checkbox"><label class="" for="checkbox3">
+								<div class="checkbox"><label class="" for="checkbox3" ng-click="showOrderBy">
 								    <input name="orderCheck" type="checkbox" id="checkbox3" data-toggle="checkbox" value="option3">
 								    Order By
 								</label></div>
@@ -268,7 +268,7 @@
 								  	</select>
 								</div> -->
 
-								<select class="form-control col-md-6" name="order" id="select01">
+								<select class="form-control col-md-6" name="order" id="select01" ng-model="searchOrderBy">
 								    <option value="dateUploaded">Date</option>
 								    <option value="downloads">Popularity</option>
 								    <option value="name">Name</option>
@@ -279,10 +279,10 @@
 	 						<div class="clearfix"></div>
 							
 							<div class="form-actions advanced-search">
-								<button type="submit" class="btn btn-primary tour-step tour-step-nineteen" >Search</button>
+                                                            <a class="btn btn-primary tour-step tour-step-nineteen" ng-href="advanced-search-dev-results">Search</a>
 								<!-- <a href="index.php" class="btn btn-default">Cancel</a> -->
 								
-								<a class="btn btn-default" href="/loop-XYZ/store/developer-update">Cancel</a>
+								<a class="btn btn-default" ng-href="developer-update">Cancel</a>
 								<!-- <button type="reset" class="btn btn-default">Cancel</button> -->
 
 
@@ -311,10 +311,7 @@
 		    	</div>
 		    <!-- </div> -->
 	    </footer>
-        </div>
-        
-       
-
+    </div>
 	<!-- Load JS here for greater good =============================-->
 
 	<!--?php $this->layout->footer_subpages() ?-->

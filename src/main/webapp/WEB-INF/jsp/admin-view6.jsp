@@ -23,9 +23,52 @@
 
 </head>
 <body>	
+
+	<div class="wrapper">
+		<div id="header-wrap">
+			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+	                    
+	                    <a class="navbar-brand" href="/loop-XYZ/store/admin-view">
+							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
+						</a>
+	                </div>
+					
+				<div class="navbar-collapse collapse" ng-controller="LoginCtrl">
+                                                <ul class="nav navbar-nav navbar-right"> 
+                                                    <li class="dropdown">
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
+                                                        <ul class="dropdown-menu">
+
+                                                                <li role="presentation" class="dropdown-header">Options</li>
+
+                                                                <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
+                                                                <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
+
+                                                                <li class="divider"></li>
+
+                                                                <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
+                                                        </ul>
+                                                     </li>
+                                                </ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+
     <jsp:include page="include/CurrentUser.jsp"/>
+<<<<<<< HEAD
+		<div class="clearfix"></div>
+=======
     <div class="wrapper">
     <div class="clearfix"></div>
+>>>>>>> Updated .....
 
     <ul class="nav nav-tabs main-views">
         <li><a href="/loop-XYZ/store/admin-view"><i class="icon-plus-sign-alt icon-large default"></i> New Account Requests</a></li>
@@ -39,6 +82,77 @@
 
     <div class="clearfix"></div>
 
+<<<<<<< HEAD
+  		<div id="content-wrap-rev">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 content">
+						
+						<div class="table-responsive" ng-controller="LEList">
+							<!-- <table class="datatable table table-bordered"> -->
+                                                        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                <div class="pull-right">
+                                                                    <i class="icomoon-search pull-left searchbar-icon"></i>
+                                                                    <div class="dataTables_filter pull-right" id="DataTables_Table_0_filter">
+                                                                        <label>
+                                                                            <input type="text" aria-controls="DataTables_Table_0" data-ng-model="searchText" placeholder="Search" class="form-control input-sm" style="width: 162px;">
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+                                                            </div>
+							<table class="datatable table table-hover">
+							    <thead>
+									<tr>
+										<th class="color-code"></th>
+										<th>Name</th>
+										<th>Subject</th>
+										<th>Uploaded</th>
+										<th>Rating</th>
+										<th>Comments</th>
+										<th>Status</th>
+										<th>Reviewer</th>
+										<th>Author</th>
+									</tr>
+								</thead>
+						        <tbody>
+                                                            
+                                                            <tr ng-repeat="le in les | filter:searchText">
+                                                                <td>
+                                                                    <img ng-if="le.rating==1" src="img/icon-red.png" alt="For Review">
+                                                                    <img ng-if="le.rating==2" src="img/icon-orange.png" alt="For Review">
+                                                                    <img ng-if="le.rating==3" src="img/icon-yellow.png" alt="For Review">
+                                                                    <img ng-if="le.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
+                                                                    <img ng-if="le.rating==5" src="img/icon-green.png" alt="For Review">
+                                                                    
+                                                                </td>
+                                                                <td><a ng-click="GetLEDetails_admin(le)"><label ng-model="name">{{le.name}}</a></td>
+                                                                <td><label ng-model="le.subject">{{le.subject}}</td>
+                                                                <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
+                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="le.rating">{{le.rating}}</td>
+                                                                <td><label ng-model="le.comments">{{le.comments}}</td>
+                                                                <td ng-if="le.status==0"><a href="#responsive_approve" data-toggle="modal"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></a></td>
+                                                                <td ng-if="le.status==1"><a href="#responsive_approve" data-toggle="modal"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></a></td>
+                                                                <td ng-if="le.status==2"><a href="#responsive_approve" data-toggle="modal"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></a></td>
+                                                                <td><label ng-model="le.rev">{{le.rev}}</td>
+                                                                <td><label ng-model="le.uploadedBy">{{le.uploadedBy}}</td>
+                                                            </tr>			
+								</tbody>
+							  </table>
+						</div>
+
+					</div>
+				</div>
+				
+				<div class="clearfix" id="before-features" ></div>
+			</div>
+		</div>
+
+  		<div class="clearfix"></div>
+=======
     <div id="content-wrap-rev">
         <div class="container">
             <div class="row">
@@ -103,6 +217,7 @@
         </div>
     <div class="clearfix"></div>
     <div class="push"></div>
+>>>>>>> Updated .....
 
 
         <div class="footer">
@@ -115,7 +230,6 @@
             </footer>
         </div>
     </div>
-        
 	<script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
 	<script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
 	<script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
