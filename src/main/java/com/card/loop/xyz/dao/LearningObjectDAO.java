@@ -70,7 +70,7 @@ public class LearningObjectDAO {
     public List<LearningObject> getAllDownloadableLO() throws UnknownHostException {
        Query query = new Query();
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
-       return (mongoOps.find(query(where("rating").is(5)), LearningObject.class));
+       return (mongoOps.find(query(where("status").is(1)), LearningObject.class));
     }
     
     public List<LearningObject> getOldLO(String name) throws UnknownHostException {

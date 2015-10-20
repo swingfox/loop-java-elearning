@@ -5,9 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<div class="wrapper" ng-controller="LoginCtrl">
+<div class="wrapper" ng-app="loop">
     
-    <form  method="post">
+    <form  method="post" ng-controller="LoginCtrl">
             <div class="modal fade" id="responsive_changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
