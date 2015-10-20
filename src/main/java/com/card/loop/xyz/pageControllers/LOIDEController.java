@@ -16,14 +16,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.card.loop.xyz.dao.LearningElementDAO;
 import com.card.loop.xyz.dao.LearningObjectDAO;
+import com.card.loop.xyz.dto.LearningElementDto;
 import com.card.loop.xyz.dto.LearningObjectDto;
 import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
+import com.card.loop.xyz.service.LearningElementService;
+import com.card.loop.xyz.service.LearningObjectService;
 import com.loop.controller.ContentShipper;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,6 +43,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/loide")
 public class LOIDEController {
+    @Autowired LearningElementService leService;
     @Autowired LearningElementDAO daoLE;
     @Autowired LearningObjectDAO daoLO;
 
@@ -57,6 +63,18 @@ public class LOIDEController {
     @RequestMapping("/error")
     public ModelAndView accessError() {
         return new ModelAndView("error");
+    }
+    
+    @RequestMapping("/query/{searchKey}")
+    public List<LearningElementDto> find(@PathVariable String searchKey) {		
+        //return Database.get().find(searchKey);
+        List<LearningElementDto> dtos = new ArrayList<>();
+        try{
+            dtos = leService.getLearningElements(searchKey);
+        }catch(Exception e){ 
+            e.printStackTrace();
+        }
+        return dtos;
     }
     
     @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.GET)
