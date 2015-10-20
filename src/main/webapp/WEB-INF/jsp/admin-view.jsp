@@ -51,8 +51,8 @@
                         </div>
                         <div class="modal-footer"> 
                             <div class="row">
-                                <div class="col-md-8 col-md-offset-3 ">
-                                    <button type="submit" class="btn btn-primary" id="changepassword"><i class="icon-ok icon-large default"></i> Save</button>
+                                <div class="col-md-8 col-md-offset-3" ng-controller="LoginCtrl">
+                                    <button type="submit" class="btn btn-primary" id="changepassword" ng-click="changeEmail(username)"><i class="icon-ok icon-large default"></i> Save</button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
                 </div>
             </div>
         </form>
-        <form id="emailForm" method="post">
+        <form id="emailForm" method="post"  ng-controller="LoginCtrl">
             <div class="modal fade" id="responsive_changeEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -75,10 +75,10 @@
                                  <p class="alert alert-danger hide" id="error1"><i class="icon-warning-sign"></i> Invalid password.</p>
                                     <p class="alert alert-success hide" id="success1"><i class="icon-ok"></i> Successfully changed password.</p>
                                 <div class="form-group">
-                                        <input type="password" class="form-control" id="emailPassword" name="emailPassword" placeholder="Enter Password" required/>
+                                        <input type="password" class="form-control" id="emailPassword" name="emailPassword" placeholder="Enter Password" ng-model="password" required/>
                                     </div>
                                     <div class="form-group last">
-                                        <input type="text" class="form-control last" id="enterNewEmail" name="enterNewEmail" placeholder="Enter New Email" required/>
+                                        <input type="text" class="form-control last" id="enterNewEmail" name="enterNewEmail" ng-model="newEmail" placeholder="Enter New Email" required/>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                         <div class="modal-footer">
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-3">
-                                    <button type="submit" class="btn btn-primary" id="changeEmail"><i class="icon-ok icon-large default"></i> Save</button>
+                                    <button type="submit" class="btn btn-primary" id="changeEmail" ng-click="changeEmail()"><i class="icon-ok icon-large default"></i> Save</button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                 </div>
                             </div>
@@ -111,11 +111,11 @@
                            <div class="navbar-collapse collapse"  ng-controller="LoginCtrl">
                                                 <ul class="nav navbar-nav navbar-right"> 
                                                     <li class="dropdown">
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} {{userId}}<b class="caret"></b></a>
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} {{uemail}} {{upassword}}<b class="caret"></b></a>
 
                                                         <ul class="dropdown-menu">
                                                                 <li role="presentation" class="dropdown-header">Options</li>
-                                                                <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
+                                                                <li><a href="#responsive_changeEmail" data-toggle="modal" >Change Email</a></li>
                                                                 <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
                                                                 <li class="divider"></li>
                                                                 <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>

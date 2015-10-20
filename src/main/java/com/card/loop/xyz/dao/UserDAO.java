@@ -75,6 +75,16 @@ public class UserDAO {
         return ok;
     }
     
+    public boolean editEmail(User user) throws UnknownHostException{
+        boolean ok=false;
+        Query query = new Query();
+        query.addCriteria(where("username").is(user.getUsername()).andOperator(where("password").is(user.getPassword())));
+        User obj = this.user.findOne(query, User.class);
+        obj.setEmail(user.getEmail());
+        this.user.save(obj);
+        return ok;
+    }
+    
     public boolean blockUser(User user) throws UnknownHostException{
          boolean ok=false;
         Query query = new Query();
@@ -107,6 +117,8 @@ public class UserDAO {
         this.user.save(obj);
         return ok;
     }
+    
+
     
     public boolean saveUser(User user) throws UnknownHostException{
         boolean ok = false;

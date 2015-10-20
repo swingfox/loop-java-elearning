@@ -65,10 +65,10 @@
     </head>
     <body>
         <!-- <div id="wrapper"> -->
-	<div class="wrapper">
+	<div class="wrapper" ng-controller="LoginCtrl">
     	<!--<?php $this->layout->modal_footer() ?>-->
 		
-		<div id="header-wrap">
+		<div id="header-wrap" >
 			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
 				<!-- <div class="container"> -->
 					<div class="navbar-header">
@@ -83,7 +83,7 @@
 						</a>
 	                </div>
 					
-					<div class="navbar-collapse collapse" ng-controller="LoginCtrl">
+					<div class="navbar-collapse collapse" >
 
 
 						<!--?php $this->layout->user_menu() ?-->
@@ -194,15 +194,14 @@
 				<div class="row">
 					<div class="col-md-12 content">
 						
-						<div class="table-responsive" ng-controller="LOList">
+						<div class="table-responsive" ng-controller="LOListHistory">
 						 	<!-- <table class="datatable table table-bordered"> -->
 						 	<table class="datatable table table-hover">
 						    <thead>
 								<tr>
-									<th class="color-code">#</th>
+									<th>#</th>
 									<th>Name</th>
 									<th>Subject</th>
-									<!-- <th>Date Uploaded</th> -->
 									<th>Uploaded</th>
 									<th>Rating</th>
 									<th>Comments</th>
@@ -210,7 +209,7 @@
 								</tr>
 							</thead>
                                                     <tbody>
-                                                        <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : username }">
+                                                        <tr ng-repeat="lo in los | filter:searchText ">
                                                                 <td>
                                                                     <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
                                                                     <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">
@@ -219,7 +218,7 @@
                                                                     <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
 
                                                                 </td>
-                                                                <td><a ng-click="GetLODeveloper(lo)"><label ng-model="lo.name">{{lo.name}}</a></td>
+                                                                <td><a ng-click="GetLO(lo)"><label ng-model="lo.name">{{lo.name}}</a></td>
                                                                 <td><label ng-model="lo.subject">{{lo.subject}}</td>
                                                                 <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>

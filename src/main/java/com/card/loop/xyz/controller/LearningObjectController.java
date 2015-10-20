@@ -9,11 +9,13 @@ package com.card.loop.xyz.controller;
 import com.card.loop.xyz.config.AppConfig;
 import com.card.loop.xyz.dao.LearningElementDAO;
 import com.card.loop.xyz.dao.LearningObjectDAO;
+import com.card.loop.xyz.dao.OldLODAO;
 import com.card.loop.xyz.dto.LearningObjectDto;
 import com.card.loop.xyz.dto.UserDto;
 import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.service.LearningObjectService;
+import com.card.loop.xyz.service.OldLOService;
 import com.card.loop.xyz.service.UserService;
 import com.loop.controller.ContentShipper;
 import java.io.BufferedOutputStream;
@@ -58,6 +60,9 @@ public class LearningObjectController {
     
     @Autowired LearningObjectService loService;
     @Autowired LearningObjectDAO dao;
+    
+    @Autowired OldLOService loService2;
+    @Autowired OldLODAO dao2;
 
     
     @RequestMapping(value="/upload", method = RequestMethod.POST)
@@ -150,6 +155,7 @@ public class LearningObjectController {
         }
         return dtos;
     }
+    
     /* 
     *   @return List<LearningObjectDto> reviewer's learning objects
     */
@@ -180,6 +186,21 @@ public class LearningObjectController {
             e.printStackTrace();
         }
         return dto;
+    }
+    
+    //list of history revisions in LOs collection=oldlo
+    @RequestMapping("/listHistory/{name}")
+    @ResponseBody
+    public List<LearningObjectDto> ListLOHistory(@PathVariable String name) throws UnknownHostException
+    {
+        List<LearningObjectDto> dtos = new ArrayList<>();
+        try{
+            dtos = loService2.getLearningObjects(name);
+            System.out.println(name);
+        }catch(Exception e){ 
+            e.printStackTrace();
+        }
+        return dtos;
     }
     
     /*

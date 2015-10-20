@@ -146,10 +146,9 @@
 
 						    <thead>
 								<tr>
-									<th class="color-code">#</th>
+									<th>#</th>
 									<th>Name</th>
 									<th>Subject</th>
-									<!-- <th>Date Uploaded</th> -->
 									<th>Uploaded</th>
 									<th>Rating</th>
 									<th>Comments</th>
@@ -166,7 +165,7 @@
                                                             <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
 
                                                         </td>
-                                                        <td><p classdownload-details ng-binding="download-details">{{lo.name}}</p></td>
+                                                        <td><p classdownload-details><label ng-model="lo.name">{{lo.name}}</p></td>
                                                         <td><label >{{lo.subject}}</td>
                                                         <td><label >{{lo.dateUploaded}}</td>
                                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label >{{lo.rating}}</td>
