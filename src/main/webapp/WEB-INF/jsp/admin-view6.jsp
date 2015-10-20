@@ -78,7 +78,7 @@
                                     </tr>
                                 </thead>
                                 
-                                <tbody>
+                                <tbody ng-controller="LECtrl">
                                     <tr ng-repeat="le in les | filter:searchText">
                                         <td>
                                             <img ng-if="le.rating==1" src="img/icon-red.png" alt="For Review">
@@ -87,14 +87,14 @@
                                             <img ng-if="le.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
                                             <img ng-if="le.rating==5" src="img/icon-green.png" alt="For Review">
                                         </td>
-                                        <td><a ng-click="GetLEDetails_admin(le)"><label ng-model="name">{{le.name}}</a></td>
+                                        <td><a ng-click="GetLEDetails_admin(le)"><label ng-model="name">nnj{{le.title}}</a></td>
                                         <td><label ng-model="le.subject">{{le.subject}}</td>
                                         <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
-                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="le.rating">{{le.rating}}</td>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td><label ng-model="le.rating">{{le.rating}}</td>
                                         <td><label ng-model="le.comments">{{le.comments}}</td>
-                                        <td ng-if="le.status==0"><a href="#responsive_approve" data-toggle="modal"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></a></td>
-                                        <td ng-if="le.status==1"><a href="#responsive_approve" data-toggle="modal"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></a></td>
-                                        <td ng-if="le.status==2"><a href="#responsive_approve" data-toggle="modal"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></a></td>
+                                        <td ng-if="le.status==0"><a href="#responsive_approve" data-toggle="modal" onclick="selectIndex('.$counter.')" ng-click="assignUser(le)"  value="le.id" ng-model="le.id"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></a></td>
+                                        <td ng-if="le.status==1"><a href="#responsive_approve" data-toggle="modal" onclick="selectIndex('.$counter.')" ng-click="assignUser(le)"   value="le.id" ng-model="le.id"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></a></td>
+                                        <td ng-if="le.status==2"><a href="#responsive_approve" data-toggle="modal" onclick="selectIndex('.$counter.')" ng-click="assignUser(le)"  value="le.id" ng-model="le.id"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></a></td>
                                         <td><label ng-model="le.rev">{{le.rev}}</td>
                                         <td><label ng-model="le.uploadedBy">{{le.uploadedBy}}</td>
                                     </tr>			
@@ -109,7 +109,7 @@
     <div class="clearfix"></div>
     <div class="push"></div>
 
-     <form method="post" ng-controller="acceptLECtrl">
+     <form method="post" ng-controller="LECtrl">
             <div class="modal fade" id="responsive_approve" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
