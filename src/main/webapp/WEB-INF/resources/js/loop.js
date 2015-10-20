@@ -142,25 +142,6 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
         });
     };
     
-
-        $scope.changeEmail=function(){
-           // alert(username);
-           var data =  {
-                            username: $scope.username,
-                            password: $scope.password,                            
-                            email: $scope.NewEmail
-                    };
-            $http.post("/loop-XYZ/loop/user/changeEmail/", data)
-            .success(function(data) {
-                console.log("SUCCESS"); 
-                window.location.reload(true);
-            })
-            .error(function(jqXHR, status, error) {
-                console.log("jsjdjs"+ error);
-            });
-        };
-
-    
    if($store.get('userID').length === 0 && window.location.toString().split('/store/')[1] !== 'home'){
        window.location = '/loop-XYZ/store/home';
    }
