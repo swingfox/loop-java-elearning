@@ -37,8 +37,8 @@ public class OldLODAO {
         System.out.println(o.getLearningObject("hahah"));
     }
     
-    public List<OldLO> getListHistory(String name) throws UnknownHostException {
-        return (mongoOps.find(query(where("name").is(name)), OldLO.class));
+    public List<OldLO> getListHistory() throws UnknownHostException {
+       return mongoOps.findAll(OldLO.class);
     }
     
     public List<OldLO> getAllDownloadableLO() throws UnknownHostException {
@@ -63,7 +63,7 @@ public class OldLODAO {
         obj.setDescription(lo.getDescription());
         obj.setUploadedBy(lo.getUploadedBy());
         obj.setRating(lo.getRating());
-        obj.setFilepath(lo.getFilepath());
+        obj.setFilepath(lo.getFilePath());
         obj.setComments(lo.getComments());
         mongoOps.save(obj);
     }   
