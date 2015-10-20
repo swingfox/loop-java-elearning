@@ -60,6 +60,9 @@
 ?>-->
 </head>
 <body>	
+<<<<<<< HEAD
+    <jsp:include page="include/CurrentUser.jsp"/>
+=======
 	<!-- <div id="wrapper"> -->
 	<div class="wrapper">
     	<!--<?php $this->layout->modal_footer() ?>-->
@@ -105,6 +108,7 @@
 
 
 
+>>>>>>> 221ca8a9002eefafbf33b477cb1f7c52b0144a33
 		<div class="clearfix"></div>
 
 		<!-- User Action -->
@@ -419,6 +423,8 @@
 		    </div>
 	    </footer>
     </div>
+<<<<<<< HEAD
+=======
                 
         <!-- echo '--><!-- Change Password Pop Up -->
         <form id="defaultForm" method="post">
@@ -508,6 +514,7 @@
                 </div>
             </div>  
         </form>
+>>>>>>> 221ca8a9002eefafbf33b477cb1f7c52b0144a33
 
 	<!-- Load JS here for greater good =============================-->
 

@@ -21,9 +21,13 @@
                 }
             </script>
 </head>
+<<<<<<< HEAD
+<body> 
+=======
 <body>  
    
 
+>>>>>>> refs/remotes/swingfox/master
                     <jsp:include page="include/CurrentUser.jsp"/>
 
         <div class="clearfix"></div>

@@ -63,8 +63,6 @@
 		</div>
 
     <jsp:include page="include/CurrentUser.jsp"/>
-    <div class="wrapper">
-		
 		<div class="clearfix"></div>
 
     	<ul class="nav nav-tabs main-views">
@@ -162,7 +160,6 @@
 	    </footer>
         </div>
     </div>
-        
 	<script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
 	<script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
 	<script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
