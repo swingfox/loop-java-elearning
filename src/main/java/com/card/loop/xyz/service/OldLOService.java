@@ -48,7 +48,7 @@ public class OldLOService
         return dto;
     }
     
-    public List<LearningObjectDto> getLearningObjects(String name) throws UnknownHostException{
+    public List<LearningObjectDto> getLearningObjects() throws UnknownHostException{
         List<OldLO> LOList = dao.getListHistory();
         List<LearningObjectDto> objects = new ArrayList<>();
         for(OldLO model: LOList){
