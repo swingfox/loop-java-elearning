@@ -58,14 +58,11 @@ echo '--><script type="text/javascript">
                                                         <div class="clearfix"></div>
                                                     </div></div>
                                                     <table class="datatable table table-hover" ng-controller="LOList">
-
-
-						    <thead>
+                                                        <thead>
 								<tr>
 									<th class="color-code"></th>
 									<th>Name</th>
 									<th>Subject</th>
-									<!-- <th>Date Uploaded</th> -->
 									<th>Uploaded</th>
 									<th>Rating</th>
 									<th>Comments</th>
@@ -73,7 +70,7 @@ echo '--><script type="text/javascript">
 								</tr>
 							</thead>
 					        <tbody>
-                                                    <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : username }">
+                                                    <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : dev1 }">
                                                         <td>
                                                             <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
                                                             <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">

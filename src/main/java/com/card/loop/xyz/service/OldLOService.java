@@ -42,14 +42,14 @@ public class OldLOService
             dto.setStatus(loModel.getStatus());
             dto.setComments(loModel.getComments());
             dto.setUploadedBy(loModel.getUploadedBy());
-            dto.setFilepath(loModel.getFilepath());     
+            dto.setFilePath(loModel.getFilepath());     
             dto.setSequence(loModel.getSequence());
         }
         return dto;
     }
     
     public List<LearningObjectDto> getLearningObjects(String name) throws UnknownHostException{
-        List<OldLO> LOList = dao.getListHistory(name);
+        List<OldLO> LOList = dao.getListHistory();
         List<LearningObjectDto> objects = new ArrayList<>();
         for(OldLO model: LOList){
             LearningObjectDto dto = new LearningObjectDto();

@@ -37,8 +37,8 @@ public class OldLODAO {
         System.out.println(o.getLearningObject("hahah"));
     }
     
-    public List<OldLO> getListHistory(String name) throws UnknownHostException {
-        return (mongoOps.find(query(where("name").is(name)), OldLO.class));
+    public List<OldLO> getListHistory() throws UnknownHostException {
+       return mongoOps.findAll(OldLO.class);
     }
     
     public List<OldLO> getAllDownloadableLO() throws UnknownHostException {
@@ -47,7 +47,7 @@ public class OldLODAO {
        return (mongoOps.find(query(where("rating").is(5)), OldLO.class));
     }
     
-     List<OldLO> getReviewerLOList(String rev) throws UnknownHostException {
+    public List<OldLO> getReviewerLOList(String rev) throws UnknownHostException {
         return mongoOps.find(query(where("uploadedBy").is(rev)), OldLO.class);        
     }
     

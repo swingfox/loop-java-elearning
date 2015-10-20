@@ -269,7 +269,7 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
     	$scope.los = data;
     })
     .error(function(jqXHR, status, error) {
-        console.log(""+ error);
+        console.log("why??"+ error);
     });
     
     $scope.DownloadLO = function(name){
@@ -304,10 +304,10 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
         });
     }; 
     
-    $scope.LoHistory = function(lo) {
-         $rootScope.userBlock = lo.name;
-        console.log($rootScope.userBlock);
-        $http.get('/loop-XYZ/loop/LO/listHistory/' + lo.name)    
+    $scope.LoHistory = function() {
+         //$rootScope.userBlock = lo.name;
+        //console.log($rootScope.userBlock);
+        $http.get('/loop-XYZ/loop/LO/listHistory/')    
         .success(function(data) {
             $store.bind($scope, 'lo.id', data.id); 
             $store.bind($scope, 'lo.name', data.name);
