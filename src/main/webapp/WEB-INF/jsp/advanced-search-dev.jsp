@@ -64,7 +64,7 @@
 
 		<!-- Gi sugdan -->
 
-		<div id="content-wrap">
+		<div id="content-wrap" ng-controller="advanceSearchController">
 			<div class="container">
 				<form class="form-horizontal" method="POST">
 
@@ -77,7 +77,7 @@
 						
 							<div class="well tour-step tour-step-sixteen">
 								<label class="checkbox" for="checkbox1" ng-click="showSubject()">
-								    <input name="subjectCheck" type="checkbox" checked="checked" id="checkbox1" data-toggle="checkbox" value="option1">
+								    <input name="subjectCheck" type="checkbox" id="checkbox1" data-toggle="checkbox">
 								    Subject
 								</label>
 
@@ -102,7 +102,7 @@
 
 							<div class="well tour-step tour-step-seventeen">
 								<div class="checkbox"><label class="" for="checkbox2" ng-click="showDate()">
-								    <input name="dateCheck" type="checkbox" id="checkbox2" data-toggle="checkbox" value="option2">
+								    <input type="checkbox" id="checkbox2" data-toggle="checkbox">
 								    Date
 								</label></div>
 
@@ -181,10 +181,10 @@
 
 								<div class="controls date col-md-6">
 									<label class="control-label pull-left date" for="select01">From &nbsp;</label>
-									<div class="bfh-datepicker" data-format="y-m-d" data-date="2013-09-01">
-										<div class="input-prepend bfh-datepicker-toggle" data-toggle="bfh-datepicker">
+									<div id="dateFrom" class="bfh-datepicker" data-format="y-m-d">
+										<div class="input-prepend bfh-datepicker-toggle" data-toggle="bfh-datepicker" >
 										    <span class="add-on"><i class="icon-calendar"></i></span>
-										    <input name="dateFrom" type="text" class="input-medium form-control" ng-model="searchFromDate">
+										    <input type="text" class="input-medium form-control">
 										</div>
 
 										<div class="bfh-datepicker-calendar">
@@ -214,10 +214,10 @@
 								<div class="controls date col-md-6">
 									<!-- <label class="control-label pull-left" for="select01">To &nbsp;</label> -->
 									<label class="control-label pull-left" for="select01" >To &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-									<div class="bfh-datepicker" data-format="y-m-d" data-date="2013-09-10">
+									<div id="dateTo" class="bfh-datepicker" data-format="y-m-d">
 										<div class="input-prepend bfh-datepicker-toggle" data-toggle="bfh-datepicker">
 										    <span class="add-on"><i class="icon-calendar"></i></span>
-										    <input name="dateTo" type="text" class="input-medium form-control" ng-model="searchToDate">
+										    <input type="date" class="input-medium form-control">
 										</div>
 
 										<div class="bfh-datepicker-calendar">
@@ -279,7 +279,7 @@
 	 						<div class="clearfix"></div>
 							
 							<div class="form-actions advanced-search">
-                                                            <a class="btn btn-primary tour-step tour-step-nineteen" ng-href="advanced-search-dev-results">Search</a>
+                                                            <a class="btn btn-primary tour-step tour-step-nineteen" ng-click="showResults()">Search</a>
 								<!-- <a href="index.php" class="btn btn-default">Cancel</a> -->
 								
 								<a class="btn btn-default" ng-href="developer-update">Cancel</a>
