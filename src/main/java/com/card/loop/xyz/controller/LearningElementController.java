@@ -126,7 +126,7 @@ public class LearningElementController {
                         stream.close();
 
                         LearningElement le = new LearningElement();
-                        le.setName(title);
+                        le.setTitle(title);
                         le.setUploadedBy(author);
                         le.setDescription(description);
                         le.setDownloads(0);

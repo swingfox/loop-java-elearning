@@ -56,14 +56,14 @@ public class OldLODAO {
         query.addCriteria(where("_id").is(lo.getId()));
         OldLO obj = mongoOps.findOne(query, OldLO.class);
         obj.setId(lo.getId());
-        obj.setDateUploaded(lo.getDateUploaded());
+        obj.setDateUploaded(lo.getUploadDate());
         obj.setDownloads(lo.getDownloads());
         obj.setStatus(lo.getStatus());
         obj.setSubject(lo.getSubject());
         obj.setDescription(lo.getDescription());
         obj.setUploadedBy(lo.getUploadedBy());
         obj.setRating(lo.getRating());
-        obj.setFilepath(lo.getFilepath());
+        obj.setFilepath(lo.getFilePath());
         obj.setComments(lo.getComments());
         mongoOps.save(obj);
     }   

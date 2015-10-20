@@ -85,9 +85,9 @@
                                                                     <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
                                                                     
                                                                 </td>
-                                                                <td><a ng-click="GetLO_admin(lo)"><label ng-model="lo.name">{{lo.name}}</a></td>
+                                                                <td><a ng-click="GetLO_admin(lo)"><label ng-model="lo.title">{{lo.title}}</a></td>
                                                                 <td><label ng-model="lo.subject">{{lo.subject}}</td>
-                                                                <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
+                                                                <td><label ng-model="lo.uploadDate">{{lo.uploadDate}}</td>
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
                                                                 <td><label ng-model="lo.comments">{{lo.comments}}</td>
                                                                 <td ng-if="lo.status==0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>

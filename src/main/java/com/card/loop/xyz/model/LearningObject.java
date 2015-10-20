@@ -5,6 +5,7 @@
  */
 package com.card.loop.xyz.model;
 
+import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -22,7 +23,7 @@ public class LearningObject {
     /*
     *Name of the Learning Object
     */
-    private String name;
+    private String title;
     /*
     *Subject of the Learning Object. e.g. (Math, English)
     */
@@ -67,13 +68,14 @@ public class LearningObject {
     private String filename;
     private String contentType;
     private String type;
+    private double price;
 
-    private String[] sequence;
+    private List<LearningElement[]> sequence;
     
 
     /**
-     * Gets the name of the uploader of the Learning Object
-     * @return String This returns the name of uploader.
+     * Gets the title of the uploader of the Learning Object
+     * @return String This returns the title of uploader.
      */
     public String getUploadedBy(){
         return this.uploadedBy;
@@ -96,11 +98,11 @@ public class LearningObject {
     }
 
     /**
-     * Gets the name of the Learning Object.
-     * @return String This returns the name of Learning Object.
+     * Gets the title of the Learning Object.
+     * @return String This returns the title of Learning Object.
      */
-    public String getName(){
-        return this.name;
+    public String getTitle(){
+        return this.title;
     }
 
     /**
@@ -131,7 +133,7 @@ public class LearningObject {
      * Gets the uploaded date of the Learning Object.
      * @return String This returns the uploaded date of Learning Object.
      */
-    public String getDateUploaded(){
+    public String getDateUpload(){
         return this.uploadDate;
     }
 
@@ -160,7 +162,7 @@ public class LearningObject {
     }
 
     /**
-     * Gets the name of the reviewer of the Learning Object.
+     * Gets the title of the reviewer of the Learning Object.
      * @return String This returns the reviewer of Learning Object.
      */
     public String getRev(){
@@ -168,7 +170,7 @@ public class LearningObject {
     }
     
     /**
-     * Sets the name of the reviewer of the Learning Object
+     * Sets the title of the reviewer of the Learning Object
      * @param rev String
      */
     public void setRev(String rev){
@@ -193,11 +195,11 @@ public class LearningObject {
     }
 
     /**
-     * Sets the name of the Learning Object
-     * @param name String
+     * Sets the title of the Learning Object
+     * @param title String
      */
-    public void setName(String name){
-        this.name = name;
+    public void setTitle(String title){
+        this.title = title;
     }
 
     /**
@@ -228,7 +230,7 @@ public class LearningObject {
      * Sets the date that the Learning Object is uploaded
      * @param dateUploaded String
      */
-    public void setDateUploaded(String dateUploaded){
+    public void setDateUpload(String dateUploaded){
         this.uploadDate = dateUploaded;
     }
 
@@ -257,18 +259,18 @@ public class LearningObject {
     }
 
     /**
-     * Sets the name of the uploader of the Learning Object
+     * Sets the title of the uploader of the Learning Object
      * @param uploadedBy String
      */
     public void setUploadedBy(String uploadedBy){
         this.uploadedBy = uploadedBy;
     }
 
-    public String[] getSequence() {
+    public List<LearningElement[]> getSequence() {
         return sequence;
     }
 
-    public void setSequence(String[] sequence) {
+    public void setSequence(List<LearningElement[]> sequence) {
         this.sequence = sequence;
     }
 
@@ -294,6 +296,22 @@ public class LearningObject {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getUploadDate() {
+        return uploadDate;
+    }
+
+    public void setUploadDate(String uploadDate) {
+        this.uploadDate = uploadDate;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
     
 }

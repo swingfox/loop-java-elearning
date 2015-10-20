@@ -123,7 +123,7 @@
                                                                     <img ng-if="le.rating==5" src="img/icon-green.png" alt="For Review">
                                                                     
                                                                 </td>
-                                                                <td><a ng-click="GetLEDetails_admin(le)"><label ng-model="name">{{le.name}}</a></td>
+                                                                <td><a ng-click="GetLEDetails_admin(le)"><label ng-model="title">{{le.title}}</a></td>
                                                                 <td><label ng-model="le.subject">{{le.subject}}</td>
                                                                 <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="le.rating">{{le.rating}}</td>
@@ -199,7 +199,7 @@
         </form>
         <!-- Change Email Pop Up -->
         <form id="emailForm" method="post">
-            <div class="modal fade" id="responsive_changeEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="responsive_changeStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header light-theme">

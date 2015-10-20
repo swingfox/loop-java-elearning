@@ -20,9 +20,9 @@ public class LearningElement {
     @Id
     private String id;
     /*
-    *name of learning element
+    *title of learning element
     */
-    private String name;
+    private String title;
     /*
     *subject of learning element
     */
@@ -82,7 +82,7 @@ public class LearningElement {
     public LearningElement(String name, String subject,  String description, int downloads,  
                            String dateUploaded, String filePath, double rating, 
                            String comments, String status, String rev, String uploadedBy,String fileExtension ){
-       this.name = name;
+       this.title = name;
        this.subject = subject;
        this.description = description;
        this.downloads = downloads;
@@ -111,18 +111,18 @@ public class LearningElement {
        this.id=id;
     }
     /**
-     * Gets the name of the learning element
-     * @return String This returns the name of the learning element 
+     * Gets the title of the learning element
+     * @return String This returns the title of the learning element 
      */
-    public String getName(){
-        return this.name;
+    public String getTitle(){
+        return this.title;
     }
     /**
-     * Sets the name of the learning element
-     * @param name 
+     * Sets the title of the learning element
+     * @param title 
      */
-    public void setName(String name){
-        this.name=name;
+    public void setTitle(String title){
+        this.title=title;
     }
     /**
      * Gets the subject of the learning the learning element

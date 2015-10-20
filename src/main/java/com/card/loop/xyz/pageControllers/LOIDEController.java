@@ -80,7 +80,7 @@ public class LOIDEController {
     @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.GET)
     public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
         LearningElement element= daoLE.getSpecificLearningElementById(elementID);
-	String path = AppConfig.UPLOAD_LE_PATH + element.getName();
+	String path = AppConfig.UPLOAD_LE_PATH + element.getTitle();
 	ContentShipper shipper = new ContentShipper(request, response, true);
 	shipper.ship(path);   
     }
@@ -88,7 +88,7 @@ public class LOIDEController {
     @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.HEAD)
     public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {	
         LearningElement element= daoLE.getSpecificLearningElementById(elementID);
-	String path = AppConfig.UPLOAD_LE_PATH + element.getName();
+	String path = AppConfig.UPLOAD_LE_PATH + element.getTitle();
 	ContentShipper shipper = new ContentShipper(request, response, false);
 	shipper.ship(path);
     }
@@ -107,7 +107,7 @@ public class LOIDEController {
                         switch (type) {
                             case "LE":
                                 LearningElement le = new LearningElement();
-                                le.setName(title);
+                                le.setTitle(title);
                                 le.setUploadedBy(author);
                                 le.setDescription(description);
                                 le.setDownloads(0);
@@ -123,7 +123,7 @@ public class LOIDEController {
                                 break;
                             case "LO":
                                 LearningObject lo = new LearningObject();
-                                lo.setName(title);
+                                lo.setTitle(title);
                                 lo.setUploadedBy(author);
                                 lo.setDescription(description);
                                 lo.setDownloads(0);
@@ -134,7 +134,7 @@ public class LOIDEController {
                                 lo.setFileName(file.getOriginalFilename());
                                 lo.setFilePath(AppConfig.UPLOAD_LO_PATH);
                                 daoLO.addLearningObject(lo);
-                                JOptionPane.showMessageDialog(null,lo.getName());
+                                JOptionPane.showMessageDialog(null,lo.getTitle());
 
                                 break;
                         }

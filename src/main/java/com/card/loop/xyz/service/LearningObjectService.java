@@ -8,6 +8,7 @@ package com.card.loop.xyz.service;
 import com.card.loop.xyz.dao.LearningObjectDAO;
 import com.card.loop.xyz.dao.UserDAO;
 import com.card.loop.xyz.dto.LearningObjectDto;
+import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.model.User;
 import java.net.UnknownHostException;
@@ -33,10 +34,10 @@ public class LearningObjectService
         LearningObjectDto dto = new LearningObjectDto();
        if(loModel != null){  
             dto.setId(loModel.getId());
-            dto.setName(loModel.getName());
+            dto.setTitle(loModel.getTitle());
             dto.setDescription(loModel.getDescription());
             dto.setSubject(loModel.getSubject());
-            dto.setDateUploaded(loModel.getDateUploaded());
+            dto.setUploadDate(loModel.getUploadDate());
             dto.setDownloads(loModel.getDownloads());           
             dto.setRating(loModel.getRating());
             dto.setRev(loModel.getRev());
@@ -56,20 +57,39 @@ public class LearningObjectService
             LearningObjectDto dto = new LearningObjectDto();
             dto.setId(model.getId());
             dto.setRating(model.getRating());
-            dto.setName(model.getName());
+            dto.setTitle(model.getTitle());
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
-            dto.setDownloads(model.getDownloads());
-            dto.setDateUploaded(model.getDateUploaded());
+            dto.setUploadDate(model.getUploadDate());
             dto.setRev(model.getRev());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
             dto.setStatus(model.getStatus());
-            dto.setSequence(model.getSequence());
-            dto.setType(model.getType());
-            dto.setFileName(model.getFileName());
-            dto.setFilePath(model.getFilePath());
-            dto.setFileType(model.getFileType());
+            List<LearningElement[]> list = model.getSequence();
+            List<LearningElement[]> seq = new ArrayList<LearningElement[]>();
+            for (LearningElement[] list1 : list) {
+                LearningElement[] dum = new LearningElement[list1.length];
+                int i = 0;
+                 System.out.println("LIST: " +dum.toString());
+
+                for (LearningElement le : list1) {
+                    LearningElement tmp = new LearningElement();
+                    tmp.setTitle(le.getTitle());
+                    tmp.setType(le.getType());
+                    tmp.setFileExtension(le.getFileExtension());
+                    tmp.setDescription(le.getDescription());
+                    tmp.setDateUploaded(le.getDateUploaded());
+                    tmp.setId(le.getId());
+                    dum[i] = tmp;
+                    System.out.println("DUM1: " +le.getType());
+                    i++;
+                    
+                }
+                seq.add(dum);
+            }
+            
+            dto.setSequence(seq);
+
             objects.add(dto);
         }
         return objects;
@@ -82,11 +102,11 @@ public class LearningObjectService
             LearningObjectDto dto = new LearningObjectDto();
             dto.setId(model.getId());
             dto.setRating(model.getRating());
-            dto.setName(model.getName());
+            dto.setTitle(model.getTitle());
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());
-            dto.setDateUploaded(model.getDateUploaded());
+            dto.setUploadDate(model.getUploadDate());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
             dto.setRev(model.getRev());
@@ -105,11 +125,11 @@ public class LearningObjectService
             LearningObjectDto dto = new LearningObjectDto();
             dto.setId(model.getId());
             dto.setRating(model.getRating());
-            dto.setName(model.getName());
+            dto.setTitle(model.getTitle());
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());
-            dto.setDateUploaded(model.getDateUploaded());
+            dto.setUploadDate(model.getUploadDate());
             dto.setRev(model.getRev());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
@@ -127,11 +147,11 @@ public class LearningObjectService
         LearningObjectDto dto = new LearningObjectDto();
             dto.setId(lo.getId());
             dto.setRating(5);
-            dto.setName(lo.getName());
+            dto.setTitle(lo.getTitle());
             dto.setDescription(lo.getDescription());
             dto.setSubject(lo.getSubject());
             dto.setDownloads(lo.getDownloads());
-            dto.setDateUploaded(lo.getDateUploaded());
+            dto.setUploadDate(lo.getUploadDate());
             dto.setRev(lo.getRev());
             dto.setUploadedBy(lo.getUploadedBy());
             dto.setComments(lo.getComments());

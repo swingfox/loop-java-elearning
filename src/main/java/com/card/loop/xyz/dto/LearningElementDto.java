@@ -17,9 +17,9 @@ public class LearningElementDto {
     */
     private String id;
     /*
-    *name of learning element
+    *title of learning element
     */
-    private String name;
+    private String title;
     /*
     *subject of learning element
     */
@@ -90,18 +90,18 @@ public class LearningElementDto {
        this.id=id;
     }
     /**
-     * Gets the name of the learning element
-     * @return String This returns the name of the learning element 
+     * Gets the title of the learning element
+     * @return String This returns the title of the learning element 
      */
-    public String getName(){
-        return this.name;
+    public String getTitle(){
+        return this.title;
     }
     /**
-     * Sets the name of the learning element
-     * @param name 
+     * Sets the title of the learning element
+     * @param title 
      */
-    public void setName(String name){
-        this.name=name;
+    public void setTitle(String title){
+        this.title=title;
     }
     /**
      * Gets the subject of the learning element

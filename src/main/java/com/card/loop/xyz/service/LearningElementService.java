@@ -27,7 +27,7 @@ public class LearningElementService {
         LearningElementDto dto = new LearningElementDto();
        if(leModel != null){  
             dto.setId(leModel.getId());
-            dto.setName(leModel.getName());
+            dto.setTitle(leModel.getTitle());
             dto.setDescription(leModel.getDescription());
             dto.setSubject(leModel.getSubject());
             dto.setDateUploaded(leModel.getDateUploaded());
@@ -49,7 +49,7 @@ public class LearningElementService {
             LearningElementDto dto = new LearningElementDto();
             dto.setId(model.getId());
             dto.setRating(model.getRating());
-            dto.setName(model.getName());
+            dto.setTitle(model.getTitle());
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());
@@ -75,7 +75,7 @@ public class LearningElementService {
             LearningElementDto dto = new LearningElementDto();
             dto.setId(model.getId());
             dto.setRating(model.getRating());
-            dto.setName(model.getName());
+            dto.setTitle(model.getTitle());
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());

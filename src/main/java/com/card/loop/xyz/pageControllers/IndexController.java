@@ -27,7 +27,7 @@ public class IndexController{
     @RequestMapping("/home")
     public ModelAndView accessIndex() throws IOException {
         LearningObjectController ctr = new LearningObjectController();
-     //s   ctr.uploadAllLOToInformatron();
+        ctr.uploadAllLOToInformatron();
         return new ModelAndView("index");
     } 
     @RequestMapping("/download")

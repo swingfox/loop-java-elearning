@@ -21,10 +21,12 @@ import com.loop.controller.ContentShipper;
 import com.mongodb.gridfs.GridFSDBFile;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.URI;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -78,9 +80,9 @@ public class LearningObjectController {
                         stream.close();
 
                         LearningObject lo = new LearningObject();
-                        lo.setName(title);
+                        lo.setTitle(title);
                         lo.setUploadedBy(author);
-                        lo.setDateUploaded(new Date().toString());
+                        lo.setDateUpload(new Date().toString());
                         lo.setDescription(description);
                         lo.setStatus("1");
                         lo.setDownloads(0);
@@ -106,11 +108,22 @@ public class LearningObjectController {
             SimpleClientHttpRequestFactory rf= new SimpleClientHttpRequestFactory();
             ClientHttpRequest req = rf.createRequest(URI.create(AppConfig.LOOP_URL + "/loop-XYZ/loop/LO/list"),HttpMethod.GET);
             ClientHttpResponse response = req.execute();
-            ClientHttpRequest req2 = rf.createRequest(URI.create(AppConfig.INFORMATRON_URL + "/InformatronYX/informatron/LO/upload/availableLOs"), HttpMethod.POST);
-            IOUtils.copy(response.getBody(), req2.getBody());
-            ClientHttpResponse response2 = req2.execute();
             
+            StringBuilder sb = new StringBuilder();
+            BufferedReader br = new BufferedReader(new InputStreamReader(response.getBody()));
+            ClientHttpRequest req2 = rf.createRequest(URI.create("http://192.168.254.101:8080" + "/InformatronYX/informatron/LO/upload/availableLOs"), HttpMethod.POST);
+            BufferedWriter req2Writer = new BufferedWriter(new OutputStreamWriter(req2.getBody()));
+            String string = br.readLine();
+                        br.close();
+
+            req2Writer.write(string);
+                        req2Writer.close();
+req2.getHeaders().add("Content-Type", "application/json");
+            System.out.println(string);
+    //     IOUtils.copy(response.getBody(), req2.getBody());
+            ClientHttpResponse response2 = req2.execute();
             BufferedReader reader  = new BufferedReader(new InputStreamReader(response2.getBody()));
+            
             try {
                 String str = reader.readLine();
                 if(str.equals("true"))

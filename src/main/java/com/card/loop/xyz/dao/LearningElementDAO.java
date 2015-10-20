@@ -151,7 +151,7 @@ public class LearningElementDAO {
 	gfsFile.setFilename(le.getFileName());
         gfsFile.setContentType(le.getFileExtension());
         gfsFile.put("_class","com.card.loop.xyz.model.LearningElement");
-        gfsFile.put("name",le.getName());
+        gfsFile.put("name",le.getTitle());
         gfsFile.put("filePath",le.getFilePath());
         gfsFile.put("subject",le.getSubject());
         gfsFile.put("description", le.getDescription());
