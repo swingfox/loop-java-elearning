@@ -9,13 +9,16 @@ package com.card.loop.xyz.controller;
 import com.card.loop.xyz.config.AppConfig;
 import com.card.loop.xyz.dao.LearningElementDAO;
 import com.card.loop.xyz.dao.LearningObjectDAO;
+import com.card.loop.xyz.dao.OldLODAO;
 import com.card.loop.xyz.dto.LearningObjectDto;
 import com.card.loop.xyz.dto.UserDto;
 import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.service.LearningObjectService;
+import com.card.loop.xyz.service.OldLOService;
 import com.card.loop.xyz.service.UserService;
 import com.loop.controller.ContentShipper;
+import com.mongodb.gridfs.GridFSDBFile;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -58,6 +61,9 @@ public class LearningObjectController {
     
     @Autowired LearningObjectService loService;
     @Autowired LearningObjectDAO dao;
+    
+    @Autowired OldLOService loService2;
+    @Autowired OldLODAO dao2;
 
     
     @RequestMapping(value="/upload", method = RequestMethod.POST)
@@ -79,7 +85,7 @@ public class LearningObjectController {
                         lo.setStatus("1");
                         lo.setDownloads(0);
                         lo.setRating(1);
-                        lo.setFilepath(file.getOriginalFilename());
+                        lo.setFilePath(file.getOriginalFilename());
                         dao.addLearningObject(lo);
 
 
@@ -107,8 +113,6 @@ public class LearningObjectController {
             BufferedReader reader  = new BufferedReader(new InputStreamReader(response2.getBody()));
             try {
                 String str = reader.readLine();
-       //         JSONObject obj = new JSONObject(str);
-                // checking
                 if(str.equals("true"))
                         System.out.println("SUCCESS!!");
                 else
@@ -151,6 +155,7 @@ public class LearningObjectController {
         }
         return dtos;
     }
+    
     /* 
     *   @return List<LearningObjectDto> reviewer's learning objects
     */
@@ -183,6 +188,21 @@ public class LearningObjectController {
         return dto;
     }
     
+    //list of history revisions in LOs collection=oldlo
+    @RequestMapping("/listHistory/{name}")
+    @ResponseBody
+    public List<LearningObjectDto> ListLOHistory(@PathVariable String name) throws UnknownHostException
+    {
+        List<LearningObjectDto> dtos = new ArrayList<>();
+        try{
+            dtos = loService2.getLearningObjects(name);
+            System.out.println(name);
+        }catch(Exception e){ 
+            e.printStackTrace();
+        }
+        return dtos;
+    }
+    
     /*
     *   @params String LOname the name of the specific LO
     *   @return ok returns true if approved successfully
@@ -201,21 +221,32 @@ public class LearningObjectController {
     */
     @RequestMapping(value = "/downloadLO/{elementID}", method = RequestMethod.GET)
     public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {                   
-                LearningObject element = dao.getLearningObject(elementID);
-		String path = AppConfig.UPLOAD_LO_PATH + element.getFilepath();
-		ContentShipper shipper = new ContentShipper(request, response, true);
-		shipper.ship(path);   
+        GridFSDBFile element = dao.getSingleLO(elementID, "lo.meta");
+        
+        System.out.println(element.getId().toString());
+        dao.writePhysicalFile(element.getId().toString(), element.getFilename());
+        System.out.println(element);
+        System.out.println(element.getFilename());
+        String path = "C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + element.getFilename();
+
+        File f = new File(path);
+        ContentShipper shipper = new ContentShipper(request, response, true);
+        shipper.ship(path);         
+        f.delete();
     }
     /*
     *   @params String elementID the name of the specific LO to be downloaded
     */
     @RequestMapping(value = "/downloadLO/{elementID}", method = RequestMethod.HEAD)
     public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
-                LearningObject element = dao.getLearningObject(elementID);
-
-		String path = AppConfig.UPLOAD_LO_PATH + element.getFilepath();
-		ContentShipper shipper = new ContentShipper(request, response, false);
-		shipper.ship(path);
+        GridFSDBFile element = dao.getSingleLO(elementID, "lo.meta");
+        String path = "C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + element.getFilename();
+	 File f = new File(path);
+            System.out.println("DABOYY");
+            ContentShipper shipper = new ContentShipper(request, response, true);
+            shipper.ship(path);
+         
+      //  f.delete();
     }
     
     

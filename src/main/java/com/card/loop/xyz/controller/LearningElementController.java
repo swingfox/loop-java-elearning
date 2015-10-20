@@ -7,10 +7,8 @@ package com.card.loop.xyz.controller;
 
 import com.card.loop.xyz.config.AppConfig;
 import com.card.loop.xyz.dao.LearningElementDAO;
-import com.card.loop.xyz.dao.LearningElementMetaDAO;
 import com.card.loop.xyz.dao.LearningObjectDAO;
 import com.card.loop.xyz.dto.LearningElementDto;
-import com.card.loop.xyz.dto.LearningElementMetaDto;
 import com.card.loop.xyz.dto.LearningObjectDto;
 import com.card.loop.xyz.dto.UserDto;
 import com.card.loop.xyz.model.LearningElement;

@@ -6,10 +6,7 @@
 package com.card.loop.xyz.service;
 
 import com.card.loop.xyz.dao.LearningElementDAO;
-import com.card.loop.xyz.dao.LearningElementMetaDAO;
 import com.card.loop.xyz.dto.LearningElementDto;
-import com.card.loop.xyz.dto.LearningElementMetaDto;
-import com.card.loop.xyz.file.meta.LearningElementMeta;
 import com.card.loop.xyz.model.LearningElement;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -23,7 +20,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class LearningElementService {
     @Autowired LearningElementDAO dao;
-    @Autowired LearningElementMetaDAO mdao;
     
     public LearningElementDto getSpecificLearningElement(String id) throws UnknownHostException{
         LearningElement leModel;
@@ -66,4 +62,41 @@ public class LearningElementService {
         }
         return objects;
      }
+     
+    public List<LearningElementDto> getLearningElements(String keyword) throws UnknownHostException{
+                        System.out.println("HAHALE");
+
+        List<LearningElement> LOList;
+                        System.out.println("HAHAF");
+
+        LOList = dao.searchLE(keyword);
+        List<LearningElementDto> objects = new ArrayList<>();
+        for(LearningElement model: LOList){
+            LearningElementDto dto = new LearningElementDto();
+            dto.setId(model.getId());
+            dto.setRating(model.getRating());
+            dto.setName(model.getName());
+            dto.setDescription(model.getDescription());
+            dto.setSubject(model.getSubject());
+            dto.setDownloads(model.getDownloads());
+            dto.setDateUploaded(model.getDateUploaded());
+            dto.setUploadedBy(model.getUploadedBy());
+            dto.setComments(model.getComments());
+            dto.setRev(model.getRev());
+            dto.setStatus(model.getStatus());
+            objects.add(dto);
+        }
+        return objects;
+     }
+    
+    
+    public static void main(String[] args) throws UnknownHostException {
+        List<LearningElementDto> list;
+        LearningElementService service = new LearningElementService();
+        list = service.getLearningElements("Test");
+     /*   for (LearningElementDto list1 : list) {
+            System.out.println(list1);
+        }*/
+    }
+    
 }

@@ -58,6 +58,7 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
     $store.bind($scope, 'username', '');
     $store.bind($scope, 'userID', '');
     $store.bind($scope, 'userType', '');
+    $store.bind($scope, 'password', '');
     $scope.user = '';
     $scope.userId = '';
     $scope.password = '';
@@ -81,6 +82,9 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
     
      $scope.$watch("userID", function(newVal) {
         console.log(newVal);
+    });
+    $scope.$watch("password", function(newVal) {
+        console.log("password"+newVal);
     });
     $scope.hide = true;
     $scope.clearUser = function(){ 
@@ -128,7 +132,8 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
                             username: $scope.username,
                             password: $scope.password,
                             id : $scope.userID,
-                            userType :  $scope.userType
+                            userType :  $scope.userType,
+                            email: $scope.email
                     };
         $http.post("/loop-XYZ/loop/user/login",data).success(function(response){
             alert (response);
@@ -137,11 +142,32 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
         });
     };
     
-    
    if($store.get('userID').length === 0 && window.location.toString().split('/store/')[1] !== 'home'){
        window.location = '/loop-XYZ/store/home';
    }
 }]);
+
+//change email
+ /*eS.controller('change', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+    $rootScope.userAccept = '';
+    $scope.email = function(id){    
+         alert(user.ID);
+        $http.post("/loop-XYZ/loop/user/acceptUser/"+ $rootScope.userAccept)
+        .success(function(data) {
+            console.log("SUCCESS"); 
+            window.location.reload(true);
+        })
+        .error(function(jqXHR, status, error) {
+            console.log("jsjdjs"+ error);
+        });
+   };
+   
+   $scope.assignUser = function(developer) {
+       $rootScope.userAccept = developer.username;
+   };
+    
+   
+}]); */
 
 eS.controller('LEList', ['$scope', '$store', '$http', function($scope, $store, $http) {
         $store.bind($scope, 'le.id', '');
@@ -278,6 +304,26 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
         });
     }; 
     
+    $scope.LoHistory = function(lo) {
+         $rootScope.userBlock = lo.name;
+        console.log($rootScope.userBlock);
+        $http.get('/loop-XYZ/loop/LO/listHistory/' + lo.name)    
+        .success(function(data) {
+            $store.bind($scope, 'lo.id', data.id); 
+            $store.bind($scope, 'lo.name', data.name);
+            $store.bind($scope, 'lo.subject', data.subject); 
+            $store.bind($scope, 'lo.dateUploaded', data.dateUploaded); 
+            $store.bind($scope, 'lo.description', data.description);          
+         
+             window.location = '/loop-XYZ/store/historyLO-dev';
+         
+        })
+        .error(function(jqXHR, status, error) {
+            console.log(""+ error);
+        });
+    }; 
+    
+    
     $scope.GetLODeveloper = function(lo) {
         $http.get('/loop-XYZ/loop/LO/download/' + lo.id)    
         .success(function(data) {
@@ -306,9 +352,7 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
             $store.bind($scope, 'lo.description', data.description); 
             console.log($store.get('username'));
             console.log($store.get('userType'));
-         if($store.get('userType') === "developer")
-             window.location = '/loop-XYZ/store/historyLO-dev';
-         else
+            alert(lo.id);
              window.location = '/loop-XYZ/store/historyLO-admin';
         })
         .error(function(jqXHR, status, error) {
@@ -344,6 +388,23 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
         $store.remove('lo.description');
     };
  }]);
+ 
+ //list of all LO's in developer-update.jsp
+ eS.controller('LOListHistory', ['$scope', '$store', '$http', function($scope, $store, $http) {
+        $store.bind($scope, 'lo.id', '');
+        $store.bind($scope, 'lo.name', '');
+        $store.bind($scope, 'lo.subject', '');
+        $store.bind($scope, 'lo.rating', '');
+        $store.bind($scope, 'lo.dateUploaded', '');
+        $store.bind($scope, 'lo.description', '');
+    $http.get("/loop-XYZ/loop/LO/listHistory")    
+    .success(function(data) {
+    	$scope.los = data;
+    })
+    .error(function(jqXHR, status, error) {
+        console.log(""+ error);
+    });
+}]);
  
 
 

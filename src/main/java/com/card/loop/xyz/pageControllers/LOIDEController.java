@@ -16,14 +16,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.card.loop.xyz.dao.LearningElementDAO;
 import com.card.loop.xyz.dao.LearningObjectDAO;
+import com.card.loop.xyz.dto.LearningElementDto;
 import com.card.loop.xyz.dto.LearningObjectDto;
 import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
+import com.card.loop.xyz.service.LearningElementService;
+import com.card.loop.xyz.service.LearningObjectService;
 import com.loop.controller.ContentShipper;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,6 +43,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/loide")
 public class LOIDEController {
+    @Autowired LearningElementService leService;
     @Autowired LearningElementDAO daoLE;
     @Autowired LearningObjectDAO daoLO;
 
@@ -57,6 +63,18 @@ public class LOIDEController {
     @RequestMapping("/error")
     public ModelAndView accessError() {
         return new ModelAndView("error");
+    }
+    
+    @RequestMapping("/query/{searchKey}")
+    public List<LearningElementDto> find(@PathVariable String searchKey) {		
+        //return Database.get().find(searchKey);
+        List<LearningElementDto> dtos = new ArrayList<>();
+        try{
+            dtos = leService.getLearningElements(searchKey);
+        }catch(Exception e){ 
+            e.printStackTrace();
+        }
+        return dtos;
     }
     
     @RequestMapping(value = "/retrieve/{elementID}", method = RequestMethod.GET)
@@ -81,11 +99,11 @@ public class LOIDEController {
             if (!file.isEmpty()) {
                     try {
                         byte[] bytes = file.getBytes();
-                        File fil = new File(AppConfig.UPLOAD_BASE_PATH+ type + "//" + file.getOriginalFilename());
+                    /*    File fil = new File(AppConfig.UPLOAD_BASE_PATH+ type + "//" + file.getOriginalFilename());
                         BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fil));
                         stream.write(bytes);    
                         stream.close();
-
+*/
                         switch (type) {
                             case "LE":
                                 LearningElement le = new LearningElement();
@@ -96,8 +114,10 @@ public class LOIDEController {
                                 le.setStatus("1");
                                 le.setRating(1);
                                 le.setSubject(subject);
+                                le.setType("LE");
                                 le.setDateUploaded(new Date().toString());
-                                le.setFilePath(file.getOriginalFilename());
+                                le.setFileName(file.getOriginalFilename());
+                                le.setFilePath(AppConfig.UPLOAD_LE_PATH);
                                 daoLE.addLearningElement(le);
                                 
                                 break;
@@ -109,8 +129,10 @@ public class LOIDEController {
                                 lo.setDownloads(0);
                                 lo.setStatus("1");
                                 lo.setRating(1);
+                                lo.setType(type);
                                 lo.setSubject(subject);
-                                lo.setFilepath(file.getOriginalFilename());
+                                lo.setFileName(file.getOriginalFilename());
+                                lo.setFilePath(AppConfig.UPLOAD_LO_PATH);
                                 daoLO.addLearningObject(lo);
                                 JOptionPane.showMessageDialog(null,lo.getName());
 

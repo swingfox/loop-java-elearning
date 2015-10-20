@@ -31,6 +31,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import org.springframework.data.mongodb.core.query.Query;
 import static org.springframework.data.mongodb.core.query.Query.query;
@@ -46,6 +47,16 @@ public class LearningElementDAO {
 
     public List<LearningElement> getList() throws UnknownHostException {
         return mongoOps.findAll(LearningElement.class);
+    }
+    
+    public List<LearningElement> searchLE(String keyword) {
+        //return mongoOps.findAll(LearningElement.class);
+        Query query = new Query();
+         //       System.out.println(query+"HAHA");
+        query.limit(10);
+        //query.addCriteria(where("name").is(keyword).orOperator(where("subject").is(keyword)).orOperator(where("description").is(keyword)));
+        query.addCriteria(Criteria.where("name").regex(keyword));
+        return mongoOps.find(query, LearningElement.class);
     }
     
     public boolean exists(String id) throws UnknownHostException {
@@ -69,7 +80,7 @@ public class LearningElementDAO {
     }
     
     public void addLearningElement(LearningElement object) throws UnknownHostException, IOException {
-       mongoOps.insert(object);
+    //   mongoOps.insert(object);
        this.addFile(object);
     }
     
@@ -139,8 +150,18 @@ public class LearningElementDAO {
         GridFSInputFile gfsFile = gf.createFile(file);
 	gfsFile.setFilename(le.getFileName());
         gfsFile.setContentType(le.getFileExtension());
+        gfsFile.put("_class","com.card.loop.xyz.model.LearningElement");
         gfsFile.put("name",le.getName());
         gfsFile.put("filePath",le.getFilePath());
+        gfsFile.put("subject",le.getSubject());
+        gfsFile.put("description", le.getDescription());
+        gfsFile.put("downloads",le.getDownloads());
+        gfsFile.put("rating",le.getRating());
+        gfsFile.put("comments",le.getComments());
+        gfsFile.put("uploadedBy",le.getUploadedBy());
+        gfsFile.put("status", le.getStatus());
+        gfsFile.put("rev", le.getRev());
+        gfsFile.put("type", le.getType());
 	gfsFile.save();
 
         // Let's store our document to MongoDB
@@ -217,16 +238,29 @@ public class LearningElementDAO {
     
     public static void main(String[] args) throws IOException{
         LearningElementDAO dao = new LearningElementDAO();
-        LearningElement le = new LearningElement();
+        List<LearningElement> le;
+        le = dao.searchLE("Test");
+        System.out.println(le);
+        /**
         le.setFileName("TestLEUpload2.zip");
-        le.setName("test");
+        le.setName("TestLEUpload2");
         le.setFilePath("C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\LE\\");
         le.setFileExtension(".zip");
+        le.setSubject("recon");
+        le.setDescription("test");
+        le.setDownloads(0);
+        le.setRating(5);
+        le.setComments("promotion");
+        le.setUploadedBy("dev1");
+        le.setStatus("1");
+        le.setRev("rev1");
+        le.setType("LE");
         
-        dao.addFile(le);
+        **/
+      //  dao.addFile(le);
      //  System.out.println(dao.getSingleLE("676f65e8970d856682dde3a34f2390f9", "le.meta"));
         
-                System.out.println(dao.getSingleLE("5623d83c456450da612f72d6", "le.meta"));
+     //           System.out.println(dao.getSingleLE("5623d83c456450da612f72d6", "le.meta"));
      //   OutputStream output = new FileOutputStream("c:\\data\\");
 
        // dao.getSingleLE("676f65e8970d856682dde3a34f2390f9","le.meta").writeTo("C:\\Users\\David\\Desktop\\haha.zip");
