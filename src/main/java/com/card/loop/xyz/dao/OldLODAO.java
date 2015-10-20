@@ -36,8 +36,8 @@ public class OldLODAO {
     }
     
     public static void main(String[] args) throws Exception {
-        MongoOperations mongoOps = new MongoTemplate(AppConfig.mongo(),AppConfig.DATABASE_LOOP);
-        JOptionPane.showMessageDialog(null,mongoOps.find(query(where("name").is("hahah")), OldLO.class));
+        //MongoOperations mongoOps = new MongoTemplate(AppConfig.mongo(),AppConfig.DATABASE_LOOP);
+        //JOptionPane.showMessageDialog(null,mongoOps.find(query(where("name").is("hahah")), OldLO.class));
     }
     
     public List<OldLO> getListHistory(String name) throws UnknownHostException {
