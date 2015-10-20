@@ -22,7 +22,7 @@
             </script>
 </head>
 <body>  
-    <div class="wrapper" ng-controller="LoginCtrl">
+   
 
                     <jsp:include page="include/CurrentUser.jsp"/>
 
@@ -124,7 +124,7 @@
         
         <!-- Take this out if you want the original footer back -->
         <div class="push"></div>
-    </div>
+    
 
     <div class="footer">
         <footer id="footer-wrap-index">
