@@ -42,7 +42,7 @@ public class OldLOService
             dto.setStatus(loModel.getStatus());
             dto.setComments(loModel.getComments());
             dto.setUploadedBy(loModel.getUploadedBy());
-            dto.setFilepath(loModel.getFilepath());     
+            dto.setFilePath(loModel.getFilepath());     
             dto.setSequence(loModel.getSequence());
         }
         return dto;

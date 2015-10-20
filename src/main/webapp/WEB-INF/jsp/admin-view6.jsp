@@ -23,7 +23,7 @@
 
 </head>
 <body>	
-    <jsp:include page="include/CurrentUser.jsp"/>
+    
 	<div class="wrapper">
 		<div id="header-wrap">
 			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
@@ -103,7 +103,6 @@
 										<th class="color-code"></th>
 										<th>Name</th>
 										<th>Subject</th>
-										<!-- <th>Date Uploaded</th> -->
 										<th>Uploaded</th>
 										<th>Rating</th>
 										<th>Comments</th>

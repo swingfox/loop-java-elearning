@@ -63,7 +63,7 @@ public class OldLODAO {
         obj.setDescription(lo.getDescription());
         obj.setUploadedBy(lo.getUploadedBy());
         obj.setRating(lo.getRating());
-        obj.setFilepath(lo.getFilepath());
+        obj.setFilepath(lo.getFilePath());
         obj.setComments(lo.getComments());
         mongoOps.save(obj);
     }   
