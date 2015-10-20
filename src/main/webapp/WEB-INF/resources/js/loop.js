@@ -478,6 +478,9 @@ eS.controller('reviewerAccountCtrl', ['$scope', '$http', function($scope, $http)
     .error(function(jqXHR, status, error) {
         console.log(""+ error);
     });
+    $http.get("/loop-XYZ/loop/LE/list").success(function(response) {
+       $scope.les = response; 
+    });
     }
     
     $scope.assignReviewer = function(reviewer) {

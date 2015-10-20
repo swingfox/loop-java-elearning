@@ -173,7 +173,7 @@
 								</tr>
 							</thead>
 					        <tbody>
-                                                     <tr ng-repeat="le in les | filter:searchText | filter: { uploadedBy : username }">
+                                                     <tr ng-repeat="le in les | filter:searchText">
                                                         <td>
                                                             <img ng-if="le.rating==1" src="http://localhost/loop.com/img/icon-red.png" alt="For Review">
                                                             <img ng-if="le.rating==2" src="http://localhost/loop.com/img/icon-orange.png" alt="For Review">
@@ -182,12 +182,12 @@
                                                             <img ng-if="le.rating==5" src="http://localhost/loop.com/img/icon-green.png" alt="For Review">
 
                                                         </td>
-                                                        <td><p classdownload-details ng-binding="download-details">{{le.name}}</p></td>
+                                                        <td><p classdownload-details ng-binding="download-details">{{le.title}}</p></td>
                                                         <td><label >{{le.subject}}</td>
-                                                        <td><label >{{le.dateUploaded}}</td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label >{{lo.rating}}</td>
-                                                        <td><label >{{lo.comments}}</td>
-                                                        <td><label >{{lo.rev}}</td>
+                                                        <td><label >{{le.uploadDate | date: mm d yyyy}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label >{{le.rating}}</td>
+                                                        <td><label >{{le.comments}}</td>
+                                                        <td><label >{{le.rev}}</td>
                                                          
                                                     </tr>
 						        <!--?php
