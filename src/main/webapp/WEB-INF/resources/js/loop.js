@@ -613,6 +613,37 @@ eS.controller('LECtrl', ['$scope', '$http', '$rootScope', function($scope, $http
    
 }]);
 
+eS.controller('LOCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+    $rootScope.LEFunc = '';
+    $scope.acceptMe = function(){ 
+        $http.post("/loop-XYZ/loop/LO/acceptLO/"+ $rootScope.LEFunc)
+        .success(function(data) {
+            console.log("SUCCESS"); 
+            window.location.reload(true);
+        })
+        .error(function(jqXHR, status, error) {
+            console.log("jsjdjs"+ error);
+        });
+   };
+   
+   $scope.demoteMe = function(){ 
+        $http.post("/loop-XYZ/loop/LO/demoteLO/"+ $rootScope.LEFunc)
+        .success(function(data) {
+            console.log("SUCCESS"); 
+            window.location.reload(true);
+        })
+        .error(function(jqXHR, status, error) {
+            console.log("jsjdjs"+ error);
+        });
+   };
+    
+   $scope.assignUser = function(lo) {
+       $rootScope.LEFunc = lo.id;
+   };
+    
+   
+}]);
+
 eS.controller('demoteLECtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
     $rootScope.LEDemote = '';
     $scope.acceptMe = function(){ 

@@ -27,6 +27,37 @@ import org.springframework.stereotype.Service;
 public class LearningObjectService 
 {
     @Autowired LearningObjectDAO dao;
+    
+    public boolean acceptLO(LearningObjectDto lo) throws UnknownHostException, Exception{
+        boolean ok = false;
+        LearningObject model = dao.getLO(lo.getId());
+        if(model!= null){
+            model.setStatus("1");
+            dao.acceptLO(model);
+            ok = true;
+        }
+        else
+            throw new Exception("LearningObject does not exist. ");
+        return ok;
+        
+    }
+    
+    public boolean demoteLO(LearningObjectDto lo) throws UnknownHostException, Exception{
+        boolean ok = false;
+        System.out.println(lo.getId());
+                System.out.println(dao);
+
+        LearningObject model = dao.getLO(lo.getId());
+        if(model!= null){
+            model.setStatus("0");
+            dao.demoteLO(model);
+            ok = true;
+        }
+        else
+            throw new Exception("LearningElement does not exist. ");
+        return ok;
+        
+    }
 
     public LearningObjectDto getLearningObject(String id) throws UnknownHostException{
         LearningObject loModel;
