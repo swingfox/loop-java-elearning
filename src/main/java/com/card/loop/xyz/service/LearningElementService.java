@@ -120,6 +120,14 @@ public class LearningElementService {
         return objects;
      }
     
+    public boolean assignReviewer(String id, String reviewer) throws UnknownHostException {
+        if(dao.exists(id))
+            return dao.assignReviewer(id,reviewer);
+        else
+            return false;
+    }
+
+    
     
     public static void main(String[] args) throws UnknownHostException, Exception {
         LearningElementDto list = new LearningElementDto();

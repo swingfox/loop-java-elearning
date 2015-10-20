@@ -457,6 +457,8 @@ eS.controller('developerAccountCtrl', ['$scope', '$http', function($scope, $http
 }]);
 
 eS.controller('reviewerAccountCtrl', ['$scope', '$http', function($scope, $http) {
+    
+    function load() {    
     $http.get("/loop-XYZ/loop/user/reviewer")    
     .success(function(data) {
     	$scope.reviewerAccount = data;
@@ -464,7 +466,31 @@ eS.controller('reviewerAccountCtrl', ['$scope', '$http', function($scope, $http)
     .error(function(jqXHR, status, error) {
         console.log(""+ error);
     });
+    $http.get("/loop-XYZ/loop/LE/list").success(function(response) {
+       $scope.les = response; 
+    });
+    }
+    
+    $scope.assignReviewer = function(reviewer) {
+        $http.post("/loop-XYZ/loop/user/assignReviewer?leid="+getValue("leid")+"reviewer="+reviewer).success(function(response) {
+            alert(response);
+        });
+    }
+    
+    function getValue(functionType) {
+        var currentURL = window.location.toString().split('?')[1].split('&');
+        var flag = 0;
+        for(var i=0; i < currentURL.length; i++) {
+            var temp = currentURL[i].split('=')[0];
+            if(temp == functionType) {
+                return temp[j+1];
+            }
+        }
+    }
+    
+    load();
 }]);
+
 //displays all inactive accounts
 eS.controller('inactiveAccountCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get("/loop-XYZ/loop/user/inactive")    
