@@ -101,7 +101,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                 
                  
                 <div class="clearfix" id="before-features" ></div>
                
@@ -109,6 +109,34 @@
     <div class="clearfix"></div>
     <div class="push"></div>
 
+     <form method="post" ng-controller="acceptLECtrl">
+            <div class="modal fade" id="responsive_approve" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header light-theme">
+                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <span class="popup">User Action</span>
+                        </div>
+                        <div class="modal-body">  
+                            <div class="row">
+                                <div class="col-md-10 col-md-push-1">                                 
+                                    <label class="file-action">What would you like to do with this account request?</label>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="modal-footer"> 
+                            <div class="row">
+                                <div class="col-md-10 col-md-push-1">
+                                    <button type="submit" class="btn btn-primary" ng-click="acceptMe()"><i class="icon-ok-sign icon-large default"></i> Accept</button>
+                                    <button type="submit" class="btn btn-default" ng-click="demoteMe()"></i> Demote</button>
+                                    <input type="hidden" id="selectedIndex" name="index" value="0"/>      
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
 
 
         <div class="footer">
