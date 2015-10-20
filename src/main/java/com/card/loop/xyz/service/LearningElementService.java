@@ -61,7 +61,7 @@ public class LearningElementService {
             dto.setTitle(leModel.getTitle());
             dto.setDescription(leModel.getDescription());
             dto.setSubject(leModel.getSubject());
-            dto.setDateUploaded(leModel.getDateUploaded());
+            dto.setUploadDate(leModel.getUploadDate());
             dto.setDownloads(leModel.getDownloads());           
             dto.setRating(leModel.getRating());
             dto.setRev(leModel.getRev());
@@ -84,7 +84,7 @@ public class LearningElementService {
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());
-            dto.setDateUploaded(model.getDateUploaded());
+            dto.setUploadDate(model.getUploadDate());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
             dto.setRev(model.getRev());
@@ -110,7 +110,7 @@ public class LearningElementService {
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());
-            dto.setDateUploaded(model.getDateUploaded());
+            dto.setUploadDate(model.getUploadDate());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
             dto.setRev(model.getRev());

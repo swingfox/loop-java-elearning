@@ -36,9 +36,9 @@ public class LearningElement {
     */
     private int downloads;
     /*
-    *dateUploaded of learning element
+    *uploadDate of learning element
     */
-    private String dateUploaded;
+    private String uploadDate;
     /*
     *filepath of learning element
     */
@@ -146,18 +146,18 @@ public class LearningElement {
         this.downloads=downloads;
     }
     /**
-     * Gets the dateUploaded of the learning element
+     * Gets the uploadDate of the learning element
      * @return String This returns the date uploaded of the learning element
      */
-    public String getDateUploaded(){
-        return this.dateUploaded;
+    public String getUploadDate(){
+        return this.uploadDate;
     }
     /**
      * Sets the date uploaded of the learning element
-     * @param dateUploaded 
+     * @param uploadDate 
      */
-    public void setDateUploaded(String dateUploaded){
-        this.dateUploaded=dateUploaded;
+    public void setUploadDate(String uploadDate){
+        this.uploadDate=uploadDate;
     }
     /**
      * Gets the file path of the learning element

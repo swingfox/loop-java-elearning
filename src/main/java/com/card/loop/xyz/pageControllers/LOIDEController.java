@@ -116,7 +116,7 @@ public class LOIDEController {
                                 le.setRating(1);
                                 le.setSubject(subject);
                                 le.setType("LE");
-                                le.setDateUploaded(new Date().toString());
+                                le.setUploadDate(new Date().toString());
                                 le.setFileName(file.getOriginalFilename());
                                 le.setFilePath(AppConfig.UPLOAD_LE_PATH);
                                 daoLE.addLearningElement(le);

@@ -87,7 +87,7 @@
                                             <img ng-if="le.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
                                             <img ng-if="le.rating==5" src="img/icon-green.png" alt="For Review">
                                         </td>
-                                        <td><a ng-click="GetLEDetails_admin(le)"><label ng-model="title">nnj{{le.title}}</a></td>
+                                        <td><a ng-click="GetLEDetails_admin(le)"><label ng-model="title">{{le.title}}</a></td>
                                         <td><label ng-model="le.subject">{{le.subject}}</td>
                                         <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td><label ng-model="le.rating">{{le.rating}}</td>

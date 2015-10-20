@@ -40,35 +40,7 @@
             <!-- Form Validator -->
             <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
     </head>
-    <body>
-        <!-- <div id="wrapper"> -->
-	<div class="wrapper">
-    	<!--<?php $this->layout->modal_footer() ?>-->
-		
-		<div id="header-wrap">
-			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-				<!-- <div class="container"> -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-	                    
-	                    <a class="navbar-brand" href="index.php">
-							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
-						</a>
-	                </div>
-					
-					<div class="navbar-collapse collapse">
-
-						<!--<?php $this->layout->user_menu() ?>-->
-					
-					</div>
-				<!-- </div> -->
-			</nav>
-		</div>
-
+    <body><jsp:include page="include/CurrentUser.jsp"/>
 		<div class="clearfix"></div>
 
 		<div id="breadcrumb-wrap">

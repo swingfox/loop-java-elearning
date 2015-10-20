@@ -78,7 +78,7 @@ public class LearningObjectService
                     tmp.setType(le.getType());
                     tmp.setFileExtension(le.getFileExtension());
                     tmp.setDescription(le.getDescription());
-                    tmp.setDateUploaded(le.getDateUploaded());
+                    tmp.setUploadDate(le.getUploadDate());
                     tmp.setId(le.getId());
                     dum[i] = tmp;
                     System.out.println("DUM1: " +le.getType());

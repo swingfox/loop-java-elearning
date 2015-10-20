@@ -41,7 +41,7 @@
                             <div class="form-group" >
                                     <label class="col-md-3 control-label download">Filename :</label>
 	                            <div class="col-md-8">
-	                                <p class="download-details">{{le.name}}</p>
+	                                <p class="download-details">{{le.filename}}</p>
 	                            </div>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 

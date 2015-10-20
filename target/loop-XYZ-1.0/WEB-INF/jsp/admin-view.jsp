@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Admin - New Account Requests</title>
@@ -22,110 +21,9 @@
                 }
             </script>
 </head>
-<body>  
-    <div class="wrapper" ng-controller="LoginCtrl">
-        <form id="defaultForm" method="post">
-            <div class="modal fade" id="responsive_changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header light-theme">
-                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <span class="popup">Change Password</span>
-                        </div>
-                        <div class="modal-body">  
-                            <div class="row">
-                                <div class="col-md-10 col-md-offset-1 ">
-                                    <p class="alert alert-danger hide" id="error"><i class="icon-warning-sign"></i> Invalid password.</p>
-                                    <p class="alert alert-success hide" id="success"><i class="icon-ok"></i> Successfully changed password.</p>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Old Password" required/>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" id="enterNewPassword" name="newPassword" placeholder="Enter New Password" />
-                                    </div>
-                                    <div class="form-group last">
-                                        <input type="password" class="form-control last" id="confirmNewPassword" name="confirmNewPassword" placeholder="Confirm New password" />
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="modal-footer"> 
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-3 ">
-                                    <button type="submit" class="btn btn-primary" id="changepassword"><i class="icon-ok icon-large default"></i> Save</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <form id="emailForm" method="post">
-            <div class="modal fade" id="responsive_changeEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header light-theme">
-                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <span class="popup">Change Email</span>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-10 col-md-offset-1">
-                                 <p class="alert alert-danger hide" id="error1"><i class="icon-warning-sign"></i> Invalid password.</p>
-                                    <p class="alert alert-success hide" id="success1"><i class="icon-ok"></i> Successfully changed password.</p>
-                                <div class="form-group">
-                                        <input type="password" class="form-control" id="emailPassword" name="emailPassword" placeholder="Enter Password" required/>
-                                    </div>
-                                    <div class="form-group last">
-                                        <input type="text" class="form-control last" id="enterNewEmail" name="enterNewEmail" placeholder="Enter New Email" required/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-3">
-                                    <button type="submit" class="btn btn-primary" id="changeEmail"><i class="icon-ok icon-large default"></i> Save</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>  
-        </form>
-        <div id="header-wrap">
-            <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="/loop-XYZ/store/admin-view">
-                            <img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
-                        </a>
-                    </div>
-                           <div class="navbar-collapse collapse"  ng-controller="LoginCtrl">
-                                                <ul class="nav navbar-nav navbar-right"> 
-                                                    <li class="dropdown">
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} {{userId}}<b class="caret"></b></a>
+<body> 
+                    <jsp:include page="include/CurrentUser.jsp"/>
 
-                                                        <ul class="dropdown-menu">
-                                                                <li role="presentation" class="dropdown-header">Options</li>
-                                                                <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
-                                                                <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
-                                                        </ul>
-                                                     </li>
-                                                </ul>
-					</div>
-                </div>
-            </nav>
-        </div>
         <div class="clearfix"></div>
         <form method="post" ng-controller="acceptCtrl">
             <div class="modal fade" id="responsive_fileActionAdmin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -212,7 +110,7 @@
         </div>
 
         <div class="clearfix"></div>
-
+        </div>
         <!-- This is the original footer with id=wrapper -->
         <!-- <footer id="footer-wrap-index"> -->
             <!-- <div class="container">
@@ -224,7 +122,7 @@
         
         <!-- Take this out if you want the original footer back -->
         <div class="push"></div>
-    </div>
+    
 
     <div class="footer">
         <footer id="footer-wrap-index">
@@ -260,7 +158,7 @@
 
     <script src="js/angular/angular.js"></script>
     <script src="js/angular/ngStorage.js"></script>
-    <script src="js/loop.js" type="text/javascript"></script>
+    <script src="js/loop.js"></script>
 
     <!-- Bootstrap tour =================================================-->
     <script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
@@ -304,7 +202,7 @@
     </script> 
     
     <script type="text/javascript">
-        $(document).ready(function() {
+ /*       $(document).ready(function() {
             $('#defaultForm').bootstrapValidator({
                 message: 'This value is not valid',
                 submitHandler: function(validator, form) {
@@ -363,7 +261,7 @@
                     }
                 }
             });
-        });
+        });*/
     </script>
 </body>
 </html>
