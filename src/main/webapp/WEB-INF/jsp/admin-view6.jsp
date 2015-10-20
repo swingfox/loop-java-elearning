@@ -102,7 +102,7 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                 
                 <div class="clearfix" id="before-features" ></div>
                
         </div>
