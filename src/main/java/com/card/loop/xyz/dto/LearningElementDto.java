@@ -17,9 +17,9 @@ public class LearningElementDto {
     */
     private String id;
     /*
-    *name of learning element
+    *title of learning element
     */
-    private String name;
+    private String title;
     /*
     *subject of learning element
     */
@@ -33,9 +33,9 @@ public class LearningElementDto {
     */
     private int downloads;
     /*
-    *dateUploaded of learning element
+    *uploadDate of learning element
     */
-    private String dateUploaded;
+    private String uploadDate;
     /*
     *filepath of learning element
     */
@@ -90,18 +90,18 @@ public class LearningElementDto {
        this.id=id;
     }
     /**
-     * Gets the name of the learning element
-     * @return String This returns the name of the learning element 
+     * Gets the title of the learning element
+     * @return String This returns the title of the learning element 
      */
-    public String getName(){
-        return this.name;
+    public String getTitle(){
+        return this.title;
     }
     /**
-     * Sets the name of the learning element
-     * @param name 
+     * Sets the title of the learning element
+     * @param title 
      */
-    public void setName(String name){
-        this.name=name;
+    public void setTitle(String title){
+        this.title=title;
     }
     /**
      * Gets the subject of the learning element
@@ -146,18 +146,18 @@ public class LearningElementDto {
         this.downloads=downloads;
     }
     /**
-     * Gets the dateUploaded of the learning element
+     * Gets the uploadDate of the learning element
      * @return String This returns the date uploaded of the learning element
      */
-    public String getDateUploaded(){
-        return this.dateUploaded;
+    public String getUploadDate(){
+        return this.uploadDate;
     }
     /**
      * Sets the date uploaded of the learning element
-     * @param dateUploaded 
+     * @param uploadDate 
      */
-    public void setDateUploaded(String dateUploaded){
-        this.dateUploaded=dateUploaded;
+    public void setUploadDate(String uploadDate){
+        this.uploadDate=uploadDate;
     }
     /**
      * Gets the file path of the learning element

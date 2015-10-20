@@ -81,9 +81,9 @@
                                                             <img ng-if="le.rating==5" src="img/icon-green.png" alt="For Review">
 
                                                         </td>
-                                                        <td><a ng-click="GetLE(le)"><label ng-model="le.name">{{le.name}}</a></td>
+                                                        <td><a ng-click="GetLE(le)"><label ng-model="le.title">{{le.title}}</a></td>
                                                         <td><label ng-model="le.subject">{{le.subject}}</td>
-                                                        <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
+                                                        <td><label ng-model="le.uploadDate">{{le.uploadDate}}</td>
                                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="le.rating">{{le.rating}}</td>
                                                         <td><label ng-model="le.comments">{{le.comments}}</td>
                                                         <td><label ng-model="le.rev">{{le.rev}}</td>

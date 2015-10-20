@@ -113,7 +113,7 @@ public class LearningObjectDAO {
     public boolean deleteLO(LearningObjectDto lo) throws UnknownHostException{
         boolean ok = false;
         Query query = new Query();
-        query.addCriteria(where("name").is(lo.getName()));
+        query.addCriteria(where("name").is(lo.getTitle()));
         ok = mongoOps.exists(query, LearningObject.class);
         if(ok)
             mongoOps.remove(lo);
@@ -125,7 +125,7 @@ public class LearningObjectDAO {
         query.addCriteria(where("_id").is(lo.getId()));
         LearningObject obj = mongoOps.findOne(query, LearningObject.class);
         obj.setId(lo.getId());
-        obj.setDateUploaded(lo.getDateUploaded());
+        obj.setUploadDate(lo.getUploadDate());
         obj.setDownloads(lo.getDownloads());
         obj.setStatus(lo.getStatus());
         obj.setSubject(lo.getSubject());
@@ -160,7 +160,7 @@ public class LearningObjectDAO {
 	gfsFile.setFilename(lo.getFileName());
         gfsFile.setContentType(lo.getFileType());
         gfsFile.put("_class","com.card.loop.xyz.model.LearningObject");
-        gfsFile.put("name",lo.getName());
+        gfsFile.put("name",lo.getTitle());
         gfsFile.put("filePath",lo.getFilePath());
         gfsFile.put("subject",lo.getSubject());
         gfsFile.put("description", lo.getDescription());
@@ -208,7 +208,14 @@ public class LearningObjectDAO {
         DB db = mongo.getDB("loop");
         GridFS le_gfs = new GridFS(db, collection);
         GridFSDBFile le_output = le_gfs.findOne(new ObjectId(id));
-
+        return le_output;
+    }
+    
+    public GridFSDBFile getSingleLOByName(String name, String collection) throws UnknownHostException {
+        Mongo mongo = new Mongo("localhost", 27017);
+        DB db = mongo.getDB("loop");
+        GridFS le_gfs = new GridFS(db, collection);
+        GridFSDBFile le_output = le_gfs.findOne(new BasicDBObject(name,collection));
         return le_output;
     }
     
@@ -248,7 +255,19 @@ public class LearningObjectDAO {
     public static void main(String[] args) throws IOException{
         LearningObjectDAO dao = new LearningObjectDAO();
         LearningObject lo = new LearningObject();
-        System.out.println(lo);
+        ArrayList<DBObject> db = dao.listAll("lo.meta");
+        for(DBObject o: db)
+        {
+            try{
+           GridFSDBFile grid = dao.getSingleLOByName((String)o.get("filename"), "lo.meta");
+           System.out.println(grid);
+            }
+            catch(Exception e){e.printStackTrace();}
+         //  System.out.println(grid.toString());
+        }
+        System.out.println();
+
+       /* System.out.println(lo);
         lo.setFileName("testing8.json");
         lo.setName("testhahah");
         lo.setFilePath("C:\\Users\\David\\Desktop\\");
@@ -261,10 +280,10 @@ public class LearningObjectDAO {
         lo.setUploadedBy("dev1");
         lo.setStatus("1");
         lo.setRev("rev1");
-        lo.setType("LO");
-        lo.setSequence(null);
+        lo.setType("LO");*/
+    //    lo.setSequence(null);
 //        dao.addLearningObject(lo);
-        dao.addFile(lo);
+   //     dao.addFile(lo);
       //  System.out.println(dao.search("676f65e8970d856682dde3a34f2390f9","lo.meta"));
      //   OutputStream output = new FileOutputStream("c:\\data\\");
 

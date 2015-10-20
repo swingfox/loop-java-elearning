@@ -11,7 +11,7 @@ echo '--><script type="text/javascript">
 				document.getElementById("counters").value = i;
 				
 			}
-		</script><
+		</script>
                 
 <title>LOOP | Developer View</title>
             <meta charset="utf-8">
@@ -29,74 +29,7 @@ echo '--><script type="text/javascript">
             <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
 </head>
 <body>
-	<div class="wrapper"  ng-controller="LoginCtrl">
-		<div id="header-wrap">
-			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-	                    
-	                    <a class="navbar-brand" href="/loop-XYZ/store/developer-update">
-							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
-						</a>
-	                </div>
-                                    <div class="navbar-collapse collapse">
-                                                <ul class="nav navbar-nav navbar-right"> 
-                                                    <li class="dropdown">
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
-                                                        <ul class="dropdown-menu">
-                                                                <li role="presentation" class="dropdown-header">Options</li>
-                                                                <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
-                                                                <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
-                                                        </ul>
-                                                     </li>
-                                                </ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-		<form id="defaultForm" method="post" action="'.base_url().'index.php/redirect/reviewNow">
-            <div class="modal fade" id="responsive_changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header light-theme">
-                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <span class="popup">Change Password</span>
-                        </div>
-                        <div class="modal-body">  
-                            <div class="row">
-                                <div class="col-md-10 col-md-push-1 ">
-                                    <p class="alert alert-danger"><i class="icon-warning-sign"></i> Invalid password.</p>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Old Password" required/>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" id="enterNewPassword" name="newPassword" placeholder="Enter New Password" />
-                                    </div>
-                                    <div class="form-group last">
-                                        <input type="password" class="form-control last" id="confirmNewPassword" name="confirmNewPassword" placeholder="Confirm New password" />
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="modal-footer"> 
-                            <div class="row">
-                                <div class="col-md-10 col-md-push-1 ">
-                                    <button type="submit" class="btn btn-primary"><i class="icon-ok icon-large default"></i> Save</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>		
+	<jsp:include page="include/CurrentUser.jsp"/>	
 		<div class="clearfix"></div>
     	<ul id="main-demo" class="nav nav-tabs main-views tour-step tour-step-two">
 			<li class="active tour-step tour-step-one"><a class="active-tab"  href="/loop-XYZ/store/developer-update"><i class="icomoon-list"></i> Learning Objects</a></li> 
@@ -125,14 +58,11 @@ echo '--><script type="text/javascript">
                                                         <div class="clearfix"></div>
                                                     </div></div>
                                                     <table class="datatable table table-hover" ng-controller="LOList">
-
-
-						    <thead>
+                                                        <thead>
 								<tr>
 									<th class="color-code"></th>
 									<th>Name</th>
 									<th>Subject</th>
-									<!-- <th>Date Uploaded</th> -->
 									<th>Uploaded</th>
 									<th>Rating</th>
 									<th>Comments</th>
@@ -140,7 +70,7 @@ echo '--><script type="text/javascript">
 								</tr>
 							</thead>
 					        <tbody>
-                                                    <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : username }">
+                                                    <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : dev1 }">
                                                         <td>
                                                             <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
                                                             <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">
@@ -148,7 +78,7 @@ echo '--><script type="text/javascript">
                                                             <img ng-if="lo.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
                                                             <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
                                                         </td>
-                                                        <td><a ng-click="GetLO(lo)"><label ng-model="lo.name">{{lo.name}}</a></td>
+                                                        <td><a ng-click="LoHistory(lo)"><label value="lo.name" ng-model="lo.name">{{lo.name}}</a></td>
                                                         <td><label ng-model="lo.subject">{{lo.subject}}</td>
                                                         <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
                                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
@@ -179,95 +109,6 @@ echo '--><script type="text/javascript">
 		    </div>
 	    </footer>
     </div>
-        
-        <!-- echo '--><!-- Change Password Pop Up -->
-        <form id="defaultForm" method="post">
-            <div class="modal fade" id="responsive_changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header light-theme">
-                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <span class="popup">Change Password</span>
-                        </div>
-                        <div class="modal-body">  
-                            <div class="row">
-                                <div class="col-md-10 col-md-offset-1 ">
-
-                                    <p class="alert alert-danger hide" id="error"><i class="icon-warning-sign"></i> Invalid password.</p>
-                                    <p class="alert alert-success hide" id="success"><i class="icon-ok"></i> Successfully changed password.</p>
-                                    
-
-                                    <!--' . $alert . '--><div class="form-group">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Old Password" required/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" id="enterNewPassword" name="newPassword" placeholder="Enter New Password" />
-                                    </div>
-
-                                    <div class="form-group last">
-                                        <input type="password" class="form-control last" id="confirmNewPassword" name="confirmNewPassword" placeholder="Confirm New password" />
-                                    </div>
-
-
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="modal-footer"> 
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-3 ">
-                                    <button type="submit" class="btn btn-primary" id="changepassword"><i class="icon-ok icon-large default"></i> Save</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <!-- Change Email Pop Up -->
-        <form id="emailForm" method="post">
-            <div class="modal fade" id="responsive_changeEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header light-theme">
-                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <span class="popup">Change Email</span>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-10 col-md-offset-1">
-
-                                 <p class="alert alert-danger hide" id="error1"><i class="icon-warning-sign"></i> Invalid password.</p>
-                                    <p class="alert alert-success hide" id="success1"><i class="icon-ok"></i> Successfully changed password.</p>
-
-                                   
-
-                                   <!--' . $alert . '--> <div class="form-group">
-                                        <input type="password" class="form-control" id="emailPassword" name="emailPassword" placeholder="Enter Password" required/>
-                                    </div>
-
-                                    <div class="form-group last">
-                                        <input type="text" class="form-control last" id="enterNewEmail" name="enterNewEmail" placeholder="Enter New Email" required/>
-                                    </div>
-                                
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal-footer">
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-3">
-                                    <button type="submit" class="btn btn-primary" id="changeEmail"><i class="icon-ok icon-large default"></i> Save</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>  
-        </form>
 
 	<!-- Load JS here for greater good =============================-->
 

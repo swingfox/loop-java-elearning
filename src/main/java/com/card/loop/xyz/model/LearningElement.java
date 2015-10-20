@@ -20,9 +20,9 @@ public class LearningElement {
     @Id
     private String id;
     /*
-    *name of learning element
+    *title of learning element
     */
-    private String name;
+    private String title;
     /*
     *subject of learning element
     */
@@ -36,9 +36,9 @@ public class LearningElement {
     */
     private int downloads;
     /*
-    *dateUploaded of learning element
+    *uploadDate of learning element
     */
-    private String dateUploaded;
+    private String uploadDate;
     /*
     *filepath of learning element
     */
@@ -74,28 +74,7 @@ public class LearningElement {
     private String fileName;
     
     
-    
-    public LearningElement(){
-    
-    }
-    
-    public LearningElement(String name, String subject,  String description, int downloads,  
-                           String dateUploaded, String filePath, double rating, 
-                           String comments, String status, String rev, String uploadedBy,String fileExtension ){
-       this.name = name;
-       this.subject = subject;
-       this.description = description;
-       this.downloads = downloads;
-       this.dateUploaded = dateUploaded;
-       this.filepath = filePath;
-       this.rating = rating;
-       this.comments = comments;
-       this.status = status;
-       this.rev = rev;
-       this.uploadedBy = uploadedBy;
-       this.fileExtension=fileExtension;
-    }
-    
+  
     /**
      * Gets the id of the learning element
      * @return Long This returns the id of the learning element
@@ -111,18 +90,18 @@ public class LearningElement {
        this.id=id;
     }
     /**
-     * Gets the name of the learning element
-     * @return String This returns the name of the learning element 
+     * Gets the title of the learning element
+     * @return String This returns the title of the learning element 
      */
-    public String getName(){
-        return this.name;
+    public String getTitle(){
+        return this.title;
     }
     /**
-     * Sets the name of the learning element
-     * @param name 
+     * Sets the title of the learning element
+     * @param title 
      */
-    public void setName(String name){
-        this.name=name;
+    public void setTitle(String title){
+        this.title=title;
     }
     /**
      * Gets the subject of the learning the learning element
@@ -167,18 +146,18 @@ public class LearningElement {
         this.downloads=downloads;
     }
     /**
-     * Gets the dateUploaded of the learning element
+     * Gets the uploadDate of the learning element
      * @return String This returns the date uploaded of the learning element
      */
-    public String getDateUploaded(){
-        return this.dateUploaded;
+    public String getUploadDate(){
+        return this.uploadDate;
     }
     /**
      * Sets the date uploaded of the learning element
-     * @param dateUploaded 
+     * @param uploadDate 
      */
-    public void setDateUploaded(String dateUploaded){
-        this.dateUploaded=dateUploaded;
+    public void setUploadDate(String uploadDate){
+        this.uploadDate=uploadDate;
     }
     /**
      * Gets the file path of the learning element

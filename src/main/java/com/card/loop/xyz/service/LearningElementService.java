@@ -21,11 +21,11 @@ import org.springframework.stereotype.Service;
 public class LearningElementService {
     @Autowired LearningElementDAO dao;
     
-    public boolean acceptLE(LearningElementDto le) throws UnknownHostException, Exception{
+        public boolean acceptLE(LearningElementDto le) throws UnknownHostException, Exception{
         boolean ok = false;
         LearningElement model = dao.getLE(le.getId());
         if(model!= null){
-            model.setStatus("1");
+            model.setStatus("2");
             dao.acceptLE(model);
             ok = true;
         }
@@ -58,10 +58,10 @@ public class LearningElementService {
         LearningElementDto dto = new LearningElementDto();
        if(leModel != null){  
             dto.setId(leModel.getId());
-            dto.setName(leModel.getName());
+            dto.setTitle(leModel.getTitle());
             dto.setDescription(leModel.getDescription());
             dto.setSubject(leModel.getSubject());
-            dto.setDateUploaded(leModel.getDateUploaded());
+            dto.setUploadDate(leModel.getUploadDate());
             dto.setDownloads(leModel.getDownloads());           
             dto.setRating(leModel.getRating());
             dto.setRev(leModel.getRev());
@@ -80,11 +80,11 @@ public class LearningElementService {
             LearningElementDto dto = new LearningElementDto();
             dto.setId(model.getId());
             dto.setRating(model.getRating());
-            dto.setName(model.getName());
+            dto.setTitle(model.getTitle());
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());
-            dto.setDateUploaded(model.getDateUploaded());
+            dto.setUploadDate(model.getUploadDate());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
             dto.setRev(model.getRev());
@@ -106,11 +106,11 @@ public class LearningElementService {
             LearningElementDto dto = new LearningElementDto();
             dto.setId(model.getId());
             dto.setRating(model.getRating());
-            dto.setName(model.getName());
+            dto.setTitle(model.getTitle());
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());
-            dto.setDateUploaded(model.getDateUploaded());
+            dto.setUploadDate(model.getUploadDate());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
             dto.setRev(model.getRev());

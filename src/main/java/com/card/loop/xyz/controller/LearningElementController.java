@@ -142,13 +142,13 @@ public class LearningElementController {
                         stream.close();
 
                         LearningElement le = new LearningElement();
-                        le.setName(title);
+                        le.setTitle(title);
                         le.setUploadedBy(author);
                         le.setDescription(description);
                         le.setDownloads(0);
                         le.setStatus("1");
                         le.setRating(1);
-                        le.setDateUploaded(new Date().toString());
+                        le.setUploadDate(new Date().toString());
                         le.setFilePath(file.getOriginalFilename());
                         dao.addLearningElement(le);
                        

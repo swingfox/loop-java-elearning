@@ -5,6 +5,7 @@
  */
 package com.card.loop.xyz.model;
 
+import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -65,7 +66,7 @@ public class OldLO {
     *Name of the uploader of the Learning Object.
     */
     private String uploadedBy;
-    private String[] sequence;
+    private List<LearningElement[]> sequence;
     
 
     /**
@@ -261,11 +262,11 @@ public class OldLO {
         this.uploadedBy = uploadedBy;
     }
 
-    public String[] getSequence() {
+    public List<LearningElement[]> getSequence() {
         return sequence;
     }
 
-    public void setSequence(String[] sequence) {
+    public void setSequence(List<LearningElement[]> sequence) {
         this.sequence = sequence;
     }
     

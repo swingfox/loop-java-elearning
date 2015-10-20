@@ -221,19 +221,7 @@ eS.controller('LEList', ['$scope', '$store', '$http', function($scope, $store, $
     
     $scope.GetLEDetails_admin = function(le) {
         console.log("SULOD....");
-        $http.get('/loop-XYZ/loop/LE/downloadLE/' + le.id)    
-        .success(function(data) {
-            $store.bind($scope, 'le.id', data.id); 
-            $store.bind($scope, 'le.name', data.name);
-            $store.bind($scope, 'le.subject', data.subject); 
-            $store.bind($scope, 'le.dateUploaded', data.dateUploaded); 
-            $store.bind($scope, 'le.description', data.description); 
-         
-             window.location = '/loop-XYZ/store/historyLE-admin';
-        })
-        .error(function(jqXHR, status, error) {
-            console.log(""+ error);
-        });
+             window.location.href = '/loop-XYZ/store/historyLE-admin?leid='+le.id;
     }; 
     
     $scope.clearLE = function(){ 
@@ -586,6 +574,57 @@ eS.controller('newAccountRequestCtrl', ['$scope', '$http', function($scope, $htt
     
    $scope.assignUser = function(developer) {
        $rootScope.userAccept = developer.username;
+   };
+    
+   
+}]);
+
+eS.controller('LECtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+    $rootScope.LEFunc = '';
+    $scope.acceptMe = function(){ 
+        $http.post("/loop-XYZ/loop/LE/acceptLE/"+ $rootScope.LEFunc)
+        .success(function(data) {
+            console.log("SUCCESS"); 
+            window.location.reload(true);
+        })
+        .error(function(jqXHR, status, error) {
+            console.log("jsjdjs"+ error);
+        });
+   };
+   
+   $scope.demoteMe = function(){ 
+        $http.post("/loop-XYZ/loop/LE/demoteLE/"+ $rootScope.LEFunc)
+        .success(function(data) {
+            console.log("SUCCESS"); 
+            window.location.reload(true);
+        })
+        .error(function(jqXHR, status, error) {
+            console.log("jsjdjs"+ error);
+        });
+   };
+    
+   $scope.assignUser = function(le) {
+       $rootScope.LEFunc = le.id;
+   };
+    
+   
+}]);
+
+eS.controller('demoteLECtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+    $rootScope.LEDemote = '';
+    $scope.acceptMe = function(){ 
+        $http.post("/loop-XYZ/loop/user/demoteLE/"+ $rootScope.LEDemote)
+        .success(function(data) {
+            console.log("SUCCESS"); 
+            window.location.reload(true);
+        })
+        .error(function(jqXHR, status, error) {
+            console.log("jsjdjs"+ error);
+        });
+   };
+    
+   $scope.assignUser = function(le) {
+       $rootScope.LEDemote = le.id;
    };
     
    

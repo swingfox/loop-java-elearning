@@ -32,10 +32,10 @@ public class OldLOService
         LearningObjectDto dto = new LearningObjectDto();
        if(loModel != null){  
             dto.setId(loModel.getId());
-            dto.setName(loModel.getName());
+            dto.setTitle(loModel.getName());
             dto.setDescription(loModel.getDescription());
             dto.setSubject(loModel.getSubject());
-            dto.setDateUploaded(loModel.getDateUploaded());
+            dto.setUploadDate(loModel.getDateUploaded());
             dto.setDownloads(loModel.getDownloads());           
             dto.setRating(loModel.getRating());
             dto.setRev(loModel.getRev());
@@ -57,11 +57,11 @@ public class OldLOService
             LearningObjectDto dto = new LearningObjectDto();
             dto.setId(model.getId());
             dto.setRating(model.getRating());
-            dto.setName(model.getName());
+            dto.setTitle(model.getName());
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());
-            dto.setDateUploaded(model.getDateUploaded());
+            dto.setUploadDate(model.getDateUploaded());
             dto.setRev(model.getRev());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
@@ -86,11 +86,11 @@ public class OldLOService
             LearningObjectDto dto = new LearningObjectDto();
             dto.setId(model.getId());
             dto.setRating(model.getRating());
-            dto.setName(model.getName());
+            dto.setTitle(model.getName());
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());
-            dto.setDateUploaded(model.getDateUploaded());
+            dto.setUploadDate(model.getDateUploaded());
             dto.setRev(model.getRev());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
@@ -110,11 +110,11 @@ public class OldLOService
             LearningObjectDto dto = new LearningObjectDto();
             dto.setId(model.getId());
             dto.setRating(model.getRating());
-            dto.setName(model.getName());
+            dto.setTitle(model.getName());
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());
-            dto.setDateUploaded(model.getDateUploaded());
+            dto.setUploadDate(model.getDateUploaded());
             dto.setRev(model.getRev());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
@@ -132,11 +132,11 @@ public class OldLOService
         LearningObjectDto dto = new LearningObjectDto();
             dto.setId(lo.getId());
             dto.setRating(5);
-            dto.setName(lo.getName());
+            dto.setTitle(lo.getName());
             dto.setDescription(lo.getDescription());
             dto.setSubject(lo.getSubject());
             dto.setDownloads(lo.getDownloads());
-            dto.setDateUploaded(lo.getDateUploaded());
+            dto.setUploadDate(lo.getDateUploaded());
             dto.setRev(lo.getRev());
             dto.setUploadedBy(lo.getUploadedBy());
             dto.setComments(lo.getComments());

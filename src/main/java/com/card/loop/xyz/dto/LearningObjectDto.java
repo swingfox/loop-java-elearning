@@ -5,6 +5,7 @@
  */
 package com.card.loop.xyz.dto;
 
+import com.card.loop.xyz.model.LearningElement;
 import java.util.List;
 
 /**
@@ -31,7 +32,7 @@ public class LearningObjectDto {
     /*
     *Name of the Learning Object
     */
-    private String name;
+    private String title;
     /*
     *Subject of the Learning Object
     */
@@ -59,6 +60,8 @@ public class LearningObjectDto {
     /*
     *Name of the reviewer of the Learning Object
     */
+    
+    
     private String rev;
     /*
     *Name of the uploader of the Learning Object
@@ -68,11 +71,13 @@ public class LearningObjectDto {
     *List of errors
     */
     private List<String>  errorList;
-    private String[] sequence;
+    private List<LearningElement[]> sequence;
+
     
     private String filename;
     private String contentType;
     private String type;
+    private double price;
 
     /**
      * 
@@ -124,18 +129,18 @@ public class LearningObjectDto {
 
     /**
      * 
-     * @return String This returns the name of the LO
+     * @return String This returns the title of the LO
      */
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     /**
-     * This sets the name of the LO
-     * @param name String
+     * This sets the title of the LO
+     * @param title String
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     /**
@@ -174,16 +179,16 @@ public class LearningObjectDto {
      * 
      * @return String This returns the date the LO is uploaded
      */
-    public String getDateUploaded() {
+    public String getUploadDate() {
         return uploadDate;
     }
 
     /**
      * This sets the date of the LO is uploaded
-     * @param dateUploaded String
+     * @param uploadDate String
      */
-    public void setDateUploaded(String dateUploaded) {
-        this.uploadDate = dateUploaded;
+    public void setUploadDate(String uploadDate) {
+        this.uploadDate = uploadDate;
     }
 
     /**
@@ -252,7 +257,7 @@ public class LearningObjectDto {
 
     /**
      * 
-     * @return String This returns the name of the uploader of the LO
+     * @return String This returns the title of the uploader of the LO
      */
     public String getUploadedBy() {
         return uploadedBy;
@@ -282,11 +287,11 @@ public class LearningObjectDto {
         this.errorList = errorList;
     }
 
-    public String[] getSequence() {
+    public List<LearningElement[]> getSequence() {
         return sequence;
     }
 
-    public void setSequence(String[] sequence) {
+    public void setSequence(List<LearningElement[]> sequence) {
         this.sequence = sequence;
     }
 
@@ -312,5 +317,13 @@ public class LearningObjectDto {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
