@@ -456,33 +456,36 @@ eS.controller('developerAccountCtrl', ['$scope', '$http', function($scope, $http
     });
 }]);
 
-eS.controller('reviewerAccountCtrl', ['$scope', '$http', function($scope, $http) { 
-    function load() {    
+eS.controller('reviewerAccountCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+    $scope.luckyReviewer = "";
+    
+        function load() {    
     $http.get("/loop-XYZ/loop/user/reviewer")    
-    .success(function(data) {
-    	$scope.reviewerAccount = data;
+    .success(function(response) {
+    	$scope.reviewerAccount = response;
     })
     .error(function(jqXHR, status, error) {
         console.log(""+ error);
     })
+    $http.get("/loop-XYZ/loop/LE/getLE/"+getValue("leid")).success(function(response) {
+        $scope.les = response;
+    });
     }
     
-    $scope.assignReviewer = function(reviewer) {
-        $http.post("/loop-XYZ/loop/user/assignReviewer?leid="+getValue("leid")+"reviewer="+reviewer).success(function(response) {
+    $scope.assignReviewer = function() {
+        $http.post("/loop-XYZ/loop/LE/assignReviewer?leid="+getValue("leid")+"&"+"reviewer="+$scope.luckyReviewer).success(function(response) {
             alert(response);
         });
     }
     
     function getValue(functionType) {
-        var currentURL = window.location.toString().split('?')[1].split('&');
+        var currentURL = window.location.toString().split('?')[1];
         var flag = 0;
-        for(var i=0; i < currentURL.length; i++) {
-            var temp = currentURL[i].split('=')[0];
-            if(temp == functionType) {
-                return temp[j+1];
+        var temp = currentURL.split('=');
+            if(temp[0] == functionType) {
+                return temp[1];
             }
         }
-    }
     
     load();
 }]);
