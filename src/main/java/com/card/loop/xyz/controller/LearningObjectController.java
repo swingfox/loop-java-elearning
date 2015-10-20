@@ -16,6 +16,7 @@ import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.service.LearningObjectService;
 import com.card.loop.xyz.service.UserService;
 import com.loop.controller.ContentShipper;
+import com.mongodb.gridfs.GridFSDBFile;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -199,21 +200,32 @@ public class LearningObjectController {
     */
     @RequestMapping(value = "/downloadLO/{elementID}", method = RequestMethod.GET)
     public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {                   
-                LearningObject element = dao.getLearningObject(elementID);
-		String path = AppConfig.UPLOAD_LO_PATH + element.getFilePath();
-		ContentShipper shipper = new ContentShipper(request, response, true);
-		shipper.ship(path);   
+        GridFSDBFile element = dao.getSingleLO(elementID, "lo.meta");
+        
+        System.out.println(element.getId().toString());
+        dao.writePhysicalFile(element.getId().toString(), element.getFilename());
+        System.out.println(element);
+        System.out.println(element.getFilename());
+        String path = "C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + element.getFilename();
+
+        File f = new File(path);
+        ContentShipper shipper = new ContentShipper(request, response, true);
+        shipper.ship(path);         
+        f.delete();
     }
     /*
     *   @params String elementID the name of the specific LO to be downloaded
     */
     @RequestMapping(value = "/downloadLO/{elementID}", method = RequestMethod.HEAD)
     public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
-                LearningObject element = dao.getLearningObject(elementID);
-
-		String path = AppConfig.UPLOAD_LO_PATH + element.getFilePath();
-		ContentShipper shipper = new ContentShipper(request, response, false);
-		shipper.ship(path);
+        GridFSDBFile element = dao.getSingleLO(elementID, "lo.meta");
+        String path = "C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + element.getFilename();
+	 File f = new File(path);
+            System.out.println("DABOYY");
+            ContentShipper shipper = new ContentShipper(request, response, true);
+            shipper.ship(path);
+         
+      //  f.delete();
     }
     
     

@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 import javax.swing.JOptionPane;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -202,11 +203,12 @@ public class LearningObjectDAO {
         return list;
     }
     
-    public GridFSDBFile getSingleLO(String md5, String collection) throws UnknownHostException {
+    public GridFSDBFile getSingleLO(String id, String collection) throws UnknownHostException {
         Mongo mongo = new Mongo("localhost", 27017);
         DB db = mongo.getDB("loop");
         GridFS le_gfs = new GridFS(db, collection);
-        GridFSDBFile le_output = le_gfs.findOne(new BasicDBObject("md5", md5));
+        GridFSDBFile le_output = le_gfs.findOne(new ObjectId(id));
+
         return le_output;
     }
     
@@ -240,7 +242,7 @@ public class LearningObjectDAO {
     }
     
     public void writePhysicalFile(String md5,String fileName) throws UnknownHostException, IOException{
-         getSingleLO(md5,"lo.meta").writeTo("C:\\Users\\David\\Desktop\\" + fileName);
+         getSingleLO(md5,"lo.meta").writeTo("C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + fileName);
     }
     
     public static void main(String[] args) throws IOException{
