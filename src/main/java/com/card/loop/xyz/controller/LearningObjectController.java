@@ -169,6 +169,22 @@ req2.getHeaders().add("Content-Type", "application/json");
         return dtos;
     }
     
+     @RequestMapping("/acceptLO/{id}")
+    @ResponseBody
+    public boolean acceptLO(@PathVariable String id) throws UnknownHostException, Exception{
+        LearningObjectDto ud = new LearningObjectDto();
+        ud.setId(id);
+        return loService.acceptLO(ud);
+    }
+    
+    @RequestMapping("/demoteLO/{id}")
+    @ResponseBody
+    public boolean demoteLO(@PathVariable String id) throws UnknownHostException, Exception{
+        LearningObjectDto ud = new LearningObjectDto();
+        ud.setId(id);
+        return loService.demoteLO(ud);
+    }
+    
     /* 
     *   @return List<LearningObjectDto> reviewer's learning objects
     */

@@ -72,7 +72,7 @@
 										<th>Author</th>
 									</tr>
 								</thead>
-						        <tbody>
+						        <tbody ng-controller="LOCtrl">
                                                             
                                                             <tr ng-repeat="lo in los | filter:searchText">
                                                                 <td>
@@ -89,9 +89,9 @@
                                                                 <td><label ng-model="lo.uploadDate">{{lo.uploadDate}}</td>
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
                                                                 <td><label ng-model="lo.comments">{{lo.comments}}</td>
-                                                                <td ng-if="lo.status===0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>
-                                                                <td ng-if="lo.status===1"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>
-                                                                <td ng-if="lo.status===2"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>
+                                                                 <td ng-if="lo.status==0"><a href="#responsive_approve" data-toggle="modal" onclick="selectIndex('.$counter.')" ng-click="assignUser(lo)"  value="lo.id" ng-model="lo.id"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></a></td>
+                                                                 <td ng-if="lo.status==1"><a href="#responsive_approve" data-toggle="modal" onclick="selectIndex('.$counter.')" ng-click="assignUser(lo)"  value="lo.id" ng-model="lo.id"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></a></td>
+
                                                                 <td><label ng-model="lo.rev">{{lo.rev}}</td>
                                                                 <td><label ng-model="lo.uploadedBy">{{lo.uploadedBy}}</td> 
                                                             </tr>							
@@ -105,7 +105,35 @@
 				<div class="clearfix" id="before-features" ></div>
 			</div>
 		</div>
-
+<form method="post" ng-controller="LOCtrl">
+            <div class="modal fade" id="responsive_approve" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header light-theme">
+                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <span class="popup">User Action</span>
+                        </div>
+                        <div class="modal-body">  
+                            <div class="row">
+                                <div class="col-md-10 col-md-push-1">                                 
+                                    <label class="file-action">What would you like to do with this account request?</label>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="modal-footer"> 
+                            <div class="row">
+                                <div class="col-md-10 col-md-push-1">
+                                    <button type="submit" class="btn btn-primary" ng-click="acceptMe()"><i class="icon-ok-sign icon-large default"></i> Accept</button>
+                                    <button type="submit" class="btn btn-default" ng-click="demoteMe()"></i> Demote</button>
+                                    <input type="hidden" id="selectedIndex" name="index" value="0"/>      
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+                    
   		<div class="clearfix"></div>
         <div class="push"></div>
 	<div class="footer">
