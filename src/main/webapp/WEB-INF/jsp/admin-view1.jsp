@@ -60,55 +60,13 @@
 ?>-->
 </head>
 <body>	
-<<<<<<< HEAD
+
     <jsp:include page="include/CurrentUser.jsp"/>
-=======
+
 	<!-- <div id="wrapper"> -->
-	<div class="wrapper">
     	<!--<?php $this->layout->modal_footer() ?>-->
 		
-		<div id="header-wrap">
-			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-	                    
-	                    <a class="navbar-brand" href="/loop-XYZ/store/admin-view">
-							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
-						</a>
-	                </div>
-					
-					<div class="navbar-collapse collapse" ng-controller="LoginCtrl">
-                                                <ul class="nav navbar-nav navbar-right"> 
-                                                    <li class="dropdown">
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} {{userID}}<b class="caret"></b></a>
-                                                        <ul class="dropdown-menu">
-
-                                                                <li role="presentation" class="dropdown-header">Options</li>
-
-                                                                <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
-                                                                <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
-
-                                                                <li class="divider"></li>
-
-                                                                <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
-                                                        </ul>
-                                                     </li>
-                                                </ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-
-
-
-
-
->>>>>>> 221ca8a9002eefafbf33b477cb1f7c52b0144a33
+		
 		<div class="clearfix"></div>
 
 		<!-- User Action -->
@@ -423,8 +381,6 @@
 		    </div>
 	    </footer>
     </div>
-<<<<<<< HEAD
-=======
                 
         <!-- echo '--><!-- Change Password Pop Up -->
         <form id="defaultForm" method="post">
@@ -514,7 +470,6 @@
                 </div>
             </div>  
         </form>
->>>>>>> 221ca8a9002eefafbf33b477cb1f7c52b0144a33
 
 	<!-- Load JS here for greater good =============================-->
 
