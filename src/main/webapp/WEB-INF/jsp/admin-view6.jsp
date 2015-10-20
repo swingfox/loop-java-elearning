@@ -87,13 +87,9 @@
                                             <img ng-if="le.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
                                             <img ng-if="le.rating==5" src="img/icon-green.png" alt="For Review">
                                         </td>
-<<<<<<< HEAD
-                                        <td><a ng-click="GetLEDetails_admin(le)"><label ng-model="title">{{le.title}}</a></td>
-=======
-                                        <td><a ng-click="GetLEDetails_admin(le)"><label ng-model="name">nnj{{le.title}}</a></td>
->>>>>>> 4b2be59ee4c471ba1bfb4b07c281b254d3671894
+                                        <td><a ng-click="GetLEDetails_admin(le)"><label ng-model="name">{{le.title}}</a></td>
                                         <td><label ng-model="le.subject">{{le.subject}}</td>
-                                        <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
+                                        <td><label ng-model="le.dateUploaded">{{le.dateUploaded | date: "MMMM d yyyy"}}</td>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td><label ng-model="le.rating">{{le.rating}}</td>
                                         <td><label ng-model="le.comments">{{le.comments}}</td>
                                         <td ng-if="le.status==0"><a href="#responsive_approve" data-toggle="modal" onclick="selectIndex('.$counter.')" ng-click="assignUser(le)"  value="le.id" ng-model="le.id"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></a></td>
@@ -243,4 +239,3 @@
 	</script>
 </body>
 </html>
-     

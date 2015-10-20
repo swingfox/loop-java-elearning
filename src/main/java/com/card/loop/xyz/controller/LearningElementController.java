@@ -165,11 +165,18 @@ public class LearningElementController {
             
         }
     
-    @RequestMapping(value = "/ässignReviewer", method = RequestMethod.POST)
+    @RequestMapping(value = "/assignReviewer", method = RequestMethod.POST)
     public boolean assignReviewer(@RequestParam("leid") String id,@RequestParam("reviewer") String reviewer) throws UnknownHostException {
         if(id!=null && reviewer!=null)
             return leService.assignReviewer(id,reviewer);
         else
             return false;
+    }
+    
+    @RequestMapping("/getLE/{leid}")
+    public List<LearningElementDto> getLE(@PathVariable String leid) throws UnknownHostException {
+        List<LearningElementDto> le = new ArrayList<LearningElementDto>(); 
+            le.add(leService.getSpecificLearningElement(leid));
+            return le;
     }
 }
