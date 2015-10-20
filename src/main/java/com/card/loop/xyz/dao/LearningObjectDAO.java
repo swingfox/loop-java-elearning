@@ -43,6 +43,35 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class LearningObjectDAO {
     @Autowired MongoOperations mongoOps;
+    
+    public LearningObject getLO(String id) throws UnknownHostException{ 
+        LearningObject p = null;
+        p = mongoOps.findOne(query(where("_id").is(id)), LearningObject.class);
+        return p;
+    }
+    
+    public boolean acceptLO(LearningObject lo) throws UnknownHostException{
+        boolean ok = false;        
+        Query query = new Query();
+        query.addCriteria(where("_id").is(lo.getId()));
+        LearningObject obj = this.mongoOps.findOne(query, LearningObject.class);
+        obj.setId(lo.getId());        
+        obj.setStatus("1");
+        this.mongoOps.save(obj);
+        return ok;
+    }
+    
+    public boolean demoteLO(LearningObject lo) throws UnknownHostException{
+        boolean ok = false;        
+        Query query = new Query();
+        query.addCriteria(where("_id").is(lo.getId()));
+        LearningObject obj = this.mongoOps.findOne(query, LearningObject.class);
+        obj.setId(lo.getId()); 
+            obj.setStatus("0");
+       
+        this.mongoOps.save(obj);
+        return ok;
+    }
 
     public List<LearningObject> getList() throws UnknownHostException {
         return mongoOps.findAll(LearningObject.class);
@@ -70,7 +99,7 @@ public class LearningObjectDAO {
     public List<LearningObject> getAllDownloadableLO() throws UnknownHostException {
        Query query = new Query();
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
-       return (mongoOps.find(query(where("rating").is(5)), LearningObject.class));
+       return (mongoOps.find(query(where("status").is(1)), LearningObject.class));
     }
     
     public List<LearningObject> getOldLO(String name) throws UnknownHostException {

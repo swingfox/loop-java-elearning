@@ -106,7 +106,7 @@ public class LearningObjectController {
     {
         try {
             SimpleClientHttpRequestFactory rf= new SimpleClientHttpRequestFactory();
-            ClientHttpRequest req = rf.createRequest(URI.create(AppConfig.LOOP_URL + "/loop-XYZ/loop/LO/list"),HttpMethod.GET);
+            ClientHttpRequest req = rf.createRequest(URI.create(AppConfig.LOOP_URL + "/loop-XYZ/loop/LO/availableLO"),HttpMethod.GET);
             ClientHttpResponse response = req.execute();
             
             StringBuilder sb = new StringBuilder();
@@ -167,6 +167,22 @@ req2.getHeaders().add("Content-Type", "application/json");
             e.printStackTrace();
         }
         return dtos;
+    }
+    
+     @RequestMapping("/acceptLO/{id}")
+    @ResponseBody
+    public boolean acceptLO(@PathVariable String id) throws UnknownHostException, Exception{
+        LearningObjectDto ud = new LearningObjectDto();
+        ud.setId(id);
+        return loService.acceptLO(ud);
+    }
+    
+    @RequestMapping("/demoteLO/{id}")
+    @ResponseBody
+    public boolean demoteLO(@PathVariable String id) throws UnknownHostException, Exception{
+        LearningObjectDto ud = new LearningObjectDto();
+        ud.setId(id);
+        return loService.demoteLO(ud);
     }
     
     /* 

@@ -71,9 +71,9 @@
                                                             <img ng-if="le.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
                                                             <img ng-if="le.rating==5" src="img/icon-green.png" alt="For Review">
                                                         </td>
-                                                       <td><a href="'" onclick=""><label ng-model="name">{{le.name}}</a></td>
+                                                       <td><a href="'" onclick=""><label ng-model="name">{{le.title}}</a></td>
                                                        <td><label ng-model="subject">{{le.subject}}</td>
-                                                       <td><label ng-model="dateUploaded">{{le.dateUploaded}}</td>
+                                                       <td><label ng-model="dateUploaded">{{le.uploadDate}}</td>
                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="rating">{{le.rating}}</td>
                                                        <td><label ng-model="comments">{{le.comments}}</td>    
                                                        <td ng-if="le.status==0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>

@@ -39,7 +39,7 @@ echo '--><script type="text/javascript">
 			<li class="tour-step tour-step-four"><a href="/loop-XYZ/store/advanced-search-dev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
 		</ul>
 		<div class="clearfix"></div>
-  		<div id="content-wrap-dev">
+  		<div id="content-wrap-dev" ng-controller="LoginCtrl">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 content">	
@@ -69,7 +69,7 @@ echo '--><script type="text/javascript">
 									<th>Reviewer</th>
 								</tr>
 							</thead>
-					        <tbody>
+					        <tbody >
                                                     <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : dev1 }">
                                                         <td>
                                                             <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
@@ -78,9 +78,9 @@ echo '--><script type="text/javascript">
                                                             <img ng-if="lo.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
                                                             <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
                                                         </td>
-                                                        <td><a ng-click="LoHistory(lo)"><label value="lo.name" ng-model="lo.name">{{lo.name}}</a></td>
+                                                        <td><a ng-click="LoHistory(lo)"><label value="lo.name" ng-model="lo.title">{{lo.title}}</a></td>
                                                         <td><label ng-model="lo.subject">{{lo.subject}}</td>
-                                                        <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
+                                                        <td><label ng-model="lo.uploadDate">{{lo.uploadDate}}</td>
                                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
                                                         <td><label ng-model="lo.comments">{{lo.comments}}</td>
                                                         <td><label ng-model="lo.rev">{{lo.rev}}</td>

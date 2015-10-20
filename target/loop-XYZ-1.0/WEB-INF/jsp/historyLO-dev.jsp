@@ -64,20 +64,11 @@
 
     </head>
     <body>
-<<<<<<< HEAD
         <jsp:include page="include/CurrentUser.jsp"/>
-=======
 
         <!-- <div id="wrapper"> -->
 	<div class="wrapper" ng-controller="LoginCtrl">
-    	<!--<?php $this->layout->modal_footer() ?>-->
 		
-		
-
-
-        <jsp:include page="include/CurrentUser.jsp"/>
-
->>>>>>> 221ca8a9002eefafbf33b477cb1f7c52b0144a33
 		<div class="clearfix"></div>
 
 		<div id="breadcrumb-wrap" ng-controller="LOList">
