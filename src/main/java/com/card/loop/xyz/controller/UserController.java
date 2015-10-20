@@ -169,6 +169,24 @@ public class UserController {
         ud.setUsername(username);
         return service.accept(ud);
     }
+    /**
+    @RequestMapping("/changeEmail")
+    @ResponseBody
+    public boolean changeEmail(@RequestBody UserDto user) throws UnknownHostException, Exception{
+        //UserDto ud = new UserDto();
+        //ud.setUsername(username);
+        //return service.changeEmail(ud);
+        UserDto result = null;
+        try{
+            result = service.changeEmail(user);
+            if(result==null)
+                user.getErrorList().add("Username or password is invalid.");
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+        return result;
+        
+    }**/
     
     @RequestMapping("/reviewer")
     public List<UserDto> reviewerUser(){

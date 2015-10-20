@@ -11,7 +11,7 @@ echo '--><script type="text/javascript">
 				document.getElementById("counters").value = i;
 				
 			}
-		</script><
+		</script>
                 
 <title>LOOP | Developer View</title>
             <meta charset="utf-8">
@@ -81,7 +81,7 @@ echo '--><script type="text/javascript">
                                                             <img ng-if="lo.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
                                                             <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
                                                         </td>
-                                                        <td><a ng-click="GetLO(lo)"><label ng-model="lo.name">{{lo.name}}</a></td>
+                                                        <td><a ng-click="LoHistory(lo)"><label value="lo.name" ng-model="lo.name">{{lo.name}}</a></td>
                                                         <td><label ng-model="lo.subject">{{lo.subject}}</td>
                                                         <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
                                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>

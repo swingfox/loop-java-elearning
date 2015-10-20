@@ -115,7 +115,7 @@
 		<footer id="footer-wrap-index">
 			<div class="container">
 	            <div class="copyright-here pull-left">
-					Copyright &copy; <?php echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
+					Copyright &copy;  LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
 		    	</div>
 		    </div>
 	    </footer>

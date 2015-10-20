@@ -57,7 +57,7 @@ public class UserService {
             model.setUserType(user.getUsertype());
             model.setEmail(user.getEmail());
             model.setBlocked(false);
-            model.setNewAccount(false);
+            model.setNewAccount(true);
             model.setLastLogin(new Date().toString());
             dao.saveUser(model);
             ok = true;
@@ -138,12 +138,31 @@ public class UserService {
             throw new Exception("User does not exist. ");
         return ok;
     }
+     
+    public  boolean  changeEmail(UserDto user) throws UnknownHostException, Exception{
+        boolean ok = false;
+       // User u= new User();
+         User model = dao.getUser(user.getUsername());
+        //System.out.println(u.getUsername());
+       
+        if(model!= null){
+            //model.setBlocked(false);
+            model.setEmail(user.getEmail());
+            ok = dao.editEmail(model);
+        }
+        else
+            throw new Exception("User does not exist. ");
+        return ok;
+    }
     
     public static void main(String args[]) throws Exception{
-        UserDto u= new UserDto();
+        UserDto u = new UserDto();
         u.setId("56045d3995840640f703d356");
+        u.setUsername("dev1");
+        u.setPassword("david");
+        u.setEmail("julie@gmail.com");        
         
-        //System.out.println(block(u));
+        //System.out.println(changeEmail(u));
     }
 
    
