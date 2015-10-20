@@ -43,7 +43,7 @@ public class LearningObjectService
             dto.setStatus(loModel.getStatus());
             dto.setComments(loModel.getComments());
             dto.setUploadedBy(loModel.getUploadedBy());
-            dto.setFilepath(loModel.getFilepath());     
+            dto.setFilePath(loModel.getFilePath());     
             dto.setSequence(loModel.getSequence());
         }
         return dto;
@@ -64,10 +64,12 @@ public class LearningObjectService
             dto.setRev(model.getRev());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
-            dto.setRev(model.getRev());
             dto.setStatus(model.getStatus());
-            dto.setUploadedBy(model.getUploadedBy());
             dto.setSequence(model.getSequence());
+            dto.setType(model.getType());
+            dto.setFileName(model.getFileName());
+            dto.setFilePath(model.getFilePath());
+            dto.setFileType(model.getFileType());
             objects.add(dto);
         }
         return objects;
@@ -85,7 +87,6 @@ public class LearningObjectService
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());
             dto.setDateUploaded(model.getDateUploaded());
-            dto.setRev(model.getRev());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
             dto.setRev(model.getRev());

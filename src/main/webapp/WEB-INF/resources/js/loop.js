@@ -63,6 +63,16 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
     $scope.userId = '';
     $scope.password = '';
     $scope.type = '';
+    $scope.ConfirmPass = '';
+    $scope.newEmail = '';
+    $scope.currentUser = '';
+    $scope.newPass = '';
+    $scope.newPass2 = '';
+    
+    $http.get("/loop-XYZ/loop/user/getUser/"+$scope.username+"/"+$scope.userType).success(function(response){
+           $scope.currentUser = response; 
+    });
+        
     $scope.$watch("username", function(newVal) {
         console.log(newVal);
     });
@@ -82,6 +92,40 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
         $store.remove('userID');
         $store.remove('userType');
     };
+    
+    $scope.ChangeEmail = function(pass,email) {
+        if($scope.currentUser.password==pass) {
+        var data = {
+          "username": $scope.username,
+          "email": email,
+          "usertype": $scope.userType
+        };    
+        $http.post("/loop-XYZ/loop/user/edit",data).success(function(response) {
+            alert(response);
+        });
+        } else {
+            alert('Failed to change Email! Confirmed Password failed!');
+        }
+    }
+    
+    $scope.ChangePass = function(pass,newpass,newpass2) {
+        if($scope.currentUser.password==pass) {
+            if(newpass==newpass2) {
+        var data = {
+          "username": $scope.username,
+          "password": newpass,
+          "usertype": $scope.userType
+        };
+        $http.post("/loop-XYZ/loop/user/edit",data).success(function(response) {
+            alert(response);
+        });
+            } else {
+                alert('Passwords do not match!');
+            }
+        } else {
+            alert('Failed to change Password! Confirmed Password failed!');
+        }
+    }
 
   $scope.login = function(){
         var data =  {
@@ -98,6 +142,7 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
         });
     };
     
+
         $scope.changeEmail=function(){
            // alert(username);
            var data =  {
@@ -114,6 +159,7 @@ eS.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store
                 console.log("jsjdjs"+ error);
             });
         };
+
     
    if($store.get('userID').length === 0 && window.location.toString().split('/store/')[1] !== 'home'){
        window.location = '/loop-XYZ/store/home';

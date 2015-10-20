@@ -1,0 +1,14 @@
+{
+  "id": 1.0,
+  "name": "Testing 1",
+  "subject": "Math",
+  "description": "For advanced math",
+  "downloads": 2,
+  "dateUploaded": "2015-09-20",
+  "filepath": null,
+  "rating": 5.0,
+  "comments": "YEY",
+  "status":"Reviewed",
+  "rev":"Aislinn",
+  "uploadedBy":"Admin"
+}

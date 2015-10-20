@@ -12,9 +12,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @author Vine Deiparine
  */
 
-@Document(collection = "lo")
+@Document(collection = "lo.meta.files")
 public class LearningObject {
-
     /*
     *ObjectId of the Learning Object in mongoDB
     */    
@@ -39,11 +38,11 @@ public class LearningObject {
     /*
     *Date of the Learning Object is uploaded.
     */
-    private String dateUploaded;
+    private String uploadDate;
     /*
     *Filepath of the Learning Object.
     */
-    private String filepath;
+    private String filePath;
     /*
     *Rating of the Learning Object.
     */
@@ -65,6 +64,10 @@ public class LearningObject {
     *Name of the uploader of the Learning Object.
     */
     private String uploadedBy;
+    private String filename;
+    private String contentType;
+    private String type;
+
     private String[] sequence;
     
 
@@ -129,15 +132,15 @@ public class LearningObject {
      * @return String This returns the uploaded date of Learning Object.
      */
     public String getDateUploaded(){
-        return this.dateUploaded;
+        return this.uploadDate;
     }
 
     /**
-     * Gets the filepath of the Learning Object.
-     * @return String This returns the filepath of Learning Object.
+     * Gets the filePath of the Learning Object.
+     * @return String This returns the filePath of Learning Object.
      */
-    public String getFilepath(){
-        return this.filepath;
+    public String getFilePath(){
+        return this.filePath;
     }
 
     /**
@@ -226,15 +229,15 @@ public class LearningObject {
      * @param dateUploaded String
      */
     public void setDateUploaded(String dateUploaded){
-        this.dateUploaded = dateUploaded;
+        this.uploadDate = dateUploaded;
     }
 
     /**
-     * Sets the filepath of the Learning Object
+     * Sets the filePath of the Learning Object
      * @param filepath String
      */
-    public void setFilepath(String filepath){
-        this.filepath= filepath;
+    public void setFilePath(String filepath){
+        this.filePath= filepath;
     }
 
     /**
@@ -267,6 +270,30 @@ public class LearningObject {
 
     public void setSequence(String[] sequence) {
         this.sequence = sequence;
+    }
+
+    public String getFileName() {
+        return filename;
+    }
+
+    public void setFileName(String fileName) {
+        this.filename = fileName;
+    }
+
+    public String getFileType() {
+        return contentType;
+    }
+
+    public void setFileType(String fileType) {
+        this.contentType = fileType;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
     
 }

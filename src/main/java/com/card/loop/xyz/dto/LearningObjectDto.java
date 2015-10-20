@@ -43,11 +43,11 @@ public class LearningObjectDto {
     /*
     *Date that the Learning Object is uploaded
     */
-    private String dateUploaded;
+    private String uploadDate;
     /*
     *Filepath of the Learning Object
     */
-    private String filepath;
+    private String filePath;
     /*
     *Comments of the Learning Object
     */
@@ -69,6 +69,10 @@ public class LearningObjectDto {
     */
     private List<String>  errorList;
     private String[] sequence;
+    
+    private String filename;
+    private String contentType;
+    private String type;
 
     /**
      * 
@@ -171,7 +175,7 @@ public class LearningObjectDto {
      * @return String This returns the date the LO is uploaded
      */
     public String getDateUploaded() {
-        return dateUploaded;
+        return uploadDate;
     }
 
     /**
@@ -179,23 +183,23 @@ public class LearningObjectDto {
      * @param dateUploaded String
      */
     public void setDateUploaded(String dateUploaded) {
-        this.dateUploaded = dateUploaded;
+        this.uploadDate = dateUploaded;
     }
 
     /**
      * 
-     * @return String This returns the filepath of the LO
+     * @return String This returns the filePath of the LO
      */
-    public String getFilepath() {
-        return filepath;
+    public String getFilePath() {
+        return filePath;
     }
 
     /**
-     * This sets the filepath of the LO
+     * This sets the filePath of the LO
      * @param filepath String
      */
-    public void setFilepath(String filepath) {
-        this.filepath = filepath;
+    public void setFilePath(String filepath) {
+        this.filePath = filepath;
     }
 
     /**
@@ -284,5 +288,29 @@ public class LearningObjectDto {
 
     public void setSequence(String[] sequence) {
         this.sequence = sequence;
+    }
+
+    public String getFileName() {
+        return filename;
+    }
+
+    public void setFileName(String fileName) {
+        this.filename = fileName;
+    }
+
+    public String getFileType() {
+        return contentType;
+    }
+
+    public void setFileType(String fileType) {
+        this.contentType = fileType;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

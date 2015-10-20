@@ -23,6 +23,7 @@
 
 </head>
 <body>	
+    <jsp:include page="include/CurrentUser.jsp"/>
 	<div class="wrapper">
 		<div id="header-wrap">
 			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
@@ -99,7 +100,7 @@
 							<table class="datatable table table-hover">
 							    <thead>
 									<tr>
-										<th class="color-code"><!-- <img src="<?php //echo base_url() ?>img/icon-colorcode.png" alt="color code" /> --></th>
+										<th class="color-code"></th>
 										<th>Name</th>
 										<th>Subject</th>
 										<!-- <th>Date Uploaded</th> -->
@@ -127,9 +128,9 @@
                                                                 <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="le.rating">{{le.rating}}</td>
                                                                 <td><label ng-model="le.comments">{{le.comments}}</td>
-                                                                <td ng-if="le.status==0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>
-                                                                <td ng-if="le.status==1"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>
-                                                                <td ng-if="le.status==2"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>
+                                                                <td ng-if="le.status==0"><a href="#responsive_approve" data-toggle="modal"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></a></td>
+                                                                <td ng-if="le.status==1"><a href="#responsive_approve" data-toggle="modal"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></a></td>
+                                                                <td ng-if="le.status==2"><a href="#responsive_approve" data-toggle="modal"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></a></td>
                                                                 <td><label ng-model="le.rev">{{le.rev}}</td>
                                                                 <td><label ng-model="le.uploadedBy">{{le.uploadedBy}}</td>
                                                             </tr>			
@@ -232,6 +233,45 @@
                 </div>
             </div>  
         </form>
+        <form id="defaultForm" method="post">
+            <div class="modal fade" id="responsive_approve" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header light-theme">
+                            <button type="button" class="close light-theme" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <span class="popup">Change Password</span>
+                        </div>
+                        <div class="modal-body">  
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1 ">
+
+                                    <p class="alert alert-danger hide" id="error"><i class="icon-warning-sign"></i> Invalid password.</p>
+                                    <p class="alert alert-success hide" id="success"><i class="icon-ok"></i> Successfully changed password.</p>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Old Password" required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="enterNewPassword" name="newPassword" placeholder="Enter New Password" />
+                                    </div>
+                                    <div class="form-group last">
+                                        <input type="password" class="form-control last" id="confirmNewPassword" name="confirmNewPassword" placeholder="Confirm New password" />
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="modal-footer"> 
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-3 ">
+                                    <button type="submit" class="btn btn-primary" id="changepassword"><i class="icon-ok icon-large default"></i> Save</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
 	<script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
 	<script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
 	<script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
@@ -254,64 +294,16 @@
         <script src="js/loop.js" type="text/javascript"></script>
 	<script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
 	<script src="js/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
-
-	<!-- Form Validator =================================================-->
 	<script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
-
 	<script>
 	$("#banner-wrap").backstretch("img/img-banner.jpg");
 	</script>
-
-<!--	<script> 
-		$(document).ready(function(){
-			var length_sel;
-
-            $('.datatable').dataTable({ 
-                "sPaginationType": "bs_normal"
-            });
-
-            $('.datatable').each(function(){
-                $(this).show();
-                datatable_configuration_for_bootstrap_three($(this));
-            });
-
-            // datatable configuration for bootstrap 3
-            function datatable_configuration_for_bootstrap_three(datatable){
-            	datatable.addClass('col-md-12');
-                var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
-                search_input.attr('placeholder', 'Search');
-
-                $('<i class="icomoon-search pull-left searchbar-icon"></i>').prependTo($('div:eq(0) > div > div:eq(0)',datatable.parents('.dataTables_wrapper')));
-                $('div:eq(0) > div > div:eq(0) > div',datatable.parents('.dataTables_wrapper')).addClass('pull-right');
-                
-                search_input.addClass('form-control input-sm');
-                search_input.width('140px'); //used to be 150
-                length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
-                length_sel.addClass('form-control input-sm').css({ padding: '5px 10px 5px 5px', cursor: 'pointer' });
-                $('option', length_sel).css({ padding: '5px 8px' });
-                var pagination = datatable.closest('.dataTables_wrapper').find('ul.pagination');
-                pagination.addClass('pagination-sm');
-            }
-		});
-
-
-		// $(document).ready( function () {
-		// 	var oTable = $('#DataTables_Table_0').dataTable();
-		// 	new FixedHeader( oTable );
-		// });
-
-	</script>
--->
 	<script type="text/javascript">
 		$(document).ready(function() {
 		    $('#defaultForm').bootstrapValidator({
 		        message: 'This value is not valid',
 		        submitHandler: function(validator, form) {
-	                // validator is the BootstrapValidator instance
-	                // form is the jQuery object present the current form
-	                // form.find('.alert').html('Thanks for signing up. Now you can sign in as ' + validator.getFieldElement('username').val()).show();
-	                form.find('.alert').html('Password Changed.').show();
-	                //form.submit();
+	             	form.find('.alert').html('Password Changed.').show();
 	            },
 		        fields: {
 		            username: {
@@ -369,6 +361,6 @@
 		    });
 		});
 	</script>
-
 </body>
 </html>
+p

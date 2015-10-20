@@ -65,13 +65,15 @@ public class UserDAO {
     }
     public boolean editUser(User user) throws UnknownHostException{
         boolean ok = false;
-        Query query = new Query();
-        query.addCriteria(where("username").is(user.getUsername()));
-        Update update = new Update();
-        update.addToSet("password", user.getPassword());
-        //update.addToSet("firstName",user.getFirstName());
-        this.user.updateFirst(query,update,User.class);
+        if(user!=null) {
+        Update userUpdate = new Update();
+        if(user.getPassword()!=null)
+        userUpdate.set("password", user.getPassword());
+        if(user.getEmail()!=null)
+        userUpdate.set("email", user.getEmail());
+        this.user.findAndModify(query(where("username").is(user.getUsername())), userUpdate, User.class);
         ok = true;
+        }
         return ok;
     }
     
@@ -169,21 +171,38 @@ public class UserDAO {
         return ok;
     }
     
-    public boolean exists(String username, String password) throws UnknownHostException{
+    public boolean exists(String username, String userType) throws UnknownHostException{
         boolean ok = false;
         Query query = new Query();
-        query.addCriteria(where("username").is(username).and("password").is(password));
+        query.addCriteria(where("username").is(username).andOperator(where("userType").is(userType)));
         ok = user.exists(query, User.class);
         return ok;
     }
+    
+    public boolean emailExists(String username,String email) throws UnknownHostException {
+        boolean ok = false;
+        Query query = new Query();
+        query.addCriteria(where("email").is(email).andOperator(where("username").is(username).not()));
+        ok = user.exists(query, User.class);
+        return ok;
+    }
+    
     public User getUser(String username,String password,String type) throws UnknownHostException{
         Query query = new Query();
         query.addCriteria(Criteria.where("username").is(username).and("password").is(password).and("userType").is(type));   
         User p = null;
-        if(exists(username,password,type))
-           p = user.findOne(query, User.class);
+        p = user.findOne(query, User.class);
         return p;
     }
+    
+    public User getUser(String username,String type) throws UnknownHostException{
+        Query query = new Query();
+        query.addCriteria(Criteria.where("username").is(username).and("userType").is(type));   
+        User p = null;
+        p = user.findOne(query, User.class);
+        return p;
+    }
+    
     public List<User> getAllUserOfType(String type){return null;}
     public List<User> getBlockedUsers() throws UnknownHostException{
         return user.find(query(where("blocked").is(true)), User.class);

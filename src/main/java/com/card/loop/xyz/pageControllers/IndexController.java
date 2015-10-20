@@ -5,6 +5,7 @@
  */
 package com.card.loop.xyz.pageControllers;
 
+import com.card.loop.xyz.controller.LearningObjectController;
 import com.card.loop.xyz.model.LearningElement;
 import com.loop.controller.ContentShipper;
 import java.io.IOException;
@@ -25,6 +26,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController{
     @RequestMapping("/home")
     public ModelAndView accessIndex() throws IOException {
+        LearningObjectController ctr = new LearningObjectController();
+     //s   ctr.uploadAllLOToInformatron();
         return new ModelAndView("index");
     } 
     @RequestMapping("/download")

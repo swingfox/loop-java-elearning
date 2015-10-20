@@ -39,6 +39,7 @@
 
 </head>
 <body>	
+
 	<!-- <div id="wrapper"> -->
 	<div class="wrapper">
     	<!--?php $this->layout->modal_footer() ?-->
@@ -83,6 +84,9 @@
 				<!-- </div> -->
 			</nav>
 		</div>
+
+
+	<jsp:include page="include/CurrentUser.jsp"/>
 
 		<div class="clearfix"></div>
 

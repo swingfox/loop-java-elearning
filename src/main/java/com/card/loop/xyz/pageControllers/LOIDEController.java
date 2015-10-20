@@ -81,11 +81,11 @@ public class LOIDEController {
             if (!file.isEmpty()) {
                     try {
                         byte[] bytes = file.getBytes();
-                        File fil = new File(AppConfig.UPLOAD_BASE_PATH+ type + "//" + file.getOriginalFilename());
+                    /*    File fil = new File(AppConfig.UPLOAD_BASE_PATH+ type + "//" + file.getOriginalFilename());
                         BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fil));
                         stream.write(bytes);    
                         stream.close();
-
+*/
                         switch (type) {
                             case "LE":
                                 LearningElement le = new LearningElement();
@@ -96,8 +96,10 @@ public class LOIDEController {
                                 le.setStatus("1");
                                 le.setRating(1);
                                 le.setSubject(subject);
+                                le.setType("LE");
                                 le.setDateUploaded(new Date().toString());
-                                le.setFilePath(file.getOriginalFilename());
+                                le.setFileName(file.getOriginalFilename());
+                                le.setFilePath(AppConfig.UPLOAD_LE_PATH);
                                 daoLE.addLearningElement(le);
                                 
                                 break;
@@ -109,8 +111,10 @@ public class LOIDEController {
                                 lo.setDownloads(0);
                                 lo.setStatus("1");
                                 lo.setRating(1);
+                                lo.setType(type);
                                 lo.setSubject(subject);
-                                lo.setFilepath(file.getOriginalFilename());
+                                lo.setFileName(file.getOriginalFilename());
+                                lo.setFilePath(AppConfig.UPLOAD_LO_PATH);
                                 daoLO.addLearningObject(lo);
                                 JOptionPane.showMessageDialog(null,lo.getName());
 
