@@ -143,6 +143,11 @@ public class IndexController{
         return new ModelAndView("uploadLE-dev");
     }
     
+    @RequestMapping("/advanced-search-dev-results")
+    public ModelAndView advancedSearchDevResults() {
+        return new ModelAndView("advanced-search-dev-results");
+    }
+    
     @RequestMapping("/admin-view")
     public ModelAndView accessAdminView() {
         return new ModelAndView("admin-view");

@@ -189,13 +189,13 @@ public class LearningObjectController {
     }
     
     //list of history revisions in LOs collection=oldlo
-    @RequestMapping("/listHistory/{name}")
+    @RequestMapping("/listHistory")
     @ResponseBody
     public List<LearningObjectDto> ListLOHistory(@PathVariable String name) throws UnknownHostException
     {
         List<LearningObjectDto> dtos = new ArrayList<>();
         try{
-            dtos = loService2.getLearningObjects(name);
+            dtos = loService2.getLearningObjects();
             System.out.println(name);
         }catch(Exception e){ 
             e.printStackTrace();

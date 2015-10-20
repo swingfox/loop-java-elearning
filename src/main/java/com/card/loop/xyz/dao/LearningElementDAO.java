@@ -31,6 +31,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import org.springframework.data.mongodb.core.query.Query;
@@ -51,12 +52,15 @@ public class LearningElementDAO {
     
     public List<LearningElement> searchLE(String keyword) {
         //return mongoOps.findAll(LearningElement.class);
-        Query query = new Query();
+        //Query query = new Query();
+        BasicQuery query = new BasicQuery("{\"name\": {$regex : '/" + keyword + "/'} }");
          //       System.out.println(query+"HAHA");
         query.limit(10);
         //query.addCriteria(where("name").is(keyword).orOperator(where("subject").is(keyword)).orOperator(where("description").is(keyword)));
-        query.addCriteria(Criteria.where("name").regex(keyword));
-        return mongoOps.find(query, LearningElement.class);
+        //query.addCriteria(Criteria.where("name").regex(keyword));
+        System.out.println(query);
+        return mongoOps.find(query(where("name").regex(keyword)), LearningElement.class);
+        //return mongoOps.find(query, LearningElement.class);
     }
     
     public boolean exists(String id) throws UnknownHostException {

@@ -69,52 +69,8 @@
 =======
 
         <!-- <div id="wrapper"> -->
-	<div class="wrapper" ng-controller="LoginCtrl">
+	
     	<!--<?php $this->layout->modal_footer() ?>-->
-		
-		<div id="header-wrap" >
-			<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-				<!-- <div class="container"> -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-	                    
-	                    <a class="navbar-brand" href="/loop-XYZ/store/developer-update">
-							<img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
-						</a>
-	                </div>
-					
-					<div class="navbar-collapse collapse" >
-
-
-						<!--?php $this->layout->user_menu() ?-->
-                                                <ul class="nav navbar-nav navbar-right"> 
-                                                    <li class="dropdown">
-                                                        <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-user"></i> Hello, '. $this->CI->session->userdata('username') .' <b class="caret"></b></a>-->
-
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icomoon-user2"></i> Hello, {{username}} <b class="caret"></b></a>
-                                                        <ul class="dropdown-menu">
-
-                                                                <li role="presentation" class="dropdown-header">Options</li>
-
-                                                                <li><a href="#responsive_changeEmail" data-toggle="modal">Change Email</a></li>
-                                                                <li><a id="responsive_changePassword_btn" href="#responsive_changePassword" data-toggle="modal">Change Password</a></li>
-
-                                                                <li class="divider"></li>
-
-                                                                <li><a href="/loop-XYZ/store/home" ng-click="clearUser()"><i class="icon-off"></i> Logout</a></li>
-                                                        </ul>
-                                                     </li>
-                                                </ul>
-					
-					
-					</div>
-				<!-- </div> -->
-			</nav>
-		</div>
 
 
         <jsp:include page="include/CurrentUser.jsp"/>
@@ -226,7 +182,7 @@
                                                                     <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
 
                                                                 </td>
-                                                                <td><a ng-click="GetLO(lo)"><label ng-model="lo.name">{{lo.name}}</a></td>
+                                                                <td><a ng-click="GetLO(lo)"><label ng-model="lo.name">starrt{{lo.name}}</a></td>
                                                                 <td><label ng-model="lo.subject">{{lo.subject}}</td>
                                                                 <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
@@ -248,8 +204,6 @@
 
   		<div class="clearfix"></div>
         <div class="push"></div>
-	</div>
-
 	<div class="footer">
 		<footer id="footer-wrap-index">
 			<!-- <div class="container"> -->

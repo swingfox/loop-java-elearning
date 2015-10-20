@@ -67,8 +67,7 @@ echo '--><script type="text/javascript">
             
 <!--?php $this->load->helper('url'); ?-->
 </head>
-<body ><!--?php echo (isset($status) && $status)?'onload=document.getElementById("responsive_changePassword_btn").click()':'' ?>-->	
-	<!-- <div id="wrapper"> -->
+<body >
 	<jsp:include page="include/CurrentUser.jsp"/>
 		<div class="clearfix"></div>
 

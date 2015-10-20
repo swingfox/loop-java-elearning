@@ -21,7 +21,13 @@
                 }
             </script>
 </head>
+<<<<<<< HEAD
 <body> 
+=======
+<body>  
+   
+
+>>>>>>> refs/remotes/swingfox/master
                     <jsp:include page="include/CurrentUser.jsp"/>
 
         <div class="clearfix"></div>
@@ -122,7 +128,7 @@
         
         <!-- Take this out if you want the original footer back -->
         <div class="push"></div>
-    </div>
+    
 
     <div class="footer">
         <footer id="footer-wrap-index">

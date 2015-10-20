@@ -49,7 +49,11 @@
 </head>
 <body>	
     <jsp:include page="include/CurrentUser.jsp"/>
+<<<<<<< HEAD
 		<div class="clearfix"></div>
+=======
+	<div class="clearfix"></div>
+>>>>>>> refs/remotes/swingfox/master
 
     	<ul class="nav nav-tabs main-views">
 		  <li><a href="/loop-XYZ/store/developer-update"><i class="icomoon-list"></i> Learning Objects</a></li>
@@ -57,7 +61,7 @@
 		  <li><a href="/loop-XYZ/store/upload-dev"><i class="icon-upload-alt icon-large default"></i> Upload LO</a></li>
 		  <li><a href="/loop-XYZ/store/uploadLE-dev"><i class="icon-upload-alt icon-large default"></i> Upload LE</a></li>
 		  <li class="active tour-step tour-step-fourteen"><a class="active-tab" href="/loop-XYZ/store/advanced-search-dev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
-		</ul>
+	</ul>
 
 		<div class="clearfix"></div>
 
@@ -302,7 +306,6 @@
 		
 		<!-- Take this out if you want the original footer back -->
         <div class="push"></div>
-	</div>
 
 	<div class="footer">
 		<footer id="footer-wrap-index">
@@ -312,7 +315,14 @@
 		    	</div>
 		    <!-- </div> -->
 	    </footer>
+<<<<<<< HEAD
     </div>
+=======
+        </div>
+        
+       
+
+>>>>>>> refs/remotes/swingfox/master
 	<!-- Load JS here for greater good =============================-->
 
 	<!--?php $this->layout->footer_subpages() ?-->
