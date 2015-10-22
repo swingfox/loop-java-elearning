@@ -102,7 +102,8 @@ public class LearningElementController {
     @RequestMapping(value = "/downloadLE/{elementID}", method = RequestMethod.GET)
     public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {                   
         GridFSDBFile element = dao.getSingleLE(elementID, "le.meta");
-        System.out.println(element.getId().toString());
+//        System.out.println(element.getId().toString());
+        
         dao.writePhysicalFile(element.getId().toString(), element.getFilename());
         System.out.println(element);
         System.out.println(element.getFilename());
@@ -146,7 +147,7 @@ public class LearningElementController {
                         le.setUploadedBy(author);
                         le.setDescription(description);
                         le.setDownloads(0);
-                        le.setStatus("1");
+                        le.setStatus(1);
                         le.setRating(1);
                         le.setUploadDate(new Date().toString());
                         le.setFilePath(file.getOriginalFilename());

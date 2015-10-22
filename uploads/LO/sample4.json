@@ -1,0 +1,31 @@
+{
+        "id": "56202874986cfb81a9ee3cf7",
+        "title": "Test 3",
+        "subject": null,
+        "description": null,
+        "downloads": 0,
+        "uploadDate": null,
+        "likes": 0,
+        "sequence": [
+            [
+                {
+                    "title": "Picture 1",
+                    "type": "image",
+                    "fileExtension": ".png",
+                    "description": null,
+                    "dateCreated": null,
+                    "id": "picture1"
+                },
+                {
+                    "title": "Music Sample",
+                    "type": "music",
+                    "fileExtension": ".mp3",
+                    "description": null,
+                    "dateCreated": null,
+                    "id": "mp3One.mp3"
+                }
+            ]
+        ],
+        "price": 0,
+        "errorList": []
+    }

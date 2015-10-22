@@ -84,7 +84,7 @@ public class LearningObjectController {
                         lo.setUploadedBy(author);
                         lo.setDateUpload(new Date().toString());
                         lo.setDescription(description);
-                        lo.setStatus("1");
+                        lo.setStatus(1);
                         lo.setDownloads(0);
                         lo.setRating(1);
                         lo.setFilePath(file.getOriginalFilename());
@@ -111,7 +111,7 @@ public class LearningObjectController {
             
             StringBuilder sb = new StringBuilder();
             BufferedReader br = new BufferedReader(new InputStreamReader(response.getBody()));
-            ClientHttpRequest req2 = rf.createRequest(URI.create("http://192.168.254.101:8080" + "/InformatronYX/informatron/LO/upload/availableLOs"), HttpMethod.POST);
+            ClientHttpRequest req2 = rf.createRequest(URI.create(AppConfig.INFORMATRON_URL + "/InformatronYX/informatron/LO/upload/availableLOs"), HttpMethod.POST);
             BufferedWriter req2Writer = new BufferedWriter(new OutputStreamWriter(req2.getBody()));
             String string = br.readLine();
                         br.close();
@@ -169,20 +169,26 @@ req2.getHeaders().add("Content-Type", "application/json");
         return dtos;
     }
     
-     @RequestMapping("/acceptLO/{id}")
+    @RequestMapping("/acceptLO/{id}")
     @ResponseBody
     public boolean acceptLO(@PathVariable String id) throws UnknownHostException, Exception{
         LearningObjectDto ud = new LearningObjectDto();
+        boolean ok = false;
         ud.setId(id);
-        return loService.acceptLO(ud);
+        ok = loService.acceptLO(ud);
+        this.uploadAllLOToInformatron();
+        return ok;
     }
     
     @RequestMapping("/demoteLO/{id}")
     @ResponseBody
     public boolean demoteLO(@PathVariable String id) throws UnknownHostException, Exception{
         LearningObjectDto ud = new LearningObjectDto();
+        boolean ok = false;
         ud.setId(id);
-        return loService.demoteLO(ud);
+        ok = loService.demoteLO(ud);
+        this.uploadAllLOToInformatron();
+        return ok;
     }
     
     /* 

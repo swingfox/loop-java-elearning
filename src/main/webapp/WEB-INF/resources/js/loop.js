@@ -270,6 +270,10 @@ eS.controller('LOList', ['$scope', '$store', '$http', function($scope, $store, $
             console.log(""+ error);
         });
     };
+    $scope.GetLODetails_admin = function(le) {
+        console.log("SULOD....");
+             window.location.href = '/loop-XYZ/store/historyLE-admin?leid='+le.id;
+    }; 
     // this is for reviewer
      $scope.GetLO = function(lo) {
         $http.get('/loop-XYZ/loop/LO/download/' + lo.id)    
@@ -467,6 +471,7 @@ eS.controller('reviewerAccountCtrl', ['$scope', '$http', '$rootScope', function(
     .error(function(jqXHR, status, error) {
         console.log(""+ error);
     })
+    if(getValue("leid")!=null)
     $http.get("/loop-XYZ/loop/LE/getLE/"+getValue("leid")).success(function(response) {
         $scope.les = response;
     });
@@ -480,12 +485,15 @@ eS.controller('reviewerAccountCtrl', ['$scope', '$http', '$rootScope', function(
     
     function getValue(functionType) {
         var currentURL = window.location.toString().split('?')[1];
-        var flag = 0;
+        if(currentURL != null) {
         var temp = currentURL.split('=');
             if(temp[0] == functionType) {
                 return temp[1];
             }
+        } else {
+            return null;
         }
+    }
     
     load();
 }]);

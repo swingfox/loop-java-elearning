@@ -35,8 +35,6 @@ public class UserService {
            
             user.setId(userModel.getId());
             user.setEmail(userModel.getEmail());
-            userModel.generateToken();
-            user.setToken(userModel.getToken());
             user.setUsertype(userModel.getUserType());
             user.setLastActivity(userModel.getLastLogin());
             user.setLastDownload(userModel.getLastDownload());

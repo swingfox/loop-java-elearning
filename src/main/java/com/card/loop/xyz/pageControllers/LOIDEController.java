@@ -26,6 +26,7 @@ import com.loop.controller.ContentShipper;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -92,18 +93,60 @@ public class LOIDEController {
 	ContentShipper shipper = new ContentShipper(request, response, false);
 	shipper.ship(path);
     }
+    
+    @RequestMapping(value="/upload/lo", method = RequestMethod.POST)
+    public void uploadLearningObject(@RequestParam("title") String title, @RequestParam("elements") String elementJson, @RequestParam("author") String authorID,
+						   @RequestParam("description") String description, @RequestParam("quiz") MultipartFile file) {
+                if (!file.isEmpty()) {
+			try {
+                byte[] bytes = file.getBytes();
+                
+                File fil = new File(System.getProperty("user.home") + File.separator + "Dragon/Learning Elements/quizzes/" + title + "/quiz");
+                
+                if (!fil.getParentFile().exists())
+                	fil.getParentFile().mkdirs();
+                
+                fil.createNewFile();
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fil));
+                stream.write(bytes);
+                stream.close();
+                
+                LearningElement le = new LearningElement();
+                le.setTitle(title);
+                le.setUploadedBy(authorID);
+                le.setDescription(description);
+                daoLE.addFile(le);
+                
+                
+                String lg = String.format("=================Learning Object Uploaded===========================\n"
+                				 + " Title: %s\n"
+                				 + " Author ID:	%s\n"
+                				 + " Description: %s\n"
+                				 + " Learning Elements :\n"
+                				 + "%s\n"
+                				 + " Quiz File: %s\n"
+                				 + "========================Log end======================================\n",
+                				 	title, authorID, description, elementJson, fil.getAbsolutePath());
+                File log = new File(System.getProperty("user.home") + File.separator + "Dragon/Learning Elements/quizzes/" + title + "/log.txt");
+                log.createNewFile();
+                FileWriter writer = new FileWriter(log);
+                writer.write(lg);
+                writer.close();
+                
+            } catch (Exception e) {
+                System.err.println(e.toString());
+            }
+        } else {
+            System.err.println("EMPTY QUIZ");
+        }
+	}
         
     @RequestMapping(value="/upload", method = RequestMethod.POST)
     public String upload(@RequestParam("title") String title, @RequestParam("author") String author, @RequestParam("subject") String subject,
 		       @RequestParam("description") String description, @RequestParam("file") MultipartFile file, @RequestParam("type") String type) {
-            if (!file.isEmpty()) {
+            System.out.println("UPLOAD");
+        if (!file.isEmpty()) {
                     try {
-                        byte[] bytes = file.getBytes();
-                    /*    File fil = new File(AppConfig.UPLOAD_BASE_PATH+ type + "//" + file.getOriginalFilename());
-                        BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fil));
-                        stream.write(bytes);    
-                        stream.close();
-*/
                         switch (type) {
                             case "LE":
                                 System.out.println("TITLE: " + title);
@@ -112,7 +155,7 @@ public class LOIDEController {
                                 le.setUploadedBy(author);
                                 le.setDescription(description);
                                 le.setDownloads(0);
-                                le.setStatus("0");
+                                le.setStatus(0);
                                 le.setRating(1);
                                 le.setSubject(subject);
                                 le.setType("LE");
@@ -128,7 +171,7 @@ public class LOIDEController {
                                 lo.setUploadedBy(author);
                                 lo.setDescription(description);
                                 lo.setDownloads(0);
-                                lo.setStatus("0");
+                                lo.setStatus(0);
                                 lo.setRating(1);
                                 lo.setType(type);
                                 lo.setSubject(subject);
@@ -136,7 +179,9 @@ public class LOIDEController {
                                 lo.setFilePath(AppConfig.UPLOAD_LO_PATH);
                                 daoLO.addLearningObject(lo);
                                 JOptionPane.showMessageDialog(null,lo.getTitle());
-
+                                break;   
+                                default:
+                                
                                 break;
                         }
 

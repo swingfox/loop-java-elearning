@@ -57,7 +57,7 @@ public class OldLO {
     *Status of the Learning Object.
     *Can be one of the following: Reviewed, Being Reviewed, Not Yet Reviewed
     */
-    private String status;
+    private int status;
     /*
     *Name of the reviewer of the Learning Object.
     */
@@ -89,7 +89,7 @@ public class OldLO {
      * Gets the status of the Learning Object
      * @return String This returns the status of Learning Object.
      */
-    public String getStatus(){
+    public int getStatus(){
         return this.status;
     }
 
@@ -186,7 +186,7 @@ public class OldLO {
      * Not Yet Reviewed
      * @param status String
      */
-    public void setStatus(String status){
+    public void setStatus(int status){
         this.status = status;
     }
 

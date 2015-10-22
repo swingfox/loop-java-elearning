@@ -79,7 +79,8 @@
                                                         <div class="clearfix"></div>
                                                     </div>
                                                 </div>
-						<div class="table-responsive" ng-controller="reviewerAccountCtrl">							<table class="datatable table table-hover">
+						<div class="table-responsive" >	
+                                                    <table class="datatable table table-hover" ng-controller="reviewerAccountCtrl">
 							    <thead>
 									<tr>
 										<th>Username</th>
@@ -90,7 +91,7 @@
 
 						        <tbody>                                                            
                                                              <tr ng-repeat="reviewer in reviewerAccount | filter:searchText ">
-                                                                    <td><a href="#responsive_fileActionAdmin2" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-click="assignUser(reviewer)" id="revUser" value="reviewer.username">{{reviewer.username}}</a></td>
+                                                                    <td><a href="#responsive_fileActionAdmin2" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-click="assignUser(reviewer)" id="revUser">{{reviewer.username}}</a></td>
                                                                     <td><label ng-model="reviewer.lastLogin">{{reviewer.lastLogin}}</td>
                                                                     <td><label ng-model="reviewer.lastDownload">{{reviewer.lastDownload}}</td>
                                                              </tr>				

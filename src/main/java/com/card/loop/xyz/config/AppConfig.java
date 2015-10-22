@@ -25,13 +25,14 @@ public class AppConfig {
     /*
      * Factory bean that creates the com.mongodb.Mongo instance
      */
-       public static String mongodb_host = "192.168.1.11";
+       public static String mongodb_host = "localhost";
     public static int mongodb_port = 27017;
-    public static String UPLOAD_LO_PATH = "C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\uploads\\LO\\";
-    public static String UPLOAD_LE_PATH = "C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\uploads\\LE\\";
-    public static String UPLOAD_BASE_PATH = "C:\\Users\\David\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\";
-    public static String INFORMATRON_URL = "http://192.168.254.101:8080";
-    public static String LOOP_URL = "http://192.168.254.100:8080";
+    public static String UPLOAD_LO_PATH = System.getProperty("user.home") + "\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\uploads\\LO\\";
+    public static String UPLOAD_LE_PATH = System.getProperty("user.home") + "\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\uploads\\LE\\";
+    public static String UPLOAD_BASE_PATH = System.getProperty("user.home") + "\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\";
+    public static String INFORMATRON_URL = "http://192.168.254.104:8080";
+  //  public static String LOOP_URL = "http://localhost:29353";
+    public static String LOOP_URL = "http://localhost:8080";
     public static String DATABASE_LOOP = "loop";
     public static String COLLECTION_LO = "lo";
     public static String COLLECTION_LE = "le";

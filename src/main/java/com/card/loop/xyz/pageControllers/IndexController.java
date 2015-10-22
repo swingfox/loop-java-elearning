@@ -26,8 +26,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController{
     @RequestMapping("/home")
     public ModelAndView accessIndex() throws IOException {
-        LearningObjectController ctr = new LearningObjectController();
-        ctr.uploadAllLOToInformatron();
+        LearningObjectController o = new LearningObjectController();
+        o.uploadAllLOToInformatron();
         return new ModelAndView("index");
     } 
     @RequestMapping("/download")

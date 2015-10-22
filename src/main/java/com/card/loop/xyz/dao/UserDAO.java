@@ -110,8 +110,6 @@ public class UserDAO {
         return ok;
     }
     
-
-    
     public boolean saveUser(User user) throws UnknownHostException{
         boolean ok = false;
         this.user.save(user);
@@ -124,35 +122,7 @@ public class UserDAO {
         ok = true;
         return ok;
     }
-    
-     
-     
-     
-    
-    public static void main(String []args) throws UnknownHostException{
-            User user = new User();
-           // user.setId(new Long(1));
-            /**user.setEmail("admin@gmail.com");
-            user.setBlocked(false);
-            user.setUserName("admin");
-      //      user = UserDAO.getUser(user);
-            user.setPassword("admin");
-            //user.generateToken();
-            System.out.println("successfully pushed");*/
-         //  System.out.println(UserDAO.getUser(user.getUsername(), user.getPassword())+ "get user");
-            //System.out.println(UserDAO.deleteUser(user));
-            //System.out.println(UserDAO.addUser(user));
-            //System.out.println(UserDAO.exists("osiastedian"));
-            //user = UserDAO.getUser(user);
-            //UserDAO.deleteUser(user);
-            // EXIST//
-            
-           //
-            
-            user.setUserName("dev1");
-         //   UserDAO.acceptUser(user);
 
-    }
     public boolean exists(String username, String password,String type) throws UnknownHostException{
         boolean ok = false;
         Query query = new Query();
@@ -179,9 +149,11 @@ public class UserDAO {
     
     public User getUser(String username,String password,String type) throws UnknownHostException{
         Query query = new Query();
-        query.addCriteria(Criteria.where("username").is(username).and("password").is(password).and("userType").is(type));   
+        query.addCriteria(Criteria.where("username").is(username).and("password").is(password).and("userType").is(type).and("newAccount").is(false));   
         User p = null;
         p = user.findOne(query, User.class);
+                System.out.println(p);
+
         return p;
     }
     

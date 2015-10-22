@@ -56,7 +56,7 @@ public class LearningObjectDAO {
         query.addCriteria(where("_id").is(lo.getId()));
         LearningObject obj = this.mongoOps.findOne(query, LearningObject.class);
         obj.setId(lo.getId());        
-        obj.setStatus("1");
+        obj.setStatus(1);
         this.mongoOps.save(obj);
         return ok;
     }
@@ -67,7 +67,7 @@ public class LearningObjectDAO {
         query.addCriteria(where("_id").is(lo.getId()));
         LearningObject obj = this.mongoOps.findOne(query, LearningObject.class);
         obj.setId(lo.getId()); 
-            obj.setStatus("0");
+            obj.setStatus(0);
        
         this.mongoOps.save(obj);
         return ok;

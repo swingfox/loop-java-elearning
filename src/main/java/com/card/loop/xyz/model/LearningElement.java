@@ -54,7 +54,7 @@ public class LearningElement {
     /*
     *status of learning element
     */
-    private String status;
+    private int status;
     /*
     *reviewer of learning element
     */
@@ -205,14 +205,14 @@ public class LearningElement {
      * Gets the status of the learning element
      * @return 
      */
-    public String getStatus(){
+    public int getStatus(){
         return this.status;
     }
     /**
      * Sets the status of the learning element
      * @param status 
      */
-    public void setStatus(String status){
+    public void setStatus(int status){
         this.status= status;
     }
     /**

@@ -32,7 +32,7 @@ public class LearningObjectService
         boolean ok = false;
         LearningObject model = dao.getLO(lo.getId());
         if(model!= null){
-            model.setStatus("1");
+            model.setStatus(1);
             dao.acceptLO(model);
             ok = true;
         }
@@ -49,7 +49,7 @@ public class LearningObjectService
 
         LearningObject model = dao.getLO(lo.getId());
         if(model!= null){
-            model.setStatus("0");
+            model.setStatus(0);
             dao.demoteLO(model);
             ok = true;
         }

@@ -56,7 +56,7 @@ public class LearningObjectDto {
     /*
     *Status of the Learning Object
     */
-    private String status;
+    private int status;
     /*
     *Name of the reviewer of the Learning Object
     */
@@ -227,7 +227,7 @@ public class LearningObjectDto {
      * 
      * @return String This returns the status of the LO
      */
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
@@ -235,7 +235,7 @@ public class LearningObjectDto {
      * This sets the status of the LO
      * @param status String
      */
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

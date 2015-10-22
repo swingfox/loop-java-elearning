@@ -59,7 +59,7 @@ public class LearningElementDAO {
         query.addCriteria(where("_id").is(le.getId()));
         LearningElement obj = this.mongoOps.findOne(query, LearningElement.class);
         obj.setId(le.getId());        
-        obj.setStatus("2");
+        obj.setStatus(2);
         this.mongoOps.save(obj);
         return ok;
     }
@@ -71,9 +71,9 @@ public class LearningElementDAO {
         LearningElement obj = this.mongoOps.findOne(query, LearningElement.class);
         obj.setId(le.getId());
         if(obj.getRev()==null)
-            obj.setStatus("0");
+            obj.setStatus(0);
         else 
-            obj.setStatus("1");
+            obj.setStatus(1);
         this.mongoOps.save(obj);
         return ok;
     }
@@ -235,7 +235,9 @@ public class LearningElementDAO {
         Mongo mongo = new Mongo("localhost", 27017);
         DB db = mongo.getDB("loop");
         GridFS le_gfs = new GridFS(db, collection);
+       // GridFSDBFile le_output = le_gfs.findOne(new ObjectId(id));
         GridFSDBFile le_output = le_gfs.findOne(new ObjectId(id));
+        System.out.println(le_output);
         return le_output;
     }
     

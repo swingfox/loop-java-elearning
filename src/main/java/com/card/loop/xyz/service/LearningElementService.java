@@ -25,7 +25,7 @@ public class LearningElementService {
         boolean ok = false;
         LearningElement model = dao.getLE(le.getId());
         if(model!= null){
-            model.setStatus("2");
+            model.setStatus(2);
             dao.acceptLE(model);
             ok = true;
         }
@@ -42,7 +42,7 @@ public class LearningElementService {
 
         LearningElement model = dao.getLE(le.getId());
         if(model!= null){
-            model.setStatus("0");
+            model.setStatus(0);
             dao.demoteLE(model);
             ok = true;
         }
