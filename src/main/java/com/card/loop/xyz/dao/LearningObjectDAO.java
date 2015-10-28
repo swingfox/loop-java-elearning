@@ -50,6 +50,11 @@ public class LearningObjectDAO {
         return p;
     }
     
+    public boolean saveLO(LearningObject lo){      
+        this.mongoOps.save(lo);
+        return true;
+    }
+    
     public boolean acceptLO(LearningObject lo) throws UnknownHostException{
         boolean ok = false;        
         Query query = new Query();
@@ -278,7 +283,19 @@ public class LearningObjectDAO {
     }
     
     public void writePhysicalFile(String md5,String fileName) throws UnknownHostException, IOException{
-         getSingleLO(md5,"lo.meta").writeTo("C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + fileName);
+        try {
+                File fil = new File(AppConfig.DOWNLOAD_BASE_PATH + fileName);
+                
+                if (!fil.getParentFile().exists()){
+                    fil.getParentFile().mkdirs();
+                }
+                
+                getSingleLO(md5,"lo.meta").writeTo(AppConfig.DOWNLOAD_BASE_PATH + fileName);
+        }
+        
+        catch (Exception e) {
+                System.err.println(e.toString());
+        }
     }
     
     public static void main(String[] args) throws IOException{

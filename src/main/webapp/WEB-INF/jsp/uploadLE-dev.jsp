@@ -68,7 +68,7 @@
                         <h2 class="download">Upload Learning Element: Revision</h2>
                     </div>
 
-			<form action="/loop-XYZ/store/loide/upload" enctype="multipart/form-data" method="post" name="upload" class="form-horizontal">
+			<form enctype="multipart/form-data" action="/loop-XYZ/loop/LE/upload" method="POST" name="upload" id="formUpload" class="form-horizontal">
                     <!-- <form class="form-horizontal bootstrap-validator-form" action="<?php //echo base_url()?>index.php/uploading/do_upload" method="post" id="defaultForm" novalidate="novalidate"> -->
 						
 						<!-- <?php echo form_open_multipart('uploading/do_upload','id="myform"');?> -->
@@ -80,11 +80,11 @@
 				            
 				            <label class="control-label upload-file fileinput pull-left" for="fileInput">File Path :</label>
 				            <div class="controls">
-				            	<input type="file" name="file" size="20" class="input-file tour-step tour-step-eight" required/>
+				            	<input type="file" name="file" id="uploadFile" size="20" class="input-file tour-step tour-step-eight" required/>
 				            	<!-- <input name="userfile" type="file" class="input-file" required/> -->
 				            </div>
 				            
-				            <div class="upload-requirement">*Only .json file types under 10 Mb are accepted for upload.<br/>
+				            <div class="upload-requirement">*Only file types under 50 Mb are accepted for upload.<br/>
 				            *Please avoid using white spaces for avoidance of information mismatch. </div>
 				        </div>
 				       <!-- </div> -->
@@ -132,7 +132,7 @@
 									}
 								?>
 								-->
-                                                                <input type="text" class="form-control col-md-7" id="input01"  name="subject" placeholder="e.g. Web Programming, Algebra" required/>
+                                                                <input type="text" name="subject" class="form-control col-md-7" id="input01"  placeholder="e.g. Web Programming, Algebra" required/>
 								<div class="clearfix"></div>
 							</div>
 
@@ -172,14 +172,14 @@
 									<!-- <button type="submit" class="btn btn-primary"><i class="icon-upload-alt icon-large"></i> Upload</button> -->
 									
 
-                                                                        <button type="submit" href="/loop-XYZ/store/loide/upload" class="btn btn-primary tour-step tour-step-twelve" ><i class="icon-upload-alt icon-large" ></i> Upload</button>
+                                                                        <button type="submit" href="/loop-XYZ/loop/LE/upload" class="btn btn-primary tour-step tour-step-twelve" ><i class="icon-upload-alt icon-large" ></i> Upload</button>
 								
 
 									<!-- <a href="index.php" class="btn btn-default">Cancel</a> -->
 									<!-- <button type="reset" class="btn btn-default">Cancel</button> -->
 
 									<!-- <button onclick="document.location='http://localhost/loop-sp-ci7/redirect/LO'" type="button" class="btn btn-default">Cancel</button> -->
-									<a class="btn btn-default" href="/loop-XYZ/store/developer-update">Cancel</a>
+									<a class="btn btn-default" href="">Cancel</a>
 
 									<!-- <button onclick="document.location='http://localhost/jiary/index.php/journal/create_entry'" class="btn btn-success btn-lg btn-block main" type="button">Create</button>
 									<button type="button" class="btn btn-info btn-lg btn-block main" onclick="document.location='http://localhost/jiary/index.php/journal/jiary_view'">Jiary View</button> -->
@@ -331,7 +331,7 @@ $("#myform").validate({
    }
     });
 
-
+                });
 
 	</script>
         <script src="js/angular/angular.js"></script>

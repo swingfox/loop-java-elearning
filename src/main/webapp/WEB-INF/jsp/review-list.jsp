@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="loop">
+<html lang="en" sng-app="loop">
     <head>
         <title>LOOP | Review List</title>
         <meta charset="utf-8">
@@ -29,7 +29,7 @@
 
 		<div class="clearfix"></div>
 
-  		<div id="content-wrap-rev">
+  		<div id="content-wrap-rev" ng-controller="LoginCtrl">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 content">						
@@ -59,7 +59,7 @@
                                                                         <th>Comments</th>
 									<th>Status</th>
                                                                         <th>Reviewer</th>
-									<th>Author</th>
+									<th>Type</th>
 								</tr>
 							</thead>
 					        <tbody>
@@ -71,16 +71,38 @@
                                                             <img ng-if="le.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
                                                             <img ng-if="le.rating==5" src="img/icon-green.png" alt="For Review">
                                                         </td>
-                                                       <td><a href="'" onclick=""><label ng-model="name">{{le.title}}</a></td>
-                                                       <td><label ng-model="subject">{{le.subject}}</td>
-                                                       <td><label ng-model="dateUploaded">{{le.uploadDate}}</td>
-                                                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="rating">{{le.rating}}</td>
-                                                       <td><label ng-model="comments">{{le.comments}}</td>    
+                                                        <td><a ng-click="reviewLE(le)"><label>{{le.title}}</label></a></td>
+                                                       <td><label>{{le.subject}}</label></td>
+                                                       <td><label>{{le.uploadDate | date : "MMMM d yyyy"}}</label></td>
+                                                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{le.rating}}</label></td>
+                                                       <td><label>{{le.comments}}</label></td>    
                                                        <td ng-if="le.status==0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>
-                                                        <td ng-if="le.status==1"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>
-                                                        <td ng-if="le.status==2"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>
-                                                       <td><label ng-model="rev">{{le.rev}}</td>   
-                                                       <td><label ng-model="uploadedBy">{{le.uploadedBy}}</td>                                              
+                                                       <td ng-if="le.status==1"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>
+                                                       <td ng-if="le.status==2"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>
+                                                       <td><label>{{le.rev}}</label></td>   
+                                                       <td><label>LE</label></td>                                              
+                                                   </tr>
+                                                    											
+						  </tbody>
+                                                  <tbody ng-controller="LOList">
+                                                    <tr ng-repeat="lo in los | filter:searchText | filter: { rev : username }">
+                                                        <td>
+                                                            <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
+                                                            <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">
+                                                            <img ng-if="lo.rating==3" src="img/icon-yellow.png" alt="For Review">
+                                                            <img ng-if="lo.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
+                                                            <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
+                                                        </td>
+                                                       <td><a ng-click="reviewLO(lo)"><label>{{lo.title}}</a></td>
+                                                       <td><label>{{lo.subject}}</td>
+                                                       <td><label>{{lo.uploadDate | date : "MMMM d yyyy"}}</td>
+                                                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{lo.rating}}</td>
+                                                       <td><label>{{lo.comments}}</td>    
+                                                       <td ng-if="lo.status==0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>
+                                                       <td ng-if="lo.status==1"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>
+                                                       <td ng-if="lo.status==2"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>
+                                                       <td><label>{{lo.rev}}</td>   
+                                                       <td><label>LO</td>                                              
                                                    </tr>
                                                     											
 							</tbody>
@@ -107,9 +129,31 @@
 		    </div>
 	    </footer>
     </div>
-        
 
-	<script> 
+        <script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
+        <script src="css/bootstrap3/assets/js/jquery.js"></script>
+        <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
+        <script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
+        <script src="js/js-flat-ui/flatui-checkbox.js"></script>
+        <script src="js/js-flat-ui/flatui-radio.js"></script>
+        <script src="js/js-flat-ui/jquery.tagsinput.js"></script>
+        <script src="js/js-flat-ui/jquery.placeholder.js"></script>
+        <script src="js/js-flat-ui/jquery.stacktable.js"></script>
+        <script src="http://vjs.zencdn.net/c/video.js"></script>
+        <script src="js/backstretch-jquery/jquery.backstretch.min.js"></script>
+        <script src="js/datatables/jquery.dataTables.min.js"></script>
+        <script src="js/datatables/dataTables.bootstrap.js"></script>
+        <script src="js/angular/angular.js"></script>
+        <script src="js/angular/ngStorage.js"></script>
+        <script src="js/loop.js" type="text/javascript"></script>
+        <script src="css/bootstrap3/js/tooltip.js"></script>
+        <script src="css/bootstrap3/js/popover.js"></script>
+        <script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
+        <script src="bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+        <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
+        <!--<script> 
 		$(document).ready(function(){
 			var length_sel;
 
@@ -138,30 +182,7 @@
                 pagination.addClass('pagination-sm');
             }
 		});
-	</script>
-        <script src="css/bootstrap3/assets/js/jquery.js"></script>
-        <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
-        <script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
-        <script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
-        <script src="js/js-flat-ui/flatui-checkbox.js"></script>
-        <script src="js/js-flat-ui/flatui-radio.js"></script>
-        <script src="js/js-flat-ui/jquery.tagsinput.js"></script>
-        <script src="js/js-flat-ui/jquery.placeholder.js"></script>
-        <script src="js/js-flat-ui/jquery.stacktable.js"></script>
-        <script src="http://vjs.zencdn.net/c/video.js"></script>
-        <script src="js/backstretch-jquery/jquery.backstretch.min.js"></script>
-        <script src="js/datatables/jquery.dataTables.min.js"></script>
-        <script src="js/datatables/dataTables.bootstrap.js"></script>
-        <script src="js/angular/angular.js"></script>
-        <script src="js/angular/ngStorage.js"></script>
-        <script src="js/loop.js" type="text/javascript"></script>
-        <script src="css/bootstrap3/js/tooltip.js"></script>
-        <script src="css/bootstrap3/js/popover.js"></script>
-        <script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
-        <script src="bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
-        <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
+	</script> -->
         <script>
 
 		$(document).ready(function() {

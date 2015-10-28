@@ -47,16 +47,12 @@
             <version>2.4.6</version>
         </dependency> 
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.4.6</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache</groupId>
             <artifactId>apache</artifactId>
             <version>17</version>
             <type>pom</type>
         </dependency>
+        <!-- Apache Commons Upload --> 
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -78,6 +74,7 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
+        <!-- Apache Commons Upload --> 
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>

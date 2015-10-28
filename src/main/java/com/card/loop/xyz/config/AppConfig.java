@@ -8,6 +8,7 @@ package com.card.loop.xyz.config;
 import com.mongodb.Mongo;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoClientOptions.Builder;
+import java.io.File;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoClientFactoryBean;
@@ -25,11 +26,15 @@ public class AppConfig {
     /*
      * Factory bean that creates the com.mongodb.Mongo instance
      */
-       public static String mongodb_host = "localhost";
+    public static String mongodb_host = "localhost";
     public static int mongodb_port = 27017;
-    public static String UPLOAD_LO_PATH = System.getProperty("user.home") + "\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\uploads\\LO\\";
-    public static String UPLOAD_LE_PATH = System.getProperty("user.home") + "\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\uploads\\LE\\";
-    public static String UPLOAD_BASE_PATH = System.getProperty("user.home") + "\\Desktop\\Software Engineering\\loop-java-elearning\\uploads\\";
+    public static String USER_VARIABLE = System.getProperty("user.home");
+    
+    public static String LE_UPLOAD_BASE_PATH = USER_VARIABLE + File.separator + "LOOP" + File.separator +"Learning Elements" + File.separator;
+    public static String DOWNLOAD_BASE_PATH = USER_VARIABLE + File.separator + "LOOP" + File.separator +"downloads" + File.separator;
+    public static String UPLOAD_BASE_PATH = USER_VARIABLE + File.separator + "LOOP" + File.separator ;
+    public static String LOG_BASE_PATH = USER_VARIABLE + File.separator + "LOOP" + File.separator +"logs" + File.separator;
+    public static String LE_FILE_PATH = File.separator + "LOOP" + File.separator +"Learning Elements" + File.separator;
     public static String INFORMATRON_URL = "http://192.168.254.104:8080";
   //  public static String LOOP_URL = "http://localhost:29353";
     public static String LOOP_URL = "http://localhost:8080";

@@ -54,7 +54,7 @@
         <input type="hidden" id="refreshed" value="no">
         <div id="wrapper">
             <!-- Login LIGHT-->
-            <form id="login_form" method="post" ng-submit="">
+            <form id="login_form" method="post" ng-submit="login()">
                 <!-- <div id="responsive_loginLight" class="modal hide fade" tabindex="-1" data-width="760"> -->
                 <div class="modal fade" id="responsive_loginLight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -101,13 +101,13 @@
                                             <div class="row">
                                                 <div class="col-md-3 ">
                                                     <label class="radio log-in">  
-                                                        <input type="radio" name="optionsRadios" ng-model="userType"  id="optionsRadios3" value="admin" data-toggle="radio" checked="">
+                                                        <input type="radio" name="optionsRadios" ng-model="userType"  id="optionsRadios3" value="admin" data-toggle="radio" checked>
                                                         Admin
                                                     </label>
                                                 </div>
                                                 <div class="col-md-3 col-md-push-1">
                                                     <label class="radio log-in">  
-                                                        <input type="radio" name="optionsRadios" ng-model="userType"  id="optionsRadios1" value="developer" data-toggle="radio" checked="">
+                                                        <input type="radio" name="optionsRadios" ng-model="userType"  id="optionsRadios1" value="developer" data-toggle="radio">
                                                         Developer
                                                     </label>
                                                 </div>
@@ -153,7 +153,7 @@
             </form>
 
             <!-- Sign Up LIGHT-->
-            <form id="defaultForm" name="sign_up" method="post" action="">
+            <form id="defaultForm" name="sign_up" method="post" ng-submit="signup()">
                 <!-- <div id="responsive_signUpLight" class="modal hide fade" tabindex="-1" data-width="760"> -->
                 <div class="modal fade" id="responsive_signUpLight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -175,19 +175,19 @@
                                         <p><span class="error_message"></span></p>
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="susername" name="username" placeholder="Username" />
+                                            <input type="text" class="form-control" id="susername" name="username" ng-model="username" placeholder="Username" />
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="semail" name="email" placeholder="Email" />
+                                            <input type="text" class="form-control" id="semail" name="email" ng-model="email" placeholder="Email" />
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="spassword" name="password" placeholder="Password" />
+                                            <input type="password" class="form-control" id="spassword" name="password" ng-model="newpass" placeholder="Password" />
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="sconfirmPassword" name="confirmPassword" placeholder="Retype password" />
+                                            <input type="password" class="form-control" id="sconfirmPassword" name="confirmPassword" ng-model="newpass2" placeholder="Retype password" />
                                         </div>
 
                                         <!-- <div class="form-group">

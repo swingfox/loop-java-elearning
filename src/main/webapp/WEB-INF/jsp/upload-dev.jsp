@@ -66,19 +66,20 @@
                                     ?-->
 
                                 </div>
-                                <form  enctype="multipart/form-data" action="/loop-XYZ/store/loide/upload" method="post" ng-controller="LoginCtrl">
+                                <form  enctype="multipart/form-data" action="/loop-XYZ/loop/LO/upload" method="post">
                                 <div class="control-group">
 
                                     <label class="control-label upload-file fileinput pull-left" for="fileInput">File Path : </label>
                                     <div class="controls">
-                                        <input type="file" ng-model="lo.file" name="file" size="20" class="input-file tour-step tour-step-eight" required/>
+                                        <input type="file" name="file" size="20" class="input-file tour-step tour-step-eight" required/>
                                         <!-- <input name="userfile" type="file" class="input-file" required/> -->
                                     </div>
 
-                                    <div class="upload-requirement">*Only .json file types under 10 Mb are accepted for upload.<br/>
-                                    *Please avoid using white spaces for avoidance of information mismatch. </div>
+                                    <div class="upload-requirement">*Enter Learning Objects information.<br/>
+                                    *Please avoid using white spaces for avoidance of information mismatch.<br/>
+                                    *This is used for offline purposes only.</div>
                                 </div>
-                                <div class="well upload tour-step tour-step-nine" >		
+                                <div class="well upload tour-step tour-step-nine" ng-controller="LoginCtrl">		
                                     <label class="col-md-3 control-label upload-file" for="input01">Name:</label>					
                                         <!-- <label class="control-label pull-left" for="input01"> -->
                                         <!-- Name : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
@@ -123,9 +124,9 @@
                                 <!-- <button type="submit" class="btn btn-primary"><i class="icon-upload-alt icon-large"></i> Upload</button> -->
 
 
-                                <button type="submit"  class="btn btn-primary tour-step tour-step-twelve"><i class="icon-upload-alt icon-large"></i> Upload</button>
+                                <button type="submit" href="/loop-XYZ/loop/LO/upload" class="btn btn-primary tour-step tour-step-twelve"><i class="icon-upload-alt icon-large"></i> Upload</button>
                                 <!-- <button onclick="document.location='http://localhost/loop-sp-ci7/redirect/LO'" type="button" class="btn btn-default">Cancel</button> -->
-                                <a class="btn btn-default" href="/loop-XYZ/store/developer-update">Cancel</a>
+                                <a class="btn btn-default" href="">Cancel</a>
 
                                 <!-- <button onclick="document.location='http://localhost/jiary/index.php/journal/create_entry'" class="btn btn-success btn-lg btn-block main" type="button">Create</button>
                                 <button type="button" class="btn btn-info btn-lg btn-block main" onclick="document.location='http://localhost/jiary/index.php/journal/jiary_view'">Jiary View</button> -->

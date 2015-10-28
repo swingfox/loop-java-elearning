@@ -69,29 +69,33 @@ public class LearningObjectController {
 
     
     @RequestMapping(value="/upload", method = RequestMethod.POST)
-    public void upload(@RequestParam("title") String title, @RequestParam("author") String author,
-		       @RequestParam("description") String description, @RequestParam("file") MultipartFile file, @RequestParam("type") String type) {
+    public String upload(@RequestParam(value = "title") String title, @RequestParam("author") String author,
+		         @RequestParam("description") String description, @RequestParam("file") MultipartFile file, @RequestParam("type") String type) {
             if (!file.isEmpty()) {
                     try {
                         byte[] bytes = file.getBytes();
-                        File fil = new File(AppConfig.UPLOAD_BASE_PATH+ type + "//" + file.getOriginalFilename());
+                        File fil = new File(AppConfig.UPLOAD_BASE_PATH + file.getOriginalFilename());
                         BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fil));
                         stream.write(bytes);
                         stream.close();
 
                         LearningObject lo = new LearningObject();
+                        System.out.println(title);
+                        System.out.println(author);
+                        System.out.println(description);
+
                         lo.setTitle(title);
                         lo.setUploadedBy(author);
-                        lo.setDateUpload(new Date().toString());
+                        lo.setDateUpload(new Date());
                         lo.setDescription(description);
-                        lo.setStatus(1);
+                        lo.setStatus(0);
                         lo.setDownloads(0);
                         lo.setRating(1);
                         lo.setFilePath(file.getOriginalFilename());
                         dao.addLearningObject(lo);
 
 
-                        System.out.println("UPLOAD FINISHED");
+                        System.out.println("UPLOAD LO FINISHED");
 
                 } catch (Exception e) {
                     System.err.println(e.toString());
@@ -100,7 +104,9 @@ public class LearningObjectController {
             else {
                 System.err.println("EMPTY FILE.");
             }
-        }
+            
+            return "redirect:/developer-update";
+    }
     
     public void uploadAllLOToInformatron()
     {
@@ -118,9 +124,8 @@ public class LearningObjectController {
 
             req2Writer.write(string);
                         req2Writer.close();
-req2.getHeaders().add("Content-Type", "application/json");
+            req2.getHeaders().add("Content-Type", "application/json");
             System.out.println(string);
-    //     IOUtils.copy(response.getBody(), req2.getBody());
             ClientHttpResponse response2 = req2.execute();
             BufferedReader reader  = new BufferedReader(new InputStreamReader(response2.getBody()));
             
@@ -211,8 +216,8 @@ req2.getHeaders().add("Content-Type", "application/json");
     *   @params String id the name of the specific LO
     *   @return List<LearningObjectDto> returns the list of all downloadable LOs
     */
-    @RequestMapping("/download/{id}")    
-    public LearningObjectDto LODetails(@PathVariable String id) throws UnknownHostException
+    @RequestMapping("/download")    
+    public LearningObjectDto LODetails(@RequestParam("loid") String id) throws UnknownHostException
     {
         LearningObjectDto dto = new LearningObjectDto();
         try{
@@ -261,7 +266,7 @@ req2.getHeaders().add("Content-Type", "application/json");
         dao.writePhysicalFile(element.getId().toString(), element.getFilename());
         System.out.println(element);
         System.out.println(element.getFilename());
-        String path = "C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + element.getFilename();
+        String path = AppConfig.DOWNLOAD_BASE_PATH + element.getFilename();
 
         File f = new File(path);
         ContentShipper shipper = new ContentShipper(request, response, true);
@@ -274,14 +279,24 @@ req2.getHeaders().add("Content-Type", "application/json");
     @RequestMapping(value = "/downloadLO/{elementID}", method = RequestMethod.HEAD)
     public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
         GridFSDBFile element = dao.getSingleLO(elementID, "lo.meta");
-        String path = "C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + element.getFilename();
-	 File f = new File(path);
-            System.out.println("DABOYY");
-            ContentShipper shipper = new ContentShipper(request, response, true);
-            shipper.ship(path);
-         
-      //  f.delete();
+        dao.writePhysicalFile(element.getId().toString(), element.getFilename());
+
+        String path = AppConfig.DOWNLOAD_BASE_PATH + element.getFilename();
+	File f = new File(path);
+
+        ContentShipper shipper = new ContentShipper(request, response, true);
+        shipper.ship(path);
+        
+        f.delete();
     }
     
-    
+    @RequestMapping(value = "/reviewLO", method = RequestMethod.POST)
+    public void reviewLO(@RequestParam("loid")String id, @RequestParam("rating") int rating, @RequestParam("comment") String comment) throws UnknownHostException{
+        LearningObjectDto lo = new LearningObjectDto();
+        
+        lo.setId(id);
+        lo.setComments(comment);
+        lo.setRating(rating);
+        loService.reviewLO(lo);
+    }
 }

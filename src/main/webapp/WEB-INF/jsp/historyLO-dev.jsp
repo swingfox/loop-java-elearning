@@ -74,7 +74,7 @@
 		<div id="breadcrumb-wrap" ng-controller="LOList">
 			<!-- <div class="container"> -->
 				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="/loop-XYZ/store/developer-update">Back to Learning Object List</a></li>
+					<li><a class="breadcrumb-link" href="/loop-XYZ/store/developer-update" ng-click="clearLO()">Back to Learning Object List</a></li>
 					<li class="active">History - {{lo.name}}</li>
 				</ol>
 			<!-- </div> -->
@@ -151,7 +151,7 @@
 				<div class="row">
 					<div class="col-md-12 content">
 						
-						<div class="table-responsive" ng-controller="LOListHistory">
+						<div class="table-responsive" ng-controller="LOList">
 						 	<!-- <table class="datatable table table-bordered"> -->
 						 	<table class="datatable table table-hover">
 						    <thead>
@@ -166,7 +166,6 @@
 								</tr>
 							</thead>
                                                     <tbody>
-                                                        <tr ng-repeat="lo in los | filter:searchText ">
                                                                 <td>
                                                                     <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
                                                                     <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">
@@ -175,13 +174,12 @@
                                                                     <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
 
                                                                 </td>
-                                                                <td><a ng-click="GetLO(lo)"><label ng-model="lo.name">starrt{{lo.name}}</a></td>
-                                                                <td><label ng-model="lo.subject">{{lo.subject}}</td>
-                                                                <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
-                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
-                                                                <td><label ng-model="lo.comments">{{lo.comments}}</td>
-                                                                <td><label ng-model="lo.rev">{{lo.rev}}</td>
-                                                        </tr>
+                                                                <td><a ng-click=""><label>{{lo.title}}</a></td>
+                                                                <td><label>{{lo.subject}}</td>
+                                                                <td><label>{{lo.uploadDate | date : "medium"}}</td>
+                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{lo.rating}}</td>
+                                                                <td><label>{{lo.comments}}</td>
+                                                                <td><label>{{lo.rev}}</td>
                                                     </tbody>
                                                         </table>
 						</div>

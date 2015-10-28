@@ -204,4 +204,10 @@ public class LearningObjectService
        // UserDAO.updateLO(u);
         return ok;
     }
+
+    public boolean reviewLO(LearningObjectDto lo) throws UnknownHostException {
+        LearningObject obj = dao.getLearningObject(lo.getId());
+        obj.setComments(lo.getComments());
+        return dao.saveLO(obj);
+    }
 }

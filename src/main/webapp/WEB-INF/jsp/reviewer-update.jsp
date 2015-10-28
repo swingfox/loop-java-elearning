@@ -32,7 +32,7 @@
 
 		<div class="clearfix"></div>
 
-  		<div id="content-wrap-rev">
+                <div id="content-wrap-rev" ng-controller="LoginCtrl">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 content">
@@ -72,7 +72,7 @@
 
 
 
-                                                            <tr ng-repeat="lo in los | filter:searchText | filter: { rating:1  }" >
+                                                            <tr ng-repeat="lo in los | filter:searchText | filter: {rev : username}" >
 
                                                                 <td>
                                                                     <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
@@ -85,14 +85,14 @@
                                                                 <td><a ng-click="GetLO(lo)"><label ng-model="lo.title">{{lo.title}}</a></td>
 
                                                                 <td><label ng-model="lo.subject">{{lo.subject}}</td>
-                                                                <td><label ng-model="lo.uploadDate">{{lo.uploadDate}}</td>
+                                                                <td><label ng-model="lo.uploadDate">{{lo.uploadDate | date : "medium"}}</td>
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
                                                                 <td><label ng-model="lo.comments">{{lo.comments}}</td>                                                                
                                                                 <td ng-if="lo.status==0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>
                                                                 <td ng-if="lo.status==1"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>
                                                                 <td ng-if="lo.status==2"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>
-                                                                <td><label ng-model="lo.rev">{{lo.rev}}</td>
-                                                                <td><label ng-model="lo.uploadedBy">{{lo.uploadedBy}}</td>
+                                                                <td><label >{{lo.rev}}</td>
+                                                                <td><label>{{lo.uploadedBy}}</td>
                                                                 
                                                             </tr>
                                                             <!--

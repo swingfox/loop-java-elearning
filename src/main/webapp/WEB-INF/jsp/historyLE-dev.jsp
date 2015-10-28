@@ -45,8 +45,8 @@
 
 		<div id="breadcrumb-wrap">
 			<!-- <div class="container"> -->
-				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="/loop-XYZ/store/developer-le">Back to Learning Element List</a></li>
+				<ol class="breadcrumb" ng-controller="LEList">
+					<li><a class="breadcrumb-link" href="/loop-XYZ/store/developer-le" ng-click="clearLE()">Back to Learning Element List</a></li>
 					<li class="active">History - <!--?php echo $name?--></li>
 				</ol>
 			<!-- </div> -->
@@ -116,10 +116,6 @@
                 </div>
             </div>
         </form>
-
-
-		<!-- Gi sugdan -->
-
 		<div class="clearfix"></div>
 		<!-- <div id="content-wrap"> -->
 
@@ -146,7 +142,6 @@
 								</tr>
 							</thead>
 					        <tbody>
-						       	<tr ng-repeat="le in les | filter:searchText | filter: { uploadedBy : username }">
                                                         <td>
                                                             <img ng-if="le.rating==1" src="img/icon-red.png" alt="For Review">
                                                             <img ng-if="le.rating==2" src="img/icon-orange.png" alt="For Review">
@@ -155,14 +150,13 @@
                                                             <img ng-if="le.rating==5" src="img/icon-green.png" alt="For Review">
 
                                                         </td>
-                                                        <td><a ng-click="GetLEDeveloper(le)"><label ng-model="le.title">{{le.title}}</a></td>
-                                                        <td><label ng-model="le.subject">{{le.subject}}</td>
-                                                        <td><label ng-model="le.dateUploaded">{{le.dateUploaded}}</td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="le.rating">{{le.rating}}</td>
-                                                        <td><label ng-model="le.comments">{{le.comments}}</td>
-                                                        <td><label ng-model="le.rev">{{le.rev}}</td>
-                                                         
-                                                    </tr>										
+                                                        <td><a ng-click="GetLEDeveloper(le)"><label>{{le.title}}</a></td>
+                                                        <td><label>{{le.subject}}</td>
+                                                        <td><label>{{le.uploadDate | date : "medium"}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{le.rating}}</td>
+                                                        <td><label>{{le.comments}}</td>
+                                                        <td><label>{{le.rev}}</td>
+            										
                                             </tbody>
 						  </table>
 						</div>

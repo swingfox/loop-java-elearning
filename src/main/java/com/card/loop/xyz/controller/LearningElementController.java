@@ -83,9 +83,9 @@ public class LearningElementController {
     *   @params String id the name of the specific LE
     *   @return List<LearningElementDto> returns the list of all downloadable LEs
     */
-    @RequestMapping("/download/{id}")    
+    @RequestMapping(value="/download",method=RequestMethod.GET,params="id")    
     @ResponseBody
-    public LearningElementDto LEDetails(@PathVariable String id) throws UnknownHostException
+    public LearningElementDto LEDetails(@RequestParam("id") String id) throws UnknownHostException
     {
         LearningElementDto dto = new LearningElementDto();
         try{
@@ -99,15 +99,13 @@ public class LearningElementController {
     /*
     *   @params String elementID the name of the specific LO to be downloaded
     */
-    @RequestMapping(value = "/downloadLE/{elementID}", method = RequestMethod.GET)
-    public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {                   
+    @RequestMapping(value = "/downloadLE", method = RequestMethod.GET)
+    public void getFile(HttpServletRequest request, HttpServletResponse response, @RequestParam(value="id") String elementID) throws IOException {                   
         GridFSDBFile element = dao.getSingleLE(elementID, "le.meta");
-//        System.out.println(element.getId().toString());
-        
         dao.writePhysicalFile(element.getId().toString(), element.getFilename());
         System.out.println(element);
         System.out.println(element.getFilename());
-        String path = "C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + element.getFilename();
+        String path = AppConfig.DOWNLOAD_BASE_PATH + element.getFilename();
 
         File f = new File(path);
         ContentShipper shipper = new ContentShipper(request, response, true);
@@ -118,26 +116,30 @@ public class LearningElementController {
     /*
     *   @params String elementID the name of the specific LO to be downloaded
     */
-    @RequestMapping(value = "/downloadLE/{elementID}", method = RequestMethod.HEAD)
-    public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
-        //LearningElement element = dao.getSpecificLearningElementById(elementID);
+    @RequestMapping(value = "/downloadLE", method = RequestMethod.HEAD)
+    public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") String elementID) throws IOException {
         GridFSDBFile element = dao.getSingleLE(elementID, "le.meta");
-        String path = "C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + element.getFilename();
-	 File f = new File(path);
-            System.out.println("DABOYY");
-            ContentShipper shipper = new ContentShipper(request, response, true);
-            shipper.ship(path);
+        String path = AppConfig.DOWNLOAD_BASE_PATH + element.getFilename();
+	File f = new File(path);
+        System.out.println("DABOYY");
+        ContentShipper shipper = new ContentShipper(request, response, true);
+        shipper.ship(path);
          
         f.delete();
     }
     
     @RequestMapping(value="/upload", method = RequestMethod.POST)
-    public void upload(@RequestParam("title") String title, @RequestParam("author") String author,
-		       @RequestParam("description") String description, @RequestParam("file") MultipartFile file, @RequestParam("type") String type) {
+    public ModelAndView upload(@RequestParam("title") String title, @RequestParam("author") String author, @RequestParam("subject") String subject,
+                               @RequestParam("description") String description, @RequestParam("file") MultipartFile file, @RequestParam("type") String type) {
             if (!file.isEmpty()) {
                     try {
                         byte[] bytes = file.getBytes();
-                        File fil = new File(AppConfig.UPLOAD_BASE_PATH+ type + "//" + file.getOriginalFilename());
+                        File fil = new File(AppConfig.USER_VARIABLE + AppConfig.LE_FILE_PATH + file.getOriginalFilename());
+                
+                        if (!fil.getParentFile().exists()){
+                             fil.getParentFile().mkdirs();
+                        }
+
                         BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fil));
                         stream.write(bytes);
                         stream.close();
@@ -149,12 +151,15 @@ public class LearningElementController {
                         le.setDownloads(0);
                         le.setStatus(1);
                         le.setRating(1);
-                        le.setUploadDate(new Date().toString());
-                        le.setFilePath(file.getOriginalFilename());
+                        le.setUploadDate(new Date());
+                        le.setSubject(subject);
+                        le.setFilePath(AppConfig.LE_FILE_PATH);
+                        le.setFileName(file.getOriginalFilename());
+                        le.setFileExtension(file.getOriginalFilename().split("\\.")[1]);
                         dao.addLearningElement(le);
                        
 
-                        System.out.println("UPLOAD FINISHED");
+                        System.out.println("UPLOAD LE FINISHED");
 
                 } catch (Exception e) {
                     System.err.println(e.toString());
@@ -163,8 +168,8 @@ public class LearningElementController {
             else {
                 System.err.println("EMPTY FILE.");
             }
-            
-        }
+          return new ModelAndView("developer-le-loop-redirect");
+    }
     
     @RequestMapping(value = "/assignReviewer", method = RequestMethod.POST)
     public boolean assignReviewer(@RequestParam("leid") String id,@RequestParam("reviewer") String reviewer) throws UnknownHostException {
@@ -176,8 +181,17 @@ public class LearningElementController {
     
     @RequestMapping("/getLE/{leid}")
     public List<LearningElementDto> getLE(@PathVariable String leid) throws UnknownHostException {
-        List<LearningElementDto> le = new ArrayList<LearningElementDto>(); 
-            le.add(leService.getSpecificLearningElement(leid));
-            return le;
+        List<LearningElementDto> le = new ArrayList<>(); 
+        le.add(leService.getSpecificLearningElement(leid));
+        return le;
+    }
+    
+    @RequestMapping(value = "/reviewLE", method = RequestMethod.POST)
+    public boolean reviewLO(@RequestParam("leid")String id,@RequestParam("rating") int rating, @RequestParam("comment") String comment) throws UnknownHostException{
+        LearningElementDto le = new LearningElementDto();
+        le.setId(id);
+        le.setRating(rating);
+        le.setComments(comment);
+        return leService.reviewLE(le);
     }
 }

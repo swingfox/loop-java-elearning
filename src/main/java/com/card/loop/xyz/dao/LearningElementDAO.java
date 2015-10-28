@@ -48,9 +48,7 @@ public class LearningElementDAO {
     @Autowired MongoOperations mongoOps;
     
     public LearningElement getLE(String id) throws UnknownHostException{ 
-        LearningElement p = null;
-        p = mongoOps.findOne(query(where("_id").is(id)), LearningElement.class);
-        return p;
+        return mongoOps.findOne(query(where("_id").is(id)), LearningElement.class);
     }
     
     public boolean acceptLE(LearningElement le) throws UnknownHostException{
@@ -115,7 +113,6 @@ public class LearningElementDAO {
     }
     
     public void addLearningElement(LearningElement object) throws UnknownHostException, IOException {
-    //   mongoOps.insert(object);
        this.addFile(object);
     }
     
@@ -176,8 +173,7 @@ public class LearningElementDAO {
     
     
     public boolean addFile(LearningElement le) throws UnknownHostException, IOException{
-        MongoOperations mongoOps = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
-        File file = new File(le.getFilePath() + le.getFileName());
+        File file = new File(AppConfig.USER_VARIABLE + le.getFilePath() + le.getFileName());
         Mongo mongo = new Mongo("localhost", 27017);
         DB db = mongo.getDB("loop");
 
@@ -200,10 +196,10 @@ public class LearningElementDAO {
 	gfsFile.save();
 
         // Let's store our document to MongoDB
-        
+     /*   System.out.println("SEARCH: " + search(gfsFile.getMD5(), "le.meta"));
         if(search(gfsFile.getMD5(), "le.meta") > 1){            
             deleteLE(le.getFileName(),"le.meta");
-        }
+        }*/
         //
 //	collection.insert(info, WriteConcern.SAFE);
         return true;
@@ -270,7 +266,18 @@ public class LearningElementDAO {
     }
     
     public void writePhysicalFile(String md5,String fileName) throws UnknownHostException, IOException{
-         getSingleLE(md5,"le.meta").writeTo("C:\\Users\\David\\Desktop\\LOOP-FILE-EDIT\\loop-java-elearning\\tmp\\" + fileName);
+                    try {
+                        File fil = new File(AppConfig.DOWNLOAD_BASE_PATH + fileName);
+                
+                        if (!fil.getParentFile().exists()){
+                             fil.getParentFile().mkdirs();
+                        }
+                        getSingleLE(md5,"le.meta").writeTo(AppConfig.DOWNLOAD_BASE_PATH + fileName);
+                    }
+                 catch (Exception e) {
+                    System.err.println(e.toString());
+                }
+           
     }
     
     public boolean assignReviewer(String id, String reviewer) throws UnknownHostException {
@@ -323,5 +330,10 @@ public class LearningElementDAO {
        // dao.getSingleLE("676f65e8970d856682dde3a34f2390f9","le.meta").writeTo("C:\\Users\\David\\Desktop\\haha.zip");
        // output.close();
      //   dao.deleteLE("TestLEUpload2.zip", "le.meta");
+    }
+
+    public boolean saveLE(LearningElement obj) {     
+        this.mongoOps.save(obj);
+        return true;
     }
 }

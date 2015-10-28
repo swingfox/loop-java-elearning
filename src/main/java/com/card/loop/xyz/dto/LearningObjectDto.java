@@ -1,11 +1,12 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * and open the template in the editor.o
  */
 package com.card.loop.xyz.dto;
 
 import com.card.loop.xyz.model.LearningElement;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,7 +45,7 @@ public class LearningObjectDto {
     /*
     *Date that the Learning Object is uploaded
     */
-    private String uploadDate;
+    private Date uploadDate;
     /*
     *Filepath of the Learning Object
     */
@@ -179,7 +180,7 @@ public class LearningObjectDto {
      * 
      * @return String This returns the date the LO is uploaded
      */
-    public String getUploadDate() {
+    public Date getUploadDate() {
         return uploadDate;
     }
 
@@ -187,7 +188,7 @@ public class LearningObjectDto {
      * This sets the date of the LO is uploaded
      * @param uploadDate String
      */
-    public void setUploadDate(String uploadDate) {
+    public void setUploadDate(Date uploadDate) {
         this.uploadDate = uploadDate;
     }
 

@@ -10,7 +10,9 @@ import com.card.loop.xyz.dto.LearningElementDto;
 import com.card.loop.xyz.model.LearningElement;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import javax.xml.bind.DatatypeConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 /**
@@ -84,6 +86,7 @@ public class LearningElementService {
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());
+            System.out.println(model.getUploadDate());
             dto.setUploadDate(model.getUploadDate());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
@@ -94,12 +97,8 @@ public class LearningElementService {
         return objects;
      }
      
-    public List<LearningElementDto> getLearningElements(String keyword) throws UnknownHostException{
-                        System.out.println("HAHALE");
-
+    public List<LearningElementDto> searchLearningElements(String keyword) throws UnknownHostException{
         List<LearningElement> LOList;
-                        System.out.println("HAHAF");
-
         LOList = dao.searchLE(keyword);
         List<LearningElementDto> objects = new ArrayList<>();
         for(LearningElement model: LOList){
@@ -139,6 +138,13 @@ public class LearningElementService {
      /*   for (LearningElementDto list1 : list) {
             System.out.println(list1);
         }*/
+    }
+
+    public boolean reviewLE(LearningElementDto le) throws UnknownHostException {
+        LearningElement obj = dao.getSpecificLearningElementById(le.getId());
+        obj.setComments(le.getComments());
+        obj.setRating(le.getRating());
+        return dao.saveLE(obj);
     }
     
 }

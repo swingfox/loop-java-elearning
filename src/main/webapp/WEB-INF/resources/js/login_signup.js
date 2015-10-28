@@ -50,7 +50,7 @@ $(document).ready(function() {
         });
         
         $("#btn-signup").click(function(){
-            var jsonData = 
+         /*   var jsonData = 
                         JSON.stringify({
 			email: $("#semail").val(),
                         username:$("#susername").val(),
@@ -78,11 +78,11 @@ $(document).ready(function() {
 		error: function(jqXHR, status, error) {
                     alert("status:" + status + " error:" + error);
 		}
-            });
+            });*/
         });
        $("#btn-login").click(function(){
             console.log("CLICKED BUTTON LOG IN");
-            var jsonData = 
+           /* var jsonData = 
                         JSON.stringify({
                             username:$("#username").val(),
                             password: $("#password").val(),
@@ -119,7 +119,7 @@ $(document).ready(function() {
 		error: function(jqXHR, status, error) {
                         alert(":( status:" + status + "error:" + error);
 		}
-        }); 
+        }); */
     });
 });
     function get(name){

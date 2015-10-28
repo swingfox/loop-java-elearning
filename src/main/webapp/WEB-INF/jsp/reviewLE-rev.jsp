@@ -6,7 +6,7 @@
 	$lo = $los[$index];
 ?-->
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="loop" lang="en">
 <head>
 <title>LOOP | Review</title>
 
@@ -64,7 +64,7 @@
 
             <div class="clearfix"></div>
 
-            <div id="content-review-rev">
+            <div id="content-review-rev" ng-controller="LOCtrl">
                 <div class="container">
 
                     <div class="alert alert-success">
@@ -77,12 +77,12 @@
 
                         You have successfully downloaded the Learning Element: "<!--?php
                         echo $lo->getName();
-                        ?-->" 
+                        ?-->"
                         Please rate this Learning Element. 
                     </div>
 
 				
-                    <form method="post" action="redirect/reviewNow" role="form">
+                    <form method="post" ng-submit="submitReviewedLE()" role="form">
                         <div class="col-md-6 col-md-push-3">
 	                    <div class="page-header download">
 	                        <h2 class="download">Review</h2>
@@ -92,28 +92,28 @@
 
 	                    <div class="form-group">
                                 <div class="well">
-                                    <label class="radio review-rev">
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" data-toggle="radio" checked>
+                                    <label class="radio review-rev" ng-click="changeRating(1)">
+                                        <input type="radio" name="optionsRadios" value="1"   id="optionsRadios1" data-toggle="radio" checked>
                                         1<i class="icon-long-arrow-right"></i> It is Newly Uploaded and For Review. <span class="label label-danger custom">Red</span>
                                     </label>
 
-                                    <label class="radio review-rev">
-                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="2" data-toggle="radio">
+                                    <label class="radio review-rev" ng-click="changeRating(2)">
+                                        <input type="radio" name="optionsRadios" value="2"  id="optionsRadios2" data-toggle="radio">
                                         2<i class="icon-long-arrow-right"></i> It has been Reviewed but needs a lot of Revisions. <span class="label label-danger custom2">Orange</span>
                                     </label>
 
-                                    <label class="radio review-rev">
-                                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="3" data-toggle="radio">
+                                    <label class="radio review-rev" ng-click="changeRating(3)">
+                                        <input type="radio" name="optionsRadios" value="3"  id="optionsRadios3" data-toggle="radio">
                                         3<i class="icon-long-arrow-right"></i> It has been Reviewed but needs more Revisions. <span class="label label-warning custom">Yellow</span>
                                     </label>
 
-                                    <label class="radio review-rev">
-                                        <input type="radio" name="optionsRadios" id="optionsRadios4" value="4" data-toggle="radio">
+                                    <label class="radio review-rev" ng-click="changeRating(4)">
+                                        <input type="radio" name="optionsRadios" value="4"  id="optionsRadios4" data-toggle="radio">
                                         4<i class="icon-long-arrow-right"></i> It has been Reviewed but still needs Admin's Approval. <span class="label label-warning custom2">Yellow Green</span>
                                     </label>
 
-                                    <label class="radio">
-                                        <input type="radio" name="optionsRadios" id="optionsRadios5" value="5" data-toggle="radio">
+                                    <label class="radio" ng-click="changeRating(5)">
+                                        <input type="radio" name="optionsRadios" value="5" id="optionsRadios5" data-toggle="radio">
                                         5<i class="icon-long-arrow-right"></i> It is Ready to Use. (Only the Admin can decide this).<span class="label label-success custom disabled">Green</span>
                                     </label>
                                 </div>
@@ -122,7 +122,7 @@
                             <div class="form-group comments">  
                                 <label class="control-label description" for="textarea">Comment :</label>  
                                 <div class="controls"> 				           
-                                    <textarea name="comments" class="form-control" placeholder="Write a Comment..." id="textarea" rows="3" required></textarea>
+                                    <textarea name="comments" ng-model="comment" class="form-control" placeholder="Write a Comment..." id="textarea" rows="3" required></textarea>
                                 </div>  
                             </div>  
 
@@ -133,8 +133,7 @@
                                 <input type="hidden" value="LE" id ="type" name="type">
                                 <button type="submit" class="btn btn-primary"><i class="icon-ok icon-large"></i> Submit</button>
 
-                                <a class="btn btn-default" href="index.jsp">Cancel</a>
-                                <!-- <button onclick="document.location='http://localhost/loop-sp-ci7/redirect/LO_rev'" type="button" class="btn btn-default">Cancel</button> -->
+                                <a class="btn btn-default" href="/loop-XYZ/store/review-list">Cancel</a>
                             </div>
 	                </div>
 	            </form>
@@ -160,7 +159,6 @@
     <!--?php $this->layout->footer_subpages() ?-->
     <script src="css/bootstrap3/assets/js/jquery.js"></script>
     <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
     <script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
     <script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
@@ -170,6 +168,10 @@
     <script src="js/js-flat-ui/jquery.placeholder.js"></script>
     <script src="js/js-flat-ui/jquery.stacktable.js"></script>
     <script src="http://vjs.zencdn.net/c/video.js"></script>
+    
+    <script src="js/main.js"></script>
+    <script src="js/angular/angular.js"></script>
+    <script src="js/loop.js"></script>
 
     <script src="js/backstretch-jquery/jquery.backstretch.min.js"></script>
     <script src="js/datatables/jquery.dataTables.min.js"></script>

@@ -5,6 +5,7 @@
  */
 package com.card.loop.xyz.model;
 
+import java.util.Date;
 import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -39,7 +40,7 @@ public class LearningObject {
     /*
     *Date of the Learning Object is uploaded.
     */
-    private String uploadDate;
+    private Date uploadDate;
     /*
     *Filepath of the Learning Object.
     */
@@ -133,7 +134,7 @@ public class LearningObject {
      * Gets the uploaded date of the Learning Object.
      * @return String This returns the uploaded date of Learning Object.
      */
-    public String getDateUpload(){
+    public Date getDateUpload(){
         return this.uploadDate;
     }
 
@@ -230,7 +231,7 @@ public class LearningObject {
      * Sets the date that the Learning Object is uploaded
      * @param dateUploaded String
      */
-    public void setDateUpload(String dateUploaded){
+    public void setDateUpload(Date dateUploaded){
         this.uploadDate = dateUploaded;
     }
 
@@ -298,11 +299,11 @@ public class LearningObject {
         this.type = type;
     }
 
-    public String getUploadDate() {
+    public Date getUploadDate() {
         return uploadDate;
     }
 
-    public void setUploadDate(String uploadDate) {
+    public void setUploadDate(Date uploadDate) {
         this.uploadDate = uploadDate;
     }
 

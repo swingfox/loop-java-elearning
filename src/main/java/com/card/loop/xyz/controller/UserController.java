@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -40,29 +42,42 @@ public class UserController {
 
     @RequestMapping("/signup")
     @ResponseBody
-    public UserDto signup(@RequestBody UserDto user) throws UnknownHostException
+    public boolean signup(@RequestParam("username") String username, @RequestParam("password") String password,
+                          @RequestParam("userType") String userType, @RequestParam("email") String email) throws UnknownHostException
     {
+        UserDto user = new UserDto();
+        boolean ok = false;
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setUsertype(userType);
+        user.setEmail(email);
         try{
-        boolean ok = service.register(user);
+             ok = service.register(user);
             if(ok==false){
                 System.out.println("HAHA");
             }
         }catch(Exception e){
             e.printStackTrace();
         }
-        return user;
+        return ok;
     }
     
     
-    @RequestMapping("/login")
+    @RequestMapping(value="/login",method=RequestMethod.POST)
     @ResponseBody
-    public UserDto login(@RequestBody UserDto user) throws UnknownHostException
+    public UserDto login(@RequestParam("username") String username,@RequestParam("password") String password, @RequestParam("userType") String userType) throws UnknownHostException
     {
+        UserDto user = new UserDto();
         UserDto result = null;
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setUsertype(userType);
+        System.out.println("username: " + username + "password: " + password + "userType: " + userType);
         try{
             result = service.login(user);
-            if(result==null)
-                user.getErrorList().add("Username or password is invalid.");
+           // if(result==null)
+             //   user.getErrorList().add("Username or password is invalid.");
+            
         }catch(Exception e){
             System.out.println(e.toString());
         }

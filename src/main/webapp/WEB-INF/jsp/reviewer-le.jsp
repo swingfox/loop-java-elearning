@@ -53,7 +53,7 @@
 		  <li><a href="/loop-XYZ/store/advanced-search-rev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
 		</ul>
 		<div class="clearfix"></div>
-  		<div id="content-wrap">
+  		<div id="content-wrap" ng-controller="LoginCtrl">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 content">						
@@ -89,7 +89,7 @@
                                                     </tr>
                                             </thead>
                                     <tbody>
-                                         <tr ng-repeat="le in les | filter:searchText | filter: { rating:1  }">
+                                         <tr ng-repeat="le in les | filter:searchText | filter: { rev : username  }">
                                              <td>
                                                 <img ng-if="le.rating==1" src="img/icon-red.png" alt="For Review">
                                                 <img ng-if="le.rating==2" src="img/icon-orange.png" alt="For Review">
@@ -98,23 +98,16 @@
                                                 <img ng-if="le.rating==5" src="img/icon-green.png" alt="For Review">
 
                                             </td>
-                                            <td><a href="/loop-XYZ/store/downloadLE" ng-click="LEDetails(le)"><label ng-model="name">{{le.title}}</a></td>
-                                            <td><label ng-model="subject">{{le.subject}}</td>
-                                            <td><label ng-model="uploadDate">{{le.uploadDate}}</td>
-                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="rating">{{le.rating}}</td>
-                                            <td><label ng-model="comments">{{le.comments}}</td>
+                                            <td><a ng-click="GetLE(le)"><label>{{le.title}}</a></td>
+                                            <td><label>{{le.subject}}</td>
+                                            <td><label>{{le.uploadDate | date : "medium"}}</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{le.rating}}</td>
+                                            <td><label>{{le.comments}}</td>
                                             <td ng-if="le.status==0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>
                                             <td ng-if="le.status==1"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>
                                             <td ng-if="le.status==2"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>
-                                            <td><label ng-model="rev">{{le.rev}}</td>
-                                            <td><label ng-model="uploadedBy">{{le.uploadedBy}}</td>
-                                            
-
-
-                                    
-                       
-                       
-
+                                            <td><label>{{le.rev}}</td>
+                                            <td><label>{{le.uploadedBy}}</td>
                     </tr>
                                     </tbody>
                                     </table>

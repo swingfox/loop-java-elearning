@@ -79,7 +79,7 @@
             </div>  
         </form>
 
-        <div id="header-wrap">
+        <div id="header-wrap" ng-controller="LoginCtrl">
             <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
@@ -88,9 +88,17 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/loop-XYZ/store/admin-view">
-                            <img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
-                        </a>
+                        <div ng-switch on="userType">
+                            <a ng-switch-when="admin" class="navbar-brand" href="/loop-XYZ/store/admin-view">
+                                <img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
+                            </a>
+                            <a ng-switch-when="reviewer" class="navbar-brand" href="/loop-XYZ/store/reviewer-update">
+                                <img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
+                            </a>
+                            <a ng-switch-when="developer" class="navbar-brand" href="/loop-XYZ/store/developer-update">
+                                <img src="img/loop-logo.svg" width="116px" height="28px" alt="LOOP Logo"/>
+                            </a>
+                        </div>
                     </div>
                     
 <div class="navbar-collapse collapse" ng-controller="LoginCtrl">

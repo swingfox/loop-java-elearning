@@ -6,6 +6,9 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:flow="springframework.org/schema/webflow-config"
+       xmlns:lang="springframework.org/schema/lang"
+       xmlns:util="springframework.org/schema/util"
        xsi:schemaLocation=
         "http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
@@ -13,7 +16,14 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
     <mvc:annotation-driven/>
-    <context:component-scan base-package="com.card.loop.xyz.controller" />
+    <bean p:suffix=".jsp" p:prefix="/WEB-INF/jsp/" class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="viewResolver"/>
+    <mvc:resources location="/WEB-INF/resources/js/" mapping="/js/**"/>
+    <mvc:resources location="/WEB-INF/resources/img/" mapping="/img/**"/>
+    <mvc:resources location="/WEB-INF/resources/css/" mapping="/css/**"/>
+    <mvc:resources location="/WEB-INF/resources/fonts/" mapping="/fonts/**"/>
  <!--   <mvc:resources location="/WEB-INF/uploads" mapping="/uploads/**"/> -->
-    
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="30000000" />
+    </bean>
+    <context:component-scan base-package="com.card.loop.xyz.controller" />
 </beans>

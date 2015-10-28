@@ -5,6 +5,7 @@
  */
 package com.card.loop.xyz.dto;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,7 +36,7 @@ public class LearningElementDto {
     /*
     *uploadDate of learning element
     */
-    private String uploadDate;
+    private Date uploadDate;
     /*
     *filepath of learning element
     */
@@ -43,7 +44,7 @@ public class LearningElementDto {
     /*
     *rating of learning element
     */
-    private double rating;
+    private int rating;
     /*
     *comments of learning element
     */
@@ -149,14 +150,14 @@ public class LearningElementDto {
      * Gets the uploadDate of the learning element
      * @return String This returns the date uploaded of the learning element
      */
-    public String getUploadDate(){
+    public Date getUploadDate(){
         return this.uploadDate;
     }
     /**
      * Sets the date uploaded of the learning element
      * @param uploadDate 
      */
-    public void setUploadDate(String uploadDate){
+    public void setUploadDate(Date uploadDate){
         this.uploadDate=uploadDate;
     }
     /**
@@ -177,14 +178,14 @@ public class LearningElementDto {
      * Gets the rating of the learning element
      * @return double Returns the rating of the learning element
      */
-    public double getRating(){
+    public int getRating(){
         return this.rating;
     }
     /**
      * Sets the rating of the learning element
      * @param rating 
      */
-    public void setRating(double rating){
+    public void setRating(int rating){
         this.rating=rating;
     }
     /**

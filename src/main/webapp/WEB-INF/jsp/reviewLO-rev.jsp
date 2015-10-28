@@ -65,7 +65,7 @@
     </div> 
 
     <div class="clearfix"></div>
-        <div id="content-review-rev">
+        <div id="content-review-rev" ng-controller="LOCtrl">
             <div class="container">
                 <div class="alert alert-success">
                     <!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
@@ -84,7 +84,7 @@
                     Please rate this Learning Object. 
                 </div>
 
-                <form method="post" action="redirect/reviewNow" role="form">
+                <form method="post" ng-submit="submitReviewedLO()" role="form">
                     <div class="col-md-6 col-md-push-3">
                         <div class="page-header download">
                             <h2 class="download">Review</h2>
@@ -94,27 +94,27 @@
 
                         <div class="form-group">
                             <div class="well">
-                                <label class="radio review-rev">
+                                <label class="radio review-rev" ng-click="changeRating(1)">
                                     <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" data-toggle="radio" checked>
                                     1<i class="icon-long-arrow-right"></i> It is Newly Uploaded and For Review. <span class="label label-danger custom">Red</span>
                                 </label>
 
-                                <label class="radio review-rev">
+                                <label class="radio review-rev" ng-click="changeRating(2)">
                                     <input type="radio" name="optionsRadios" id="optionsRadios2" value="2" data-toggle="radio">
                                     2<i class="icon-long-arrow-right"></i> It has been Reviewed but needs a lot of Revisions. <span class="label label-danger custom2">Orange</span>
                                 </label>
 
-                                <label class="radio review-rev">
+                                <label class="radio review-rev" ng-click="changeRating(3)">
                                     <input type="radio" name="optionsRadios" id="optionsRadios3" value="3" data-toggle="radio">
                                     3<i class="icon-long-arrow-right"></i> It has been Reviewed but needs more Revisions. <span class="label label-warning custom">Yellow</span>
                                 </label>
 
-                                <label class="radio review-rev">
+                                <label class="radio review-rev" ng-click="changeRating(4)">
                                     <input type="radio" name="optionsRadios" id="optionsRadios4" value="4" data-toggle="radio">
                                     4<i class="icon-long-arrow-right"></i> It has been Reviewed but still needs Admin's Approval. <span class="label label-warning custom2">Yellow Green</span>
                                 </label>
 
-                                <label class="radio">
+                                <label class="radio" ng-click="changeRating(5)">
                                     <input type="radio" name="optionsRadios" id="optionsRadios5" value="5" data-toggle="radio">
                                     5<i class="icon-long-arrow-right"></i> It is Ready to Use. (Only the Admin can decide this).<span class="label label-success custom disabled">Green</span>
                                 </label>
@@ -124,7 +124,7 @@
                         <div class="form-group comments">  
                             <label class="control-label description" for="textarea">Comment :</label>  
                             <div class="controls"> 				           
-                                <textarea name="comments" class="form-control" placeholder="Write a Comment..." id="textarea" rows="3" required></textarea>
+                                <textarea name="comments" ng-model="comment" class="form-control" placeholder="Write a Comment..." id="textarea" rows="3" required></textarea>
                             </div>  
                         </div>  
 
