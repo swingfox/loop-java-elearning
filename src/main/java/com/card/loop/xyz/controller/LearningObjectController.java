@@ -291,12 +291,12 @@ public class LearningObjectController {
     }
     
     @RequestMapping(value = "/reviewLO", method = RequestMethod.POST)
-    public void reviewLO(@RequestParam("loid")String id, @RequestParam("rating") int rating, @RequestParam("comment") String comment) throws UnknownHostException{
+    public boolean reviewLO(@RequestParam("loid")String id, @RequestParam("rating") int rating, @RequestParam("comment") String comment) throws UnknownHostException{
         LearningObjectDto lo = new LearningObjectDto();
         
         lo.setId(id);
         lo.setComments(comment);
         lo.setRating(rating);
-        loService.reviewLO(lo);
+        return loService.reviewLO(lo);
     }
 }

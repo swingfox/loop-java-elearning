@@ -64,7 +64,7 @@
 
             <div class="clearfix"></div>
 
-            <div id="content-review-rev" ng-controller="LOCtrl">
+            <div id="content-review-rev" ng-controller="LECtrl">
                 <div class="container">
 
                     <div class="alert alert-success">

@@ -675,6 +675,8 @@ app.controller('LECtrl', ['$scope', '$store', '$http', '$rootScope', function($s
     $scope.submitReviewedLE = function(){
     $http.post("/loop-XYZ/loop/LE/reviewLE?leid="+getValue("leid")+'&'+"rating="+$scope.rating+'&'+"comment="+$scope.comment).success(function(response) {
             alert(response);
+            if(response === true)
+                windows.location = '/loop-XYZ/store/reviewer-le';
         });
     };
     
@@ -754,7 +756,8 @@ app.controller('LOCtrl', ['$scope', '$http', '$rootScope', function($scope, $htt
      
     $scope.submitReviewedLO = function(){
     $http.post("/loop-XYZ/loop/LO/reviewLO?loid="+getValue("loid")+'&'+"rating="+$scope.rating+'&'+"comment="+$scope.comment).success(function(response) {
-            alert(response);
+            if(response === true)
+                window.location = '/loop-XYZ/store/reviewer-update';
         });
     };
     
