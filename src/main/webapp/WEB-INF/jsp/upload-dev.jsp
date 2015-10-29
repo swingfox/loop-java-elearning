@@ -83,7 +83,7 @@
                                         <!-- <label class="control-label pull-left" for="input01"> -->
                                         <!-- Name : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
                                         <!-- Name : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-                                    </label>
+                                 <!--   </label> -->
                                     <input type="hidden"  name="author" id="auth" value="{{username}}">
                                     <input type="hidden"  name="rating"  value="0">
                                     <input type="hidden"  name="type" value="LO">
@@ -96,7 +96,7 @@
                                     <!-- <label class="control-label pull-left" for="input01"> -->
                                         <!-- Subject : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
                                         <!-- Subject : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-                                </label>
+                               <!-- </label>-->
                                 <input type="text" class="form-control col-md-7" id="input01"  name="subject" placeholder="e.g. Web Programming, Algebra" required/>
                                 <!--?php
                                         if(!isset($lsubj)){
@@ -114,9 +114,17 @@
                                 <!-- <label class="control-label pull-left" for="input01"> -->
                                         <!-- Description : &nbsp; -->
                                         <!-- Description : -->
-                                </label>
-                                <input type="text"  name = "description" class="form-control col-md-7" name="desc" placeholder="Write a description..." required/>								
+                              <!--  </label> -->
+                                <input type="text"  name = "description" class="form-control col-md-7" placeholder="Write a description..." required/>								
                                <!-- <input type="text" class="form-control col-md-7" id="input01" ng-model="lo.subject"  name="subject" placeholder="e.g. Web Programming, Algebra" required/> -->
+                                <div class="clearfix"></div>
+                            </div>
+                                    
+                            <div class="well upload tour-step tour-step-eleven">
+                                <label class="col-md-3 control-label upload-file" for="input01">Price:							
+                              
+                                </label>
+                                <input type="text"  name = "price" class="form-control col-md-7" placeholder="Price..." required/>								
                                 <div class="clearfix"></div>
                             </div>
                             <div class="form-actions advanced-search">
@@ -137,7 +145,7 @@
         <div class="clearfix"></div>
 
     <div class="push"></div>
-    </div>
+ <!--   </div> -->
 
     <div class="footer">
         <footer id="footer-wrap-index">

@@ -12,8 +12,20 @@
 <script src="js/angular/angular.js"></script>
 <script src="js/angular/ngStorage.js"></script>
 <script src="js/main.js"></script>
-<script src="js/loop.js" type="text/javascript"></script>
+<script src="js/scripts/services/storeService.js"></script>
+<script src="js/loop.js"></script>
+
+<script src="js/scripts/controllers/userController.js"></script>
+<script src="js/scripts/controllers/loController.js"></script>
+<script src="js/scripts/controllers/leController.js"></script>
+<script src="js/scripts/controllers/advancedSearchController.js"></script>
+
 <script src="js/scripts/services/userService.js"></script>
+<script src="js/scripts/services/loService.js"></script>
+<script src="js/scripts/services/leService.js"></script>
+<script src="js/scripts/services/utilService.js"></script>
+
+
 
 
 <script src="js/js-flat-ui/flatui-checkbox.js"></script>

@@ -118,9 +118,6 @@
                                         </div>
 
                                         <div class="clearfix"></div>
-                                        <div ng-hide="hide"><input type="text" id="userId" class="ng-dirty ng-touched" ng-model="userID"/></div>
-                                        <div ng-hide="hide"><input type="text" id="userName" class="ng-dirty ng-touched" ng-model="username"/></div>
-                                        <div ng-hide="hide"><input type="text" id="userType" class="ng-dirty ng-touched" ng-model="userType"/></div>
                                         <div class="label-signup">
                                             <p>Haven’t Signed Up Yet?</p>
                                         </div>
@@ -201,7 +198,7 @@
                                             <div class="row">
                                                 <div class="col-md-4 col-md-push-1">
                                                     <label class="radio log-in">  <!-- login-wrap -->
-                                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="developer" data-toggle="radio" checked="">
+                                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="developer" data-toggle="radio" checked>
                                                         Developer
                                                     </label>
                                                 </div>
@@ -752,7 +749,6 @@
         </div>
     </div>
 </footer>
-</div>
 
 <jsp:include page="include/mainScripts.jsp"/>
 
