@@ -41,9 +41,9 @@ public class LearningElement {
     */
     private Date uploadDate;
     /*
-    *filepath of learning element
+    *filePath of learning element
     */
-    private String filepath;
+    private String filePath;
     /*
     *rating of learning element
     */
@@ -70,12 +70,21 @@ public class LearningElement {
     */
     private String type;
     
-    private String fileExtension;
+    private String contentType;
     
-    private String fileName;
+    private String filename;
+    
+    private String aliases;
+    
+    private long chunkSize;
+    
+    private String md5;
+    
+    private long length;
+   
+    private String _class;
     
     
-  
     /**
      * Gets the id of the learning element
      * @return Long This returns the id of the learning element
@@ -165,14 +174,14 @@ public class LearningElement {
      * @return String Returns the file path of the learning element
      */
     public String getFilePath() {
-        return filepath;
+        return filePath;
     }
     /**
      * Sets the file path of the learning element
      * @param filepath 
      */
     public void setFilePath(String filepath) {
-        this.filepath = filepath;
+        this.filePath = filepath;
     }
     /**
      * Gets the rating of the learning element
@@ -260,20 +269,28 @@ public class LearningElement {
         this.type = type;
     }
 
-    public String getFileExtension() {
-        return fileExtension;
+    public String getContentType() {
+        return contentType;
     }
 
-    public void setFileExtension(String fileExtension) {
-        this.fileExtension = fileExtension;
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 
-    public String getFileName() {
-        return fileName;
+    public String getFilename() {
+        return filename;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public String getAliases() {
+        return aliases;
+    }
+
+    public void setAliases(String aliases) {
+        this.aliases = aliases;
     }
     
    

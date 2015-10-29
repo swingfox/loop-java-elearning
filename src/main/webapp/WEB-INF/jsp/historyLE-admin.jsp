@@ -1,35 +1,4 @@
-<%--NOTE:
-<!--Functions in php that have not been transfered/revised here:-->
-    <!--?php $this->layout->modal_footer() ?>-->
-    <!--?php echo date("Y"); ?-->
-    under <ol class="breadcrumb">
-    href ="<php echo base_url().'redirect/admin_view6'?>"
-    href="<?php echo base_url().'redirect/download_Admin/LE/'.$counter ?>"
-    href="<?php echo base_url().'index.php'?>"
-    value="<?php echo $index?>"
-    <!--?php echo $name?-->
-    <%--action="<?php echo base_url().'redirect/deleteLE_admin/'?>" --%>
-    <%--action="<?php echo base_url().'redirect/plusrevLE/'?>"--%>
-    <%--under <table class="datatable table table-hover">--%>
-
-
-<!--?php
-	session_start();//to use session variables
-	require './application/controllers/LEController.php';
-	$les = unserialize($_SESSION['les']);
-	$index = $counter;
-	$le = $les[$index];
-	$_SESSION['le'] = serialize($le);
-	$id = $le->getID();
-	$rev = $le->getRev();
-	$dev = $le->getUploadedBy();
-	$name = $le->getName();
-	$status = $le->getStatus();
-	$filepath = $le->getFilepath();
-
-	$path = base_url().'uploads/';
-?-->
-<!DOCTYPE html>
+<jsp:include page="include/headerScript.jsp"/>
 <html lang="en" ng-app="loop">
 <head>
 <title>LOOP | History</title>
@@ -75,9 +44,9 @@
 
 		<div id="breadcrumb-wrap">
 			<!-- <div class="container"> -->
-				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="/loop-XYZ/store/admin-view6" >Back to Learning Element List</a></li>
-					<li class="active">History - <!--?php echo $name?--></li>
+                        <ol class="breadcrumb" ng-controller="LEList">
+					<li><a class="breadcrumb-link" href="/loop-XYZ/store/admin-view6" ng-click="clearLE()">Back to Learning Element List</a></li>
+					<li class="active">History - {{le.title}}</li>
 				</ol>
 			<!-- </div> -->
 		</div> 
@@ -256,43 +225,7 @@
         
         <!-- Delete modal-->
 	<!-- Load JS here for greater good =============================-->
-
-	<!--?php $this->layout->footer() ?-->
-        <script src="css/bootstrap3/assets/js/jquery.js"></script>
-        <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
-        <script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
-        <script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
-        <script src="js/js-flat-ui/flatui-checkbox.js"></script>
-        <script src="js/js-flat-ui/flatui-radio.js"></script>
-        <script src="js/js-flat-ui/jquery.tagsinput.js"></script>
-        <script src="js/js-flat-ui/jquery.placeholder.js"></script>
-        <script src="js/js-flat-ui/jquery.stacktable.js"></script>
-        <script src="http://vjs.zencdn.net/c/video.js"></script>
-
-        <script src="js/backstretch-jquery/jquery.backstretch.min.js"></script>
-
-        <script src="js/datatables/jquery.dataTables.min.js"></script>
-
-        <script src="js/datatables/dataTables.bootstrap.js"></script>
-
-
-        <script src="css/bootstrap3/js/tooltip.js"></script>
-        <script src="css/bootstrap3/js/popover.js"></script>
-        
-        <script src="js/angular/angular.js"></script>
-        <script src="js/angular/ngStorage.js"></script>
-        <script src="js/loop.js" type="text/javascript"></script>
-
-
-        <!-- Bootstrap tour =================================================-->
-        <script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
-        <script src="bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
-        <!--script src="'.$this->base_url.'js/reviewer-tour-script.js"></script-->
-
-        <!-- Form Validator =================================================-->
-        <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
+	<jsp:include page="include/mainScripts.jsp"/>
         <script>
 
 

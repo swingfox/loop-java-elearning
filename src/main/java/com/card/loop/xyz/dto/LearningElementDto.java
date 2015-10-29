@@ -14,9 +14,9 @@ import java.util.List;
  */
 public class LearningElementDto {
     /*
-    *id of learning element
+    *_id of learning element
     */
-    private String id;
+    private String _id;
     /*
     *title of learning element
     */
@@ -38,9 +38,9 @@ public class LearningElementDto {
     */
     private Date uploadDate;
     /*
-    *filepath of learning element
+    *filePath of learning element
     */
-    private String filepath;
+    private String filePath;
     /*
     *rating of learning element
     */
@@ -71,24 +71,24 @@ public class LearningElementDto {
     */
     private List<String>  errorList;
     
-    private String fileExtension;
+    private String contentType;
     
     
     
     
     /**
-     * Gets the id of the learning element
-     * @return Long This returns the id of the learning element
+     * Gets the _id of the learning element
+     * @return Long This returns the _id of the learning element
      */
     public String getId(){
-        return this.id;
+        return this._id;
     }
     /**
-     * Sets the id of the learning element
+     * Sets the _id of the learning element
      * @param id 
      */
     public void setId(String id){
-       this.id=id;
+       this._id=id;
     }
     /**
      * Gets the title of the learning element
@@ -164,15 +164,15 @@ public class LearningElementDto {
      * Gets the file path of the learning element
      * @return String Returns the file path of the learning element
      */
-    public String getFilepath() {
-        return filepath;
+    public String getFilePath() {
+        return filePath;
     }
     /**
      * Sets the file path of the learning element
-     * @param filepath 
+     * @param filePath 
      */
-    public void setFilepath(String filepath) {
-        this.filepath = filepath;
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
     /**
      * Gets the rating of the learning element
@@ -274,11 +274,11 @@ public class LearningElementDto {
         this.type = type;
     }
 
-    public String getFileExtension() {
-        return fileExtension;
+    public String getContentType() {
+        return contentType;
     }
 
-    public void setFileExtension(String fileExtension) {
-        this.fileExtension = fileExtension;
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 }

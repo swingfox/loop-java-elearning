@@ -1,23 +1,4 @@
-<!--
-<?php
-	session_start();//to use session variables
-	require './application/controllers/LOController.php';
-	$los = unserialize($_SESSION['obj']);
-	$index = $counter;
-	$lo = $los[$index];
-	$id = $lo->getID();
-	$rev = $lo->getRev();
-	$dev = $lo->getUploadedBy();
-	$name = $lo->getName();
-	$status = $lo->getStatus();
-	$filepath = $lo->getFilepath();
-
-	$path = base_url().'uploads/';
-	//serialize($_SESSION['los']);
-	//echo $dev;*/
-?>
--->
-<!DOCTYPE html>
+<jsp:include page="include/headerScript.jsp"/>
 <html lang="en">
     <head>
         <title>LOOP | History</title>
@@ -65,9 +46,9 @@
         <jsp:include page="include/CurrentUser.jsp"/>
 		<div id="breadcrumb-wrap">
 			<!-- <div class="container"> -->
-				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="/loop-XYZ/store/reviewer-update">Back to Review List</a></li>
-					<li class="active">History - <!--<?php echo $name?>--></li>
+				<ol class="breadcrumb" ng-controller="LOList">
+                                    <li><a class="breadcrumb-link" href="/loop-XYZ/store/reviewer-update" ng-click="clearLO()">Back to Review List</a></li>
+					<li class="active">History - {{lo.title}}</li>
 				</ol>
 			<!-- </div> -->
 		</div> 
@@ -182,10 +163,8 @@
     </div>
 
 	<!-- Load JS here for greater good =============================-->
+        <jsp:include page="include/mainScripts.jsp"/>
 
-	<!--?php $this->layout->footer_subpages() ?-->
-
-	<!--<?php $this->layout->footer() ?>-->
 
 	<script type="text/javascript">
 		$(document).ready(function() {

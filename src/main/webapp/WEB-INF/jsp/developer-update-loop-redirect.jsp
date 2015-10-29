@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+<jsp:include page="include/headerScript.jsp"/>
 <html lang="en" ng-app="loop">
 <head>
 <!--?php

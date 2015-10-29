@@ -42,10 +42,6 @@ public class LearningObject {
     */
     private Date uploadDate;
     /*
-    *Filepath of the Learning Object.
-    */
-    private String filePath;
-    /*
     *Rating of the Learning Object.
     */
     private int rating;
@@ -66,11 +62,8 @@ public class LearningObject {
     *Name of the uploader of the Learning Object.
     */
     private String uploadedBy;
-    private String filename;
-    private String contentType;
-    private String type;
     private double price;
-
+    private String _class;
     private List<LearningElement[]> sequence;
     
 
@@ -138,13 +131,6 @@ public class LearningObject {
         return this.uploadDate;
     }
 
-    /**
-     * Gets the filePath of the Learning Object.
-     * @return String This returns the filePath of Learning Object.
-     */
-    public String getFilePath(){
-        return this.filePath;
-    }
 
     /**
      * Gets the rating of the Learning Object.
@@ -234,15 +220,6 @@ public class LearningObject {
     public void setDateUpload(Date dateUploaded){
         this.uploadDate = dateUploaded;
     }
-
-    /**
-     * Sets the filePath of the Learning Object
-     * @param filepath String
-     */
-    public void setFilePath(String filepath){
-        this.filePath= filepath;
-    }
-
     /**
      * Sets the rating of the Learning Object
      * @param rating String
@@ -275,30 +252,6 @@ public class LearningObject {
         this.sequence = sequence;
     }
 
-    public String getFileName() {
-        return filename;
-    }
-
-    public void setFileName(String fileName) {
-        this.filename = fileName;
-    }
-
-    public String getFileType() {
-        return contentType;
-    }
-
-    public void setFileType(String fileType) {
-        this.contentType = fileType;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public Date getUploadDate() {
         return uploadDate;
     }
@@ -313,6 +266,10 @@ public class LearningObject {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getClassType() {
+        return _class;
     }
     
 }

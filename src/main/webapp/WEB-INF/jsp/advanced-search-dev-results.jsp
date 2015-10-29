@@ -1,21 +1,7 @@
-<%--NOTE:
-Functions in php that have not been transfered/revised here:
-    <!--?php $this->layout->modal_footer() ?>-->
-    <!--?php echo date("Y"); ?-->
-    <!--?php $this->load->helper('url'); ?-->
-    <!--?php echo (isset($status) && $status)?'onload=document.getElementById("responsive_changePassword_btn").click()':'' ?>-->	
-    <!--?php $this->layout->modal_footer(isset($status)?$status:FALSE) ?-->
-    <!--?php session_start();?-->
---%>
-
-<!--?php
-	session_start();
-?!-->
-<!DOCTYPE html>
+<jsp:include page="include/headerScript.jsp"/>
 <html lang="en" ng-app="loop">
 <head>
-<!--?php
-echo '--><script type="text/javascript">
+<script type="text/javascript">
 			function select(i)
 			{
 				
@@ -262,46 +248,8 @@ echo '--><script type="text/javascript">
         
 
 	<!-- Load JS here for greater good =============================-->
+        <jsp:include page="include/mainScripts.jsp"/>
 
-	<!--?php $this->layout->footer() ?-->
-        <script src="css/bootstrap3/assets/js/jquery.js"></script>
-        <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
-
-
-
-        <script src="js/main.js"></script>
-
-
-        <script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
-        <script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
-        <script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
-        <script src="js/js-flat-ui/flatui-checkbox.js"></script>
-        <script src="js/js-flat-ui/flatui-radio.js"></script>
-        <script src="js/js-flat-ui/jquery.tagsinput.js"></script>
-        <script src="js/js-flat-ui/jquery.placeholder.js"></script>
-        <script src="js/js-flat-ui/jquery.stacktable.js"></script>
-        <script src="http://vjs.zencdn.net/c/video.js"></script>
-
-        <script src="js/backstretch-jquery/jquery.backstretch.min.js"></script>
-
-        <script src="js/datatables/jquery.dataTables.min.js"></script>
-
-        <script src="js/datatables/dataTables.bootstrap.js"></script>
-        
-        <script src="js/angular/angular.js"></script>
-        <script src="js/angular/ngStorage.js"></script>
-        <script src="js/loop.js" type="text/javascript"></script>
-
-        <script src="css/bootstrap3/js/tooltip.js"></script>
-        <script src="css/bootstrap3/js/popover.js"></script>
-
-        <!-- Bootstrap tour =================================================-->
-        <script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
-        <script src="bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
-        <!--script src="'.$this->base_url.'js/reviewer-tour-script.js"></script-->
-
-        <!-- Form Validator =================================================-->
-        <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
         <script>
 
 

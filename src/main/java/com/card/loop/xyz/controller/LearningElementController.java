@@ -154,8 +154,8 @@ public class LearningElementController {
                         le.setUploadDate(new Date());
                         le.setSubject(subject);
                         le.setFilePath(AppConfig.LE_FILE_PATH);
-                        le.setFileName(file.getOriginalFilename());
-                        le.setFileExtension(file.getOriginalFilename().split("\\.")[1]);
+                        le.setFilename(file.getOriginalFilename());
+                        le.setContentType(file.getOriginalFilename().split("\\.")[1]);
                         dao.addLearningElement(le);
                        
 

@@ -104,8 +104,8 @@ public class LOIDEController {
                             le.setRating(1);
                             le.setUploadDate(new Date());
                             le.setFilePath(AppConfig.DOWNLOAD_BASE_PATH);
-                            le.setFileName(file.getOriginalFilename());
-                            le.setFileExtension(file.getOriginalFilename().split("\\.")[1]);
+                            le.setFilename(file.getOriginalFilename());
+                            le.setContentType(file.getOriginalFilename().split("\\.")[1]);
                             daoLE.addLearningElement(le);
 
                          //   LearningElement lo = new LearningElement(title, authorID, description);
@@ -143,7 +143,7 @@ public class LOIDEController {
                         lo.setTitle(title);
                         lo.setUploadedBy(authorID);
                         lo.setDescription(description);
-                        daoLO.addFile(lo);
+//                        daoLO.addFile(lo);
                 
                 
                         String lg = String.format("=================Learning Object Uploaded===========================\n"

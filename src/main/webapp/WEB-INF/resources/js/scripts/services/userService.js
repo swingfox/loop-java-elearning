@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 
-
-app.factory('userFactory', function($http){
+app.factory('userService', function($http){
     return {
         getReviewer : function(){
             return $http.get("/loop-XYZ/loop/user/reviewer");

@@ -1,25 +1,4 @@
-<%--NOTE:
-<!--Functions in php that have not been transfered/revised here:-->
-    <!--?php $this->layout->modal_footer() ?>-->
-    <!--?php echo date("Y"); ?-->
-    under <ol class="breadcrumb">
-    under <div class="page-header download">
-    under <div class="form-actions advanced-search">
-    <?php echo $le->getName(); ?>
-    <?php echo $le->getSubject(); ?>
-    <?php echo $le->getDateUploaded(); ?>
-    <?php echo $le->getDescription(); ?>
---%>
-
-<!--?php
-	session_start();//to use session variables
-	require './application/controllers/LOController.php';
-	$los = unserialize($_SESSION['los']);
-	$index = $counter;
-	$lo = $los[$index];
-	$filepath = $lo->getFilepath();
-?-->
-<!DOCTYPE html>
+<jsp:include page="include/headerScript.jsp"/>
 <html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Download</title>
@@ -180,44 +159,7 @@
     </div>
 
 	<!-- Load JS here for greater good =============================-->
-
-	<!--?php $this->layout->footer_subpages() ?-->
-
-	<!--?php $this->layout->footer() ?-->
-        <script src="css/bootstrap3/assets/js/jquery.js"></script>
-        <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
-        <script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
-        <script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
-        <script src="js/js-flat-ui/flatui-checkbox.js"></script>
-        <script src="js/js-flat-ui/flatui-radio.js"></script>
-        <script src="js/js-flat-ui/jquery.tagsinput.js"></script>
-        <script src="js/js-flat-ui/jquery.placeholder.js"></script>
-        <script src="js/js-flat-ui/jquery.stacktable.js"></script>
-        <script src="http://vjs.zencdn.net/c/video.js"></script>
-
-        <script src="js/backstretch-jquery/jquery.backstretch.min.js"></script>
-
-        <script src="js/datatables/jquery.dataTables.min.js"></script>
-
-        <script src="js/datatables/dataTables.bootstrap.js"></script>
-
-
-        <script src="css/bootstrap3/js/tooltip.js"></script>
-        <script src="css/bootstrap3/js/popover.js"></script>
-        
-        
-        <script src="js/angular/angular.js"></script>
-        <script src="js/angular/ngStorage.js"></script>
-        <script src="js/loop.js"></script>
-        <!-- Bootstrap tour =================================================-->
-        <script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
-        <script src="bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
-        <!--script src="'.$this->base_url.'js/reviewer-tour-script.js"></script-->
-
-        <!-- Form Validator =================================================-->
-        <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
+	<jsp:include page="include/mainScripts.jsp"/>
         <script>
 
 

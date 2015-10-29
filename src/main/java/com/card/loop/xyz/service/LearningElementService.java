@@ -70,7 +70,7 @@ public class LearningElementService {
             dto.setStatus(leModel.getStatus());
             dto.setComments(leModel.getComments());
             dto.setUploadedBy(leModel.getUploadedBy());
-            dto.setFilepath(leModel.getFilePath());            
+            dto.setFilePath(leModel.getFilePath());            
         }
         return dto;
     }
@@ -144,6 +144,7 @@ public class LearningElementService {
         LearningElement obj = dao.getSpecificLearningElementById(le.getId());
         obj.setComments(le.getComments());
         obj.setRating(le.getRating());
+        
         return dao.saveLE(obj);
     }
     

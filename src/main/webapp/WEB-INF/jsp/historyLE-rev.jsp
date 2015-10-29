@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<jsp:include page="include/headerScript.jsp"/>
 <html lang="en">
     <head>
-        <title>LOOP | <History</title>
+        <title>LOOP | History</title>
         <meta charset="utf-8">
             
 
@@ -45,9 +45,9 @@
 
 		<div id="breadcrumb-wrap">
 			<!-- <div class="container"> -->
-				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="/loop-XYZ/store/review-list">Back to Review List</a></li>
-					<li class="active">History - <!--<?php echo $name?></li>-->
+                        <ol class="breadcrumb" ng-controller="LEList">
+					<li><a class="breadcrumb-link" href="/loop-XYZ/store/review-list" ng-click="clearLE()">Back to Review List</a></li>
+					<li class="active">History - {{le.title}} </li>
 				</ol>
 			<!-- </div> -->
 		</div> 
@@ -161,9 +161,8 @@
 
 	<!-- Load JS here for greater good =============================-->
 
-	<!--?php $this->layout->footer_subpages() ?-->
+        <jsp:include page="include/mainScripts.jsp"/>
 
-	<!--<?php $this->layout->footer() ?>-->
 
 	<script type="text/javascript">
 		$(document).ready(function() {

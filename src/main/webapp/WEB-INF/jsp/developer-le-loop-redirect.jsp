@@ -1,7 +1,6 @@
-<!DOCTYPE html>
+<jsp:include page="include/headerScript.jsp"/>
 <html lang="en" ng-app="loop">
-<head>
-    
+<head>  
 <script type="text/javascript">
 			function select(i)
 			{
@@ -235,6 +234,8 @@
         <script src="../js/angular/angular.js"></script>
         <script src="../js/angular/ngStorage.js"></script>
         <script src="../js/loop.js" type="text/javascript"></script>
+        <script src="../js/scripts/services/userService.js"></script>
+
         <script src="../js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
         <script src="../bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
         <script type="text/javascript" src="../js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>

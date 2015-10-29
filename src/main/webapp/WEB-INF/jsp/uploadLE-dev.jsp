@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+<jsp:include page="include/headerScript.jsp"/>
 <html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Upload</title>
 
-<!--<?php $this->layout->header() ?> -->
  <meta charset="utf-8">          
 
     <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
@@ -156,7 +155,7 @@
 								<!-- <label class="control-label pull-left" for="input01"> -->
 									<!-- Description : &nbsp; -->
 									<!-- Description : -->
-								</label>
+								<!--</label> -->
 								<input type="text" class="form-control col-md-7" id="input01" name="description" placeholder="Write a description..." required/>								
 								
 								<div class="clearfix"></div>
@@ -211,7 +210,7 @@
 		
 		<!-- Take this out if you want the original footer back -->
         <div class="push"></div>
-	</div>
+<!--	</div> -->
 
 	<div class="footer">
 		<footer id="footer-wrap-index">
@@ -225,54 +224,9 @@
         
 	<!-- Load JS here for greater good =============================-->
 
-	<!--?php $this->layout->footer_subpages() ?-->
-        <script src="css/bootstrap3/assets/js/jquery.js"></script>
-            <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
-
-            
-
-            <script src="js/main.js"></script>
+	<jsp:include page="include/mainScripts.jsp"/>
 
 
-            <script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
-            <script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
-            <script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
-            <script src="js/js-flat-ui/flatui-checkbox.js"></script>
-            <script src="js/js-flat-ui/flatui-radio.js"></script>
-            <script src="js/js-flat-ui/jquery.tagsinput.js"></script>
-            <script src="js/js-flat-ui/jquery.placeholder.js"></script>
-            <script src="js/js-flat-ui/jquery.stacktable.js"></script>
-            <script src="http://vjs.zencdn.net/c/video.js"></script>
-
-            <script src="js/backstretch-jquery/jquery.backstretch.min.js"></script>
-
-            <script src="js/datatables/jquery.dataTables.min.js"></script>
-            
-            <script src="js/datatables/dataTables.bootstrap.js"></script>
-            
-            
-            <script src="js/angular/angular.js"></script>
-            <script src="js/angular/ngStorage.js"></script>
-            <script src="js/loop.js" type="text/javascript"></script>
-
-            <!-- Datepicker =================================================-->
-            <!--script src="'.$this->base_url.'css/bootstrapformhelpers/js/bootstrap-formhelpers-datepicker.en_US.js"></script-->
-            <script src="css/bootstrapformhelpers/js/bootstrap-formhelpers.js"></script>
-            
-            <script src="css/bootstrap3/js/tooltip.js"></script>
-            <script src="css/bootstrap3/js/popover.js"></script>
-
-            <!-- Bootstrap tour =================================================-->
-            <script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
-            <script src="js/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
-            <!--script src="'.$this->base_url.'js/developer-tour-script.js"></script-->
-
-            <!-- Input File =================================================-->
-            <script src="css/inputfile/jquery.inputfile.js"></script>
-
-            <!-- Form Validator =================================================-->
-
-            <script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
 
 	<script> 
 		$(document).ready(function(){
@@ -334,8 +288,5 @@ $("#myform").validate({
                 });
 
 	</script>
-        <script src="js/angular/angular.js"></script>
-        <script src="js/angular/ngStorage.js"></script>
-        <script src="js/loop.js" type="text/javascript"></script>
 </body>
 </html>

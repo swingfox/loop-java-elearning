@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+<jsp:include page="include/headerScript.jsp"/>
 <html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Admin - Learning Objects</title>
@@ -83,17 +82,17 @@
                                                                     <img ng-if="lo.rating===5" src="img/icon-green.png" alt="For Review"> 
                                                                     
                                                                 </td>
-                                                                <td><a ng-click="GetLODetails_admin(lo)"><label ng-model="lo.title">{{lo.title}}</a></td>
+                                                                <td><a ng-click="GetLODetails_admin(lo)"><label>{{lo.title}}</label></a></td>
 
-                                                                <td><label ng-model="lo.subject">{{lo.subject}}</td>
-                                                                <td><label ng-model="lo.uploadDate">{{lo.uploadDate}}</td>
+                                                                <td><label>{{lo.subject}}</td>
+                                                                <td><label>{{lo.uploadDate | date : "MMMM dd, yyyy"}}</td>
                                                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
-                                                                <td><label ng-model="lo.comments">{{lo.comments}}</td>
+                                                                <td><label>{{lo.comments}}</td>
                                                                  <td ng-if="lo.status==0"><a href="#responsive_approve" data-toggle="modal" onclick="selectIndex('.$counter.')" ng-click="assignUser(lo)"  value="lo.id" ng-model="lo.id"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></a></td>
                                                                  <td ng-if="lo.status==1"><a href="#responsive_approve" data-toggle="modal" onclick="selectIndex('.$counter.')" ng-click="assignUser(lo)"  value="lo.id" ng-model="lo.id"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></a></td>
 
-                                                                <td><label ng-model="lo.rev">{{lo.rev}}</td>
-                                                                <td><label ng-model="lo.uploadedBy">{{lo.uploadedBy}}</td> 
+                                                                <td><label>{{lo.rev}}</td>
+                                                                <td><label>{{lo.uploadedBy}}</td> 
                                                             </tr>							
 								</tbody>
 							  </table>
@@ -147,29 +146,8 @@
     </div>
         	</div>
 
-	<script src="js/js-flat-ui/jquery-1.8.3.min.js"></script>
-	<script src="js/js-flat-ui/jquery-ui-1.10.3.custom.min.js"></script>
-	<script src="js/js-flat-ui/jquery.ui.touch-punch.min.js"></script>
-	<script src="js/js-flat-ui/flatui-checkbox.js"></script>
-	<script src="js/js-flat-ui/flatui-radio.js"></script>
-	<script src="js/js-flat-ui/jquery.tagsinput.js"></script>
-	<script src="js/js-flat-ui/jquery.placeholder.js"></script>
-	<script src="js/js-flat-ui/jquery.stacktable.js"></script>
-	<script src="js/datatables/jquery.dataTables.min.js"></script>
-	<script src="js/datatables/dataTables.bootstrap.js"></script>        
-	<script src="js/backstretch-jquery/jquery.backstretch.min.js"></script>
-	<script src="js/datatables/jquery.dataTables.min.js"></script>            
-	<script src="js/datatables/dataTables.bootstrap.js"></script>
-        <script src="js/main.js"></script>
-	<script src="css/bootstrap3/js/tooltip.js"></script>
-	<script src="css/bootstrap3/js/popover.js"></script>
-	<script src="css/bootstrap3/dist/js/bootstrap.js"></script>
-        <script src="js/angular/angular.js"></script>
-        <script src="js/angular/ngStorage.js"></script>
-        <script src="js/loop.js" type="text/javascript"></script>
-	<script src="js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
-	<script src="js/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
-	<script type="text/javascript" src="js/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
+	<jsp:include page="include/mainScripts.jsp"/>
+
 	<script>
 	$("#banner-wrap").backstretch("img/img-banner.jpg");
 	</script>

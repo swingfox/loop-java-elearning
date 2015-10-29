@@ -47,7 +47,7 @@ var app = angular.module('loop', ['localStorage'], function($httpProvider) {
 });
 
 
-app.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $store,$http) {
+app.controller('LoginCtrl', ['$scope', '$store', '$http', 'userService' , function($scope, $store,$http,userService) {
     $store.bind($scope, 'username', '');
     $store.bind($scope, 'userID', '');
     $store.bind($scope, 'userType', '');
@@ -149,7 +149,7 @@ app.controller('LoginCtrl', ['$scope', '$store', '$http', function($scope, $stor
                 userType :  $('input[name=optionsRadios]:checked','#login_form').val()
         }; 
 
-      $http.post('/loop-XYZ/loop/user/login',data).success(function(data){
+      userService.login(data).success(function(data){
             $store.bind($scope, 'username', data.username);
             $store.bind($scope, 'userID', data.id);
             $store.bind($scope, 'userType', data.usertype);
@@ -676,7 +676,7 @@ app.controller('LECtrl', ['$scope', '$store', '$http', '$rootScope', function($s
     $http.post("/loop-XYZ/loop/LE/reviewLE?leid="+getValue("leid")+'&'+"rating="+$scope.rating+'&'+"comment="+$scope.comment).success(function(response) {
             alert(response);
             if(response === true)
-                windows.location = '/loop-XYZ/store/reviewer-le';
+                window.location = '/loop-XYZ/store/reviewer-le';
         });
     };
     

@@ -91,8 +91,6 @@ public class LearningObjectController {
                         lo.setStatus(0);
                         lo.setDownloads(0);
                         lo.setRating(1);
-                        lo.setFilePath(file.getOriginalFilename());
-                        dao.addLearningObject(lo);
 
 
                         System.out.println("UPLOAD LO FINISHED");
@@ -260,9 +258,9 @@ public class LearningObjectController {
     */
     @RequestMapping(value = "/downloadLO/{elementID}", method = RequestMethod.GET)
     public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {                   
-        GridFSDBFile element = dao.getSingleLO(elementID, "lo.meta");
+      //  GridFSDBFile element = dao.getSingleLO(elementID, "lo.meta");
         
-        System.out.println(element.getId().toString());
+       /* System.out.println(element.getId().toString());
         dao.writePhysicalFile(element.getId().toString(), element.getFilename());
         System.out.println(element);
         System.out.println(element.getFilename());
@@ -272,13 +270,14 @@ public class LearningObjectController {
         ContentShipper shipper = new ContentShipper(request, response, true);
         shipper.ship(path);         
         f.delete();
+        */
     }
     /*
     *   @params String elementID the name of the specific LO to be downloaded
     */
     @RequestMapping(value = "/downloadLO/{elementID}", method = RequestMethod.HEAD)
     public void getFileHeader(HttpServletRequest request, HttpServletResponse response, @PathVariable String elementID) throws IOException {
-        GridFSDBFile element = dao.getSingleLO(elementID, "lo.meta");
+   /*     GridFSDBFile element = dao.getSingleLO(elementID, "lo.meta");
         dao.writePhysicalFile(element.getId().toString(), element.getFilename());
 
         String path = AppConfig.DOWNLOAD_BASE_PATH + element.getFilename();
@@ -287,7 +286,7 @@ public class LearningObjectController {
         ContentShipper shipper = new ContentShipper(request, response, true);
         shipper.ship(path);
         
-        f.delete();
+        f.delete();*/
     }
     
     @RequestMapping(value = "/reviewLO", method = RequestMethod.POST)

@@ -4,7 +4,6 @@
     Author     : User
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="wrapper" ng-app="loop">
     
     <form  method="post" ng-controller="LoginCtrl">

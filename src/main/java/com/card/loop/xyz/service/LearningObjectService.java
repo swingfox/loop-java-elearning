@@ -74,8 +74,7 @@ public class LearningObjectService
             dto.setRev(loModel.getRev());
             dto.setStatus(loModel.getStatus());
             dto.setComments(loModel.getComments());
-            dto.setUploadedBy(loModel.getUploadedBy());
-            dto.setFilePath(loModel.getFilePath());     
+            dto.setUploadedBy(loModel.getUploadedBy());    
             dto.setSequence(loModel.getSequence());
         }
         return dto;
@@ -107,7 +106,7 @@ public class LearningObjectService
                     LearningElement tmp = new LearningElement();
                     tmp.setTitle(le.getTitle());
                     tmp.setType(le.getType());
-                    tmp.setFileExtension(le.getFileExtension());
+                    tmp.setContentType(le.getContentType());
                     tmp.setDescription(le.getDescription());
                     tmp.setUploadDate(le.getUploadDate());
                     tmp.setId(le.getId());
