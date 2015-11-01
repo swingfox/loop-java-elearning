@@ -75,6 +75,7 @@ public class LearningObjectService
             dto.setStatus(loModel.getStatus());
             dto.setComments(loModel.getComments());
             dto.setUploadedBy(loModel.getUploadedBy());    
+            dto.setPrice(loModel.getPrice());
             dto.setSequence(loModel.getSequence());
         }
         return dto;

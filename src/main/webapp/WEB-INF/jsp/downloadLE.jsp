@@ -34,35 +34,34 @@
 				<div class="col-md-6 col-md-push-3">
                     <div class="page-header download">
                     </div>       
-                    <form class="form-horizontal bootstrap-validator-form" id="les from le" novalidate="novalidate">
+                    <form class="form-horizontal bootstrap-validator-form" id="le" novalidate="novalidate">
                         <div class="well">	
                             <div class="form-group" >
                                     <label class="col-md-3 control-label download">Title :</label>
-	                            <div class="col-md-8">
+	                          
 	                                <p class="download-details">{{le.title}}</p>
-	                            </div>
+	                        
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Subject :</label>
-	                            <div class="col-md-8">
-	                                <p classdownload-details ng-binding="download-details">{{le.subject}}</p>
-	                            </div>
+	                  
+	                                <p class="download-details">{{le.subject}}</p>
+	                      
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Date Uploaded :</label>
-	                            <div class="col-md-8">
-	                                <p class="download-details">{{le.uploadDate | date : "medium"}}</p>
-	                            </div>
+	                            
+	                                <p class="download-details">{{le.uploadDate | date : "MMMM dd, yyyy"}}</p>
+	                         
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Description :</label>
-	                            <div class="col-md-8">
+	                           
 	                                <p class="download-details">{{le.description}}</p>
-	                            </div>
-	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
+	                     
 	                    </div>	
                             <div class="form-actions advanced-search" ng-controller="LoginCtrl">                                    
                                 <a class="btn btn-primary" href="/loop-XYZ/loop/LE/downloadLE?id={{le.id}}"><i class="icon-download-alt icon-large" > Download</i></a>
@@ -73,11 +72,9 @@
                 </div>
 				<div class="clearfix"></div>				
 			</div>
-		</div> 
 
   		<div class="clearfix"></div>
         <div class="push"></div>
-	</div>
 
 	<div class="footer">
 		<footer id="footer-wrap-index">

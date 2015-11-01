@@ -10,10 +10,14 @@
 
 
 <script src="js/angular/angular.js"></script>
+<script src="js/angular/angular-sanitize.js"></script>
 <script src="js/angular/ngStorage.js"></script>
+
+
 <script src="js/main.js"></script>
-<script src="js/scripts/services/storeService.js"></script>
 <script src="js/loop.js"></script>
+
+<script src="js/scripts/services/storeService.js"></script>
 
 <script src="js/scripts/controllers/userController.js"></script>
 <script src="js/scripts/controllers/loController.js"></script>

@@ -123,28 +123,23 @@ public class LOIDEController {
 	}
     
     @RequestMapping(value="/upload/lo", method = RequestMethod.POST)
-    public void uploadLearningObject(@RequestParam("title") String title, @RequestParam("elements") String elementJson, @RequestParam("author") String authorID,
-				     @RequestParam("description") String description, @RequestParam("quiz") MultipartFile file) {
-        if (!file.isEmpty()) {
-		try {
-                        byte[] bytes = file.getBytes();
-                
-                        File fil = new File(System.getProperty("user.home") + File.separator + "Dragon/Learning Elements/quizzes/" + title + "/quiz");
-                
-                        if (!fil.getParentFile().exists())
-                            fil.getParentFile().mkdirs();
-                
-                        fil.createNewFile();
-                        BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fil));
-                        stream.write(bytes);
-                        stream.close();
-                
+    public void uploadLearningObject(@RequestParam("title") String title, @RequestParam("elements") List<LearningElement[]> elementJson, @RequestParam("author") String authorID,
+				     @RequestParam("description") String description) {
+
                         LearningObject lo = new LearningObject();
                         lo.setTitle(title);
                         lo.setUploadedBy(authorID);
                         lo.setDescription(description);
-//                        daoLO.addFile(lo);
-                
+                        lo.setSequence(elementJson);
+                        lo.setStatus(0);
+                        lo.setRating(1);
+                        lo.setDateUpload(new Date());
+                        lo.setComments(null);
+                        lo.setSubject(null);
+                        lo.setDownloads(0);
+                        lo.setPrice(0.0);
+                        lo.setRev(null);
+                        daoLO.saveLO(lo);
                 
                         String lg = String.format("=================Learning Object Uploaded===========================\n"
                                                          + " Title: %s\n"
@@ -154,19 +149,7 @@ public class LOIDEController {
                                                          + "%s\n"
                                                          + " Quiz File: %s\n"
                                                          + "========================Log end======================================\n",
-                                                                title, authorID, description, elementJson, fil.getAbsolutePath());
-                        File log = new File(System.getProperty("user.home") + File.separator + "Dragon/Learning Elements/quizzes/" + title + "/log.txt");
-                        log.createNewFile();
-                        FileWriter writer = new FileWriter(log);
-                        writer.write(lg);
-                        writer.close();
-                
-            } catch (Exception e) {
-                System.err.println(e.toString());
-            }
-        } else {
-            System.err.println("EMPTY QUIZ");
-        }
+                                                                title, authorID, description, elementJson);
                 /*
                 REDIRECT SAMPLE CODE
                 return "redirect:/store/developer-lo";

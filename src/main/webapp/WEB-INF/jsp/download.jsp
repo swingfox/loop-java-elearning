@@ -36,9 +36,9 @@
                     <form ng-controller="LOList" class="form-horizontal bootstrap-validator-form" id="los from lo" novalidate="novalidate">
                         <div class="well">	
                             <div class="form-group" >
-                                    <label class="col-md-3 control-label download">Filename :</label>
+                                    <label class="col-md-3 control-label download">Title :</label>
 	                            
-	                                <p class="download-details">{{lo.name}}</p>
+	                                <p class="download-details">{{lo.title}}</p>
 	                            
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
@@ -52,7 +52,7 @@
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Date Uploaded :</label>
 	                           
-	                                <p class="download-details">{{lo.dateUploaded}}</p>
+	                                <p class="download-details">{{lo.uploadDate | date : "MMMM dd, yyyy"}}</p>
 	                           
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
@@ -62,12 +62,26 @@
 	                                <p class="download-details">{{lo.description}}</p>
 	                            
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
-	                    </div>	
+                                
+                                 <div class="form-group">
+	                            <label class="col-md-3 control-label download">Price :</label>
+	                            
+	                                <p class="download-details">{{lo.price}}</p>
+	                            
+	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
+                                <div class="form-group">
 
-                        <div class="form-actions advanced-search" ng-controller="LoginCtrl">                                    
-                                <a class="btn btn-primary" href="/loop-XYZ/loop/LO/downloadLO/{{lo.id}}"><i class="icon-download-alt icon-large" ></i> Download</a>
+                                 <label class="col-md-3 control-label download">LEs :</label>
+                                 <div ng-bind-html="snippet">
+                                 </div>
+	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
+                                   <div class="form-actions advanced-search" ng-controller="LoginCtrl">                                    
+                                <a class="btn btn-primary" ng-click="reviewLO(lo.id)"><i class="icon-download-alt icon-large" ></i> Review!</a>
                                 <a class="btn btn-default" href="/loop-XYZ/store/{{userType}}-update" ng-click="clearLO()">Back</a>
                             </div>
+	                    </div>	
+
+                     
 									
                     </form>
                 </div>
@@ -78,7 +92,6 @@
   		<div class="clearfix"></div>
 
         <div class="push"></div>
-	</div>
 
 	<div class="footer">
 		<footer id="footer-wrap-index">

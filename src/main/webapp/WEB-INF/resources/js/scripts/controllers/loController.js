@@ -10,12 +10,24 @@
 
 app.controller('LOList', ['$scope', '$store', '$http' , 'loService', function($scope, $store, $http, loService) {
         $store.bind($scope, 'lo.id', ''); 
-            $store.bind($scope, 'lo.title','');
-            $store.bind($scope, 'lo.subject',''); 
-            $store.bind($scope, 'lo.rating', ''); 
-            $store.bind($scope, 'lo.rev', ''); 
-            $store.bind($scope, 'lo.comments',''); 
-            $store.bind($scope, 'lo.uploadDate', ''); 
+        $store.bind($scope, 'lo.title','');
+        $store.bind($scope, 'lo.subject',''); 
+        $store.bind($scope, 'lo.rating', ''); 
+        $store.bind($scope, 'lo.rev', ''); 
+        $store.bind($scope, 'lo.comments',''); 
+        $store.bind($scope, 'lo.uploadDate', ''); 
+        $store.bind($scope, 'lo.description', ''); 
+        $store.bind($scope, 'lo.price', ''); 
+        $store.bind($scope, 'lo.sequence', ''); 
+        $store.bind($scope, 'lo.leArray', ''); 
+
+
+    if(window.location.toString().split('/store/')[1] === 'download')
+        $scope.snippet = $store.get('lo.leArray');
+    else
+        $scope.snippet = '<br>';
+
+
 
     loService.getList().success(function(data) {
     	$scope.los = data;
@@ -34,8 +46,8 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', function($s
         });
     };
     
-    $scope.reviewLO = function(data){
-        loService.getSpecificLO(data).success(function(data) {
+    $scope.reviewLO = function(lo){
+        loService.getSpecificLO(lo.id).success(function(data) {
             $store.bind($scope, 'lo.id', data.id); 
             $store.bind($scope, 'lo.title', data.title);
             $store.bind($scope, 'lo.subject', data.subject); 
@@ -43,6 +55,10 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', function($s
             $store.bind($scope, 'lo.rev', data.rev); 
             $store.bind($scope, 'lo.comments', data.comments); 
             $store.bind($scope, 'lo.uploadDate', data.uploadDate); 
+            $store.bind($scope, 'lo.description', data.description); 
+            $store.bind($scope, 'lo.price', data.price); 
+            $store.bind($scope, 'lo.sequence', data.sequence); 
+
 
            
             console.log($store.get('name'));
@@ -63,7 +79,34 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', function($s
             $store.bind($scope, 'lo.rev', data.rev); 
             $store.bind($scope, 'lo.comments', data.comments); 
             $store.bind($scope, 'lo.uploadDate', data.uploadDate); 
+            $store.bind($scope, 'lo.description', data.description); 
+            $store.bind($scope, 'lo.price', data.price); 
+            
+            
+           var pages = data.sequence.length;
+                       var obj = [[]];
 
+           for (var i = 0; i < pages; i++) { 
+               console.log(data.sequence[i].length);
+               for(var j = 0; j < data.sequence[i].length; j++){
+                   console.log("J: " + j);
+                   if(!obj[i])
+                       obj[i] = [];
+                   obj[i][j] = data.sequence[i][j];
+                   $scope.snippet +=  
+                                         '<p class="col-md-3 download-details">' + 
+                                        'Title: '+ data.sequence[i][j].title +'<br>' + 
+                                         'Type: '+ data.sequence[i][j].type + '<br>' + 
+                                         'Rating: '+ data.sequence[i][j].rating +'<br><br>' + 
+                                     '</p>';
+               }
+           }       
+          // $store.bind($scope, 'lo.sequence', obj); 
+           console.log(data.sequence.length);
+           console.log(data.sequence[0].length);
+                   $store.bind($scope, 'lo.leArray', $scope.snippet); 
+
+            console.log("TITLE : " +data.sequence[0][0].title);
            
             console.log($store.get('name'));
             console.log($store.get('usertype'));
@@ -76,7 +119,17 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', function($s
             console.log(""+ error);
         });
     }; 
-    
+    function createArray(length) {
+    var arr = new Array(length || 0),
+        i = length;
+
+    if (arguments.length > 1) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        while(i--) arr[length-1 - i] = createArray.apply(this, args);
+    }
+
+    return arr;
+}
     $scope.LoHistory = function(lo) {
          //$rootScope.userBlock = lo.name;
         //console.log($rootScope.userBlock);
@@ -149,6 +202,8 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', function($s
         $store.remove('lo.comments');
         $store.remove('lo.rating');
         $store.remove('lo.rev'); 
+        $store.remove('lo.leArray'); 
+
     };
  }]);
 

@@ -68,12 +68,7 @@
                     <!-- You have successfully downloaded this Learning Object.
                     Please rate this Learning Object after you have reviewed it.  -->
 
-                    You have successfully downloaded the Learning Object: "<!--?php
-                    //require_once('LO.php');
-                    //$los = unserialize($_SESSION['los']);
-                    //$lo = $los[$index];
-                    echo $lo->getName();
-                    ?-->" 
+                    You have successfully downloaded the Learning Object: "{{lo.title}}" 
                     Please rate this Learning Object. 
                 </div>
 

@@ -141,10 +141,10 @@ public class LearningObjectDAO {
     }
     
     public boolean deleteLO(LearningObjectDto lo) throws UnknownHostException{
-        boolean ok = false;
         Query query = new Query();
         query.addCriteria(where("name").is(lo.getTitle()));
-        ok = mongoOps.exists(query, LearningObject.class);
+        boolean ok = mongoOps.exists(query, LearningObject.class);
+
         if(ok)
             mongoOps.remove(lo);
         return ok;

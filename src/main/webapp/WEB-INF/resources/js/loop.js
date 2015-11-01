@@ -1,6 +1,6 @@
 /* global angular, com */
 
-var app = angular.module('loop', ['localStorage'], function($httpProvider) {
+var app = angular.module('loop', ['localStorage','ngSanitize'], function($httpProvider) {
   // Use x-www-form-urlencoded Content-Type
   $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
@@ -45,3 +45,4 @@ var app = angular.module('loop', ['localStorage'], function($httpProvider) {
     return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
   }];
 });
+
