@@ -3,7 +3,6 @@
     <head>
         <title>LOOP | Review Admin</title>
 
-        <!--?php $this->layout->header() ?-->
         <meta charset="utf-8">          
 
         <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
@@ -41,12 +40,6 @@
     <jsp:include page="include/CurrentUser.jsp"/>
         <div class="clearfix"></div>
 
-        <!-- <ul class="nav nav-tabs main-views">
-                <li class="active"><a class="active-tab" href="redirect/admin_view5"><i class="icomoon-list"></i> Learning Objects</a></li>
-                <li><a href="redirect/reviewlist_rev"><i class="icomoon-signup"></i> Review List</a></li>
-                <li ><a  href="redirect/search_rev"><i class="icomoon-search"></i> Advanced Search</a></li>
-        </ul> -->
-
         <div id="breadcrumb-wrap">
             <ol class="breadcrumb">
                 <li><a class="breadcrumb-link" href="/loop-XYZ/store/admin-view6">Back to Learning Element List</a></li>
@@ -65,12 +58,7 @@
                     <!-- You have successfully downloaded this Learning Object.
                     Please rate this Learning Object after you have reviewed it.  -->
 
-                    You have successfully downloaded the Learning Element: "<!--?php
-                    //require_once('LO.php');
-                    //$les = unserialize($_SESSION['los']);
-                    //$le = $les[$index];
-                    echo $le->getName();
-                    ?-->" 
+                    You have successfully downloaded the Learning Element: "" 
                     Please rate this Learning Element. 
                 </div>
 
@@ -127,7 +115,6 @@
 							<button type="submit" class="btn btn-primary"><i class="icon-ok icon-large"></i> Submit</button>
 
 							<a class="btn btn-default" href="index.jsp">Cancel</a>
-							<!-- <button onclick="document.location='http://localhost/loop-sp-ci7/redirect/LO_rev'" type="button" class="btn btn-default">Cancel</button> -->
 						</div>
 	                </div>
 	            </form>
@@ -138,26 +125,12 @@
 
   		<div class="clearfix"></div>
 
-		<!-- This is the original footer with id=wrapper -->
-		<!-- <footer id="footer-wrap-index"> -->
-			<!-- <div class="container">
-		    	<div class="copyright-here pull-left">
-					Copyright &copy; <?php //echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<button id="aime" class="btn btn-default">Test</button>
-		    	</div>
-	  		</div>
-    	</footer> -->
-		
-		<!-- Take this out if you want the original footer back -->
         <div class="push"></div>
-	</div>
-
 	<div class="footer">
 		<footer id="footer-wrap-index">
-			<!-- <div class="container"> -->
 	            <div class="copyright-here pull-left review">
 					Copyright &copy; <!--?php echo date("Y"); ?--> LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
 		    	</div>
-		    <!-- </div> -->
 	    </footer>
     </div>
 

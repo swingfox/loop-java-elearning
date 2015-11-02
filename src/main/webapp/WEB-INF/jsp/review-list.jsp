@@ -1,5 +1,5 @@
 <jsp:include page="include/headerScript.jsp"/>
-<html lang="en" sng-app="loop">
+<html lang="en" ng-app="loop">
     <head>
         <title>LOOP | Review List</title>
         <meta charset="utf-8">
@@ -119,7 +119,6 @@
   		<div class="clearfix"></div>
         <div class="push"></div>
 	</div>
-        </div>
 	<div class="footer">
 		<footer id="footer-wrap-index">
 			<div class="container">
@@ -131,37 +130,7 @@
     </div>
 <jsp:include page="include/mainScripts.jsp"/>
 
-        <!--<script> 
-		$(document).ready(function(){
-			var length_sel;
-
-            $('.datatable').dataTable({ 
-                "sPaginationType": "bs_normal"
-            });
-
-            $('.datatable').each(function(){
-                $(this).show();
-                datatable_configuration_for_bootstrap_three($(this));
-            });
-
-            function datatable_configuration_for_bootstrap_three(datatable){
-            	datatable.addClass('col-md-12');
-                var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
-                search_input.attr('placeholder', 'Search');
-
-                $('<i class="icomoon-search pull-left searchbar-icon"></i>').prependTo($('div:eq(0) > div > div:eq(0)',datatable.parents('.dataTables_wrapper')));
-                $('div:eq(0) > div > div:eq(0) > div',datatable.parents('.dataTables_wrapper')).addClass('pull-right');              
-                search_input.addClass('form-control input-sm');
-                search_input.width('140px');
-                length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
-                length_sel.addClass('form-control input-sm').css({ padding: '5px 10px 5px 5px', cursor: 'pointer' });
-                $('option', length_sel).css({ padding: '5px 8px' });
-                var pagination = datatable.closest('.dataTables_wrapper').find('ul.pagination');
-                pagination.addClass('pagination-sm');
-            }
-		});
-	</script> -->
-        <script>
+<script>
 
 		$(document).ready(function() {
 		    $('#defaultForm').bootstrapValidator({

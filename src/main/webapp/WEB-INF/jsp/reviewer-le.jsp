@@ -2,9 +2,6 @@
 <html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Review View</title>
-<meta charset="utf-8">
-        <head>
-        <title>LOOP | Review View</title>
         <meta charset="utf-8">
             <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 
@@ -22,9 +19,9 @@
             <!-- Icons -->
             <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
             <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
-            <!--[if IE 7]>
-              <link href="'.$this->base_url.'fonts/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
-            <![endif]-->
+            <!--[if IE 7]-->
+              <link href="fonts/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
+            <!--[endif]-->
 
             <!-- 1280 grid -->
             <link type="text/css" href="css/css-include/1280grid.css" rel="stylesheet" />
@@ -58,7 +55,6 @@
                         <div class="row">
                             <div class="col-md-12 content">						
                                 <div class="table-responsive">
-                                    <!-- <table class="datatable table table-bordered"> -->
                                     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
                                     <div class="row">
                                     <div class="col-sm-12">
@@ -100,7 +96,7 @@
                                             </td>
                                             <td><a ng-click="GetLE(le)"><label>{{le.title}}</a></td>
                                             <td><label>{{le.subject}}</td>
-                                            <td><label>{{le.uploadDate | date : "medium"}}</td>
+                                            <td><label>{{le.uploadDate | date : "MMMM dd, yyyy"}}</td>
                                             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{le.rating}}</td>
                                             <td><label>{{le.comments}}</td>
                                             <td ng-if="le.status==0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>
@@ -121,7 +117,6 @@
   		<div class="clearfix"></div>
         <div class="push"></div>
 	</div>
-        </div>
 	<div class="footer">
 		<footer id="footer-wrap-index">
 			<div class="container">
@@ -133,46 +128,6 @@
         </div>
         
 <jsp:include page="include/mainScripts.jsp"/>
-      <!--  <script>
-		$(document).ready(function(){
-			var length_sel;
-			var optionVal = $('tbody > tr:last-child()').index();
-				$('.dataTables_filter label input').click(function(){
-					if(optionVal >= 8){
-						$('footer').removeClass('navbar-fixed-bottom').addClass('navbar-static-bottom');
-					}
-					else{
-						$('footer').addClass('navbar-fixed-bottom').removeClass('navbar-static-bottom');
-					}
-				});
-            $('.datatable').dataTable({ 
-                "sPaginationType": "bs_normal"
-            });
-
-            $('.datatable').each(function(){
-                $(this).show();
-                datatable_configuration_for_bootstrap_three($(this));
-            });
-
-            // datatable configuration for bootstrap 3
-            function datatable_configuration_for_bootstrap_three(datatable){
-            	datatable.addClass('col-md-12');
-                var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
-                search_input.attr('placeholder', 'Search');
-                
-                $('<i class="icomoon-search pull-left searchbar-icon"></i>').prependTo($('div:eq(0) > div > div:eq(0)',datatable.parents('.dataTables_wrapper')));
-                $('div:eq(0) > div > div:eq(0) > div',datatable.parents('.dataTables_wrapper')).addClass('pull-right');
-
-                search_input.addClass('form-control input-sm');
-                search_input.width('140px'); //used to be 150
-                length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
-                length_sel.addClass('form-control input-sm').css({ padding: '5px 10px 5px 5px', cursor: 'pointer' });
-                $('option', length_sel).css({ padding: '5px 8px' });
-                var pagination = datatable.closest('.dataTables_wrapper').find('ul.pagination');
-                pagination.addClass('pagination-sm');
-            }
-		});
-	</script> -->
 	<script type="text/javascript">
 		$(document).ready(function() {
 		    $('#defaultForm').bootstrapValidator({

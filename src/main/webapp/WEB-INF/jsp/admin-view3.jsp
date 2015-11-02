@@ -13,15 +13,10 @@
     <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
     <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
     <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
-    <script type="text/javascript">
-        function selectIndex(v){
-                document.getElementById("selectedIndex").value=v;
-        }
-    </script>
 </head>
 <body>
     <jsp:include page="include/CurrentUser.jsp"/>
-		<div class="clearfix"></div>
+       <div class="clearfix"></div>
        <form method="post" ng-controller="blockCtrl" id="blockForm" name="blockForm">
             <div class="modal fade" id="responsive_fileActionAdmin3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -43,7 +38,8 @@
                                 	<button type="button" class="btn btn-primary" ng-click="blockMe()"><i class="icon-ban-circle icon-large default"></i> Block Account</button>
 								    <button type="button" data-dismiss="modal" class="btn btn-default"></i> Cancel</button>
 									<input type="hidden" id="selectedIndex" name="index" value="0"/>      
-									<input type="hidden" name="a" id="a" value="3" />                                </div>
+									<input type="hidden" name="a" id="a" value="3" />                                
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -91,7 +87,7 @@
 						        <tbody>
                                                             
                                                             <tr ng-repeat="passive in inactiveAccount | filter:searchText">
-                                                                    <td><a href="#responsive_fileActionAdmin3" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-click="assignUser(passive)" value="passive.username">{{passive.username}}</a></td>
+                                                                    <td><a href="#responsive_fileActionAdmin3" data-toggle="modal"><label ng-click="assignUser(passive)" value="passive.username">{{passive.username}}</a></td>
                                                                     <td><label ng-model="passive.lastLogin">{{passive.lastLogin}}</td>
                                                                     <td><label ng-model="passive.usertype">{{passive.usertype}}</td>
                                                              </tr>						

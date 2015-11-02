@@ -2,8 +2,6 @@
 <html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Download</title>
-
-<!--?php $this->layout->header() ?-->
     <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 
     <!-- Bootstrap 3 -->
@@ -42,30 +40,16 @@
 		<div class="clearfix"></div>
 
 		<div id="breadcrumb-wrap">
-			<!-- <div class="container"> -->
 				<ol class="breadcrumb">
 					<li><a class="breadcrumb-link" href="/loop-XYZ/store/admin-view5">Back to Learning Object List</a></li>
 					<li class="active">
-						<!--?php 
-	                    	if($lo->getStatus() == 0)
-	                        	echo 'Download';
-	                        else
-	                        	echo 'Review';
-                        ?-->
                     </li>
 				</ol>
-			<!-- </div> -->
 		</div> 
 
 		<div class="clearfix"></div>
-
-
-		<!-- Gi sugdan -->
-
-		<!-- <div id="content-wrap"> -->
 		<div id="content-download">
 			<div class="container">
-				<!-- <div class="col-md-8 col-md-push-2"> -->
 				<div class="col-md-6 col-md-push-3">
                     <div class="page-header download">
                     	<!--?php 
@@ -76,53 +60,32 @@
                         ?-->
                     </div>
 
-                    <!-- <legend class="col-md-12 col-md-push-3">Download</legend> -->
-
                    <form ng-controller="LOList" class="form-horizontal bootstrap-validator-form" id="defaultForm" novalidate="novalidate">
                         <div class="well">		
 	                        <div class="form-group">
-	                            <label class="col-md-3 control-label download">Filename :</label>
-	                            
-	                                <!-- <input type="text" name="username" class="form-control"> -->
-	                                <!-- <p class="download-details"><//?php echo $lo->getName(); ?></p> -->
+                                    <label class="col-md-3 control-label download">Filename :</label>
 	                                <p class="download-details">{{lo.name}}</p>
 	                           
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Subject :</label>
-	                            
-	                                <!-- <input type="text" name="email" class="form-control"> -->
 	                                <p class="download-details">{{lo.subject}}</p>
 	                            
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Date Uploaded :</label>
-	                            
-	                                <!-- <input type="password" name="password" class="form-control"> -->
-	                                <p class="download-details">{{lo.dateUploaded}}</p>
-	                            
+	                                <p class="download-details">{{lo.dateUploaded}}</p>       
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Description :</label>
-	                            
-	                                <!-- <input type="password" name="confirmPassword" class="form-control"> -->
 	                                <p class="download-details">{{lo.description}}</p>
-                                        
-	                            
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 	                    </div>	
 
 	                        <div class="form-actions advanced-search">
-                                    <!--?php
-                                    echo '<input type="hidden" value="'.$lo->getID().'" id="id" name="id">';
-                                    if($lo->getStatus() <= 1)
-                                     echo '<a href="'.base_url().'redirect/downloadNow/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-download-alt icon-large"></i> Download</a>';
-                                    if($lo->getStatus() == 2 && $lo->getRev() == $username)
-                                    echo '<a href="'.base_url().'redirect/reviewLO_Admin/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>';
-                                    ?-->
                                     <a class="btn btn-primary"><i class="icon-download-alt icon-large"></i> Download</a>
                                     <a class="btn btn-default" href="/loop-XYZ/store/admin-view5">Back</a>
                                 </div>
@@ -135,26 +98,13 @@
 
   		<div class="clearfix"></div>
 
-  		<!-- This is the original footer with id=wrapper -->
-		<!-- <footer id="footer-wrap-index"> -->
-			<!-- <div class="container">
-		    	<div class="copyright-here pull-left">
-					Copyright &copy; <?php //echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<button id="aime" class="btn btn-default">Test</button>
-		    	</div>
-	  		</div>
-    	</footer> -->
-		
-		<!-- Take this out if you want the original footer back -->
         <div class="push"></div>
-	</div>
 
 	<div class="footer">
 		<footer id="footer-wrap-index">
-			<!-- <div class="container"> -->
 	            <div class="copyright-here pull-left download">
 					Copyright &copy; <!--?php echo date("Y"); ?--> LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
 		    	</div>
-		    <!-- </div> -->
 	    </footer>
     </div>
 

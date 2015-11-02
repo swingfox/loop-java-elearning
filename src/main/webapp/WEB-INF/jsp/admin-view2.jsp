@@ -13,11 +13,6 @@
     <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
     <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
     <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
-    <script type="text/javascript">
-        function selectIndex(v){
-                document.getElementById("selectedIndex").value=v;
-	}
-    </script>
 </head>
 <body>	
     <jsp:include page="include/CurrentUser.jsp"/>
@@ -91,7 +86,7 @@
 
 						        <tbody>                                                            
                                                              <tr ng-repeat="reviewer in reviewerAccount | filter:searchText ">
-                                                                    <td><a href="#responsive_fileActionAdmin2" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-click="assignUser(reviewer)" id="revUser">{{reviewer.username}}</a></td>
+                                                                    <td><a href="#responsive_fileActionAdmin2" data-toggle="modal"><label ng-click="assignUser(reviewer)" id="revUser">{{reviewer.username}}</a></td>
                                                                     <td><label ng-model="reviewer.lastLogin">{{reviewer.lastLogin}}</td>
                                                                     <td><label ng-model="reviewer.lastDownload">{{reviewer.lastDownload}}</td>
                                                              </tr>				

@@ -13,13 +13,6 @@
     <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
     <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
     <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
-    <script type="text/javascript">
-        function select(i)
-        {
-                document.getElementById("counters").value = i;
-                document.getElementById("ctr").value = i;
-        }
-    </script>
 
 </head>
 <body>	
@@ -92,9 +85,9 @@
                                         <td><label>{{le.uploadDate | date: "MMMM d yyyy"}}</td>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td><label>{{le.rating}}</td>
                                         <td><label>{{le.comments}}</td>
-                                        <td ng-if="le.status==0"><a href="#responsive_approve" data-toggle="modal" onclick="selectIndex('.$counter.')" ng-click="assignUser(le)"  value="le.id" ng-model="le.id"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></a></td>
-                                        <td ng-if="le.status==1"><a href="#responsive_approve" data-toggle="modal" onclick="selectIndex('.$counter.')" ng-click="assignUser(le)"   value="le.id" ng-model="le.id"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></a></td>
-                                        <td ng-if="le.status==2"><a href="#responsive_approve" data-toggle="modal" onclick="selectIndex('.$counter.')" ng-click="assignUser(le)"  value="le.id" ng-model="le.id"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></a></td>
+                                        <td ng-if="le.status==0"><a href="#responsive_approve" data-toggle="modal" ng-click="assignUser(le)"  value="le.id" ng-model="le.id"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></a></td>
+                                        <td ng-if="le.status==1"><a href="#responsive_approve" data-toggle="modal" ng-click="assignUser(le)"   value="le.id" ng-model="le.id"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></a></td>
+                                        <td ng-if="le.status==2"><a href="#responsive_approve" data-toggle="modal" ng-click="assignUser(le)"  value="le.id" ng-model="le.id"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></a></td>
                                         <td><label>{{le.rev}}</td>
                                         <td><label>{{le.uploadedBy}}</td>
                                     </tr>			
@@ -129,7 +122,6 @@
                                 <div class="col-md-10 col-md-push-1">
                                     <button type="submit" class="btn btn-primary" ng-click="acceptMe()"><i class="icon-ok-sign icon-large default"></i> Accept</button>
                                     <button type="submit" class="btn btn-default" ng-click="demoteMe()"></i> Demote</button>
-                                    <input type="hidden" id="selectedIndex" name="index" value="0"/>      
                                 </div>
                             </div>
                         </div>

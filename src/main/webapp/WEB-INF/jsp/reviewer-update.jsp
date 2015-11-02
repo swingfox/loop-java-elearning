@@ -25,7 +25,6 @@
     	<ul class="nav nav-tabs main-views">
 		 <li class="active"><a class="active-tab" href="/loop-XYZ/store/reviewer-update"><i class="icomoon-list"></i> Learning Objects</a></li>
 		  <li><a class="active-tab" href="/loop-XYZ/store/reviewer-le"><i class="icomoon-list"></i> Learning Elements</a></li>
-		  <!-- <li><a href="<?php echo base_url()?>redirect/reviewlist_rev"><i class="icomoon-signup"></i> Review List</a></li> -->
 		  <li><a href="/loop-XYZ/store/review-list"><i class="icon-edit icon-large default"></i> Review List</a></li>
 		  <li ><a  href="/loop-XYZ/store/advanced-search-rev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
 		</ul>
@@ -38,7 +37,6 @@
 					<div class="col-md-12 content">
 						
 						<div class="table-responsive">
-							<!-- <table class="datatable table table-bordered"> -->
                                                          <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
                                                         <div class="row">
                                                         <div class="col-sm-12">
@@ -95,103 +93,7 @@
                                                                 <td><label>{{lo.uploadedBy}}</td>
                                                                 
                                                             </tr>
-                                                            <!--
-						        <?php  
-
-					        		require './application/controllers/LOController.php';
-					        		$controller = new LOController();
-					        		// $username = 'Details'.$username;
-					        		//$user = $this->session->userdata('username');
-									if(isset($_POST['searchName'])){
-										$subject = null;
-										$dateFrom = null;
-										$dateTo = null;
-										$order = null;
-										//find by subject
-										if(isset($_POST['subject']) && isset($_POST['subjectCheck'])){
-											$subject = $_POST['subject'];
-										}
-										//find by date
-										if(isset($_POST['dateFrom']) && isset($_POST['dateTo']) && isset($_POST['dateCheck'])){
-											$dateFrom = $_POST['dateFrom'];
-											$dateTo = $_POST['dateTo'];
-										}
-										//order by
-										if(isset($_POST['order']) && isset($_POST['orderCheck'])){
-											$order = $_POST['order'];
-										}
-										$LOs = $controller->searchLORev($_POST['searchName'],$subject,$dateFrom,$dateTo,$order);
-										//$_POST['searchName'] = null;
-									}
-									else{//new condition for advanced search
-										$LOs = @$controller->getAllLORev();
-									}
-									$_SESSION['los'] = serialize($LOs);
-									$counter = 0;
-									$LO = current($LOs);
-									if($LO != null && isset($_POST['searchName'])){
-										echo '<tr style="font-size:80%;"><td><i class="icon-search"></i></td><td colspan="8">Search Results for "'.$_POST['searchName'].'"....<a href='. base_url().'redirect/LO_rev>CLICK HERE</a> to reload all Learning Objects</td></tr>';
-									echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '</tr>';
-
-									}
-									while($LO != null)
-									{
-										echo '<form name="form'.$counter.'" action="<?php echo base_url()?>/redirect/download" method="POST">';
-										//echo "<script type='text/javascript'>alert('1');</script>";
-										echo '<tr>';
-										if($LO->getRating()==1)
-								echo '<td><img src="'.base_url().'img/icon-red.png" alt="For Review" /></td>';
-							else if($LO->getRating()==2)
-								echo '<td><img src="'.base_url().'img/icon-orange.png" alt="For Review" /></td>';
-							else if($LO->getRating()==3)
-								echo '<td><img src="'.base_url().'img/icon-yellow.png" alt="For Review" /></td>';
-										// echo '<td><a href="#responsive_fileActionReviewer" data-toggle="modal" >'.$LO->getName().'</a></td>';
-										echo '<td><a href="'.base_url().'redirect/download/'.$counter.'" onclick="document.form'.$counter.'.submit()">'.$LO->getName().'</a></td>';
-										echo '<td>'.$LO->getSubject().'</td>';
-										// echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LO->getDateUploaded().'</td>';
-										echo '<td>'.$LO->getDateUploaded().'</td>';
-										echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LO->getRating().'</td>';
-										echo '<td>'.$LO->getComments().'</td>';
-										echo '<input type="hidden" name="downloadLO" value="'.$counter.'"/>';
-										if($LO->getStatus() == 0)
-											echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;<i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>';
-										else if($LO->getStatus() == 2)
-											echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;<i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>';
-										else if($LO->getStatus() == 1)
-											echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;<i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>';
-										echo '<td>'.$LO->getRev().'</td>';
-										echo '<td>'.$LO->getUploadedBy().'</td>';
-										echo '</tr>';
-										echo '</form>';
-										next($LOs);
-										$LO = current($LOs);
-										$counter++;
-									}
-
-									if($counter == 0){
-											echo '<tr>';
-												echo '<td colspan=9><h2 style="color: #000; font-weight:bold;">No Learning Objects found.</h2><br>
-																No Learning Objects found.Please <a href="'. base_url().'redirect/LO_rev" class="btn btn-success">CLICK HERE</a> to refresh the list.</td>';	
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '<td style="display: none">'.'</td>';
-												echo '</tr>';
-												}
-											unset($_POST['searchName']);
-
-						        ?>-->
-									
-														
+                                                         					
 								</tbody>
 							  </table>
 						</div>
@@ -207,12 +109,10 @@
         
         <div class="clearfix" id="before-features" ></div>
 </div>
-</div>
 
 <div class="clearfix"></div>
 <div class="push"></div>
-</div>
-</div>
+
 <div class="footer">
 <footer id="footer-wrap-index">
 <div class="container">

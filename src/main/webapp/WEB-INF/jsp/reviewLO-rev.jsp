@@ -3,7 +3,6 @@
 <head>
 <title>LOOP | Review</title>
 
-<!--?php $this->layout->header() ?-->
     <meta charset="utf-8">          
 
     <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
@@ -124,7 +123,6 @@
                             <button type="submit" class="btn btn-primary"><i class="icon-ok icon-large"></i> Submit</button>
 
                             <a class="btn btn-default" href="/loop-XYZ/store/review-list">Cancel</a>
-                            <!-- <button onclick="document.location='http://localhost/loop-sp-ci7/redirect/LO_rev'" type="button" class="btn btn-default">Cancel</button> -->
                         </div>
                     </div>
                 </form>
@@ -135,16 +133,6 @@
 
         <div class="clearfix"></div>
 
-        <!-- This is the original footer with id=wrapper -->
-        <!-- <footer id="footer-wrap-index"> -->
-                <!-- <div class="container">
-                <div class="copyright-here pull-left">
-                                Copyright &copy; <?php //echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<button id="aime" class="btn btn-default">Test</button>
-                </div>
-                </div>
-        </footer> -->
-
-        <!-- Take this out if you want the original footer back -->
         <div class="push"></div>
 
         <div class="footer">

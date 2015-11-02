@@ -21,9 +21,9 @@
             <!-- Icons -->
             <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
             <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
-            <!--[if IE 7]>
-              <link href="'.$this->base_url.'fonts/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
-            <![endif]-->
+            <!--[if IE 7]-->
+              <link href="fonts/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
+            <!--[endif]-->
 
             <!-- 1280 grid -->
             <link type="text/css" href="css/css-include/1280grid.css" rel="stylesheet" />
@@ -44,32 +44,23 @@
 		<div class="clearfix"></div>
 
 		<div id="breadcrumb-wrap">
-			<!-- <div class="container"> -->
                         <ol class="breadcrumb" ng-controller="LEList">
 					<li><a class="breadcrumb-link" href="/loop-XYZ/store/review-list" ng-click="clearLE()">Back to Review List</a></li>
 					<li class="active">History - {{le.title}} </li>
 				</ol>
-			<!-- </div> -->
 		</div> 
 
 		<div class="clearfix"></div>
 
-		<!-- Gi sugdan -->
-
 		<div class="clearfix"></div>
-		<!-- <div id="content-wrap"> -->
-
 		<div id="content-wrap">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 content">
 						
 						<div class="table-responsive">
-						 	<!-- <table class="datatable table table-bordered"> -->
 						 	<table class="datatable table table-hover">
-
-
-						    <thead>
+                                                        <thead>
 								<tr>
 									<th class="color-code">#</th>
 									<th>Name</th>
@@ -81,47 +72,11 @@
 									<th>Reviewer</th>
 								</tr>
 							</thead>
-					        <tbody>
-						        <!--<?php
-						        $controller = new LEController();
-						        $LEs = $controller->getLEHistory($name,$dev);
-						        $_SESSION['histles'] = serialize($LEs);
-						        $LE = current($LEs);
-						        $count = count($LEs);
-						        $i=0;
-						        while($LE!=NULL){						       		
-								  	echo '<tr>';										
-										echo '<td>'.($i+1).'</td>';
-										if(($i+1)!=$count)
-											echo '<td><a href="'.$path.$LE->getFilepath().'">'.$LE->getName().'</a></td>';
-										else
-											echo '<td>'.$LE->getName().'</a></td>';
-										echo '<td>'.$LE->getSubject().'</td>';
-										// echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LO->getDateUploaded().'</td>';
-										echo '<td>'.$LE->getDateUploaded().'</td>';
-										echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LE->getRating().'</td>';
-										echo '<td>'.$LE->getComments().'</td>';
-										echo '<td>'.$LE->getRev().'</td>';
-										echo '<input type="hidden" name="downloadlo" value="'.$counter.'"/>';
-									echo '</tr>';
-									next($LEs);
-									$LE = current($LEs);
-									$i++;							
-								}
-						        ?>		-->											
+					        <tbody>										
 							</tbody>
 						  </table>
 						</div>
 						<div>
-							<input type="hidden" value="<?php echo $index?>" id="ctr" name="ctr">
-                            <input type="hidden" value="" id="counters" name="counters">
-
-							<!--<?php
-								if($status == 0)
-								echo '<a href="'.base_url().'redirect/downloadNow/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-download-alt icon-large"></i> Download</a>';
-								if($status == 2 && $rev == $username)
-						 		echo '<a href="'.base_url().'redirect/review_rev/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>';
-							?>-->
 				    		<a href="redirect/review_list" class="btn btn-default"> Back</a>
 						</div>
 					</div>
@@ -131,31 +86,15 @@
 			</div>
 		</div>
 				<div class="clearfix"></div>				
-			</div>
-		</div> 
-
   		<div class="clearfix"></div>
 
-  		<!-- This is the original footer with id=wrapper -->
-		<!-- <footer id="footer-wrap-index"> -->
-			<!-- <div class="container">
-		    	<div class="copyright-here pull-left">
-					Copyright &copy; <?php //echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<button id="aime" class="btn btn-default">Test</button>
-		    	</div>
-	  		</div>
-    	</footer> -->
-		
-		<!-- Take this out if you want the original footer back -->
+  	
         <div class="push"></div>
-	</div>
-
 	<div class="footer">
 		<footer id="footer-wrap-index">
-			<!-- <div class="container"> -->
 	            <div class="copyright-here pull-left download">
 					Copyright &copy;  LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
-		    	</div>
-		    <!-- </div> -->
+		    </div>
 	    </footer>
     </div>
 

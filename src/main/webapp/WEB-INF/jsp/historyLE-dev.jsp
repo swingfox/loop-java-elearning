@@ -43,12 +43,10 @@
 		<div class="clearfix"></div>
 
 		<div id="breadcrumb-wrap">
-			<!-- <div class="container"> -->
 				<ol class="breadcrumb" ng-controller="LEList">
 					<li><a class="breadcrumb-link" href="/loop-XYZ/store/developer-le" ng-click="clearLE()">Back to Learning Element List</a></li>
 					<li class="active">History - {{le.title}}</li>
 				</ol>
-			<!-- </div> -->
 		</div> 
 
 		<div class="clearfix"></div>
@@ -72,7 +70,6 @@
                         <div class="modal-footer"> 
                             <div class="row">
                                 <div class="col-md-8 col-md-push-3">                                  
-                                <input type="hidden" <%--value="<?php echo $counter?>" --%>id="counters" name="counters">                                           
                                     <button type="button" class="btn btn-primary" onclick="document.uniquetest.submit()"><i class="icon-ok icon-large default"></i> Yes &nbsp;</button>
                             		<button type="button" class="btn btn-default" data-dismiss="modal" style="color: red;"><i class="icon-remove icon-large default"></i> &nbsp; No &nbsp;</button>
                                 </div>
@@ -84,7 +81,7 @@
         </form>  
 
 		<!-- Confirm Upload Revision Update-->
-        <form name = "teeest" method="post" <%--action="<?php echo base_url().'redirect/upload_reviseLE/'?>" --%>>
+        <form name = "teeest" method="post" >
             <div class="modal fade" id="responsive_confirmUploadRev" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -159,31 +156,6 @@
                                             </tbody>
 						  </table>
 						</div>
-						<div>
-							<input type="hidden" <%--value="<?php echo $index?>"--%> id="ctr" name="ctr">
-                            <input type="hidden" value="" id="counters" name="counters">
-							<!--?php
-                            if($rate != 5){
-								if($comment==NULL && $rev==NULL){									
-									if($i==1)
-										echo '<a href="#responsive_confirmDelete" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"><i class="icon-trash icon-large default"></i> Delete</a>';
-									else
-										echo '<a href="#responsive_confirmUploadRev" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" disabled><i class="icon-upload-alt icon-large default"></i> Upload Revision</a>'.' ';
-								}
-								else if($rev!=NULL){
-									if($comment!=NULL){									
-										echo '<a href="#responsive_confirmUploadRev" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"><i class="icon-upload-alt icon-large default"></i> Upload Revision</a>'.' ';
-									}
-									else{
-										echo '<a href="#responsive_confirmUploadRev" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" disabled><i class="icon-upload-alt icon-large default"></i> Upload Revision</a>'.' ';
-									}
-								}
-							}
-				    		else{								
-				    			echo '<a href="#responsive_confirmUploadRev" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" disabled><i class="icon-upload-alt icon-large default"></i> Upload Revision</a>'.' ';
-				    		}
-				    		?-->
-						</div>
 					</div>
 				</div>
 				
@@ -191,31 +163,14 @@
 			</div>
 		</div>
 				<div class="clearfix"></div>				
-			</div>
-		</div> 
-
   		<div class="clearfix"></div>
 
-  		<!-- This is the original footer with id=wrapper -->
-		<!-- <footer id="footer-wrap-index"> -->
-			<!-- <div class="container">
-		    	<div class="copyright-here pull-left">
-					Copyright &copy; <?php //echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<button id="aime" class="btn btn-default">Test</button>
-		    	</div>
-	  		</div>
-    	</footer> -->
-		
-		<!-- Take this out if you want the original footer back -->
         <div class="push"></div>
-	</div>
-
 	<div class="footer">
 		<footer id="footer-wrap-index">
-			<!-- <div class="container"> -->
 	            <div class="copyright-here pull-left download">
 					Copyright &copy; <!--?php echo date("Y"); ?--> LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
-		    	</div>
-		    <!-- </div> -->
+		    </div>
 	    </footer>
     </div>
 

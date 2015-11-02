@@ -3,56 +3,44 @@
 <head>
 <title>LOOP | Admin - Developer Accounts</title>
 
-<!--<?php $this->layout->header_subpages() ?>-->
+        <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 
-            <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+        <!-- Bootstrap 3 -->
+        <link href="css/bootstrap3/dist/css/bootstrap.css" rel="stylesheet" media="screen" />
 
-            <!-- Bootstrap 3 -->
-            <link href="css/bootstrap3/dist/css/bootstrap.css" rel="stylesheet" media="screen" />
+        <!-- <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" media="screen" /> -->
+        <!-- <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" /> -->
 
-            <!-- <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" media="screen" /> -->
-            <!-- <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" /> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Date Picker -->
+        <link href="css/bootstrap-formhelpers/docs/assets/css/bootstrap-responsive.css" rel="stylesheet"/>
+        <link href="css/bootstrapformhelpers/css/bootstrap-formhelpers.css" rel="stylesheet"/>
 
-            <!-- Date Picker -->
-            <!--link href="'.$this->base_url.'css/bootstrap-formhelpers/docs/assets/css/bootstrap-responsive.css" rel="stylesheet" /-->
-            <link href="css/bootstrapformhelpers/css/bootstrap-formhelpers.css" rel="stylesheet" />
-
-            <!-- Modal -->
-            <link href="css/bootstrap-modal-master/css/bootstrap-modal.css" rel="stylesheet" />
+        <!-- Modal -->
+        <link href="css/bootstrap-modal-master/css/bootstrap-modal.css" rel="stylesheet"/>
             
-            <!-- Icons -->
-            <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-            <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
-            <!--[if IE 7]>
-              <link href="'.$this->base_url.'fonts/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
-            <![endif]-->
+        <!-- Icons -->
+        <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css"/>
+        <!--[if IE 7]-->
+        <link href="fonts/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
+        <!--[endif]-->
 
-            <!-- 1280 grid -->
-            <!--link type="text/css" href="'.$this->base_url.'css/css-include/1280grid.css" rel="stylesheet" /-->
+        <!-- 1280 grid -->
+        <link type="text/css" href="css/css-include/1280grid.css" rel="stylesheet" />
 
-            <!-- Bootstrap Tour -->
-            <link href="js/bootstrap-tour/build/css/bootstrap-tour.css" rel="stylesheet" />
-            <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
+        <!-- Bootstrap Tour -->
+        <link href="js/bootstrap-tour/build/css/bootstrap-tour.css" rel="stylesheet" />
+        <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
 
 
 
-            <!--link type="text/css" href="'.$this->base_url.'css/css-include/style.css" rel="stylesheet" /-->
-            <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
+        <link type="text/css" href="css/css-include/style.css" rel="stylesheet" />
+        <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
                 
-            <!-- Input File -->
-            <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
-
-<!--?php -->
-<!--session_start();
-	echo '--><script type="text/javascript">
-			function selectIndex(v){
-				document.getElementById("selectedIndex").value=v;
-				//alert(document.getElementById("selectedIndex").getAttribute("value"));
-			}
-		</script><!--';
-?>-->
+        <!-- Input File -->
+        <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
 </head>
 <body>
     <jsp:include page="include/CurrentUser.jsp"/>
@@ -84,10 +72,6 @@
 			    </div>
 			</div>
 		</form> -->
-
-
-    	<!-- User Action Update-->
-        <!-- <form method="post" action="'.base_url().'index.php/account/change_password"> -->
 
        <form method="post" ng-controller="blockCtrl" id="blockForm" name="blockForm">
             <div class="modal fade" id="responsive_fileActionAdmin1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -182,16 +166,12 @@
 
     	<ul class="nav nav-tabs main-views">
     		<li><a href="/loop-XYZ/store/admin-view"><i class="icon-plus-sign-alt icon-large default"></i> New Account Requests</a></li>
-			<!-- <li class="active"><a class="active-tab" href="<?php //echo base_url()?>redirect/admin_view"><i class="icon-upload-alt icon-large default"></i> Developer</a></li> -->
-			<li class="active"><a class="active-tab" href="/loop-XYZ/store/admin-view1"><i class="icon-folder-open icon-large default"></i> Developers</a></li>
-			<!-- <li class="active"><a class="active-tab" href="<?php //echo base_url()?>redirect/admin_view"><i class="icon-inbox icon-large default"></i> Developer</a></li> -->
-
-		    <li><a href="/loop-XYZ/store/admin-view2"><i class="icon-edit icon-large default"></i> Reviewers</a></li>
-		    <li><a href="/loop-XYZ/store/admin-view3"><i class="icon-time icon-large default"></i> Inactive Accounts</a></li>
-		    <li><a href="/loop-XYZ/store/admin-view4"><i class="icon-ban-circle icon-large default"></i> Blocked Accounts</a></li>
-		    
-			<li><a href="/loop-XYZ/store/admin-view5"><i class="icomoon-list"></i> Learning Objects</a></li>
-			<li><a href="/loop-XYZ/store/admin-view6"><i class="icomoon-list"></i> Learning Elements</a></li>	</ul>
+		<li class="active"><a class="active-tab" href="/loop-XYZ/store/admin-view1"><i class="icon-folder-open icon-large default"></i> Developers</a></li>
+		<li><a href="/loop-XYZ/store/admin-view2"><i class="icon-edit icon-large default"></i> Reviewers</a></li>
+		<li><a href="/loop-XYZ/store/admin-view3"><i class="icon-time icon-large default"></i> Inactive Accounts</a></li>
+		<li><a href="/loop-XYZ/store/admin-view4"><i class="icon-ban-circle icon-large default"></i> Blocked Accounts</a></li>
+		<li><a href="/loop-XYZ/store/admin-view5"><i class="icomoon-list"></i> Learning Objects</a></li>
+		<li><a href="/loop-XYZ/store/admin-view6"><i class="icomoon-list"></i> Learning Elements</a></li>	</ul>
 
 		<div class="clearfix"></div>
 
@@ -224,119 +204,13 @@
 									</tr>
 								</thead>
 
-						        <tbody>                                                         
-                                                             <tr ng-repeat="developer in developerAccount | filter:searchText ">
-                                                                    <td><a href="#responsive_fileActionAdmin1" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-click="assignUser(developer)" id="devUser" value="developer.username">{{developer.username}}</a></td>
-                                                                    <td><label ng-model="developer.lastLogin">{{developer.lastLogin}}</td>
-                                                                    <td><label ng-model="developer.lastUpload">{{developer.lastUpload}}</td>
-                                                             </tr>
-						        <!-- <?php  
-
-					        		require './application/controllers/AdminController.php';
-					        		$controller = new AdminController;
-						if(isset($_POST['searchUsers'])){
-							if($_POST['searchUsers']=='')
-								$siteUsers = @$controller->getAllSiteUsersDev();
-							else
-								$siteUsers = @$controller->searchSiteUsersDev($_POST['searchUsers']);
-						}
-						else{
-							$siteUsers = @$controller->getAllSiteUsersDev();
-						}
-
-						$_SESSION['siteUsers'] = serialize($siteUsers);
-						$counter = 0;
-						$siteUser = current($siteUsers);
-						if($siteUser != null && isset($_POST['searchUsers'])){
-							echo '<tr style="font-size:80%;"><td colspan="4">Search Results for "'.$_POST['searchUsers'].'"....<a href="admin-view.php">CLICK HERE</a> to reload all developer accounts</td></tr>';
-						}
-						while($siteUser != null)
-						{
-							//echo '<form name="form'.$counter.'" action="admin-view.php" method="POST">';
-							echo '<tr>';
-							echo '<td><a href="#responsive_fileActionAdmin1" data-toggle="modal" onclick="selectIndex('.$counter.')">'.$siteUser->getUserName().'</td>';
-							echo '<td>'.$siteUser->getLastLogin().'</td>';
-							echo '<td>'.$siteUser->getLastDownload().'</td>';
-							//echo '<input type="hidden" name="siteUserIndex" value="'.$counter.'"/>';
-							echo '</tr>';
-							//echo '</form>';
-							next($siteUsers);
-							$siteUser = current($siteUsers);
-							$counter++;
-						}
-						unset($_POST['searchUsers']);
-
-						if($counter == 0){
-							echo '<tr>';
-							echo '<td>'.'</td>';
-							echo '<td colspan=3><h2 style="color: #000; font-weight:bold;">Developer not found.</h2><br>
-												Developer not found. Please <a href="admin-view.php" class="btn btn-success">CLICK HERE</a> to refresh the list.</td>';
-
-							echo '<td></td>';
-							echo '<td></td>';				
-							echo '</tr>';
-						}
-
-						        ?>-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-								<!-- This is from the original admin-view.php -->
-						        <!--?php
-									$controller = new AdminController;
-									if(isset($_POST['searchUsers'])){
-										if($_POST['searchUsers']=='')
-											$siteUsers = @$controller->getAllSiteUsersDev();
-										else
-											$siteUsers = @$controller->searchSiteUsersDev($_POST['searchUsers']);
-									}
-									else{
-										$siteUsers = @$controller->getAllSiteUsersDev();
-									}
-
-									$_SESSION['siteUsers'] = serialize($siteUsers);
-									$counter = 0;
-									$siteUser = current($siteUsers);
-									if($siteUser != null && isset($_POST['searchUsers'])){
-										echo '<tr style="font-size:80%;"><td colspan="4">Search Results for "'.$_POST['searchUsers'].'"....<a href="admin-view.php">CLICK HERE</a> to reload all developer accounts</td></tr>';
-									}
-									while($siteUser != null)
-									{
-										//echo '<form name="form'.$counter.'" action="admin-view.php" method="POST">';
-										echo '<tr>';
-										echo '<td><a href="#responsive_fileActionAdmin1" data-toggle="modal" onclick="selectIndex('.$counter.')">'.$siteUser->getUserName().'</td>';
-										echo '<td>'.$siteUser->getLastLogin().'</td>';
-										echo '<td>'.$siteUser->getLastDownload().'</td>';
-										//echo '<input type="hidden" name="siteUserIndex" value="'.$counter.'"/>';
-										echo '</tr>';
-										//echo '</form>';
-										next($siteUsers);
-										$siteUser = current($siteUsers);
-										$counter++;
-									}
-									unset($_POST['searchUsers']);
-
-									if($counter == 0){
-										echo '<tr>';
-										echo '<td>'.'</td>';
-										echo '<td colspan=3><h2 style="color: #000; font-weight:bold;">Developer not found.</h2><br>
-															Developer not found. Please <a href="admin-view.php" class="btn btn-success">CLICK HERE</a> to refresh the list.</td>';
-										echo '</tr>';
-									}
-								?-->
-									
-														
-								</tbody>
+                                                            <tbody>                                                         
+                                                                <tr ng-repeat="developer in developerAccount | filter:searchText ">
+                                                                       <td><a href="#responsive_fileActionAdmin1" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-click="assignUser(developer)" id="devUser" value="developer.username">{{developer.username}}</a></td>
+                                                                       <td><label ng-model="developer.lastLogin">{{developer.lastLogin}}</td>
+                                                                       <td><label ng-model="developer.lastUpload">{{developer.lastUpload}}</td>
+                                                                </tr>							
+                                                            </tbody>
 							  </table>
 						</div>
 
@@ -349,16 +223,6 @@
 
   		<div class="clearfix"></div>
 
-		<!-- This is the original footer with id=wrapper -->
-		<!-- <footer id="footer-wrap-index"> -->
-			<!-- <div class="container">
-		    	<div class="copyright-here pull-left">
-					Copyright &copy; <?php //echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<button id="aime" class="btn btn-default">Test</button>
-		    	</div>
-	  		</div>
-    	</footer> -->
-		
-		<!-- Take this out if you want the original footer back -->
         <div class="push"></div>
 	</div>
 

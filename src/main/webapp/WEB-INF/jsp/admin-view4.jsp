@@ -13,11 +13,6 @@
     <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
     <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
     <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
-    <script type="text/javascript">
-        function selectIndex(v){
-                document.getElementById("selectedIndex").value=v;
-        }
-    </script>
 </head>
 <body>	
     <jsp:include page="include/CurrentUser.jsp"/>
@@ -92,7 +87,7 @@
 
 						        <tbody>
                                                             <tr ng-repeat="blocked in blockedAccount | filter:searchText">
-                                                                    <td><a href="#responsive_fileActionAdmin4" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-click="assignUser(blocked)" value="blocked.username" ng-model="blocked.username">{{blocked.username}}</a></td>
+                                                                    <td><a href="#responsive_fileActionAdmin4" data-toggle="modal"><label ng-click="assignUser(blocked)" value="blocked.username" ng-model="blocked.username">{{blocked.username}}</a></td>
                                                                     <td><label ng-model="blocked.lastLogin">{{blocked.lastLogin}}</td>
                                                                     <td><label ng-model="blocked.usertype">{{blocked.usertype}}</td>
                                                              </tr>							
@@ -111,12 +106,12 @@
 	<div class="footer">
 		<footer id="footer-wrap-index">
 			<div class="container">
-	            <div class="copyright-here pull-left">
-					Copyright &copy; LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
-		    	</div>
+                            <div class="copyright-here pull-left">
+                                    Copyright &copy; LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
+                            </div>
 		    </div>
-	    </footer>
-    </div>
+	        </footer>
+        </div>
 	<!-- Load JS here for greater good =============================-->
 	<jsp:include page="include/mainScripts.jsp"/>
 

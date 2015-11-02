@@ -14,15 +14,9 @@
             <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
             <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
             <link type="text/css" href="css/inputfile/jquery.inputfile.css" rel="stylesheet" />
-            <script type="text/javascript">
-                function selectIndex(v){
-                    document.getElementById("selectedIndex").value=v;
-                
-                }
-            </script>
 </head>
 <body> 
-                    <jsp:include page="include/CurrentUser.jsp"/>
+            <jsp:include page="include/CurrentUser.jsp"/>
 
         <div class="clearfix"></div>
         <form method="post" ng-controller="acceptCtrl">
@@ -44,8 +38,7 @@
                             <div class="row">
                                 <div class="col-md-10 col-md-push-1">
                                     <button type="submit" class="btn btn-primary" ng-click="acceptMe()"><i class="icon-ok-sign icon-large default"></i> Accept</button>
-                                    <button type="button" data-dismiss="modal" class="btn btn-default"></i> Cancel</button>
-                                    <input type="hidden" id="selectedIndex" name="index" value="0"/>      
+                                    <button type="button" data-dismiss="modal" class="btn btn-default"></i> Cancel</button>  
                                 </div>
                             </div>
                         </div>
@@ -62,7 +55,7 @@
                 <li><a href="/loop-XYZ/store/admin-view4"><i class="icon-ban-circle icon-large default"></i> Blocked Accounts</a></li>
                 <li><a href="/loop-XYZ/store/admin-view5"><i class="icomoon-list"></i> Learning Objects</a></li>
                 <li><a href="/loop-XYZ/store/admin-view6"><i class="icomoon-list"></i> Learning Elements</a></li>
-    </ul>
+            </ul>
         <div class="clearfix"></div>
         <div id="content-wrap-rev" ng-controller="acceptCtrl">
             <div class="container">
@@ -93,7 +86,7 @@
                                 </thead>
                                 <tbody>
                                       <tr ng-repeat="user in newAccount | filter:searchText ">
-                                            <td><a href="#responsive_fileActionAdmin" data-toggle="modal" onclick="selectIndex('.$counter.')"><label ng-click="assignUser(user)" value="user.username" ng-model="user.username">{{user.username}}</a></td>
+                                            <td><a href="#responsive_fileActionAdmin" data-toggle="modal"><label ng-click="assignUser(user)" value="user.username" ng-model="user.username">{{user.username}}</a></td>
                                             <td><label ng-model="user.email">{{user.email}}</td>
                                             <td><label ng-model="user.usertype">{{user.usertype}}</td>
                                       </tr>
@@ -128,7 +121,7 @@
         <footer id="footer-wrap-index">
             <div class="container">
                 <div class="copyright-here pull-left">
-                    Copyright &copy; LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
+                    Copyright &copy; LOOP | Learning Object Organizer Plus. All rights reserved.
                 </div>
             </div>
         </footer>

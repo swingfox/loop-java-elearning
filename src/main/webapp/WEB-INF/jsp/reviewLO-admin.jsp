@@ -3,7 +3,6 @@
     <head>
         <title>LOOP | Review Admin</title>
 
-        <!--?php $this->layout->header() ?-->
         <meta charset="utf-8">          
 
         <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
@@ -28,7 +27,7 @@
         <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
 
 
-        <!--link type="text/css" href="'.$this->base_url.'css/css-include/style.css" rel="stylesheet" /-->
+        <link type="text/css" href="css/css-include/style.css" rel="stylesheet" />
         <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
 
         <!-- Input File -->
@@ -40,12 +39,6 @@
     <body>	
 	<jsp:include page="include/CurrentUser.jsp"/>
             <div class="clearfix"></div>
-		<!-- <ul class="nav nav-tabs main-views">
-			<li class="active"><a class="active-tab" href="<?php echo base_url()?>redirect/admin_view5"><i class="icomoon-list"></i> Learning Objects</a></li>
-			<li><a href="<?php echo base_url()?>redirect/reviewlist_rev"><i class="icomoon-signup"></i> Review List</a></li>
-			<li ><a  href="<?php echo base_url()?>redirect/search_rev"><i class="icomoon-search"></i> Advanced Search</a></li>
-		</ul> -->
-
 		<div id="breadcrumb-wrap">
                     <ol class="breadcrumb">
                         <li><a class="breadcrumb-link" href="/loop-XYZ/store/admin-view5">Back to Learning Object List</a></li>
@@ -57,19 +50,13 @@
 		<div id="content-review-rev">
                 <div class="container">
                     <div class="alert alert-success">
-                        <!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
                         <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
 
                         <strong>Success!</strong>
                         <!-- You have successfully downloaded this Learning Object.
                         Please rate this Learning Object after you have reviewed it.  -->
 
-                        You have successfully downloaded the Learning Object: "<!--?php
-                        //require_once('LO.php');
-                        //$los = unserialize($_SESSION['los']);
-                        //$lo = $los[$index];
-                        echo $lo->getName();
-                        ?-->" 
+                        You have successfully downloaded the Learning Object: "" 
                         Please rate this Learning Object. 	
                     </div>
 
@@ -122,7 +109,6 @@
                                 <button type="submit" class="btn btn-primary"><i class="icon-ok icon-large"></i> Submit</button>
 
                                 <a class="btn btn-default" href="index.jsp">Cancel</a>
-                                <!-- <button onclick="document.location='http://localhost/loop-sp-ci7/redirect/LO_rev'" type="button" class="btn btn-default">Cancel</button> -->
                             </div>
                         </div>
                     </form>
@@ -133,8 +119,6 @@
 
             <div class="clearfix"></div>
             <div class="push"></div>
-	</div>
-
 	<div class="footer">
             <footer id="footer-wrap-index">
                 <div class="copyright-here pull-left review">

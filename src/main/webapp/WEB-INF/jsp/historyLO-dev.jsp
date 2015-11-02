@@ -21,9 +21,9 @@
             <!-- Icons -->
             <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
             <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
-            <!--[if IE 7]>
-              <link href="'.$this->base_url.'fonts/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
-            <![endif]-->
+            <!--[if IE 7]-->
+              <link href="fonts/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
+            <!--[endif]-->
 
             <!-- 1280 grid -->
             <link type="text/css" href="css/css-include/1280grid.css" rel="stylesheet" />
@@ -49,12 +49,10 @@
 		<div class="clearfix"></div>
 
 		<div id="breadcrumb-wrap" ng-controller="LOList">
-			<!-- <div class="container"> -->
-				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="/loop-XYZ/store/developer-update" ng-click="clearLO()">Back to Learning Object List</a></li>
-					<li class="active">History - {{lo.title}}</li>
-				</ol>
-			<!-- </div> -->
+			<ol class="breadcrumb">
+				<li><a class="breadcrumb-link" href="/loop-XYZ/store/developer-update" ng-click="clearLO()">Back to Learning Object List</a></li>
+				<li class="active">History - {{lo.title}}</li>
+			</ol>
 		</div> 
 
 		<div class="clearfix"></div>
@@ -103,7 +101,7 @@
                                 <div class="col-md-10 col-md-push-1">                                 
                                     <label class="file-action upload-revision">Are you sure you want to upload a revision of this Learning Object?</label>                                    			
 
-									<p class="alert alert-danger upload-revision"><i class="icon-warning-sign"></i> IMPORTANT: <br> Please make sure that the revision will have the same 'Name' and 'Subject' to ensure that the revision will reflect to the history list.</p>
+				    <p class="alert alert-danger upload-revision"><i class="icon-warning-sign"></i> IMPORTANT: <br> Please make sure that the revision will have the same 'Name' and 'Subject' to ensure that the revision will reflect to the history list.</p>
                                 </div> 
                             </div>
                         </div>
@@ -121,15 +119,12 @@
             </div>
         </form>
 		<div class="clearfix"></div>
-		<!-- <div id="content-wrap"> -->
-
 		<div id="content-wrap">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 content">
 						
 						<div class="table-responsive" ng-controller="LOList">
-						 	<!-- <table class="datatable table table-bordered"> -->
 						 	<table class="datatable table table-hover">
 						    <thead>
 								<tr>
@@ -168,19 +163,13 @@
 		</div>
 				<div class="clearfix"></div>				
 			</div>
-		</div> 
-
   		<div class="clearfix"></div>
         <div class="push"></div>
-	</div>
-
 	<div class="footer">
 		<footer id="footer-wrap-index">
-			<!-- <div class="container"> -->
 	            <div class="copyright-here pull-left download">
 					Copyright &copy; <!--<?php echo date("Y"); ?>--> LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
 		    	</div>
-		    <!-- </div> -->
 	    </footer>
     </div>
         

@@ -2,8 +2,6 @@
 <html ng-app="loop" lang="en">
 <head>
 <title>LOOP | Review</title>
-
-<!--?php $this->layout->header() ?-->
     <meta charset="utf-8">          
 
     <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
@@ -28,7 +26,7 @@
     <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
 
 
-    <!--link type="text/css" href="'.$this->base_url.'css/css-include/style.css" rel="stylesheet" /-->
+    <link type="text/css" href="css/css-include/style.css" rel="stylesheet" />
     <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
 
     <!-- Input File -->
@@ -41,12 +39,6 @@
 <body>	
 	<jsp:include page="include/CurrentUser.jsp"/>
             <div class="clearfix"></div>
-
-            <!-- <ul class="nav nav-tabs main-views">
-                    <li class="active"><a class="active-tab" href="<?php echo base_url()?>redirect/LO_rev"><i class="icomoon-list"></i> Learning Objects</a></li>
-                    <li><a href="<?php echo base_url()?>redirect/reviewlist_rev"><i class="icomoon-signup"></i> Review List</a></li>
-                    <li ><a  href="<?php echo base_url()?>redirect/search_rev"><i class="icomoon-search"></i> Advanced Search</a></li>
-            </ul> -->
 
             <div id="breadcrumb-wrap">
                 <ol class="breadcrumb">
@@ -61,16 +53,13 @@
                 <div class="container">
 
                     <div class="alert alert-success">
-                        <!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
                         <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
 
                         <strong>Success!</strong>
                         <!-- You have successfully downloaded this Learning Object.
                         Please rate this Learning Object after you have reviewed it.  -->
 
-                        You have successfully downloaded the Learning Element: "<!--?php
-                        echo $lo->getName();
-                        ?-->"
+                        You have successfully downloaded the Learning Element: ""
                         Please rate this Learning Element. 
                     </div>
 
@@ -122,7 +111,6 @@
                             <div class="clearfix"></div>
 
                             <div class="form-actions advanced-search">
-                                <input type="hidden" value="<?php echo $lo->getID(); ?>" id="id" name="id">
                                 <input type="hidden" value="LE" id ="type" name="type">
                                 <button type="submit" class="btn btn-primary"><i class="icon-ok icon-large"></i> Submit</button>
 
@@ -137,8 +125,6 @@
 
             <div class="clearfix"></div>
             <div class="push"></div>
-	</div>
-
 	<div class="footer">
             <footer id="footer-wrap-index">
                 <div class="copyright-here pull-left review">

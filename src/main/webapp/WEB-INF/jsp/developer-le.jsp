@@ -1,15 +1,6 @@
 <jsp:include page="include/headerScript.jsp"/>
 <html lang="en" ng-app="loop">
 <head>
-    
-<script type="text/javascript">
-			function select(i)
-			{
-				document.getElementById("ctr").value = i;
-				document.getElementById("counters").value = i;
-			}
-</script>
-
 <title>LOOP | Developer View</title>
 
             <meta charset="utf-8">
@@ -99,7 +90,6 @@
   		<div class="clearfix"></div>
         <div class="push"></div>
 	</div>
-                </div>
 	<div class="footer">
 		<footer id="footer-wrap-index">
 			<div class="container">

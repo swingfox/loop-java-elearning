@@ -1,16 +1,6 @@
 <jsp:include page="include/headerScript.jsp"/>
 <html lang="en" ng-app="loop">
 <head>
-<!--?php
-echo '--><script type="text/javascript">
-			function select(i)
-			{
-				
-				document.getElementById("ctr").value = i;
-				document.getElementById("counters").value = i;
-				
-			}
-		</script>
                 
 <title>LOOP | Developer View</title>
             <meta charset="utf-8">
@@ -36,7 +26,7 @@ echo '--><script type="text/javascript">
 			<li class="tour-step tour-step-three"><a href="/loop-XYZ/store/upload-dev"><i class="icon-upload-alt icon-large default"></i> Upload LO</a></li>
 			<li class="tour-step tour-step-three"><a href="/loop-XYZ/store/uploadLE-dev"><i class="icon-upload-alt icon-large default"></i> Upload LE</a></li>
 			<li class="tour-step tour-step-four"><a href="/loop-XYZ/store/advanced-search-dev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
-		</ul>
+	</ul>
 		<div class="clearfix"></div>
   		<div id="content-wrap-dev" ng-controller="LoginCtrl">
 			<div class="container">
@@ -98,7 +88,6 @@ echo '--><script type="text/javascript">
   		<div class="clearfix"></div>
         <div class="push"></div>
 	</div>
-        </div>
 	<div class="footer">
 		<footer id="footer-wrap-index">
 			<div class="container">
@@ -111,12 +100,9 @@ echo '--><script type="text/javascript">
 
 	<!-- Load JS here for greater good =============================-->
 
-	<!--?php $this->layout->footer() ?-->
         <script src="css/bootstrap3/assets/js/jquery.js"></script>
         <script src="css/bootstrap3/dist/js/bootstrap.js"></script>
-
-
-
+        
         <script src="js/main.js"></script>
 
 
@@ -238,41 +224,7 @@ echo '--><script type="text/javascript">
             
  </script>
             
-
-	<!--script> 
-		$(document).ready(function(){
-			var length_sel;
-			
-            $('.datatable').dataTable({ 
-                "sPaginationType": "bs_normal"
-            });
-
-            $('.datatable').each(function(){
-                $(this).show();
-                datatable_configuration_for_bootstrap_three($(this));
-            });
-
-            // datatable configuration for bootstrap 3
-            function datatable_configuration_for_bootstrap_three(datatable){
-            	datatable.addClass('col-md-12');
-                var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
-                search_input.attr('placeholder', 'Search');
-                $('<i class="icomoon-search pull-left searchbar-icon"></i>').prependTo($('div:eq(0) > div > div:eq(0)',datatable.parents('.dataTables_wrapper')));
-                $('div:eq(0) > div > div:eq(0) > div',datatable.parents('.dataTables_wrapper')).addClass('pull-right');
-                search_input.addClass('form-control input-sm');
-                search_input.width('140px'); //used to be 150
-                length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
-                length_sel.addClass('form-control input-sm').css({ padding: '5px 10px 5px 5px', cursor: 'pointer' });
-                $('option', length_sel).css({ padding: '5px 8px' });
-                var pagination = datatable.closest('.dataTables_wrapper').find('ul.pagination');
-                pagination.addClass('pagination-sm');
-            }
-		});
-
-	</script-->
-
-
-	<script type="text/javascript">
+<script type="text/javascript">
 		$(document).ready(function() {
     
 		    $('#defaultForm').bootstrapValidator({

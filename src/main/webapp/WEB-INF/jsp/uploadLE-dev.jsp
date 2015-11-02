@@ -27,7 +27,7 @@
     <link href="js/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet" />
 
 
-    <!--link type="text/css" href="'.$this->base_url.'css/css-include/style.css" rel="stylesheet" /-->
+    <link type="text/css" href="css/css-include/style.css" rel="stylesheet" />
     <link type="text/css" href="css/css-include/style-footer-try.css" rel="stylesheet" />
 
     <!-- Input File -->
@@ -56,57 +56,23 @@
 			<div class="container">
 				<div class="col-md-6 col-md-push-3">
                     <div class="page-header download">
-                    	<!--<?php
-                    		if(!isset($lelement)){
-                    			echo '<h2 class="download">Upload Learning Element</h2>';
-                    		}
-                    		else{
-								echo '<h2 class="download">Upload Learning Element: Revision</h2>';
-                    		}
-                    	?> -->
                         <h2 class="download">Upload Learning Element: Revision</h2>
                     </div>
 
 			<form enctype="multipart/form-data" action="/loop-XYZ/loop/LE/upload" method="POST" name="upload" id="formUpload" class="form-horizontal">
-                    <!-- <form class="form-horizontal bootstrap-validator-form" action="<?php //echo base_url()?>index.php/uploading/do_upload" method="post" id="defaultForm" novalidate="novalidate"> -->
-						
-						<!-- <?php echo form_open_multipart('uploading/do_upload','id="myform"');?> -->
-						
-
-						<!-- <div class="col-md-6 col-md-push-3"> -->
-							
 							<div class="control-group">
 				            
 				            <label class="control-label upload-file fileinput pull-left" for="fileInput">File Path :</label>
 				            <div class="controls">
 				            	<input type="file" name="file" id="uploadFile" size="20" class="input-file tour-step tour-step-eight" required/>
-				            	<!-- <input name="userfile" type="file" class="input-file" required/> -->
 				            </div>
 				            
 				            <div class="upload-requirement">*Only file types under 50 Mb are accepted for upload.<br/>
 				            *Please avoid using white spaces for avoidance of information mismatch. </div>
 				        </div>
-				       <!-- </div> -->
-
-
-
-
 						<div class="well upload tour-step tour-step-nine" ng-controller="LoginCtrl">		
 								<label class="col-md-3 control-label upload-file" for="input01">Name:</label>					
-								<!-- <label class="control-label pull-left" for="input01"> -->
-									<!-- Name : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-									<!-- Name : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-								</label>
-								<!--<?php
-								if(!isset($lelement)){
-									echo '<input type="text" class="form-control col-md-7" id="input01" name="filenames" placeholder="e.g. HTML5, Linear Equations"/>';
-								}
-								else{
-									echo '<input type="text" class="form-control col-md-7" id="input01" name="filenames" value="'.$lelement.'" readonly/>';
-								}
-
-								?> -->
-                                                                
+							
                                                                 <input type="hidden" name="author" id="auth" value="{{username}}">
                                                                 <input type="hidden" name="rating"  value="0">
                                                                 <input type="hidden" name="type" value="LE">
@@ -116,46 +82,14 @@
 
 
 							<div class="well upload tour-step tour-step-ten">
-							<label class="col-md-3 control-label upload-file" for="input01">Subject:</label>							
-								<!-- <label class="control-label pull-left" for="input01"> -->
-									<!-- Subject : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-									<!-- Subject : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-								</label>
-								<!--
-								<?php
-									if(!isset($lsubj)){
-										echo '<input type="text" class="form-control col-md-7" id="input01" name="subject" placeholder="e.g. Web Programming, Algebra" required/>';
-									}
-									else{
-										echo '<input type="text" class="form-control col-md-7" id="input01" name="subject" value="'.$lsubj.'" readonly/>';
-									}
-								?>
-								-->
+							<label class="col-md-3 control-label upload-file" for="input01">Subject:</label>					
                                                                 <input type="text" name="subject" class="form-control col-md-7" id="input01"  placeholder="e.g. Web Programming, Algebra" required/>
 								<div class="clearfix"></div>
 							</div>
 
-							<!--<div class="well upload tour-step tour-step-eleven">
-								<label class="col-md-3 control-label upload-file" for="input01">Type:</label>							
-								<!-- <label class="control-label pull-left" for="input01"> -->
-									<!-- Description : &nbsp; -->
-									<!-- Description : 
-								</label>
-
-								<select name="uploadType" class="btn btn-default" required/>
-									<option value = "LO">Learning Object</option>
-									<option value = "LE">Learning Element</option>
-								</select>								
-								
-								<div class="clearfix"></div>
-							</div>-->
-
 							<div class="well upload tour-step tour-step-eleven">
 								<label class="col-md-3 control-label upload-file" for="input01">Description:</label>							
-								<!-- <label class="control-label pull-left" for="input01"> -->
-									<!-- Description : &nbsp; -->
-									<!-- Description : -->
-								<!--</label> -->
+								
 								<input type="text" class="form-control col-md-7" id="input01" name="description" placeholder="Write a description..." required/>								
 								
 								<div class="clearfix"></div>
@@ -168,57 +102,22 @@
                        
 
 	                        <div class="form-actions advanced-search">
-									<!-- <button type="submit" class="btn btn-primary"><i class="icon-upload-alt icon-large"></i> Upload</button> -->
-									
-
-                                                                        <button type="submit" href="/loop-XYZ/loop/LE/upload" class="btn btn-primary tour-step tour-step-twelve" ><i class="icon-upload-alt icon-large" ></i> Upload</button>
-								
-
-									<!-- <a href="index.php" class="btn btn-default">Cancel</a> -->
-									<!-- <button type="reset" class="btn btn-default">Cancel</button> -->
-
-									<!-- <button onclick="document.location='http://localhost/loop-sp-ci7/redirect/LO'" type="button" class="btn btn-default">Cancel</button> -->
-									<a class="btn btn-default" href="">Cancel</a>
-
-									<!-- <button onclick="document.location='http://localhost/jiary/index.php/journal/create_entry'" class="btn btn-success btn-lg btn-block main" type="button">Create</button>
-									<button type="button" class="btn btn-info btn-lg btn-block main" onclick="document.location='http://localhost/jiary/index.php/journal/jiary_view'">Jiary View</button> -->
-							</div>
-									
+					<button type="submit" href="/loop-XYZ/loop/LE/upload" class="btn btn-primary tour-step tour-step-twelve" ><i class="icon-upload-alt icon-large" ></i> Upload</button>	
+					<a class="btn btn-default" href="">Cancel</a>			
+				</div>						
                     </form>
                 </div>
 			</div>
 		</div> 
 
-
-
-
-
-		
-		
-
-
   		<div class="clearfix"></div>
 
-		<!-- This is the original footer with id=wrapper -->
-		<!-- <footer id="footer-wrap-index"> -->
-			<!-- <div class="container">
-		    	<div class="copyright-here pull-left">
-					Copyright &copy; <?php //echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<button id="aime" class="btn btn-default">Test</button>
-		    	</div>
-	  		</div>
-    	</footer> -->
-		
-		<!-- Take this out if you want the original footer back -->
         <div class="push"></div>
-<!--	</div> -->
-
 	<div class="footer">
 		<footer id="footer-wrap-index">
-			<!-- <div class="container"> -->
 	            <div class="copyright-here pull-left upload">
 					Copyright &copy; <?php echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
 		    	</div>
-		    <!-- </div> -->
 	    </footer>
     </div>
         

@@ -1,14 +1,6 @@
 <jsp:include page="include/headerScript.jsp"/>
 <html lang="en" ng-app="loop">
 <head>  
-<script type="text/javascript">
-			function select(i)
-			{
-				document.getElementById("ctr").value = i;
-				document.getElementById("counters").value = i;
-			}
-</script>
-
 <title>LOOP | Developer View</title>
 
             <meta charset="utf-8">
@@ -232,9 +224,23 @@
         <script src="../css/bootstrap3/js/tooltip.js"></script>
         <script src="../css/bootstrap3/js/popover.js"></script>
         <script src="../js/angular/angular.js"></script>
+        <script src="../js/angular/angular-sanitize.js"></script>
         <script src="../js/angular/ngStorage.js"></script>
         <script src="../js/loop.js" type="text/javascript"></script>
         <script src="../js/scripts/services/userService.js"></script>
+        
+        <script src="../js/scripts/services/storeService.js"></script>
+
+        <script src="../js/scripts/controllers/userController.js"></script>
+        <script src="../js/scripts/controllers/loController.js"></script>
+        <script src="../js/scripts/controllers/leController.js"></script>
+        <script src="../js/scripts/controllers/advancedSearchController.js"></script>
+
+        <script src="../js/scripts/services/userService.js"></script>
+        <script src="../js/scripts/services/loService.js"></script>
+        <script src="../js/scripts/services/leService.js"></script>
+        <script src="../js/scripts/services/utilService.js"></script>
+
 
         <script src="../js/bootstrap-tour/build/js/bootstrap-tour.js"></script>
         <script src="../bootstrap-tour/build/js/bootstrap-tour.min.js"></script>

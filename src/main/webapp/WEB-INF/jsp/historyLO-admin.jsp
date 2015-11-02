@@ -19,9 +19,9 @@
             <!-- Icons -->
             <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
             <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
-            <!--[if IE 7]>
-              <link href="'.$this->base_url.'fonts/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
-            <![endif]-->
+            <!--[if IE 7-->
+              <link href="fonts/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
+            <!--[endif]-->
 
             <!-- 1280 grid -->
             <link type="text/css" href="css/css-include/1280grid.css" rel="stylesheet" />
@@ -37,7 +37,6 @@
 
             <!-- Form Validator -->
             <link rel="stylesheet" href="js/bootstrapvalidator/dist/css/bootstrapValidator.css" />
-            <!--<?php $this->layout->header() ?>-->
 
     </head>
     <body>
@@ -45,12 +44,10 @@
 		<div class="clearfix"></div>
 
 		<div id="breadcrumb-wrap">
-			<!-- <div class="container"> -->
                         <ol class="breadcrumb" ng-controller="LOList">
                             <li><a class="breadcrumb-link" href="/loop-XYZ/store/admin-view5" ng-click="clearLO()">Back to Learning Object List</a></li>
 					<li class="active">History - {{lo.name}}</li>
-				</ol>
-			<!-- </div> -->
+			</ol>
 		</div> 
 
 		<div class="clearfix"></div>
@@ -84,22 +81,14 @@
             </div>
         </form>
 
-        
-		<!-- Gi sugdan -->
-
 		<div class="clearfix"></div>
-		<!-- <div id="content-wrap"> -->
-
 		<div id="content-wrap">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 content">
 						
 						<div class="table-responsive">
-						 	<!-- <table class="datatable table table-bordered"> -->
 						 	<table class="datatable table table-hover" ng-controller="LOList">
-
-
 						    <thead>
 								<tr>
 									<th>#</th>
@@ -121,42 +110,13 @@
                                                             <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
 
                                                         </td>
-                                                        <td><p classdownload-details><label ng-model="lo.name">{{lo.name}}</p></td>
-                                                        <td><label >{{lo.subject}}</td>
-                                                        <td><label >{{lo.dateUploaded}}</td>
+                                                        <td><p class="download-details"><label>{{lo.name}}</p></td>
+                                                        <td><label>{{lo.subject}}</td>
+                                                        <td><label>{{lo.dateUploaded}}</td>
                                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label >{{lo.rating}}</td>
-                                                        <td><label >{{lo.comments}}</td>
-                                                        <td><label >{{lo.rev}}</td>
-                                                         
-                                                    
-                                                    <!--
-						        <?php
-						        $controller = new LOController();
-						        $LOs = $controller->getLOHistory($name,$dev);
-						        $_SESSION['histlos'] = serialize($LOs);
-						        $LO = current($LOs);
-						        $count = count($LOs);
-						        $i=0;
-						        while($LO!=NULL){						       		
-								  	echo '<tr>';										
-										echo '<td>'.($i+1).'</td>';
-										if(($i+1)!=$count)
-											echo '<td><a href="'.$path.$LO->getFilepath().'">'.$LO->getName().'</a></td>';
-										else
-											echo '<td>'.$LO->getName().'</a></td>';
-										echo '<td>'.$LO->getSubject().'</td>';
-										// echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LO->getDateUploaded().'</td>';
-										echo '<td>'.$LO->getDateUploaded().'</td>';
-										echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LO->getRating().'</td>';
-										echo '<td>'.$LO->getComments().'</td>';
-										echo '<td>'.$LO->getRev().'</td>';;
-										echo '<input type="hidden" name="downloadlo" value="'.$counter.'"/>';
-									echo '</tr>';
-									next($LOs);
-									$LO = current($LOs);
-									$i++;							
-								}s
-						        ?>-->													
+                                                        <td><label>{{lo.comments}}</td>
+                                                        <td><label>{{lo.rev}}</td>
+                                                   											
 							</tbody>
 						  </table>
 						</div>
@@ -176,28 +136,19 @@
 			</div>
 		</div>
 				<div class="clearfix"></div>				
-			</div>
-		</div> 
-
   		<div class="clearfix"></div>
 
         <div class="push"></div>
-	</div>
-
 	<div class="footer">
 		<footer id="footer-wrap-index">
-			<!-- <div class="container"> -->
 	            <div class="copyright-here pull-left download">
 					Copyright &copy; <!--<?php echo date("Y"); ?>--> LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
 		    	</div>
-		    <!-- </div> -->
 	    </footer>
         </div>
         
         <!-- Delete modal -->
-        
-        
-         <form name="tester" method="post" <%--action="<?php echo base_url().'redirect/plusrevLE/'?>"--%> >
+         <form name="tester" method="post" >
             <div class="modal fade" id="responsive_addReviewer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content fileAction">
@@ -211,38 +162,15 @@
                                     <label class="file-action">Choose a Reviewer for the Learning Element</label>
                                     
                                     <select name="reviewer" class="btn btn-default" >
-                                        
->                                               <option value="">--none--</option>
-                                                <option ng-repeat="reviewer in reviewerAccount">{{reviewer.username}}</option>
-                                               
-                                               
-                                       			
+                                                <option value="">--none--</option>
+                                                <option ng-repeat="reviewer in reviewerAccount">{{reviewer.username}}</option>                                                   			
                                     </select>
-                                    <!--?php 
-                                        require './application/controllers/AdminController.php';
-                                        $controller = new AdminController;
-                                        $siteUsers = @$controller->getAllSiteUsersRev();						        		
-                                                $indexer = 0;
-                                                $siteUser = current($siteUsers);
-
-                                        echo '<select name="reviewer" class="btn btn-default">';
-                                                echo '<option value="">--none--</option>';
-                                                while($siteUser != null){
-                                                        echo '<option value="'.$siteUser->getUserName().'">'.$siteUser->getUserName().'</option>';
-                                                                next($siteUsers);
-                                                                $siteUser = current($siteUsers);
-                                                                $indexer++;
-
-                                                }        			
-                                        echo '</select>';
-                                    ?-->
                                 </div> 
                             </div>
                         </div>
                         <div class="modal-footer"> 
                             <div class="row">
                                 <div class="col-md-8 col-md-push-3">      
-                                <input type="hidden" value="<?php echo $counter?>" id="counters" name="counters">                                                                  
                                     <button type="button" class="btn btn-primary" onclick="document.tester.submit()"><i class="icon-ok icon-large default"></i> Yes &nbsp;</button>
                             		<button type="button" class="btn btn-default" data-dismiss="modal" style="color: red;"><i class="icon-remove icon-large default"></i> &nbsp; No &nbsp;</button>
                         		</div>

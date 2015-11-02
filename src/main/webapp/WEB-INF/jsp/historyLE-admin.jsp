@@ -2,8 +2,6 @@
 <html lang="en" ng-app="loop">
 <head>
 <title>LOOP | History</title>
-
-<!--?php $this->layout->header() ?-->
     <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 
     <!-- Bootstrap 3 -->
@@ -43,12 +41,10 @@
 		<div class="clearfix"></div>
 
 		<div id="breadcrumb-wrap">
-			<!-- <div class="container"> -->
                         <ol class="breadcrumb" ng-controller="LEList">
 					<li><a class="breadcrumb-link" href="/loop-XYZ/store/admin-view6" ng-click="clearLE()">Back to Learning Element List</a></li>
 					<li class="active">History - {{le.title}}</li>
 				</ol>
-			<!-- </div> -->
 		</div> 
 
 		<div class="clearfix"></div>
@@ -96,8 +92,7 @@
                                     <label class="file-action">Choose a Reviewer for the Learning Element</label>
                                     <select ng-model="luckyReviewer">
                                         <option ng-repeat="reviewer in reviewerAccount" ng-title="{{reviewer.username}}" ng-selected="{{reviewer.username == luckyReviewer}}" value="{{reviewer.username}}">{{reviewer.username}}</option>
-                                    </select>
-                                    
+                                    </select>               
                                 </div> 
                             </div>
                         </div>
@@ -113,21 +108,14 @@
                 </div>
             </div>
         </form>
-		<!-- Gi sugdan -->
-
 		<div class="clearfix"></div>
-		<!-- <div id="content-wrap"> -->
-
 		<div id="content-wrap">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 content">
 						
 						<div class="table-responsive">
-						 	<!-- <table class="datatable table table-bordered"> -->
 						 	<table class="datatable table table-hover" ng-controller="reviewerAccountCtrl">
-
-
 						    <thead>
 								<tr>
 									<th class="color-code">#</th>
@@ -157,34 +145,7 @@
                                                         <td><label >{{le.comments}}</td>
                                                         <td><label >{{le.rev}}</td>
                                                          
-                                                    </tr>
-						        <!--?php
-						        $controller = new LEController();
-						        $LEs = $controller->getLEHistory($name,$dev);
-						        $_SESSION['histles'] = serialize($LEs);
-						        $LE = current($LEs);
-						        $count = count($LEs);
-						        $i=0;
-						        while($LE!=NULL){						       		
-								  	echo '<tr>';										
-										echo '<td>'.($i+1).'</td>';
-										if(($i+1)!=$count)
-											echo '<td><a href="'.$path.$LE->getFilepath().'">'.$LE->getName().'</a></td>';
-										else
-											echo '<td>'.$LE->getName().'</a></td>';
-										echo '<td>'.$LE->getSubject().'</td>';
-										// echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LE->getDateUploaded().'</td>';
-										echo '<td>'.$LE->getDateUploaded().'</td>';
-										echo '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$LE->getRating().'</td>';
-										echo '<td>'.$LE->getComments().'</td>';
-										echo '<td>'.$LE->getRev().'</td>';;
-										echo '<input type="hidden" name="downloadlo" value="'.$counter.'"/>';
-									echo '</tr>';
-									next($LEs);
-									$LE = current($LEs);
-									$i++;							
-								}
-						        ?-->													
+                                                    </tr>									
 							</tbody>
 						  </table>
 						</div>
@@ -193,7 +154,7 @@
                                                         <input type="hidden" value="" id="counters" name="counters">
 
                                                         <a href="#responsive_addReviewer" class="btn btn-default" data-dismiss="modal" data-toggle="modal"><i class="icon-plus-sign icon-large default"></i> Add Reviewer</a>
-							<a <%--href="<?php echo base_url().'redirect/download_Admin/LE/'.$counter ?>" --%> type="button" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>
+							<a href="/loop-XYZ/store/reviewLE-admin" type="button" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>
 							<a href="#responsive_confirmDelete" class="btn btn-primary" data-toggle="modal"><i class="icon-trash icon-large default"></i> Delete</a>
 
 				    		<a href="/loop-XYZ/store/admin-view6" class="btn btn-default"> Back</a>

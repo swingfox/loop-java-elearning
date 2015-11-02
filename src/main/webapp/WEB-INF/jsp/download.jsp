@@ -79,10 +79,7 @@
                                 <a class="btn btn-primary" ng-click="reviewLO(lo.id)"><i class="icon-download-alt icon-large" ></i> Review!</a>
                                 <a class="btn btn-default" href="/loop-XYZ/store/{{userType}}-update" ng-click="clearLO()">Back</a>
                             </div>
-	                    </div>	
-
-                     
-									
+	                    </div>								
                     </form>
                 </div>
 				<div class="clearfix"></div>				
