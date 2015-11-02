@@ -2,11 +2,8 @@
 <html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Advanced Search</title>
-
-<!--?php $this->layout->header() ?-->
 <meta charset="utf-8">
-            
-
+           
             <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 
             <!-- Bootstrap 3 -->
@@ -23,9 +20,9 @@
             <!-- Icons -->
             <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
             <link rel="stylesheet" href="css/datatables/css/dataTables.bootstrap.css" />
-            <!--[if IE 7]>
-              <link href="'.$this->base_url.'fonts/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
-            <![endif]-->
+            <!--[if IE 7]> -->
+              <link href="fonts/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
+            <!--[endif]-->
 
             <!-- 1280 grid -->
             <link type="text/css" href="css/css-include/1280grid.css" rel="stylesheet" />
@@ -47,18 +44,15 @@
     <jsp:include page="include/CurrentUser.jsp"/>
 		<div class="clearfix"></div>
 
-    	<ul class="nav nav-tabs main-views">
-		  <li><a href="developer-update"><i class="icomoon-list"></i> Learning Objects</a></li>
-		  <li class=" tour-step tour-step-two"><a class="active-tab"  href="developer-le"><i class="icomoon-list"></i> Learning Elements</a></li>
-		  <li><a href="upload-dev"><i class="icon-upload-alt icon-large default"></i> Upload LO</a></li>
-		  <li><a href="uploadLE-dev"><i class="icon-upload-alt icon-large default"></i> Upload LE</a></li>
-		  <li class="active tour-step tour-step-fourteen"><a class="active-tab" href="advanced-search-dev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
-	</ul>
+                <ul class="nav nav-tabs main-views">
+                          <li><a href="developer-update"><i class="icomoon-list"></i> Learning Objects</a></li>
+                          <li class=" tour-step tour-step-two"><a class="active-tab"  href="developer-le"><i class="icomoon-list"></i> Learning Elements</a></li>
+                          <li><a href="upload-dev"><i class="icon-upload-alt icon-large default"></i> Upload LO</a></li>
+                          <li><a href="uploadLE-dev"><i class="icon-upload-alt icon-large default"></i> Upload LE</a></li>
+                          <li class="active tour-step tour-step-fourteen"><a class="active-tab" href="advanced-search-dev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
+                </ul>
 
 		<div class="clearfix"></div>
-
-
-		<!-- Gi sugdan -->
 
 		<div id="content-wrap" ng-controller="advanceSearchController">
 			<div class="container">
@@ -80,101 +74,17 @@
 								<label class="control-label pull-left" for="select01">
 									Choose Subject &nbsp;
 								</label>
-									
-
-								
-	
-								<!-- <div class="controls">
-								  	<input type="text" name="subject" placeholder="e.g. Algebra, Physics" />
-								</div> -->
 								
 								<input type="text" name="subject" class="form-control col-md-6" name="subject" placeholder="e.g. Algebra, Physics" ng-model="searchSubject" />
-								<!-- <input type="text" class="form-control" placeholder="Text input"> -->
 								<div class="clearfix"></div>
 							</div>
-
-
-
 
 							<div class="well tour-step tour-step-seventeen">
 								<div class="checkbox"><label class="" for="checkbox2" ng-click="showDate()">
 								    <input type="checkbox" id="checkbox2" data-toggle="checkbox">
 								    Date
 								</label></div>
-
-								
-
-								<!-- <div class="controls date">
-									<label class="control-label" for="select01">From</label>
-									<div class="bfh-datepicker" data-format="y-m-d" data-date="2013-09-01">
-										<div class="input-prepend bfh-datepicker-toggle" data-toggle="bfh-datepicker">
-										    <span class="add-on"><i class="icon-calendar"></i></span>
-										    <input name="dateFrom" type="text" class="input-medium form-control" readonly="">
-										</div>
-
-										<div class="bfh-datepicker-calendar">
-										    <table class="calendar table table-bordered">
-										     	<thead>
-											        <tr class="months-header">
-											          	<th class="month" colspan="4">
-												            <a class="previous" href="#"><i class="icon-chevron-left"></i></a>
-												            <span></span>
-												            <a class="next" href="#"><i class="icon-chevron-right"></i></a>
-											         	</th>
-
-											          	<th class="year" colspan="3">
-												            <a class="previous" href="#"><i class="icon-chevron-left"></i></a>
-												            <span></span>
-												            <a class="next" href="#"><i class="icon-chevron-right"></i></a>
-											          	</th>
-											        </tr>
-											        <tr class="days-header"></tr>
-										     	</thead>
-										      	<tbody></tbody>
-										    </table>
-										</div>
-									</div>
-								</div> 
-
-								<div class="controls date">
-									<label class="control-label" for="select01">To</label>
-									<div class="bfh-datepicker" data-format="y-m-d" data-date="2013-09-10">
-										<div class="input-prepend bfh-datepicker-toggle" data-toggle="bfh-datepicker">
-										    <span class="add-on"><i class="icon-calendar"></i></span>
-										    <input name="dateTo" type="text" class="input-medium form-control" readonly="">
-										</div>
-
-										<div class="bfh-datepicker-calendar">
-										    <table class="calendar table table-bordered">
-										     	<thead>
-											        <tr class="months-header">
-											          	<th class="month" colspan="4">
-												            <a class="previous" href="#"><i class="icon-chevron-left"></i></a>
-												            <span></span>
-												            <a class="next" href="#"><i class="icon-chevron-right"></i></a>
-											         	</th>
-
-											          	<th class="year" colspan="3">
-												            <a class="previous" href="#"><i class="icon-chevron-left"></i></a>
-												            <span></span>
-												            <a class="next" href="#"><i class="icon-chevron-right"></i></a>
-											          	</th>
-											        </tr>
-											        <tr class="days-header"></tr>
-										     	</thead>
-										      	<tbody></tbody>
-										    </table>
-										</div>
-									</div>
-								</div>  -->
-
-
-
-
-
-
-
-
+                                                            
 								<div class="controls date col-md-6">
 									<label class="control-label pull-left date" for="select01">From &nbsp;</label>
 									<div id="dateFrom" class="bfh-datepicker" data-format="y-m-d">
@@ -208,7 +118,6 @@
 								</div> 
 
 								<div class="controls date col-md-6">
-									<!-- <label class="control-label pull-left" for="select01">To &nbsp;</label> -->
 									<label class="control-label pull-left" for="select01" >To &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 									<div id="dateTo" class="bfh-datepicker" data-format="y-m-d">
 										<div class="input-prepend bfh-datepicker-toggle" data-toggle="bfh-datepicker">
@@ -253,17 +162,6 @@
 									Choose Order &nbsp;
 								</label>
 
-								
-	
-								
-								<!-- <div class="controls">
-									<select name="order" id="select01">
-									    <option value="dateUploaded">Date</option>
-									    <option value="downloads">Popularity</option>
-									    <option value="name">Name</option>
-								  	</select>
-								</div> -->
-
 								<select class="form-control col-md-6" name="order" id="select01" ng-model="searchOrderBy">
 								    <option value="dateUploaded">Date</option>
 								    <option value="downloads">Popularity</option>
@@ -276,36 +174,22 @@
 							
 							<div class="form-actions advanced-search">
                                                             <a class="btn btn-primary tour-step tour-step-nineteen" ng-click="showResults()">Search</a>
-								<!-- <a href="index.php" class="btn btn-default">Cancel</a> -->
-								
-								<a class="btn btn-default" ng-href="developer-update">Cancel</a>
-								<!-- <button type="reset" class="btn btn-default">Cancel</button> -->
-
-
-								<!-- <button onclick="document.location='http://localhost/jiary/index.php/journal/create_entry'" class="btn btn-success btn-lg btn-block main" type="button">Create</button>
-								<button type="button" class="btn btn-info btn-lg btn-block main" onclick="document.location='http://localhost/jiary/index.php/journal/jiary_view'">Jiary View</button> -->
+							    <a class="btn btn-default" ng-href="developer-update">Cancel</a>
+							    <button type="button" class="btn btn-info btn-lg btn-block main" onclick="document.location='http://localhost/jiary/index.php/journal/jiary_view'">Jiary View</button> -->
 							</div>
 				        </div>
 					</div>
 				</form>
 			</div>
 		</div>	
-
-
   		<div class="clearfix"></div>
-
-		
-		
-		<!-- Take this out if you want the original footer back -->
         <div class="push"></div>
 
 	<div class="footer">
 		<footer id="footer-wrap-index">
-			<!-- <div class="container"> -->
 	            <div class="copyright-here pull-left advanced-search">
 					Copyright &copy; <!--?php echo date("Y"); ?--> LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
-		    	</div>
-		    <!-- </div> -->
+		    </div>
 	    </footer>
     </div>
 	<!-- Load JS here for greater good =============================-->
