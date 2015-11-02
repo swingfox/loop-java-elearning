@@ -84,7 +84,7 @@
                                                             <th>Author</th>
                                                     </tr>
                                             </thead>
-                                    <tbody>
+                                    <tbody >
                                          <tr ng-repeat="le in les | filter:searchText | filter: { rev : username  }">
                                              <td>
                                                 <img ng-if="le.rating==1" src="img/icon-red.png" alt="For Review">

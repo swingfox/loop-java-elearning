@@ -82,10 +82,10 @@
                                                                 </td>
                                                                 <td><a ng-click="GetLO(lo)"><label ng-model="lo.title">{{lo.title}}</a></td>
 
-                                                                <td><label ng-model="lo.subject">{{lo.subject}}</td>
-                                                                <td><label ng-model="lo.uploadDate">{{lo.uploadDate | date : "medium"}}</td>
-                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
-                                                                <td><label ng-model="lo.comments">{{lo.comments}}</td>                                                                
+                                                                <td><label>{{lo.subject}}</td>
+                                                                <td><label>{{lo.uploadDate | date : "MMMM dd, yyyy"}}</td>
+                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{lo.rating}}</td>
+                                                                <td><label>{{lo.comments}}</td>                                                                
                                                                 <td ng-if="lo.status==0"><i rel="tooltip" title="Not Yet Reviewed" id="unreviewed" class="icon-check-empty icon-large"></i></td>
                                                                 <td ng-if="lo.status==1"><i rel="tooltip" title="Being Reviewed" id="being-reviewed" class="icon-edit icon-large"></i></td>
                                                                 <td ng-if="lo.status==2"><i rel="tooltip" title="Reviewed" id="reviewed" class="icon-check icon-large"></i></td>

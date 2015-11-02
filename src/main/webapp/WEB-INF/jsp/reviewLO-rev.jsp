@@ -60,7 +60,6 @@
         <div id="content-review-rev" ng-controller="LOCtrl">
             <div class="container">
                 <div class="alert alert-success">
-                    <!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
                     <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
 
                     <strong>Success!</strong>
@@ -118,8 +117,7 @@
                         <div class="clearfix"></div>
 
                         <div class="form-actions advanced-search">
-                            <input type="hidden" value="<?php echo $lo->getID(); ?>" id="id" name="id">
-                            <input type="hidden" value="LO" id ="type" name="type">
+                            <input type="hidden" value="LO" id="type" name="type">
                             <button type="submit" class="btn btn-primary"><i class="icon-ok icon-large"></i> Submit</button>
 
                             <a class="btn btn-default" href="/loop-XYZ/store/review-list">Cancel</a>

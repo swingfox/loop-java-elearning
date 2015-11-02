@@ -208,6 +208,7 @@ public class LearningObjectService
     public boolean reviewLO(LearningObjectDto lo) throws UnknownHostException {
         LearningObject obj = dao.getLearningObject(lo.getId());
         obj.setComments(lo.getComments());
+        obj.setRating(lo.getRating());
         return dao.saveLO(obj);
     }
 }

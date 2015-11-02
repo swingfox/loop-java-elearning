@@ -295,6 +295,7 @@ public class LearningObjectController {
         lo.setId(id);
         lo.setComments(comment);
         lo.setRating(rating);
+        System.out.println("ID : " +  id + " Comments: " + comment + " Rating: " + rating);
         return loService.reviewLO(lo);
     }
 }

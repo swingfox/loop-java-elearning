@@ -58,8 +58,8 @@
 									<th>Reviewer</th>
 								</tr>
 							</thead>
-					        <tbody >
-                                                    <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : dev1 }">
+					        <tbody ng-controller="LoginCtrl">
+                                                    <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : username }">
                                                         <td>
                                                             <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
                                                             <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">
@@ -67,12 +67,12 @@
                                                             <img ng-if="lo.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
                                                             <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
                                                         </td>
-                                                        <td><a ng-click="GetLO(lo)"><label value="lo.name" ng-model="lo.title">{{lo.title}}</a></td>
-                                                        <td><label ng-model="lo.subject">{{lo.subject}}</td>
-                                                        <td><label ng-model="lo.uploadDate">{{lo.uploadDate | date : "medium"}}</td>
+                                                        <td><a ng-click="GetLO(lo)"><label value="lo.name">{{lo.title}}</a></td>
+                                                        <td><label>{{lo.subject}}</td>
+                                                        <td><label>{{lo.uploadDate | date : "medium"}}</td>
                                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
-                                                        <td><label ng-model="lo.comments">{{lo.comments}}</td>
-                                                        <td><label ng-model="lo.rev">{{lo.rev}}</td>
+                                                        <td><label>{{lo.comments}}</td>
+                                                        <td><label>{{lo.rev}}</td>
                                                          
                                                     </tr>					
 							</tbody>

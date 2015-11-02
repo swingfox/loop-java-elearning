@@ -47,7 +47,7 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', function($s
     };
     
     $scope.reviewLO = function(lo){
-        loService.getSpecificLO(lo.id).success(function(data) {
+        loService.getSpecificLO(lo).success(function(data) {
             $store.bind($scope, 'lo.id', data.id); 
             $store.bind($scope, 'lo.title', data.title);
             $store.bind($scope, 'lo.subject', data.subject); 
@@ -260,6 +260,10 @@ app.controller('LOCtrl', ['$scope', '$http', '$rootScope', 'utilService', 'loSer
     $scope.rating = '1';
     $scope.$watch("rating", function(newVal) {
         console.log(newVal);
+    });
+    
+     $scope.$watch("comment", function(newVal) {
+        console.log("review comment" + newVal);
     });
     
     $scope.changeRating = function(rate){
