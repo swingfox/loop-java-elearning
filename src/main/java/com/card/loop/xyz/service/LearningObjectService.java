@@ -58,6 +58,13 @@ public class LearningObjectService
         return ok;
         
     }
+    
+    public boolean assignReviewer(String id, String reviewer) throws UnknownHostException {
+        if(dao.exists(id))
+            return dao.assignReviewer(id,reviewer);
+        else
+            return false;
+    }
 
     public LearningObjectDto getLearningObject(String id) throws UnknownHostException{
         LearningObject loModel;
@@ -77,6 +84,7 @@ public class LearningObjectService
             dto.setUploadedBy(loModel.getUploadedBy());    
             dto.setPrice(loModel.getPrice());
             dto.setSequence(loModel.getSequence());
+            dto.setObjective(loModel.getObjective());
         }
         return dto;
     }
@@ -96,6 +104,8 @@ public class LearningObjectService
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
             dto.setStatus(model.getStatus());
+            dto.setObjective(model.getObjective());
+
             List<LearningElement[]> list = model.getSequence();
             List<LearningElement[]> seq = new ArrayList<LearningElement[]>();
             for (LearningElement[] list1 : list) {
@@ -144,6 +154,7 @@ public class LearningObjectService
             dto.setStatus(model.getStatus());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setSequence(model.getSequence());
+            dto.setObjective(model.getObjective());
             objects.add(dto);
         }
         return objects;
@@ -167,6 +178,7 @@ public class LearningObjectService
             dto.setStatus(model.getStatus());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setSequence(model.getSequence());
+            dto.setObjective(model.getObjective());
             objects.add(dto);
         }
         return objects;
@@ -189,6 +201,7 @@ public class LearningObjectService
             dto.setStatus(lo.getStatus());
             dto.setUploadedBy(lo.getUploadedBy());
             dto.setSequence(lo.getSequence());
+            dto.setObjective(lo.getObjective());
             dao.updateLO(dto);
         return ok;
     }

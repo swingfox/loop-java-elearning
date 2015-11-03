@@ -64,6 +64,7 @@ public class LearningObject {
     private String uploadedBy;
     private double price;
     private String _class;
+    private String objective;
     private List<LearningElement[]> sequence;
     
 
@@ -270,6 +271,14 @@ public class LearningObject {
 
     public String getClassType() {
         return _class;
+    }
+
+    public String getObjective() {
+        return objective;
+    }
+
+    public void setObjective(String objective) {
+        this.objective = objective;
     }
     
 }

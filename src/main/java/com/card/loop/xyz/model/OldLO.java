@@ -25,7 +25,7 @@ public class OldLO {
     /*
     *Name of the Learning Object
     */
-    private String name;
+    private String title;
     /*
     *Subject of the Learning Object. e.g. (Math, English)
     */
@@ -41,7 +41,7 @@ public class OldLO {
     /*
     *Date of the Learning Object is uploaded.
     */
-    private Date dateUploaded;
+    private Date uploadDate;
     /*
     *Filepath of the Learning Object.
     */
@@ -98,8 +98,8 @@ public class OldLO {
      * Gets the name of the Learning Object.
      * @return String This returns the name of Learning Object.
      */
-    public String getName(){
-        return this.name;
+    public String getTitle(){
+        return this.title;
     }
 
     /**
@@ -130,8 +130,8 @@ public class OldLO {
      * Gets the uploaded date of the Learning Object.
      * @return String This returns the uploaded date of Learning Object.
      */
-    public Date getDateUploaded(){
-        return this.dateUploaded;
+    public Date getUploadDate(){
+        return this.uploadDate;
     }
 
     /**
@@ -195,8 +195,8 @@ public class OldLO {
      * Sets the name of the Learning Object
      * @param name String
      */
-    public void setName(String name){
-        this.name = name;
+    public void setTitle(String title){
+        this.title = title;
     }
 
     /**
@@ -227,8 +227,8 @@ public class OldLO {
      * Sets the date that the Learning Object is uploaded
      * @param dateUploaded String
      */
-    public void setDateUploaded(Date dateUploaded){
-        this.dateUploaded = dateUploaded;
+    public void setUploadDate(Date uploadDate){
+        this.uploadDate = uploadDate;
     }
 
     /**

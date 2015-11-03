@@ -51,8 +51,9 @@
 		</div> 
 
 		<div class="clearfix"></div>
-
-		<form name="uniquetest" method="post" >
+        
+        <!-- Delete modal-->
+	<form name="uniquetest" method="post" >
             <div class="modal fade" id="responsive_confirmDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -88,7 +89,7 @@
 					<div class="col-md-12 content">
 						
 						<div class="table-responsive">
-						 	<table class="datatable table table-hover"  ng-controller="reviewerAccountCtrlLO">
+						 	<table class="datatable table table-hover" >
 						    <thead>
 								<tr>
 									<th>#</th>
@@ -100,8 +101,9 @@
 									<th>Reviewer</th>
 								</tr>
 							</thead>
-					        <tbody>                                                
-                                                    <tr ng-repeat="lo in los | filter:searchText">
+					       <tbody ng-controller="reviewerAccountCtrlLO">                             
+                                                    <tr ng-repeat="lo in los | filter:searchText"> 
+                                              
                                                         <td>
                                                             <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
                                                             <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">
@@ -113,10 +115,11 @@
                                                         <td><p class="download-details"><label>{{lo.title}}</p></td>
                                                         <td><label>{{lo.subject}}</td>
                                                         <td><label>{{lo.dateUploaded}}</td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label >{{lo.rating}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{lo.rating}}</td>
                                                         <td><label>{{lo.comments}}</td>
                                                         <td><label>{{lo.rev}}</td>
-                                                    </tr>										
+                                                    </tr>
+                                                    
 							</tbody>
 						  </table>
 						</div>
@@ -147,8 +150,8 @@
 	    </footer>
         </div>
         
-        <!-- Delete modal -->
-         <form name="tester" method="post" >
+        <!-- Add reviewer modal -->
+         <form name="tester" method="post" ng-controller="reviewerAccountCtrlLO"> 
             <div class="modal fade" id="responsive_addReviewer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content fileAction">
@@ -158,21 +161,19 @@
                         </div>
                         <div class="modal-body">  
                             <div class="row">
-                                <div class="col-md-10 col-md-push-1" ng-controller="reviewerAccountCtrlLO">                                 
+                                <div class="col-md-10 col-md-push-1">                                 
                                     <label class="file-action">Choose a Reviewer for the Learning Element</label>
-                                    
-                                    <select name="reviewer" class="btn btn-default" >
-                                                <option value="">--none--</option>
-                                                <option ng-repeat="reviewer in reviewerAccount">{{reviewer.username}}</option>                                                   			
-                                    </select>
+                                    <select ng-model="luckyReviewer">
+                                        <option ng-repeat="reviewer in reviewerAccount" ng-title="{{reviewer.username}}" ng-selected="{{reviewer.username == luckyReviewer}}" value="{{reviewer.username}}">{{reviewer.username}}</option>
+                                    </select>               
                                 </div> 
                             </div>
                         </div>
                         <div class="modal-footer"> 
                             <div class="row">
-                                <div class="col-md-8 col-md-push-3">      
-                                    <button type="button" class="btn btn-primary" onclick="document.tester.submit()"><i class="icon-ok icon-large default"></i> Yes &nbsp;</button>
-                            		<button type="button" class="btn btn-default" data-dismiss="modal" style="color: red;"><i class="icon-remove icon-large default"></i> &nbsp; No &nbsp;</button>
+                                <div class="col-md-8 col-md-push-3">                                                                        
+                                    <button type="button" class="btn btn-primary" ng-click="assignReviewer()" data-dismiss="modal"><i class="icon-ok icon-large default"></i> Yes &nbsp;</button>
+                            		<button type="button" class="btn btn-default" style="color: red;" data-dismiss="modal"><i class="icon-remove icon-large default"></i> &nbsp; No &nbsp;</button>
                         		</div>
                             </div>
                         </div>

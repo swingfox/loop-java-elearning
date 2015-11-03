@@ -89,7 +89,7 @@ public class LearningElementDAO {
         //query.addCriteria(Criteria.where("title").regex(keyword));
         System.out.println(query);
         //return mongoOps.find(query(where("title").regex(keyword)), LearningElement.class);
-        return mongoOps.find(query, LearningElement.class);
+        return mongoOps.find(query(where("status").is(1)), LearningElement.class);
     }
     
     public boolean exists(String id) throws UnknownHostException {
@@ -140,7 +140,7 @@ public class LearningElementDAO {
        mongoOps.find(query(where("rating").is(5)), LearningElement.class);
        Query query= new Query();
        query.addCriteria(where("title").is(title).andOperator(where("subject").is(subject)));
-       return DatabaseManager.getMongoOpsInstance("loop").exists(query, LearningElement.class);
+       return DatabaseManager.getMongoOpsInstance(AppConfig.DATABASE_LOOP).exists(query, LearningElement.class);
     }
     
     public List<LearningElement> getAllLE() throws UnknownHostException {
@@ -174,8 +174,8 @@ public class LearningElementDAO {
     
     public boolean addFile(LearningElement le) throws UnknownHostException, IOException{
         File file = new File(AppConfig.USER_VARIABLE + le.getFilePath() + le.getFilename());
-        Mongo mongo = new Mongo("localhost", 27017);
-        DB db = mongo.getDB("loop");
+        Mongo mongo = new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port);
+        DB db = mongo.getDB(AppConfig.DATABASE_LOOP);
 
         GridFS gf = new GridFS(db,"le.meta");
         GridFSInputFile gfsFile = gf.createFile(file);
@@ -206,16 +206,16 @@ public class LearningElementDAO {
     }
     
     public void deleteLE(String newFName, String type) throws UnknownHostException {
-        Mongo mongo = new Mongo("localhost", 27017);
-        DB db = mongo.getDB("loop");
+        Mongo mongo = new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port);
+        DB db = mongo.getDB(AppConfig.DATABASE_LOOP);
         GridFS le_gfs = new GridFS(db, type);
         le_gfs.remove(le_gfs.findOne(newFName));
     }
     
     public ArrayList<DBObject> listAll(String collection) throws UnknownHostException {
         ArrayList<DBObject> list = new ArrayList<DBObject>();
-        Mongo mongo = new Mongo("localhost", 27017);
-        DB db = mongo.getDB("loop");
+        Mongo mongo = new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port);
+        DB db = mongo.getDB(AppConfig.DATABASE_LOOP);
         GridFS le_gfs = new GridFS(db, collection);
         DBCursor cursor = le_gfs.getFileList();
          System.out.println(le_gfs.getFileList()+"");
@@ -225,11 +225,9 @@ public class LearningElementDAO {
         return list;
     }
     
-  //  public 
-    
     public GridFSDBFile getSingleLE(String id, String collection) throws UnknownHostException {
-        Mongo mongo = new Mongo("localhost", 27017);
-        DB db = mongo.getDB("loop");
+        Mongo mongo = new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port);
+        DB db = mongo.getDB(AppConfig.DATABASE_LOOP);
         GridFS le_gfs = new GridFS(db, collection);
        // GridFSDBFile le_output = le_gfs.findOne(new ObjectId(id));
         GridFSDBFile le_output = le_gfs.findOne(new ObjectId(id));
@@ -238,8 +236,8 @@ public class LearningElementDAO {
     }
     
     public ArrayList<String> getKeywords(String md5, String collection) throws UnknownHostException{
-        Mongo mongo = new Mongo("localhost", 27017);
-        DB db = mongo.getDB("loop");
+        Mongo mongo = new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port);
+        DB db = mongo.getDB(AppConfig.DATABASE_LOOP);
         ArrayList<String> list = new ArrayList<>();
         GridFS le_gfs = new GridFS(db, collection);
         GridFSDBFile le_output = le_gfs.findOne(new BasicDBObject("md5", md5));

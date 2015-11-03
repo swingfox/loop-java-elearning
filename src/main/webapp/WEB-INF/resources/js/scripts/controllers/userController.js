@@ -159,10 +159,12 @@ app.controller('reviewerAccountCtrl', ['$scope', '$http', '$rootScope', 'userSer
             console.log(""+ error);
         });
         
-        if(utilService.getValue("leid")!==null){
-            $http.get("/loop-XYZ/loop/LE/getLE/"+utilService.getValue("leid")).success(function(response) {
-                  $scope.les = response;
-            });
+        if(utilService.getValue("leid") !== null && window.location.toString().split('/store/')[1] === 'historyLE-admin?leid='+utilService.getValue("leid")){
+            if(utilService.getValue("leid")!==null){
+                $http.get("/loop-XYZ/loop/LE/getLE/"+utilService.getValue("leid")).success(function(response) {
+                      $scope.les = response;
+                });
+            }
         }
     }
     
@@ -170,9 +172,10 @@ app.controller('reviewerAccountCtrl', ['$scope', '$http', '$rootScope', 'userSer
         if(utilService.getValue("leid")!==null){
             $http.post("/loop-XYZ/loop/LE/assignReviewer?leid="+utilService.getValue("leid")+"&"+"reviewer="+$scope.luckyReviewer).success(function(response) {
                 alert(response);
+                window.location.reload();
             });
         }
-    };
+    };    
     
     load();
 }]);
@@ -198,6 +201,7 @@ app.controller('reviewerAccountCtrlLO', ['$scope', '$http', '$rootScope', 'userS
         if(utilService.getValue("loid")!==null){
             $http.post("/loop-XYZ/loop/LO/assignReviewer?loid="+utilService.getValue("loid")+"&"+"reviewer="+$scope.luckyReviewer).success(function(response) {
                 alert(response);
+                window.location.reload();
             });
         }
     };
@@ -211,6 +215,34 @@ app.controller('inactiveAccountCtrl', ['$scope', '$http', 'userService', functio
     }).error(function(jqXHR, status, error) {
         console.log(""+ error);
     });
+}]);
+
+app.controller('reviewerAccountCtrlOldLO', ['$scope', '$http', '$rootScope', 'userService', 'utilService', function($scope, $http, $rootScope, userService, utilService) {
+    $scope.luckyReviewer = "";
+    
+    function load() {    
+        userService.getReviewer().success(function(response) {
+            $scope.reviewerAccount = response;
+        })
+        .error(function(jqXHR, status, error) {
+            console.log(""+ error);
+        });
+        if(utilService.getValue("loid")!==null){
+            $http.get("/loop-XYZ/loop/LO/getOldLO/"+utilService.getValue("loid")).success(function(response) {
+                  $scope.oldlos = response;
+            });
+        }
+    }
+    
+    $scope.assignReviewer = function() {
+        if(utilService.getValue("loid")!==null){
+            $http.post("/loop-XYZ/loop/LO/assignReviewer?loid="+utilService.getValue("loid")+"&"+"reviewer="+$scope.luckyReviewer).success(function(response) {
+                alert(response);
+            });
+        }
+    };
+    
+    load();
 }]);
 
 

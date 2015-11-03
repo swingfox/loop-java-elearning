@@ -34,6 +34,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import org.springframework.data.mongodb.core.query.Query;
 import static org.springframework.data.mongodb.core.query.Query.query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -78,7 +79,17 @@ public class LearningObjectDAO {
         this.mongoOps.save(obj);
         return ok;
     }
-
+    
+     public boolean assignReviewer(String id, String reviewer) throws UnknownHostException {
+        boolean ok = false;
+        Update assigner = new Update();
+        assigner.set("rev", reviewer);
+        mongoOps.findAndModify(query(where("id").is(id)), assigner, LearningObject.class);
+        ok = true;
+        
+        return ok;
+    }
+    
     public List<LearningObject> getList() throws UnknownHostException {
         return mongoOps.findAll(LearningObject.class);
     }

@@ -79,6 +79,15 @@ public class LearningObjectDto {
     private String contentType;
     private String type;
     private double price;
+    private String objective;
+
+    public String getObjective() {
+        return objective;
+    }
+
+    public void setObjective(String objective) {
+        this.objective = objective;
+    }
 
     /**
      * 
