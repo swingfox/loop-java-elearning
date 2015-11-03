@@ -158,6 +158,14 @@ app.controller('reviewerAccountCtrl', ['$scope', '$http', '$rootScope', 'userSer
         .error(function(jqXHR, status, error) {
             console.log(""+ error);
         });
+        
+        if(utilService.getValue("leid") !== null && window.location.toString().split('/store/')[1] === 'historyLE-admin?leid='+utilService.getValue("leid")){
+            if(utilService.getValue("leid")!==null){
+                $http.get("/loop-XYZ/loop/LE/getLE/"+utilService.getValue("leid")).success(function(response) {
+                      $scope.les = response;
+                });
+            }
+        }
     }
     
     $scope.assignReviewer = function() {
@@ -217,7 +225,6 @@ app.controller('reviewerAccountCtrlOldLO', ['$scope', '$http', '$rootScope', 'us
         .error(function(jqXHR, status, error) {
             console.log(""+ error);
         });
-        
         if(utilService.getValue("loid")!==null){
             $http.get("/loop-XYZ/loop/LO/getOldLO/"+utilService.getValue("loid")).success(function(response) {
                   $scope.oldlos = response;
