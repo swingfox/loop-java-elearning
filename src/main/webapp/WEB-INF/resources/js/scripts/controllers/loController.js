@@ -66,8 +66,8 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', function($s
              window.location = '/loop-XYZ/store/reviewLO-rev?loid=' + data.id;
     });
 };
-    $scope.GetLODetails_admin = function(le) {
-             window.location.href = '/loop-XYZ/store/historyLE-admin?title='+le.title;
+    $scope.GetLODetails_admin = function(lo) {
+             window.location.href = '/loop-XYZ/store/historyLO-admin?loid='+lo.id;
     }; 
     // this is for reviewer
      $scope.GetLO = function(lo) {
@@ -170,7 +170,7 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', function($s
         });
     };
     
-    $scope.GetLODetails_admin = function(lo) {
+   /* $scope.GetLODetails_admin = function(lo) {
         $http.get('/loop-XYZ/loop/LO/download/' + lo.id)    
         .success(function(data) {
             $store.bind($scope, 'lo.id', data.id); 
@@ -191,7 +191,7 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', function($s
         .error(function(jqXHR, status, error) {
             console.log(""+ error);
         });
-    }; 
+    }; */
     
     $scope.clearLO = function(){ 
         $store.remove('lo.id'); 
@@ -258,6 +258,7 @@ app.controller('LOCtrl', ['$scope', '$http', '$rootScope', 'utilService', 'loSer
     $rootScope.LEFunc = '';
     $scope.comment = '';
     $scope.rating = '1';
+   
     $scope.$watch("rating", function(newVal) {
         console.log(newVal);
     });

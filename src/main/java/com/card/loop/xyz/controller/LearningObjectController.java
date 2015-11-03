@@ -9,6 +9,7 @@ import com.card.loop.xyz.config.AppConfig;
 import com.card.loop.xyz.dao.LearningElementDAO;
 import com.card.loop.xyz.dao.LearningObjectDAO;
 import com.card.loop.xyz.dao.OldLODAO;
+import com.card.loop.xyz.dto.LearningElementDto;
 import com.card.loop.xyz.dto.LearningObjectDto;
 import com.card.loop.xyz.dto.UserDto;
 import com.card.loop.xyz.model.LearningElement;
@@ -287,7 +288,12 @@ public class LearningObjectController {
         
         f.delete();*/
     }
-    
+    @RequestMapping("/getLO/{loid}")
+    public List<LearningObjectDto> getLE(@PathVariable String loid) throws UnknownHostException {
+        List<LearningObjectDto> lo = new ArrayList<>(); 
+        lo.add(loService.getLearningObject(loid));
+        return lo;
+    }
     @RequestMapping(value = "/reviewLO", method = RequestMethod.POST)
     public boolean reviewLO(@RequestParam("loid")String id, @RequestParam("rating") int rating, @RequestParam("comment") String comment) throws UnknownHostException{
         LearningObjectDto lo = new LearningObjectDto();

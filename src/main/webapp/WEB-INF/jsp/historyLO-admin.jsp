@@ -88,11 +88,11 @@
 					<div class="col-md-12 content">
 						
 						<div class="table-responsive">
-						 	<table class="datatable table table-hover" ng-controller="LOList">
+						 	<table class="datatable table table-hover"  ng-controller="reviewerAccountCtrlLO">
 						    <thead>
 								<tr>
 									<th>#</th>
-									<th>Name</th>
+									<th>Name</th>   
 									<th>Subject</th>
 									<th>Uploaded</th>
 									<th>Rating</th>
@@ -100,8 +100,8 @@
 									<th>Reviewer</th>
 								</tr>
 							</thead>
-					        <tbody>
-                                                    
+					        <tbody>                                                
+                                                    <tr ng-repeat="lo in los | filter:searchText">
                                                         <td>
                                                             <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
                                                             <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">
@@ -110,13 +110,13 @@
                                                             <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
 
                                                         </td>
-                                                        <td><p class="download-details"><label>{{lo.name}}</p></td>
+                                                        <td><p class="download-details"><label>{{lo.title}}</p></td>
                                                         <td><label>{{lo.subject}}</td>
                                                         <td><label>{{lo.dateUploaded}}</td>
                                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label >{{lo.rating}}</td>
                                                         <td><label>{{lo.comments}}</td>
                                                         <td><label>{{lo.rev}}</td>
-                                                   											
+                                                    </tr>										
 							</tbody>
 						  </table>
 						</div>
@@ -158,7 +158,7 @@
                         </div>
                         <div class="modal-body">  
                             <div class="row">
-                                <div class="col-md-10 col-md-push-1" ng-controller="reviewerAccountCtrl">                                 
+                                <div class="col-md-10 col-md-push-1" ng-controller="reviewerAccountCtrlLO">                                 
                                     <label class="file-action">Choose a Reviewer for the Learning Element</label>
                                     
                                     <select name="reviewer" class="btn btn-default" >
