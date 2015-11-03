@@ -88,7 +88,7 @@
 					<div class="col-md-12 content">
 						
 						<div class="table-responsive">
-						 	<table class="datatable table table-hover"  ng-controller="reviewerAccountCtrlLO">
+						 	<table class="datatable table table-hover" >
 						    <thead>
 								<tr>
 									<th>#</th>
@@ -100,8 +100,9 @@
 									<th>Reviewer</th>
 								</tr>
 							</thead>
-					        <tbody>                                                
-                                                    <tr ng-repeat="lo in los | filter:searchText">
+					       <tbody ng-controller="reviewerAccountCtrlLO">                             
+                                                    <tr ng-repeat="lo in los | filter:searchText"> 
+                                              
                                                         <td>
                                                             <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
                                                             <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">
@@ -116,7 +117,8 @@
                                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label >{{lo.rating}}</td>
                                                         <td><label>{{lo.comments}}</td>
                                                         <td><label>{{lo.rev}}</td>
-                                                    </tr>										
+                                                    </tr>
+                                                    
 							</tbody>
 						  </table>
 						</div>

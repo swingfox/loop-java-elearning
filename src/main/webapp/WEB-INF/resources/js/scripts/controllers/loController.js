@@ -28,9 +28,16 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', function($s
         $scope.snippet = '<br>';
 
 
-
+    //displays all LEARNING OBJECTS in admin-view5
     loService.getList().success(function(data) {
     	$scope.los = data;
+    })
+    .error(function(jqXHR, status, error) {
+        console.log("why??"+ error);
+    });
+    
+    loService.loListHistory ().success(function(data) {
+    	$scope.loss = data;
     })
     .error(function(jqXHR, status, error) {
         console.log("why??"+ error);

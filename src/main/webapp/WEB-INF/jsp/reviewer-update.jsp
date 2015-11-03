@@ -70,7 +70,7 @@
 
 
 
-                                                            <tr ng-repeat="lo in los | filter:searchText | filter: {rev : username}" >
+                                                            <tr ng-repeat="lo in los | filter:searchText | filter: {rev : null}" >
 
                                                                 <td>
                                                                     <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">

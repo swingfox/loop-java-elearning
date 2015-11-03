@@ -7,7 +7,8 @@
 
 (function(){
   "use strict";
-        app.factory('loService', function($http){
+
+  app.factory('loService', function($http){
             return {
                 getList : function(){
                     return $http.get("/loop-XYZ/loop/LO/list");

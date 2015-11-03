@@ -40,8 +40,8 @@ public class OldLODAO {
         //JOptionPane.showMessageDialog(null,mongoOps.find(query(where("name").is("hahah")), OldLO.class));
     }
     
-    public List<OldLO> getListHistory(String name) throws UnknownHostException {
-       return mongoOps.find(query(where("name").is(name)), OldLO.class);
+    public List<OldLO> getListHistory() throws UnknownHostException {
+        return mongoOps.findAll(OldLO.class);
     }
     
     public List<OldLO> getAllDownloadableLO() throws UnknownHostException {
@@ -59,7 +59,7 @@ public class OldLODAO {
         query.addCriteria(where("_id").is(lo.getId()));
         OldLO obj = mongoOps.findOne(query, OldLO.class);
         obj.setId(lo.getId());
-        obj.setDateUploaded(lo.getUploadDate());
+        obj.setUploadDate(lo.getUploadDate());
         obj.setDownloads(lo.getDownloads());
         obj.setStatus(lo.getStatus());
         obj.setSubject(lo.getSubject());

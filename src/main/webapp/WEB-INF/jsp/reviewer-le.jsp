@@ -85,7 +85,7 @@
                                                     </tr>
                                             </thead>
                                     <tbody >
-                                         <tr ng-repeat="le in les | filter:searchText | filter: { rev : username  }">
+                                         <tr ng-repeat="le in les | filter:searchText | filter: { rev : null  }">
                                              <td>
                                                 <img ng-if="le.rating==1" src="img/icon-red.png" alt="For Review">
                                                 <img ng-if="le.rating==2" src="img/icon-orange.png" alt="For Review">
