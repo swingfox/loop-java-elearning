@@ -162,9 +162,9 @@
 								</label>
 
 								<select class="form-control col-md-6" name="order" id="select01" ng-model="searchOrderBy">
-								    <option value="dateUploaded">Date</option>
+								    <option value="uploadDate">Date</option>
 								    <option value="downloads">Popularity</option>
-								    <option value="name">Name</option>
+								    <option value="title">Name</option>
 							  	</select>
 							  	<div class="clearfix"></div>
 							</div>

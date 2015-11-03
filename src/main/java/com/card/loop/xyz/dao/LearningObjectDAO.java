@@ -21,7 +21,7 @@ import com.mongodb.gridfs.GridFSInputFile;
 import java.io.File;
 import java.io.IOException;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ListIterator;
 import javax.swing.JOptionPane;
@@ -30,6 +30,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import org.springframework.data.mongodb.core.query.Query;
 import static org.springframework.data.mongodb.core.query.Query.query;
@@ -85,6 +86,32 @@ public class LearningObjectDAO {
     public List<LearningObject> getReviewerLOList(String rev) throws UnknownHostException {
         return mongoOps.find(query(where("uploadedBy").is(rev)), LearningObject.class);        
     }
+    
+    public List<LearningObject> searchLO(String title, String subject, Date fromDate, Date toDate, String orderBy) throws UnknownHostException {
+        Query query = new Query();
+        if(title != null || !"".equals(title))
+            query.addCriteria(Criteria.where("title").regex(title));
+        else if (subject != null || !"".equals(subject))
+            query.addCriteria(Criteria.where("subject").regex(subject));
+        else if (fromDate != null && toDate != null)
+            query.addCriteria(Criteria.where("uploadDate").gte(fromDate).lte(toDate));
+        else if (orderBy != null || !"".equals(orderBy))
+        {
+           switch (orderBy) {
+               case "uploadDate":
+                   query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "uploadedDate")));
+                   break;
+               case "downloads":
+                   query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "downloads")));
+                   break;
+               case "title":
+                   query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "title")));
+                   break;
+           }
+        }            
+       return mongoOps.find(query, LearningObject.class);
+    }
+    
     /*
     * Get details of specific learning object
     */
