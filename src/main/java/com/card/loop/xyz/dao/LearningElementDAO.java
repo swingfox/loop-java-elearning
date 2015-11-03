@@ -89,7 +89,7 @@ public class LearningElementDAO {
         //query.addCriteria(Criteria.where("title").regex(keyword));
         System.out.println(query);
         //return mongoOps.find(query(where("title").regex(keyword)), LearningElement.class);
-        return mongoOps.find(query, LearningElement.class);
+        return mongoOps.find(query(where("status").is(1)), LearningElement.class);
     }
     
     public boolean exists(String id) throws UnknownHostException {

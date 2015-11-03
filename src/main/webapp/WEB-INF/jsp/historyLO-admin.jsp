@@ -114,7 +114,7 @@
                                                         <td><p class="download-details"><label>{{lo.title}}</p></td>
                                                         <td><label>{{lo.subject}}</td>
                                                         <td><label>{{lo.dateUploaded}}</td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label >{{lo.rating}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{lo.rating}}</td>
                                                         <td><label>{{lo.comments}}</td>
                                                         <td><label>{{lo.rev}}</td>
                                                     </tr>
