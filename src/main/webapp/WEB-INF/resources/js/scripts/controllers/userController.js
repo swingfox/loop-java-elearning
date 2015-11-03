@@ -158,12 +158,6 @@ app.controller('reviewerAccountCtrl', ['$scope', '$http', '$rootScope', 'userSer
         .error(function(jqXHR, status, error) {
             console.log(""+ error);
         });
-        
-        if(utilService.getValue("leid")!==null){
-            $http.get("/loop-XYZ/loop/LE/getLE/"+utilService.getValue("leid")).success(function(response) {
-                  $scope.les = response;
-            });
-        }
     }
     
     $scope.assignReviewer = function() {
