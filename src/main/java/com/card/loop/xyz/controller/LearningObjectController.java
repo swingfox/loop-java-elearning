@@ -9,6 +9,7 @@ import com.card.loop.xyz.config.AppConfig;
 import com.card.loop.xyz.dao.LearningElementDAO;
 import com.card.loop.xyz.dao.LearningObjectDAO;
 import com.card.loop.xyz.dao.OldLODAO;
+import com.card.loop.xyz.dto.LearningElementDto;
 import com.card.loop.xyz.dto.LearningObjectDto;
 import com.card.loop.xyz.dto.UserDto;
 import com.card.loop.xyz.model.LearningElement;
@@ -170,7 +171,19 @@ public class LearningObjectController {
         }
         return dtos;
     }
-    
+    //list of history revisions in LOs collection=oldlo
+    @RequestMapping("/listHistory")
+    @ResponseBody
+    public List<LearningObjectDto> ListLOHistory() throws UnknownHostException
+    {
+        List<LearningObjectDto> dtos = new ArrayList<>();
+        try{
+            dtos = loService2.getLearningObjects();
+        }catch(Exception e){ 
+            e.printStackTrace();
+        }
+        return dtos;
+    }
     @RequestMapping("/acceptLO/{id}")
     @ResponseBody
     public boolean acceptLO(@PathVariable String id) throws UnknownHostException, Exception{
@@ -225,19 +238,7 @@ public class LearningObjectController {
         return dto;
     }
     
-    //list of history revisions in LOs collection=oldlo
-    @RequestMapping("/listHistory/{name}")
-    @ResponseBody
-    public List<LearningObjectDto> ListLOHistory(@PathVariable String name) throws UnknownHostException
-    {
-        List<LearningObjectDto> dtos = new ArrayList<>();
-        try{
-            dtos = loService2.getLearningObjects("hahah");
-        }catch(Exception e){ 
-            e.printStackTrace();
-        }
-        return dtos;
-    }
+    
     
     /*
     *   @params String LOname the name of the specific LO
@@ -286,6 +287,19 @@ public class LearningObjectController {
         shipper.ship(path);
         
         f.delete();*/
+    }
+    @RequestMapping("/getLO/{loid}")
+    public List<LearningObjectDto> getLO(@PathVariable String loid) throws UnknownHostException {
+        List<LearningObjectDto> lo = new ArrayList<>(); 
+        lo.add(loService.getLearningObject(loid));
+        return lo;
+    }
+    
+    @RequestMapping("/getOldLO/{loid}")
+    public List<LearningObjectDto> getOldLO(@PathVariable String loid) throws UnknownHostException {
+        List<LearningObjectDto> lo = new ArrayList<>(); 
+        lo.add(loService2.getLearningObject(loid));
+        return lo;
     }
     
     @RequestMapping(value = "/reviewLO", method = RequestMethod.POST)

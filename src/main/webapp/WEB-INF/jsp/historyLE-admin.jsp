@@ -12,7 +12,7 @@
     <!-- Date Picker -->
     <link href="css/bootstrapformhelpers/css/bootstrap-formhelpers.css" rel="stylesheet" />
 
-    <!-- Modal -->
+    <!-- Modal -->  
     <link href="css/bootstrap-modal-master/css/bootstrap-modal.css" rel="stylesheet" />
 
     <!-- Icons -->
@@ -121,7 +121,6 @@
 									<th class="color-code">#</th>
 									<th>Name</th>
 									<th>Subject</th>
-									<!-- <th>Date Uploaded</th> -->
 									<th>Uploaded</th>
 									<th>Rating</th>
 									<th>Comments</th>

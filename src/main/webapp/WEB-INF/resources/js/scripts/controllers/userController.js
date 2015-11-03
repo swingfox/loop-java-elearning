@@ -176,7 +176,34 @@ app.controller('reviewerAccountCtrl', ['$scope', '$http', '$rootScope', 'userSer
     
     load();
 }]);
-
+app.controller('reviewerAccountCtrlLO', ['$scope', '$http', '$rootScope', 'userService', 'utilService', function($scope, $http, $rootScope, userService, utilService) {
+    $scope.luckyReviewer = "";
+    
+    function load() {    
+        userService.getReviewer().success(function(response) {
+            $scope.reviewerAccount = response;
+        })
+        .error(function(jqXHR, status, error) {
+            console.log(""+ error);
+        });
+        
+        if(utilService.getValue("loid")!==null){
+            $http.get("/loop-XYZ/loop/LO/getLO/"+utilService.getValue("loid")).success(function(response) {
+                  $scope.los = response;
+            });
+        }
+    }
+    
+    $scope.assignReviewer = function() {
+        if(utilService.getValue("loid")!==null){
+            $http.post("/loop-XYZ/loop/LO/assignReviewer?loid="+utilService.getValue("loid")+"&"+"reviewer="+$scope.luckyReviewer).success(function(response) {
+                alert(response);
+            });
+        }
+    };
+    
+    load();
+}]);
 //displays all inactive accounts
 app.controller('inactiveAccountCtrl', ['$scope', '$http', 'userService', function($scope, $http, userService) {
     userService.getInactive().success(function(data) {
@@ -184,6 +211,35 @@ app.controller('inactiveAccountCtrl', ['$scope', '$http', 'userService', functio
     }).error(function(jqXHR, status, error) {
         console.log(""+ error);
     });
+}]);
+
+app.controller('reviewerAccountCtrlOldLO', ['$scope', '$http', '$rootScope', 'userService', 'utilService', function($scope, $http, $rootScope, userService, utilService) {
+    $scope.luckyReviewer = "";
+    
+    function load() {    
+        userService.getReviewer().success(function(response) {
+            $scope.reviewerAccount = response;
+        })
+        .error(function(jqXHR, status, error) {
+            console.log(""+ error);
+        });
+        
+        if(utilService.getValue("loid")!==null){
+            $http.get("/loop-XYZ/loop/LO/getOldLO/"+utilService.getValue("loid")).success(function(response) {
+                  $scope.oldlos = response;
+            });
+        }
+    }
+    
+    $scope.assignReviewer = function() {
+        if(utilService.getValue("loid")!==null){
+            $http.post("/loop-XYZ/loop/LO/assignReviewer?loid="+utilService.getValue("loid")+"&"+"reviewer="+$scope.luckyReviewer).success(function(response) {
+                alert(response);
+            });
+        }
+    };
+    
+    load();
 }]);
 
 

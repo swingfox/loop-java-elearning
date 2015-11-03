@@ -47,7 +47,6 @@
                 <ul class="nav nav-tabs main-views">
                           <li><a href="developer-update"><i class="icomoon-list"></i> Learning Objects</a></li>
                           <li class=" tour-step tour-step-two"><a class="active-tab"  href="developer-le"><i class="icomoon-list"></i> Learning Elements</a></li>
-                          <li><a href="upload-dev"><i class="icon-upload-alt icon-large default"></i> Upload LO</a></li>
                           <li><a href="uploadLE-dev"><i class="icon-upload-alt icon-large default"></i> Upload LE</a></li>
                           <li class="active tour-step tour-step-fourteen"><a class="active-tab" href="advanced-search-dev"><i class="icon-search icon-large search-tab"></i> Advanced Search</a></li>
                 </ul>

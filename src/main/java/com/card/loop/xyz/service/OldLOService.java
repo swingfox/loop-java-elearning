@@ -7,6 +7,7 @@ package com.card.loop.xyz.service;
 
 import com.card.loop.xyz.dao.OldLODAO;
 import com.card.loop.xyz.dto.LearningObjectDto;
+import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.model.OldLO;
 import java.net.UnknownHostException;
@@ -32,10 +33,10 @@ public class OldLOService
         LearningObjectDto dto = new LearningObjectDto();
        if(loModel != null){  
             dto.setId(loModel.getId());
-            dto.setTitle(loModel.getName());
+            dto.setTitle(loModel.getTitle());
             dto.setDescription(loModel.getDescription());
             dto.setSubject(loModel.getSubject());
-            dto.setUploadDate(loModel.getDateUploaded());
+            dto.setUploadDate(loModel.getUploadDate());
             dto.setDownloads(loModel.getDownloads());           
             dto.setRating(loModel.getRating());
             dto.setRev(loModel.getRev());
@@ -48,27 +49,48 @@ public class OldLOService
         return dto;
     }
     
-    public List<LearningObjectDto> getLearningObjects(String name) throws UnknownHostException{
+    public List<LearningObjectDto> getLearningObjects() throws UnknownHostException{
         if(dao==null)
             System.out.println("asdsad");
-        List<OldLO> LOList = dao.getListHistory(name);
+        List<OldLO> LOList = dao.getListHistory();
         List<LearningObjectDto> objects = new ArrayList<>();
         for(OldLO model: LOList){
             LearningObjectDto dto = new LearningObjectDto();
             dto.setId(model.getId());
             dto.setRating(model.getRating());
-            dto.setTitle(model.getName());
+            dto.setTitle(model.getTitle());
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
-            dto.setDownloads(model.getDownloads());
-            dto.setUploadDate(model.getDateUploaded());
+            dto.setUploadDate(model.getUploadDate());
             dto.setRev(model.getRev());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
-            dto.setRev(model.getRev());
             dto.setStatus(model.getStatus());
-            dto.setUploadedBy(model.getUploadedBy());
-            dto.setSequence(model.getSequence());
+            List<LearningElement[]> list = model.getSequence();
+            List<LearningElement[]> seq = new ArrayList<LearningElement[]>();
+            for (LearningElement[] list1 : list) {
+                LearningElement[] dum = new LearningElement[list1.length];
+                int i = 0;
+                 System.out.println("LIST: " +dum.toString());
+
+                for (LearningElement le : list1) {
+                    LearningElement tmp = new LearningElement();
+                    tmp.setTitle(le.getTitle());
+                    tmp.setType(le.getType());
+                    tmp.setContentType(le.getContentType());
+                    tmp.setDescription(le.getDescription());
+                    tmp.setUploadDate(le.getUploadDate());
+                    tmp.setId(le.getId());
+                    dum[i] = tmp;
+                    System.out.println("DUM1: " +le.getType());
+                    i++;
+                    
+                }
+                seq.add(dum);
+            }
+            
+            dto.setSequence(seq);
+
             objects.add(dto);
         }
         return objects;
@@ -76,7 +98,7 @@ public class OldLOService
     
     public static void main(String args[]) throws UnknownHostException{
         OldLOService os= new OldLOService();
-        System.out.println(os.getLearningObjects("hahah"));
+       // System.out.println(os.getLearningObjects("hahah"));
     }
     
     public List<LearningObjectDto> getAvailableLearningObjects() throws UnknownHostException{
@@ -86,11 +108,11 @@ public class OldLOService
             LearningObjectDto dto = new LearningObjectDto();
             dto.setId(model.getId());
             dto.setRating(model.getRating());
-            dto.setTitle(model.getName());
+            dto.setTitle(model.getTitle());
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());
-            dto.setUploadDate(model.getDateUploaded());
+            dto.setUploadDate(model.getUploadDate());
             dto.setRev(model.getRev());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
@@ -110,11 +132,11 @@ public class OldLOService
             LearningObjectDto dto = new LearningObjectDto();
             dto.setId(model.getId());
             dto.setRating(model.getRating());
-            dto.setTitle(model.getName());
+            dto.setTitle(model.getTitle());
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());
-            dto.setUploadDate(model.getDateUploaded());
+            dto.setUploadDate(model.getUploadDate());
             dto.setRev(model.getRev());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
@@ -132,11 +154,11 @@ public class OldLOService
         LearningObjectDto dto = new LearningObjectDto();
             dto.setId(lo.getId());
             dto.setRating(5);
-            dto.setTitle(lo.getName());
+            dto.setTitle(lo.getTitle());
             dto.setDescription(lo.getDescription());
             dto.setSubject(lo.getSubject());
             dto.setDownloads(lo.getDownloads());
-            dto.setUploadDate(lo.getDateUploaded());
+            dto.setUploadDate(lo.getUploadDate());
             dto.setRev(lo.getRev());
             dto.setUploadedBy(lo.getUploadedBy());
             dto.setComments(lo.getComments());
