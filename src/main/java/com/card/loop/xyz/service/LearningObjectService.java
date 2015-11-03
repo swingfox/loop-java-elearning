@@ -58,6 +58,13 @@ public class LearningObjectService
         return ok;
         
     }
+    
+    public boolean assignReviewer(String id, String reviewer) throws UnknownHostException {
+        if(dao.exists(id))
+            return dao.assignReviewer(id,reviewer);
+        else
+            return false;
+    }
 
     public LearningObjectDto getLearningObject(String id) throws UnknownHostException{
         LearningObject loModel;
