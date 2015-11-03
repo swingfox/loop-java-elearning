@@ -106,6 +106,14 @@ public class LearningObjectController {
             return "redirect:/developer-update";
     }
     
+     @RequestMapping(value = "/assignReviewer", method = RequestMethod.POST)
+    public boolean assignReviewer(@RequestParam("loid") String id,@RequestParam("reviewer") String reviewer) throws UnknownHostException {
+        if(id!=null && reviewer!=null)
+            return loService.assignReviewer(id,reviewer);
+        else
+            return false;
+    }
+    
     public void uploadAllLOToInformatron()
     {
         try {

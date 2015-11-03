@@ -160,18 +160,21 @@
 				
 				<div class="clearfix" id="before-features" ></div>
 			</div>
-		</div>
+		
 				<div class="clearfix"></div>				
-			</div>
-  		<div class="clearfix"></div>
-        <div class="push"></div>
+			
+                                <div class="clearfix"></div>
+        <div class="push"></div><div class="push"></div><div class="push"></div><div class="push"></div><div class="push"></div><div class="push"></div><div class="push"></div><div class="push"></div><div class="push"></div><div class="push"></div>
 	<div class="footer">
 		<footer id="footer-wrap-index">
 	            <div class="copyright-here pull-left download">
 					Copyright &copy; <!--<?php echo date("Y"); ?>--> LOOP | Learning Object Organizer Plus. All rights reserved.<!-- <button id="aime" class="btn btn-default">Test</button> -->
 		    	</div>
 	    </footer>
+            </div>
     </div>
+        </div>
+        
         
 	<!-- Load JS here for greater good =============================-->
 	<jsp:include page="include/mainScripts.jsp"/>

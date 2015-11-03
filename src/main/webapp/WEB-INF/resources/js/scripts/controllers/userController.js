@@ -172,9 +172,10 @@ app.controller('reviewerAccountCtrl', ['$scope', '$http', '$rootScope', 'userSer
         if(utilService.getValue("leid")!==null){
             $http.post("/loop-XYZ/loop/LE/assignReviewer?leid="+utilService.getValue("leid")+"&"+"reviewer="+$scope.luckyReviewer).success(function(response) {
                 alert(response);
+                window.location.reload();
             });
         }
-    };
+    };    
     
     load();
 }]);
@@ -200,6 +201,7 @@ app.controller('reviewerAccountCtrlLO', ['$scope', '$http', '$rootScope', 'userS
         if(utilService.getValue("loid")!==null){
             $http.post("/loop-XYZ/loop/LO/assignReviewer?loid="+utilService.getValue("loid")+"&"+"reviewer="+$scope.luckyReviewer).success(function(response) {
                 alert(response);
+                window.location.reload();
             });
         }
     };
