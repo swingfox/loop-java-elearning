@@ -49,7 +49,7 @@
 
 		<div class="clearfix"></div>
 
-            <form name="uniquetest" method="post" > <%--action="<?php echo base_url().'redirect/deleteLE_admin/'?>" --%>>
+            <form name="uniquetest" method="post" ng-controller="LECtrl"> <%--action="<?php echo base_url().'redirect/deleteLE_admin/'?>" --%>>
             <div class="modal fade" id="responsive_confirmDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -68,7 +68,7 @@
                             <div class="row">
                                 <div class="col-md-8 col-md-push-3">      
                                 <input type="hidden" value="" id="counters" name="counters">                                                                  
-                                    <button type="button" class="btn btn-primary" onclick="document.uniquetest.submit()"><i class="icon-ok icon-large default"></i> Yes &nbsp;</button>
+                                    <button type="button" class="btn btn-primary" ng-click="deleteMe()"><i class="icon-ok icon-large default"></i> Yes &nbsp;</button>
                             		<button type="button" class="btn btn-default" data-dismiss="modal" style="color: red;"><i class="icon-remove icon-large default"></i> &nbsp; No &nbsp;</button>
                                 </div>
                             </div>

@@ -74,7 +74,7 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', function($s
     });
 };
     $scope.GetLODetails_admin = function(lo) {
-             window.location.href = '/loop-XYZ/store/historyLO-admin?loid='+lo.id;
+        window.location.href = '/loop-XYZ/store/historyLO-admin?loid='+lo.id;
     }; 
     // this is for reviewer
      $scope.GetLO = function(lo) {
@@ -299,13 +299,26 @@ app.controller('LOCtrl', ['$scope', '$http', '$rootScope', 'utilService', 'loSer
         });
     };
    
-   $scope.demoteMe = function(){ 
+   $scope.demoteMe = function(){        
+       alert("BRAVEEEE" + $rootScope.LEFunc);
         loService.demoteLO($rootScope.LEFunc)
         .success(function(data) { 
             window.location.reload(true);
         })
         .error(function(jqXHR, status, error) {
             console.log("DEMOTE LO FAILED : "+ error);
+        });
+   };
+   
+   $scope.deleteMe = function(){        
+       //alert("BRAVEEEE" + utilService.getValue("loid"));
+        loService.deleteLO(utilService.getValue("loid"))
+        .success(function(data) { 
+            alert("Successfully deleted!");
+            window.location.href = 'admin-view5';
+        })
+        .error(function(jqXHR, status, error) {
+            console.log("DELETE LO FAILED : "+ error);
         });
    };
     

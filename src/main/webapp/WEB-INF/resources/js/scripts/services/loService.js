@@ -22,6 +22,9 @@
                 demoteLO : function(data){
                     return $http.post("/loop-XYZ/loop/LO/demoteLO/"+ data);
                 },
+                deleteLO : function(data){
+                    return $http.post("/loop-XYZ/loop/LO/deleteLO/"+ data);
+                },
                 reviewLO : function(data){
                     return $http.post("/loop-XYZ/loop/LO/reviewLO?loid="+data.id+'&'+"rating="+data.rating+'&'+"comment="+data.comment);
 

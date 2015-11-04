@@ -54,6 +54,22 @@ public class LearningElementService {
         
     }
     
+    public boolean deleteLE(LearningElementDto le) throws UnknownHostException, Exception{
+        boolean ok = false;
+        System.out.println(le.getId());
+        System.out.println(dao);
+
+        LearningElement model = dao.getLE(le.getId());
+        if(model!= null){
+            dao.deleteLE(model);
+            ok = true;
+        }
+        else
+            throw new Exception("LearningObject does not exist. ");
+        return ok;
+        
+    }
+    
     public LearningElementDto getSpecificLearningElement(String id) throws UnknownHostException{
         LearningElement leModel;
         leModel = dao.getSpecificLearningElement(id);
