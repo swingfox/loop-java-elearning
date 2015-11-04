@@ -214,6 +214,17 @@ public class LearningObjectController {
         return ok;
     }
     
+    @RequestMapping("/deleteLO/{id}")
+    @ResponseBody
+    public boolean deleteLO(@PathVariable String id) throws UnknownHostException, Exception{
+        LearningObjectDto ud = new LearningObjectDto();
+        boolean ok = false;
+        ud.setId(id);
+        ok = loService.deleteLO(ud);
+        //this.uploadAllLOToInformatron();
+        return ok;
+    }
+    
     /* 
     *   @return List<LearningObjectDto> reviewer's learning objects
     */

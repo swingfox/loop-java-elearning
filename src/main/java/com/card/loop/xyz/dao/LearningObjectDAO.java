@@ -80,6 +80,25 @@ public class LearningObjectDAO {
         return ok;
     }
     
+     public boolean deleteLO(LearningObject lo) throws UnknownHostException{
+        //Query query = new Query();
+        //query.addCriteria(where("name").is(lo.getTitle()));
+        boolean ok = false;
+        //boolean ok = mongoOps.exists(query, LearningObject.class);
+
+        try{
+            //mongoOps.remove(lo);
+            mongoOps.findAndRemove(query(where("_id").is(lo.getId())), LearningObject.class);
+            ok = true;
+            //mongoOps.remove(query, LearningObject.class);
+            
+        }
+        catch (Exception e){
+            System.out.println("FAILED TO DELETE " + e);
+        }
+        return ok;
+    }   
+    
      public boolean assignReviewer(String id, String reviewer) throws UnknownHostException {
         boolean ok = false;
         Update assigner = new Update();
@@ -177,16 +196,6 @@ public class LearningObjectDAO {
        query.with(new Sort(new Sort.Order(Sort.Direction.DESC, "dateUploaded")));
        return mongoOps.find(query(where("rating").lt(4).andOperator(where("rating").gt(0)).andOperator(where("status").is(2)).andOperator(where("rev").is(user))), LearningObject.class);
     }
-    
-    public boolean deleteLO(LearningObjectDto lo) throws UnknownHostException{
-        Query query = new Query();
-        query.addCriteria(where("name").is(lo.getTitle()));
-        boolean ok = mongoOps.exists(query, LearningObject.class);
-
-        if(ok)
-            mongoOps.remove(lo);
-        return ok;
-    }   
     
     public void updateLO(LearningObjectDto lo) throws UnknownHostException{
         Query query = new Query();

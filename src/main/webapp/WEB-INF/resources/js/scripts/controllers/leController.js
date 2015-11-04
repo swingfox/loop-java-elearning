@@ -145,6 +145,17 @@ app.controller('LEList', ['$scope', '$store', '$http', 'leService', function($sc
             console.log("DEMOTE LE FAILED : "+ error);
         });
    };
+   
+   $scope.deleteMe = function(){ 
+        leService.deleteLE(utilService.getValue("leid"))
+        .success(function(data) { 
+            alert("Successfully deleted!");
+            window.location.href = 'admin-view6';
+        })
+        .error(function(jqXHR, status, error) {
+            console.log("DELETE LE FAILED : "+ error);
+        });
+   };
     
    $scope.assignUser = function(le) {
        $rootScope.LEFunc = le.id;

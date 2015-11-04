@@ -53,7 +53,7 @@
 		<div class="clearfix"></div>
         
         <!-- Delete modal-->
-	<form name="uniquetest" method="post" >
+	<form name="uniquetest" method="post" ng-controller="LOCtrl">
             <div class="modal fade" id="responsive_confirmDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -64,7 +64,7 @@
                         <div class="modal-body">  
                             <div class="row">
                                 <div class="col-md-10 col-md-push-1">                                 
-                                    <label class="file-action">Are you sure you want to delete this Learning Element?</label>
+                                    <label class="file-action">Are you sure you want to delete this Learning Object?</label>
                                 </div> 
                             </div>
                         </div>
@@ -72,8 +72,8 @@
                             <div class="row">
                                 <div class="col-md-8 col-md-push-3">      
                                 <input type="hidden" value="" id="counters" name="counters">                                                                  
-                                    <button type="button" class="btn btn-primary" onclick="document.uniquetest.submit()"><i class="icon-ok icon-large default"></i> Yes &nbsp;</button>
-                            		<button type="button" class="btn btn-default" data-dismiss="modal" style="color: red;"><i class="icon-remove icon-large default"></i> &nbsp; No &nbsp;</button>
+                                <button type="button" class="btn btn-primary" ng-click="deleteMe()"><i class="icon-ok icon-large default"></i> Yes &nbsp;</button>
+                            	    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: red;"><i class="icon-remove icon-large default"></i> &nbsp; No &nbsp;</button>
                                 </div>
                             </div>
                         </div>

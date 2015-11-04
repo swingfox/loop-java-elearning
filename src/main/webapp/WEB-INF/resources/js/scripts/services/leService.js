@@ -23,6 +23,9 @@
                 },
                 demoteLE : function(data){
                     return $http.post("/loop-XYZ/loop/LE/demoteLE/"+ data);
+                },
+                 deleteLE : function(data){
+                    return $http.post("/loop-XYZ/loop/LE/deleteLE/"+ data);
                 }
             };
         });

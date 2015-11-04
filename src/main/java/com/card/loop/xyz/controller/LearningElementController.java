@@ -79,6 +79,17 @@ public class LearningElementController {
         ud.setId(id);
         return leService.demoteLE(ud);
     }
+    
+    @RequestMapping("/deleteLE/{id}")
+    @ResponseBody
+    public boolean deleteLE(@PathVariable String id) throws UnknownHostException, Exception{
+        LearningElementDto ud = new LearningElementDto();
+        boolean ok = false;
+        ud.setId(id);
+        ok = leService.deleteLE(ud);
+        return ok;
+    }
+    
     /*
     *   @params String id the name of the specific LE
     *   @return List<LearningElementDto> returns the list of all downloadable LEs

@@ -120,9 +120,21 @@ public class LearningElementDAO {
        mongoOps.insert(objects);
     }
     
-    public void deleteLearningElement(LearningElement objects) throws UnknownHostException{
+   /* public void deleteLearningElement(LearningElement objects) throws UnknownHostException{
        mongoOps.remove(objects);
-    }
+    }*/
+    
+    public boolean deleteLE(LearningElement le) throws UnknownHostException{
+        boolean ok = false;
+        try{
+            mongoOps.findAndRemove(query(where("_id").is(le.getId())), LearningElement.class);
+            ok = true;
+        }
+        catch (Exception e){
+            System.out.println("FAILED TO DELETE " + e);
+        }
+        return ok;
+    }   
     
     public List<LearningElement> getAllLearningElementByDateUpload(Date date) throws UnknownHostException {
        return mongoOps.find(query(where("uploadDate").is(date)), LearningElement.class);
@@ -205,12 +217,12 @@ public class LearningElementDAO {
         return true;
     }
     
-    public void deleteLE(String newFName, String type) throws UnknownHostException {
+    /*public void deleteLE(String newFName, String type) throws UnknownHostException {
         Mongo mongo = new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port);
         DB db = mongo.getDB(AppConfig.DATABASE_LOOP);
         GridFS le_gfs = new GridFS(db, type);
         le_gfs.remove(le_gfs.findOne(newFName));
-    }
+    }*/
     
     public ArrayList<DBObject> listAll(String collection) throws UnknownHostException {
         ArrayList<DBObject> list = new ArrayList<DBObject>();

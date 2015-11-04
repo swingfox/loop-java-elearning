@@ -59,6 +59,23 @@ public class LearningObjectService
         
     }
     
+    public boolean deleteLO(LearningObjectDto lo) throws UnknownHostException, Exception{
+        boolean ok = false;
+        System.out.println(lo.getId());
+        System.out.println(dao);
+
+        LearningObject model = dao.getLO(lo.getId());
+        if(model!= null){
+            //model.setStatus(0);
+            dao.deleteLO(model);
+            ok = true;
+        }
+        else
+            throw new Exception("LearningObject does not exist. ");
+        return ok;
+        
+    }
+    
     public boolean assignReviewer(String id, String reviewer) throws UnknownHostException {
         if(dao.exists(id))
             return dao.assignReviewer(id,reviewer);
