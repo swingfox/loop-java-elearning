@@ -156,6 +156,10 @@ app.controller('LEList', ['$scope', '$store', '$http', 'leService', function($sc
             console.log("DELETE LE FAILED : "+ error);
         });
    };
+   
+   $scope.reviewRedirect = function(){ 
+        window.location.href = '/loop-XYZ/store/reviewLE-admin?leid='+utilService.getValue("leid");
+   };
     
    $scope.assignUser = function(le) {
        $rootScope.LEFunc = le.id;

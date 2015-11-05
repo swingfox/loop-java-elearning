@@ -43,7 +43,7 @@
                 </div>
             </div>
         </form>
-        <form id="emailForm">
+        <form id="emailForm" ng-controller="LoginCtrl">
             <div class="modal fade" id="responsive_changeEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">

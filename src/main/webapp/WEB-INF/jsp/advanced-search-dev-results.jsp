@@ -83,21 +83,21 @@
 									<th>Reviewer</th>
 								</tr>
 							</thead>
-                                                    <tbody>
-                                                            <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : username }">
+                                                    <tbody ng-controller="LoginCtrl">
+                                                            <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : username } | filter: { subject : subject } |  filter:lo | orderBy : order">
                                                                 <td>
-                                                                    <img ng-if="lo.rating==1" src="img/icon-red.png" alt="For Review">
-                                                                    <img ng-if="lo.rating==2" src="img/icon-orange.png" alt="For Review">
-                                                                    <img ng-if="lo.rating==3" src="img/icon-yellow.png" alt="For Review">
-                                                                    <img ng-if="lo.rating==4" src="img/icon-yellowgreen.png" alt="For Review">
-                                                                    <img ng-if="lo.rating==5" src="img/icon-green.png" alt="For Review">
+                                                                    <img ng-if="rating==1" src="img/icon-red.png" alt="For Review">
+                                                                    <img ng-if="rating==2" src="img/icon-orange.png" alt="For Review">
+                                                                    <img ng-if="rating==3" src="img/icon-yellow.png" alt="For Review">
+                                                                    <img ng-if="rating==4" src="img/icon-yellowgreen.png" alt="For Review">
+                                                                    <img ng-if="rating==5" src="img/icon-green.png" alt="Reviewed">
                                                                 </td>
-                                                                <td><a ng-click="GetLO(lo)"><label ng-model="lo.name">{{lo.name}}</a></td>
-                                                                <td><label ng-model="lo.subject">{{lo.subject}}</td>
-                                                                <td><label ng-model="lo.dateUploaded">{{lo.dateUploaded}}</td>
-                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="lo.rating">{{lo.rating}}</td>
-                                                                <td><label ng-model="lo.comments">{{lo.comments}}</td>
-                                                                <td><label ng-model="lo.rev">{{lo.rev}}</td>
+                                                                <td><a ng-click="GetLO(lo)"><label ng-model="title">{{lo.title}}</a></td>
+                                                                <td><label ng-model="subject">{{lo.subject}}</td>
+                                                                <td><label ng-model="uploadDate">{{lo.uploadDate | date:"yyyy-MM-dd"}}</td>
+                                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label ng-model="rating">{{lo.rating}}</td>
+                                                                <td><label ng-model="comments">{{lo.comments}}</td>
+                                                                <td><label ng-model="rev">{{lo.rev}}</td>
 
                                                             </tr>													
                                                     </tbody>

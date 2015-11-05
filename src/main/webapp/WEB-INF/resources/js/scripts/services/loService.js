@@ -27,7 +27,9 @@
                 },
                 reviewLO : function(data){
                     return $http.post("/loop-XYZ/loop/LO/reviewLO?loid="+data.id+'&'+"rating="+data.rating+'&'+"comment="+data.comment);
-
+                },
+                searchLO : function(data){
+                    return $http.get("/loop-XYZ/loop/LO/searchLO?lo="+data.lo+'&'+"subject="+data.subject+'&'+"from="+data.from+'&'+"to="+data.to+'&'+"orderBy="+data.orderBy);
                 },
                 loListHistory : function(){
                     return $http.get("/loop-XYZ/loop/LO/listHistory/");

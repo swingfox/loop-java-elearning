@@ -101,6 +101,7 @@ public class LearningElementController {
         LearningElementDto dto = new LearningElementDto();
         try{
             dto = leService.getSpecificLearningElement(id);
+            dto.setDownloads(dto.getDownloads() + 1);
         }catch(Exception e){ 
             e.printStackTrace();
         }

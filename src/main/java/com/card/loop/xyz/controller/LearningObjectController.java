@@ -251,6 +251,7 @@ public class LearningObjectController {
         LearningObjectDto dto = new LearningObjectDto();
         try{
             dto = loService.getLearningObject(id);
+            //dto.setDownloads(dto.getDownloads()+1);
         }catch(Exception e){ 
             e.printStackTrace();
         }
@@ -311,6 +312,13 @@ public class LearningObjectController {
     public List<LearningObjectDto> getLO(@PathVariable String loid) throws UnknownHostException {
         List<LearningObjectDto> lo = new ArrayList<>(); 
         lo.add(loService.getLearningObject(loid));
+        return lo;
+    }
+    
+    @RequestMapping(value = "/searchLO", method = RequestMethod.GET)
+    public List<LearningObjectDto> reviewLO(@RequestParam("lo")String id, @RequestParam("subject") int subject, @RequestParam("from") String from, @RequestParam("to") String to, @RequestParam("orderBy") String orderBy) throws UnknownHostException{
+        List<LearningObjectDto> lo = new ArrayList<>(); 
+        //lo.add(loService.getLearningObject(loid));
         return lo;
     }
     

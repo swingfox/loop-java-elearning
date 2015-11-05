@@ -8,7 +8,7 @@
 (function(){
   "use strict";
 
-app.controller('LOList', ['$scope', '$store', '$http' , 'loService', function($scope, $store, $http, loService) {
+app.controller('LOList', ['$scope', '$store', '$http' , 'loService', 'utilService', function($scope, $store, $http, loService, utilService) {
         $store.bind($scope, 'lo.id', ''); 
         $store.bind($scope, 'lo.title','');
         $store.bind($scope, 'lo.subject',''); 
@@ -20,8 +20,12 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', function($s
         $store.bind($scope, 'lo.price', ''); 
         $store.bind($scope, 'lo.sequence', ''); 
         $store.bind($scope, 'lo.leArray', ''); 
-
-
+        $scope.subject = utilService.getVal("subject");
+        $scope.lo = utilService.getVal("lo");
+        $scope.order = utilService.getVal("orderBy");
+        $scope.startDate = utilService.getVal("from");
+        $scope.endDate = utilService.getVal("to");
+        
     if(window.location.toString().split('/store/')[1] === 'download')
         $scope.snippet = $store.get('lo.leArray');
     else
@@ -51,6 +55,16 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', function($s
         .error(function(jqXHR, status, error) {
             console.log(""+ error);
         });
+    };
+    
+    $scope.dateRangeFilter = function (lo, startDate, endDate) {
+        return function (lo) {
+            alert("LO: " + lo);
+            if (lo === null) return false;
+
+            if (lo >= startDate && lo <= endDate) return true;
+            return false;
+        };
     };
     
     $scope.reviewLO = function(lo){

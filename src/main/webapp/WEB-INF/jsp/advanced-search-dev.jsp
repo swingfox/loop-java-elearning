@@ -152,7 +152,7 @@
 							</div>
 
 							<div class="well tour-step tour-step-eighteen">
-								<div class="checkbox"><label class="" for="checkbox3" ng-click="showOrderBy">
+								<div class="checkbox"><label class="" for="checkbox3" ng-click="showOrderBy()">
 								    <input name="orderCheck" type="checkbox" id="checkbox3" data-toggle="checkbox" value="option3">
 								    Order By
 								</label></div>
@@ -174,7 +174,6 @@
 							<div class="form-actions advanced-search">
                                                             <a class="btn btn-primary tour-step tour-step-nineteen" ng-click="showResults()">Search</a>
 							    <a class="btn btn-default" ng-href="developer-update">Cancel</a>
-							    <button type="button" class="btn btn-info btn-lg btn-block main" onclick="document.location='http://localhost/jiary/index.php/journal/jiary_view'">Jiary View</button> -->
 							</div>
 				        </div>
 					</div>
