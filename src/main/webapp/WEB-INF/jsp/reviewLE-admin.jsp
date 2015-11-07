@@ -112,7 +112,7 @@
 				        <div class="form-actions advanced-search">
 							<input type="hidden" value="<?php echo $le->getID(); ?>" id="id" name="id">
 							<input type="hidden" value="LE" name="type">
-							<button type="submit" class="btn btn-primary"><i class="icon-ok icon-large"></i> Submit</button>
+							<button ng-click="" type="submit" class="btn btn-primary"><i class="icon-ok icon-large"></i> Submit</button>
 
 							<a class="btn btn-default" href="index.jsp">Cancel</a>
 						</div>

@@ -44,6 +44,7 @@ app.controller('LEList', ['$scope', '$store', '$http', 'leService', function($sc
      };
     
      $scope.GetLE = function(le) {
+         console.log("CHECK");
         leService.getSpecificLE(le.id)
         .success(function(data) {
             $store.bind($scope, 'le.id', data.id); 
@@ -155,6 +156,10 @@ app.controller('LEList', ['$scope', '$store', '$http', 'leService', function($sc
         .error(function(jqXHR, status, error) {
             console.log("DELETE LE FAILED : "+ error);
         });
+   };
+   
+   $scope.reviewRedirect = function(){ 
+        window.location.href = '/loop-XYZ/store/downloadLEAdmin?leid='+utilService.getValue("leid");
    };
     
    $scope.assignUser = function(le) {

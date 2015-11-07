@@ -148,12 +148,12 @@
 							</tbody>
 						  </table>
 						</div>
-						<div>
+						<div ng-controller="LECtrl">
 							<input type="hidden" <%--value="<?php echo $index?>"--%> id="ctr" name="ctr">
                                                         <input type="hidden" value="" id="counters" name="counters">
 
                                                         <a href="#responsive_addReviewer" class="btn btn-default" data-dismiss="modal" data-toggle="modal"><i class="icon-plus-sign icon-large default"></i> Add Reviewer</a>
-							<a href="/loop-XYZ/store/reviewLE-admin" type="button" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>
+							<a ng-click="reviewRedirect()" type="button" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>
 							<a href="#responsive_confirmDelete" class="btn btn-primary" data-toggle="modal"><i class="icon-trash icon-large default"></i> Delete</a>
 
 				    		<a href="/loop-XYZ/store/admin-view6" class="btn btn-default"> Back</a>

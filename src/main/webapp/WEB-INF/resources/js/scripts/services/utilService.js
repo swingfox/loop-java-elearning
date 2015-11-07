@@ -13,19 +13,41 @@
             getValue : function(data){
                 try{
                     var currentURL = window.location.toString().split('?')[1];
-                      if(currentURL !== null) {
-                      var temp = currentURL.split('=');
-                          if(temp[0] === data) {
-                              return temp[1];
-                          }
-                      } else {
-                          return null;
-                      }  
+                        if(currentURL !== null) {
+                            var temp = currentURL.split('=');
+                            if(temp[0] === data) {
+                                return temp[1];
+                            }
+                        } else {
+                            return null;
+                        }  
                  }
                  catch(err){
                      return null;
                  }
-            }
+            },
+            getVal : function(data){
+                try{
+                    var currentURL = window.location.toString().split('?')[1];
+                        if(currentURL !== null) {
+                            var x = [];
+                            var x = currentURL.split('&');
+                            var i;
+                            for(i = 0; i<x.length; i++) {
+                                console.log("JULIE: " + x[i]);
+                                var temp = x[i].split('=');
+                                if(temp[0] === data) {
+                                    return temp[1];
+                                }
+                            }   
+                        } else {
+                            return null;
+                        }  
+                 }
+                 catch(err){
+                     return null;
+                 }
+            },
         };
     });
 })();
