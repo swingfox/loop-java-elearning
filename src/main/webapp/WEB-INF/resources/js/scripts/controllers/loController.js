@@ -21,19 +21,31 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', 'utilServic
     $store.bind($scope, 'lo.sequence', ''); 
     $store.bind($scope, 'lo.leArray', ''); 
 
-    $scope.xsubject = utilService.getVal("subject");
-    $scope.xlo = utilService.getVal("lo");
-    $scope.xorder = utilService.getVal("orderBy");
-    $scope.xstartDate = utilService.getVal("from");
-    $scope.xendDate = utilService.getVal("to");
 
+    $scope.xsubject = utilService.getVal("subject") === null ? '' : utilService.getVal("subject");
+    $scope.xlo = utilService.getVal("lo") === null ? '' : utilService.getVal("lo");
+    $scope.xorder = utilService.getVal("orderBy") === null ? '' : utilService.getVal("orderBy");
+    $scope.xstartDate = utilService.getVal("from") === null ? '' : utilService.getVal("from");
+    $scope.xendDate = utilService.getVal("to")=== null ? '' : utilService.getVal("to");
 
-    if(window.location.toString().split('/store/')[1] === 'download')
+    var webpage = window.location.toString().split('/store/')[1];
+    if(contains('?'))
+        webpage = webpage.substring(0,15);
+    if(webpage === 'download' || webpage === 'downloadLOAdmin')
         $scope.snippet = $store.get('lo.leArray');
     else
         $scope.snippet = '<br>';
 
-
+    function contains(str){
+        var ok = false;
+        for(var i = 0; i < str.length;i++){
+            if(str[i] === '?'){
+                ok = true;
+                break;
+            }
+        }
+        return ok;
+    }
     //displays all LEARNING OBJECTS in admin-view5
     loService.getList().success(function(data) {
     	$scope.los = data;
@@ -97,9 +109,16 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', 'utilServic
              window.location = '/loop-XYZ/store/reviewLO-rev?loid=' + data.id;
     });
 };
-    $scope.GetLODetails_admin = function(lo) {
-        window.location.href = '/loop-XYZ/store/historyLO-admin?loid='+lo.id;
-    }; 
+
+    $scope.reviewRedirect = function(){ 
+       loService.getSpecificLO(utilService.getValue("loid"))    
+        .success(function(data) {
+            window.location.href = '/loop-XYZ/store/downloadLOAdmin?loid='+data.id;
+        })
+        .error(function(jqXHR, status, error) {
+            console.log(""+ error);
+        });
+   };
     // this is for reviewer
      $scope.GetLO = function(lo) {
         loService.getSpecificLO(lo.id).success(function(data) {
@@ -201,8 +220,8 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', 'utilServic
         });
     };
     
-   /* $scope.GetLODetails_admin = function(lo) {
-        $http.get('/loop-XYZ/loop/LO/download/' + lo.id)    
+    $scope.GetLODetails_admin = function(lo) {
+        $http.get('/loop-XYZ/loop/LO/download?loid=' + lo.id)    
         .success(function(data) {
             $store.bind($scope, 'lo.id', data.id); 
             $store.bind($scope, 'lo.title', data.title);
@@ -214,16 +233,38 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', 'utilServic
             $store.bind($scope, 'lo.status', data.status); 
             console.log($store.get('username'));
             console.log($store.get('userType'));
-         if($store.get('userType') === "developer")
-             window.location = '/loop-XYZ/store/historyLO-dev';
-         else
-             window.location = '/loop-XYZ/store/downloadLOAdmin';
+              
+            
+           var pages = data.sequence.length;
+                       var obj = [[]];
+
+           for (var i = 0; i < pages; i++) { 
+               console.log(data.sequence[i].length);
+               for(var j = 0; j < data.sequence[i].length; j++){
+                   console.log("J: " + j);
+                   if(!obj[i])
+                       obj[i] = [];
+                   obj[i][j] = data.sequence[i][j];
+                   $scope.snippet +=  
+                                         '<p class="col-md-3 download-details">' + 
+                                        'Title: '+ data.sequence[i][j].title +'<br>' + 
+                                         'Type: '+ data.sequence[i][j].type + '<br>' + 
+                                         'Rating: '+ data.sequence[i][j].rating +'<br><br>' + 
+                                     '</p>';
+               }
+           }       
+          // $store.bind($scope, 'lo.sequence', obj); 
+           console.log(data.sequence.length);
+           console.log(data.sequence[0].length);
+                   $store.bind($scope, 'lo.leArray', $scope.snippet); 
+
+        window.location.href = '/loop-XYZ/store/historyLO-admin?loid='+lo.id;
+
         })
         .error(function(jqXHR, status, error) {
             console.log(""+ error);
         });
-    }; */
-    
+    }; 
     $scope.clearLO = function(){ 
         $store.remove('lo.id'); 
         $store.remove('lo.title');

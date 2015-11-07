@@ -39,16 +39,15 @@
 	<jsp:include page="include/CurrentUser.jsp"/>
 		<div class="clearfix"></div>
 
-		<div id="breadcrumb-wrap">
+		<div id="breadcrumb-wrap" ng-controller="LOList">
 				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="/loop-XYZ/store/admin-view5">Back to Learning Object List</a></li>
-					<li class="active">
-                    </li>
+					<li><a class="breadcrumb-link" ng-click="clearLO()" href="/loop-XYZ/store/admin-view5">Back to Learning Object List</a></li>
+					<li class="active"></li>
 				</ol>
 		</div> 
 
 		<div class="clearfix"></div>
-		<div id="content-download">
+		<div id="content-download" ng-controller="LOList">
 			<div class="container">
 				<div class="col-md-6 col-md-push-3">
                     <div class="page-header download">
@@ -64,30 +63,39 @@
                         <div class="well">		
 	                        <div class="form-group">
                                     <label class="col-md-3 control-label download">Filename :</label>
-	                                <p class="download-details">{{lo.name}}</p>
-	                           
+	                                <p class="download-details">{{lo.title}}</p>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Subject :</label>
-	                                <p class="download-details">{{lo.subject}}</p>
-	                            
+	                                <p class="download-details">{{lo.subject}}</p>               
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Date Uploaded :</label>
-	                                <p class="download-details">{{lo.dateUploaded}}</p>       
+	                                <p class="download-details">{{lo.uploadDate | date: "MMMM dd, yyyy"}}</p>       
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
-
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Description :</label>
 	                                <p class="download-details">{{lo.description}}</p>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
+                                 <div class="form-group">
+	                            <label class="col-md-3 control-label download">Price :</label>
+	                            
+	                                <p class="download-details">{{lo.price}}</p>
+	                            
+	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
+                                <div class="form-group">
+
+                                 <label class="col-md-3 control-label download">LEs :</label>
+                                 <div ng-bind-html="snippet">
+                                 </div>
+	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 	                    </div>	
 
 	                        <div class="form-actions advanced-search">
-                                    <a class="btn btn-primary"><i class="icon-download-alt icon-large"></i> Download</a>
-                                    <a class="btn btn-default" href="/loop-XYZ/store/admin-view5">Back</a>
+                                <!--    <a class="btn btn-primary"><i class="icon-download-alt icon-large"></i> Download</a> -->
+                                    <a class="btn btn-default" href="/loop-XYZ/store/admin-view5" ng-click="clearLO()">Back</a>
                                 </div>
 									
                     </form>

@@ -77,7 +77,22 @@ app.controller('LEList', ['$scope', '$store', '$http', 'leService', function($sc
     }; 
     
     $scope.GetLEDetails_admin = function(le) {
-            window.location.href = '/loop-XYZ/store/historyLE-admin?leid='+le.id;
+        leService.getSpecificLE(le.id)
+        .success(function(data) {
+            $store.bind($scope, 'le.id', data.id); 
+            $store.bind($scope, 'le.title', data.title);
+            $store.bind($scope, 'le.subject', data.subject); 
+            $store.bind($scope, 'le.uploadDate', data.uploadDate); 
+            $store.bind($scope, 'le.comments', data.comments);
+            $store.bind($scope, 'le.rating', data.rating); 
+            $store.bind($scope, 'le.description', data.description); 
+            $store.bind($scope, 'le.rev', data.rev); 
+            window.location.href = '/loop-XYZ/store/historyLE-admin?leid='+data.id;
+
+        })
+        .error(function(jqXHR, status, error) {
+            console.log(""+ error);
+        });
     }; 
     
     $scope.clearLE = function(){ 
@@ -159,7 +174,13 @@ app.controller('LEList', ['$scope', '$store', '$http', 'leService', function($sc
    };
    
    $scope.reviewRedirect = function(){ 
-        window.location.href = '/loop-XYZ/store/downloadLEAdmin?leid='+utilService.getValue("leid");
+       leService.getSpecificLE(utilService.getValue("leid"))    
+        .success(function(data) {
+            window.location.href = '/loop-XYZ/store/downloadLEAdmin?leid='+data.id;
+        })
+        .error(function(jqXHR, status, error) {
+            console.log(""+ error);
+        });
    };
     
    $scope.assignUser = function(le) {

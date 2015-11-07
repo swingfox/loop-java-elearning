@@ -1,9 +1,8 @@
 <jsp:include page="include/headerScript.jsp"/>
-<html lang="en">
+<html lang="en" ng-app="loop">
 <head>
 <title>LOOP | Download</title>
 
-<!--?php $this->layout->header() ?-->
     <link href="img/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 
     <!-- Bootstrap 3 -->
@@ -42,31 +41,17 @@
 <jsp:include page="include/CurrentUser.jsp"/>
 		<div class="clearfix"></div>
 
-		<div id="breadcrumb-wrap">
-			<!-- <div class="container"> -->
+		<div id="breadcrumb-wrap" ng-controller="LEList">
 				<ol class="breadcrumb">
-					<li><a class="breadcrumb-link" href="/loop-XYZ/store/admin-view6">Back to Learning Element List</a></li>
-					<li class="active">
-						<!--?php 
-	                    	if($le->getStatus() == 0)
-	                        	echo 'Download';
-	                        else
-	                        	echo 'Review';
-                        ?-->
-                    </li>
+                                    <li><a class="breadcrumb-link" href="/loop-XYZ/store/admin-view6" ng-click="clearLE()">Back to Learning Element List</a></li>
+                                    <li class="active">Download</li>
 				</ol>
-			<!-- </div> -->
 		</div> 
 
 		<div class="clearfix"></div>
-
-
-		<!-- Gi sugdan -->
-
-		<!-- <div id="content-wrap"> -->
+                
 		<div id="content-download">
 			<div class="container">
-				<!-- <div class="col-md-8 col-md-push-2"> -->
 				<div class="col-md-6 col-md-push-3">
                     <div class="page-header download">
                     	<!--?php 
@@ -76,55 +61,33 @@
                         	echo '<h2 class="download">Review</h2>';
                         ?-->
                     </div>
-
-                    <!-- <legend class="col-md-12 col-md-push-3">Download</legend> -->
-
+                                    
                     <form class="form-horizontal bootstrap-validator-form" method="post" id="defaultForm" novalidate="novalidate" ng-controller="LEList">
                         <div class="well">		
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Filename :</label>
-	                            <div class="col-md-8">
-	                                <!-- <input type="text" name="username" class="form-control"> -->
-	                                <!-- <p class="download-details"><//?php echo $le->getName(); ?></p> -->
-	                                <p class="download-details"><!--?php echo $le->getName(); ?--></p>
-	                            </div>
+	                                <p class="download-details">{{le.title}}</p>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Subject :</label>
-	                            <div class="col-md-8">
-	                                <!-- <input type="text" name="email" class="form-control"> -->
-	                                <p class="download-details"><!--?php echo $le->getSubject(); ?--></p>
-	                            </div>
+	                                <p class="download-details">{{le.subject}}</p>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Date Uploaded :</label>
-	                            <div class="col-md-8">
-	                                <!-- <input type="password" name="password" class="form-control"> -->
-	                                <p class="download-details"><!--?php echo $le->getDateUploaded(); ?--></p>
-	                            </div>
+	                                <p class="download-details">{{le.uploadDate |  date : "MMMM dd, yyyy"}}</p>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Description :</label>
-	                            <div class="col-md-8">
-	                                <!-- <input type="password" name="confirmPassword" class="form-control"> -->
-	                                <p class="download-details"><!--?php echo $le->getDescription(); ?--></p>
-	                            </div>
+	                                <p class="download-details">{{le.description}}</p>
 	                        <small class="help-block col-md-push-3 col-md-9" style="display: none;"></small></div>
 	                    </div>	
 
 	                        <div class="form-actions advanced-search">
-                                   <!--?php
-                                    echo '<input type="hidden" value="'.$le->getID().'" id="id" name="id">';
-                                    if($le->getStatus() <= 1)
-                                     echo '<a href="'.base_url().'redirect/downloadNow/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-download-alt icon-large"></i> Download</a>';
-                                    if($le->getStatus() == 2 && $le->getRev() == $username)
-                                    echo '<a href="'.base_url().'redirect/reviewLE_Admin/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>';
-                                    ?-->
-                                    <a href="" class="btn btn-primary"><i class="icon-download-alt icon-large"></i>{{le.id}} Download</a>
-                                    <a class="btn btn-default" href="<?php echo base_url() ?>index.php">Back</a>
+                                    <a href="/loop-XYZ/loop/LE/downloadLE?id={{le.id}}" class="btn btn-primary"><i class="icon-download-alt icon-large" ></i> Download</a>
+                                    <a class="btn btn-default" href="/loop-XYZ/store/admin-view6" ng-click="clearLE()">Back</a>
                                 </div>
 									
                     </form>
@@ -134,20 +97,7 @@
 		</div> 
 
   		<div class="clearfix"></div>
-
-  		<!-- This is the original footer with id=wrapper -->
-		<!-- <footer id="footer-wrap-index"> -->
-			<!-- <div class="container">
-		    	<div class="copyright-here pull-left">
-					Copyright &copy; <?php //echo date("Y"); ?> LOOP | Learning Object Organizer Plus. All rights reserved.<button id="aime" class="btn btn-default">Test</button>
-		    	</div>
-	  		</div>
-    	</footer> -->
-		
-		<!-- Take this out if you want the original footer back -->
         <div class="push"></div>
-	</div>
-
 	<div class="footer">
 		<footer id="footer-wrap-index">
 			<!-- <div class="container"> -->

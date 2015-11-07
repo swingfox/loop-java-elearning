@@ -71,7 +71,6 @@
                         <div class="modal-footer"> 
                             <div class="row">
                                 <div class="col-md-8 col-md-push-3">      
-                                <input type="hidden" value="" id="counters" name="counters">                                                                  
                                 <button type="button" class="btn btn-primary" ng-click="deleteMe()"><i class="icon-ok icon-large default"></i> Yes &nbsp;</button>
                             	    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: red;"><i class="icon-remove icon-large default"></i> &nbsp; No &nbsp;</button>
                                 </div>
@@ -123,12 +122,9 @@
 							</tbody>
 						  </table>
 						</div>
-						<div>
-                                                    <input type="hidden" value="<?php echo $index?>" id="ctr" name="ctr">
-                                                    <input type="hidden" value="" id="counters" name="counters">
-
+						<div ng-controller="LOList">
                                                     <a href="#responsive_addReviewer" class="btn btn-default" data-dismiss="modal" data-toggle="modal"><i class="icon-plus-sign icon-large default"></i> Add Reviewer</a>
-                                                    <a ng-click="GetLODetails_admin(lo)" type="button" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>
+                                                    <a ng-click="reviewRedirect()" type="button" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>
                                                     <a href="#responsive_confirmDelete" class="btn btn-primary" data-toggle="modal"><i class="icon-trash icon-large default"></i> Delete</a>
                                                     <a href="/loop-XYZ/store/admin-view5" class="btn btn-default"> Back</a>
 						</div>
