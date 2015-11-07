@@ -84,7 +84,7 @@
 								</tr>
 							</thead>
                                                     <tbody ng-controller="LoginCtrl">
-                                                            <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : username } | filter: { subject : subject } |  filter:lo | orderBy : order">
+                                                            <tr ng-repeat="lo in los | filter:searchText | filter: { uploadedBy : username } | filter: { subject : xsubject } |  filter:xlo | filter: dateRangeFilter(lo, xstartDate, xendDate) | orderBy : xorder">
                                                                 <td>
                                                                     <img ng-if="rating==1" src="img/icon-red.png" alt="For Review">
                                                                     <img ng-if="rating==2" src="img/icon-orange.png" alt="For Review">

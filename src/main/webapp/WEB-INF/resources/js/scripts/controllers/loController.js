@@ -9,23 +9,25 @@
   "use strict";
 
 app.controller('LOList', ['$scope', '$store', '$http' , 'loService', 'utilService', function($scope, $store, $http, loService, utilService) {
-        $store.bind($scope, 'lo.id', ''); 
-        $store.bind($scope, 'lo.title','');
-        $store.bind($scope, 'lo.subject',''); 
-        $store.bind($scope, 'lo.rating', ''); 
-        $store.bind($scope, 'lo.rev', ''); 
-        $store.bind($scope, 'lo.comments',''); 
-        $store.bind($scope, 'lo.uploadDate', ''); 
-        $store.bind($scope, 'lo.description', ''); 
-        $store.bind($scope, 'lo.price', ''); 
-        $store.bind($scope, 'lo.sequence', ''); 
-        $store.bind($scope, 'lo.leArray', ''); 
-        $scope.subject = utilService.getVal("subject");
-        $scope.lo = utilService.getVal("lo");
-        $scope.order = utilService.getVal("orderBy");
-        $scope.startDate = utilService.getVal("from");
-        $scope.endDate = utilService.getVal("to");
-        
+    $store.bind($scope, 'lo.id', ''); 
+    $store.bind($scope, 'lo.title','');
+    $store.bind($scope, 'lo.subject',''); 
+    $store.bind($scope, 'lo.rating', ''); 
+    $store.bind($scope, 'lo.rev', ''); 
+    $store.bind($scope, 'lo.comments',''); 
+    $store.bind($scope, 'lo.uploadDate', ''); 
+    $store.bind($scope, 'lo.description', ''); 
+    $store.bind($scope, 'lo.price', ''); 
+    $store.bind($scope, 'lo.sequence', ''); 
+    $store.bind($scope, 'lo.leArray', ''); 
+
+    $scope.xsubject = utilService.getVal("subject");
+    $scope.xlo = utilService.getVal("lo");
+    $scope.xorder = utilService.getVal("orderBy");
+    $scope.xstartDate = utilService.getVal("from");
+    $scope.xendDate = utilService.getVal("to");
+
+
     if(window.location.toString().split('/store/')[1] === 'download')
         $scope.snippet = $store.get('lo.leArray');
     else
@@ -59,13 +61,21 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', 'utilServic
     
     $scope.dateRangeFilter = function (lo, startDate, endDate) {
         return function (lo) {
-            alert("LO: " + lo);
-            if (lo === null) return false;
-
-            if (lo >= startDate && lo <= endDate) return true;
+            function parseDate(input) {
+                input = "" + input;
+                var parts = input.split('-');             
+                return new Date(parts[0], parts[1]-1, parts[2]); 
+            }            
+            
+            var date = new Date(lo.uploadDate);
+            var from = parseDate(startDate);
+            var to = parseDate(endDate);
+            if ( date >= from && date <= to) return true;
             return false;
         };
     };
+    
+    
     
     $scope.reviewLO = function(lo){
         loService.getSpecificLO(lo).success(function(data) {

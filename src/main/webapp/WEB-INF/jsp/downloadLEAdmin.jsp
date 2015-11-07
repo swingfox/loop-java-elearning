@@ -79,7 +79,7 @@
 
                     <!-- <legend class="col-md-12 col-md-push-3">Download</legend> -->
 
-                    <form class="form-horizontal bootstrap-validator-form" method="post" id="defaultForm" novalidate="novalidate">
+                    <form class="form-horizontal bootstrap-validator-form" method="post" id="defaultForm" novalidate="novalidate" ng-controller="LEList">
                         <div class="well">		
 	                        <div class="form-group">
 	                            <label class="col-md-3 control-label download">Filename :</label>
@@ -123,6 +123,7 @@
                                     if($le->getStatus() == 2 && $le->getRev() == $username)
                                     echo '<a href="'.base_url().'redirect/reviewLE_Admin/'.$counter.'/'.$filepath.'" class="btn btn-primary"><i class="icon-edit icon-large"></i> Review</a>';
                                     ?-->
+                                    <a href="" class="btn btn-primary"><i class="icon-download-alt icon-large"></i>{{le.id}} Download</a>
                                     <a class="btn btn-default" href="<?php echo base_url() ?>index.php">Back</a>
                                 </div>
 									
