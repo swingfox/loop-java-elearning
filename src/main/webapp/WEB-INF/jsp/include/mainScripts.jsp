@@ -39,7 +39,7 @@
 <script src="js/js-flat-ui/jquery.stacktable.js"></script>
 <script src="js/datatables/jquery.dataTables.min.js"></script>
 <script src="js/datatables/dataTables.bootstrap.js"></script>  
-<script src="http://vjs.zencdn.net/c/video.js"></script>
+<script src="js/video.js"></script>
 <script src="js/datatables/jquery.dataTables.min.js"></script>            
 <script src="js/datatables/dataTables.bootstrap.js"></script>
 
