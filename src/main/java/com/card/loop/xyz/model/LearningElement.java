@@ -292,6 +292,14 @@ public class LearningElement {
     public void setAliases(String aliases) {
         this.aliases = aliases;
     }
+
+    public long getLength() {
+        return length;
+    }
+
+    public void setLength(long length) {
+        this.length = length;
+    }
     
    
 }

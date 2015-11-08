@@ -217,6 +217,38 @@ public class LearningElementDAO {
         return true;
     }
     
+    public boolean addFile(LearningElement le, File file) throws UnknownHostException, IOException{
+        Mongo mongo = new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port);
+        DB db = mongo.getDB(AppConfig.DATABASE_LOOP);
+
+        GridFS gf = new GridFS(db,"le.meta");
+        GridFSInputFile gfsFile = gf.createFile(file);
+	gfsFile.setFilename(le.getFilename());
+        gfsFile.setContentType(le.getContentType());
+        gfsFile.put("_class","com.card.loop.xyz.model.LearningElement");
+        gfsFile.put("title",le.getTitle());
+        gfsFile.put("filePath",le.getFilePath());
+        gfsFile.put("subject",le.getSubject());
+        gfsFile.put("description", le.getDescription());
+        gfsFile.put("downloads",le.getDownloads());
+        gfsFile.put("rating",le.getRating());
+        gfsFile.put("comments",le.getComments());
+        gfsFile.put("uploadedBy",le.getUploadedBy());
+        gfsFile.put("status", le.getStatus());
+        gfsFile.put("rev", le.getRev());
+        gfsFile.put("type", le.getType());
+	gfsFile.save();
+
+        // Let's store our document to MongoDB
+     /*   System.out.println("SEARCH: " + search(gfsFile.getMD5(), "le.meta"));
+        if(search(gfsFile.getMD5(), "le.meta") > 1){            
+            deleteLE(le.getFileName(),"le.meta");
+        }*/
+        //
+//	collection.insert(info, WriteConcern.SAFE);
+        return true;
+    }
+    
     /*public void deleteLE(String newFName, String type) throws UnknownHostException {
         Mongo mongo = new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port);
         DB db = mongo.getDB(AppConfig.DATABASE_LOOP);
