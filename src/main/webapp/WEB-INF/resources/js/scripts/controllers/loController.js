@@ -212,7 +212,6 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', 'utilServic
             $store.bind($scope, 'lo.description', data.description); 
             console.log($store.get('username'));
             console.log($store.get('userType'));
-            alert(lo.id);
              window.location = '/loop-XYZ/store/historyLO-admin';
         })
         .error(function(jqXHR, status, error) {
@@ -365,7 +364,6 @@ app.controller('LOCtrl', ['$scope', '$http', '$rootScope', 'utilService', 'loSer
     };
    
    $scope.demoteMe = function(){        
-       alert("BRAVEEEE" + $rootScope.LEFunc);
         loService.demoteLO($rootScope.LEFunc)
         .success(function(data) { 
             window.location.reload(true);
@@ -376,7 +374,6 @@ app.controller('LOCtrl', ['$scope', '$http', '$rootScope', 'utilService', 'loSer
    };
    
    $scope.deleteMe = function(){        
-       //alert("BRAVEEEE" + utilService.getValue("loid"));
         loService.deleteLO(utilService.getValue("loid"))
         .success(function(data) { 
             alert("Successfully deleted!");

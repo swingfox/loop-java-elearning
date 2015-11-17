@@ -42,16 +42,13 @@ public class OldLOService
             dto.setRev(loModel.getRev());
             dto.setStatus(loModel.getStatus());
             dto.setComments(loModel.getComments());
-            dto.setUploadedBy(loModel.getUploadedBy());
-            dto.setFilePath(loModel.getFilepath());     
+            dto.setUploadedBy(loModel.getUploadedBy());   
             dto.setSequence(loModel.getSequence());
         }
         return dto;
     }
     
     public List<LearningObjectDto> getLearningObjects() throws UnknownHostException{
-        if(dao==null)
-            System.out.println("asdsad");
         List<OldLO> LOList = dao.getListHistory();
         List<LearningObjectDto> objects = new ArrayList<>();
         for(OldLO model: LOList){
@@ -71,7 +68,7 @@ public class OldLOService
             for (LearningElement[] list1 : list) {
                 LearningElement[] dum = new LearningElement[list1.length];
                 int i = 0;
-                 System.out.println("LIST: " +dum.toString());
+                System.out.println("LIST: " +dum.toString());
 
                 for (LearningElement le : list1) {
                     LearningElement tmp = new LearningElement();
@@ -82,23 +79,15 @@ public class OldLOService
                     tmp.setUploadDate(le.getUploadDate());
                     tmp.setId(le.getId());
                     dum[i] = tmp;
-                    System.out.println("DUM1: " +le.getType());
-                    i++;
-                    
+                    i++;             
                 }
                 seq.add(dum);
             }
             
             dto.setSequence(seq);
-
             objects.add(dto);
         }
         return objects;
-    }
-    
-    public static void main(String args[]) throws UnknownHostException{
-        OldLOService os= new OldLOService();
-       // System.out.println(os.getLearningObjects("hahah"));
     }
     
     public List<LearningObjectDto> getAvailableLearningObjects() throws UnknownHostException{

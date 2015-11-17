@@ -11,8 +11,7 @@ package com.card.loop.xyz.LOIDE;
  */
 public class AuthorMeta {
     private String ID;
-    private String fName;
-    private String lName;
+    private String username;
 
     public String getID() {
         return ID;
@@ -22,19 +21,11 @@ public class AuthorMeta {
         this.ID = ID;
     }
 
-    public String getfName() {
-        return fName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setfName(String fName) {
-        this.fName = fName;
-    }
-
-    public String getlName() {
-        return lName;
-    }
-
-    public void setlName(String lName) {
-        this.lName = lName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

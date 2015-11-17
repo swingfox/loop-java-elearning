@@ -137,7 +137,7 @@ public class LOIDEController {
                         lo.setComments(null);
                         lo.setSubject(null);
                         lo.setDownloads(0);
-                        lo.setPrice(0.0);
+                        lo.setPrice(0);
                         lo.setRev(null);
                         daoLO.saveLO(lo);
                 

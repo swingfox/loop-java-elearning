@@ -5,17 +5,12 @@
  */
 package com.card.loop.xyz.dao;
 
-import com.card.loop.xyz.config.AppConfig;
-import com.card.loop.xyz.config.DatabaseManager;
-import com.card.loop.xyz.dto.UserDto;
 import com.card.loop.xyz.model.User;
-import com.mongodb.Mongo;
 import java.net.UnknownHostException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import org.springframework.data.mongodb.core.query.Query;
@@ -31,17 +26,12 @@ public class UserDAO {
     @Autowired MongoOperations user;
 
     public User getUser(String username) throws UnknownHostException{ 
-        User p = null;
-        p = user.findOne(query(where("username").is(username)), User.class);
-        return p;
+        return user.findOne(query(where("username").is(username)), User.class);
     }
-    /*public static User getUser(User user) throws UnknownHostException{ 
-        MongoOperations user = new MongoTemplate(new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port),"loop");
-        User p = null;
-        if(exists(user.getUsername(),user.getPassword()))
-        p = user.findOne(query(where("username").is(user.getUsername())), User.class);
-        return p;
-    }*/
+
+    public User getUserById(String id) throws UnknownHostException{ 
+        return user.findOne(query(where("_id").is(id)), User.class);
+    }
     
     public User getDeveloperUser(User user) throws UnknownHostException{ 
         return this.user.findOne(query(where("username").is(user.getUsername()).and("userType").is("developer")),User.class);
@@ -57,20 +47,24 @@ public class UserDAO {
         p = this.user.findOne(query(where("username").is(user.getUsername()).and("userType").is("reviewer")), User.class);
         return p;
     }
+    
     public boolean addUser(User user) throws UnknownHostException{
         boolean ok = false;
         this.user.insert(user);
         ok = true;
         return ok;
     }
+    
     public boolean editUser(User user) throws UnknownHostException{
         boolean ok = false;
         if(user!=null) {
-        Update userUpdate = new Update();
-        if(user.getPassword()!=null)
-        userUpdate.set("password", user.getPassword());
-        if(user.getEmail()!=null)
-        userUpdate.set("email", user.getEmail());
+            Update userUpdate = new Update();
+            if(user.getPassword()!=null){
+            userUpdate.set("password", user.getPassword());
+            }
+            if(user.getEmail()!=null){
+                 userUpdate.set("email", user.getEmail());
+            }
         this.user.findAndModify(query(where("username").is(user.getUsername())), userUpdate, User.class);
         ok = true;
         }
@@ -78,7 +72,7 @@ public class UserDAO {
     }
     
     public boolean blockUser(User user) throws UnknownHostException{
-         boolean ok=false;
+        boolean ok=false;
         Query query = new Query();
         query.addCriteria(where("_id").is(user.getId()));
         User obj = this.user.findOne(query, User.class);
@@ -131,6 +125,14 @@ public class UserDAO {
         return ok;
     }
     
+    public boolean exists(String username) throws UnknownHostException{
+        boolean ok = false;
+        Query query = new Query();
+        query.addCriteria(where("username").is(username));
+        ok = user.exists(query, User.class);
+        return ok;
+    }
+    
     public boolean exists(String username, String userType) throws UnknownHostException{
         boolean ok = false;
         Query query = new Query();
@@ -165,7 +167,6 @@ public class UserDAO {
         return p;
     }
     
-    public List<User> getAllUserOfType(String type){return null;}
     public List<User> getBlockedUsers() throws UnknownHostException{
         return user.find(query(where("blocked").is(true)), User.class);
     }
@@ -184,9 +185,5 @@ public class UserDAO {
     
     public List<User> getNewAccount() throws UnknownHostException {
         return user.find(query(where("newAccount").is(true)), User.class);
-    }
-
-    public static boolean exists(String username) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

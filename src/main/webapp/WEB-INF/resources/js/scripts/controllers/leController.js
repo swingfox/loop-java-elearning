@@ -129,7 +129,6 @@ app.controller('LEList', ['$scope', '$store', '$http', 'leService', function($sc
         comment : $scope.comment
     };
         leService.reviewLE(data).success(function(response) {
-                alert(response);
                 if(response === true)
                     window.location = '/loop-XYZ/store/reviewer-le';
         });

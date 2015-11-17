@@ -6,11 +6,9 @@
 package com.card.loop.xyz.service;
 
 import com.card.loop.xyz.dao.LearningObjectDAO;
-import com.card.loop.xyz.dao.UserDAO;
 import com.card.loop.xyz.dto.LearningObjectDto;
 import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
-import com.card.loop.xyz.model.User;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,9 +42,6 @@ public class LearningObjectService
     
     public boolean demoteLO(LearningObjectDto lo) throws UnknownHostException, Exception{
         boolean ok = false;
-        System.out.println(lo.getId());
-                System.out.println(dao);
-
         LearningObject model = dao.getLO(lo.getId());
         if(model!= null){
             model.setStatus(0);
@@ -61,9 +56,6 @@ public class LearningObjectService
     
     public boolean deleteLO(LearningObjectDto lo) throws UnknownHostException, Exception{
         boolean ok = false;
-        System.out.println(lo.getId());
-        System.out.println(dao);
-
         LearningObject model = dao.getLO(lo.getId());
         if(model!= null){
             //model.setStatus(0);
@@ -121,32 +113,9 @@ public class LearningObjectService
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
             dto.setStatus(model.getStatus());
+            dto.setSequence(model.getSequence());
+            dto.setPrice(model.getPrice());
             dto.setObjective(model.getObjective());
-
-            List<LearningElement[]> list = model.getSequence();
-            List<LearningElement[]> seq = new ArrayList<LearningElement[]>();
-            for (LearningElement[] list1 : list) {
-                LearningElement[] dum = new LearningElement[list1.length];
-                int i = 0;
-                 System.out.println("LIST: " +dum.toString());
-
-                for (LearningElement le : list1) {
-                    LearningElement tmp = new LearningElement();
-                    tmp.setTitle(le.getTitle());
-                    tmp.setType(le.getType());
-                    tmp.setContentType(le.getContentType());
-                    tmp.setDescription(le.getDescription());
-                    tmp.setUploadDate(le.getUploadDate());
-                    tmp.setId(le.getId());
-                    dum[i] = tmp;
-                    System.out.println("DUM1: " +le.getType());
-                    i++;
-                    
-                }
-                seq.add(dum);
-            }
-            
-            dto.setSequence(seq);
 
             objects.add(dto);
         }
@@ -165,20 +134,21 @@ public class LearningObjectService
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());
             dto.setUploadDate(model.getUploadDate());
+            dto.setRev(model.getRev());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
-            dto.setRev(model.getRev());
             dto.setStatus(model.getStatus());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setSequence(model.getSequence());
             dto.setObjective(model.getObjective());
+            dto.setPrice(model.getPrice());
             objects.add(dto);
         }
         return objects;
     }
     
     public List<LearningObjectDto> getReviewerLOList(String rev) throws UnknownHostException{
-        List<LearningObject> LOList = dao.getReviewerLOList(rev);//LearningObjectDAO.getAllLearningObjectByDateUpload(new Date());
+        List<LearningObject> LOList = dao.getReviewerLOList(rev);
         List<LearningObjectDto> objects = new ArrayList<>();
         for(LearningObject model: LOList){
             LearningObjectDto dto = new LearningObjectDto();
@@ -220,18 +190,6 @@ public class LearningObjectService
             dto.setSequence(lo.getSequence());
             dto.setObjective(lo.getObjective());
             dao.updateLO(dto);
-        return ok;
-    }
-    
-    public boolean acceptUser(String name) throws UnknownHostException{
-        boolean ok = false;
-        LearningObject lo = dao.getLearningObject(name);
-      //  User u= UserDAO.getUser(null);
-
-       // u.setNewAccount(false);
-
-    //    u.setNewAccount(false);
-       // UserDAO.updateLO(u);
         return ok;
     }
 

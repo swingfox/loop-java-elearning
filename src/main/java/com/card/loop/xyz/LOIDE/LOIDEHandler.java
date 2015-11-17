@@ -16,7 +16,7 @@ import java.util.List;
 public interface LOIDEHandler {
     public LearningElementMeta getLearningElementMeta(String id);
     public File getLearningElement(String id);
-    public List<LearningElementMeta> findLearningElementMeta();
+    public List<LearningElementMeta> findLearningElementMeta(String title);
     public AuthorMeta getAuthorMeta(String id);
     public boolean submitLearningElement(LearningElementMeta meta, File file);
     public boolean submitLearningObject(LearningObjectMeta meta);

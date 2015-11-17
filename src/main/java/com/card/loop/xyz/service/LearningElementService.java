@@ -10,9 +10,7 @@ import com.card.loop.xyz.dto.LearningElementDto;
 import com.card.loop.xyz.model.LearningElement;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import javax.xml.bind.DatatypeConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 /**
@@ -39,9 +37,6 @@ public class LearningElementService {
     
     public boolean demoteLE(LearningElementDto le) throws UnknownHostException, Exception{
         boolean ok = false;
-        System.out.println(le.getId());
-                System.out.println(dao);
-
         LearningElement model = dao.getLE(le.getId());
         if(model!= null){
             model.setStatus(0);
@@ -56,9 +51,6 @@ public class LearningElementService {
     
     public boolean deleteLE(LearningElementDto le) throws UnknownHostException, Exception{
         boolean ok = false;
-        System.out.println(le.getId());
-        System.out.println(dao);
-
         LearningElement model = dao.getLE(le.getId());
         if(model!= null){
             dao.deleteLE(model);
@@ -71,23 +63,22 @@ public class LearningElementService {
     }
     
     public LearningElementDto getSpecificLearningElement(String id) throws UnknownHostException{
-        LearningElement leModel;
-        leModel = dao.getSpecificLearningElement(id);
+        LearningElement leModel = dao.getSpecificLearningElement(id);
         LearningElementDto dto = new LearningElementDto();
-       if(leModel != null){  
-            dto.setId(leModel.getId());
-            dto.setTitle(leModel.getTitle());
-            dto.setDescription(leModel.getDescription());
-            dto.setSubject(leModel.getSubject());
-            dto.setUploadDate(leModel.getUploadDate());
-            dto.setDownloads(leModel.getDownloads());           
-            dto.setRating(leModel.getRating());
-            dto.setRev(leModel.getRev());
-            dto.setStatus(leModel.getStatus());
-            dto.setComments(leModel.getComments());
-            dto.setUploadedBy(leModel.getUploadedBy());
-            dto.setFilePath(leModel.getFilePath());            
-        }
+        if(leModel != null){  
+             dto.setId(leModel.getId());
+             dto.setTitle(leModel.getTitle());
+             dto.setDescription(leModel.getDescription());
+             dto.setSubject(leModel.getSubject());
+             dto.setUploadDate(leModel.getUploadDate());
+             dto.setDownloads(leModel.getDownloads());           
+             dto.setRating(leModel.getRating());
+             dto.setRev(leModel.getRev());
+             dto.setStatus(leModel.getStatus());
+             dto.setComments(leModel.getComments());
+             dto.setUploadedBy(leModel.getUploadedBy());
+             dto.setFilePath(leModel.getFilePath());            
+         }
         return dto;
     }
     
@@ -102,7 +93,6 @@ public class LearningElementService {
             dto.setDescription(model.getDescription());
             dto.setSubject(model.getSubject());
             dto.setDownloads(model.getDownloads());
-            System.out.println(model.getUploadDate());
             dto.setUploadDate(model.getUploadDate());
             dto.setUploadedBy(model.getUploadedBy());
             dto.setComments(model.getComments());
@@ -142,25 +132,10 @@ public class LearningElementService {
             return false;
     }
 
-    
-    
-    public static void main(String[] args) throws UnknownHostException, Exception {
-        LearningElementDto list = new LearningElementDto();
-        LearningElementService service = new LearningElementService();
-        
-        list.setId("56252cd8456429c7df1e680b");
-        service.getSpecificLearningElement(list.getId());
-       // System.out.println(service.demoteLE(list));
-     /*   for (LearningElementDto list1 : list) {
-            System.out.println(list1);
-        }*/
-    }
-
     public boolean reviewLE(LearningElementDto le) throws UnknownHostException {
         LearningElement obj = dao.getSpecificLearningElementById(le.getId());
         obj.setComments(le.getComments());
         obj.setRating(le.getRating());
-        
         return dao.saveLE(obj);
     }
     

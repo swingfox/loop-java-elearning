@@ -28,7 +28,6 @@ public class UserService {
     
     public UserDto login(UserDto user) throws UnknownHostException{
         User userModel = dao.getUser(user.getUsername(), user.getPassword(),user.getUsertype());
-        System.out.println("USER SERVICE CONTROLLER");
         if(userModel != null){
            if(userModel.getUsername().equals(user.getUsername()) && userModel.getPassword().equals(user.getPassword())){
             System.out.println("USER FOUND!!!");
@@ -64,7 +63,7 @@ public class UserService {
     }
     public boolean blockUser(UserDto user) throws UnknownHostException{
         User obj = new User();
-        if(!UserDAO.exists(user.getUsername())){
+        if(!dao.exists(user.getUsername())){
             obj.setBlocked(true);
             obj.setEmail(user.getEmail());
             obj.setLastDownload(user.getLastDownload());
@@ -136,19 +135,7 @@ public class UserService {
             throw new Exception("User does not exist. ");
         return ok;
     }
-     
-    public static void main(String args[]) throws Exception{
-        UserDto u = new UserDto();
-        u.setId("56045d3995840640f703d356");
-        u.setUsername("dev1");
-        u.setPassword("david");
-        u.setEmail("julie@gmail.com");        
-        
-        //System.out.println(changeEmail(u));
-    }
 
-   
-    
     public List<UserDto> getBlockedUsers() throws UnknownHostException{
          List<UserDto> objects = new ArrayList<>();
          List<User> userList = dao.getBlockedUsers();
@@ -186,9 +173,7 @@ public class UserService {
          }
          return objects;
      }
-   
-    public UserDto promote(String username) throws UnknownHostException{return null;}
-    public UserDto demote(String username) throws UnknownHostException{return null;}
+
     public UserDto getUserInfo(String user, String usertype) throws UnknownHostException{
         User userinfo = dao.getUser(user,usertype);
         UserDto newUser = new UserDto();
@@ -235,6 +220,4 @@ public class UserService {
          }
          return objects;
     }
-    public List<UserDto> getAllNewUsers(UserDto user) throws UnknownHostException{return null;}
-    public boolean appoveUserRegistration(UserDto user) throws UnknownHostException{return false;}
 }

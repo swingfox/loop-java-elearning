@@ -84,6 +84,8 @@ public class LearningElement {
    
     private String _class;
     
+    private String fileExtension;
+    
     
     /**
      * Gets the id of the learning element
@@ -299,6 +301,14 @@ public class LearningElement {
 
     public void setLength(long length) {
         this.length = length;
+    }
+
+    public String getFileExtension() {
+        return fileExtension;
+    }
+
+    public void setFileExtension(String fileExtension) {
+        this.fileExtension = fileExtension;
     }
     
    

@@ -46,10 +46,7 @@ public class LearningObjectDto {
     *Date that the Learning Object is uploaded
     */
     private Date uploadDate;
-    /*
-    *Filepath of the Learning Object
-    */
-    private String filePath;
+    
     /*
     *Comments of the Learning Object
     */
@@ -78,8 +75,9 @@ public class LearningObjectDto {
     private String filename;
     private String contentType;
     private String type;
-    private double price;
+    private int price;
     private String objective;
+    private String fileExtension;
 
     public String getObjective() {
         return objective;
@@ -200,23 +198,6 @@ public class LearningObjectDto {
     public void setUploadDate(Date uploadDate) {
         this.uploadDate = uploadDate;
     }
-
-    /**
-     * 
-     * @return String This returns the filePath of the LO
-     */
-    public String getFilePath() {
-        return filePath;
-    }
-
-    /**
-     * This sets the filePath of the LO
-     * @param filepath String
-     */
-    public void setFilePath(String filepath) {
-        this.filePath = filepath;
-    }
-
     /**
      * 
      * @return String This returns the comments of the LO
@@ -329,11 +310,19 @@ public class LearningObjectDto {
         this.type = type;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getFileExtension() {
+        return fileExtension;
+    }
+
+    public void setFileExtension(String fileExtension) {
+        this.fileExtension = fileExtension;
     }
 }

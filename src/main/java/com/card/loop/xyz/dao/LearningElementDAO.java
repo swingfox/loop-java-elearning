@@ -120,10 +120,6 @@ public class LearningElementDAO {
        mongoOps.insert(objects);
     }
     
-   /* public void deleteLearningElement(LearningElement objects) throws UnknownHostException{
-       mongoOps.remove(objects);
-    }*/
-    
     public boolean deleteLE(LearningElement le) throws UnknownHostException{
         boolean ok = false;
         try{

@@ -62,7 +62,7 @@ public class LearningObject {
     *Name of the uploader of the Learning Object.
     */
     private String uploadedBy;
-    private double price;
+    private int price;
     private String _class;
     private String objective;
     private List<LearningElement[]> sequence;
@@ -261,11 +261,11 @@ public class LearningObject {
         this.uploadDate = uploadDate;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
