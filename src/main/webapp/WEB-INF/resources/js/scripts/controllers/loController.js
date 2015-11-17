@@ -82,7 +82,10 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', 'utilServic
             var date = new Date(lo.uploadDate);
             var from = parseDate(startDate);
             var to = parseDate(endDate);
-            if ( date >= from && date <= to) return true;
+            if (date.getDate() >= from.getDate() && date.getDate() <= to.getDate()) {
+                console.log("GWAPA KO: " + lo.title);      
+                return true;
+            }
             return false;
         };
     };
