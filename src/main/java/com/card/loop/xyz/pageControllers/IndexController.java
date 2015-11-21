@@ -30,6 +30,10 @@ public class IndexController{
         o.uploadAllLOToInformatron();
         return new ModelAndView("index");
     } 
+    @RequestMapping("/dragon")
+    public ModelAndView dragon() throws IOException {
+        return new ModelAndView("dragon");
+    } 
     @RequestMapping("/download")
     public ModelAndView accessDownload() {
         return new ModelAndView("download");

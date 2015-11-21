@@ -55,19 +55,17 @@
                             <div class="col-md-6 col-md-push-3">
                                 <div class="page-header download">
                                 </div>
-                                <form  enctype="multipart/form-data" action="/loop-XYZ/loop/LO/upload" method="post">
+                        <!--        <form  enctype="multipart/form-data" action="/loop-XYZ/loop/LO/upload" method="post"> -->
                                 <div class="control-group">
 
-                                    <label class="control-label upload-file fileinput pull-left" for="fileInput">File Path : </label>
+                                 <!--   <label class="control-label upload-file fileinput pull-left" for="fileInput">File Path : </label>
                                     <div class="controls">
                                         <input type="file" name="file" size="20" class="input-file tour-step tour-step-eight" required/>
                                     </div>
-
-                                    <div class="upload-requirement">*Enter Learning Objects information.<br/>
-                                    *Please avoid using white spaces for avoidance of information mismatch.<br/>
-                                    *This is used for offline purposes only.</div>
+-->
+                                    <div class="upload-requirement">*Enter to LOIDE.<br/></div>
                                 </div>
-                                <div class="well upload tour-step tour-step-nine" ng-controller="LoginCtrl">		
+                        <!--        <div class="well upload tour-step tour-step-nine" ng-controller="LoginCtrl">		
                                     <label class="col-md-3 control-label upload-file" for="input01">Name:</label>					
                                      
                                     <input type="hidden"  name="author" id="auth" value="{{username}}">
@@ -95,13 +93,13 @@
                                 </label>
                                 <input type="text"  name = "price" class="form-control col-md-7" placeholder="Price..." required/>								
                                 <div class="clearfix"></div>
-                            </div>
+                            </div> -->
                             <div class="form-actions advanced-search">
-                                <button type="submit" href="/loop-XYZ/loop/LO/upload" class="btn btn-primary tour-step tour-step-twelve"><i class="icon-upload-alt icon-large"></i> Upload</button>
+                                <button type="button" class="btn btn-primary tour-step tour-step-twelve"><a href="/loop-XYZ/store/dragon" class="icon-upload-alt icon-large"></a> Launch LOIDE!</button>
                                 <a class="btn btn-default" href="">Cancel</a>
-                                <button type="button" class="btn btn-info btn-lg btn-block main" onclick="document.location='http://localhost/jiary/index.php/journal/jiary_view'">Jiary View</button> -->
+                               <!-- <button type="button" class="btn btn-info btn-lg btn-block main" onclick="document.location='http://localhost/jiary/index.php/journal/jiary_view'">Jiary View</button> -->
                             </div>
-                        </form>
+                      <!--  </form> -->
                     </div>
                 </div>
             </div> 

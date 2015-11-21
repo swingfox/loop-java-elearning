@@ -5,6 +5,8 @@
  */
 package com.card.loop.xyz.LOIDE;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author siegfred
@@ -27,7 +29,17 @@ public class LearningObjectMeta {
     private String description;
     private String publishingDate;
     private String objective;
+    private ArrayList<String> elementIDs;
 
+    public ArrayList<String> getElementIDs() {
+        return elementIDs;
+    }
+
+    public void setElementIDs(ArrayList<String> elementIDs) {
+        this.elementIDs = elementIDs;
+    }
+    
+    
     public String getID() {
         return ID;
     }
