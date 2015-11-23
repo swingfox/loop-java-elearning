@@ -49,7 +49,7 @@ public class LearningObjectService
             ok = true;
         }
         else
-            throw new Exception("LearningElement does not exist. ");
+            throw new Exception("LearningObject does not exist. ");
         return ok;
         
     }

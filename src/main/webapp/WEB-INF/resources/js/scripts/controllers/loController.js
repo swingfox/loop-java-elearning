@@ -93,7 +93,7 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', 'utilServic
     
     
     $scope.reviewLO = function(lo){
-        loService.getSpecificLO(lo).success(function(data) {
+        loService.getSpecificLO(lo.id).success(function(data) {
             $store.bind($scope, 'lo.id', data.id); 
             $store.bind($scope, 'lo.title', data.title);
             $store.bind($scope, 'lo.subject', data.subject); 
@@ -109,8 +109,11 @@ app.controller('LOList', ['$scope', '$store', '$http' , 'loService', 'utilServic
            
             console.log($store.get('name'));
             console.log($store.get('usertype'));
-             window.location = '/loop-XYZ/store/reviewLO-rev?loid=' + data.id;
-    });
+             window.location = '/loop-XYZ/store/reviewLO-rev?loid='+data.id;
+        })
+        .error(function(jqXHR, status, error) {
+                console.log(""+ error);
+        });;
 };
 
     $scope.reviewRedirect = function(){ 
@@ -367,8 +370,7 @@ app.controller('LOCtrl', ['$scope', '$http', '$rootScope', 'utilService', 'loSer
     };
    
    $scope.demoteMe = function(){        
-        loService.demoteLO($rootScope.LEFunc)
-        .success(function(data) { 
+        loService.demoteLO($rootScope.LEFunc).success(function(data) { 
             window.location.reload(true);
         })
         .error(function(jqXHR, status, error) {
