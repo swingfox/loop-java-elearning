@@ -6,60 +6,60 @@
 package com.card.loop.xyz.dto;
 
 import com.card.loop.xyz.model.User;
+
 import java.util.List;
 
 /**
- *
  * @author Julie Jane A. Alegre
  */
 public class UserDto {
     /*
-    *id number of the user
-    */
+     *id number of the user
+     */
     private String id;
     /*
-    *username of the user
-    */
+     *username of the user
+     */
     private String username;
-     /*
-    *passsword of the user
-    */
+    /*
+     *passsword of the user
+     */
     private String password;
-     /*
-    *email of the user
-    */
+    /*
+     *email of the user
+     */
     private String email;
-     /*
-    *usertype of the user
-    */
+    /*
+     *usertype of the user
+     */
     private String usertype;
-     /*
-    *blocked or unblocked the user
-    */
+    /*
+     *blocked or unblocked the user
+     */
     private boolean blocked;
-     /*
-    *date of the last log in
-    */
+    /*
+     *date of the last log in
+     */
     private String lastLogin;
     /*
-    *Date of last download
-    */
-    private String lastDownload;    
-     /*
-    *date of the last activity
-    */
+     *Date of last download
+     */
+    private String lastDownload;
+    /*
+     *date of the last activity
+     */
     private String lastActivity;
-     /*
-    *newAccount the user
-    */
+    /*
+     *newAccount the user
+     */
     private boolean newAccount;
-     /*
-    *error list
-    */
+    /*
+     *error list
+     */
     private List<String> errorList;
-    
+
     private String token;
-    
+
     private String lastUpload;
 
     public String getToken() {
@@ -69,7 +69,7 @@ public class UserDto {
     public void setToken(String token) {
         this.token = token;
     }
-    
+
     public String getLastUpload() {
         return lastUpload;
     }
@@ -78,24 +78,24 @@ public class UserDto {
         this.lastUpload = lastUpload;
     }
 
-    
+
     /**
-     * 
      * @return Long - Get the Id number of the user
      */
     public String getId() {
         return id;
     }
-     /**
+
+    /**
      * This sets the id of the user
+     *
      * @param id Long
      */
     public void setId(String id) {
         this.id = id;
     }
-    
-     /**
-     * 
+
+    /**
      * @return String - Get the username of the user
      */
     public String getUsername() {
@@ -104,13 +104,14 @@ public class UserDto {
 
     /**
      * This sets the username of the user
+     *
      * @param username String
      */
     public void setUsername(String username) {
         this.username = username;
     }
-     /**
-     * 
+
+    /**
      * @return String - Get the password of the user
      */
     public String getPassword() {
@@ -119,14 +120,14 @@ public class UserDto {
 
     /**
      * This sets the password of the user
+     *
      * @param password String
      */
     public void setPassword(String password) {
         this.password = password;
     }
 
-     /**
-     * 
+    /**
      * @return String - Get the email of the user
      */
     public String getEmail() {
@@ -135,14 +136,14 @@ public class UserDto {
 
     /**
      * This sets the email of the user
+     *
      * @param email String
      */
     public void setEmail(String email) {
         this.email = email;
     }
 
-     /**
-     * 
+    /**
      * @return String - Get the type of the user
      */
     public String getUsertype() {
@@ -151,15 +152,14 @@ public class UserDto {
 
     /**
      * This sets the type of the user
-     * 
+     *
      * @param usertype String
      */
     public void setUsertype(String usertype) {
         this.usertype = usertype;
     }
 
-     /**
-     * 
+    /**
      * @return boolean - Get the status of the user (blocked or unblocked)
      */
     public boolean getBlocked() {
@@ -168,14 +168,14 @@ public class UserDto {
 
     /**
      * This sets the status of the user (blocked or unblocked)
+     *
      * @param blocked boolean
      */
     public void setBlocked(boolean blocked) {
         this.blocked = blocked;
     }
 
-     /**
-     * 
+    /**
      * @return String - Get the last date the user log in
      */
     public String getLastLogin() {
@@ -184,14 +184,14 @@ public class UserDto {
 
     /**
      * This sets the date the user last log in
-     * @param lastLogin String 
+     *
+     * @param lastLogin String
      */
     public void setLastLogin(String lastLogin) {
         this.lastLogin = lastLogin;
     }
 
-     /**
-     * 
+    /**
      * @return String - Get the date of the last activity of the user
      */
     public String getLastActivity() {
@@ -200,41 +200,45 @@ public class UserDto {
 
     /**
      * This sets the date of the last activity of the user
+     *
      * @param rating String lastActivity
      */
     public void setLastActivity(String lastActivity) {
         this.lastActivity = lastActivity;
     }
 
-     /**
-     * 
+    /**
      * @return boolean - Get the status of the user (newAccount or unaccepted )
      */
     public boolean isNewAccount() {
         return newAccount;
     }
 
+    public boolean getNewAccount() {
+        return newAccount;
+    }
+
     /**
      * This sets the status of user (newAccount or unaccepted)
+     *
      * @param newAccount boolean
      */
     public void setNewAccount(boolean newAccount) {
         this.newAccount = newAccount;
     }
-    public boolean getNewAccount() {
-        return newAccount;
-    }
+
     /**
-     * 
      * @return List<String> This returns the list of errors in the learning element
      */
     public List<String> getErrorList() {
         return errorList;
     }
+
     /**
-    * Sets the list of errors of the learning element
-    * @param errorList List<String>
-    */
+     * Sets the list of errors of the learning element
+     *
+     * @param errorList List<String>
+     */
     public void setErrorList(List<String> errorList) {
         this.errorList = errorList;
     }
@@ -246,7 +250,7 @@ public class UserDto {
     public void setLastDownload(String lastDownload) {
         this.lastDownload = lastDownload;
     }
-    
+
     public void setVariables(User model) {
         //this.setBlocked(model.getBlocked());
         this.setEmail(model.getEmail());

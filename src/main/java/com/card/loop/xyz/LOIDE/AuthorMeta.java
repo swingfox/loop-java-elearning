@@ -6,7 +6,6 @@
 package com.card.loop.xyz.LOIDE;
 
 /**
- *
  * @author siegfred
  */
 public class AuthorMeta {

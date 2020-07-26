@@ -6,23 +6,23 @@
 package com.card.loop.xyz.config;
 
 import com.mongodb.Mongo;
-import java.net.UnknownHostException;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import com.mongodb.gridfs.GridFS;
+
+import java.net.UnknownHostException;
 
 /**
- *
  * @author David
  */
 public class DatabaseManager {
     private static MongoOperations instance = null;
     private static Mongo instanceMongo = null;
-    public static MongoOperations getMongoOpsInstance(String databaseName) throws UnknownHostException{
-         if(instance==null){
-             instanceMongo = new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port);
-             instance = new MongoTemplate(instanceMongo,databaseName);
-         }
+
+    public static MongoOperations getMongoOpsInstance(String databaseName) throws UnknownHostException {
+        if (instance == null) {
+            instanceMongo = new Mongo(AppConfig.mongodb_host, AppConfig.mongodb_port);
+            instance = new MongoTemplate(instanceMongo, databaseName);
+        }
         return instance;
     }
 }

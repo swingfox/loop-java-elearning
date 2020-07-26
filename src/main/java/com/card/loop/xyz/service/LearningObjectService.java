@@ -7,101 +7,97 @@ package com.card.loop.xyz.service;
 
 import com.card.loop.xyz.dao.LearningObjectDAO;
 import com.card.loop.xyz.dto.LearningObjectDto;
-import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- *
  * @author Aislinn
- * 
+ * <p>
  * [09/30/2015] -   Vine Deiparine  - Added getLearningObjects
  */
 @Service
-public class LearningObjectService 
-{
-    @Autowired LearningObjectDAO dao;
-    
-    public boolean acceptLO(LearningObjectDto lo) throws UnknownHostException, Exception{
+public class LearningObjectService {
+    @Autowired
+    LearningObjectDAO dao;
+
+    public boolean acceptLO(LearningObjectDto lo) throws Exception {
         boolean ok = false;
         LearningObject model = dao.getLO(lo.getId());
-        if(model!= null){
+        if (model != null) {
             model.setStatus(1);
             dao.acceptLO(model);
             ok = true;
-        }
-        else
+        } else
             throw new Exception("LearningObject does not exist. ");
         return ok;
-        
+
     }
-    
-    public boolean demoteLO(LearningObjectDto lo) throws UnknownHostException, Exception{
+
+    public boolean demoteLO(LearningObjectDto lo) throws Exception {
         boolean ok = false;
         LearningObject model = dao.getLO(lo.getId());
-        if(model!= null){
+        if (model != null) {
             model.setStatus(0);
             dao.demoteLO(model);
             ok = true;
-        }
-        else
+        } else
             throw new Exception("LearningObject does not exist. ");
         return ok;
-        
+
     }
-    
-    public boolean deleteLO(LearningObjectDto lo) throws UnknownHostException, Exception{
+
+    public boolean deleteLO(LearningObjectDto lo) throws Exception {
         boolean ok = false;
         LearningObject model = dao.getLO(lo.getId());
-        if(model!= null){
+        if (model != null) {
             //model.setStatus(0);
             dao.deleteLO(model);
             ok = true;
-        }
-        else
+        } else
             throw new Exception("LearningObject does not exist. ");
         return ok;
-        
+
     }
-    
+
     public boolean assignReviewer(String id, String reviewer) throws UnknownHostException {
-        if(dao.exists(id))
-            return dao.assignReviewer(id,reviewer);
+        if (dao.exists(id))
+            return dao.assignReviewer(id, reviewer);
         else
             return false;
     }
 
-    public LearningObjectDto getLearningObject(String id) throws UnknownHostException{
+    public LearningObjectDto getLearningObject(String id) throws UnknownHostException {
         LearningObject loModel;
         loModel = dao.getLearningObject(id);
         LearningObjectDto dto = new LearningObjectDto();
-       if(loModel != null){  
+        if (loModel != null) {
             dto.setId(loModel.getId());
             dto.setTitle(loModel.getTitle());
             dto.setDescription(loModel.getDescription());
             dto.setSubject(loModel.getSubject());
             dto.setUploadDate(loModel.getUploadDate());
-            dto.setDownloads(loModel.getDownloads());           
+            dto.setDownloads(loModel.getDownloads());
             dto.setRating(loModel.getRating());
             dto.setRev(loModel.getRev());
             dto.setStatus(loModel.getStatus());
             dto.setComments(loModel.getComments());
-            dto.setUploadedBy(loModel.getUploadedBy());    
+            dto.setUploadedBy(loModel.getUploadedBy());
             dto.setPrice(loModel.getPrice());
             dto.setSequence(loModel.getSequence());
             dto.setObjective(loModel.getObjective());
         }
         return dto;
     }
-    
-    public List<LearningObjectDto> getLearningObjects() throws UnknownHostException{
+
+    public List<LearningObjectDto> getLearningObjects() throws UnknownHostException {
         List<LearningObject> LOList = dao.getList();
         List<LearningObjectDto> objects = new ArrayList<>();
-        for(LearningObject model: LOList){
+        for (LearningObject model : LOList) {
             LearningObjectDto dto = new LearningObjectDto();
             dto.setId(model.getId());
             dto.setRating(model.getRating());
@@ -121,11 +117,11 @@ public class LearningObjectService
         }
         return objects;
     }
-    
-    public List<LearningObjectDto> getAvailableLearningObjects() throws UnknownHostException{
+
+    public List<LearningObjectDto> getAvailableLearningObjects() throws UnknownHostException {
         List<LearningObject> LOList = dao.getAllDownloadableLO();
         List<LearningObjectDto> objects = new ArrayList<>();
-        for(LearningObject model: LOList){
+        for (LearningObject model : LOList) {
             LearningObjectDto dto = new LearningObjectDto();
             dto.setId(model.getId());
             dto.setRating(model.getRating());
@@ -146,11 +142,11 @@ public class LearningObjectService
         }
         return objects;
     }
-    
-    public List<LearningObjectDto> getReviewerLOList(String rev) throws UnknownHostException{
+
+    public List<LearningObjectDto> getReviewerLOList(String rev) throws UnknownHostException {
         List<LearningObject> LOList = dao.getReviewerLOList(rev);
         List<LearningObjectDto> objects = new ArrayList<>();
-        for(LearningObject model: LOList){
+        for (LearningObject model : LOList) {
             LearningObjectDto dto = new LearningObjectDto();
             dto.setId(model.getId());
             dto.setRating(model.getRating());
@@ -170,26 +166,26 @@ public class LearningObjectService
         }
         return objects;
     }
-    
-    public boolean approveLO(String name) throws UnknownHostException{
+
+    public boolean approveLO(String name) throws UnknownHostException {
         boolean ok = false;
         LearningObject lo = dao.getLearningObject(name);
         LearningObjectDto dto = new LearningObjectDto();
-            dto.setId(lo.getId());
-            dto.setRating(5);
-            dto.setTitle(lo.getTitle());
-            dto.setDescription(lo.getDescription());
-            dto.setSubject(lo.getSubject());
-            dto.setDownloads(lo.getDownloads());
-            dto.setUploadDate(lo.getUploadDate());
-            dto.setRev(lo.getRev());
-            dto.setUploadedBy(lo.getUploadedBy());
-            dto.setComments(lo.getComments());
-            dto.setStatus(lo.getStatus());
-            dto.setUploadedBy(lo.getUploadedBy());
-            dto.setSequence(lo.getSequence());
-            dto.setObjective(lo.getObjective());
-            dao.updateLO(dto);
+        dto.setId(lo.getId());
+        dto.setRating(5);
+        dto.setTitle(lo.getTitle());
+        dto.setDescription(lo.getDescription());
+        dto.setSubject(lo.getSubject());
+        dto.setDownloads(lo.getDownloads());
+        dto.setUploadDate(lo.getUploadDate());
+        dto.setRev(lo.getRev());
+        dto.setUploadedBy(lo.getUploadedBy());
+        dto.setComments(lo.getComments());
+        dto.setStatus(lo.getStatus());
+        dto.setUploadedBy(lo.getUploadedBy());
+        dto.setSequence(lo.getSequence());
+        dto.setObjective(lo.getObjective());
+        dao.updateLO(dto);
         return ok;
     }
 

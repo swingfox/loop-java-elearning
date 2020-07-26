@@ -6,72 +6,72 @@
 package com.card.loop.xyz.dto;
 
 import com.card.loop.xyz.model.LearningElement;
+
 import java.util.Date;
 import java.util.List;
 
 /**
  * REVISION HISTORY
- * 
- * [2015/09/09]     -   Vine Deiparine  -   Initial Codes 
- * 
+ * <p>
+ * [2015/09/09]     -   Vine Deiparine  -   Initial Codes
  */
 public class LearningObjectDto {
-        
+
     /*
-    *number of downloads of the Learning Object
-    */
-    private int downloads;    
+     *number of downloads of the Learning Object
+     */
+    private int downloads;
     /*
-    *Rating of the Learning Object
-    */
+     *Rating of the Learning Object
+     */
     private int rating;
     /*
-    * Id of the Learning Object   in mongoDB
-    */
+     * Id of the Learning Object   in mongoDB
+     */
     private String id;
-    
+
     /*
-    *Name of the Learning Object
-    */
+     *Name of the Learning Object
+     */
     private String title;
     /*
-    *Subject of the Learning Object
-    */
+     *Subject of the Learning Object
+     */
     private String subject;
     /*
-    *Description of the Learning Object
-    */
+     *Description of the Learning Object
+     */
     private String description;
     /*
-    *Date that the Learning Object is uploaded
-    */
+     *Date that the Learning Object is uploaded
+     */
     private Date uploadDate;
-    
+
     /*
-    *Comments of the Learning Object
-    */
+     *Comments of the Learning Object
+     */
     private String comments;
     /*
-    *Status of the Learning Object
-    */
+     *Status of the Learning Object
+     */
     private int status;
     /*
-    *Name of the reviewer of the Learning Object
-    */
-    
-    
+     *Name of the reviewer of the Learning Object
+     */
+
+
     private String rev;
     /*
-    *Name of the uploader of the Learning Object
-    */
+     *Name of the uploader of the Learning Object
+     */
     private String uploadedBy;
     /*
-    *List of errors
-    */
-    private List<String>  errorList;
+     *List of errors
+     */
+    private List<String> errorList;
     private List<LearningElement[]> sequence;
 
-    
+
     private String filename;
     private String contentType;
     private String type;
@@ -88,7 +88,6 @@ public class LearningObjectDto {
     }
 
     /**
-     * 
      * @return int Number of downloads of the LO
      */
     public int getDownloads() {
@@ -97,6 +96,7 @@ public class LearningObjectDto {
 
     /**
      * This sets the number of downloads of the LO
+     *
      * @param downloads int
      */
     public void setDownloads(int downloads) {
@@ -104,7 +104,6 @@ public class LearningObjectDto {
     }
 
     /**
-     * 
      * @return double This returns the rating of the LO
      */
     public int getRating() {
@@ -113,6 +112,7 @@ public class LearningObjectDto {
 
     /**
      * This sets the rating of the LO
+     *
      * @param rating double
      */
     public void setRating(int rating) {
@@ -120,7 +120,6 @@ public class LearningObjectDto {
     }
 
     /**
-     * 
      * @return String This returns the id of the LO in mongoDB
      */
     public String getId() {
@@ -129,6 +128,7 @@ public class LearningObjectDto {
 
     /**
      * This sets the id of the LO  in mongoDB
+     *
      * @param id String
      */
     public void setId(String id) {
@@ -136,7 +136,6 @@ public class LearningObjectDto {
     }
 
     /**
-     * 
      * @return String This returns the title of the LO
      */
     public String getTitle() {
@@ -145,6 +144,7 @@ public class LearningObjectDto {
 
     /**
      * This sets the title of the LO
+     *
      * @param title String
      */
     public void setTitle(String title) {
@@ -152,7 +152,6 @@ public class LearningObjectDto {
     }
 
     /**
-     * 
      * @return String This returns the subject of the LO
      */
     public String getSubject() {
@@ -161,6 +160,7 @@ public class LearningObjectDto {
 
     /**
      * This sets the subject of the LO
+     *
      * @param subject Long
      */
     public void setSubject(String subject) {
@@ -168,7 +168,6 @@ public class LearningObjectDto {
     }
 
     /**
-     * 
      * @return String This returns the description of the LO
      */
     public String getDescription() {
@@ -177,6 +176,7 @@ public class LearningObjectDto {
 
     /**
      * This sets the description of the LO
+     *
      * @param description String
      */
     public void setDescription(String description) {
@@ -184,7 +184,6 @@ public class LearningObjectDto {
     }
 
     /**
-     * 
      * @return String This returns the date the LO is uploaded
      */
     public Date getUploadDate() {
@@ -193,13 +192,14 @@ public class LearningObjectDto {
 
     /**
      * This sets the date of the LO is uploaded
+     *
      * @param uploadDate String
      */
     public void setUploadDate(Date uploadDate) {
         this.uploadDate = uploadDate;
     }
+
     /**
-     * 
      * @return String This returns the comments of the LO
      */
     public String getComments() {
@@ -208,6 +208,7 @@ public class LearningObjectDto {
 
     /**
      * This sets the comments of the LO
+     *
      * @param comments String
      */
     public void setComments(String comments) {
@@ -215,7 +216,6 @@ public class LearningObjectDto {
     }
 
     /**
-     * 
      * @return String This returns the status of the LO
      */
     public int getStatus() {
@@ -224,6 +224,7 @@ public class LearningObjectDto {
 
     /**
      * This sets the status of the LO
+     *
      * @param status String
      */
     public void setStatus(int status) {
@@ -231,7 +232,6 @@ public class LearningObjectDto {
     }
 
     /**
-     * 
      * @return String This returns the reviewer of the LO
      */
     public String getRev() {
@@ -240,6 +240,7 @@ public class LearningObjectDto {
 
     /**
      * This sets the rev of the LO
+     *
      * @param rev String
      */
     public void setRev(String rev) {
@@ -247,7 +248,6 @@ public class LearningObjectDto {
     }
 
     /**
-     * 
      * @return String This returns the title of the uploader of the LO
      */
     public String getUploadedBy() {
@@ -256,6 +256,7 @@ public class LearningObjectDto {
 
     /**
      * This sets the uploader of the LO
+     *
      * @param uploadedBy String
      */
     public void setUploadedBy(String uploadedBy) {
@@ -263,7 +264,6 @@ public class LearningObjectDto {
     }
 
     /**
-     * 
      * @return List<String> This returns the list of errors of the LO
      */
     public List<String> getErrorList() {
@@ -272,6 +272,7 @@ public class LearningObjectDto {
 
     /**
      * This sets the errorList of the LO
+     *
      * @param errorList List<String>
      */
     public void setErrorList(List<String> errorList) {

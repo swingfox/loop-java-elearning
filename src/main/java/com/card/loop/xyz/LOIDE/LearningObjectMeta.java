@@ -8,7 +8,6 @@ package com.card.loop.xyz.LOIDE;
 import java.util.ArrayList;
 
 /**
- *
  * @author siegfred
  */
 public class LearningObjectMeta {
@@ -22,7 +21,7 @@ public class LearningObjectMeta {
 	   “objective”: ”objective”
 	}
     */
-    
+
     private String ID;
     private String authorID;
     private String title;
@@ -38,8 +37,8 @@ public class LearningObjectMeta {
     public void setElementIDs(ArrayList<String> elementIDs) {
         this.elementIDs = elementIDs;
     }
-    
-    
+
+
     public String getID() {
         return ID;
     }

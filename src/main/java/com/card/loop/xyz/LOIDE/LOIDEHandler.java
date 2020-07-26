@@ -10,14 +10,18 @@ import java.io.File;
 import java.util.List;
 
 /**
- *
  * @author siegfred
  */
 public interface LOIDEHandler {
-    public LearningElementMeta getLearningElementMeta(String id);
-    public File getLearningElement(String id);
-    public List<LearningElementMeta> findLearningElementMeta(String title);
-    public AuthorMeta getAuthorMeta(String id);
-    public boolean submitLearningElement(LearningElementMeta meta, File file);
-    public boolean submitLearningObject(LearningObjectMeta meta);
+    LearningElementMeta getLearningElementMeta(String id);
+
+    File getLearningElement(String id);
+
+    List<LearningElementMeta> findLearningElementMeta(String title);
+
+    AuthorMeta getAuthorMeta(String id);
+
+    boolean submitLearningElement(LearningElementMeta meta, File file);
+
+    boolean submitLearningObject(LearningObjectMeta meta);
 }

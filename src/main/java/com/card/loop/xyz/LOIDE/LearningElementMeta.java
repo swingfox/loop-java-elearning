@@ -6,7 +6,6 @@
 package com.card.loop.xyz.LOIDE;
 
 /**
- *
  * @author siegfred
  */
 public class LearningElementMeta {
@@ -19,7 +18,7 @@ public class LearningElementMeta {
 	  “publishingDate”: “09/09/1993”,
 	  “size”: “0.45 MB”;
 	}*/
-    
+
     private String ID;
     private String title;
     private String authorID;
