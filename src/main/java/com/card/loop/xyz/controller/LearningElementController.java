@@ -6,6 +6,7 @@
 package com.card.loop.xyz.controller;
 
 import com.card.loop.xyz.config.AppConfig;
+import com.card.loop.xyz.config.ContentShipper;
 import com.card.loop.xyz.dao.LearningElementDAO;
 import com.card.loop.xyz.dao.LearningObjectDAO;
 import com.card.loop.xyz.dto.LearningElementDto;
@@ -14,7 +15,6 @@ import com.card.loop.xyz.dto.UserDto;
 import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.service.LearningElementService;
 import com.card.loop.xyz.service.UserService;
-import com.loop.controller.ContentShipper;
 import com.mongodb.gridfs.GridFSDBFile;
 import java.io.BufferedOutputStream;
 import java.io.File;

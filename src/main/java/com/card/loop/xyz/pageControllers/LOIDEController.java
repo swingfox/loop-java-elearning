@@ -9,6 +9,8 @@ import com.card.loop.xyz.config.AppConfig;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.card.loop.xyz.config.ContentShipper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +24,6 @@ import com.card.loop.xyz.model.LearningElement;
 import com.card.loop.xyz.model.LearningObject;
 import com.card.loop.xyz.service.LearningElementService;
 import com.card.loop.xyz.service.LearningObjectService;
-import com.loop.controller.ContentShipper;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;

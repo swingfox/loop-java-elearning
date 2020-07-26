@@ -5,9 +5,9 @@
  */
 package com.card.loop.xyz.pageControllers;
 
+import com.card.loop.xyz.config.ContentShipper;
 import com.card.loop.xyz.controller.LearningObjectController;
 import com.card.loop.xyz.model.LearningElement;
-import com.loop.controller.ContentShipper;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
